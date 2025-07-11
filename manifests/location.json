@@ -1,0 +1,2271 @@
+{
+  "shapes": {
+    "com.amazonaws.location#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ApiKey": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ApiKeyAction": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ApiKeyActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ApiKeyFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ApiKeyResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#ApiKeyRestrictions": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#AssociateTrackerConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#AssociateTrackerConsumerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#AssociateTrackerConsumerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#AssociateTrackerConsumerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Base64EncodedGeobuf": {
+      "type": "blob"
+    },
+    "com.amazonaws.location#BatchDeleteDevicePositionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchDeleteDevicePositionHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchDeleteDevicePositionHistoryError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchDeleteDevicePositionHistoryErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchDeleteDevicePositionHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchDeleteDevicePositionHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchDeleteGeofence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchDeleteGeofenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchDeleteGeofenceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchDeleteGeofenceErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchDeleteGeofenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchDeleteGeofenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchEvaluateGeofences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchEvaluateGeofencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchEvaluateGeofencesError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchEvaluateGeofencesErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchEvaluateGeofencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchEvaluateGeofencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchGetDevicePosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchGetDevicePositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchGetDevicePositionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchGetDevicePositionErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchGetDevicePositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchGetDevicePositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchItemError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchItemErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.location#BatchPutGeofence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchPutGeofenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchPutGeofenceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchPutGeofenceErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchPutGeofenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchPutGeofenceRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchPutGeofenceRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchPutGeofenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchPutGeofenceSuccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchPutGeofenceSuccessList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchUpdateDevicePosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#BatchUpdateDevicePositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#BatchUpdateDevicePositionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchUpdateDevicePositionErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#BatchUpdateDevicePositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BatchUpdateDevicePositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#BoundingBox": {
+      "type": "list"
+    },
+    "com.amazonaws.location#CalculateRoute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CalculateRouteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CalculateRouteCarModeOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteMatrix": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CalculateRouteMatrixRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CalculateRouteMatrixRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteMatrixResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteMatrixSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CalculateRouteTruckModeOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CellSignals": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Circle": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CountryCode3": {
+      "type": "string"
+    },
+    "com.amazonaws.location#CountryCode3OrEmpty": {
+      "type": "string"
+    },
+    "com.amazonaws.location#CountryCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#CreateGeofenceCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreateGeofenceCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreateGeofenceCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateGeofenceCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreateKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreateKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateMap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreateMapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreateMapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateMapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreatePlaceIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreatePlaceIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreatePlaceIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreatePlaceIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateRouteCalculator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreateRouteCalculatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreateRouteCalculatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateRouteCalculatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#CreateTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#CreateTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CreateTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#CustomLayer": {
+      "type": "string"
+    },
+    "com.amazonaws.location#CustomLayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteGeofenceCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeleteGeofenceCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeleteGeofenceCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteGeofenceCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeleteKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeleteKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteMap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeleteMapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeleteMapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteMapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeletePlaceIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeletePlaceIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeletePlaceIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeletePlaceIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteRouteCalculator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeleteRouteCalculatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeleteRouteCalculatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteRouteCalculatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DeleteTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DeleteTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeleteTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeGeofenceCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribeGeofenceCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribeGeofenceCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeGeofenceCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribeKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribeKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeMap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribeMapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribeMapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeMapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribePlaceIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribePlaceIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribePlaceIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribePlaceIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeRouteCalculator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribeRouteCalculatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribeRouteCalculatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeRouteCalculatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DescribeTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DescribeTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DescribeTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DeviceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#DevicePosition": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DevicePositionList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#DevicePositionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DevicePositionUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#DeviceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DimensionUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.location#DisassociateTrackerConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#DisassociateTrackerConsumerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#DisassociateTrackerConsumerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DisassociateTrackerConsumerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#DistanceUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.location#Earfcn": {
+      "type": "integer"
+    },
+    "com.amazonaws.location#EutranCellId": {
+      "type": "integer"
+    },
+    "com.amazonaws.location#FilterPlaceCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ForecastGeofenceEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ForecastGeofenceEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ForecastGeofenceEventsDeviceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ForecastGeofenceEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ForecastGeofenceEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ForecastedEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ForecastedEventsList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ForecastedGeofenceEventType": {
+      "type": "string"
+    },
+    "com.amazonaws.location#GenericResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#GeoArn": {
+      "type": "string"
+    },
+    "com.amazonaws.location#GeoArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#GeoArnV2": {
+      "type": "string"
+    },
+    "com.amazonaws.location#GeofenceCollectionResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#GeofenceGeometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetDevicePosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetDevicePositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetDevicePositionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetDevicePositionHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetDevicePositionHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetDevicePositionHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetDevicePositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetDevicePositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetGeofence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetGeofenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetGeofenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetGeofenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapGlyphs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetMapGlyphsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetMapGlyphsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapGlyphsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapSprites": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetMapSpritesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetMapSpritesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapSpritesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapStyleDescriptor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetMapStyleDescriptorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetMapStyleDescriptorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapStyleDescriptorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapTile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetMapTileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetMapTileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetMapTileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetPlace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#GetPlaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#GetPlaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#GetPlaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.location#IdList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#InferredState": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#IntendedUse": {
+      "type": "string"
+    },
+    "com.amazonaws.location#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.location#LanguageTag": {
+      "type": "string"
+    },
+    "com.amazonaws.location#LargeToken": {
+      "type": "string"
+    },
+    "com.amazonaws.location#Leg": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#LegGeometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#LegList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#LineString": {
+      "type": "list"
+    },
+    "com.amazonaws.location#LinearRing": {
+      "type": "list"
+    },
+    "com.amazonaws.location#LinearRings": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListDevicePositions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListDevicePositionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListDevicePositionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListDevicePositionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListDevicePositionsResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListDevicePositionsResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListGeofenceCollections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListGeofenceCollectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListGeofenceCollectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListGeofenceCollectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListGeofenceCollectionsResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListGeofenceCollectionsResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListGeofenceResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListGeofenceResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListGeofences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListGeofencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListGeofencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListGeofencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListKeysResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListKeysResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListMaps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListMapsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListMapsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListMapsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListMapsResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListMapsResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListPlaceIndexes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListPlaceIndexesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListPlaceIndexesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListPlaceIndexesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListPlaceIndexesResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListPlaceIndexesResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListRouteCalculators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListRouteCalculatorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListRouteCalculatorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListRouteCalculatorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListRouteCalculatorsResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListRouteCalculatorsResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackerConsumers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListTrackerConsumersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListTrackerConsumersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackerConsumersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#ListTrackersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#ListTrackersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackersResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ListTrackersResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#LocationService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Location"
+        }
+      }
+    },
+    "com.amazonaws.location#LteCellDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#LteCellDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#LteLocalId": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#LteNetworkMeasurements": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#LteNetworkMeasurementsList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#MapConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#MapConfigurationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#MapResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#MapStyle": {
+      "type": "string"
+    },
+    "com.amazonaws.location#NearestDistance": {
+      "type": "double"
+    },
+    "com.amazonaws.location#OptimizationMode": {
+      "type": "string"
+    },
+    "com.amazonaws.location#Pci": {
+      "type": "integer"
+    },
+    "com.amazonaws.location#Place": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#PlaceCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.location#PlaceCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#PlaceGeometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#PlaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.location#PlaceIndexResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#PlaceIndexSearchResultLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.location#PlaceSupplementalCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.location#PlaceSupplementalCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#Position": {
+      "type": "list"
+    },
+    "com.amazonaws.location#PositionFiltering": {
+      "type": "string"
+    },
+    "com.amazonaws.location#PositionList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#PositionPropertyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.location#PositionalAccuracy": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#PricingPlan": {
+      "type": "string"
+    },
+    "com.amazonaws.location#PropertyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.location#PutGeofence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#PutGeofenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#PutGeofenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#PutGeofenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#RefererPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.location#RefererPatternList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#RouteCalculatorResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#RouteMatrix": {
+      "type": "list"
+    },
+    "com.amazonaws.location#RouteMatrixEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#RouteMatrixEntryError": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#RouteMatrixErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.location#RouteMatrixRow": {
+      "type": "list"
+    },
+    "com.amazonaws.location#Rsrp": {
+      "type": "integer"
+    },
+    "com.amazonaws.location#Rsrq": {
+      "type": "float"
+    },
+    "com.amazonaws.location#SearchForPositionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchForPositionResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#SearchForSuggestionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchForSuggestionsResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#SearchForTextResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchForTextResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForPosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#SearchPlaceIndexForPositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#SearchPlaceIndexForPositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForPositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForPositionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForSuggestions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#SearchPlaceIndexForSuggestionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#SearchPlaceIndexForSuggestionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForSuggestionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForSuggestionsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#SearchPlaceIndexForTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#SearchPlaceIndexForTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SearchPlaceIndexForTextSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#SpeedUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.location#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.location#Step": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#StepList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.location#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.location#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.location#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#TimeZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.location#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.location#TrackerResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.location#TrackingFilterGeometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#TravelMode": {
+      "type": "string"
+    },
+    "com.amazonaws.location#TruckDimensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#TruckWeight": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateGeofenceCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdateGeofenceCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdateGeofenceCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateGeofenceCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdateKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdateKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateMap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdateMapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdateMapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateMapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdatePlaceIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdatePlaceIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdatePlaceIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdatePlaceIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateRouteCalculator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdateRouteCalculatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdateRouteCalculatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateRouteCalculatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#UpdateTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#UpdateTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#UpdateTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.location#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.location#VehicleWeightUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.location#VerifyDevicePosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.location#VerifyDevicePositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.location#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.location#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.location#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.location#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.location#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.location#VerifyDevicePositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#VerifyDevicePositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#WaypointPositionList": {
+      "type": "list"
+    },
+    "com.amazonaws.location#WiFiAccessPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.location#WiFiAccessPointList": {
+      "type": "list"
+    }
+  }
+}

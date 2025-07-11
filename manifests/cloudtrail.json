@@ -1,0 +1,3292 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudtrail#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AccountHasOngoingImportException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#AccountNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AccountNotRegisteredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AccountRegisteredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#AddTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TagsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#AddTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AddTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AdvancedEventSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AdvancedEventSelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#AdvancedFieldSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#AdvancedFieldSelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#BillingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudtrail#ByteBuffer": {
+      "type": "blob"
+    },
+    "com.amazonaws.cloudtrail#CancelQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#CancelQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveQueryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#QueryIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#CancelQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CancelQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CannotDelegateManagementAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Channel": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ChannelARNInvalidException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ChannelAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ChannelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ChannelExistsForEDSException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ChannelMaxLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ChannelName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ChannelNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Channels": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#CloudTrailARNInvalidException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CloudTrailInvalidClientTokenIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CloudTrail_20131101": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudTrail"
+        }
+      }
+    },
+    "com.amazonaws.cloudtrail#CloudWatchLogsDeliveryUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ContextKeySelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ContextKeySelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#CreateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#CreateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelMaxLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidSourceException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TagsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#CreateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#CreateDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidQueryStatementException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#CreateDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateEventDataStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#CreateEventDataStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreMaxLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidKmsKeyIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#CreateEventDataStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateEventDataStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateTrail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#CreateTrailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailInvalidClientTokenIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudWatchLogsDeliveryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientS3BucketPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientSnsTopicPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidCloudWatchLogsLogGroupArnException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidCloudWatchLogsRoleArnException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidKmsKeyIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3BucketNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3PrefixException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidSnsTopicNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#MaximumNumberOfTrailsExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#S3BucketDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TagsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotProvidedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#CreateTrailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#CreateTrailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DashboardArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#DashboardDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DashboardName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#DashboardStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#DashboardType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#Dashboards": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#DataResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DataResourceValues": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#DataResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudtrail#DelegatedAdminAccountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeleteChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeleteChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeleteDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeleteDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteEventDataStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeleteEventDataStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelExistsForEDSException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreFederationEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreHasOngoingImportException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreTerminationProtectedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeleteEventDataStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteEventDataStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceARNNotValidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourcePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteTrail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeleteTrailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeleteTrailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeleteTrailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeliveryS3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#DeliveryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#DeregisterOrganizationDelegatedAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DeregisterOrganizationDelegatedAdminRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#AccountNotRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationManagementAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DeregisterOrganizationDelegatedAdminRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DeregisterOrganizationDelegatedAdminResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DescribeQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DescribeQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#QueryIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DescribeQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DescribeQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DescribeTrails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DescribeTrailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DescribeTrailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DescribeTrailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#Destinations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#DisableFederation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#DisableFederationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#DisableFederationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#DisableFederationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudtrail#EnableFederation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#EnableFederationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreFederationEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#EnableFederationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EnableFederationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#EventDataStore": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreFederationEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreHasOngoingImportException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreKmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreMaxLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#EventDataStoreTerminationProtectedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventDataStores": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#EventName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#EventSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#EventSelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#EventSource": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#EventsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ExcludeManagementEventSources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#FederationRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#FederationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#GenerateQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GenerateQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GenerateResponseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GenerateQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GenerateQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GenerateResponseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetEventConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetEventConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventDataStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetEventDataStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetEventDataStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventDataStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventSelectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetEventSelectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetEventSelectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetEventSelectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ImportNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetInsightSelectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetInsightSelectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsightNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetInsightSelectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetInsightSelectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetQueryResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetQueryResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#QueryIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetQueryResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetQueryResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceARNNotValidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourcePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetTrail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetTrailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetTrailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetTrailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetTrailStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#GetTrailStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#GetTrailStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#GetTrailStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ImportDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ImportFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ImportFailureListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ImportFailureStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#ImportNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ImportSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ImportStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ImportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#ImportsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ImportsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InactiveEventDataStoreException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InactiveQueryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#IngestionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsightNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsightSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsightSelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#InsightType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#InsightsMetricDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#InsightsMetricMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#InsightsMetricNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#InsightsMetricPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#InsightsMetricValues": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsufficientIAMAccessPermissionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsufficientS3BucketPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InsufficientSnsTopicPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#InvalidCloudWatchLogsLogGroupArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidCloudWatchLogsRoleArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidDateRangeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidEventCategoryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidEventSelectorsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidHomeRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidImportSourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidInsightSelectorsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidKmsKeyIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidLookupAttributesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidMaxResultsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidQueryStatementException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidQueryStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidS3BucketNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidS3PrefixException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidSnsTopicNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidSourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidTagParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidTimeRangeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#InvalidTrailNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#KmsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#KmsKeyDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#KmsKeyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListChannelsMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListDashboards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListDashboardsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListDashboardsMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListDashboardsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListDashboardsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListEventDataStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListEventDataStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListEventDataStoresMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListEventDataStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListEventDataStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListImportFailures": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListImportFailuresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListImportFailuresMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListImportFailuresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListImportFailuresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListImports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListImportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListImportsMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListImportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListImportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListInsightsMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListInsightsMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListInsightsMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListInsightsMetricDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListPublicKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListPublicKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTimeRangeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListPublicKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListPublicKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidDateRangeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidQueryStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListQueriesMaxResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#ListQueriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListQueriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListTrails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#ListTrailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#ListTrailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ListTrailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudtrail#LookupAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#LookupAttributeKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#LookupAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#LookupAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#LookupEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#LookupEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidLookupAttributesException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTimeRangeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#LookupEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#LookupEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#MaxConcurrentQueriesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#MaxEventSize": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#MaxQueryResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#MaximumNumberOfTrailsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#NotOrganizationManagementAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#OperationNotPermittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Operator": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#OperatorTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#OperatorTargetListMember": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#OperatorValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#OrganizationsNotInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#PartitionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PartitionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#PartitionKeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#PartitionKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Prompt": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#PublicKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PublicKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#PutEventConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#PutEventConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientIAMAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#PutEventConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutEventConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutEventSelectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#PutEventSelectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#PutEventSelectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutEventSelectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutInsightSelectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#PutInsightSelectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientS3BucketPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidInsightSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#S3BucketDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#PutInsightSelectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutInsightSelectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceARNNotValidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourcePolicyNotValidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Queries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#Query": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#QueryAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryIdNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#QueryParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryParameterValues": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudtrail#QueryParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#QueryResultColumn": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudtrail#QueryResultKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryResultRow": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#QueryResultRows": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#QueryResultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#QueryStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#QueryStatisticsForDescribeQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#QueryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#ReadWriteType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#RefreshId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#RefreshSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RefreshScheduleFrequency": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RefreshScheduleFrequencyUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#RefreshScheduleFrequencyValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#RefreshScheduleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#RegisterOrganizationDelegatedAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#RegisterOrganizationDelegatedAdminRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#AccountRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CannotDelegateManagementAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DelegatedAdminAccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientIAMAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationManagementAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#RegisterOrganizationDelegatedAdminRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RegisterOrganizationDelegatedAdminResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RemoveTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#RemoveTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#RemoveTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RemoveTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RequestWidget": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RequestWidgetList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourceARNNotValidException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourcePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ResourcePolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourcePolicyNotValidException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ResourceTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#ResourceTypeNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RestoreEventDataStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#RestoreEventDataStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreMaxLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#RestoreEventDataStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RestoreEventDataStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#RetentionPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#S3BucketDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#S3ImportSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#SampleQueryDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SampleQueryName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SampleQueryRelevance": {
+      "type": "float"
+    },
+    "com.amazonaws.cloudtrail#SampleQuerySQL": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#SearchSampleQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesSearchPhrase": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesSearchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#SearchSampleQueriesSearchResults": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#SelectorField": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SelectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartDashboardRefresh": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StartDashboardRefreshRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StartDashboardRefreshRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartDashboardRefreshResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartEventDataStoreIngestion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StartEventDataStoreIngestionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StartEventDataStoreIngestionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartEventDataStoreIngestionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StartImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#AccountHasOngoingImportException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ImportNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidImportSourceException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StartImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StartLoggingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StartLoggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartLoggingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StartQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientS3BucketPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidQueryStatementException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3BucketNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3PrefixException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#MaxConcurrentQueriesException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#S3BucketDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StartQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StartQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopEventDataStoreIngestion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StopEventDataStoreIngestionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StopEventDataStoreIngestionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopEventDataStoreIngestionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StopImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ImportNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StopImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#StopLoggingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#StopLoggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#StopLoggingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#TagsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#TerminationProtectionEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudtrail#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TimeOfDay": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Timestamps": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#Trail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TrailAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TrailInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TrailList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#TrailNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#TrailNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#TrailNotProvidedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#Trails": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudtrail#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudtrail#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#UpdateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ChannelNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventDataStoreCategoryException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#UpdateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#UpdateDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidQueryStatementException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#UpdateDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateEventDataStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#UpdateEventDataStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreHasOngoingImportException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EventDataStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InactiveEventDataStoreException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidInsightSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidKmsKeyIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#UpdateEventDataStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateEventDataStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateTrail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudtrail#UpdateTrailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailARNInvalidException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudTrailInvalidClientTokenIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CloudWatchLogsDeliveryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientDependencyServiceAccessPermissionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientEncryptionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientS3BucketPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InsufficientSnsTopicPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidCloudWatchLogsLogGroupArnException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidCloudWatchLogsRoleArnException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidEventSelectorsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidHomeRegionException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidKmsKeyIdException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3BucketNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidS3PrefixException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidSnsTopicNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#InvalidTrailNameException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#KmsKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NoManagementAccountSLRExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#NotOrganizationMasterAccountException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#OrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#S3BucketDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#TrailNotProvidedException"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudtrail#UpdateTrailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#UpdateTrailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#ViewPropertiesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#ViewPropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudtrail#ViewPropertiesValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudtrail#Widget": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudtrail#WidgetList": {
+      "type": "list"
+    }
+  }
+}

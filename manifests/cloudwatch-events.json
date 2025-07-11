@@ -1,0 +1,1818 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudwatchevents#AWSEvents": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudWatch Events"
+        }
+      }
+    },
+    "com.amazonaws.cloudwatchevents#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ActivateEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ActivateEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ActivateEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationHttpMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationInvocationRateLimitPerSecond": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ApiDestinationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#Archive": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ArchiveStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#AssignPublicIp": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#AuthHeaderParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#AuthHeaderParametersSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#AwsVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#BatchArrayProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#BatchParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#BatchRetryStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchevents#CancelReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CancelReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#IllegalStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CancelReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CancelReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CapacityProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#CapacityProviderStrategy": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#CapacityProviderStrategyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CapacityProviderStrategyItemBase": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#CapacityProviderStrategyItemWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Connection": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionApiKeyAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionAuthorizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionBasicAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionBodyParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionBodyParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionHeaderParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionHeaderParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionHttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionOAuthClientResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionOAuthHttpMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionOAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionQueryStringParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionQueryStringParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ConnectionStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#CreateApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CreateApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CreateApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CreateArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CreateArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CreateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionApiKeyAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionBasicAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionOAuthClientRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionOAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CreateEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CreateEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreateEventBusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreatePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#CreatePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#CreatePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreatePartnerEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#CreatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Database": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#DbUser": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#DeactivateEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeactivateEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeactivateEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeadLetterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeauthorizeConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeauthorizeConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeauthorizeConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeauthorizeConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeleteApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeleteApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeleteArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeleteArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeleteConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeleteEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeleteEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeletePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeletePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeletePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DeleteRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DeleteRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventBusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribePartnerEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DescribeRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DescribeRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DescribeRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#DisableRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#DisableRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#DisableRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#EcsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#EnableRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#EnableRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#EnableRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventBus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#EventBusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#EventBusName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventBusNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventResource": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#EventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#EventSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#EventSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventSourceNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#EventSourceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#EventTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudwatchevents#HeaderKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#HeaderParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchevents#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#HeaderValueSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#HttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#HttpsEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#IllegalStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#InputTransformer": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#InputTransformerPathKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#InvalidEventPatternException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#KinesisParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#LaunchType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#LimitMax100": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#LimitMin1": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#ListApiDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListApiDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListApiDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListApiDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListArchives": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListArchivesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListArchivesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListArchivesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListEventBuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListEventBusesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListEventBusesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListEventBusesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListEventSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListEventSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListEventSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListEventSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSourceAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListPartnerEventSourceAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSourceAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSourceAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListPartnerEventSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListPartnerEventSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListReplays": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListReplaysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListReplaysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListReplaysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListRuleNamesByTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListRuleNamesByTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListRuleNamesByTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListRuleNamesByTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListTargetsByRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#ListTargetsByRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#ListTargetsByRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ListTargetsByRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchevents#ManagedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ManagedRuleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#MaximumEventAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#MaximumRetryAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#MessageGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#NonPartnerEventBusName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#NonPartnerEventBusNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#OperationDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PartnerEventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PartnerEventSourceAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PartnerEventSourceAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PartnerEventSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PartnerEventSourceNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#PathParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#PathParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementConstraintExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementConstraintType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementStrategyField": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#PlacementStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#PolicyLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Principal": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#PropagateTags": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#PutEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#PutEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutEventsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#PutPartnerEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutPartnerEventsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#PutPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#PutPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PolicyLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#PutPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#PutRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#PutRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#PutTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#PutTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutTargetsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#PutTargetsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#QueryStringKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#QueryStringParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchevents#QueryStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#QueryStringValueSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RedshiftDataParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RedshiftSecretManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#RemovePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#RemovePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RemoveTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#RemoveTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#RemoveTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RemoveTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RemoveTargetsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RemoveTargetsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#Replay": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayDestinationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#ReplayStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RetentionDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchevents#RetryPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RuleNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#RuleResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#RuleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandTargetKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandTargetValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandTargetValues": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#RunCommandTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#SageMakerPipelineParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#SageMakerPipelineParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#SageMakerPipelineParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#SageMakerPipelineParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#SageMakerPipelineParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#SecretsManagerSecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Sql": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#SqsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#StartReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#StartReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#StartReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#StartReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#StatementId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#StatementName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#TargetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TargetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#TargetInput": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TargetInputPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchevents#TargetPartitionKeyPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TestEventPattern": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#TestEventPatternRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidEventPatternException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#TestEventPatternRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#TestEventPatternResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudwatchevents#TraceHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TransformerInput": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchevents#TransformerPaths": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchevents#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#UpdateApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#UpdateApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#UpdateArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#UpdateArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchevents#UpdateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionApiKeyAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionBasicAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionOAuthClientRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionOAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchevents#UpdateConnectionResponse": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,1082 @@
+{
+  "shapes": {
+    "com.amazonaws.amplifyuibuilder#ActionParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#AmplifyUIBuilder": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AmplifyUIBuilder"
+        }
+      }
+    },
+    "com.amazonaws.amplifyuibuilder#ApiConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.amplifyuibuilder#AppId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#AssociatedFieldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenDependencies": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenFeatureFlags": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataEnum": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataEnumValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataEnums": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataField": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataFieldDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataFields": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataModels": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataNonModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataNonModelFields": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataNonModels": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenGenericDataRelationshipType": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobGenericDataSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobGenericDataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobRenderConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#CodegenPrimaryKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#Component": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentBindingProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentBindingPropertiesValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentBindingPropertiesValueProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentChild": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentChildList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentCollectionProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentConditionProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentDataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentEvents": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentOverrides": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentOverridesValue": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentPropertyBindingProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentType": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentVariant": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentVariantValues": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ComponentVariants": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#CreateComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#CreateComponentData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateForm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#CreateFormRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#CreateFormData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateFormRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateFormResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateTheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#CreateThemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#CreateThemeData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateThemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#CreateThemeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#DataStoreRenderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#DeleteComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteForm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#DeleteFormRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteFormRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteTheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#DeleteThemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#DeleteThemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExchangeCodeForToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ExchangeCodeForTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ExchangeCodeForTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExchangeCodeForTokenRequestBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExchangeCodeForTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ExportComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ExportComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportForms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ExportFormsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ExportFormsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportFormsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportThemes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ExportThemesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ExportThemesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ExportThemesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FeaturesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#FieldConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FieldInputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FieldPosition": {
+      "type": "union"
+    },
+    "com.amazonaws.amplifyuibuilder#FieldValidationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FieldsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#FileUploaderFieldConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FixedPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#Form": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#FormBindingElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormBindings": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#FormButton": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormButtonsPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#FormCTA": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormDataSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#FormDataTypeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputBindingProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputBindingPropertiesValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputBindingPropertiesValueProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputValueProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputValuePropertyBindingProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormInputValuePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#FormList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#FormName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#FormResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.amplifyuibuilder#FormStyle": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormStyleConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.amplifyuibuilder#FormSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#FormSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#GenericDataRelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#GetCodegenJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#GetCodegenJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#GetCodegenJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetCodegenJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#GetComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#GetComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetForm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#GetFormRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#GetFormRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetFormResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#GetMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#GetMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetTheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#GetThemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#GetThemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GetThemeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#GraphQLRenderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#IdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#JSModule": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#JSScript": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#JSTarget": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#LabelDecorator": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ListCodegenJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ListCodegenJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ListCodegenJobsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.amplifyuibuilder#ListCodegenJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListCodegenJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ListComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ListComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListEntityLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.amplifyuibuilder#ListForms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ListFormsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ListFormsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListFormsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListThemes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#ListThemesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#ListThemesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ListThemesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#MutationActionSetStateParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#NoApiRenderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#NumValues": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#OperandType": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#Predicate": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#PredicateList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#PutMetadataFlag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#PutMetadataFlagRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#PutMetadataFlagBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#PutMetadataFlagRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ReactCodegenDependencies": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#ReactStartCodegenJobData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#RefreshToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#RefreshTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#RefreshTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#RefreshTokenRequestBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#RefreshTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#RelatedModelFieldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ResourceConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#SectionalElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#SectionalElementMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#SortDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#SortProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#SortPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#StartCodegenJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#StartCodegenJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#StartCodegenJobData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#StartCodegenJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#StartCodegenJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#StorageAccessLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifyuibuilder#StrValues": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.amplifyuibuilder#Theme": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ThemeValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#TokenProviders": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#UpdateComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateComponentData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateForm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#UpdateFormRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateFormData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateFormRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateFormResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateTheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifyuibuilder#UpdateThemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.amplifyuibuilder#ResourceConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateThemeData": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateThemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#UpdateThemeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.amplifyuibuilder#ValidationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ValueMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifyuibuilder#ValueMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifyuibuilder#ValueMappings": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,800 @@
+{
+  "shapes": {
+    "com.amazonaws.translate#AWSShineFrontendService_20170701": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Translate"
+        }
+      }
+    },
+    "com.amazonaws.translate#AppliedTerminology": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#AppliedTerminologyList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#BoundedLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#Brevity": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#ClientTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#CreateParallelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#CreateParallelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#CreateParallelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#CreateParallelDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DeleteParallelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#DeleteParallelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#DeleteParallelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DeleteParallelDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DeleteTerminology": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#DeleteTerminologyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#DeleteTerminologyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DescribeTextTranslationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#DescribeTextTranslationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#DescribeTextTranslationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DescribeTextTranslationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#DetectedLanguageLowConfidenceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#Directionality": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#DisplayLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#Document": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#DocumentContent": {
+      "type": "blob"
+    },
+    "com.amazonaws.translate#EncryptionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#EncryptionKeyID": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#EncryptionKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#Formality": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#GetParallelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#GetParallelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#GetParallelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#GetParallelDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#GetTerminology": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#GetTerminologyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#GetTerminologyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#GetTerminologyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ImportTerminology": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ImportTerminologyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ImportTerminologyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ImportTerminologyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#InputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.translate#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#InvalidFilterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#JobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#JobName": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#Language": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#LanguageCodeString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#LanguageCodeStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#LanguagesList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListLanguages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ListLanguagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#UnsupportedDisplayLanguageCodeException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ListLanguagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListLanguagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListParallelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ListParallelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ListParallelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListParallelDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTerminologies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ListTerminologiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ListTerminologiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTerminologiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTextTranslationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#ListTextTranslationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#ListTextTranslationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ListTextTranslationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#LocalizedNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.translate#MaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.translate#MergeStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#OutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ParallelDataArn": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ParallelDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ParallelDataDataLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ParallelDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#ParallelDataProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#ParallelDataPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#ParallelDataStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#Profanity": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ResourceNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#S3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#StartTextTranslationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#StartTextTranslationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#UnsupportedLanguagePairException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#StartTextTranslationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#StartTextTranslationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#StopTextTranslationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#StopTextTranslationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#StopTextTranslationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#StopTextTranslationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#String": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#TargetLanguageCodeStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#Term": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TermList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#TerminologyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#TerminologyData": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TerminologyDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.translate#TerminologyDataLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TerminologyFile": {
+      "type": "blob"
+    },
+    "com.amazonaws.translate#TerminologyProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TerminologyPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#TextSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TextTranslationJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TextTranslationJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TextTranslationJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.translate#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.translate#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslateDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#TranslateDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#UnsupportedLanguagePairException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#TranslateDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslateDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslateText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#TranslateTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#DetectedLanguageLowConfidenceException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.translate#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.translate#UnsupportedLanguagePairException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#TranslateTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslateTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslatedDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#TranslatedDocumentContent": {
+      "type": "blob"
+    },
+    "com.amazonaws.translate#TranslatedTextString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#TranslationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UnboundedLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.translate#UnsupportedDisplayLanguageCodeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UnsupportedLanguagePairException": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UpdateParallelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.translate#UpdateParallelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.translate#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.translate#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.translate#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.translate#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.translate#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.translate#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.translate#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.translate#UpdateParallelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.translate#UpdateParallelDataResponse": {
+      "type": "structure"
+    }
+  }
+}

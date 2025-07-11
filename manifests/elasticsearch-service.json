@@ -1,0 +1,2118 @@
+{
+  "shapes": {
+    "com.amazonaws.elasticsearchservice#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#AWSAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#AcceptInboundCrossClusterSearchConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#AcceptInboundCrossClusterSearchConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#AcceptInboundCrossClusterSearchConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AcceptInboundCrossClusterSearchConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AccessPoliciesStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#AddTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#AddTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AdditionalLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AdditionalLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#AdvancedOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticsearchservice#AdvancedOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AdvancedSecurityOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AdvancedSecurityOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AdvancedSecurityOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AmazonElasticsearchService2015": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Elasticsearch Service"
+        }
+      }
+    },
+    "com.amazonaws.elasticsearchservice#AssociatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#AssociatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#AssociatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AssociatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AuthorizeVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#AuthorizeVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#AuthorizeVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AuthorizeVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AuthorizedPrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AuthorizedPrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTune": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneDesiredState": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneMaintenanceSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneMaintenanceScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneState": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#AutoTuneType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#BackendRole": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#BaseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticsearchservice#CancelDomainConfigChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CancelDomainConfigChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CancelDomainConfigChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CancelDomainConfigChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CancelElasticsearchServiceSoftwareUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CancelElasticsearchServiceSoftwareUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CancelElasticsearchServiceSoftwareUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CancelElasticsearchServiceSoftwareUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CancelledChangeProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CancelledChangePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressStage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressStageList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressStageName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressStageStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#ChangeProgressStatusDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#CloudWatchLogsLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#CognitoOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CognitoOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ColdStorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CommitMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#CompatibleElasticsearchVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#CompatibleVersionsMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ConfigChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ConnectionAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#CreateElasticsearchDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CreateElasticsearchDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CreateElasticsearchDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreateElasticsearchDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreateOutboundCrossClusterSearchConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CreateOutboundCrossClusterSearchConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CreateOutboundCrossClusterSearchConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreateOutboundCrossClusterSearchConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CreatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CreatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#CreateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#CreateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#CreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#CrossClusterSearchConnectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#CrossClusterSearchConnectionStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteElasticsearchDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DeleteElasticsearchDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeleteElasticsearchDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteElasticsearchDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteElasticsearchServiceRole": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeleteInboundCrossClusterSearchConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DeleteInboundCrossClusterSearchConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeleteInboundCrossClusterSearchConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteInboundCrossClusterSearchConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteOutboundCrossClusterSearchConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DeleteOutboundCrossClusterSearchConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeleteOutboundCrossClusterSearchConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteOutboundCrossClusterSearchConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeletePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DeletePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeletePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeletePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DeleteVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DeleteVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeleteVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DeploymentCloseDateTimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#DeploymentType": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainAutoTunes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeDomainAutoTunesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainAutoTunesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainAutoTunesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainChangeProgress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeDomainChangeProgressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainChangeProgressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeDomainChangeProgressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchInstanceTypeLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchInstanceTypeLimitsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchInstanceTypeLimitsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeElasticsearchInstanceTypeLimitsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeInboundCrossClusterSearchConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeInboundCrossClusterSearchConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidPaginationTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeInboundCrossClusterSearchConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeInboundCrossClusterSearchConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeOutboundCrossClusterSearchConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeOutboundCrossClusterSearchConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidPaginationTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeOutboundCrossClusterSearchConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeOutboundCrossClusterSearchConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstanceOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstanceOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstanceOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstanceOfferingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeVpcEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DescribeVpcEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DescribeVpcEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DescribeVpcEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DisableTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#DisabledOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DissociatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#DissociatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#DissociatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DissociatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DomainEndpointOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainEndpointOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DomainInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#DomainInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DomainNameFqdn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#DomainNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#DomainPackageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DomainPackageDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#DomainPackageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#DomainProcessingStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.elasticsearchservice#DryRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticsearchservice#DryRunResults": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#Duration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#DurationValue": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticsearchservice#EBSOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#EBSOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ESPartitionInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ESWarmPartitionInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchClusterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchClusterConfigStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchDomainConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchDomainStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchDomainStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchInstanceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchVersionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ElasticsearchVersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#EncryptionAtRestOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#EncryptionAtRestOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#EndpointsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticsearchservice#EngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#ErrorType": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#GUID": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#GUIDList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#GetCompatibleElasticsearchVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#GetCompatibleElasticsearchVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#GetCompatibleElasticsearchVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetCompatibleElasticsearchVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetPackageVersionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#GetPackageVersionHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#GetPackageVersionHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetPackageVersionHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#GetUpgradeHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#GetUpgradeStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#GetUpgradeStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#IdentityPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#InboundCrossClusterSearchConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InboundCrossClusterSearchConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InboundCrossClusterSearchConnectionStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#InboundCrossClusterSearchConnections": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#InitiatedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#InstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#InstanceCountLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InstanceLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InstanceRole": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#IntegerClass": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#InvalidTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#Issue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#Issues": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#LastUpdated": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#LimitName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#LimitValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#LimitValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#Limits": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#LimitsByRole": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListDomainNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainsForPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListDomainsForPackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainsForPackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListDomainsForPackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchInstanceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListElasticsearchInstanceTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchInstanceTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchInstanceTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListElasticsearchVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListElasticsearchVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListPackagesForDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListPackagesForDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListPackagesForDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListPackagesForDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListVpcEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointsForDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#ListVpcEndpointsForDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointsForDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointsForDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ListVpcEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#LogPublishingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#LogPublishingOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticsearchservice#LogPublishingOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#MasterUserOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#MaximumInstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#MinimumInstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#ModifyingProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ModifyingPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#NodeToNodeEncryptionOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#NodeToNodeEncryptionOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#OptionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#OptionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#OutboundCrossClusterSearchConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#OutboundCrossClusterSearchConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#OutboundCrossClusterSearchConnectionStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#OutboundCrossClusterSearchConnections": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#OverallChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#OwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PackageDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PackageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#PackageDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#PackageID": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PackageSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#PackageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#PackageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#PackageVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PackageVersionHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#PackageVersionHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#Password": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#PropertyValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#PurchaseReservedElasticsearchInstanceOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#PurchaseReservedElasticsearchInstanceOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#PurchaseReservedElasticsearchInstanceOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#PurchaseReservedElasticsearchInstanceOfferingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ReferencePath": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#RejectInboundCrossClusterSearchConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#RejectInboundCrossClusterSearchConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#RejectInboundCrossClusterSearchConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RejectInboundCrossClusterSearchConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RemoveTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#RemoveTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#RemoveTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ReservationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#ReservedElasticsearchInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ReservedElasticsearchInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ReservedElasticsearchInstanceOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ReservedElasticsearchInstanceOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ReservedElasticsearchInstancePaymentOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RevokeVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#RevokeVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#RevokeVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RevokeVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#RollbackOnDisable": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#SAMLEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#SAMLIdp": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#SAMLMetadata": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#SAMLOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#SAMLOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ScheduledAutoTuneActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ScheduledAutoTuneDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#ScheduledAutoTuneDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ScheduledAutoTuneSeverityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#ServiceSoftwareOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ServiceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#SnapshotOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#SnapshotOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#StartAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#StartElasticsearchServiceSoftwareUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#StartElasticsearchServiceSoftwareUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#StartElasticsearchServiceSoftwareUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#StartElasticsearchServiceSoftwareUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#StartTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#StorageSubTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#StorageType": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#StorageTypeLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#StorageTypeLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#StorageTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#StorageTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#String": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#TLSSecurityPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#TimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#TotalNumberOfStages": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#UIntValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticsearchservice#UpdateElasticsearchDomainConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#UpdateElasticsearchDomainConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#UpdateElasticsearchDomainConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpdateElasticsearchDomainConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpdatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#UpdatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#UpdatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpdatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpdateTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticsearchservice#UpdateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#UpdateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#UpdateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpdateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeElasticsearchDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticsearchservice#UpgradeElasticsearchDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#BaseException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#InternalException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeElasticsearchDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeElasticsearchDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeStep": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeStepItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#UpgradeStepsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#UserPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#VPCDerivedInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#VPCDerivedInfoStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#VPCOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#ValueStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#VolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointError": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpointSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#VpcEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticsearchservice#ZoneAwarenessConfig": {
+      "type": "structure"
+    }
+  }
+}

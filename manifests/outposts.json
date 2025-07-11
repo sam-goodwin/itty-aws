@@ -1,0 +1,1386 @@
+{
+  "shapes": {
+    "com.amazonaws.outposts#AWSServiceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#AWSServiceNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#Address": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AddressLine1": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AddressLine2": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AddressLine3": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AssetId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AssetIdInput": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AssetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AssetInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AssetInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AssetInstanceCapacityList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AssetInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AssetInstanceTypeCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AssetListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AssetLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#AssetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#AssetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#AvailabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AvailabilityZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#AvailabilityZoneIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#BlockingInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#BlockingInstancesList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CIDR": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CIDRList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CancelCapacityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#CancelCapacityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#CancelCapacityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CancelCapacityTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CancelOrder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#CancelOrderInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#CancelOrderInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CancelOrderOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CapacityTaskFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CapacityTaskFailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#CapacityTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CapacityTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CapacityTaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#CapacityTaskStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CapacityTaskStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CapacityTaskSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CatalogItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CatalogItemClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#CatalogItemClassList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CatalogItemListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CatalogItemPowerKva": {
+      "type": "float"
+    },
+    "com.amazonaws.outposts#CatalogItemStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#CatalogItemWeightLbs": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#City": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CityList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#ComputeAssetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#ComputeAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ConnectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ConnectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#ContactName": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#ContactPhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CountryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#CountryCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#CreateOrder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#CreateOrderInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#CreateOrderInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CreateOrderOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CreateOutpost": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#CreateOutpostInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#CreateOutpostInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CreateOutpostOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CreateSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#CreateSiteInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#CreateSiteInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#CreateSiteOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#DeleteOutpost": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#DeleteOutpostInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#DeleteOutpostInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#DeleteOutpostOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#DeleteSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#DeleteSiteInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#DeleteSiteInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#DeleteSiteOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#DeviceSerialNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#DistrictOrCounty": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#DryRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.outposts#EC2Capacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#EC2CapacityListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#EC2FamilyList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#Family": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#FiberOpticCableType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#GetCapacityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetCapacityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetCapacityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetCapacityTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetCatalogItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetCatalogItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetCatalogItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetCatalogItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOrder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetOrderInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetOrderInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOrderOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpost": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetOutpostInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetOutpostInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpostInstanceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetOutpostInstanceTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetOutpostInstanceTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpostInstanceTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpostOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpostSupportedInstanceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetOutpostSupportedInstanceTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetOutpostSupportedInstanceTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetOutpostSupportedInstanceTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetSiteInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetSiteAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#GetSiteAddressInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#GetSiteAddressInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetSiteAddressOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetSiteInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#GetSiteOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#HostId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#HostIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#ISO8601Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.outposts#InstanceFamilies": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#InstanceFamilyName": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#InstanceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#InstanceTypeCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#InstanceTypeCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#InstanceTypeItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#InstanceTypeListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#InstanceTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#InstancesToExclude": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#LifeCycleStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#LifeCycleStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#LineItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#LineItemAssetInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#LineItemAssetInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#LineItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#LineItemListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#LineItemQuantity": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#LineItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#LineItemRequestListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#LineItemStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#LineItemStatusCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.outposts#ListAssetInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListAssetInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListAssetInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListAssetInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListAssetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListAssetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListAssetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListBlockingInstancesForCapacityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListBlockingInstancesForCapacityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListBlockingInstancesForCapacityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListBlockingInstancesForCapacityTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListCapacityTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListCapacityTasksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListCapacityTasksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListCapacityTasksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListCatalogItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListCatalogItemsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListCatalogItemsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListCatalogItemsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListOrders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListOrdersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListOrdersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListOrdersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListOutposts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListOutpostsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListOutpostsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListOutpostsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListSites": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListSitesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListSitesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListSitesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#MacAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#MacAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#MaxResults1000": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#MaxSize": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#MaximumSupportedWeightLbs": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Municipality": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#NetworkInterfaceDeviceIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#OpticalStandard": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Order": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#OrderId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OrderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#OrderSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#OrderSummaryListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#OrderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Outpost": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#OutpostArn": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostIdOnly": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostInstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostInstanceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#OutpostName": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#OutpostsOlafService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Outposts"
+        }
+      }
+    },
+    "com.amazonaws.outposts#OwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#PaymentOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#PaymentTerm": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#PostalCode": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#PowerConnector": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#PowerDrawKva": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#PowerFeedDrop": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#PowerPhase": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Quantity": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#RackElevation": {
+      "type": "float"
+    },
+    "com.amazonaws.outposts#RackId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#RackPhysicalProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#RequestedInstancePools": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#ServerEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#ShipmentCarrier": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#ShipmentInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#Site": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#SiteArn": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SiteDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SiteId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SiteName": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SiteNotes": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SkuCode": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#StartCapacityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#StartCapacityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#StartCapacityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#StartCapacityTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#StartConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#StartConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#StartConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#StartConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#StateOrRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#StateOrRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#StatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#String": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#SupportedHardwareType": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#SupportedStorageEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#SupportedStorageList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#SupportedUplinkGbps": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#SupportedUplinkGbpsListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.outposts#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#TaskActionOnBlockingInstances": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#TrackingId": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#UnderlayIpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateOutpost": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#UpdateOutpostInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#UpdateOutpostInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateOutpostOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#UpdateSiteInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#UpdateSiteAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#UpdateSiteAddressInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#UpdateSiteAddressInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSiteAddressOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSiteInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSiteOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSiteRackPhysicalProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.outposts#UpdateSiteRackPhysicalPropertiesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.outposts#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.outposts#UpdateSiteRackPhysicalPropertiesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UpdateSiteRackPhysicalPropertiesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#UplinkCount": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#UplinkGbps": {
+      "type": "enum"
+    },
+    "com.amazonaws.outposts#VCPUCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.outposts#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.outposts#WireGuardPublicKey": {
+      "type": "string"
+    },
+    "com.amazonaws.outposts#outpostListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.outposts#siteListDefinition": {
+      "type": "list"
+    }
+  }
+}

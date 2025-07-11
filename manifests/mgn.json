@@ -1,0 +1,2255 @@
+{
+  "shapes": {
+    "com.amazonaws.mgn#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#AccountID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#AccountResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ActionCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ActionID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ActionIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplianceID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplianceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ApplicationAggregatedStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ApplicationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplicationHealthStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplicationID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplicationIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ApplicationIDsFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ApplicationMigrationService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "mgn"
+        }
+      }
+    },
+    "com.amazonaws.mgn#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplicationProgressStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ApplicationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ApplicationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ArchiveApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ArchiveApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ArchiveApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ArchiveWave": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ArchiveWaveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ArchiveWaveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#AssociateApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#AssociateApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#AssociateApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#AssociateApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#AssociateSourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#AssociateSourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#AssociateSourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#AssociateSourceServersRequestSourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#AssociateSourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#BandwidthThrottling": {
+      "type": "long"
+    },
+    "com.amazonaws.mgn#BootMode": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#BoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#CPU": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ChangeServerLifeCycleState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ChangeServerLifeCycleStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ChangeServerLifeCycleStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ChangeServerLifeCycleStateSourceServerLifecycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ChangeServerLifeCycleStateSourceServerLifecycleState": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ClientIdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#CloudWatchLogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ConflictExceptionErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#Connector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ConnectorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ConnectorID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ConnectorIDsFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ConnectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ConnectorResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ConnectorSsmCommandConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ConnectorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#Cpus": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#CreateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#CreateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#CreateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#CreateLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#CreateLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#CreateLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#CreateReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#CreateReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#CreateReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#CreateWave": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#CreateWaveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#CreateWaveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationErrorString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#DataReplicationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationInfoReplicatedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationInfoReplicatedDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DataReplicationInitiation": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationInitiationStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DataReplicationInitiationStepName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#DataReplicationInitiationStepStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#DataReplicationInitiationSteps": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DataReplicationState": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteLaunchConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteReplicationConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteSourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteSourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteSourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteSourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteVcenterClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteVcenterClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteVcenterClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteWave": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DeleteWaveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DeleteWaveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DeleteWaveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeJobLogItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeJobLogItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeJobLogItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeJobLogItemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeJobsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeJobsRequestFiltersJobIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DescribeJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeLaunchConfigurationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeLaunchConfigurationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeLaunchConfigurationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeLaunchConfigurationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeReplicationConfigurationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeReplicationConfigurationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeReplicationConfigurationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeReplicationConfigurationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeSourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeSourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeSourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeSourceServersRequestApplicationIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DescribeSourceServersRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeSourceServersRequestFiltersIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DescribeSourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeVcenterClients": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DescribeVcenterClientsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DescribeVcenterClientsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DescribeVcenterClientsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DisassociateApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DisassociateApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DisassociateApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DisassociateApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DisassociateSourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DisassociateSourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DisassociateSourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DisassociateSourceServersRequestSourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DisassociateSourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#DisconnectFromService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#DisconnectFromServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#DisconnectFromServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#Disk": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#Disks": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#DocumentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#EC2InstanceID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#EC2InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#EC2LaunchConfigurationTemplateID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ExportErrorData": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ExportErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ExportID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ExportResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ExportStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ExportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ExportTaskError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ExportTaskSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ExportsList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#FinalizeCutover": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#FinalizeCutoverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#FinalizeCutoverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#FirstBoot": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#GetLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#GetLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#GetLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#GetReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#GetReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#GetReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#IPsList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ISO8601DatetimeString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ISO8601DurationString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#IdentificationHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportErrorData": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportErrorType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ImportErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ImportID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ImportIDsFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ImportList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ImportResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ImportStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ImportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportTaskError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportTaskSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportTaskSummaryApplications": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportTaskSummaryServers": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ImportTaskSummaryWaves": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#InitializeService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#InitializeServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#InitializeServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#InitializeServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#InitiatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#Iops": {
+      "type": "long"
+    },
+    "com.amazonaws.mgn#JmesPathString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#JobID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#JobLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#JobLogEvent": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#JobLogEventData": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#JobLogs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#JobPostLaunchActionsLaunchStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#JobResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#JobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#JobType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#JobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#LargeBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#LaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LaunchConfigurationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LaunchConfigurationTemplateID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#LaunchConfigurationTemplateIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#LaunchConfigurationTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#LaunchConfigurationTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#LaunchDisposition": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#LaunchStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#LaunchTemplateDiskConf": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LaunchedInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#Licensing": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastCutover": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastCutoverFinalized": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastCutoverInitiated": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastCutoverReverted": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastTest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastTestFinalized": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastTestInitiated": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleLastTestReverted": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#LifeCycleState": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#LifeCycleStates": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListApplicationsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListConnectorsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListExportErrors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListExportErrorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListExportErrorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListExportErrorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListExports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListExportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListExportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListExportsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListExportsRequestFiltersExportIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ListExportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListImportErrors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListImportErrorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListImportErrorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListImportErrorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListImports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListImportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListImportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListImportsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListImportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListManagedAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListManagedAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListManagedAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListManagedAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListSourceServerActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListSourceServerActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListSourceServerActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListSourceServerActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListTemplateActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListTemplateActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListTemplateActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListTemplateActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListWaves": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ListWavesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ListWavesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListWavesRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ListWavesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ManagedAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ManagedAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#MarkAsArchived": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#MarkAsArchivedRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#MarkAsArchivedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#MaxResultsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.mgn#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#OS": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#OperatingSystemString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#OrderType": {
+      "type": "integer"
+    },
+    "com.amazonaws.mgn#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ParticipatingServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ParticipatingServers": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#PauseReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#PauseReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#PauseReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#PositiveInteger": {
+      "type": "long"
+    },
+    "com.amazonaws.mgn#PostLaunchActionExecutionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#PostLaunchActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#PostLaunchActionsDeploymentType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#PostLaunchActionsLaunchStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#PostLaunchActionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#PutSourceServerAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#PutSourceServerActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#PutSourceServerActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#PutTemplateAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#PutTemplateActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#PutTemplateActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#RemoveSourceServerAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#RemoveSourceServerActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#RemoveSourceServerActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#RemoveSourceServerActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#RemoveTemplateAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#RemoveTemplateActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#RemoveTemplateActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#RemoveTemplateActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationDataPlaneRouting": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationDefaultLargeStagingDiskType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationEbsEncryption": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationReplicatedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationReplicatedDiskStagingDiskType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationReplicatedDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationTemplateID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationTemplateIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#ReplicationConfigurationTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ReplicationServersSecurityGroupsIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ReplicationType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ReplicationTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ResumeReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#ResumeReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#ResumeReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#RetryDataReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#RetryDataReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#RetryDataReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#S3BucketSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#S3LogBucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SecurityGroupID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SmallBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SourceServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SourceServerActionDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SourceServerActionDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#SourceServerActionsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SourceServerConnectorAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SourceServerID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SourceServerResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#SourceServersList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#SsmDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SsmDocumentExternalParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.mgn#SsmDocumentName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmDocumentParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmDocumentParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.mgn#SsmDocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#SsmExternalParameter": {
+      "type": "union"
+    },
+    "com.amazonaws.mgn#SsmInstanceID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmParameterStoreParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#SsmParameterStoreParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmParameterStoreParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#SsmParameterStoreParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#StartCutover": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StartCutoverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StartCutoverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartCutoverRequestSourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#StartCutoverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StartExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StartExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StartImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StartImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StartReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StartReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartTest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StartTestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StartTestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StartTestRequestSourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#StartTestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StopReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#StopReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#StopReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#StrictlyPositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.mgn#SubnetID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.mgn#TargetInstanceTypeRightSizingMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#TemplateActionDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#TemplateActionDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#TemplateActionsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#TerminateTargetInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#TerminateTargetInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#TerminateTargetInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#TerminateTargetInstancesRequestSourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#TerminateTargetInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#Throughput": {
+      "type": "long"
+    },
+    "com.amazonaws.mgn#UnarchiveApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UnarchiveApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UnarchiveApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UnarchiveWave": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UnarchiveWaveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UnarchiveWaveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UninitializedAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateSourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateSourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateSourceServerReplicationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateSourceServerReplicationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateSourceServerReplicationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateSourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#UpdateWave": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mgn#UpdateWaveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mgn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mgn#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mgn#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.mgn#UpdateWaveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#VcenterClient": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#VcenterClientID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#VcenterClientList": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#VcenterClientResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#VolumeType": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#Wave": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#WaveAggregatedStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mgn#WaveDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#WaveHealthStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#WaveID": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#WaveIDsFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.mgn#WaveName": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#WaveProgressStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mgn#WaveResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mgn#WavesList": {
+      "type": "list"
+    }
+  }
+}

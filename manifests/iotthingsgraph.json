@@ -1,0 +1,1183 @@
+{
+  "shapes": {
+    "com.amazonaws.iotthingsgraph#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#AssociateEntityToThing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#AssociateEntityToThingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#AssociateEntityToThingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#AssociateEntityToThingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateFlowTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#CreateFlowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#CreateFlowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateFlowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#CreateSystemInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#CreateSystemTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#CreateSystemTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DefinitionDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DefinitionLanguage": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#DefinitionText": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteFlowTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeleteFlowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeleteFlowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteFlowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeleteNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeleteNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeleteSystemInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeleteSystemTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeleteSystemTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DependencyRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DependencyRevisions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#DeploySystemInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeploySystemInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeploySystemInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeploySystemInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeploymentTarget": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateExistingEntities": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateFlowTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeprecateFlowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateFlowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateFlowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateSystemTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DeprecateSystemTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateSystemTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DeprecateSystemTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DescribeNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DescribeNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DescribeNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DescribeNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DissociateEntityFromThing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#DissociateEntityFromThingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#DissociateEntityFromThingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#DissociateEntityFromThingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotthingsgraph#EntityDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#EntityDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#EntityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#EntityFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#EntityFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#EntityFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#EntityFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#EntityTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionMessageId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionMessagePayload": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#FlowExecutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#FlowTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetFlowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetSystemInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetSystemTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetUploadStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#GetUploadStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#GetUploadStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GetUploadStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#GreengrassDeploymentId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#GreengrassGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#GreengrassGroupVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#IotThingsGraphFrontEndService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTThingsGraph"
+        }
+      }
+    },
+    "com.amazonaws.iotthingsgraph#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ListFlowExecutionMessages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#ListFlowExecutionMessagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#ListFlowExecutionMessagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ListFlowExecutionMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotthingsgraph#MetricsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#NamespaceDeletionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#NamespaceDeletionStatusErrorCodes": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#NamespaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#SearchEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchFlowExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchFlowTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchFlowTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchSystemInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchSystemTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchSystemTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchThings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#SearchThingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#SearchThingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SearchThingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#String": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SyncWithPublicNamespace": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceDeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemInstanceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#SystemTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#Thing": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#ThingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#ThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#Things": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotthingsgraph#UndeploySystemInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#UndeploySystemInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#UndeploySystemInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UndeploySystemInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UpdateFlowTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#UpdateFlowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#UpdateFlowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UpdateFlowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UpdateSystemTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#UpdateSystemTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#UpdateSystemTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UpdateSystemTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UploadEntityDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotthingsgraph#UploadEntityDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotthingsgraph#UploadEntityDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UploadEntityDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotthingsgraph#UploadId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#UploadStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotthingsgraph#Urn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotthingsgraph#Urns": {
+      "type": "list"
+    },
+    "com.amazonaws.iotthingsgraph#Version": {
+      "type": "long"
+    }
+  }
+}

@@ -1,0 +1,1402 @@
+{
+  "shapes": {
+    "com.amazonaws.xray#AWSXRay": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "XRay"
+        }
+      }
+    },
+    "com.amazonaws.xray#Alias": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#AliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#AliasNames": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#AnnotationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#AnnotationValue": {
+      "type": "union"
+    },
+    "com.amazonaws.xray#Annotations": {
+      "type": "map"
+    },
+    "com.amazonaws.xray#AnomalousService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#AnomalousServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#AttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#AttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.xray#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#AvailabilityZoneDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#BackendConnectionErrors": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#BatchGetTraces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#BatchGetTracesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#BatchGetTracesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#BatchGetTracesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.xray#BorrowCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#CancelTraceRetrieval": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#CancelTraceRetrievalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#CancelTraceRetrievalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#CancelTraceRetrievalResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ClientID": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#CreateGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#CreateSamplingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#CreateSamplingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#RuleLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#CreateSamplingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#CreateSamplingRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteResourcePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteSamplingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#DeleteSamplingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#DeleteSamplingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#DeleteSamplingRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.xray#EC2InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Edge": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#EdgeList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#EdgeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#EncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#EncryptionKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#EncryptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#EntitySelectorExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#ErrorRootCause": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ErrorRootCauseEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ErrorRootCauseEntityPath": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ErrorRootCauseService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ErrorRootCauseServices": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ErrorRootCauses": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ErrorStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#EventSummaryText": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#FaultRootCause": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#FaultRootCauseEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#FaultRootCauseEntityPath": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#FaultRootCauseService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#FaultRootCauseServices": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#FaultRootCauses": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#FaultStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#FilterExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#FixedRate": {
+      "type": "double"
+    },
+    "com.amazonaws.xray#ForecastStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetEncryptionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetGroupsNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#GetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetIndexingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetIndexingRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetIndexingRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetIndexingRulesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsight": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetInsightRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetInsightEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetInsightEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetInsightEventsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#GetInsightEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightEventsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightImpactGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetInsightImpactGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetInsightImpactGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightImpactGraphResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetInsightSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetInsightSummariesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#GetInsightSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetInsightSummariesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetRetrievedTracesGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetRetrievedTracesGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetRetrievedTracesGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetRetrievedTracesGraphResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetSamplingRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetSamplingRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingRulesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingStatisticSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetSamplingStatisticSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetSamplingStatisticSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingStatisticSummariesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetSamplingTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetSamplingTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetSamplingTargetsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetServiceGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetServiceGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetServiceGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetServiceGraphResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTimeSeriesServiceStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetTimeSeriesServiceStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetTimeSeriesServiceStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTimeSeriesServiceStatisticsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetTraceGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetTraceGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceGraphResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceSegmentDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetTraceSegmentDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetTraceSegmentDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceSegmentDestinationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#GetTraceSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#GetTraceSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GetTraceSummariesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GraphLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GroupARN": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#GroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#GroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#HTTPMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Histogram": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#HistogramEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Host": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Hostname": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Http": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#IndexingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#IndexingRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#IndexingRuleValue": {
+      "type": "union"
+    },
+    "com.amazonaws.xray#IndexingRuleValueUpdate": {
+      "type": "union"
+    },
+    "com.amazonaws.xray#Insight": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InsightCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#InsightCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InsightEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#InsightImpactGraphEdge": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InsightImpactGraphEdgeList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightImpactGraphService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InsightImpactGraphServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightState": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#InsightStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InsightSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#InsightSummaryText": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#InsightsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InstanceIdDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#InvalidPolicyRevisionIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#LinksList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ListResourcePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#ListResourcePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#ListResourcePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ListResourcePoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ListRetrievedTraces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#ListRetrievedTracesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#ListRetrievedTracesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ListRetrievedTracesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#LockoutPreventionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.xray#NullableDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.xray#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#NullableLong": {
+      "type": "long"
+    },
+    "com.amazonaws.xray#PolicyCountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#PolicyRevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#PolicySizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Priority": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#ProbabilisticRuleValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ProbabilisticRuleValueUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#PutEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#PutEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutEncryptionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.xray#LockoutPreventionException"
+        },
+        {
+          "target": "com.amazonaws.xray#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.xray#PolicyCountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.xray#PolicySizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutResourcePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutTelemetryRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#PutTelemetryRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#PutTelemetryRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutTelemetryRecordsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutTraceSegments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#PutTraceSegmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#PutTraceSegmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#PutTraceSegmentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#RequestCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#RequestImpactStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ReservoirSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#ResourceARNDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResourcePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResourcePolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ResourcePolicyNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCause": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCauseEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCauseEntityPath": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCauseService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCauseServices": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ResponseTimeRootCauses": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#RetrievalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#RetrievalToken": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#RetrievedService": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#RetrievedServicesList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#RetrievedTrace": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#RootCauseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#RootCauseExceptions": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#RuleLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#SampledCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.xray#SamplingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingRuleRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingRuleRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#SamplingRuleUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingStatisticSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingStatisticSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#SamplingStatisticsDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingStatisticsDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#SamplingStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingStrategyName": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#SamplingTargetDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SamplingTargetDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#Segment": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SegmentDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#SegmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#SegmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ServiceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ServiceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#ServiceNames": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ServiceStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ServiceType": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Span": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#SpanDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#SpanId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#SpanList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#StartTraceRetrieval": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#StartTraceRetrievalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#StartTraceRetrievalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#StartTraceRetrievalResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#String": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.xray#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#TelemetryRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TelemetryRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#ThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TimeRangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#TimeSeriesServiceStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TimeSeriesServiceStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.xray#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#Trace": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TraceAvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceFormatType": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#TraceId": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#TraceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceIdListForRetrieval": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceInstanceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceResourceARNs": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceSegmentDestination": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#TraceSegmentDestinationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.xray#TraceSegmentDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#TraceSegmentDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceSpanList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TraceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#TraceUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#TraceUsers": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#URLPath": {
+      "type": "string"
+    },
+    "com.amazonaws.xray#UnprocessedStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UnprocessedStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#UnprocessedTraceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#UnprocessedTraceSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UnprocessedTraceSegmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateIndexingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#UpdateIndexingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#UpdateIndexingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateIndexingRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateSamplingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#UpdateSamplingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#UpdateSamplingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateSamplingRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateTraceSegmentDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.xray#UpdateTraceSegmentDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.xray#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.xray#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.xray#UpdateTraceSegmentDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#UpdateTraceSegmentDestinationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ValueWithServiceIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.xray#ValuesWithServiceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.xray#Version": {
+      "type": "integer"
+    }
+  }
+}

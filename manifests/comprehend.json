@@ -1,0 +1,3182 @@
+{
+  "shapes": {
+    "com.amazonaws.comprehend#AnyLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#AttributeNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#AttributeNamesListItem": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#AugmentedManifestsDocumentTypeFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#AugmentedManifestsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectDominantLanguage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectDominantLanguageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectDominantLanguageItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectDominantLanguageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectDominantLanguageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectEntitiesItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectKeyPhrases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectKeyPhrasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectKeyPhrasesItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectKeyPhrasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectKeyPhrasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSentiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectSentimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectSentimentItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSentimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSyntax": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectSyntaxRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectSyntaxItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSyntaxRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectSyntaxResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectTargetedSentiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#BatchDetectTargetedSentimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#BatchSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#BatchDetectTargetedSentimentItemResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectTargetedSentimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchDetectTargetedSentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchItemError": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BatchItemErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#BatchSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Block": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BlockReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#BlockType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#BoundingBox": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ChildBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ClassifierEvaluationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ClassifierMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ClassifyDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ClassifyDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ClassifyDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ClassifyDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ClientRequestTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendArnName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendDatasetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendEndpointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendEndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendFlywheelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ComprehendModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#Comprehend_20171127": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Comprehend"
+        }
+      }
+    },
+    "com.amazonaws.comprehend#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ContainsPiiEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ContainsPiiEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ContainsPiiEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ContainsPiiEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateDocumentClassifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#CreateDocumentClassifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#CreateDocumentClassifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateDocumentClassifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#CreateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#CreateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateEntityRecognizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#CreateEntityRecognizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#CreateEntityRecognizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateEntityRecognizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateFlywheel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#CreateFlywheelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#CreateFlywheelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CreateFlywheelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#CustomerInputString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#CustomerInputStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DataSecurityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetAugmentedManifestsList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DatasetAugmentedManifestsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DatasetDocumentClassifierInputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetEntityRecognizerAnnotations": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetEntityRecognizerDocuments": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetEntityRecognizerEntityList": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetEntityRecognizerInputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetInputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DatasetPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DatasetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DatasetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DeleteDocumentClassifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DeleteDocumentClassifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DeleteDocumentClassifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteDocumentClassifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DeleteEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DeleteEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteEntityRecognizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DeleteEntityRecognizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DeleteEntityRecognizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteEntityRecognizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteFlywheel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DeleteFlywheelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DeleteFlywheelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteFlywheelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassificationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeDocumentClassificationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassificationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassificationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeDocumentClassifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDocumentClassifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDominantLanguageDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeDominantLanguageDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeDominantLanguageDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeDominantLanguageDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEntityRecognizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeEntityRecognizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeEntityRecognizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEntityRecognizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEventsDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeEventsDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeEventsDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeEventsDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeFlywheel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeFlywheelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeFlywheelIteration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeFlywheelIterationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeFlywheelIterationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeFlywheelIterationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeFlywheelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeFlywheelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeKeyPhrasesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeKeyPhrasesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeKeyPhrasesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeKeyPhrasesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribePiiEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribePiiEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribePiiEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribePiiEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeTargetedSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeTargetedSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeTargetedSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeTargetedSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeTopicsDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DescribeTopicsDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DescribeTopicsDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DescribeTopicsDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#DetectDominantLanguage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectDominantLanguageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectDominantLanguageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectDominantLanguageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectKeyPhrases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectKeyPhrasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectKeyPhrasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectKeyPhrasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectPiiEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectPiiEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectPiiEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectPiiEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectSentiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectSentimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectSentimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectSentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectSyntax": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectSyntaxRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectSyntaxRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectSyntaxResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectTargetedSentiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectTargetedSentimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectTargetedSentimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectTargetedSentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectToxicContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#DetectToxicContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UnsupportedLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#DetectToxicContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DetectToxicContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClass": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassificationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassificationJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassificationJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassificationJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierAugmentedManifestsList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierDocumentTypeFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierDocuments": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierEndpointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierInputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierOutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#DocumentClassifierSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentLabel": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentReadAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentReadFeatureTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentReadMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentReaderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DocumentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#DocumentTypeListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DominantLanguage": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DominantLanguageDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DominantLanguageDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#DominantLanguageDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.comprehend#EndpointFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EndpointProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EndpointPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#EntitiesDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntitiesDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntitiesDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityLabel": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognitionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerAnnotations": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerAugmentedManifestsList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerDocuments": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerEndpointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerEntityList": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerEvaluationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerInputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerMetadataEntityTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerMetadataEntityTypesListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerOutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EntityRecognizerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#EntityTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#EntityTypesEvaluationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EntityTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#EntityTypesListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ErrorsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EventTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#EventsDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EventsDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#EventsDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ExtractedCharactersListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.comprehend#FlywheelFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelIterationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelIterationId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#FlywheelIterationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelIterationPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#FlywheelIterationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#FlywheelModelEvaluationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelS3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#FlywheelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#FlywheelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#FlywheelSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#Geometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#ImportModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ImportModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ImportModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ImportModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InferenceUnitsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehend#InputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehend#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InvalidFilterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InvalidRequestDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InvalidRequestDetailReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#InvalidRequestReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#JobName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#JobNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#KeyPhrase": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#KeyPhrasesDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#KeyPhrasesDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#KeyPhrasesDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#KmsKeyValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#LabelDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#LabelListItem": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#LabelsList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassificationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListDocumentClassificationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListDocumentClassificationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassificationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifierSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListDocumentClassifierSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifierSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifierSummariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifiers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListDocumentClassifiersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifiersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDocumentClassifiersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDominantLanguageDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListDominantLanguageDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListDominantLanguageDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListDominantLanguageDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntitiesDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListEntitiesDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListEntitiesDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntitiesDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizerSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListEntityRecognizerSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizerSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizerSummariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListEntityRecognizersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEntityRecognizersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEventsDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListEventsDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListEventsDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListEventsDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListFlywheelIterationHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListFlywheelIterationHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListFlywheelIterationHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListFlywheelIterationHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListFlywheels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListFlywheelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListFlywheelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListFlywheelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListKeyPhrasesDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListKeyPhrasesDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListKeyPhrasesDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListKeyPhrasesDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListOfBlockReferences": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfChildBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfClasses": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDescriptiveMentionIndices": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectDominantLanguageResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectEntitiesResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectKeyPhrasesResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectSentimentResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectSyntaxResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDetectTargetedSentimentResult": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDocumentReadFeatureTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDocumentType": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfDominantLanguages": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfEntityLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfExtractedCharacters": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfKeyPhrases": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfMentions": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfPiiEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfPiiEntityTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfRelationships": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfSyntaxTokens": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfTargetedSentimentEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfTextSegments": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfToxicContent": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfToxicLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListOfWarnings": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ListPiiEntitiesDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListPiiEntitiesDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListPiiEntitiesDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListPiiEntitiesDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListSentimentDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListSentimentDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListSentimentDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListSentimentDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTargetedSentimentDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListTargetedSentimentDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListTargetedSentimentDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTargetedSentimentDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTopicsDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#ListTopicsDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidFilterException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#ListTopicsDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ListTopicsDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#MaskCharacter": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#MaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehend#MentionSentiment": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ModelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#ModelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#NumberOfDocuments": {
+      "type": "long"
+    },
+    "com.amazonaws.comprehend#NumberOfTopicsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehend#OutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PageBasedErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PageBasedWarningCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PartOfSpeechTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PartOfSpeechTagType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PiiEntitiesDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PiiEntitiesDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PiiEntitiesDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#PiiEntitiesDetectionMaskMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PiiEntitiesDetectionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PiiEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PiiEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#PiiOutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Point": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#PolicyRevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#Polygon": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#RedactionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#RelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#RelationshipsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ResourceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#S3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#SemiStructuredDocumentBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.comprehend#SentimentDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#SentimentDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#SentimentDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#SentimentScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#SentimentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#Split": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#StartDocumentClassificationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartDocumentClassificationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartDocumentClassificationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartDocumentClassificationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartDominantLanguageDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartDominantLanguageDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartDominantLanguageDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartDominantLanguageDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartEventsDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartEventsDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartEventsDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartEventsDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartFlywheelIteration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartFlywheelIterationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartFlywheelIterationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartFlywheelIterationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartKeyPhrasesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartKeyPhrasesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartKeyPhrasesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartKeyPhrasesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartPiiEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartPiiEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartPiiEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartPiiEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartTargetedSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartTargetedSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartTargetedSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartTargetedSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartTopicsDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StartTopicsDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StartTopicsDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StartTopicsDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopDominantLanguageDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopDominantLanguageDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopDominantLanguageDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopDominantLanguageDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopEventsDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopEventsDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopEventsDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopEventsDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopKeyPhrasesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopKeyPhrasesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopKeyPhrasesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopKeyPhrasesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopPiiEntitiesDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopPiiEntitiesDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopPiiEntitiesDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopPiiEntitiesDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTargetedSentimentDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopTargetedSentimentDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#JobNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopTargetedSentimentDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTargetedSentimentDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTrainingDocumentClassifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopTrainingDocumentClassifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopTrainingDocumentClassifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTrainingDocumentClassifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTrainingEntityRecognizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#StopTrainingEntityRecognizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#StopTrainingEntityRecognizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#StopTrainingEntityRecognizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#String": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#SyntaxLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#SyntaxToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#TargetEventTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#TargetedSentimentMention": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TaskConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TextSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TextSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.comprehend#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TooManyTagKeysException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TopicsDetectionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TopicsDetectionJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#TopicsDetectionJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehend#ToxicContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#ToxicContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehend#ToxicLabels": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UnsupportedLanguageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyTagKeysException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UpdateDataSecurityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UpdateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#UpdateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#UpdateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UpdateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UpdateFlywheel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehend#UpdateFlywheelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehend#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#KmsKeyValidationException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehend#UpdateFlywheelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#UpdateFlywheelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#VersionName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehend#VpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehend#WarningsListItem": {
+      "type": "structure"
+    }
+  }
+}

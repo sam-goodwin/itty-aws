@@ -1,0 +1,620 @@
+{
+  "shapes": {
+    "com.amazonaws.braket#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#AlgorithmSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#Association": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#AssociationType": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#Associations": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#Braket": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Braket"
+        }
+      }
+    },
+    "com.amazonaws.braket#BraketResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CancelJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CancelQuantumTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#CancelQuantumTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#CancelQuantumTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CancelQuantumTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CancellationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#CompressionType": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#ContainerImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#CreateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.braket#DeviceOfflineException"
+        },
+        {
+          "target": "com.amazonaws.braket#DeviceRetiredException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#CreateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CreateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CreateQuantumTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#CreateQuantumTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#DeviceOfflineException"
+        },
+        {
+          "target": "com.amazonaws.braket#DeviceRetiredException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#CreateQuantumTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#CreateQuantumTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#DeviceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceOfflineException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceQueueInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceQueueInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#DeviceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.braket#DeviceRetiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#DeviceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#DeviceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#DeviceType": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#GetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#GetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#GetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#GetDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#GetJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#GetJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#GetJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#GetQuantumTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#GetQuantumTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#GetQuantumTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#GetQuantumTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#HybridJobAdditionalAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#HybridJobAdditionalAttributeNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#HybridJobQueueInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#HyperParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.braket#InputConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#InputFileConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#InstanceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobArn": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#JobCheckpointConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobEventType": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#JobEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#JobOutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobPrimaryStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#JobResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.braket#JobStoppingCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#JobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#JobToken": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#JsonValue": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#QuantumTaskAdditionalAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#QuantumTaskAdditionalAttributeNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#QuantumTaskArn": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#QuantumTaskQueueInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#QuantumTaskResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.braket#QuantumTaskStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#QuantumTaskSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#QuantumTaskSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#QueueName": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#QueuePriority": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#S3DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#S3Path": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#ScriptModeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#SearchDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#SearchDevicesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchDevicesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#SearchDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#SearchJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#SearchJobsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchJobsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#SearchJobsFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#SearchJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchQuantumTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#SearchQuantumTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#SearchQuantumTasksFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchQuantumTasksFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#SearchQuantumTasksFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#SearchQuantumTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#SearchQuantumTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#String1024": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#String2048": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#String256": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#String256List": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#String4096": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#String64": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.braket#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.braket#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.braket#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.braket#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.braket#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.braket#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.braket#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.braket#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.braket#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,2674 @@
+{
+  "shapes": {
+    "com.amazonaws.dynamodb#ApproximateCreationDateTimePrecision": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ArchivalReason": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ArchivalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AttributeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#AttributeDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AttributeDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#AttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#AttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#AttributeUpdates": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#AttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.dynamodb#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#AttributeValueUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingPolicyDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#AutoScalingPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#AutoScalingPolicyUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#AutoScalingSettingsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingSettingsUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingTargetTrackingScalingPolicyConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#AutoScalingTargetTrackingScalingPolicyConfigurationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Backfilling": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#BackupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#BackupCreationDateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#BackupDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BackupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BackupInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BackupName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#BackupNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BackupSizeBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#BackupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#BackupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#BackupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BackupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#BackupTypeFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#BackupsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#BatchExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#BatchExecuteStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#BatchExecuteStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchExecuteStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchGetItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#BatchGetItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#BatchGetItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchGetItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchGetRequestMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#BatchGetResponseMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#BatchStatementError": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchStatementErrorCodeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#BatchStatementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchStatementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchWriteItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#BatchWriteItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicatedWriteConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#BatchWriteItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchWriteItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BatchWriteItemRequestMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#BilledSizeBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#BillingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#BillingModeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#BinaryAttributeValue": {
+      "type": "blob"
+    },
+    "com.amazonaws.dynamodb#BinarySetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#BooleanAttributeValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#CancellationReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CancellationReasonList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#Capacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#CloudWatchLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ConditionCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ConditionExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ConditionalCheckFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ConditionalOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ConfirmRemoveSelfResourceAccess": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#ConsistentRead": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#ConsumedCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ConsumedCapacityMultiple": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ConsumedCapacityUnits": {
+      "type": "double"
+    },
+    "com.amazonaws.dynamodb#ContinuousBackupsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ContinuousBackupsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ContinuousBackupsUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsRule": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ContributorInsightsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#CreateBackupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#BackupInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ContinuousBackupsUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#CreateBackupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateBackupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateGlobalSecondaryIndexAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateGlobalTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#CreateGlobalTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#GlobalTableAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#CreateGlobalTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateGlobalTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateGlobalTableWitnessGroupMemberAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateReplicaAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateReplicationGroupMemberAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#CreateTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#CreateTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CreateTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#CsvDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#CsvHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#CsvHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#CsvOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#Delete": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DeleteBackupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#BackupInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#BackupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DeleteBackupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteBackupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteGlobalSecondaryIndexAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteGlobalTableWitnessGroupMemberAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DeleteItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ConditionalCheckFailedException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicatedWriteConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DeleteItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteReplicaAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteReplicationGroupMemberAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DeleteResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DeleteResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DeleteTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DeleteTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeleteTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DeletionProtectionEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#DescribeBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeBackupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#BackupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeBackupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeBackupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeContinuousBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeContinuousBackupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeContinuousBackupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeContinuousBackupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeContributorInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeContributorInsightsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeContributorInsightsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeContributorInsightsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeEndpointsRequest"
+      }
+    },
+    "com.amazonaws.dynamodb#DescribeEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeExportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ExportNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeExportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeExportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeGlobalTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#GlobalTableNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTableSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeGlobalTableSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#GlobalTableNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTableSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeGlobalTableSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeImportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ImportNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeImportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeImportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeKinesisStreamingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeKinesisStreamingDestinationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeKinesisStreamingDestinationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeKinesisStreamingDestinationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeLimitsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeLimitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeLimitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTableReplicaAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeTableReplicaAutoScalingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeTableReplicaAutoScalingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTableReplicaAutoScalingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTimeToLive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#DescribeTimeToLiveInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DescribeTimeToLiveInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DescribeTimeToLiveOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DestinationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#DisableKinesisStreamingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#KinesisStreamingDestinationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#DoubleObject": {
+      "type": "double"
+    },
+    "com.amazonaws.dynamodb#DuplicateItemException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#DynamoDB_20120810": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DynamoDB"
+        }
+      }
+    },
+    "com.amazonaws.dynamodb#EnableKinesisStreamingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#EnableKinesisStreamingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#KinesisStreamingDestinationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Endpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ErrorCount": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExceptionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExceptionName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ExecuteStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ConditionalCheckFailedException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ExecuteStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExecuteStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExecuteTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ExecuteTransactionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ExecuteTransactionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExecuteTransactionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExpectedAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#ExpectedAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExportConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportEndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ExportFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ExportFromTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ExportManifest": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExportNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExportNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportStartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ExportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ExportSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ExportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportTableToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ExportTableToPointInTimeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ExportConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidExportTimeException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PointInTimeRecoveryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ExportTableToPointInTimeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportTableToPointInTimeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ExportTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ExportToTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ExportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ExportViewType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ExpressionAttributeNameMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#ExpressionAttributeNameVariable": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ExpressionAttributeValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#ExpressionAttributeValueVariable": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#FailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#FailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#FailureMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#FilterConditionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#Get": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GetItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#GetItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#GetItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GetItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#GetResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#GetResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GetResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexAutoScalingUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexAutoScalingUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexWarmThroughputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalSecondaryIndexes": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#GlobalTableDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableGlobalSecondaryIndexSettingsUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableGlobalSecondaryIndexSettingsUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalTableList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalTableNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#GlobalTableWitnessDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableWitnessDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#GlobalTableWitnessGroupUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#GlobalTableWitnessGroupUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ImportConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportEndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ImportNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ImportNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportStartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#ImportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ImportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ImportTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ImportTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ImportConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ImportTableDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ImportedItemCount": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#IncrementalExportSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#IndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#IndexNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#IndexStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#InputCompressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#InputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#InputFormatOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#IntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#InvalidEndpointException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#InvalidExportTimeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#InvalidRestoreTimeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionKeyAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionMetricsMultiple": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionMetricsPerTable": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionSizeEstimateBound": {
+      "type": "double"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionSizeEstimateRange": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ItemCount": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#ItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ItemResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#KMSMasterKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#KMSMasterKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#Key": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#KeyConditions": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#KeyExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#KeySchema": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#KeySchemaAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#KeySchemaElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#KeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#KeysAndAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#KinesisDataStreamDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#KinesisDataStreamDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#KinesisStreamingDestinationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#KinesisStreamingDestinationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#LastUpdateDateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ListBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListBackupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListBackupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListBackupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListContributorInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListContributorInsightsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListContributorInsightsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListContributorInsightsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#ListContributorInsightsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListExports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListExportsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListExportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListExportsMaxLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#ListExportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListGlobalTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListGlobalTablesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListGlobalTablesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListGlobalTablesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListImports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListImportsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListImportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListImportsMaxLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#ListImportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListTablesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListTablesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListTablesInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#ListTablesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListTagsOfResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ListTagsOfResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ListTagsOfResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ListTagsOfResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndexDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndexDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndexInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndexList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#LocalSecondaryIndexes": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#LongObject": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#MapAttributeValue": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#MultiRegionConsistency": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#NextTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#NonKeyAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#NonKeyAttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#NonNegativeLongObject": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#NullAttributeValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#NumberAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#NumberSetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#OnDemandThroughput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#OnDemandThroughputOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ParameterizedStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ParameterizedStatements": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#PartiQLBatchRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#PartiQLBatchResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#PartiQLNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#PartiQLStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#PointInTimeRecoveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PointInTimeRecoverySpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PointInTimeRecoveryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#PointInTimeRecoveryUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PolicyRevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#PositiveIntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#PositiveLongObject": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#PreparedStatementParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ProcessedItemCount": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodb#Projection": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ProjectionExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ProjectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ProvisionedThroughput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ProvisionedThroughputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ProvisionedThroughputExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ProvisionedThroughputOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Put": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PutItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#PutItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ConditionalCheckFailedException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicatedWriteConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#PutItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PutItemInputAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#PutItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#PutResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#PutResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#PutResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Query": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#QueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#QueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#QueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#RecoveryPeriodInDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#RegionName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#Replica": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaAutoScalingDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaAutoScalingDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaAutoScalingUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaAutoScalingUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexAutoScalingDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexAutoScalingDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexAutoScalingUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexAutoScalingUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexSettingsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexSettingsDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexSettingsUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaGlobalSecondaryIndexSettingsUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaSettingsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaSettingsDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaSettingsUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaSettingsUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicaStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ReplicaStatusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ReplicaStatusPercentProgress": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ReplicaUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicaUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#ReplicatedWriteConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicationGroupUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReplicationGroupUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#RequestLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ResourceArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ResourcePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#RestoreInProgress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#RestoreSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#RestoreTableFromBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#RestoreTableFromBackupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#BackupInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#BackupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#RestoreTableFromBackupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#RestoreTableFromBackupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#RestoreTableToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#RestoreTableToPointInTimeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidRestoreTimeException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PointInTimeRecoveryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#RestoreTableToPointInTimeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#RestoreTableToPointInTimeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ReturnConsumedCapacity": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ReturnItemCollectionMetrics": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ReturnValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ReturnValuesOnConditionCheckFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#S3BucketOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#S3BucketSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#S3Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#S3SseAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#S3SseKmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#SSEDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#SSEEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#SSESpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#SSEStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#SSEType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#ScalarAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#Scan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#ScanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#ScanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ScanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#ScanSegment": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#ScanTotalSegments": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodb#SecondaryIndexesCapacityMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodb#Select": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#SourceTableDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#SourceTableFeatureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#StreamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#StreamEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#StreamSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#StreamViewType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#String": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#StringAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#StringSetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TableAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TableAutoScalingDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#TableClassSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableCreationDateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#TableCreationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableId": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TableInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TableNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TableNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#TableWarmThroughputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TagKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TagValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TimeRangeLowerBound": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#TimeRangeUpperBound": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodb#TimeToLiveAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#TimeToLiveDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TimeToLiveEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodb#TimeToLiveSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TimeToLiveStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#TransactGetItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactGetItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TransactGetItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#TransactGetItemsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionCanceledException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#TransactGetItemsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactGetItemsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactWriteItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactWriteItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodb#TransactWriteItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#TransactWriteItemsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#TransactWriteItemsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactWriteItemsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactionCanceledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactionConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#TransactionInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#Update": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateContinuousBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateContinuousBackupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ContinuousBackupsUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateContinuousBackupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateContinuousBackupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateContributorInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateContributorInsightsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateContributorInsightsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateContributorInsightsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalSecondaryIndexAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateGlobalTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#GlobalTableNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicaAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicaNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TableNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTableSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateGlobalTableSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#GlobalTableNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#IndexNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicaNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTableSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateGlobalTableSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#ConditionalCheckFailedException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ItemCollectionSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ReplicatedWriteConflictException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactionConflictException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateKinesisStreamingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateKinesisStreamingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateKinesisStreamingDestinationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateKinesisStreamingDestinationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateKinesisStreamingDestinationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateReplicationGroupMemberAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTableReplicaAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateTableReplicaAutoScalingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateTableReplicaAutoScalingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTableReplicaAutoScalingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTimeToLive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodb#UpdateTimeToLiveInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodb#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodb#UpdateTimeToLiveInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#UpdateTimeToLiveOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#WarmThroughput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#WitnessStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodb#WriteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodb#WriteRequests": {
+      "type": "list"
+    }
+  }
+}

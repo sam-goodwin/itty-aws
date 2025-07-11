@@ -1,0 +1,737 @@
+{
+  "shapes": {
+    "com.amazonaws.mediapackage#AdMarkers": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#AdTriggers": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#AdsOnDeliveryRestrictions": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#Authorization": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#Channel": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CmafEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CmafEncryptionMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#CmafPackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CmafPackageCreateOrUpdateParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ConfigureLogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#ConfigureLogsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#ConfigureLogsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ConfigureLogsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#CreateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#CreateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateHarvestJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#CreateHarvestJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#CreateHarvestJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateHarvestJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateOriginEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#CreateOriginEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#CreateOriginEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#CreateOriginEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DashEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DashPackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DeleteChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#DeleteChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#DeleteChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DeleteChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DeleteOriginEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#DeleteOriginEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#DeleteOriginEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DeleteOriginEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#DescribeChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#DescribeChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeHarvestJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#DescribeHarvestJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#DescribeHarvestJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeHarvestJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeOriginEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#DescribeOriginEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#DescribeOriginEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#DescribeOriginEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#EgressAccessLogs": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#EncryptionContractConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#EncryptionMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HarvestJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HlsEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HlsIngest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HlsManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HlsManifestCreateOrUpdateParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#HlsPackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#IngestEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#IngressAccessLogs": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#ListChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#ListChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListHarvestJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#ListHarvestJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#ListHarvestJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListHarvestJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListOriginEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#ListOriginEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#ListOriginEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListOriginEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#ListTagsForResourceRequest"
+      }
+    },
+    "com.amazonaws.mediapackage#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#ManifestLayout": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediapackage#MediaPackage": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MediaPackage"
+        }
+      }
+    },
+    "com.amazonaws.mediapackage#MssEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#MssPackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#OriginEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#Origination": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#PlaylistType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#PresetSpeke20Audio": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#PresetSpeke20Video": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#Profile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#RotateChannelCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#RotateChannelCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#RotateChannelCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#RotateChannelCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#RotateIngestEndpointCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#RotateIngestEndpointCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#RotateIngestEndpointCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#RotateIngestEndpointCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#SegmentTemplateFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.mediapackage#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#SpekeKeyProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#StreamOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#StreamSelection": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#TagResourceRequest"
+      }
+    },
+    "com.amazonaws.mediapackage#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.mediapackage#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UnprocessableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#UntagResourceRequest"
+      }
+    },
+    "com.amazonaws.mediapackage#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UpdateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#UpdateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#UpdateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UpdateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UpdateOriginEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediapackage#UpdateOriginEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediapackage#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.mediapackage#UpdateOriginEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UpdateOriginEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediapackage#UtcTiming": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#__AdTriggersElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#__PeriodTriggersElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediapackage#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.mediapackage#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediapackage#__listOfChannel": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOfHarvestJob": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOfHlsManifest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOfHlsManifestCreateOrUpdateParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOfIngestEndpoint": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOfOriginEndpoint": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOf__PeriodTriggersElement": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.mediapackage#__mapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.mediapackage#__string": {
+      "type": "string"
+    }
+  }
+}

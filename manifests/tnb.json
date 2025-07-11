@@ -1,0 +1,1215 @@
+{
+  "shapes": {
+    "com.amazonaws.tnb#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CancelSolNetworkOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#CancelSolNetworkOperationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#CancelSolNetworkOperationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolFunctionPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#CreateSolFunctionPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#CreateSolFunctionPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolFunctionPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#CreateSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#CreateSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolNetworkInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolNetworkPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#CreateSolNetworkPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#CreateSolNetworkPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#CreateSolNetworkPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#DeleteSolFunctionPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#DeleteSolFunctionPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#DeleteSolFunctionPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#DeleteSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#DeleteSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#DeleteSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#DeleteSolNetworkPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#DeleteSolNetworkPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#DeleteSolNetworkPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#DescriptorContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#ErrorCause": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#ErrorDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#ErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#FunctionArtifactMeta": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolFunctionInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolFunctionInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionInstanceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolFunctionPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolFunctionPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageDescriptor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolFunctionPackageDescriptorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageDescriptorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageDescriptorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolFunctionPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolInstantiatedVnfInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkInstanceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolNetworkOperationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperationTaskDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkOperationTasksList": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolNetworkPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolNetworkPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageDescriptor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#GetSolNetworkPackageDescriptorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageDescriptorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageDescriptorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolNetworkPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolVnfInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolVnfcResourceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#GetSolVnfcResourceInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#GetSolVnfcResourceInfoMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#InstantiateMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#InstantiateSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#InstantiateSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#InstantiateSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#InstantiateSolNetworkInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#LcmOperationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#LcmOperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstanceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstanceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstanceResources": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListSolFunctionInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackageInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackageResources": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListSolFunctionPackagesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackagesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolFunctionPackagesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstanceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstanceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstanceResources": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListSolNetworkInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListSolNetworkOperationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperationsInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperationsMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkOperationsResources": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackageInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackageResources": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListSolNetworkPackagesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackagesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListSolNetworkPackagesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ModifyVnfInfoMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#NetworkArtifactMeta": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#NsInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsLcmOpOccArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsLcmOpOccId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsLcmOperationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#NsState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#NsdId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsdInfoArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsdInfoId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#NsdOnboardingState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#NsdOperationalState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#NsdUsageState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#OnboardingState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#OperationalState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#OverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#PackageContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#ProblemDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolFunctionPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#PutSolFunctionPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#PutSolFunctionPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolFunctionPackageContentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolFunctionPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolNetworkPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#PutSolNetworkPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#PutSolNetworkPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolNetworkPackageContentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#PutSolNetworkPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#SensitiveBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.tnb#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.tnb#TNB": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "tnb"
+        }
+      }
+    },
+    "com.amazonaws.tnb#TNBResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.tnb#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#TaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#TerminateSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#TerminateSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#TerminateSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#TerminateSolNetworkInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ToscaOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateNsMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolFunctionPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#UpdateSolFunctionPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#UpdateSolFunctionPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolFunctionPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#UpdateSolNetworkInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkModify": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#UpdateSolNetworkPackageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkPackageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkPackageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkServiceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#UpdateSolNetworkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#UsageState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#ValidateSolFunctionPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ValidateSolFunctionPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ValidateSolFunctionPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidateSolFunctionPackageContentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidateSolFunctionPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidateSolNetworkPackageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.tnb#ValidateSolNetworkPackageContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.tnb#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.tnb#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.tnb#ValidateSolNetworkPackageContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidateSolNetworkPackageContentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidateSolNetworkPackageContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.tnb#VnfInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#VnfInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#VnfInstantiationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#VnfOperationalState": {
+      "type": "enum"
+    },
+    "com.amazonaws.tnb#VnfPkgArn": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#VnfPkgId": {
+      "type": "string"
+    },
+    "com.amazonaws.tnb#VnfPkgIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.tnb#VnfdId": {
+      "type": "string"
+    }
+  }
+}

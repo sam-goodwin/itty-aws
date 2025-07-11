@@ -1,0 +1,557 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudcontrol#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#CancelResourceRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#CancelResourceRequestInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#RequestTokenNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#CancelResourceRequestInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#CancelResourceRequestOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#ClientTokenConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#CloudApiService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudControl"
+        }
+      }
+    },
+    "com.amazonaws.cloudcontrol#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ConcurrentOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#CreateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#CreateResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ClientTokenConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ConcurrentOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GeneralServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerInternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NetworkFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotStabilizedException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotUpdatableException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#PrivateTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#TypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UnsupportedActionException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#CreateResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#CreateResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#DeleteResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#DeleteResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ClientTokenConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ConcurrentOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GeneralServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerInternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NetworkFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotStabilizedException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotUpdatableException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#PrivateTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#TypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UnsupportedActionException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#DeleteResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#DeleteResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#GeneralServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#GetResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#GetResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GeneralServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerInternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NetworkFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotStabilizedException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotUpdatableException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#PrivateTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#TypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UnsupportedActionException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#GetResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#GetResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#GetResourceRequestStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#GetResourceRequestStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#RequestTokenNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#GetResourceRequestStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#GetResourceRequestStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#HandlerErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HandlerFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#HandlerInternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#HandlerNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HookFailureMode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HookInvocationPoint": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HookProgressEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#HookStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HookTypeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#HooksProgressEvent": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudcontrol#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#InvalidCredentialsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ListResourceRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#ListResourceRequestsInput"
+      }
+    },
+    "com.amazonaws.cloudcontrol#ListResourceRequestsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ListResourceRequestsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ListResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#ListResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GeneralServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerInternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NetworkFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotStabilizedException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotUpdatableException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#PrivateTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#TypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UnsupportedActionException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#ListResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ListResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudcontrol#NetworkFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#NotStabilizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#NotUpdatableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#Operation": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#OperationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#OperationStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudcontrol#Operations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudcontrol#PatchDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#PrivateTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ProgressEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#Properties": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#RequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#RequestTokenNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ResourceConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ResourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ResourceDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudcontrol#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ResourceRequestStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ResourceRequestStatusSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudcontrol#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#ServiceInternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#ServiceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudcontrol#TypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#TypeNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#TypeVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudcontrol#UnsupportedActionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#UpdateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudcontrol#UpdateResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudcontrol#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ClientTokenConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ConcurrentOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GeneralServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#HandlerInternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NetworkFailureException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotStabilizedException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#NotUpdatableException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#PrivateTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#TypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UnsupportedActionException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudcontrol#UpdateResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudcontrol#UpdateResourceOutput": {
+      "type": "structure"
+    }
+  }
+}

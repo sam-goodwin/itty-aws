@@ -1,0 +1,2551 @@
+{
+  "shapes": {
+    "com.amazonaws.route53resolver#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#Action": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#AssociateFirewallRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#AssociateFirewallRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#AssociateFirewallRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateFirewallRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverEndpointIpAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#AssociateResolverEndpointIpAddressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#AssociateResolverEndpointIpAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverEndpointIpAddressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverQueryLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#AssociateResolverQueryLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#AssociateResolverQueryLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverQueryLogConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#AssociateResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#AssociateResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AssociateResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#AutodefinedReverseFlag": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#BlockOverrideDnsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#BlockOverrideDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#BlockOverrideTtl": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#BlockResponse": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53resolver#ConfidenceThreshold": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Count": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallDomainList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateFirewallDomainListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateFirewallDomainListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallDomainListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateFirewallRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateFirewallRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateFirewallRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateOutpostResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateOutpostResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateOutpostResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateOutpostResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateResolverEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateResolverEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverQueryLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateResolverQueryLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateResolverQueryLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverQueryLogConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#CreateResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#CreateResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreateResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#CreatorRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#DelegationRecord": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallDomainList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteFirewallDomainListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallDomainListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallDomainListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteFirewallRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteFirewallRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteFirewallRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteOutpostResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteOutpostResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteOutpostResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteOutpostResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteResolverEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteResolverEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverQueryLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteResolverQueryLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteResolverQueryLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverQueryLogConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DeleteResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DeleteResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DeleteResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#DisassociateFirewallRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DisassociateFirewallRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DisassociateFirewallRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateFirewallRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverEndpointIpAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DisassociateResolverEndpointIpAddressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverEndpointIpAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverEndpointIpAddressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverQueryLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DisassociateResolverQueryLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverQueryLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverQueryLogConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#DisassociateResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DisassociateResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#DnsThreatProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#DomainListFileUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainImportOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainList": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainListMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainListMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainListStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainRedirectionAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallDomainUpdateOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallFailOpenStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#FirewallRuleGroupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#FirewallRules": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#GetFirewallConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetFirewallConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetFirewallConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallDomainList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetFirewallDomainListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetFirewallDomainListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallDomainListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetFirewallRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetFirewallRuleGroupAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetFirewallRuleGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetFirewallRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetOutpostResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetOutpostResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetOutpostResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetOutpostResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverDnssecConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverDnssecConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverDnssecConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverDnssecConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfigAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfigPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverQueryLogConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverRuleAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverRuleAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverRuleAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRuleAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRulePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#GetResolverRulePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#GetResolverRulePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRulePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#GetResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ImportFirewallDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ImportFirewallDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ImportFirewallDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ImportFirewallDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InvalidPolicyDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#InvalidTagException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Ip": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#IpAddressCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#IpAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#IpAddressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#IpAddressStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#IpAddressUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#IpAddressesRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#IpAddressesResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#Ipv6": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListDomainMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#ListFirewallConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallConfigsMaxResult": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#ListFirewallConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomainLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallDomainListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomainListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomainListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroupAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallRuleGroupAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroupAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroupAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallRuleGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRuleGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListFirewallRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListFirewallRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListFirewallRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListOutpostResolvers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListOutpostResolversRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListOutpostResolversRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListOutpostResolversResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverConfigsMaxResult": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#ListResolverConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverDnssecConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverDnssecConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverDnssecConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverDnssecConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpointIpAddresses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverEndpointIpAddressesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpointIpAddressesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpointIpAddressesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverQueryLogConfigAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverQueryLogConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverQueryLogConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverRuleAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverRuleAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverRuleAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverRuleAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListResolverRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListResolverRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListResolverRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#MutationProtectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#OutpostArn": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#OutpostInstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#OutpostResolver": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#OutpostResolverList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#OutpostResolverName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#OutpostResolverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#OutpostResolverStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#Priority": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ProtocolList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#PutFirewallRuleGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#PutFirewallRuleGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#PutFirewallRuleGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#PutFirewallRuleGroupPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#PutResolverQueryLogConfigPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#PutResolverQueryLogConfigPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidPolicyDocument"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#PutResolverQueryLogConfigPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#PutResolverQueryLogConfigPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#PutResolverRulePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#PutResolverRulePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidPolicyDocument"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#PutResolverRulePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#PutResolverRulePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Qtype": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResolverAutodefinedReverseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverDNSSECValidationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverDnssecConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverDnssecConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverEndpointDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverEndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigAssociationError": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigAssociationErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResolverQueryLogConfigStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverRuleAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverRuleAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverRuleAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResolverRuleConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResolverRulePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResolverRuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ResolverRules": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ResourceExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ResourceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Rfc3339TimeString": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#Route53Resolver": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Route53Resolver"
+        }
+      }
+    },
+    "com.amazonaws.route53resolver#RuleTypeOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ServerNameIndication": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ServicePrinciple": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#ShareStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#SortByKey": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#String": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.route53resolver#TargetAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#TargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UnknownResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Unsigned": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53resolver#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateFirewallConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateFirewallDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateFirewallRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRuleGroupAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateFirewallRuleGroupAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRuleGroupAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRuleGroupAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateFirewallRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateIpAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.route53resolver#UpdateOutpostResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateOutpostResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateOutpostResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateOutpostResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateResolverConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateResolverConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverDnssecConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateResolverDnssecConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateResolverDnssecConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverDnssecConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateResolverEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateResolverEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53resolver#UpdateResolverRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53resolver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53resolver#UpdateResolverRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#UpdateResolverRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53resolver#Validation": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53resolver#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

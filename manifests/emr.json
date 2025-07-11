@@ -1,0 +1,1799 @@
+{
+  "shapes": {
+    "com.amazonaws.emr#ActionOnFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#AddInstanceFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#AddInstanceFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#AddInstanceFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddInstanceFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddInstanceGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#AddInstanceGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#AddInstanceGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddInstanceGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddJobFlowSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#AddJobFlowStepsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#AddJobFlowStepsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddJobFlowStepsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#AddTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#AddTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AddTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AdjustmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#AuthMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#AutoScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AutoScalingPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AutoScalingPolicyState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#AutoScalingPolicyStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AutoScalingPolicyStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#AutoScalingPolicyStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#AutoTerminationPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#BlockPublicAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#BlockPublicAccessConfigurationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.emr#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.emr#BootstrapActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#BootstrapActionConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#BootstrapActionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#BootstrapActionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#CancelSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#CancelStepsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#CancelStepsInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CancelStepsInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#CancelStepsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CancelStepsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CancelStepsRequestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#CloudWatchAlarmDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ClusterId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#ClusterState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ClusterStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ClusterStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ClusterStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ClusterStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ClusterSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ClusterSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ClusterTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Command": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CommandList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ComputeLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ComputeLimitsUnitType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#CreatePersistentAppUI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#CreatePersistentAppUIInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#CreatePersistentAppUIInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreatePersistentAppUIOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreateSecurityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#CreateSecurityConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#CreateSecurityConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreateSecurityConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreateStudio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#CreateStudioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#CreateStudioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreateStudioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#CreateStudioSessionMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#CreateStudioSessionMappingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#CreateStudioSessionMappingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Credentials": {
+      "type": "union"
+    },
+    "com.amazonaws.emr#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.emr#DeleteSecurityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DeleteSecurityConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DeleteSecurityConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DeleteSecurityConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DeleteStudio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DeleteStudioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DeleteStudioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DeleteStudioSessionMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DeleteStudioSessionMappingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DeleteStudioSessionMappingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeClusterInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeClusterInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeClusterOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeJobFlows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeJobFlowsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeJobFlowsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeJobFlowsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeNotebookExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeNotebookExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeNotebookExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeNotebookExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribePersistentAppUI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribePersistentAppUIInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribePersistentAppUIInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribePersistentAppUIOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeReleaseLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeReleaseLabelInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeReleaseLabelInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeReleaseLabelOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeSecurityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeSecurityConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeSecurityConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeSecurityConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeStepInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeStepInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeStepOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeStudio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#DescribeStudioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#DescribeStudioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#DescribeStudioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EC2InstanceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#EC2InstanceIdsToTerminateList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#EMRContainersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EbsBlockDevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EbsBlockDeviceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EbsBlockDeviceConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#EbsBlockDeviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#EbsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EbsVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#EbsVolumeList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#Ec2InstanceAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ElasticMapReduce": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EMR"
+        }
+      }
+    },
+    "com.amazonaws.emr#EnvironmentVariablesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emr#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#ErrorData": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ErrorDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#ExecutionEngineConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ExecutionEngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#FailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.emr#GetAutoTerminationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetAutoTerminationPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#GetAutoTerminationPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetAutoTerminationPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetBlockPublicAccessConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetBlockPublicAccessConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#GetBlockPublicAccessConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetBlockPublicAccessConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetClusterSessionCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetClusterSessionCredentialsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#GetClusterSessionCredentialsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetClusterSessionCredentialsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetManagedScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetManagedScalingPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#GetManagedScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetManagedScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetOnClusterAppUIPresignedURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetOnClusterAppUIPresignedURLInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#GetOnClusterAppUIPresignedURLInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetOnClusterAppUIPresignedURLOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetPersistentAppUIPresignedURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetPersistentAppUIPresignedURLInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#GetPersistentAppUIPresignedURLInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetPersistentAppUIPresignedURLOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetStudioSessionMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#GetStudioSessionMappingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#GetStudioSessionMappingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#GetStudioSessionMappingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#HadoopJarStepConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#HadoopStepConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#IdcUserAssignment": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#IdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceCollectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceFleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceFleetId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#InstanceFleetList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceFleetModifyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetProvisioningSpecifications": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetResizingSpecifications": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceFleetStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceFleetStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceFleetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceGroupDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#InstanceGroupIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceGroupModifyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupModifyConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceGroupState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceGroupStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceGroupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceGroupTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#InstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceResizePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceRoleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#InstanceStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#InstanceTypeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceTypeConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#InstanceTypeSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InstanceTypeSpecificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#JobFlowDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#JobFlowDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#JobFlowExecutionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#JobFlowExecutionStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#JobFlowExecutionStatusDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#JobFlowInstancesConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#JobFlowInstancesDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#KerberosAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#KeyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#KeyValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ListBootstrapActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListBootstrapActionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListBootstrapActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListBootstrapActionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListClustersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListClustersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListClustersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstanceFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListInstanceFleetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListInstanceFleetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstanceFleetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstanceGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListInstanceGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListInstanceGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstanceGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListNotebookExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListNotebookExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListNotebookExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListNotebookExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListReleaseLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListReleaseLabelsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListReleaseLabelsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListReleaseLabelsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListSecurityConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListSecurityConfigurationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListSecurityConfigurationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListSecurityConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListStepsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListStepsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListStepsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListStudioSessionMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListStudioSessionMappingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListStudioSessionMappingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListStudioSessionMappingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListStudios": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListStudiosInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListStudiosInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListStudiosOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListSupportedInstanceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ListSupportedInstanceTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ListSupportedInstanceTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ListSupportedInstanceTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.emr#ManagedScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#MarketType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#MaxResultsNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#MetricDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#MetricDimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ModifyCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ModifyClusterInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ModifyClusterInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ModifyClusterOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ModifyInstanceFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ModifyInstanceFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ModifyInstanceFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ModifyInstanceGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#ModifyInstanceGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#ModifyInstanceGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#NewSupportedProductsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#NonNegativeDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.emr#NotebookExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#NotebookExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#NotebookExecutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#NotebookExecutionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#NotebookS3LocationForOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#NotebookS3LocationFromInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OSRelease": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OSReleaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#OnClusterAppUIType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#OnDemandCapacityReservationOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OnDemandCapacityReservationPreference": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#OnDemandCapacityReservationUsageStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#OnDemandProvisioningAllocationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#OnDemandProvisioningSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OnDemandResizingSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OptionalArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#OutputNotebookFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#OutputNotebookS3LocationForOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#OutputNotebookS3LocationFromInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PersistentAppUI": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PersistentAppUIType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#PersistentAppUITypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#PlacementGroupConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PlacementGroupConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#PlacementGroupStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#PlacementType": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#PortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PortRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ProfilerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#PutAutoScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#PutAutoScalingPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#PutAutoScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutAutoScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutAutoTerminationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#PutAutoTerminationPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#PutAutoTerminationPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutAutoTerminationPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutBlockPublicAccessConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#PutBlockPublicAccessConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#PutBlockPublicAccessConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutBlockPublicAccessConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutManagedScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#PutManagedScalingPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#PutManagedScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#PutManagedScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ReconfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ReleaseLabelFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveAutoScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#RemoveAutoScalingPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#RemoveAutoScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveAutoScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveAutoTerminationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#RemoveAutoTerminationPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#RemoveAutoTerminationPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveAutoTerminationPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveManagedScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#RemoveManagedScalingPolicyInput"
+      }
+    },
+    "com.amazonaws.emr#RemoveManagedScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveManagedScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#RemoveTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#RemoveTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RemoveTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RepoUpgradeOnBoot": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#RunJobFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#RunJobFlowInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#RunJobFlowInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#RunJobFlowOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ScaleDownBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ScalingAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ScalingConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ScalingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ScalingRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#ScalingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#ScalingTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ScriptBootstrapActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SecurityConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SecurityConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SecurityGroupsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SessionMappingDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SessionMappingSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SessionMappingSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SetKeepJobFlowAliveWhenNoSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#SetKeepJobFlowAliveWhenNoStepsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#SetKeepJobFlowAliveWhenNoStepsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SetTerminationProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#SetTerminationProtectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#SetTerminationProtectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SetUnhealthyNodeReplacement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#SetUnhealthyNodeReplacementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#SetUnhealthyNodeReplacementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SetVisibleToAllUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#SetVisibleToAllUsersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#SetVisibleToAllUsersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ShrinkPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SimpleScalingPolicyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SimplifiedApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SimplifiedApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SpotProvisioningAllocationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#SpotProvisioningSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SpotProvisioningTimeoutAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#SpotResizingSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StartNotebookExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#StartNotebookExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#StartNotebookExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StartNotebookExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#Statistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#Step": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepCancellationOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#StepConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StepDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StepExecutionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#StepExecutionStatusDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepId": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#StepIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StepState": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#StepStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#StepStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StepStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StepSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StepTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StopNotebookExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#StopNotebookExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#StopNotebookExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#String": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emr#Studio": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StudioSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#StudioSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SupportedInstanceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SupportedInstanceTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#SupportedProductConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#SupportedProductsList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#TerminateJobFlows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#TerminateJobFlowsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.emr#TerminateJobFlowsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#ThroughputVal": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#Unit": {
+      "type": "enum"
+    },
+    "com.amazonaws.emr#UpdateStudio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#UpdateStudioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#UpdateStudioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#UpdateStudioSessionMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emr#UpdateStudioSessionMappingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emr#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.emr#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.emr#UpdateStudioSessionMappingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#UriString": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#UsernamePassword": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#UtilizationPerformanceIndexInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#VolumeSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emr#WholeNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.emr#XmlString": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#XmlStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.emr#XmlStringMaxLen256": {
+      "type": "string"
+    },
+    "com.amazonaws.emr#XmlStringMaxLen256List": {
+      "type": "list"
+    }
+  }
+}

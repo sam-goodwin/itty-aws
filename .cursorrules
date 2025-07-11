@@ -1,0 +1,140 @@
+# itty-aws Project Rules
+
+## Package Manager & Runtime
+- Use **bun** instead of pnpm or npm for all package management operations
+- Prefer `bun add`, `bun remove`, `bun install` commands
+- Use `bun run` for script execution
+- Bun serves as both package manager and runtime environment
+- Target Bun's optimized APIs when available (Bun.write, Bun.main, etc.)
+
+## Dependencies
+- Use Effect library for functional programming and side effects
+- Use `aws4fetch` for AWS request signing (lightweight alternative to AWS SDK)
+- Use `@aws-sdk/credential-providers` for credential resolution only
+- Fetch all @aws-sdk/client-* packages from npm registry for manifest generation
+- Generate dependency information using Effect-based scripts
+
+## Code Generation Architecture
+- **Type-only service files**: Generate `src/services/{service}.ts` files containing only TypeScript types
+- **Service interfaces**: Each service exports a main interface (e.g., `DynamoDB`) with camelCase methods
+- **Operation namespaces**: Use PascalCase `export declare namespace` for operation type helpers
+- **Error interfaces**: Generate interfaces extending `AwsErrorMeta` with `_tag` discriminators
+- **Zero runtime**: Generated service files contribute 0 bytes to bundle size
+- **Metadata separation**: Service metadata stored in `src/services/metadata.ts`
+
+## Client Runtime Pattern
+- **Double proxy pattern**: `aws(region).serviceName.methodName(input)` 
+- **Effect-based**: All operations return `Effect<Output, Error, never>`
+- **Precise error modeling**: Each operation's error union includes exact AWS errors + CommonAwsError
+- **Lazy loading**: Service proxies created on-demand, no upfront cost
+- **Type safety**: Full TypeScript completion and error checking via generated interfaces
+
+## Code Style
+- Use TypeScript for all source files
+- Prefer functional programming patterns with Effect
+- Use proper error handling with Effect's error management
+- Include comprehensive logging with Effect Console
+- Structure data with proper TypeScript interfaces
+- Use `Data.TaggedError` for all error classes with proper discriminated unions
+
+## Error Management (Effect)
+- **Two Types of Errors**: Expected Errors (failures, typed, recoverable) and Unexpected Errors (defects, untyped, unrecoverable)
+- **Never use try-catch blocks** in Effect code - use Effect's native error handling operators
+- Use `Effect.fail` for expected errors that should be tracked at the type level
+- Use `pipe` with `catchAll`, `catchSome`, `catchTag` for error handling instead of imperative error handling
+- Use `Effect.as` to transform success values while preserving error handling
+- Use `Effect.flatMap` to chain operations that might fail
+- Let Effect handle error tracking and recovery automatically
+- Prefer declarative error handling over imperative error handling
+- Use `Effect.catchAll` to handle all errors and provide fallback values
+- Use `Effect.catchSome` to handle specific errors conditionally
+- **AWS-specific**: Use `Effect.catchTag("ConditionalCheckFailedException")` etc. for service errors
+
+## File Organization
+### Generated Files (DO NOT EDIT MANUALLY)
+- `src/services/{service}.ts` - Type-only service definitions
+- `src/services/metadata.ts` - Service metadata for runtime
+
+### Core Files
+- `src/client.ts` - Main runtime proxy implementation using aws4fetch
+- `src/manifest.ts` - Smithy manifest schema definitions
+- `src/npm.ts` - NPM package discovery utilities
+
+### Scripts
+- `scripts/generate-clients.ts` - Code generator script
+- `scripts/fetch-manifests.ts` - Smithy manifest downloader
+
+### Project Structure Rules
+- Source code in `src/` directory with flat structure for core files
+- Generated services in `src/services/` subdirectory
+- Always use `.ts` suffix for imports and file references
+- Avoid vague collection files like `types.ts`, `shared/`, `utils/`
+- Use Effect's built-in platform services instead of creating wrappers
+- Use meaningful file names and clear project structure
+
+## Smithy Manifest Processing
+- Download manifests from AWS SDK JS v3 GitHub repository
+- Parse Smithy JSON format to extract operations, errors, and service metadata
+- Generate TypeScript interfaces from Smithy shape definitions
+- Map AWS error shapes to Effect tagged errors
+- Extract service metadata (targetPrefix, protocol, etc.) for runtime
+
+## Scripts and Automation
+- `bun run scripts/fetch-manifests.ts` - Download/refresh Smithy manifests from AWS
+- `bun run scripts/generate-clients.ts` - Generate type-only service files
+- Create scripts using Effect for npm package discovery
+- Save structured package data with timestamps and runtime information
+- Use Bun's optimized APIs (Bun.write, Bun.main) when available
+- Include both display output and file saving functionality
+- Use Effect's built-in FileSystem, HttpClient, etc. instead of custom wrappers
+
+## Testing Strategy
+- Use **vitest** for all testing (unit, integration, and Effect-based tests)
+- Use **@effect/vitest** for Effect-aware testing with proper Effect handling
+- Effect tests use `it.effect()` for automatic Effect execution
+- Test commands: `bun test` (watch), `bun run test:run` (single run), `bun run test:ui` (UI mode)
+- Write tests that demonstrate real AWS service interactions (read-only operations preferred)
+- Test error handling using Effect's tagged error system
+- Mock external dependencies when needed but prefer integration tests with actual AWS services
+
+## Development Workflow
+- Install Bun type definitions (@types/bun) for proper TypeScript support
+- Run tests with `bun test` during development
+- Test scripts with `bun run` commands
+- Regenerate services after updating manifests or generator logic using `bun run generate:clients`
+- Clean up temporary build artifacts after testing
+- Maintain compatibility with Effect ecosystem
+- Share code logically across scripts by extracting common functionality
+
+## AWS Client Usage Pattern
+```typescript
+import { aws } from "./src/client.ts";
+import { Effect } from "effect";
+
+// Get a typed service client
+const dynamodb = aws("us-east-1").dynamodb;
+
+// All operations return Effects with precise error types
+const result = dynamodb.putItem({ 
+  TableName: "users", 
+  Item: { id: { S: "123" } } 
+});
+
+// Handle specific AWS errors with type safety
+const handled = result.pipe(
+  Effect.catchTag("ConditionalCheckFailedException", (error) => 
+    Effect.succeed({ message: "Item already exists" })
+  ),
+  Effect.catchTag("ThrottlingException", (error) =>
+    Effect.delay(error.statusCode === 400 ? 1000 : 5000)
+  )
+);
+
+Effect.runPromise(handled).then(console.log);
+```
+
+## Bundle Size Goals
+- Generated service files: 0 runtime bytes (types only)
+- Core runtime: ~5KB (aws4fetch + proxy logic)
+- Tree-shakable: Only used services/operations included
+- No AWS SDK dependency in final bundle

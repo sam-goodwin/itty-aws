@@ -1,0 +1,1933 @@
+{
+  "shapes": {
+    "com.amazonaws.workdocs#AWSGorillaBoyService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WorkDocs"
+        }
+      }
+    },
+    "com.amazonaws.workdocs#AbortDocumentVersionUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#AbortDocumentVersionUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#AbortDocumentVersionUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ActivateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#ActivateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#ActivateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ActivateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#Activity": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ActivityNamesFilterType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#ActivityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#AddResourcePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#AddResourcePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#AddResourcePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#AddResourcePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#AdditionalResponseFieldType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#AdditionalResponseFieldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#AuthenticationHeaderType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#BooleanEnumType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#BooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.workdocs#Comment": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CommentIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#CommentList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#CommentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CommentStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#CommentTextType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#CommentVisibilityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ConflictingOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ContentCategoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#CreateComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateCommentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#DocumentLockedForCommentsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidCommentOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateCommentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateCommentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateCustomMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateCustomMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#CustomMetadataLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateCustomMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateCustomMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#TooManyLabelsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateNotificationSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateNotificationSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#TooManySubscriptionsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateNotificationSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateNotificationSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CustomMetadataKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#CustomMetadataKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#CustomMetadataLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#CustomMetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.workdocs#CustomMetadataValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#DateRangeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeactivateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeactivateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeactivateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeactivatingLastSystemUserException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteCommentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#DocumentLockedForCommentsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteCommentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteCustomMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteCustomMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteCustomMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteCustomMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteDocumentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteDocumentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteDocumentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteFolderContents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteFolderContentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteFolderContentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteNotificationSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteNotificationSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteNotificationSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeActivitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeActivitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeActivitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeComments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeCommentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeCommentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeCommentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeDocumentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeDocumentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeDocumentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeDocumentVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeFolderContents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeFolderContentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeFolderContentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeFolderContentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeNotificationSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeNotificationSubscriptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeNotificationSubscriptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeNotificationSubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeResourcePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeResourcePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeResourcePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeResourcePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeRootFolders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeRootFoldersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeRootFoldersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeRootFoldersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#DescribeUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#RequestedEntityTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#DescribeUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DescribeUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DocumentContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#DocumentLockedForCommentsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DocumentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DocumentMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#DocumentSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#DocumentSourceUrlMap": {
+      "type": "map"
+    },
+    "com.amazonaws.workdocs#DocumentStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#DocumentThumbnailType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#DocumentThumbnailUrlMap": {
+      "type": "map"
+    },
+    "com.amazonaws.workdocs#DocumentVersionIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#DocumentVersionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#DocumentVersionMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#DocumentVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#DraftUploadOutOfSyncException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#EmailAddressType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#EntityAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#EntityIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#EntityNotExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ErrorMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#ExceptionCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#FailedDependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#FieldNamesType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#Filters": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#FolderContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#FolderMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#FolderMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#GetCurrentUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetCurrentUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetCurrentUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetCurrentUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetDocumentPath": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetDocumentPathRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetDocumentPathRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocumentPathResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocumentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetDocumentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetDocumentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetDocumentVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetFolderPath": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetFolderPathRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetFolderPathRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetFolderPathResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#GetResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#GetResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GetResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GroupMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#GroupMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#GroupNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#HashType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#HeaderNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#HeaderValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#IdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#IllegalUserStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InitiateDocumentVersionUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#InitiateDocumentVersionUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#DraftUploadOutOfSyncException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ResourceAlreadyCheckedOutException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#StorageLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#StorageLimitWillExceedException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#InitiateDocumentVersionUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InitiateDocumentVersionUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InvalidCommentOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#InvalidPasswordException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#LanguageCodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#LimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.workdocs#LocaleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#LongRangeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#LongType": {
+      "type": "long"
+    },
+    "com.amazonaws.workdocs#MarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#MessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#NextMarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#NotificationOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#OrderByFieldType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#OrderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#OrganizationUserList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#PageMarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#Participants": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#PasswordType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#PermissionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#PermissionInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#PositiveIntegerType": {
+      "type": "integer"
+    },
+    "com.amazonaws.workdocs#PositiveSizeType": {
+      "type": "long"
+    },
+    "com.amazonaws.workdocs#Principal": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#PrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#PrincipalRoleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ProhibitedStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#RemoveAllResourcePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#RemoveAllResourcePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#RemoveAllResourcePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#RemoveResourcePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#RemoveResourcePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#RemoveResourcePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#RequestedEntityTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResourceAlreadyCheckedOutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResourceCollectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ResourceIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#ResourceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResourceNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#ResourcePath": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResourcePathComponent": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResourcePathComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#ResourceSortType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ResourceStateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ResponseItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ResponseItemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#ResponseItemWebUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#ResponseItemsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#RestoreDocumentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#RestoreDocumentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#RestoreDocumentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#RolePermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#RoleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SearchAncestorId": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SearchAncestorIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchCollectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SearchCollectionTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchContentCategoryTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SearchLabelList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchMarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SearchPrincipalRoleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchPrincipalType": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SearchPrincipalTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchQueryScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SearchQueryScopeTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchQueryType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SearchResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SearchResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#SearchResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#SearchResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SearchResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SearchResultSortList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SearchResultsLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.workdocs#SearchSortResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SharePrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SharePrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#ShareResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#ShareResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#ShareStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SharedLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SharedLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SignedHeaderMap": {
+      "type": "map"
+    },
+    "com.amazonaws.workdocs#SizeType": {
+      "type": "long"
+    },
+    "com.amazonaws.workdocs#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#StorageLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#StorageLimitWillExceedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#StorageRuleType": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#StorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#SubscriptionEndPointType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#SubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#SubscriptionProtocolType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#SubscriptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#TextLocaleTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#TimeZoneIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#TimestampType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.workdocs#TooManyLabelsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#TooManySubscriptionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UnauthorizedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UnauthorizedResourceAccessException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UpdateDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#UpdateDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#UpdateDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UpdateDocumentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#UpdateDocumentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#UpdateDocumentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UpdateFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#UpdateFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#UpdateFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workdocs#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workdocs#DeactivatingLastSystemUserException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#EntityNotExistsException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#FailedDependencyException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#IllegalUserStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ProhibitedStateException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedOperationException"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UnauthorizedResourceAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.workdocs#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UploadMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UrlType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UserActivities": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#UserAttributeValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#UserFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#UserIdsType": {
+      "type": "string"
+    },
+    "com.amazonaws.workdocs#UserMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UserMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.workdocs#UserSortType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#UserStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#UserStorageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.workdocs#UserType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workdocs#UsernameType": {
+      "type": "string"
+    }
+  }
+}

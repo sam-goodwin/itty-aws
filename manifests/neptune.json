@@ -1,0 +1,2258 @@
+{
+  "shapes": {
+    "com.amazonaws.neptune#AddRoleToDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#AddRoleToDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterRoleAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterRoleQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#AddRoleToDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AddSourceIdentifierToSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#AddSourceIdentifierToSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#AddSourceIdentifierToSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AddSourceIdentifierToSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#AddTagsToResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#AddTagsToResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AmazonRDSv19": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Neptune"
+        }
+      }
+    },
+    "com.amazonaws.neptune#ApplyMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.neptune#ApplyPendingMaintenanceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ApplyPendingMaintenanceActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ApplyPendingMaintenanceActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ApplyPendingMaintenanceActionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#AuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#AvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.neptune#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.neptune#CertificateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CharacterSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CloudwatchLogsExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ClusterPendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CopyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CopyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CopyDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CopyDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CopyDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CopyDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CopyDBParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterEndpointAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterEndpointQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionAlreadyExistFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionCategoryNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#CreateGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#CreateGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#CreateGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterEndpointAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterEndpointNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterEndpointQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterOptionGroupMemberships": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterOptionGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterRoleAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterRoleQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterRoles": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBEngineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstanceAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstanceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstanceStatusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBInstanceStatusInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBParameterGroupStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBSecurityGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBSecurityGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroupDoesNotCoverEnoughAZs": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DBSubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DBUpgradeDependencyFailureFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSubnetStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#InvalidEventSubscriptionStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DeleteGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DeleteGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DeleteGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClusterEndpointsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClusterEndpointsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClusterParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClusterParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterSnapshotAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClusterSnapshotAttributesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClusterSnapshotAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClusterSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClusterSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBEngineVersionsMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeDBEngineVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBInstancesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeDBSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeDBSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeDBSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeEngineDefaultClusterParametersMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultClusterParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeEngineDefaultParametersMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEngineDefaultParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEventCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeEventCategoriesMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeEventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeEventSubscriptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeEventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeGlobalClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeGlobalClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeGlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeOrderableDBInstanceOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeOrderableDBInstanceOptionsMessage"
+      }
+    },
+    "com.amazonaws.neptune#DescribeOrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribePendingMaintenanceActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribePendingMaintenanceActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribePendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeValidDBInstanceModifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#DescribeValidDBInstanceModificationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#DescribeValidDBInstanceModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DescribeValidDBInstanceModificationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DomainMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DomainMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#DomainNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.neptune#DoubleOptional": {
+      "type": "double"
+    },
+    "com.amazonaws.neptune#DoubleRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#DoubleRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EngineDefaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventCategoriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#EventCategoriesMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventCategoriesMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#EventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventSubscriptionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventSubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#EventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#EventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.neptune#FailoverDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#FailoverDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#FailoverDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FailoverDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FailoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#FailoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#FailoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FailoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FailoverState": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FailoverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.neptune#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#GlobalCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#GlobalClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#GlobalClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.neptune#GlobalClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#GlobalClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#GlobalClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#GlobalClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#GlobalClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#GlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InstanceQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InsufficientDBClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InsufficientDBInstanceCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InsufficientStorageClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.neptune#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.neptune#InvalidDBClusterEndpointStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBInstanceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBSecurityGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBSubnetGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidDBSubnetStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidEventSubscriptionStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidGlobalClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidRestoreFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#KMSKeyNotAccessibleFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#LogTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ModifyDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterSnapshotAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBClusterSnapshotAttributeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SharedSnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBClusterSnapshotAttributeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBClusterSnapshotAttributeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBUpgradeDependencyFailureFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubnetAlreadyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionCategoryNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ModifyGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ModifyGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ModifyGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#OptionGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#OptionGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#OptionGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#OrderableDBInstanceOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#OrderableDBInstanceOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#OrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#PendingCloudwatchLogsExports": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#PendingMaintenanceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#PendingMaintenanceActionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#PendingMaintenanceActions": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#PendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#PendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#PromoteReadReplicaDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#PromoteReadReplicaDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#PromoteReadReplicaDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#PromoteReadReplicaDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ProvisionedIopsNotAvailableInAZFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ReadReplicaDBClusterIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ReadReplicaDBInstanceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ReadReplicaIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ReadersArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#RebootDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RebootDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RebootDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RebootDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveFromGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RemoveFromGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RemoveFromGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveFromGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveRoleFromDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RemoveRoleFromDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RemoveRoleFromDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveSourceIdentifierFromSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RemoveSourceIdentifierFromSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RemoveSourceIdentifierFromSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveSourceIdentifierFromSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RemoveTagsFromResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RemoveTagsFromResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ResetDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ResetDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ResetDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ResetDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#ResetDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#ResetDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ResourcePendingMaintenanceActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RestoreDBClusterFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RestoreDBClusterFromSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RestoreDBClusterFromSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RestoreDBClusterFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RestoreDBClusterToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#RestoreDBClusterToPointInTimeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#RestoreDBClusterToPointInTimeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#RestoreDBClusterToPointInTimeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SNSInvalidTopicFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SNSNoAuthorizationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SNSTopicArnNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.neptune#ServerlessV2ScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ServerlessV2ScalingConfigurationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SharedSnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SourceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#SourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.neptune#StartDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#StartDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#StartDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#StartDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#StopDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#StopDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#StopDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#StopDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#StorageQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#StorageTypeNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#String": {
+      "type": "string"
+    },
+    "com.amazonaws.neptune#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SubnetAlreadyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#SubscriptionAlreadyExistFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SubscriptionCategoryNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SubscriptionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SupportedCharacterSetsList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#SupportedTimezonesList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#SwitchoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.neptune#SwitchoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.neptune#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.neptune#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.neptune#SwitchoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#SwitchoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.neptune#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#TagListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#Timezone": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#UpgradeTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ValidDBInstanceModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ValidStorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#ValidStorageOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#ValidUpgradeTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#VpcSecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.neptune#VpcSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.neptune#VpcSecurityGroupMembershipList": {
+      "type": "list"
+    }
+  }
+}

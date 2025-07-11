@@ -1,0 +1,1076 @@
+{
+  "shapes": {
+    "com.amazonaws.grafana#AWSGrafanaControlPlane": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "grafana"
+        }
+      }
+    },
+    "com.amazonaws.grafana#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#AccountAccessType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#AllowedOrganization": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#AllowedOrganizations": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ApiKey": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#ApiKeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ApiKeyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#AssertionAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#AssertionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#AssociateLicense": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#AssociateLicenseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#AssociateLicenseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#AssociateLicenseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#Authentication": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#AuthenticationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#AuthenticationProviderTypes": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#AuthenticationProviders": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#AuthenticationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#AwsSsoAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#Configuration": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#CreateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#CreateWorkspaceApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#CreateWorkspaceApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#CreateWorkspaceApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceApiKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#CreateWorkspaceServiceAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccountToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#CreateWorkspaceServiceAccountTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccountTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#CreateWorkspaceServiceAccountTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DataSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#DataSourceTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#DeleteWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DeleteWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DeleteWorkspaceApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceApiKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DeleteWorkspaceServiceAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccountToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DeleteWorkspaceServiceAccountTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccountTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DeleteWorkspaceServiceAccountTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DescribeWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceAuthentication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DescribeWorkspaceAuthenticationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceAuthenticationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceAuthenticationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DescribeWorkspaceConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DescribeWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#DisassociateLicense": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#DisassociateLicenseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#DisassociateLicenseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#DisassociateLicenseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#GrafanaToken": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#GrafanaVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#GrafanaVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#IdpMetadata": {
+      "type": "union"
+    },
+    "com.amazonaws.grafana#IdpMetadataUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#License": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#LicenseType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ListPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccountTokens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListWorkspaceServiceAccountTokensRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccountTokensRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccountTokensResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListWorkspaceServiceAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspaceServiceAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#ListWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#ListWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ListWorkspacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#LoginValidityDuration": {
+      "type": "integer"
+    },
+    "com.amazonaws.grafana#NetworkAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#NotificationDestinationType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#NotificationDestinationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#OrganizationRoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#OrganizationalUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#OrganizationalUnitList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#OverridableConfigurationJson": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#Permission": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#PermissionEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#PermissionEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#PermissionType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#PrefixListId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#PrefixListIds": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#Role": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#RoleValue": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#RoleValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#RoleValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#SSOClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#SamlAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#SamlConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#SamlConfigurationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ServiceAccount": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#ServiceAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ServiceAccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ServiceAccountSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ServiceAccountToken": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#ServiceAccountTokenKey": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ServiceAccountTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ServiceAccountTokenName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ServiceAccountTokenSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ServiceAccountTokenSummaryWithKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#SsoId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#StackSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.grafana#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateAction": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#UpdateError": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#UpdateInstruction": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateInstructionBatch": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#UpdatePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#UpdatePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#UpdatePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdatePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#UpdateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceAuthentication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#UpdateWorkspaceAuthenticationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceAuthenticationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceAuthenticationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.grafana#UpdateWorkspaceConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.grafana#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.grafana#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.grafana#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UpdateWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#UserType": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#VpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#VpceId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#VpceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#Workspace": {
+      "type": "resource"
+    },
+    "com.amazonaws.grafana#WorkspaceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.grafana#WorkspaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#WorkspaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.grafana#WorkspaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#WorkspaceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.grafana#WorkspaceSummary": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,1435 @@
+{
+  "shapes": {
+    "com.amazonaws.billingconductor#AWSBillingConductor": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "billingconductor"
+        }
+      }
+    },
+    "com.amazonaws.billingconductor#AWSCost": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AccountAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#AccountAssociationsListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AccountEmail": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#AccountGrouping": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#AccountIdFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#AccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#AssociateAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#AssociateAccountsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#AssociateAccountsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociateAccountsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociatePricingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#AssociatePricingRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#AssociatePricingRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociatePricingRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociateResourceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociateResourceErrorReason": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#AssociateResourceResponseElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AssociateResourcesResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#Association": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#AttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BatchAssociateResourcesToCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#BatchAssociateResourcesToCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#BatchAssociateResourcesToCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BatchAssociateResourcesToCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BatchDisassociateResourcesFromCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#BatchDisassociateResourcesFromCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#BatchDisassociateResourcesFromCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BatchDisassociateResourcesFromCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BillingEntity": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.billingconductor#BillingGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroupArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportResultElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BillingGroupDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroupFullArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BillingGroupListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#BillingGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroupStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingGroupStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#BillingGroupStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingPeriod": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#BillingPeriodRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ComputationPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ConflictExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CreateBillingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#CreateBillingGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#CreateBillingGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreateBillingGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreateCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#CreateCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#CreateCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreateCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreateFreeTierConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreatePricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#CreatePricingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#CreatePricingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreatePricingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreatePricingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#CreatePricingRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#CreatePricingRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreatePricingRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CreateTieringInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#Currency": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CurrencyCode": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItem": {
+      "type": "resource"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemArns": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemAssociationElement": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemBatchAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemBatchDisassociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemBillingPeriodRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemChargeValue": {
+      "type": "double"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemFlatChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemPercentageChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemPercentageChargeValue": {
+      "type": "double"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemProductCode": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemRelationship": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemType": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#CustomLineItemVersionListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeleteBillingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DeleteBillingGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DeleteBillingGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeleteBillingGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeleteCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DeleteCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DeleteCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeleteCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeletePricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DeletePricingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DeletePricingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeletePricingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeletePricingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DeletePricingRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DeletePricingRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DeletePricingRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociateAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DisassociateAccountsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DisassociateAccountsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociateAccountsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociatePricingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#DisassociatePricingRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#DisassociatePricingRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociatePricingRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociateResourceResponseElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#DisassociateResourcesResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#FreeTierConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#GetBillingGroupCostReportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#GroupByAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#GroupByAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#Instant": {
+      "type": "long"
+    },
+    "com.amazonaws.billingconductor#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#LineItemFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#LineItemFilterAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#LineItemFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#LineItemFilterValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#LineItemFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#ListAccountAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListAccountAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListAccountAssociationsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListAccountAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListAccountAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupAccountGrouping": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupCostReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListBillingGroupCostReportsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupCostReportsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupCostReportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupCostReportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListBillingGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemFlatChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemPercentageChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListCustomLineItemVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemVersionsBillingPeriodRangeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemVersionsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListCustomLineItemsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListCustomLineItemsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListPricingPlansInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansAssociatedWithPricingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListPricingPlansAssociatedWithPricingRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansAssociatedWithPricingRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansAssociatedWithPricingRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingPlansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListPricingRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesAssociatedToPricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListPricingRulesAssociatedToPricingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesAssociatedToPricingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesAssociatedToPricingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListPricingRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemResponseElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListResourcesAssociatedToCustomLineItemResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#Margin": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#MarginPercentage": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#MatchOption": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#MaxBillingGroupCostReportResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#MaxBillingGroupResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#MaxCustomLineItemResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#MaxPricingPlanResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#MaxPricingRuleResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#ModifierPercentage": {
+      "type": "double"
+    },
+    "com.amazonaws.billingconductor#NumberOfAccounts": {
+      "type": "long"
+    },
+    "com.amazonaws.billingconductor#NumberOfAssociatedPricingRules": {
+      "type": "long"
+    },
+    "com.amazonaws.billingconductor#NumberOfAssociations": {
+      "type": "long"
+    },
+    "com.amazonaws.billingconductor#NumberOfPricingPlansAssociatedWith": {
+      "type": "long"
+    },
+    "com.amazonaws.billingconductor#Operation": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingPlan": {
+      "type": "resource"
+    },
+    "com.amazonaws.billingconductor#PricingPlanArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingPlanArns": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingPlanDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingPlanFullArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingPlanList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingPlanListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#PricingPlanName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingRule": {
+      "type": "resource"
+    },
+    "com.amazonaws.billingconductor#PricingRuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingRuleArns": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingRuleArnsInput": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingRuleArnsNonEmptyInput": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingRuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#PricingRuleListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#PricingRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingRuleScope": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#PricingRuleType": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ProformaCost": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.billingconductor#Service": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ServiceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#String": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.billingconductor#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#Tiering": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#TieringActivated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.billingconductor#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateBillingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#UpdateBillingGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#UpdateBillingGroupAccountGrouping": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateBillingGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateBillingGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#UpdateCustomLineItemInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItemChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItemFlatChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItemInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItemOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateCustomLineItemPercentageChargeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateFreeTierConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdatePricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#UpdatePricingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#UpdatePricingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdatePricingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdatePricingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#UpdatePricingRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.billingconductor#UpdatePricingRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdatePricingRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UpdateTieringInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#UsageType": {
+      "type": "string"
+    },
+    "com.amazonaws.billingconductor#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.billingconductor#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.billingconductor#ValidationExceptionReason": {
+      "type": "string"
+    }
+  }
+}

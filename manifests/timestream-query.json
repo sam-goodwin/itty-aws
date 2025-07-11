@@ -1,0 +1,783 @@
+{
+  "shapes": {
+    "com.amazonaws.timestreamquery#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#AccountSettingsNotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#CancelQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#CancelQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#CancelQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#CancelQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ColumnInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ColumnInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#ComputeMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#CreateScheduledQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#CreateScheduledQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#CreateScheduledQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#CreateScheduledQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Datum": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DatumList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#DeleteScheduledQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#DeleteScheduledQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#DeleteScheduledQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#DescribeAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#DescribeAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#DescribeEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#DescribeEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeScheduledQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#DescribeScheduledQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#DescribeScheduledQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DescribeScheduledQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DimensionMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#DimensionMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#DimensionValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.timestreamquery#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Endpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ErrorReportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ErrorReportLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ExecuteScheduledQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#ExecuteScheduledQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#ExecuteScheduledQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ExecutionStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#InvalidEndpointException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#LastUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#LastUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ListScheduledQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#ListScheduledQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#ListScheduledQueriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ListScheduledQueriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.timestreamquery#MaxQueryCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamquery#MaxQueryResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamquery#MaxScheduledQueriesResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamquery#MaxTagsForResourceResult": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamquery#MeasureValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#MixedMeasureMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#MixedMeasureMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#MultiMeasureAttributeMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#MultiMeasureAttributeMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#MultiMeasureMappings": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#NextScheduledQueriesResultsToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#NextTagsForResourceResultsToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.timestreamquery#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ParameterMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ParameterMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#PartitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#PartitionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#PrepareQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#PrepareQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#PrepareQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#PrepareQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ProvisionedCapacityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ProvisionedCapacityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Query": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#QueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#QueryExecutionException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#QueryComputeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryComputeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryExecutionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryId": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#QueryInsights": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryInsightsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#QueryInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryPricingModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#QueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QuerySpatialCoverage": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QuerySpatialCoverageMax": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#QueryTCU": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamquery#QueryTemporalRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#QueryTemporalRangeMax": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Row": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#RowList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#S3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#S3EncryptionOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#S3ObjectKeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#S3ReportLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScalarMeasureValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ScalarType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ScalarValue": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ScheduleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryInsights": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryInsightsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryRunStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryRunSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryRunSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#ScheduledQueryState": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamquery#SchemaName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#SelectColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#SelectColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#ServiceErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#SnsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#String": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#StringValue2048": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#TargetConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TargetDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Time": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.timestreamquery#TimeSeriesDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TimeSeriesDataPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamquery#Timestamp": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamquery#TimestreamConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#TimestreamDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#Timestream_20181101": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Timestream Query"
+        }
+      }
+    },
+    "com.amazonaws.timestreamquery#Type": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#UpdateAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#UpdateAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#UpdateAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#UpdateAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#UpdateScheduledQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamquery#UpdateScheduledQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamquery#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamquery#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamquery#UpdateScheduledQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamquery#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

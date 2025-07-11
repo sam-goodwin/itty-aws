@@ -1,0 +1,1188 @@
+{
+  "shapes": {
+    "com.amazonaws.groundstation#AWSRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#Agent": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#AgentCpuCoresList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#AgentDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AgentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#AggregateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AngleUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#AntennaDemodDecodeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AntennaDownlinkConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AntennaDownlinkDemodDecodeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AntennaUplinkConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#AnyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#AuditResults": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#AwsGroundStationAgentEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#BandwidthUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#CancelContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#CancelContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#CancelContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#CapabilityArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#CapabilityArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#CapabilityHealth": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#CapabilityHealthReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#CapabilityHealthReasonList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#ComponentStatusData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ComponentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#ComponentTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#ComponentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ComponentVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#Config": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#ConfigArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#ConfigCapabilityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#ConfigDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.groundstation#ConfigIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#ConfigListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ConfigTypeData": {
+      "type": "union"
+    },
+    "com.amazonaws.groundstation#ConnectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Contact": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#ContactData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ContactIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ContactList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#ContactStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#CreateConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#CreateConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#CreateConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#CreateDataflowEndpointGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#CreateDataflowEndpointGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#CreateDataflowEndpointGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#CreateEphemeris": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#CreateEphemerisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#CreateEphemerisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#CreateMissionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#CreateMissionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#CreateMissionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Criticality": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#CustomerEphemerisPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#DataflowDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DataflowEdge": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#DataflowEdgeList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#DataflowEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointGroupDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointGroupIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#DataflowEndpointListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DataflowList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#DecodeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DeleteConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DeleteConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DeleteConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DeleteDataflowEndpointGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DeleteDataflowEndpointGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DeleteDataflowEndpointGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DeleteEphemeris": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DeleteEphemerisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DeleteEphemerisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DeleteMissionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DeleteMissionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DeleteMissionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DemodulationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DescribeContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DescribeContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DescribeContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DescribeContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DescribeEphemeris": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#DescribeEphemerisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#DescribeEphemerisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DescribeEphemerisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DiscoveryData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#DurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#Eirp": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EirpUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#Elevation": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EndpointDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EndpointDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#EndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#EphemeridesList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#Ephemeris": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#EphemerisData": {
+      "type": "union"
+    },
+    "com.amazonaws.groundstation#EphemerisDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EphemerisIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EphemerisInvalidReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#EphemerisItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EphemerisMetaData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#EphemerisPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#EphemerisSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#EphemerisStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#EphemerisStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#EphemerisTypeDescription": {
+      "type": "union"
+    },
+    "com.amazonaws.groundstation#Frequency": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#FrequencyBandwidth": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#FrequencyUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#GetAgentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetAgentConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetAgentConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetAgentConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetDataflowEndpointGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetDataflowEndpointGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetDataflowEndpointGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetDataflowEndpointGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetMinuteUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetMinuteUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetMinuteUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetMinuteUsageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetMissionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetMissionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetMissionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetMissionProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetSatellite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#GetSatelliteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#GetSatelliteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GetSatelliteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GroundStation": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "GroundStation"
+        }
+      }
+    },
+    "com.amazonaws.groundstation#GroundStationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#GroundStationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#GroundStationList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#GroundStationName": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#GroundStationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#IntegerRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#IpAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#IpV4Address": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#JsonString": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#KeyAliasArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#KeyAliasName": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#KeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#KmsKey": {
+      "type": "union"
+    },
+    "com.amazonaws.groundstation#ListConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListContacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListContactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListContactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListContactsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListDataflowEndpointGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListDataflowEndpointGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListDataflowEndpointGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListDataflowEndpointGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListEphemerides": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListEphemeridesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListEphemeridesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListEphemeridesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListGroundStations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListGroundStationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListGroundStationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListGroundStationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListMissionProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListMissionProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListMissionProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListMissionProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListSatellites": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListSatellitesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListSatellitesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListSatellitesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#MissionProfile": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#MissionProfileArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#MissionProfileIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#MissionProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#MissionProfileListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Month": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#OEMEphemeris": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#PaginationMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#Polarization": {
+      "type": "enum"
+    },
+    "com.amazonaws.groundstation#PositiveDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#RangedConnectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#RangedSocketAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#RegisterAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#RegisterAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#RegisterAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#RegisterAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ReserveContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#ReserveContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#ReserveContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#S3RecordingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#S3RecordingDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#S3VersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#SafeName": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#Satellite": {
+      "type": "resource"
+    },
+    "com.amazonaws.groundstation#SatelliteList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#SatelliteListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#SecurityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#SignatureMap": {
+      "type": "map"
+    },
+    "com.amazonaws.groundstation#SocketAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#SpectrumConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#StatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#TLEData": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#TLEDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#TLEEphemeris": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.groundstation#TimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#TleLineOne": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#TleLineTwo": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#TrackingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UnboundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UpdateAgentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#UpdateAgentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#UpdateAgentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UpdateAgentStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UpdateConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#UpdateConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#UpdateConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UpdateEphemeris": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#UpdateEphemerisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#UpdateEphemerisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UpdateMissionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.groundstation#UpdateMissionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.groundstation#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.groundstation#UpdateMissionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UplinkEchoConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#UplinkSpectrumConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.groundstation#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#VersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.groundstation#VersionStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.groundstation#Year": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#noradSatelliteID": {
+      "type": "integer"
+    },
+    "com.amazonaws.groundstation#satelliteArn": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,2061 @@
+{
+  "shapes": {
+    "com.amazonaws.robomaker#Architecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Arns": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#BatchDeleteWorlds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#BatchDeleteWorldsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#BatchDeleteWorldsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#BatchDeleteWorldsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#BatchDescribeSimulationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#BatchDescribeSimulationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#BatchDescribeSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#BatchDescribeSimulationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#BatchPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#BatchTimeoutInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.robomaker#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.robomaker#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.robomaker#CancelDeploymentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CancelDeploymentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CancelDeploymentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelDeploymentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelSimulationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CancelSimulationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CancelSimulationJobBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CancelSimulationJobBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CancelSimulationJobBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelSimulationJobBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelSimulationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelWorldExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CancelWorldExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CancelWorldExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelWorldExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelWorldGenerationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CancelWorldGenerationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CancelWorldGenerationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CancelWorldGenerationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Command": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#CommandList": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#Compute": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ComputeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#ConcurrentDeploymentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateDeploymentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateDeploymentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#ConcurrentDeploymentException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateDeploymentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateDeploymentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateRobotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateRobotApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateRobotApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateRobotApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobotApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobotApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateRobotApplicationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateRobotApplicationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobotApplicationVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateRobotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateSimulationApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateSimulationApplicationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplicationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationApplicationVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateSimulationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateSimulationJobRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#CreateSimulationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateWorldExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateWorldExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldGenerationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateWorldGenerationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateWorldGenerationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldGenerationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#CreateWorldTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#CreateWorldTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreateWorldTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#CreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.robomaker#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DataSourceConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#DataSourceNames": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#DataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#DataSources": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#DeleteFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeleteFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeleteFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteRobot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeleteRobotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeleteRobotApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeleteRobotApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeleteRobotApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteRobotApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteRobotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteRobotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteSimulationApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeleteSimulationApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeleteSimulationApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteSimulationApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteWorldTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeleteWorldTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeleteWorldTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeleteWorldTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeploymentApplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeploymentApplicationConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#DeploymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeploymentJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeploymentJobErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#DeploymentJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#DeploymentLaunchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#DeploymentTimeout": {
+      "type": "long"
+    },
+    "com.amazonaws.robomaker#DeploymentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#DeregisterRobot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DeregisterRobotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DeregisterRobotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DeregisterRobotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeDeploymentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeDeploymentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeDeploymentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeDeploymentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeRobot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeRobotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeRobotApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeRobotApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeRobotApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeRobotApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeRobotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeRobotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeSimulationApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeSimulationApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeSimulationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJobBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeSimulationJobBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJobBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJobBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeSimulationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorld": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeWorldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeWorldExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeWorldExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeWorldExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldGenerationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeWorldGenerationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeWorldGenerationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldGenerationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#DescribeWorldTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#DescribeWorldTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#DescribeWorldTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#EnvironmentVariableKey": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#EnvironmentVariableMap": {
+      "type": "map"
+    },
+    "com.amazonaws.robomaker#EnvironmentVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#ExitBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#FailedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.robomaker#FailedCreateSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#FailedCreateSimulationJobRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#FailureBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#FailureSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#FinishedWorldsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Fleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Fleets": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#FloorplanCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#GPUUnit": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#GenericInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#GenericString": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#GetWorldTemplateBody": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#GetWorldTemplateBodyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#GetWorldTemplateBodyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#GetWorldTemplateBodyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#IamRole": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ImageDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#InteriorCountPerFloorplan": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#JobDuration": {
+      "type": "long"
+    },
+    "com.amazonaws.robomaker#Json": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#LastStartedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.robomaker#LastUpdatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.robomaker#LaunchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListDeploymentJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListDeploymentJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListDeploymentJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListDeploymentJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListFleetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListFleetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListFleetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListRobotApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListRobotApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListRobotApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListRobotApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListRobots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListRobotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListRobotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListRobotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListSimulationApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListSimulationApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationJobBatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListSimulationJobBatchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListSimulationJobBatchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationJobBatchesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListSimulationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListSimulationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListSimulationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListWorldExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListWorldExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldGenerationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListWorldGenerationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListWorldGenerationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldGenerationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListWorldTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListWorldTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorlds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#ListWorldsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#ListWorldsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ListWorldsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#LoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#MaxConcurrency": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#NonSystemPort": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#OutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Path": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#PercentDone": {
+      "type": "float"
+    },
+    "com.amazonaws.robomaker#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#PortForwardingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#PortMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#PortMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#ProgressDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RegisterRobot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#RegisterRobotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#RegisterRobotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RegisterRobotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RenderingEngine": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RenderingEngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#RenderingEngineVersionType": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#RepositoryUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RestartSimulationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#RestartSimulationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#RestartSimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RestartSimulationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#Robot": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RobotApplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RobotApplicationConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#RobotApplicationNames": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#RobotApplicationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#RobotApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RobotDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RobotDeploymentStep": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#RobotDeploymentSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#RobotSoftwareSuite": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#RobotSoftwareSuiteType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#RobotSoftwareSuiteVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#RobotStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#Robots": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#S3Etag": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#S3Etags": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#S3KeyOrPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#S3KeyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#S3KeyOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#S3KeysOrPrefixes": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationApplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationApplicationConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationApplicationNames": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationApplicationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationJobBatchErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#SimulationJobBatchStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#SimulationJobBatchSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationJobBatchSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationJobErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#SimulationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#SimulationJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SimulationSoftwareSuite": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SimulationSoftwareSuiteType": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#SimulationSoftwareSuiteVersionType": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#SimulationTimeMillis": {
+      "type": "long"
+    },
+    "com.amazonaws.robomaker#SimulationUnit": {
+      "type": "integer"
+    },
+    "com.amazonaws.robomaker#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SourceConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#Sources": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#StartSimulationJobBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#StartSimulationJobBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#StartSimulationJobBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#StartSimulationJobBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#SyncDeploymentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#SyncDeploymentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#ConcurrentDeploymentException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#SyncDeploymentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#SyncDeploymentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.robomaker#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#TemplateLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#TemplateSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#TemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Tool": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Tools": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#UnrestrictedCommand": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateRobotApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#UpdateRobotApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#UpdateRobotApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateRobotApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateSimulationApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#UpdateSimulationApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#UpdateSimulationApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateSimulationApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateWorldTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.robomaker#UpdateWorldTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.robomaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.robomaker#UpdateWorldTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UpdateWorldTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UploadBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#UploadConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#UploadConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#VPCConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#VPCConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#VersionQualifier": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#WorldConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#WorldConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#WorldCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#WorldExportJobErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#WorldExportJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#WorldExportJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#WorldExportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#WorldFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#WorldFailures": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#WorldGenerationJobErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#WorldGenerationJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.robomaker#WorldGenerationJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#WorldGenerationJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#WorldSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.robomaker#WorldSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.robomaker#errorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.robomaker#robomaker": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RoboMaker"
+        }
+      }
+    }
+  }
+}

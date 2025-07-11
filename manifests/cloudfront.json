@@ -1,0 +1,6330 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudfront#AccessControlAllowHeadersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AccessControlAllowMethodsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AccessControlAllowOriginsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AccessControlExposeHeadersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AccessDenied": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ActiveTrustedKeyGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ActiveTrustedSigners": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AliasICPRecordal": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AliasICPRecordals": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#Aliases": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AllowedMethods": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AnycastIpList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AnycastIpListCollection": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AnycastIpListName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#AnycastIpListSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AnycastIpListSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AnycastIps": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#AssociateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#AssociateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#AssociateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionTenantWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#AssociateDistributionTenantWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionTenantWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionTenantWebACLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#AssociateDistributionWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AssociateDistributionWebACLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#AwsAccountNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#BatchTooLarge": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CNAMEAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CacheBehavior": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CacheBehaviorList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#CacheBehaviors": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyCookieBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CachePolicyCookiesConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyHeaderBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CachePolicyHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicyQueryStringBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CachePolicyQueryStringsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CachePolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#CachePolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CachedMethods": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CannotChangeImmutablePublicKeyFields": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CannotUpdateEntityWhileInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CertificateSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CertificateTransparencyLoggingPreference": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentitySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentitySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#Cloudfront2020_05_31": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudFront"
+        }
+      }
+    },
+    "com.amazonaws.cloudfront#CommentType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#ConflictingAlias": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ConflictingAliases": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ConflictingAliasesList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ConnectionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ConnectionGroupAssociationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ConnectionGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ConnectionGroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ConnectionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ContentTypeProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContentTypeProfileConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContentTypeProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ContentTypeProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentPolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentSingleHeaderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ContinuousDeploymentSingleWeightConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CookieNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#CookieNames": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CookiePreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CopyDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CopyDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DistributionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDefaultRootObject"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidErrorCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidForwardCookies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidHeadersForS3Origin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLocationCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginReadTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidProtocolSettings"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRelativePath"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRequiredProtocol"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidResponseCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTTLOrder"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidViewerCertificate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCacheBehaviors"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCertificates"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginCustomHeaders"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CopyDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CopyDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateAnycastIpList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateAnycastIpListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateAnycastIpListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateAnycastIpListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateCachePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateCachePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CachePolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCachePolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookiesInCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringsInCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateCachePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateCachePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCloudFrontOriginAccessIdentities"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentityResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateConnectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateConnectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateConnectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateConnectionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ContinuousDeploymentPolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StagingDistributionInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyContinuousDeploymentPolicies"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ContinuousDeploymentPolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DistributionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalOriginAccessConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDefaultRootObject"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDomainNameForOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidErrorCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidForwardCookies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidHeadersForS3Origin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLocationCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginReadTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidProtocolSettings"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRelativePath"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRequiredProtocol"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidResponseCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTTLOrder"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidViewerCertificate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCacheBehaviors"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCertificates"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginCustomHeaders"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistributionWithTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateDistributionWithTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ContinuousDeploymentPolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DistributionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalOriginAccessConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDefaultRootObject"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDomainNameForOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidErrorCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidForwardCookies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidHeadersForS3Origin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLocationCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginReadTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidProtocolSettings"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRelativePath"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRequiredProtocol"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidResponseCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTTLOrder"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidViewerCertificate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCacheBehaviors"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCertificates"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginCustomHeaders"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateDistributionWithTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateDistributionWithTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionConfigAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#QueryArgProfileEmpty"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionConfigs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionContentTypeProfiles"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionQueryArgProfiles"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionProfileAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionProfileSizeExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionEncryptionEntities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionFieldPatterns"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionProfiles"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#FunctionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FunctionSizeLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateInvalidation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateInvalidationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#BatchTooLarge"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyInvalidationsInProgress"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateInvalidationForDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateInvalidationForDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#BatchTooLarge"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyInvalidationsInProgress"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateInvalidationForDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateInvalidationForDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateInvalidationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateInvalidationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateKeyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateKeyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#KeyGroupAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroups"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyPublicKeysInKeyGroup"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateKeyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateKeyGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateKeyValueStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateKeyValueStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntitySizeLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateKeyValueStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateKeyValueStoreResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateMonitoringSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateMonitoringSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MonitoringSubscriptionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateMonitoringSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateMonitoringSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateOriginAccessControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateOriginAccessControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginAccessControlAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginAccessControls"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateOriginAccessControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateOriginAccessControlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateOriginRequestPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateOriginRequestPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginRequestPolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookiesInOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginRequestPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringsInOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateOriginRequestPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateOriginRequestPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreatePublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreatePublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PublicKeyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyPublicKeys"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreatePublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreatePublicKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateRealtimeLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateRealtimeLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyRealtimeLogConfigs"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateRealtimeLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateRealtimeLogConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateResponseHeadersPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateResponseHeadersPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResponseHeadersPolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooLongCSPInResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCustomHeadersInResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyRemoveHeadersInResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyResponseHeadersPolicies"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateResponseHeadersPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateResponseHeadersPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateStreamingDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StreamingDistributionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyStreamingDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyStreamingDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistributionWithTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateStreamingDistributionWithTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StreamingDistributionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyStreamingDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyStreamingDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistributionWithTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateStreamingDistributionWithTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateVpcOrigin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#CreateVpcOriginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#CreateVpcOriginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CreateVpcOriginResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CustomErrorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CustomErrorResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#CustomErrorResponses": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CustomHeaders": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CustomOriginConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#CustomizationActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#Customizations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DefaultCacheBehavior": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteAnycastIpList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteAnycastIpListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalDelete"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteAnycastIpListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteCachePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteCachePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CachePolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalDelete"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteCachePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteCloudFrontOriginAccessIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteCloudFrontOriginAccessIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CloudFrontOriginAccessIdentityInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteCloudFrontOriginAccessIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteConnectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteConnectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResourceNotDisabled"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteConnectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteContinuousDeploymentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteContinuousDeploymentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ContinuousDeploymentPolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteContinuousDeploymentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DistributionNotDisabled"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResourceNotDisabled"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionConfigInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionProfileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#FunctionInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteKeyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteKeyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteKeyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteKeyValueStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteKeyValueStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteKeyValueStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteMonitoringSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteMonitoringSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchMonitoringSubscription"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteMonitoringSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteMonitoringSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteOriginAccessControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteOriginAccessControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginAccessControlInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteOriginAccessControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteOriginRequestPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteOriginRequestPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalDelete"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginRequestPolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteOriginRequestPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeletePublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeletePublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PublicKeyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeletePublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteRealtimeLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteRealtimeLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteRealtimeLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteResponseHeadersPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteResponseHeadersPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalDelete"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResponseHeadersPolicyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteResponseHeadersPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteStreamingDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteStreamingDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StreamingDistributionNotDisabled"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteStreamingDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteVpcOrigin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DeleteVpcOriginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalDelete"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DeleteVpcOriginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DeleteVpcOriginResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DescribeFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DescribeFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DescribeFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DescribeFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DescribeKeyValueStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DescribeKeyValueStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DescribeKeyValueStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DescribeKeyValueStoreResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionTenantWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DisassociateDistributionTenantWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionTenantWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionTenantWebACLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#DisassociateDistributionWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DisassociateDistributionWebACLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Distribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionConfigWithTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionIdList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionIdListSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DistributionList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionNotDisabled": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionResourceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#DistributionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DistributionTenant": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionTenantAssociationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DistributionTenantList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DistributionTenantSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DnsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DnsConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DnsConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#DomainConflict": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DomainConflictsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DomainItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DomainResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#DomainResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#DomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#EncryptionEntities": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EncryptionEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EncryptionEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#EndPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EndPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#EntityAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EntityLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EntityNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EntitySizeLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionConfigAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionConfigInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileSizeExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionProfileSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FieldLevelEncryptionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FieldPatternList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FieldPatterns": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ForwardedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FrameOptionsList": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#FunctionARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#FunctionAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FunctionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.cloudfront#FunctionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionEventObject": {
+      "type": "blob"
+    },
+    "com.amazonaws.cloudfront#FunctionExecutionLogList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#FunctionInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#FunctionRuntime": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#FunctionSizeLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionStage": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#FunctionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#FunctionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#GeoRestriction": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GeoRestrictionCustomization": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GeoRestrictionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#GetAnycastIpList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetAnycastIpListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetAnycastIpListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetAnycastIpListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCachePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetCachePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetCachePolicyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetCachePolicyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetCachePolicyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCachePolicyConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCachePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCachePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCloudFrontOriginAccessIdentity"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCloudFrontOriginAccessIdentity"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetConnectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroupByRoutingEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetConnectionGroupByRoutingEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroupByRoutingEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroupByRoutingEndpointResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetConnectionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetDistributionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetDistributionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetDistributionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenantByDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetDistributionTenantByDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenantByDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenantByDomainResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFieldLevelEncryptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetInvalidation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetInvalidationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchInvalidation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetInvalidationForDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetInvalidationForDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchInvalidation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetInvalidationForDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetInvalidationForDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetInvalidationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetInvalidationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetKeyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetKeyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetKeyGroupConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetKeyGroupConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetKeyGroupConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetKeyGroupConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetKeyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetKeyGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetManagedCertificateDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetManagedCertificateDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetManagedCertificateDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetManagedCertificateDetailsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetMonitoringSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetMonitoringSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchMonitoringSubscription"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetMonitoringSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetMonitoringSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetOriginAccessControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginAccessControl"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControlConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetOriginAccessControlConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginAccessControl"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControlConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControlConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginAccessControlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetOriginRequestPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetOriginRequestPolicyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicyConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetOriginRequestPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetPublicKeyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetPublicKeyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetPublicKeyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetPublicKeyConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetPublicKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetRealtimeLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetRealtimeLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetRealtimeLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetRealtimeLogConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetResponseHeadersPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetResponseHeadersPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetStreamingDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchStreamingDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistributionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetStreamingDistributionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchStreamingDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistributionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistributionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetStreamingDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetVpcOrigin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#GetVpcOriginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#GetVpcOriginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GetVpcOriginResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#GrpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#HeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#Headers": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#HttpVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ICPRecordalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#IllegalDelete": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#IllegalOriginAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#IllegalUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ImportSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ImportSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#InconsistentQuantities": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidDefaultRootObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidDomainNameForOriginAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidErrorCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidForwardCookies": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidFunctionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidHeadersForS3Origin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidIfMatchVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidLocationCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidOrigin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidOriginAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidOriginAccessIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidOriginReadTimeout": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidProtocolSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidQueryStringParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidRelativePath": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidRequiredProtocol": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidResponseCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidTTLOrder": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidTagging": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidViewerCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidWebACLId": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Invalidation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidationBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidationList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#InvalidationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ItemSelection": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#KGKeyPairIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KGKeyPairIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#KeyGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyGroupAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyGroupConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyGroupList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyGroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#KeyPairIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#KeyPairIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyValueStore": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreComment": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#KeyValueStoreSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#KinesisStreamConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#LambdaFunctionARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#LambdaFunctionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#LambdaFunctionAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#LambdaFunctionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListAnycastIpLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListAnycastIpListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListAnycastIpListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListAnycastIpListsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListCachePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListCachePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListCachePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListCachePoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentitiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListConflictingAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListConflictingAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListConflictingAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListConflictingAliasesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListConnectionGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListConnectionGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListConnectionGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListConnectionGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListContinuousDeploymentPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListContinuousDeploymentPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListContinuousDeploymentPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListContinuousDeploymentPoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionTenantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenantsByCustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionTenantsByCustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenantsByCustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenantsByCustomizationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionTenantsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByAnycastIpListId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByAnycastIpListIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByAnycastIpListIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByAnycastIpListIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByCachePolicyId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByCachePolicyIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByCachePolicyIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByCachePolicyIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByConnectionMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByConnectionModeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByConnectionModeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByConnectionModeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByKeyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByKeyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByKeyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByKeyGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByVpcOriginId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByVpcOriginIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByVpcOriginIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByVpcOriginIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByWebACLId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDistributionsByWebACLIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByWebACLIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsByWebACLIdResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDistributionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDomainConflicts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListDomainConflictsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListDomainConflictsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListDomainConflictsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfilesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFunctions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListFunctionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListFunctionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListFunctionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListInvalidations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListInvalidationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListInvalidationsForDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListInvalidationsForDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListInvalidationsForDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListInvalidationsForDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListInvalidationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListInvalidationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListKeyGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListKeyGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListKeyGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListKeyGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListKeyValueStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListKeyValueStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListKeyValueStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListKeyValueStoresResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListOriginAccessControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListOriginAccessControlsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListOriginAccessControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListOriginAccessControlsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListOriginRequestPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListOriginRequestPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListOriginRequestPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListOriginRequestPoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListPublicKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListPublicKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListPublicKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListPublicKeysResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListRealtimeLogConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListRealtimeLogConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListRealtimeLogConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListRealtimeLogConfigsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListResponseHeadersPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListResponseHeadersPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListResponseHeadersPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListResponseHeadersPoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListStreamingDistributions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListStreamingDistributionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListStreamingDistributionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListStreamingDistributionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListTagsForResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListVpcOrigins": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#ListVpcOriginsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#ListVpcOriginsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ListVpcOriginsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#LocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#LoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ManagedCertificateDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ManagedCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ManagedCertificateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#Method": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#MethodsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#MinimumProtocolVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#MissingBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#MonitoringSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#MonitoringSubscriptionAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchCachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchCloudFrontOriginAccessIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchFunctionExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchInvalidation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchMonitoringSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchOrigin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchOriginAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchPublicKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#NoSuchStreamingDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Origin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlOriginTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlSigningBehaviors": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlSigningProtocols": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginAccessControlSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginCustomHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginCustomHeadersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginGroupFailoverCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginGroupMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginGroupMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginGroupMembers": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginGroupSelectionCriteria": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginProtocolPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyCookieBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyCookiesConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyHeaderBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyQueryStringBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyQueryStringsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#OriginRequestPolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#OriginShield": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#OriginShieldRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#OriginSslProtocols": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Origins": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ParameterDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ParameterDefinitionSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ParameterDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#Parameters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ParametersInCacheKeyAndForwardedToOrigin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PathList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#Paths": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PreconditionFailed": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PriceClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#PublicKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeyIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#PublicKeyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublicKeySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#PublishFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#PublishFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#PublishFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#PublishFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryArgProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryArgProfileConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryArgProfileEmpty": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryArgProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#QueryArgProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryStringCacheKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryStringCacheKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#QueryStringNames": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#QueryStringNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfigAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfigInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeLogConfigs": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeMetricsSubscriptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#RealtimeMetricsSubscriptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ReferrerPolicyList": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#ResourceInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResourceNotDisabled": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAccessControlAllowHeaders": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAccessControlAllowMethods": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAccessControlAllowMethodsValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAccessControlAllowOrigins": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAccessControlExposeHeaders": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyContentSecurityPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyContentTypeOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyCorsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyCustomHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyCustomHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyCustomHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyFrameOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyReferrerPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyRemoveHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyRemoveHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyRemoveHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicySecurityHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyServerTimingHeadersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyStrictTransportSecurity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#ResponseHeadersPolicyXSSProtection": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Restrictions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#S3Origin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#S3OriginConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#SSLSupportMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#SamplingRate": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudfront#SessionStickinessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Signer": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#SignerList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#SslProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#SslProtocolsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#StagingDistributionDnsNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#StagingDistributionDnsNames": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StagingDistributionInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StatusCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#StatusCodes": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionConfigWithTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionNotDisabled": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StreamingDistributionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#StreamingLoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#StringSchemaConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#TagKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#Tags": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TenantConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TestFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#TestFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TestFunctionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#TestFunctionFailed": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TestFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TestFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TestResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooLongCSPInResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCacheBehaviors": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCachePolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCertificates": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCloudFrontOriginAccessIdentities": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyContinuousDeploymentPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCookiesInCachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCookiesInOriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyCustomHeadersInResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionCNAMEs": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionConfigs": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionContentTypeProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionEncryptionEntities": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionFieldPatterns": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionQueryArgProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFunctionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyFunctions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyHeadersInCachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyHeadersInOriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyInvalidationsInProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyKeyGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyOriginAccessControls": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyOriginCustomHeaders": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyOriginRequestPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyOrigins": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyPublicKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyPublicKeysInKeyGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyQueryStringParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyQueryStringsInCachePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyQueryStringsInOriginRequestPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyRealtimeLogConfigs": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyRemoveHeadersInResponseHeadersPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyResponseHeadersPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyStreamingDistributionCNAMEs": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyStreamingDistributions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TooManyTrustedSigners": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TrafficConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TrustedKeyGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#TrustedKeyGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TrustedSignerDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#TrustedSigners": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UnsupportedOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTagging"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateCachePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateCachePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CachePolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookiesInCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringsInCachePolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateCachePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateCachePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentityResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateConnectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateConnectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateConnectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateConnectionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StagingDistributionInUse"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ContinuousDeploymentPolicyInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalOriginAccessConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDefaultRootObject"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDomainNameForOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidErrorCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidForwardCookies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidHeadersForS3Origin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLocationCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginReadTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRelativePath"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRequiredProtocol"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidResponseCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTTLOrder"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidViewerCertificate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#StagingDistributionInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCacheBehaviors"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCertificates"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginCustomHeaders"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionTenant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateDistributionTenantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionTenantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionTenantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidDefaultRootObject"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidErrorCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidForwardCookies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidGeoRestrictionParameter"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidHeadersForS3Origin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLambdaFunctionAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidLocationCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidMinimumProtocolVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginKeepaliveTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginReadTimeout"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRelativePath"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidRequiredProtocol"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidResponseCode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidTTLOrder"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidViewerCertificate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#RealtimeLogConfigOwnerMismatch"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCacheBehaviors"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCertificates"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookieNamesInWhiteList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithLambdaAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyDistributionsWithSingleFunctionARN"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInForwardedValues"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyKeyGroupsAssociatedToDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyLambdaFunctionAssociations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginCustomHeaders"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOriginGroupsPerDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedKeyGroupDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateDomainAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateDomainAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#QueryArgProfileEmpty"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionContentTypeProfiles"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionQueryArgProfiles"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionProfileAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#FieldLevelEncryptionProfileSizeExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionEncryptionEntities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyFieldLevelEncryptionFieldPatterns"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#FunctionSizeLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchFunctionExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateFunctionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateKeyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateKeyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#KeyGroupAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResource"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyPublicKeysInKeyGroup"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateKeyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateKeyGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateKeyValueStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateKeyValueStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateKeyValueStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateKeyValueStoreResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateOriginAccessControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateOriginAccessControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginAccessControlAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateOriginAccessControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateOriginAccessControlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateOriginRequestPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateOriginRequestPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#OriginRequestPolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCookiesInOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyHeadersInOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyQueryStringsInOriginRequestPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateOriginRequestPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateOriginRequestPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdatePublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdatePublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotChangeImmutablePublicKeyFields"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchPublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdatePublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdatePublicKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateRealtimeLogConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateRealtimeLogConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchRealtimeLogConfig"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateRealtimeLogConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateRealtimeLogConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateResponseHeadersPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateResponseHeadersPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ResponseHeadersPolicyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooLongCSPInResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyCustomHeadersInResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyRemoveHeadersInResponseHeadersPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateResponseHeadersPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateResponseHeadersPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateStreamingDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateStreamingDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CNAMEAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#MissingBody"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#NoSuchStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyStreamingDistributionCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TooManyTrustedSigners"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TrustedSignerDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateStreamingDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateStreamingDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateVpcOrigin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#UpdateVpcOriginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CannotUpdateEntityWhileInUse"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#IllegalUpdate"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InconsistentQuantities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PreconditionFailed"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#UpdateVpcOriginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#UpdateVpcOriginResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ValidationTokenDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ValidationTokenDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#ValidationTokenHost": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#VerifyDnsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudfront#VerifyDnsConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudfront#AccessDenied"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#EntityNotFound"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#InvalidArgument"
+        }
+      ]
+    },
+    "com.amazonaws.cloudfront#VerifyDnsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VerifyDnsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ViewerCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#ViewerProtocolPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudfront#VpcOrigin": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VpcOriginConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VpcOriginEndpointConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VpcOriginList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VpcOriginSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#VpcOriginSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudfront#WebAclCustomization": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudfront#aliasString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudfront#distributionIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#float": {
+      "type": "float"
+    },
+    "com.amazonaws.cloudfront#integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudfront#listConflictingAliasesMaxItemsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudfront#long": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudfront#sensitiveStringType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#string": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudfront#timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

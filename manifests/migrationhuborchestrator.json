@@ -1,0 +1,1115 @@
+{
+  "shapes": {
+    "com.amazonaws.migrationhuborchestrator#AWSMigrationHubOrchestrator": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MigrationHubOrchestrator"
+        }
+      }
+    },
+    "com.amazonaws.migrationhuborchestrator#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ApplicationConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#CreateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#CreateMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#CreateWorkflowStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DataType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#DeleteTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#DeleteMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#DeleteWorkflowStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetTemplateStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStepGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetTemplateStepGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStepGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStepGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetTemplateStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetWorkflowStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStepGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#GetWorkflowStepGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStepGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStepGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#GetWorkflowStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListPlugins": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListPluginsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListPluginsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListPluginsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateStepGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListTemplateStepGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateStepGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateStepGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListTemplateStepsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateStepsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplateStepsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowStepGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListWorkflowStepGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowStepGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowStepGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListWorkflowStepsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowStepsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflowStepsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ListWorkflows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#ListMigrationWorkflowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhuborchestrator#MaxStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#MaxStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflow": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowStatusEnum": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#MigrationWorkflowTemplate": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#Owner": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#PlatformCommand": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#PlatformScriptKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#Plugin": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#PluginHealth": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#PluginId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#PluginSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#PluginSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#PluginVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#RetryWorkflowStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#RetryWorkflowStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#RetryWorkflowStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#RetryWorkflowStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#RunEnvironment": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StartMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StartMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StartWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#StartMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#StepActionType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepAutomationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepGroupDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepGroupStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepInput": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepInputParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepInputParametersKey": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#StepStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StopMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StopMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#StopWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#StopMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#StringListMember": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.migrationhuborchestrator#StringMapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StringMapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#StringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TargetType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateInputName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateSource": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStep": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepGroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepGroups": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateStepSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#TemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#Tool": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ToolsList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateMigrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateMigrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#UpdateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#UpdateMigrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#UpdateWorkflowStepResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStep": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepAutomationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepGroupsSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepOutputName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepOutputUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhuborchestrator#WorkflowStepsSummaryList": {
+      "type": "list"
+    }
+  }
+}

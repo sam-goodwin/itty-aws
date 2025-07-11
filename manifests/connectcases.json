@@ -1,0 +1,1768 @@
+{
+  "shapes": {
+    "com.amazonaws.connectcases#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#AmazonConnectCases": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ConnectCases"
+        }
+      }
+    },
+    "com.amazonaws.connectcases#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#AssociationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#AuditEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#AuditEventDateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#AuditEventField": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#AuditEventFieldId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#AuditEventFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#AuditEventFieldValueUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#AuditEventId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#AuditEventPerformedBy": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#AuditEventType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#AuditEventsList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BasicLayout": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchGetCaseRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#BatchGetCaseRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#BatchGetCaseRuleErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BatchGetCaseRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BatchGetCaseRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchGetCaseRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchGetField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#BatchGetFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#BatchGetFieldErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BatchGetFieldIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BatchGetFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BatchGetFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchGetFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchPutFieldOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#BatchPutFieldOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#BatchPutFieldOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BatchPutFieldOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#BooleanCondition": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#BooleanConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#BooleanOperands": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#Case": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#CaseArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseEventIncludedData": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CaseFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#CaseFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#CaseId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseRule": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#CaseRuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseRuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseRuleDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#CaseRuleError": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CaseRuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseRuleIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CaseRuleIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#CaseRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CaseRuleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CaseRuleSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#CaseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CaseSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#Channel": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#ChannelList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#CommentBody": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CommentBodyTextType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#CommentContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CommentFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ConnectedToSystemTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#Contact": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ContactArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#ContactContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ContactFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateCaseRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateCaseRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateCaseRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateCaseRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateRelatedItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateRelatedItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateRelatedItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateRelatedItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#CreateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#CreateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#CreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#CustomEntity": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#DeleteCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteCaseRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteCaseRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteCaseRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteCaseRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteRelatedItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteRelatedItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteRelatedItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteRelatedItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#DeleteTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DeleteTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#Deleted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.connectcases#Domain": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#DomainArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#DomainId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#DomainStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#DomainSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#DomainSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#EmptyFieldValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#EmptyOperandValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#EventBridgeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#EventIncludedData": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#Field": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#FieldArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldError": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#FieldGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldOptionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldOptionErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldOptionName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldOptionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FieldValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FieldValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#FieldValueUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#FileArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#FileContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#FileFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetCaseAuditEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseEventConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetCaseEventConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetCaseEventConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseEventConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetCaseRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#GetTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#GetTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#IamPrincipalArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#LastModifiedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#Layout": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#LayoutArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#LayoutConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#LayoutContent": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#LayoutId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#LayoutName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#LayoutSections": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#LayoutSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#LayoutSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#ListCaseRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListCaseRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListCaseRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListCaseRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListCasesForContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListCasesForContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListCasesForContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListCasesForContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListFieldOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListFieldOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListFieldOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListFieldOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListFields": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListFieldsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListFieldsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListFieldsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListLayouts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListLayoutsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListLayoutsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListLayoutsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#ListTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#ListTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#ListTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectcases#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#OperandOne": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#OperandTwo": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#Order": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#PutCaseEventConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#PutCaseEventConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#PutCaseEventConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#PutCaseEventConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#RelatedItem": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#RelatedItemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#RelatedItemContent": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#RelatedItemEventIncludedData": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#RelatedItemFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#RelatedItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#RelatedItemInputContent": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#RelatedItemType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#RelatedItemTypeFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#RequiredCaseRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#RequiredField": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#RequiredFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#RuleType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#SearchCases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#SearchCasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#SearchCasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchCasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchCasesResponseItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchCasesResponseItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#SearchRelatedItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#SearchRelatedItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#SearchRelatedItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchRelatedItemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchRelatedItemsResponseItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SearchRelatedItemsResponseItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#Section": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#SectionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SlaCompletionTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#SlaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SlaContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SlaFieldValueUnionList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#SlaFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SlaInputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SlaInputContent": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#SlaName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#SlaStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#SlaTargetTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcases#SlaType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#Sort": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#SortList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.connectcases#TargetSlaMinutes": {
+      "type": "long"
+    },
+    "com.amazonaws.connectcases#Template": {
+      "type": "resource"
+    },
+    "com.amazonaws.connectcases#TemplateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TemplateCaseRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#TemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TemplateRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#TemplateStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#TemplateStatusFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#TemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#TemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcases#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UpdateCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UpdateCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateCaseRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UpdateCaseRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UpdateCaseRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateCaseRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UpdateFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UpdateFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UpdateLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UpdateLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#UpdateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcases#UpdateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UpdateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#UserArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#UserUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcases#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcases#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcases#ValuesList": {
+      "type": "list"
+    }
+  }
+}

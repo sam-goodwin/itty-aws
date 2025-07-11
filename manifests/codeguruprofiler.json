@@ -1,0 +1,847 @@
+{
+  "shapes": {
+    "com.amazonaws.codeguruprofiler#ActionGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#AddNotificationChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#AddNotificationChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#AddNotificationChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AddNotificationChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AgentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AgentOrchestrationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AgentParameterField": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#AgentParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.codeguruprofiler#AgentProfile": {
+      "type": "blob"
+    },
+    "com.amazonaws.codeguruprofiler#AggregatedProfile": {
+      "type": "blob"
+    },
+    "com.amazonaws.codeguruprofiler#AggregatedProfileTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AggregationPeriod": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Anomalies": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#Anomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AnomalyInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#AnomalyInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#AnomalyInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#BatchGetFrameMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#BatchGetFrameMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#BatchGetFrameMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#BatchGetFrameMetricDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Channel": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ChannelId": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#ChannelUri": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Channels": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#CodeGuruProfiler": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CodeGuruProfiler"
+        }
+      }
+    },
+    "com.amazonaws.codeguruprofiler#ComputePlatform": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#ConfigureAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#ConfigureAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#ConfigureAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ConfigureAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#CreateProfilingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#CreateProfilingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#CreateProfilingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#CreateProfilingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#DeleteProfilingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#DeleteProfilingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#DeleteProfilingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#DeleteProfilingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#DescribeProfilingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#DescribeProfilingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#DescribeProfilingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#DescribeProfilingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#EventPublisher": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#EventPublishers": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#FeedbackType": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#FindingsReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#FindingsReportSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#FindingsReportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#FleetInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetricData": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetricDatum": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetricValue": {
+      "type": "double"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetricValues": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#FrameMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#GetFindingsReportAccountSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#GetFindingsReportAccountSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#GetFindingsReportAccountSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetFindingsReportAccountSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#GetNotificationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#GetNotificationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetNotificationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#GetProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#GetProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#GetRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#GetRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#GetRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListFindingsReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#ListFindingsReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#ListFindingsReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListFindingsReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListOfTimestamps": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ListProfileTimes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#ListProfileTimesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#ListProfileTimesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListProfileTimesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListProfilingGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#ListProfilingGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#ListProfilingGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListProfilingGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Locale": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Match": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Matches": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#MaxDepth": {
+      "type": "integer"
+    },
+    "com.amazonaws.codeguruprofiler#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codeguruprofiler#Metadata": {
+      "type": "map"
+    },
+    "com.amazonaws.codeguruprofiler#MetadataField": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#MetricType": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#OrderBy": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Pattern": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Percentage": {
+      "type": "double"
+    },
+    "com.amazonaws.codeguruprofiler#Period": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#PostAgentProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#PostAgentProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#PostAgentProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#PostAgentProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Principal": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#Principals": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ProfileTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ProfileTimes": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroupDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroupDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingGroupNames": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ProfilingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#PutPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#PutPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#PutPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#PutPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Recommendations": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#RemoveNotificationChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#RemoveNotificationChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#RemoveNotificationChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#RemoveNotificationChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#RemovePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#RemovePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#RemovePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#RevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codeguruprofiler#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Strings": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#SubmitFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#SubmitFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#SubmitFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#SubmitFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codeguruprofiler#TargetFrame": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#TargetFrames": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ThreadStates": {
+      "type": "list"
+    },
+    "com.amazonaws.codeguruprofiler#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codeguruprofiler#TimestampStructure": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#UnprocessedEndTimeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codeguruprofiler#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#UpdateProfilingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codeguruprofiler#UpdateProfilingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codeguruprofiler#UpdateProfilingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#UpdateProfilingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#UserFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.codeguruprofiler#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

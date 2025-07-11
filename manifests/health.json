@@ -1,0 +1,517 @@
+{
+  "shapes": {
+    "com.amazonaws.health#AWSHealth_20160804": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Health"
+        }
+      }
+    },
+    "com.amazonaws.health#AccountEntityAggregate": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#AccountEntityAggregatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#AffectedEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DateTimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedAccountsForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeAffectedAccountsForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeAffectedAccountsForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedAccountsForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeAffectedEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeAffectedEntitiesForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesForOrganizationFailedSet": {
+      "type": "list"
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeAffectedEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEntityAggregates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEntityAggregatesRequest"
+      }
+    },
+    "com.amazonaws.health#DescribeEntityAggregatesForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEntityAggregatesForOrganizationRequest"
+      }
+    },
+    "com.amazonaws.health#DescribeEntityAggregatesForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEntityAggregatesForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEntityAggregatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEntityAggregatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventAggregates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventAggregatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventAggregatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventAggregatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventDetailsFailedSet": {
+      "type": "list"
+    },
+    "com.amazonaws.health#DescribeEventDetailsForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventDetailsForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventDetailsForOrganizationFailedSet": {
+      "type": "list"
+    },
+    "com.amazonaws.health#DescribeEventDetailsForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventDetailsForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventDetailsForOrganizationSuccessfulSet": {
+      "type": "list"
+    },
+    "com.amazonaws.health#DescribeEventDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventDetailsSuccessfulSet": {
+      "type": "list"
+    },
+    "com.amazonaws.health#DescribeEventTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventsForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.health#DescribeEventsForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.health#UnsupportedLocale"
+        }
+      ]
+    },
+    "com.amazonaws.health#DescribeEventsForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventsForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DescribeHealthServiceStatusForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.health#DescribeHealthServiceStatusForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#DisableHealthServiceAccessForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#ConcurrentModificationException"
+        }
+      ]
+    },
+    "com.amazonaws.health#EnableHealthServiceAccessForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.health#ConcurrentModificationException"
+        }
+      ]
+    },
+    "com.amazonaws.health#EntityAccountFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EntityAggregate": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EntityAggregateList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EntityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventAccountFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventAggregate": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventAggregateList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EventArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EventDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventDescription2": {
+      "type": "string"
+    },
+    "com.amazonaws.health#EventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventDetailsErrorItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EventType": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventType2": {
+      "type": "string"
+    },
+    "com.amazonaws.health#EventTypeCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EventTypeCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#EventTypeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#EventTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#InvalidPaginationToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationAccountIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationAffectedEntitiesErrorItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEntityAccountFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationEntityAggregate": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEntityAggregatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationEntityFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEventArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationEventDetailFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#OrganizationEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEventDetailsErrorItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#OrganizationEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#UnsupportedLocale": {
+      "type": "structure"
+    },
+    "com.amazonaws.health#accountId": {
+      "type": "string"
+    },
+    "com.amazonaws.health#affectedAccountsList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#aggregateValue": {
+      "type": "string"
+    },
+    "com.amazonaws.health#availabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.health#availabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.health#awsAccountIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#count": {
+      "type": "integer"
+    },
+    "com.amazonaws.health#dateTimeRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#entityArn": {
+      "type": "string"
+    },
+    "com.amazonaws.health#entityArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#entityMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.health#entityMetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.health#entityMetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.health#entityStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.health#entityStatusCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#entityStatuses": {
+      "type": "map"
+    },
+    "com.amazonaws.health#entityUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.health#entityValue": {
+      "type": "string"
+    },
+    "com.amazonaws.health#entityValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#eventAggregateField": {
+      "type": "enum"
+    },
+    "com.amazonaws.health#eventArn": {
+      "type": "string"
+    },
+    "com.amazonaws.health#eventArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#eventMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.health#eventScopeCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.health#eventStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.health#eventStatusCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#eventTypeCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.health#eventTypeCategoryList2": {
+      "type": "list"
+    },
+    "com.amazonaws.health#eventTypeCode": {
+      "type": "string"
+    },
+    "com.amazonaws.health#eventTypeList2": {
+      "type": "list"
+    },
+    "com.amazonaws.health#healthServiceAccessStatusForOrganization": {
+      "type": "string"
+    },
+    "com.amazonaws.health#locale": {
+      "type": "string"
+    },
+    "com.amazonaws.health#maxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.health#maxResultsLowerRange": {
+      "type": "integer"
+    },
+    "com.amazonaws.health#metadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.health#metadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.health#nextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.health#region": {
+      "type": "string"
+    },
+    "com.amazonaws.health#regionList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#service": {
+      "type": "string"
+    },
+    "com.amazonaws.health#serviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.health#string": {
+      "type": "string"
+    },
+    "com.amazonaws.health#tagFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.health#tagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.health#tagSet": {
+      "type": "map"
+    },
+    "com.amazonaws.health#tagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.health#timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

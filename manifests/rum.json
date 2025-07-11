@@ -1,0 +1,877 @@
+{
+  "shapes": {
+    "com.amazonaws.rum#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#Alias": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#AppMonitor": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#AppMonitorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#AppMonitorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#AppMonitorDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#AppMonitorDomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#AppMonitorId": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#AppMonitorName": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#AppMonitorResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.rum#AppMonitorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#AppMonitorSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#BatchCreateRumMetricDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#BatchCreateRumMetricDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#BatchCreateRumMetricDefinitionsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchCreateRumMetricDefinitionsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#BatchCreateRumMetricDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchCreateRumMetricDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchDeleteRumMetricDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#BatchDeleteRumMetricDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#BatchDeleteRumMetricDefinitionsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchDeleteRumMetricDefinitionsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#BatchDeleteRumMetricDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchDeleteRumMetricDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchGetRumMetricDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#BatchGetRumMetricDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#BatchGetRumMetricDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#BatchGetRumMetricDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#CreateAppMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#CreateAppMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#CreateAppMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#CreateAppMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#CustomEvents": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#CustomEventsStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#CwLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DataStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteAppMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#DeleteAppMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#DeleteAppMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteAppMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.rum#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteRumMetricsDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#DeleteRumMetricsDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#DeleteRumMetricsDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeleteRumMetricsDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeobfuscationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#DeobfuscationS3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#DeobfuscationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#DestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#DimensionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#DimensionKeysMap": {
+      "type": "map"
+    },
+    "com.amazonaws.rum#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#EventData": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#EventDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#EventPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#FavoritePages": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#GetAppMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#GetAppMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#GetAppMonitorData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#GetAppMonitorDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#GetAppMonitorDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#GetAppMonitorDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#GetAppMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#GetAppMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#GetResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#GetResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#GetResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ISOTimestampString": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#IdentityPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#InvalidPolicyRevisionIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#JavaScriptSourceMaps": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#JsonValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#ListAppMonitors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#ListAppMonitorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#ListAppMonitorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ListAppMonitorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ListRumMetricsDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#ListRumMetricsDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#ListRumMetricsDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ListRumMetricsDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#MaxQueryResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.rum#MaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.rum#MetricDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#MetricDefinitionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#MetricDefinitionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#MetricDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#MetricDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#MetricDefinitionsRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#MetricDestination": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#MetricDestinationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#MetricDestinationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#Pages": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#PolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PolicyRevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#PolicySizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.rum#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.rum#PolicySizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutRumEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#PutRumEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#PutRumEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutRumEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutRumMetricsDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#PutRumMetricsDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#PutRumMetricsDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#PutRumMetricsDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#QueryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#QueryFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#QueryFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#QueryFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#QueryFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#QueryTimestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.rum#RUM": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RUM"
+        }
+      }
+    },
+    "com.amazonaws.rum#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#RumEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#RumEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#SessionSampleRate": {
+      "type": "double"
+    },
+    "com.amazonaws.rum#StateEnum": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.rum#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#Telemetries": {
+      "type": "list"
+    },
+    "com.amazonaws.rum#Telemetry": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#TimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#UnitLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#UpdateAppMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#UpdateAppMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#UpdateAppMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#UpdateAppMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#UpdateRumMetricDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rum#UpdateRumMetricDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rum#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rum#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rum#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rum#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rum#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rum#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rum#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rum#UpdateRumMetricDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#UpdateRumMetricDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.rum#UserDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rum#ValueKey": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,3843 @@
+{
+  "shapes": {
+    "com.amazonaws.bedrockagent#APISchema": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupExecutor": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupSignature": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupSignatureParams": {
+      "type": "map"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupState": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#ActionGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AdditionalModelRequestFields": {
+      "type": "map"
+    },
+    "com.amazonaws.bedrockagent#AdditionalModelRequestFieldsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AdditionalModelRequestFieldsValue": {
+      "type": "document"
+    },
+    "com.amazonaws.bedrockagent#Agent": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentActionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentAlias": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasHistoryEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasHistoryEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasRoutingConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasRoutingConfigurationListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentAliasSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AgentCollaboration": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#AgentCollaborator": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentCollaboratorResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#AgentCollaboratorSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentCollaboratorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentKnowledgeBase": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentKnowledgeBaseSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentKnowledgeBaseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#AgentRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AgentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#AgentSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AgentVersionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#AgentVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AliasInvocationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#AliasResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#AmazonBedrockAgentBuildTimeLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Bedrock Agent"
+        }
+      }
+    },
+    "com.amazonaws.bedrockagent#AnyToolChoice": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentCollaborator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#AssociateAgentCollaboratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentCollaboratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentCollaboratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#AssociateAgentKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AssociateAgentKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AutoToolChoice": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#AwsDataCatalogTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#AwsDataCatalogTableNames": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#BasePromptTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#BedrockDataAutomationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#BedrockEmbeddingModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#BedrockEmbeddingModelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#BedrockFoundationModelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#BedrockFoundationModelContextEnrichmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#BedrockModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#BedrockRerankingModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#BucketOwnerAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ByteContentBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.bedrockagent#ByteContentDoc": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CachePointBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CachePointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ChatPromptTemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ChunkingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ChunkingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#CollaborationInstruction": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#CollectorFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ConcurrencyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ConditionFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ConfluenceAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ConfluenceCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ConfluenceDataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ConfluenceHostType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ConfluenceSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ContentBlock": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ContentBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#ContentDataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ContextEnrichmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ContextEnrichmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ConversationRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#CrawlFilterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CrawlFilterConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#CreateAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateAgentActionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateAgentActionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateAgentActionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateAgentActionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateAgentAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateAgentAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateAgentAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateAgentAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateFlowAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateFlowAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateFlowAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlowAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateFlowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateFlowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateFlowVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreateKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreateKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreateKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreatePrompt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreatePromptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreatePromptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreatePromptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreatePromptVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#CreatePromptVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#CreatePromptVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreatePromptVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CreationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#CuratedQueries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#CuratedQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CustomContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CustomControlMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#CustomDocumentIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CustomOrchestration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CustomS3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CustomSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#CustomTransformationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#CyclicConnectionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Data": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#DataDeletionPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DataSourceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#DataSourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#DataSourceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#DataSourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#DateTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentActionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteAgentActionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentActionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentActionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteAgentAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteAgentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteAgentVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteFlowAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteFlowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteFlowVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBaseDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeleteKnowledgeBaseDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBaseDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBaseDocumentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeleteKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeletePrompt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DeletePromptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DeletePromptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DeletePromptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#Dimensions": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentCollaborator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DisassociateAgentCollaboratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentCollaboratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentCollaboratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#DisassociateAgentKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DisassociateAgentKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DocumentContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DocumentIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DocumentIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#DocumentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DocumentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#DraftVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#DuplicateConditionExpressionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#DuplicateConnectionsFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#EmbeddingDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#EmbeddingModelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#EnabledMemoryTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#EnrichmentStrategyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#EnrichmentStrategyMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FailureReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FieldForReranking": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FieldsForReranking": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FilterPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FilteredObjectType": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FixedSizeChunkingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasConcurrencyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasRoutingConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasRoutingConfigurationListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowAliasSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowConditionExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowConditionName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowConditionalConnectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowConditions": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowConnectionConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#FlowConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowConnections": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowDataConnectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowExecutionRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeIODataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeInputCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeInputExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeInputName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeInputs": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeOutputName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowNodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowNodes": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#FlowStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowValidation": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FlowValidationDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#FlowValidationSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowValidationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#FlowValidations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowVersionResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#FlowVersionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#FlowVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Function": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#FunctionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#FunctionSchema": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#Functions": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#GetAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentActionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentActionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentActionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentActionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentCollaborator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentCollaboratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentCollaboratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentCollaboratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetAgentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetAgentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetAgentVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetFlowAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetFlowAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetFlowAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlowAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetFlowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetFlowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetFlowVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetIngestionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetIngestionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetIngestionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetIngestionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBaseDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetKnowledgeBaseDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBaseDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBaseDocumentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetPrompt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#GetPromptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#GetPromptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GetPromptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GraphArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#GuardrailConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#GuardrailIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#GuardrailVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#HierarchicalChunkingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#HierarchicalChunkingLevelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#HierarchicalChunkingLevelConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#HttpsUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#IncludeExclude": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#IncompatibleConnectionDataTypeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IncompatibleLoopNodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#InferenceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestKnowledgeBaseDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#IngestKnowledgeBaseDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#IngestKnowledgeBaseDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestKnowledgeBaseDocumentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestionJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilterAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobSortBy": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobSortByAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#IngestionJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#InlineCode": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#InlineCodeFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#InlineContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#InlineContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#InputFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Instruction": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#IntermediateStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#InvalidLoopBoundaryFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#IteratorFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KendraIndexArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KendraKnowledgeBaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBase": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseDocumentDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseDocumentDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseDocumentResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseModelIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseOrchestrationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBasePromptTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseState": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseStorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseTextPrompt": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#KnowledgeBaseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#LambdaFunctionFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#LexBotAliasArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#LexBotLocaleId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#LexFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentActionGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentActionGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentActionGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentActionGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentCollaborators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentCollaboratorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentCollaboratorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentCollaboratorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentKnowledgeBases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentKnowledgeBasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentKnowledgeBasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentKnowledgeBasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListAgentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListAgentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListAgentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListDataSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListDataSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListDataSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlowAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListFlowAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListFlowAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlowAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlowVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListFlowVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListFlowVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlowVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListFlowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListFlowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListFlowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListIngestionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListIngestionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListIngestionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListIngestionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBaseDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListKnowledgeBaseDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBaseDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBaseDocumentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListKnowledgeBasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListKnowledgeBasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListPrompts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListPromptsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListPromptsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListPromptsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#LoopControllerFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#LoopFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#LoopIncompatibleNodeTypeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#LoopInputFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MalformedConditionExpressionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MalformedNodeInputExpressionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MaxRecentSessions": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#MaximumLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#MemoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MemoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Messages": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#MetadataAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MetadataAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MetadataAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#MetadataConfigurationForReranking": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MetadataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#MetadataValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#Microsoft365TenantId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MismatchedNodeInputTypeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MismatchedNodeOutputTypeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingConnectionConfigurationFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingDefaultConditionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingEndingNodesFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingLoopControllerNodeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingLoopInputNodeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingNodeConfigurationFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingNodeInputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingNodeOutputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MissingStartingNodesFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ModelIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasCollectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasEndpointServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MongoDbAtlasIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#MultipleLoopControllerNodesFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MultipleLoopInputNodesFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#MultipleNodeInputConnectionsFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#NaturalLanguageString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#NeptuneAnalyticsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#NeptuneAnalyticsFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#NonBlankString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#NumberValue": {
+      "type": "double"
+    },
+    "com.amazonaws.bedrockagent#NumericalVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchManagedClusterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchManagedClusterDomainArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchManagedClusterDomainEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchManagedClusterFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchManagedClusterIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchServerlessCollectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchServerlessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchServerlessFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#OpenSearchServerlessIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#OrchestrationExecutor": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#OrchestrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#OutputFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ParameterDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.bedrockagent#ParsingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ParsingModality": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#ParsingPrompt": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ParsingPromptText": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ParsingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#PatternObjectFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PatternObjectFilterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PatternObjectFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#Payload": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PerformanceConfigLatency": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#PerformanceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PineconeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PineconeConnectionString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PineconeFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PineconeNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PrepareAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#PrepareAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#PrepareAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PrepareAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PrepareFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#PrepareFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#PrepareFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PrepareFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptAgentResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#PromptDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptFlowNodeInlineConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptFlowNodeResourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptFlowNodeSourceConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#PromptGenAiResource": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#PromptId": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptInferenceConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#PromptInputVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptInputVariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptInputVariablesList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#PromptMetadataEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptMetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#PromptMetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptModelIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptModelInferenceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#PromptOverrideConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#PromptState": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#PromptSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#PromptSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptTemplateConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#PromptTemplateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#PromptType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#PromptVariant": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#PromptVariantList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#PromptVariantName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ProvisionedModelIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#QueryEngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#QueryExecutionTimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationColumns": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#QueryGenerationTables": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#RdsArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RdsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RdsDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RdsFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RdsTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RecommendedAction": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RecommendedActions": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#RedisEnterpriseCloudConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedisEnterpriseCloudEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RedisEnterpriseCloudFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedisEnterpriseCloudIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RedshiftClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RedshiftConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftDatabase": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#RedshiftProvisionedAuthConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftProvisionedAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RedshiftProvisionedConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineAwsDataCatalogStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineRedshiftStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineStorageConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineStorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RedshiftQueryEngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RedshiftServerlessAuthConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RedshiftServerlessAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RedshiftServerlessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RelayConversationHistory": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RequireConfirmation": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RerankingMetadataSelectionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#RerankingMetadataSelectiveModeConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RetrievalFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RetrievalFlowNodeS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#RetrievalFlowNodeServiceConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#S3BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3BucketUri": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3Content": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#S3DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#S3Identifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3ObjectUri": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#S3Prefixes": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#SalesforceAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SalesforceCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SalesforceDataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SalesforceSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#SeedUrl": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SeedUrls": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#SemanticChunkingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ServerSideEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SessionSummaryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SessionTTL": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#SharePointAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SharePointCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SharePointDataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SharePointDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#SharePointHostType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SharePointSiteUrls": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#SharePointSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SpecificToolChoice": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SqlKnowledgeBaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SqlString": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#StartIngestionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#StartIngestionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#StartIngestionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StartIngestionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StepType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#StopIngestionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#StopIngestionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#StopIngestionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StopIngestionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StopSequences": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#StorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StorageDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#StorageFlowNodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StorageFlowNodeS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#StorageFlowNodeServiceConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#StringListValue": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#StringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#SupplementalDataStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SupplementalDataStorageLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#SupplementalDataStorageLocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SupplementalDataStorageLocations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#SupportedLanguages": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#SystemContentBlock": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#SystemContentBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#TaggableResourcesArn": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#TaggingResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.bedrockagent#Temperature": {
+      "type": "float"
+    },
+    "com.amazonaws.bedrockagent#TextContentDoc": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#TextPrompt": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#TextPromptTemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Tool": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ToolChoice": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ToolConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ToolInputSchema": {
+      "type": "union"
+    },
+    "com.amazonaws.bedrockagent#ToolName": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ToolSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Tools": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#TopK": {
+      "type": "integer"
+    },
+    "com.amazonaws.bedrockagent#TopP": {
+      "type": "float"
+    },
+    "com.amazonaws.bedrockagent#Transformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#TransformationFunction": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#TransformationLambdaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Transformations": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#UnfulfilledNodeInputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownConnectionConditionFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownConnectionSourceFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownConnectionSourceOutputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownConnectionTargetFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownConnectionTargetInputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownNodeInputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnknownNodeOutputFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnreachableNodeFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnsatisfiedConnectionConditionsFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UnspecifiedFlowValidationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentActionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateAgentActionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentActionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentActionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateAgentAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentCollaborator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateAgentCollaboratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentCollaboratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentCollaboratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateAgentKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateFlowAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateFlowAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateFlowAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateFlowAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdateKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdateKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdateKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdatePrompt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#UpdatePromptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#UpdatePromptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UpdatePromptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#UrlConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#UserAgent": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#UserAgentHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#ValidateFlowDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.bedrockagent#ValidateFlowDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.bedrockagent#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.bedrockagent#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.bedrockagent#ValidateFlowDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ValidateFlowDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.bedrockagent#VectorIngestionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#VectorKnowledgeBaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#VectorSearchBedrockRerankingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#VectorSearchBedrockRerankingModelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#VectorSearchRerankingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#VectorSearchRerankingConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.bedrockagent#VersionResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.bedrockagent#WebCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#WebCrawlerLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#WebDataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#WebScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.bedrockagent#WebSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.bedrockagent#WorkgroupArn": {
+      "type": "string"
+    }
+  }
+}

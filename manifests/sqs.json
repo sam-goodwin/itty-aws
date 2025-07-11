@@ -1,0 +1,1027 @@
+{
+  "shapes": {
+    "com.amazonaws.sqs#AWSAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#ActionNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#AddPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#AddPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#OverLimit"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#AddPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#AmazonSQS": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SQS"
+        }
+      }
+    },
+    "com.amazonaws.sqs#AttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#BatchEntryIdsNotDistinct": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#BatchRequestTooLong": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#BatchResultErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#BatchResultErrorEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#Binary": {
+      "type": "blob"
+    },
+    "com.amazonaws.sqs#BinaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sqs#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.sqs#CancelMessageMoveTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#CancelMessageMoveTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#CancelMessageMoveTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#CancelMessageMoveTaskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibility": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ChangeMessageVisibilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#MessageNotInflight"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#ReceiptHandleIsInvalid"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ChangeMessageVisibilityBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#BatchEntryIdsNotDistinct"
+        },
+        {
+          "target": "com.amazonaws.sqs#EmptyBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidBatchEntryId"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#TooManyEntriesInBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityBatchResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#ChangeMessageVisibilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#CreateQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#CreateQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAttributeName"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAttributeValue"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDeletedRecently"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueNameExists"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#CreateQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#CreateQueueResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#DeleteMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidIdFormat"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#ReceiptHandleIsInvalid"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#DeleteMessageBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#DeleteMessageBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#BatchEntryIdsNotDistinct"
+        },
+        {
+          "target": "com.amazonaws.sqs#EmptyBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidBatchEntryId"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#TooManyEntriesInBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteMessageBatchResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#DeleteMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#DeleteQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#DeleteQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#DeleteQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#EmptyBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#GetQueueAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#GetQueueAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAttributeName"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#GetQueueAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#GetQueueAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#GetQueueUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#GetQueueUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#GetQueueUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#GetQueueUrlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidAttributeName": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidBatchEntryId": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidIdFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidMessageContents": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#InvalidSecurity": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsAccessDenied": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsDisabled": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsInvalidKeyUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsInvalidState": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsOptInRequired": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#KmsThrottled": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListDeadLetterSourceQueues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ListDeadLetterSourceQueuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ListDeadLetterSourceQueuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListDeadLetterSourceQueuesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListMessageMoveTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ListMessageMoveTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ListMessageMoveTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListMessageMoveTasksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListMessageMoveTasksResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListMessageMoveTasksResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#ListQueueTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ListQueueTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ListQueueTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListQueueTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListQueues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ListQueuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ListQueuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ListQueuesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.sqs#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#MessageAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#MessageAttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#MessageAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#MessageBodyAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sqs#MessageBodySystemAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sqs#MessageList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#MessageNotInflight": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#MessageSystemAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#MessageSystemAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sqs#MessageSystemAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.sqs#MessageSystemAttributeNameForSends": {
+      "type": "enum"
+    },
+    "com.amazonaws.sqs#MessageSystemAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.sqs#NullableLong": {
+      "type": "long"
+    },
+    "com.amazonaws.sqs#OverLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#PurgeQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#PurgeQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#PurgeQueueInProgress"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#PurgeQueueInProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#PurgeQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#QueueAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sqs#QueueAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.sqs#QueueDeletedRecently": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#QueueDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#QueueNameExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#QueueUrlList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#ReceiptHandleIsInvalid": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ReceiveMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#ReceiveMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsAccessDenied"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsDisabled"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidKeyUsage"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidState"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsNotFound"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#OverLimit"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#ReceiveMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ReceiveMessageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#RemovePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#RemovePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#RequestThrottled": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#SendMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidMessageContents"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsAccessDenied"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsDisabled"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidKeyUsage"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidState"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsNotFound"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#SendMessageBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#SendMessageBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#BatchEntryIdsNotDistinct"
+        },
+        {
+          "target": "com.amazonaws.sqs#BatchRequestTooLong"
+        },
+        {
+          "target": "com.amazonaws.sqs#EmptyBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidBatchEntryId"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsAccessDenied"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsDisabled"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidKeyUsage"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsInvalidState"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsNotFound"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.sqs#KmsThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#TooManyEntriesInBatchRequest"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#SendMessageBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessageBatchRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessageBatchRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#SendMessageBatchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessageBatchResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessageBatchResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#SendMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SendMessageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#SetQueueAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#SetQueueAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAttributeName"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidAttributeValue"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#OverLimit"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#SetQueueAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#StartMessageMoveTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#StartMessageMoveTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#StartMessageMoveTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#StartMessageMoveTaskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#String": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.sqs#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sqs#TagQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#TagQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#TagQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.sqs#TooManyEntriesInBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#UnsupportedOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.sqs#UntagQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sqs#UntagQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sqs#InvalidAddress"
+        },
+        {
+          "target": "com.amazonaws.sqs#InvalidSecurity"
+        },
+        {
+          "target": "com.amazonaws.sqs#QueueDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sqs#RequestThrottled"
+        },
+        {
+          "target": "com.amazonaws.sqs#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.sqs#UntagQueueRequest": {
+      "type": "structure"
+    }
+  }
+}

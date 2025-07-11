@@ -1,0 +1,914 @@
+{
+  "shapes": {
+    "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#AddApplicationInputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#CodeValidationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInputProcessingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#AddApplicationInputProcessingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInputProcessingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInputProcessingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationInputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#AddApplicationOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationReferenceDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#AddApplicationReferenceDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationReferenceDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#AddApplicationReferenceDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationCode": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ApplicationVersionId": {
+      "type": "long"
+    },
+    "com.amazonaws.kinesisanalytics#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kinesisanalytics#BucketARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#CSVMappingParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOptionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOptionDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOptionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOptionUpdates": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#CloudWatchLoggingOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#CodeValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#CodeValidationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationCloudWatchLoggingOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DeleteApplicationCloudWatchLoggingOptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationCloudWatchLoggingOptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationCloudWatchLoggingOptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationInputProcessingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DeleteApplicationInputProcessingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationInputProcessingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationInputProcessingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DeleteApplicationOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationReferenceDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DeleteApplicationReferenceDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationReferenceDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationReferenceDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DescribeApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DescribeApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DescribeApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DescribeApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DestinationSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DiscoverInputSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#DiscoverInputSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnableToDetectSchemaException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#DiscoverInputSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#DiscoverInputSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#FileKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#InAppStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#InAppStreamNames": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#InAppTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#Input": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#InputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#InputLambdaProcessor": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputLambdaProcessorDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputLambdaProcessorUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputParallelism": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputParallelismCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisanalytics#InputParallelismUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputProcessingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputProcessingConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputProcessingConfigurationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputSchemaUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputStartingPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisanalytics#InputStartingPositionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InputUpdates": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#Inputs": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#InvalidApplicationConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#JSONMappingParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisAnalyticsARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisAnalytics_20150814": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Kinesis Analytics"
+        }
+      }
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseInputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseInputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseOutputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisFirehoseOutputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsInputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsInputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsOutputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#KinesisStreamsOutputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#LambdaOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#LambdaOutputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#LambdaOutputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#ListApplicationsRequest"
+      }
+    },
+    "com.amazonaws.kinesisanalytics#ListApplicationsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisanalytics#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#LogStreamARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#MappingParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#OutputDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#OutputDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#OutputUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#OutputUpdates": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#Outputs": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ParsedInputRecord": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ParsedInputRecordField": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ParsedInputRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ProcessedInputRecord": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ProcessedInputRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#RawInputRecord": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RawInputRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumnDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumnMapping": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumnSqlType": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordColumns": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#RecordEncoding": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#RecordFormatType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisanalytics#RecordRowDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#RecordRowPath": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ReferenceDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ReferenceDataSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ReferenceDataSourceDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ReferenceDataSourceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ReferenceDataSourceUpdates": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ResourceProvisionedThroughputExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#RoleARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#S3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#S3ReferenceDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#S3ReferenceDataSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#S3ReferenceDataSourceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#SourceSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#StartApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#StartApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidApplicationConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#StartApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#StartApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#StopApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#StopApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#StopApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#StopApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisanalytics#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisanalytics#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.kinesisanalytics#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UnableToDetectSchemaException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisanalytics#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#CodeValidationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisanalytics#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisanalytics#UpdateApplicationResponse": {
+      "type": "structure"
+    }
+  }
+}

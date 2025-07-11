@@ -1,0 +1,2093 @@
+{
+  "shapes": {
+    "com.amazonaws.ecr#AccountSettingName": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#AccountSettingValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#AmazonEC2ContainerRegistry_V20150921": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ECR"
+        }
+      }
+    },
+    "com.amazonaws.ecr#Arch": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#AttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#AttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Author": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#AuthorizationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#AuthorizationDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#AwsEcrContainerImageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Base64": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#BaseScore": {
+      "type": "double"
+    },
+    "com.amazonaws.ecr#BatchCheckLayerAvailability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#BatchCheckLayerAvailabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#BatchCheckLayerAvailabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchCheckLayerAvailabilityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchDeleteImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#BatchDeleteImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#BatchDeleteImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchDeleteImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchGetImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#BatchGetImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToGetUpstreamImageException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#BatchGetImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchGetImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchGetRepositoryScanningConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#BatchGetRepositoryScanningConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#BatchGetRepositoryScanningConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchGetRepositoryScanningConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#BatchedOperationLayerDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#BatchedOperationLayerDigestList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#CompleteLayerUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#CompleteLayerUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#EmptyUploadException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidLayerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LayerAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LayerPartTooSmallException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UploadNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#CompleteLayerUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CompleteLayerUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreatePullThroughCacheRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#CreatePullThroughCacheRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#PullThroughCacheRuleAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#SecretNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToAccessSecretException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToDecryptSecretValueException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnsupportedUpstreamRegistryException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#CreatePullThroughCacheRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreatePullThroughCacheRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreateRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#CreateRepositoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#CreateRepositoryCreationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#CreateRepositoryCreationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TemplateAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#CreateRepositoryCreationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreateRepositoryCreationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreateRepositoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreateRepositoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CreationTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#CredentialArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#CustomRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#CvssScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CvssScoreAdjustment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CvssScoreAdjustmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#CvssScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#CvssScoreList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#DeleteLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeleteLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LifecyclePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeleteLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeletePullThroughCacheRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeletePullThroughCacheRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#PullThroughCacheRuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeletePullThroughCacheRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeletePullThroughCacheRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRegistryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeleteRegistryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RegistryPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeleteRegistryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRegistryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeleteRepositoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotEmptyException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeleteRepositoryCreationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeleteRepositoryCreationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TemplateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeleteRepositoryCreationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepositoryCreationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepositoryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DeleteRepositoryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DeleteRepositoryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepositoryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepositoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DeleteRepositoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImageReplicationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeImageReplicationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#ImageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeImageReplicationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImageReplicationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImageScanFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeImageScanFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#ImageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ScanNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeImageScanFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImageScanFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#ImageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeImagesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeImagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribePullThroughCacheRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribePullThroughCacheRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#PullThroughCacheRuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribePullThroughCacheRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribePullThroughCacheRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRegistry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeRegistryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeRegistryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRegistryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeRepositoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeRepositoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRepositoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRepositoryCreationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#DescribeRepositoryCreationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#DescribeRepositoryCreationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#DescribeRepositoryCreationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#EmptyUploadException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#EncryptionConfigurationForRepositoryCreationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#EnhancedImageScanFinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#EnhancedImageScanFindingList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#Epoch": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#EvaluationTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ExpirationTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#ExploitAvailable": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FindingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FindingDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FindingName": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FindingSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#FindingSeverityCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.ecr#FixAvailable": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#FixedInVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ForceFlag": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ecr#GetAccountSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetAccountSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetAccountSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetAccountSettingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetAuthorizationToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetAuthorizationTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetAuthorizationTokenRegistryIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#GetAuthorizationTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetAuthorizationTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetDownloadUrlForLayer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetDownloadUrlForLayerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LayerInaccessibleException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LayersNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToGetUpstreamLayerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetDownloadUrlForLayerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetDownloadUrlForLayerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LifecyclePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicyPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetLifecyclePolicyPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LifecyclePolicyPreviewNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicyPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicyPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRegistryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetRegistryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RegistryPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetRegistryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRegistryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRegistryScanningConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetRegistryScanningConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetRegistryScanningConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRegistryScanningConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRepositoryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#GetRepositoryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#GetRepositoryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#GetRepositoryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Image": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ImageAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#ImageDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ImageDigestDoesNotMatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageFailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ImageFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ImageIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageManifest": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ImageNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageReplicationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageReplicationStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageScanFinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageScanFindingList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageScanFindings": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageScanFindingsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageScanStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageScanningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageSizeInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.ecr#ImageTag": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ImageTagAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ImageTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ImageTagMutability": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ImageTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#InUseCount": {
+      "type": "long"
+    },
+    "com.amazonaws.ecr#InitiateLayerUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#InitiateLayerUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#InitiateLayerUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#InitiateLayerUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#InvalidLayerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#InvalidLayerPartException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#InvalidTagParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#IsPTCRuleValid": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ecr#KmsError": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#KmsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#KmsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#KmsKeyForRepositoryCreationTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Layer": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LayerAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LayerAvailability": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#LayerDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#LayerDigestList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#LayerFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LayerFailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#LayerFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#LayerFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#LayerInaccessibleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#LayerPartBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.ecr#LayerPartTooSmallException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LayerSizeInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.ecr#LayersNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyPreviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyRuleAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyRulePriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyText": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#LifecyclePolicyTextForRepositoryCreationTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#LifecyclePreviewMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ListImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#ListImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#ListImagesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ListImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ListImagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#MediaType": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#MediaTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#Metric": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PTCValidateFailure": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PackageManager": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PackageVulnerabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PartSize": {
+      "type": "long"
+    },
+    "com.amazonaws.ecr#Platform": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PrefixList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ProxyEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRuleAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRuleNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRuleRepositoryPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#PullThroughCacheRuleRepositoryPrefixList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#PushTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#PutAccountSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutAccountSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutAccountSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutAccountSettingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#ImageAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ImageDigestDoesNotMatchException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ImageTagAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LayersNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ReferencedImagesNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImageScanningConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutImageScanningConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutImageScanningConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImageScanningConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImageTagMutability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutImageTagMutabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutImageTagMutabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutImageTagMutabilityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutRegistryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutRegistryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutRegistryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutRegistryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutRegistryScanningConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutRegistryScanningConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutRegistryScanningConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutRegistryScanningConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#PutReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#PutReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#PutReplicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RCTAppliedFor": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#RCTAppliedForList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RecommendationText": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RecordedPullTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#ReferenceUrlsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ReferencedImagesNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RegistryId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RegistryPolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RegistryPolicyText": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RegistryScanningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RegistryScanningRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RegistryScanningRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RelatedVulnerabilitiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RelatedVulnerability": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Release": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Remediation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ReplicationDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ReplicationDestinationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ReplicationError": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ReplicationRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ReplicationRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#Repository": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryCreationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryCreationTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#RepositoryFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RepositoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RepositoryNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryNotEmptyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryPolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryPolicyText": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#RepositoryScanningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryScanningConfigurationFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#RepositoryScanningConfigurationFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryScanningConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#RepositoryTemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ScanFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ScanNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ScanOnPushFlag": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ecr#ScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ScanStatusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ScanTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#ScanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ScanningConfigurationFailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ScanningConfigurationFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ScanningConfigurationRepositoryNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ScanningRepositoryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ScanningRepositoryFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#ScanningRepositoryFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#ScanningRepositoryFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Score": {
+      "type": "double"
+    },
+    "com.amazonaws.ecr#ScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ScoringVector": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#SecretNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#SetRepositoryPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#SetRepositoryPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#SetRepositoryPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#SetRepositoryPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Severity": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#SeverityCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecr#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#SourceLayerHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#StartImageScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#StartImageScanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#ImageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnsupportedImageTypeException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#StartImageScanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#StartImageScanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#StartLifecyclePolicyPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#StartLifecyclePolicyPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LifecyclePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LifecyclePolicyPreviewInProgressException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#StartLifecyclePolicyPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#StartLifecyclePolicyPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecr#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#TagStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.ecr#TemplateAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#TemplateNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Title": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#UnableToAccessSecretException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UnableToDecryptSecretValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UnableToGetUpstreamImageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UnableToGetUpstreamLayerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UnsupportedImageTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UnsupportedUpstreamRegistryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidTagParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpdatePullThroughCacheRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#UpdatePullThroughCacheRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#PullThroughCacheRuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#SecretNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToAccessSecretException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UnableToDecryptSecretValueException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#UpdatePullThroughCacheRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpdatePullThroughCacheRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpdateRepositoryCreationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#UpdateRepositoryCreationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#TemplateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#UpdateRepositoryCreationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpdateRepositoryCreationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpdatedTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#UploadId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#UploadLayerPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#UploadLayerPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidLayerPartException"
+        },
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#KmsException"
+        },
+        {
+          "target": "com.amazonaws.ecr#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecr#RepositoryNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#UploadNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#UploadLayerPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UploadLayerPartResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UploadNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#UpstreamRegistry": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecr#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#ValidatePullThroughCacheRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecr#ValidatePullThroughCacheRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecr#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecr#PullThroughCacheRuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ecr#ValidatePullThroughCacheRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ValidatePullThroughCacheRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#VulnerabilityId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#VulnerabilitySourceUpdateTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecr#VulnerablePackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecr#VulnerablePackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.ecr#VulnerablePackagesList": {
+      "type": "list"
+    }
+  }
+}

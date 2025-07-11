@@ -1,0 +1,188 @@
+{
+  "shapes": {
+    "com.amazonaws.migrationhubconfig#AWSMigrationHubMultiAccountService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MigrationHub Config"
+        }
+      }
+    },
+    "com.amazonaws.migrationhubconfig#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#ControlId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubconfig#CreateHomeRegionControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubconfig#CreateHomeRegionControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubconfig#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#DryRunOperation"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubconfig#CreateHomeRegionControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#CreateHomeRegionControlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#DeleteHomeRegionControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubconfig#DeleteHomeRegionControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubconfig#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubconfig#DeleteHomeRegionControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#DeleteHomeRegionControlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#DescribeHomeRegionControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubconfig#DescribeHomeRegionControlsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubconfig#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubconfig#DescribeHomeRegionControlsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhubconfig#DescribeHomeRegionControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#DescribeHomeRegionControlsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#DryRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.migrationhubconfig#DryRunOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubconfig#GetHomeRegion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubconfig#GetHomeRegionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubconfig#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubconfig#GetHomeRegionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#GetHomeRegionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#HomeRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubconfig#HomeRegionControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#HomeRegionControls": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubconfig#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#RequestedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.migrationhubconfig#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhubconfig#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubconfig#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.migrationhubconfig#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubconfig#Token": {
+      "type": "string"
+    }
+  }
+}

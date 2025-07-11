@@ -1,0 +1,589 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudhsm#AZ": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#AZList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#AddTagsToResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#AddTagsToResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#AddTagsToResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudhsm#Certificate": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#CertificateFingerprint": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ClientArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ClientLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ClientList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ClientVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudhsm#CloudHsmFrontendService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudHSM"
+        }
+      }
+    },
+    "com.amazonaws.cloudhsm#CloudHsmInternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CloudHsmObjectState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudhsm#CloudHsmServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateHapg": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#CreateHapgRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#CreateHapgRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateHapgResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateHsm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#CreateHsmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#CreateHsmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateHsmResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateLunaClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#CreateLunaClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#CreateLunaClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#CreateLunaClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteHapg": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DeleteHapgRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DeleteHapgRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteHapgResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteHsm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DeleteHsmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DeleteHsmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteHsmResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteLunaClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DeleteLunaClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DeleteLunaClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DeleteLunaClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeHapg": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DescribeHapgRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DescribeHapgRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeHapgResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeHsm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DescribeHsmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DescribeHsmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeHsmResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeLunaClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#DescribeLunaClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#DescribeLunaClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#DescribeLunaClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#EniId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ExternalId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#GetConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#GetConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#GetConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#GetConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#HapgArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#HapgList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#HsmArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#HsmList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#HsmSerialNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#HsmStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudhsm#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#Label": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#ListAvailableZones": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ListAvailableZonesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ListAvailableZonesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListAvailableZonesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListHapgs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ListHapgsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ListHapgsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListHapgsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListHsms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ListHsmsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ListHsmsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListHsmsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListLunaClients": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ListLunaClientsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ListLunaClientsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListLunaClientsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyHapg": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ModifyHapgRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ModifyHapgRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyHapgResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyHsm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ModifyHsmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ModifyHsmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyHsmResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyLunaClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#ModifyLunaClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#ModifyLunaClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#ModifyLunaClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#PartitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#PartitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#PartitionSerial": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#PartitionSerialList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudhsm#RemoveTagsFromResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmInternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CloudHsmServiceException"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudhsm#RemoveTagsFromResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#RemoveTagsFromResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#SshKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#SubscriptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudhsm#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudhsm#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudhsm#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#Timestamp": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudhsm#VpcId": {
+      "type": "string"
+    }
+  }
+}

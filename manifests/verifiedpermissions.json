@@ -1,0 +1,1073 @@
+{
+  "shapes": {
+    "com.amazonaws.verifiedpermissions#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ActionId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ActionIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ActionIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#ActionType": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#AttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#Audience": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#Audiences": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#BatchGetPolicyInput"
+      }
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyErrorItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyInputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyOutputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchGetPolicyOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorized": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#BatchIsAuthorizedInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedInputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedOutputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenInputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenOutputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#BatchIsAuthorizedWithTokenOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#BooleanAttribute": {
+      "type": "boolean"
+    },
+    "com.amazonaws.verifiedpermissions#CedarJson": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#CedarVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#Claim": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ClientIds": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoGroupConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoGroupConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoUserPoolConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoUserPoolConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CognitoUserPoolConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#Configuration": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#ConfigurationDetail": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#ConfigurationItem": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ContextDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#ContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.verifiedpermissions#CreateIdentitySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#CreateIdentitySourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#CreateIdentitySourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreateIdentitySourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#CreatePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#CreatePolicyStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#CreatePolicyTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#CreatePolicyTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#Decimal": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#Decision": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#DeleteIdentitySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#DeleteIdentitySourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#DeleteIdentitySourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeleteIdentitySourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#DeletePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#DeletePolicyStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#InvalidStateException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#DeletePolicyTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletePolicyTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeletionProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#DeterminingPolicyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#DeterminingPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#DiscoveryUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#EntitiesDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#EntityAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.verifiedpermissions#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#EntityIdPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#EntityIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#EntityItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#EntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#EntityReference": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#EntityType": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#EvaluationErrorItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#EvaluationErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#GetIdentitySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#GetIdentitySourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#GetIdentitySourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetIdentitySourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#GetPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#GetPolicyStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#GetPolicyTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetPolicyTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#GetSchemaInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#GetSchemaInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GetSchemaOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#GroupEntityType": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySource": {
+      "type": "resource"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySourceItemDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IdentitySources": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IpAddr": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorized": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#IsAuthorizedInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorizedInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorizedOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorizedWithToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#IsAuthorizedWithTokenInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorizedWithTokenInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#IsAuthorizedWithTokenOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#Issuer": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ListIdentitySources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#ListIdentitySourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#ListIdentitySourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListIdentitySourcesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.verifiedpermissions#ListIdentitySourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#ListPoliciesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#ListPoliciesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPoliciesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#ListPolicyStoresInput"
+      }
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyStoresInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyStoresOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#ListPolicyTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListPolicyTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#LongAttribute": {
+      "type": "long"
+    },
+    "com.amazonaws.verifiedpermissions#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.verifiedpermissions#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#NamespaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectAccessTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectAccessTokenConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectAccessTokenConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectGroupConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectGroupConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectIdentityTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectIdentityTokenConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectIdentityTokenConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectTokenSelection": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectTokenSelectionDetail": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdConnectTokenSelectionItem": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#OpenIdIssuer": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#ParentList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#Policy": {
+      "type": "resource"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyDefinitionDetail": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyDefinitionItem": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyEffect": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStore": {
+      "type": "resource"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStoreDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStoreItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyStoreList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyTemplate": {
+      "type": "resource"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyTemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyTemplateItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyTemplatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#PolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#PrincipalEntityType": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#PutSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#PutSchemaInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#PutSchemaInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#PutSchemaOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#RecordAttribute": {
+      "type": "map"
+    },
+    "com.amazonaws.verifiedpermissions#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ResourceConflict": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ResourceConflictList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#SchemaDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#SchemaJson": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#SetAttribute": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#StaticPolicyDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#StaticPolicyDefinitionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#StaticPolicyDefinitionItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#StaticPolicyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#StringAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.verifiedpermissions#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#TemplateLinkedPolicyDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#TemplateLinkedPolicyDefinitionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#TemplateLinkedPolicyDefinitionItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#TimestampFormat": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.verifiedpermissions#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateCognitoGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateCognitoUserPoolConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateIdentitySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#UpdateIdentitySourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#UpdateIdentitySourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateIdentitySourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateOpenIdConnectAccessTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateOpenIdConnectConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateOpenIdConnectGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateOpenIdConnectIdentityTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateOpenIdConnectTokenSelection": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#UpdatePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#UpdatePolicyStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.verifiedpermissions#UpdatePolicyTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdatePolicyTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UpdateStaticPolicyDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#UserPoolArn": {
+      "type": "string"
+    },
+    "com.amazonaws.verifiedpermissions#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.verifiedpermissions#ValidationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.verifiedpermissions#ValidationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.verifiedpermissions#VerifiedPermissions": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "VerifiedPermissions"
+        }
+      }
+    }
+  }
+}

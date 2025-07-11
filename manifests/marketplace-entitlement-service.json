@@ -1,0 +1,92 @@
+{
+  "shapes": {
+    "com.amazonaws.marketplaceentitlementservice#AWSMPEntitlementService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Marketplace Entitlement Service"
+        }
+      }
+    },
+    "com.amazonaws.marketplaceentitlementservice#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.marketplaceentitlementservice#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.marketplaceentitlementservice#Entitlement": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#EntitlementList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplaceentitlementservice#EntitlementValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplaceentitlementservice#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplaceentitlementservice#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplaceentitlementservice#GetEntitlementFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplaceentitlementservice#GetEntitlementFilters": {
+      "type": "map"
+    },
+    "com.amazonaws.marketplaceentitlementservice#GetEntitlements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplaceentitlementservice#GetEntitlementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplaceentitlementservice#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.marketplaceentitlementservice#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.marketplaceentitlementservice#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplaceentitlementservice#GetEntitlementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#GetEntitlementsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.marketplaceentitlementservice#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplaceentitlementservice#PageSizeInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.marketplaceentitlementservice#ProductCode": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplaceentitlementservice#String": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplaceentitlementservice#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplaceentitlementservice#Timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

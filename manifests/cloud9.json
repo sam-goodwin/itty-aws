@@ -1,0 +1,569 @@
+{
+  "shapes": {
+    "com.amazonaws.cloud9#AWSCloud9WorkspaceManagementService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Cloud9"
+        }
+      }
+    },
+    "com.amazonaws.cloud9#AutomaticStopTimeMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloud9#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#BoundedEnvironmentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#ConcurrentAccessException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentEC2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#CreateEnvironmentEC2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentEC2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentEC2Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#CreateEnvironmentMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#CreateEnvironmentMembershipResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DeleteEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#DeleteEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#DeleteEnvironmentMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#DeleteEnvironmentMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#DeleteEnvironmentMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DeleteEnvironmentMembershipResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DeleteEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DeleteEnvironmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentMemberships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#DescribeEnvironmentMembershipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentMembershipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentMembershipsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#DescribeEnvironmentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#DescribeEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#DescribeEnvironmentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#EnvironmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#EnvironmentDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#EnvironmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#EnvironmentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#EnvironmentLifecycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#EnvironmentLifecycleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#EnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#EnvironmentMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#EnvironmentMembersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#EnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#EnvironmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#EnvironmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloud9#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ListEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#ListEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#ListEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ListEnvironmentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#ManagedCredentialsAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#ManagedCredentialsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloud9#MemberPermissions": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloud9#Permissions": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloud9#PermissionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloud9#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloud9#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloud9#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#UpdateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#UpdateEnvironmentMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloud9#UpdateEnvironmentMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloud9#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloud9#UpdateEnvironmentMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UpdateEnvironmentMembershipResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UpdateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UpdateEnvironmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloud9#UserArn": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,3145 @@
+{
+  "shapes": {
+    "com.amazonaws.workmail#AccessControlRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AccessControlRuleAction": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#AccessControlRuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#AccessControlRuleEffect": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#AccessControlRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#AccessControlRuleNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#AccessControlRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#AccessEffect": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#ActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#Aliases": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#AssociateDelegateToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#AssociateDelegateToResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#AssociateDelegateToResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AssociateDelegateToResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AssociateMemberToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#AssociateMemberToGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#AssociateMemberToGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AssociateMemberToGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AssumeImpersonationRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#AssumeImpersonationRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#AssumeImpersonationRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AssumeImpersonationRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AvailabilityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#AvailabilityConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#AvailabilityProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#BookingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.workmail#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.workmail#CancelMailboxExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CancelMailboxExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CancelMailboxExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CancelMailboxExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EmailAddressInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateAvailabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateAvailabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateAvailabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateAvailabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ReservedNameException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateIdentityCenterApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateIdentityCenterApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateIdentityCenterApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateIdentityCenterApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateImpersonationRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateImpersonationRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateImpersonationRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateImpersonationRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateMobileDeviceAccessRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateMobileDeviceAccessRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateMobileDeviceAccessRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateMobileDeviceAccessRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ReservedNameException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ReservedNameException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Delegate": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAccessControlRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteAccessControlRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteAccessControlRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAccessControlRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAliasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAvailabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteAvailabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteAvailabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteAvailabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteEmailMonitoringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteEmailMonitoringConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteEmailMonitoringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteEmailMonitoringConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteIdentityCenterApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteIdentityCenterApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteIdentityCenterApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteIdentityCenterApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteIdentityProviderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteIdentityProviderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteIdentityProviderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteIdentityProviderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteImpersonationRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteImpersonationRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteImpersonationRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteImpersonationRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMailboxPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteMailboxPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteMailboxPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMailboxPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessOverride": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteMobileDeviceAccessOverrideRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessOverrideRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessOverrideResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteMobileDeviceAccessRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteMobileDeviceAccessRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeletePersonalAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeletePersonalAccessTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeletePersonalAccessTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeletePersonalAccessTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteRetentionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteRetentionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteRetentionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteRetentionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeleteUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeregisterFromWorkMail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeregisterFromWorkMailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeregisterFromWorkMailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeregisterFromWorkMailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeregisterMailDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DeregisterMailDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidCustomSesConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DeregisterMailDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DeregisterMailDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeEmailMonitoringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeEmailMonitoringConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeEmailMonitoringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeEmailMonitoringConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeIdentityProviderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeIdentityProviderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeIdentityProviderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeIdentityProviderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeInboundDmarcSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeInboundDmarcSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeInboundDmarcSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeInboundDmarcSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeMailboxExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeMailboxExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeMailboxExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeMailboxExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DescribeUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DescribeUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DescribeUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceModel": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceModelList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#DeviceOperatingSystem": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceOperatingSystemList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#DeviceType": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#DeviceUserAgent": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DeviceUserAgentList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#DirectoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#DirectoryInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DirectoryUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DisassociateDelegateFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DisassociateDelegateFromResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DisassociateDelegateFromResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DisassociateDelegateFromResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DisassociateMemberFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#DisassociateMemberFromGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#DisassociateMemberFromGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DisassociateMemberFromGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DnsRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DnsRecordVerificationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#DnsRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#Domain": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#Domains": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#EmailAddressInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#EntityAlreadyRegisteredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#EntityIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#EntityNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#EntityState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#EntityStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#EwsAvailabilityProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ExpiresIn": {
+      "type": "long"
+    },
+    "com.amazonaws.workmail#ExternalUserName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#FolderConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#FolderConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#FolderName": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#GetAccessControlEffect": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetAccessControlEffectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetAccessControlEffectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetAccessControlEffectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetDefaultRetentionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetDefaultRetentionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetDefaultRetentionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetDefaultRetentionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetImpersonationRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetImpersonationRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetImpersonationRoleEffect": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetImpersonationRoleEffectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetImpersonationRoleEffectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetImpersonationRoleEffectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetImpersonationRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetImpersonationRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMailDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetMailDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetMailDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMailDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMailboxDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetMailboxDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetMailboxDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMailboxDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessEffect": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetMobileDeviceAccessEffectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessEffectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessEffectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessOverride": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetMobileDeviceAccessOverrideRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessOverrideRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetMobileDeviceAccessOverrideResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetPersonalAccessTokenMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#GetPersonalAccessTokenMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#GetPersonalAccessTokenMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GetPersonalAccessTokenMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GroupIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#GroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#HostedZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdempotencyClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdentityCenterApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdentityCenterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#IdentityProviderAuthenticationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#IdentityProviderIdentityStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdentityProviderUserId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdentityProviderUserIdForUpdate": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IdentityProviderUserIdPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationMatchedRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ImpersonationMatchedRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#ImpersonationRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationRoleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#ImpersonationRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ImpersonationRuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationRuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#ImpersonationRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ImpersonationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#InstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#InvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#InvalidCustomSesConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#InvalidPasswordException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IpRange": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#IpRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#Jobs": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#LambdaAvailabilityProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAccessControlRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListAccessControlRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListAccessControlRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAccessControlRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAvailabilityConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListAvailabilityConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListAvailabilityConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListAvailabilityConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListGroupMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListGroupMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListGroupsFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupsForEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListGroupsForEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListGroupsForEntityFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupsForEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupsForEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListImpersonationRoles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListImpersonationRolesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListImpersonationRolesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListImpersonationRolesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListMailDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListMailDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailboxExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListMailboxExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListMailboxExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailboxExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailboxPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListMailboxPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListMailboxPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMailboxPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessOverrides": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListMobileDeviceAccessOverridesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessOverridesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessOverridesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListMobileDeviceAccessRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListMobileDeviceAccessRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListOrganizations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListOrganizationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListOrganizationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListOrganizationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListPersonalAccessTokens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListPersonalAccessTokensRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListPersonalAccessTokensRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListPersonalAccessTokensResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListResourceDelegates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListResourceDelegatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListResourceDelegatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListResourceDelegatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListResourcesFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ListUsersFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#LogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MailDomainInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MailDomainNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MailDomainStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MailDomainSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MailDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#MailboxExportErrorInfo": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MailboxExportJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MailboxExportJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MailboxExportJobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#MailboxQuota": {
+      "type": "integer"
+    },
+    "com.amazonaws.workmail#MailboxSize": {
+      "type": "double"
+    },
+    "com.amazonaws.workmail#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.workmail#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MemberType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#Members": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessMatchedRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessMatchedRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessOverridesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRuleEffect": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#MobileDeviceAccessRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#NameAvailabilityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#NewResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#OrganizationId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#OrganizationName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#OrganizationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#OrganizationStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#OrganizationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#OrganizationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Password": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.workmail#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#PermissionValues": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#Permissions": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenLifetimeInDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenScope": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenScopeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PersonalAccessTokenSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#PolicyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#PutAccessControlRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutAccessControlRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutAccessControlRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutAccessControlRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutEmailMonitoringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutEmailMonitoringConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutEmailMonitoringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutEmailMonitoringConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutIdentityProviderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutIdentityProviderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutIdentityProviderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutIdentityProviderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutInboundDmarcSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutInboundDmarcSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutInboundDmarcSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutInboundDmarcSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutMailboxPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutMailboxPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutMailboxPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutMailboxPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutMobileDeviceAccessOverride": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutMobileDeviceAccessOverrideRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutMobileDeviceAccessOverrideRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutMobileDeviceAccessOverrideResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutRetentionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#PutRetentionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#PutRetentionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#PutRetentionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#RedactedEwsAvailabilityProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#RegisterMailDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#RegisterMailDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#RegisterMailDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#RegisterMailDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#RegisterToWorkMail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#RegisterToWorkMailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EmailAddressInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityAlreadyRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#RegisterToWorkMailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#RegisterToWorkMailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ReservedNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ResetPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#ResetPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#ResetPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ResetPasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ResourceDelegates": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#Resources": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#RetentionAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#RetentionPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.workmail#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#ShortString": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#StartMailboxExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#StartMailboxExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#StartMailboxExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#StartMailboxExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#String": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#TargetUsers": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#TestAvailabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#TestAvailabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#TestAvailabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#TestAvailabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.workmail#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateAvailabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateAvailabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateAvailabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateAvailabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateDefaultMailDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateDefaultMailDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateDefaultMailDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateDefaultMailDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateImpersonationRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateImpersonationRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateImpersonationRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateImpersonationRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateMailboxQuota": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateMailboxQuotaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateMailboxQuotaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateMailboxQuotaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateMobileDeviceAccessRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateMobileDeviceAccessRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateMobileDeviceAccessRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateMobileDeviceAccessRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdatePrimaryEmailAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdatePrimaryEmailAddressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EmailAddressInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdatePrimaryEmailAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdatePrimaryEmailAddressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EmailAddressInUseException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#MailDomainStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#NameAvailabilityException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmail#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmail#DirectoryServiceAuthenticationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workmail#DirectoryUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#EntityStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workmail#OrganizationStateException"
+        },
+        {
+          "target": "com.amazonaws.workmail#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.workmail#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmail#UserAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#UserIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#UserRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.workmail#Users": {
+      "type": "list"
+    },
+    "com.amazonaws.workmail#WorkMailDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#WorkMailIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.workmail#WorkMailService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WorkMail"
+        }
+      }
+    }
+  }
+}

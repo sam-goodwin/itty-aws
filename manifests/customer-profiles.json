@@ -1,0 +1,3258 @@
+{
+  "shapes": {
+    "com.amazonaws.customerprofiles#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AddProfileKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#AddProfileKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#AddProfileKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AddProfileKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AdditionalSearchKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Address": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AddressDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#AppflowIntegration": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AppflowIntegrationWorkflowAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AppflowIntegrationWorkflowMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AppflowIntegrationWorkflowStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeDimensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#AttributeItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#AttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#AttributeMatchingModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#AttributeSourceIdMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#AttributeTypesSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeValueItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#AttributeValueItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Attributes": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#AutoMerging": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Batch": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileError": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetCalculatedAttributeForProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#BatchGetProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfileError": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfileErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfileIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#BatchGetProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Batches": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#BucketPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#CalculatedAttributeDefinitionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#CalculatedAttributeDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CalculatedAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CalculatedAttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#CalculatedAttributesForProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#CalculatedCustomAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ConditionOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Conditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ConflictResolution": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ConflictResolvingModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ConnectorOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ConnectorProfileName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#Consolidation": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateCalculatedAttributeDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateCalculatedAttributeDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateCalculatedAttributeDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateCalculatedAttributeDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateDomainLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateDomainLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateDomainLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateDomainLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateEventTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateEventTriggerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateEventTriggerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateEventTriggerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateIntegrationWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateIntegrationWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateIntegrationWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateIntegrationWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateSegmentDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentEstimate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateSegmentEstimateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentEstimateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentEstimateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateSegmentSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateSegmentSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateUploadJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#CreateUploadJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#CreateUploadJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CreateUploadJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#CustomAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#CustomerProfiles_20200815": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Customer Profiles"
+        }
+      }
+    },
+    "com.amazonaws.customerprofiles#DataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#DataPullMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.customerprofiles#DateDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DateDimensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#DateValues": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#DatetimeTypeFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#DeleteCalculatedAttributeDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteCalculatedAttributeDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteCalculatedAttributeDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteCalculatedAttributeDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteDomainLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteDomainLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteDomainLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteDomainLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteEventTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteEventTriggerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteEventTriggerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteEventTriggerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteProfileKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteProfileObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObjectType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteProfileObjectTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObjectTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileObjectTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteSegmentDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteSegmentDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteSegmentDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteSegmentDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DeleteWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DeleteWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DeleteWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DestinationField": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#DestinationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DetectProfileObjectType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#DetectProfileObjectTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#DetectProfileObjectTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DetectProfileObjectTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DetectedProfileObjectType": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#DetectedProfileObjectTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Dimension": {
+      "type": "union"
+    },
+    "com.amazonaws.customerprofiles#DimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#DomainStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.customerprofiles#Double0To1": {
+      "type": "double"
+    },
+    "com.amazonaws.customerprofiles#EmailList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#End": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#EstimateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#EventStreamDestinationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventStreamDestinationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#EventStreamState": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#EventStreamSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventStreamSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerConditions": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerDimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerLogicalOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerNames": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerSummaryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#EventTriggerValues": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ExportingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ExportingLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ExtraLengthValueProfileDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ExtraLengthValues": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Failures": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#FieldContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#FieldMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#FieldNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#FieldSourceProfileIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#FilterAttributeDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#FilterDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#FilterDimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#FilterDimensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#FilterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#FlowDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#FlowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#FlowName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#FoundByKeyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Gender": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#GetAutoMergingPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetAutoMergingPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetAutoMergingPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetAutoMergingPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetCalculatedAttributeDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeForProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetCalculatedAttributeForProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeForProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetCalculatedAttributeForProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetDomainLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetDomainLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetDomainLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetDomainLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetEventTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetEventTriggerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetEventTriggerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetEventTriggerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetIdentityResolutionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetIdentityResolutionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetIdentityResolutionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetIdentityResolutionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetMatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetMatchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetMatchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetMatchesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetProfileObjectTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectTypeTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetProfileObjectTypeTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectTypeTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetProfileObjectTypeTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetSegmentDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetSegmentDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentEstimate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetSegmentEstimateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetSegmentEstimateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentEstimateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetSegmentMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetSegmentMembershipMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentMembershipStatus": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetSegmentSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetSegmentSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSegmentSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSimilarProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetSimilarProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetSimilarProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetSimilarProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetUploadJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetUploadJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetUploadJobPath": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetUploadJobPathRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetUploadJobPathRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetUploadJobPathResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetUploadJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetUploadJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetWorkflowSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#GetWorkflowStepsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#GetWorkflowStepsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GetWorkflowStepsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#GroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#IdentityResolutionJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#IdentityResolutionJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#IdentityResolutionJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Include": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#IncludeOptions": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#IncrementalPullConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#IntegrationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#IntegrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#JobSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#JobScheduleDayOfTheWeek": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#JobScheduleTime": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#JobStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#KeyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#KmsArn": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#LayoutItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#LayoutList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#LayoutType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ListAccountIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListAccountIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListAccountIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListAccountIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributeDefinitionItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributeDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListCalculatedAttributeDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributeDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributeDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributeForProfileItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributesForProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListCalculatedAttributesForProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributesForProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListCalculatedAttributesForProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListDomainItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListDomainLayouts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListDomainLayoutsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListDomainLayoutsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListDomainLayoutsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListEventStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListEventStreamsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListEventStreamsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListEventStreamsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListEventTriggers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListEventTriggersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListEventTriggersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListEventTriggersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListIdentityResolutionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListIdentityResolutionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListIdentityResolutionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListIdentityResolutionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListIntegrationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListObjectTypeAttributeItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListObjectTypeAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListObjectTypeAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListObjectTypeAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ListObjectTypeAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListObjectTypeAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileAttributeValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ProfileAttributeValuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypeItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypeTemplateItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypeTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListProfileObjectTypeTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypeTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypeTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListProfileObjectTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListProfileObjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListProfileObjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListRuleBasedMatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListRuleBasedMatchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListRuleBasedMatchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListRuleBasedMatchesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListSegmentDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListSegmentDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListSegmentDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListSegmentDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListUploadJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListUploadJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListUploadJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListUploadJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListWorkflows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#ListWorkflowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#ListWorkflowsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListWorkflowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ListWorkflowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MarketoConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#MarketoSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MatchIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MatchItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MatchType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#MatchesList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MatchingAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MatchingAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MatchingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MatchingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MatchingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MatchingRuleAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MatchingRules": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#MaxAllowedRuleLevelForMatching": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#MaxAllowedRuleLevelForMerging": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#MaxSize500": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#MergeProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#MergeProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#MergeProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#MergeProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Object": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#ObjectAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ObjectAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ObjectCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#ObjectFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ObjectTypeField": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ObjectTypeKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ObjectTypeKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ObjectTypeNames": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#Objects": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Operator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#OperatorPropertiesKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#PartyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Period": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PeriodUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Periods": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#PhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Profile": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileAttributeValuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileAttributeValuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileId": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#ProfileIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileIdToBeMergedList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileIds": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileObjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileObjectTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileObjectTypeTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ProfileQueryFailures": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ProfileQueryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Profiles": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Property": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#PutIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#PutIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#PutIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PutIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PutProfileObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#PutProfileObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#PutProfileObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PutProfileObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PutProfileObjectType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#PutProfileObjectTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#PutProfileObjectTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#PutProfileObjectTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#QueryResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#RangeOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#RangeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Readiness": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ReadinessStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ResultsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#RuleBasedMatchingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#RuleBasedMatchingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#RuleBasedMatchingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#RuleLevel": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#S3ConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#S3ExportingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#S3ExportingLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#S3SourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SalesforceConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#SalesforceSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#ScheduleOffset": {
+      "type": "long"
+    },
+    "com.amazonaws.customerprofiles#ScheduledTriggerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SearchProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#SearchProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#SearchProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SearchProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SegmentDefinitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#SegmentDefinitionItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SegmentDefinitionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#SegmentGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SegmentGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#SegmentGroupStructure": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SegmentSnapshotStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ServiceNowConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ServiceNowSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SourceConnectorProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SourceConnectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#SourceFields": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#SourceFlowConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SourceSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#SourceSegmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#StandardIdentifier": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#StandardIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Start": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#StartUploadJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#StartUploadJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#StartUploadJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#StartUploadJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Statistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#StatusCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#StatusReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#StopUploadJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#StopUploadJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#StopUploadJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#StopUploadJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#StringDimensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#TagArn": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#Task": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#TaskPropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#TaskType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Tasks": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Threshold": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#TriggerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#TriggerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#TriggerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#Unit": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.customerprofiles#UpdateCalculatedAttributeDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UpdateCalculatedAttributeDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UpdateCalculatedAttributeDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateCalculatedAttributeDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UpdateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UpdateDomainLayout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UpdateDomainLayoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UpdateDomainLayoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateDomainLayoutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateEventTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UpdateEventTriggerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UpdateEventTriggerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateEventTriggerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.customerprofiles#UpdateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.customerprofiles#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.customerprofiles#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.customerprofiles#UpdateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UpdateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UploadJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#UploadJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#UploadJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#Value": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#ValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#ValueRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#ValueRangeEnd": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#ValueRangeStart": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#WorkflowAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#WorkflowList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#WorkflowMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#WorkflowStepItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#WorkflowStepsList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#WorkflowType": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ZendeskConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#ZendeskSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.customerprofiles#additionalSearchKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#attributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.customerprofiles#displayName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#encryptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#expirationDaysInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#fieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#foundByList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#logicalOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.customerprofiles#long": {
+      "type": "long"
+    },
+    "com.amazonaws.customerprofiles#matchesNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#maxSize100": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#maxSize1000": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#maxSize24": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#message": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#minSize0": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#minSize1": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#name": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#optionalBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.customerprofiles#optionalLong": {
+      "type": "long"
+    },
+    "com.amazonaws.customerprofiles#percentageInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.customerprofiles#requestValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.customerprofiles#s3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#s3KeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#s3KeyNameCustomerOutputConfig": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveString0To1000": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveString0To255": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveString1To1000": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveString1To2000000": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveString1To255": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sensitiveText": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#sqsQueueUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#string0To255": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#string1To1000": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#string1To255": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#stringTo2048": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#stringifiedJson": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#text": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.customerprofiles#token": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#typeName": {
+      "type": "string"
+    },
+    "com.amazonaws.customerprofiles#uuid": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,1811 @@
+{
+  "shapes": {
+    "com.amazonaws.accessanalyzer#Access": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessAnalyzer": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AccessAnalyzer"
+        }
+      }
+    },
+    "com.amazonaws.accessanalyzer#AccessCheckPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessCheckPolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessCheckResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPointPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreview": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewFinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewFindingId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewFindingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewStatusReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewStatusReasonCode": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AccessPreviewsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AccountAggregations": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AccountIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AclCanonicalId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AclGrantee": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#AclPermission": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AclUri": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AnalysisRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AnalysisRuleCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AnalysisRuleCriteriaList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzedResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzedResourcesList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#Analyzer": {
+      "type": "resource"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzerConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzerStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#AnalyzersList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ApplyArchiveRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ApplyArchiveRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ApplyArchiveRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ArchiveRule": {
+      "type": "resource"
+    },
+    "com.amazonaws.accessanalyzer#ArchiveRuleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ArchiveRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#CancelPolicyGeneration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CancelPolicyGenerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CancelPolicyGenerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CancelPolicyGenerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckAccessNotGranted": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CheckAccessNotGrantedRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#UnprocessableEntityException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CheckAccessNotGrantedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckAccessNotGrantedResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckAccessNotGrantedResult": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoNewAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CheckNoNewAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#UnprocessableEntityException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CheckNoNewAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoNewAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoNewAccessResult": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoPublicAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CheckNoPublicAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#UnprocessableEntityException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CheckNoPublicAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoPublicAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CheckNoPublicAccessResult": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#CloudTrailArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#CloudTrailDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CloudTrailProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ConditionKeyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#Configuration": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#ConfigurationsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#ConfigurationsMapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CreateAccessPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CreateAccessPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CreateAccessPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CreateAccessPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CreateAnalyzer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CreateAnalyzerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CreateAnalyzerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CreateAnalyzerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#CreateArchiveRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#CreateArchiveRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#CreateArchiveRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Criterion": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#DeleteAnalyzer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#DeleteAnalyzerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#DeleteAnalyzerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#DeleteArchiveRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#DeleteArchiveRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#DeleteArchiveRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#DynamodbStreamConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#DynamodbStreamPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#DynamodbTableConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#DynamodbTablePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#EbsGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#EbsGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#EbsSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#EbsSnapshotDataEncryptionKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#EbsUserId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#EbsUserIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#EcrRepositoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#EcrRepositoryPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#EfsFileSystemConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#EfsFileSystemPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ExternalAccessDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ExternalAccessFindingsStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FilterCriteriaMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#Finding": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingAggregationAccountDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingAggregationAccountDetailsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#FindingChangeType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#FindingDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#FindingId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#FindingSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingSourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#FindingSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingStatusUpdate": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingSummaryV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#FindingType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#FindingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#FindingsListV2": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#FindingsStatistics": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#FindingsStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#GenerateFindingRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GenerateFindingRecommendationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GenerateFindingRecommendationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GeneratedPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GeneratedPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#GeneratedPolicyProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GeneratedPolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAccessPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetAccessPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetAccessPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAccessPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzedResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetAnalyzedResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzedResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzedResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetAnalyzerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetAnalyzerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetArchiveRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetArchiveRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetArchiveRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetArchiveRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFinding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetFindingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetFindingRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetFindingRecommendationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetFindingRecommendationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingRecommendationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetFindingV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetFindingV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingsStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetFindingsStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetFindingsStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetFindingsStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetGeneratedPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#GetGeneratedPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#GetGeneratedPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GetGeneratedPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#GranteePrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#IamRoleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#IamTrustPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#InlineArchiveRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InlineArchiveRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessAnalysisRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessAnalysisRuleCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessAnalysisRuleCriteriaList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessFindingsStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessResourceTypeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessResourceTypeStatisticsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#InternalAccessType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InternetConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#IssueCode": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#IssuingAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#JobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#JobError": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#JobErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#JobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#KmsConstraintsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#KmsConstraintsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#KmsConstraintsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#KmsGrantConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#KmsGrantConfigurationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#KmsGrantConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#KmsGrantOperation": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#KmsGrantOperationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#KmsKeyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#KmsKeyPoliciesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#KmsKeyPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#LearnMoreLink": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviewFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListAccessPreviewFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviewFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviewFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviews": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListAccessPreviewsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviewsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAccessPreviewsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzedResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListAnalyzedResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzedResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzedResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListAnalyzersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListAnalyzersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListArchiveRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListArchiveRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListArchiveRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListArchiveRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListFindingsV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListFindingsV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListFindingsV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListFindingsV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListPolicyGenerations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListPolicyGenerationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListPolicyGenerationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListPolicyGenerationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Locale": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#LocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#NetworkOriginConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#OrderBy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#PathElement": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#PathElementList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#PolicyGeneration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#PolicyGenerationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#PolicyGenerationList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#PolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#Position": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#PrincipalArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#PrincipalMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#PrincipalType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotAccountIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotAttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbClusterSnapshotKmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotAccountIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotAttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#RdsDbSnapshotKmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ReasonCode": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ReasonSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ReasonSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#RecommendationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#RecommendationType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RecommendedRemediationAction": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RecommendedStep": {
+      "type": "union"
+    },
+    "com.amazonaws.accessanalyzer#RecommendedStepList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#Resource": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ResourceArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ResourceControlPolicyRestriction": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ResourceTypeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ResourceTypeStatisticsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#ResourcesList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#RetiringPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#S3AccessPointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#S3AccessPointConfigurationsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#S3BucketAclGrantConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#S3BucketAclGrantConfigurationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#S3BucketConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#S3BucketPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#S3ExpressDirectoryAccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#S3ExpressDirectoryAccessPointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#S3ExpressDirectoryAccessPointConfigurationsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#S3ExpressDirectoryBucketConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#S3ExpressDirectoryBucketPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#S3PublicAccessBlockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SecretsManagerSecretConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SecretsManagerSecretKmsId": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#SecretsManagerSecretPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ServiceControlPolicyRestriction": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SharedViaList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#SnsTopicConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SnsTopicPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#SortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Span": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SqsQueueConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#SqsQueuePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#StartPolicyGeneration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#StartPolicyGenerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#StartPolicyGenerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#StartPolicyGenerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#StartResourceScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#StartResourceScanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#StartResourceScanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#StatusReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Substring": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#TagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.accessanalyzer#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.accessanalyzer#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#Trail": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#TrailList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#TrailProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#TrailPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#UnprocessableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedAccessFindingsStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedAccessTypeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedAccessTypeStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#UnusedAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#UnusedIamRoleDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedIamUserAccessKeyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedIamUserPasswordDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedPermissionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UnusedPermissionsRecommendedStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UpdateAnalyzer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#UpdateAnalyzerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#UpdateAnalyzerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UpdateAnalyzerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UpdateArchiveRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#UpdateArchiveRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#UpdateArchiveRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#UpdateFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#UpdateFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#UpdateFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.accessanalyzer#ValidatePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.accessanalyzer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyFinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyFindingList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyFindingType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ValidatePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.accessanalyzer#ValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.accessanalyzer#VpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.accessanalyzer#VpcId": {
+      "type": "string"
+    }
+  }
+}

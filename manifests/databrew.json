@@ -1,0 +1,1528 @@
+{
+  "shapes": {
+    "com.amazonaws.databrew#AWSGlueDataBrew": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DataBrew"
+        }
+      }
+    },
+    "com.amazonaws.databrew#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ActionId": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#AllowedStatisticList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#AllowedStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#AnalyticsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#AssumeControl": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#Attempt": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#BatchDeleteRecipeVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#BatchDeleteRecipeVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#BatchDeleteRecipeVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#BatchDeleteRecipeVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#BucketOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#CatalogId": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ClientSessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ColumnNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ColumnRange": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#ColumnSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ColumnSelectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ColumnStatisticsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ColumnStatisticsConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#CompressionFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#Condition": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ConditionExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ConditionExpressionList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ConditionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateColumn": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateProfileJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateProfileJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateProfileJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateProfileJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateRecipeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateRecipeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateRecipeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRecipeJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRuleset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateRulesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateRulesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateRulesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#CreateScheduleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#CreateScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreateScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CreatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#CronExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#CsvOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#CsvOutputOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DataCatalogInputDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DataCatalogOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DataCatalogOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#DatabaseInputDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#DatabaseOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DatabaseOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#DatabaseOutputMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#DatabaseTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#DatabaseTableOutputOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Dataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DatasetList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#DatasetName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#DatasetParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.databrew#DatetimeFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#DatetimeOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteRecipeVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteRecipeVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteRecipeVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteRecipeVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteRuleset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteRulesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteRulesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteRulesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DeleteScheduleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DeleteScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DeleteScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Delimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeRuleset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeRulesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeRulesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeRulesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#DescribeScheduleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#DescribeScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#DescribeScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Disabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#EncryptionKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#EncryptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#EntityDetectorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#EntityType": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#EntityTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ExcelOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ExecutionTime": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#Expression": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#FilesLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#FilterExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#FormatOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#GlueConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#HeaderRow": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#HiddenColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#Input": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#InputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#JobList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#JobName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#JobNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#JobRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#JobRunErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#JobRunId": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#JobRunList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#JobRunState": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#JobSample": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#JobSize": {
+      "type": "long"
+    },
+    "com.amazonaws.databrew#JobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#JsonOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#LastModifiedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListJobRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListJobRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListJobRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListJobRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRecipeVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListRecipeVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListRecipeVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRecipeVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRecipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListRecipesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListRecipesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRecipesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRulesets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListRulesetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListRulesetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListRulesetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListSchedules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListSchedulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListSchedulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListSchedulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#LocaleCode": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#LogSubscription": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#MaxCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#MaxFiles": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#MaxOutputFiles": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#MaxResults100": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#MaxRetries": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#MultiLine": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#OpenedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Operation": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Order": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#OrderedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#OutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#OutputFormatOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#OutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#OverwriteOutput": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#ParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.databrew#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#PathOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#PathParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#PathParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.databrew#Preview": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databrew#ProfileConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Project": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ProjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#PublishRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#PublishRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#PublishRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#PublishRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#PublishedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Recipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RecipeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RecipeDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RecipeErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#RecipeErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RecipeList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#RecipeName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RecipeReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RecipeStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RecipeStepList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#RecipeVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RecipeVersionErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RecipeVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Result": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RowRange": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RuleCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#RuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RulesetDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#RulesetItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#RulesetItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#RulesetName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#S3TableOutputOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#Sample": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#SampleMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#SampleSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#SampleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#Schedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ScheduleName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#SendProjectSessionAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#SendProjectSessionActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#SendProjectSessionActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#SendProjectSessionActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#SessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#SheetIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#SheetIndexList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#SheetName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#SheetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#Source": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#StartColumnIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#StartJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#StartJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#StartJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StartJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StartProjectSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#StartProjectSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#StartProjectSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StartProjectSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StartRowIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#StartedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Statistic": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#StatisticList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#StatisticOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StatisticOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#StatisticsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StepIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#StopJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#StopJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#StopJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#StopJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.databrew#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#TargetColumn": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#Threshold": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ThresholdType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#ThresholdUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#ThresholdValue": {
+      "type": "double"
+    },
+    "com.amazonaws.databrew#Timeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.databrew#TimezoneOffset": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateProfileJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateProfileJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateProfileJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateProfileJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateRecipeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateRecipeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateRecipeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRecipeJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRuleset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateRulesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateRulesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateRulesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databrew#UpdateScheduleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databrew#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.databrew#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.databrew#UpdateScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#UpdateScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ValidationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ValidationConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.databrew#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.databrew#ValidationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databrew#ValueReference": {
+      "type": "string"
+    },
+    "com.amazonaws.databrew#ValuesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.databrew#ViewFrame": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,1073 @@
+{
+  "shapes": {
+    "com.amazonaws.marketplacecatalog#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#AWSMPSeymour": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Marketplace Catalog"
+        }
+      }
+    },
+    "com.amazonaws.marketplacecatalog#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductTitleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductTitleFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductTitleString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductVisibilityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductVisibilityFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#AmiProductVisibilityString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#BatchDescribeEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeErrorCodeString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#BatchDescribeErrorMessageContent": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#CancelChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#CancelChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#CancelChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#CancelChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Catalog": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#Change": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeName": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeSetDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeSetSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeSetSummaryListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ChangeType": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductTitleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductTitleFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductTitleString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductVisibilityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductVisibilityFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ContainerProductVisibilityString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductTitleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductTitleFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductTitleString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductVisibilityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductVisibilityFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#DataProductVisibilityString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#DateTimeISO8601": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DescribeChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#DescribeChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#DescribeChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DescribeChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DescribeEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#DescribeEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#DescribeEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#DescribeEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#EntityDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#EntityDetails": {
+      "type": "map"
+    },
+    "com.amazonaws.marketplacecatalog#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#EntityNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#EntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#EntityRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#EntitySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#EntitySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#EntityType": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#EntityTypeFilters": {
+      "type": "union"
+    },
+    "com.amazonaws.marketplacecatalog#EntityTypeSort": {
+      "type": "union"
+    },
+    "com.amazonaws.marketplacecatalog#ErrorCodeString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ErrorDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#Errors": {
+      "type": "map"
+    },
+    "com.amazonaws.marketplacecatalog#ExceptionMessageContent": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#FailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#FilterValueContent": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#GetResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#GetResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#GetResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#Intent": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Json": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#JsonDocumentType": {
+      "type": "document"
+    },
+    "com.amazonaws.marketplacecatalog#ListChangeSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#ListChangeSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#ListChangeSetsMaxResultInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.marketplacecatalog#ListChangeSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ListChangeSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ListEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#ListEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#ListEntitiesMaxResultInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.marketplacecatalog#ListEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ListEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductTitleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductTitleFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductTitleString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductVisibilityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductVisibilityFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#MachineLearningProductVisibilityString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferAvailabilityEndDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferAvailabilityEndDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferBuyerAccountsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferBuyerAccountsFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferBuyerAccountsList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferBuyerAccountsString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferNameFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferNameFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferProductIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferProductIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferProductIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferReleaseDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferReleaseDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferResaleAuthorizationIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferResaleAuthorizationIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferResaleAuthorizationIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#OfferSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#OfferStateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferStateFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferStateString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#OfferSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferTargetingFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#OfferTargetingFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferTargetingList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#OfferTargetingString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#OwnershipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#RequestedChangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationAvailabilityEndDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationAvailabilityEndDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationAvailabilityEndDateFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationCreatedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationCreatedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationCreatedDateFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerAccountIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerAccountIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerAccountIdFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerAccountIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerLegalNameFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerLegalNameFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerLegalNameFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationManufacturerLegalNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationNameFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationNameFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationNameFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationOfferExtendedStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationOfferExtendedStatusFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationOfferExtendedStatusString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductIdFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductNameFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductNameFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductNameFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationProductNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerAccountIDFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerAccountIDFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerAccountIDFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerAccountIDString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerLegalNameFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerLegalNameFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerLegalNameFilterWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationResellerLegalNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationStatusFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationStatusString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#ResaleAuthorizationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResourceNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ResourcePolicyJson": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductEntityIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductEntityIdFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductEntityIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductLastModifiedDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductLastModifiedDateFilterDateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductSort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductTitleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductTitleFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductTitleString": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductVisibilityFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductVisibilityFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#SaaSProductVisibilityString": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Sort": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#SortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.marketplacecatalog#StartChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#StartChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#StartChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#StartChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.marketplacecatalog#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.marketplacecatalog#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.marketplacecatalog#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.marketplacecatalog#ValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.marketplacecatalog#VisibilityValue": {
+      "type": "string"
+    }
+  }
+}

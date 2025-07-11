@@ -1,0 +1,1059 @@
+{
+  "shapes": {
+    "com.amazonaws.servicediscovery#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#AttrKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#AttrValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Attributes": {
+      "type": "map"
+    },
+    "com.amazonaws.servicediscovery#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#CreateHttpNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#CreateHttpNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#CreateHttpNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreateHttpNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreatePrivateDnsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#CreatePrivateDnsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#CreatePrivateDnsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreatePrivateDnsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreatePublicDnsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#CreatePublicDnsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#CreatePublicDnsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreatePublicDnsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#CreateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#CreateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CreateServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CustomHealthNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#CustomHealthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#DeleteNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DeleteNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DeleteNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeleteNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeleteService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DeleteServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DeleteServiceAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DeleteServiceAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DeleteServiceAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeleteServiceAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeleteServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeleteServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeregisterInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DeregisterInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InstanceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DeregisterInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DeregisterInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DiscoverInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstancesRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#DiscoverInstancesRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#RequestLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstancesRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DiscoverInstancesRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DiscoverMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicediscovery#DnsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DnsConfigChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DnsProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DnsRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#DnsRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#DuplicateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#FailureThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicediscovery#FilterCondition": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#GetInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InstanceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetInstancesHealthStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetInstancesHealthStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InstanceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetInstancesHealthStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetInstancesHealthStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetOperationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#OperationNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetOperationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetOperationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetServiceAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#GetServiceAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#GetServiceAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetServiceAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#GetServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#HealthCheckConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#HealthCheckCustomConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#HealthCheckType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#HealthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#HealthStatusFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#HttpInstanceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#HttpInstanceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#HttpNamespaceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#HttpProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#InstanceHealthStatusMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicediscovery#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#InstanceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#InstanceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#InstanceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#InstanceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#InvalidInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#ListInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#ListInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListNamespaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#ListNamespacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#ListNamespacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListNamespacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#ListOperationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#ListOperationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListOperationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#ListServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#ListServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicediscovery#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Namespace": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#NamespaceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#NamespaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#NamespaceNameHttp": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#NamespaceNamePrivate": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#NamespaceNamePublic": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#NamespaceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#NamespaceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#NamespaceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Operation": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#OperationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#OperationFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#OperationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#OperationId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#OperationNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#OperationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#OperationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#OperationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#OperationTargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#OperationTargetsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicediscovery#OperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#PrivateDnsNamespaceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PrivateDnsNamespaceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PrivateDnsNamespacePropertiesChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PrivateDnsPropertiesMutable": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PrivateDnsPropertiesMutableChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PublicDnsNamespaceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PublicDnsNamespaceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PublicDnsNamespacePropertiesChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PublicDnsPropertiesMutable": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#PublicDnsPropertiesMutableChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#RecordTTL": {
+      "type": "long"
+    },
+    "com.amazonaws.servicediscovery#RecordType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#RegisterInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#RegisterInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#RegisterInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#RegisterInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#RequestLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ResourceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicediscovery#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#ResourceInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ResourceLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ResourcePath": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Revision": {
+      "type": "long"
+    },
+    "com.amazonaws.servicediscovery#Route53AutoNaming_v20170314": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ServiceDiscovery"
+        }
+      }
+    },
+    "com.amazonaws.servicediscovery#RoutingPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#SOA": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#SOAChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributeKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributesLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicediscovery#ServiceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#ServiceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#ServiceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#ServiceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#ServiceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#ServiceTypeOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicediscovery#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicediscovery#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicediscovery#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicediscovery#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateHttpNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdateHttpNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdateHttpNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateHttpNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateInstanceCustomHealthStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdateInstanceCustomHealthStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#CustomHealthNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InstanceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdateInstanceCustomHealthStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdatePrivateDnsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdatePrivateDnsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdatePrivateDnsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdatePrivateDnsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdatePublicDnsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdatePublicDnsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#NamespaceNotFound"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ResourceInUse"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdatePublicDnsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdatePublicDnsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#DuplicateRequest"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdateServiceAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicediscovery#UpdateServiceAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicediscovery#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceAttributesLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ServiceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.servicediscovery#UpdateServiceAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateServiceAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicediscovery#UpdateServiceResponse": {
+      "type": "structure"
+    }
+  }
+}

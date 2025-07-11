@@ -1,0 +1,6724 @@
+{
+  "shapes": {
+    "com.amazonaws.ssm#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AccessKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AccessKeySecretType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AccessRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AccessRequestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#Account": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AccountSharingInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AccountSharingInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#Accounts": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#Activation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ActivationCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ActivationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ActivationId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ActivationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#AddTagsToResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceType"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyTagsError"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#AddTagsToResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AddTagsToResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AgentErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AgentType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AgentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AggregatorSchemaOnly": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#Alarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AlarmConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AlarmList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AlarmName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AlarmStateInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AlarmStateInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AllowedPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AmazonSSM": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SSM"
+        }
+      }
+    },
+    "com.amazonaws.ssm#ApplyOnlyAtCronInterval": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#ApproveAfterDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#Architecture": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociateOpsItemRelatedItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#AssociateOpsItemRelatedItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemRelatedItemAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#AssociateOpsItemRelatedItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociateOpsItemRelatedItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociatedInstances": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Association": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationComplianceSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecutionDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecutionFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationExecutionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationExecutionFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTargetsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTargetsFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTargetsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTargetsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationExecutionTargetsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationExecutionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationFilterOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AssociationName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationOverview": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationStatusAggregatedCount": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#AssociationStatusName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationSyncCompliance": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AssociationVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AssociationVersionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationVersionLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AssociationVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AttachmentContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AttachmentContentList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AttachmentHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttachmentHashType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AttachmentIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttachmentInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AttachmentInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AttachmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttachmentUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttachmentsSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AttachmentsSourceKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AttachmentsSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AttachmentsSourceValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttachmentsSourceValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationDefinitionNotApprovedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationDefinitionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationDefinitionVersionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AutomationExecutionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AutomationExecutionFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationExecutionFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AutomationExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationExecutionInputs": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AutomationExecutionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionPreview": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AutomationParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#AutomationParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#AutomationStepNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#AutomationSubtype": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#AutomationTargetParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#AutomationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#BaselineDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#BaselineId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#BaselineName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#BaselineOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#BatchErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#CalendarNameOrARN": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CalendarNameOrARNList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CalendarState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#CancelCommand": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CancelCommandRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DuplicateInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidCommandId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CancelCommandRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CancelCommandResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CancelMaintenanceWindowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CancelMaintenanceWindowExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CancelMaintenanceWindowExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CancelMaintenanceWindowExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Category": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CategoryEnumList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ChangeDetailsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ChangeRequestName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CloudWatchLogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CloudWatchOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CloudWatchOutputEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#Command": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CommandFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CommandFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#CommandFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CommandFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CommandId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CommandInvocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CommandInvocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CommandInvocationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#CommandList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CommandMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#CommandPlugin": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CommandPluginList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CommandPluginName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CommandPluginOutput": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CommandPluginStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#CommandStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#Comment": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#CompletedCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ComplianceExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceExecutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceExecutionType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceItemContentHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceItemDetails": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#ComplianceItemEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceItemEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceItemTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceQueryOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ComplianceResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ComplianceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ComplianceStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceStringFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceStringFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceSummaryCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ComplianceSummaryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceSummaryItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ComplianceTypeCountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComplianceTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ComplianceUploadType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#CompliantSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ComputerName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ContentLength": {
+      "type": "long"
+    },
+    "com.amazonaws.ssm#CreateActivation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateActivationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidParameters"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateActivationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateActivationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.ssm#AssociationLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidOutputLocation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidParameters"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidSchedule"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTag"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTarget"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTargetMaps"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedPlatformType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateAssociationBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateAssociationBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#DuplicateInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidOutputLocation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidParameters"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidSchedule"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTarget"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTargetMaps"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedPlatformType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateAssociationBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateAssociationBatchRequestEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#CreateAssociationBatchRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateAssociationBatchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DocumentAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.ssm#DocumentLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentContent"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#MaxDocumentSizeExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateDocumentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateOpsItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateOpsItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateOpsItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateOpsItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateOpsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateOpsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataInvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataTooManyUpdatesException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateOpsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateOpsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreatePatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreatePatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreatePatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreatePatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateResourceDataSync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#CreateResourceDataSyncRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncCountExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncInvalidConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#CreateResourceDataSyncRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreateResourceDataSyncResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CreatedDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#Credentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#CustomSchemaCountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#DefaultBaseline": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#DefaultInstanceName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DeleteActivation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteActivationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidActivation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidActivationId"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteActivationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteActivationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociatedInstances"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentOperation"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteDocumentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteInventory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteInventoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDeleteInventoryParametersException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInventoryRequestException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidOptionException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteInventoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteInventoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteOpsItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteOpsItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteOpsItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteOpsItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteOpsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteOpsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataInvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteOpsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteOpsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteParameter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteParameterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteParameterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteParameterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeletePatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeletePatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeletePatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeletePatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteResourceDataSync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteResourceDataSyncRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteResourceDataSyncRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteResourceDataSyncResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#MalformedResourcePolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeliveryTimedOutCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#DeregisterManagedInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeregisterManagedInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeregisterManagedInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterManagedInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterPatchBaselineForPatchGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeregisterPatchBaselineForPatchGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeregisterPatchBaselineForPatchGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterPatchBaselineForPatchGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterTargetFromMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeregisterTargetFromMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#TargetInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeregisterTargetFromMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterTargetFromMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterTaskFromMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DeregisterTaskFromMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DeregisterTaskFromMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DeregisterTaskFromMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeActivations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeActivationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeActivationsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeActivationsFilterKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DescribeActivationsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DescribeActivationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeActivationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAssociationVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutionTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAssociationExecutionTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#AssociationExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutionTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutionTargetsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAssociationExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociationExecutionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAutomationExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAutomationExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAutomationExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAutomationExecutionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAutomationStepExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAutomationStepExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAutomationStepExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAutomationStepExecutionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAvailablePatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeAvailablePatchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeAvailablePatchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeAvailablePatchesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeDocumentPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeDocumentPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentOperation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidPermissionType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeDocumentPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeDocumentPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeDocumentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeEffectiveInstanceAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeEffectiveInstanceAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeEffectiveInstanceAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeEffectiveInstanceAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeEffectivePatchesForPatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeEffectivePatchesForPatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedOperatingSystem"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeEffectivePatchesForPatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeEffectivePatchesForPatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstanceAssociationsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstanceAssociationsStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstanceAssociationsStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstanceAssociationsStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstanceInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstanceInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceInformationFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstanceInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstanceInformationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstancePatchStatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStatesForPatchGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstancePatchStatesForPatchGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStatesForPatchGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStatesForPatchGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchStatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstancePatchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePatchesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstanceProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInstancePropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidActivationId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstancePropertyFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInstancePropertiesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#DescribeInstancePropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInstancePropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInventoryDeletions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeInventoryDeletionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDeletionIdException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeInventoryDeletionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeInventoryDeletionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTaskInvocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTaskInvocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTaskInvocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTaskInvocationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionTasksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowExecutionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowScheduleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowScheduleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTargetsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowTasksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowsForTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeMaintenanceWindowsForTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowsForTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowsForTargetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeMaintenanceWindowsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeOpsItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeOpsItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeOpsItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeOpsItemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterOption"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchBaselines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribePatchBaselinesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribePatchBaselinesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchBaselinesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchGroupState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribePatchGroupStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribePatchGroupStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchGroupStateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribePatchGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribePatchGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribePatchPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribePatchPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribePatchPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DescribeSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DescribeSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescribeSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DescriptionInDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DisassociateOpsItemRelatedItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#DisassociateOpsItemRelatedItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemRelatedItemAssociationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#DisassociateOpsItemRelatedItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DisassociateOpsItemRelatedItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentARN": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentAuthor": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentContent": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentDefaultVersionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentHashType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentKeyValuesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentKeyValuesFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentKeyValuesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentKeyValuesFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentKeyValuesFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentMetadataEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentMetadataResponseInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentParameterDefaultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentParameterDescrption": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentPermissionLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentPermissionMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#DocumentPermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentRequires": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentRequiresList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentReviewAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentReviewComment": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentReviewCommentList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentReviewCommentSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentReviewCommentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentReviewerResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentReviewerResponseSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentReviews": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentSchemaVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentSha1": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentStatusInformation": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#DocumentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentVersionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentVersionLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DocumentVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#DocumentVersionName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DocumentVersionNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#DoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DryRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#DuplicateDocumentContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DuplicateDocumentVersionName": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#DuplicateInstanceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Duration": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#EffectiveInstanceAssociationMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#EffectivePatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#EffectivePatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ErrorCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ExcludeAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ExcludeAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ExecutionInputs": {
+      "type": "union"
+    },
+    "com.amazonaws.ssm#ExecutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ExecutionPreview": {
+      "type": "union"
+    },
+    "com.amazonaws.ssm#ExecutionPreviewId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ExecutionPreviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ExecutionRoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ExpirationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#ExternalAlarmState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#FailedCreateAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#FailedCreateAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#FailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Fault": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#FeatureNotAvailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetAccessTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetAccessTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetAccessTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetAutomationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetAutomationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetAutomationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetAutomationExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetCalendarState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetCalendarStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentType"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedCalendarException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetCalendarStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetCalendarStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetCommandInvocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetCommandInvocationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidCommandId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidPluginName"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvocationDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetCommandInvocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetCommandInvocationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetConnectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetConnectionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetConnectionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetConnectionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDefaultPatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetDefaultPatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetDefaultPatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDefaultPatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDeployablePatchSnapshotForInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetDeployablePatchSnapshotForInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedFeatureRequiredException"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedOperatingSystem"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetDeployablePatchSnapshotForInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDeployablePatchSnapshotForInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetDocumentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetExecutionPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetExecutionPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetExecutionPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetExecutionPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetInventory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetInventoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInventoryGroupException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResultAttributeException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetInventoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetInventoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetInventorySchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetInventorySchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetInventorySchemaMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#GetInventorySchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetInventorySchemaResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetMaintenanceWindowExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskInvocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskInvocationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskInvocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskInvocationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowExecutionTaskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetMaintenanceWindowTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetMaintenanceWindowTaskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetOpsItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetOpsItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetOpsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataInvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetOpsMetadataMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#GetOpsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetOpsSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetOpsSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetOpsSummaryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParameter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetParameterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidKeyId"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterVersionNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetParameterHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetParameterHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidKeyId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetParameterHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParameterHistoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParameterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParameterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidKeyId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetParametersByPath": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetParametersByPathRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterOption"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterValue"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidKeyId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetParametersByPathMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#GetParametersByPathRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParametersByPathResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetPatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetPatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetPatchBaselineForPatchGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetPatchBaselineForPatchGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetPatchBaselineForPatchGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetPatchBaselineForPatchGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetPatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetPatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetResourcePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetResourcePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetResourcePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetResourcePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetResourcePoliciesResponseEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#GetResourcePoliciesResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetServiceSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#GetServiceSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ServiceSettingNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#GetServiceSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#GetServiceSettingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#HierarchyLevelLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#HierarchyTypeMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ISO8601String": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#IamRole": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#IdempotentParameterMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ImpactType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#IncompatiblePolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstallOverrideList": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceAggregatedAssociationOverview": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceAssociationExecutionSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceAssociationOutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceAssociationOutputUrl": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceAssociationStatusAggregatedCount": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#InstanceAssociationStatusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceAssociationStatusInfos": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceInformationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceInformationFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InstanceInformationFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceInformationFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceInformationFilterValueSet": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceInformationStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstanceInformationStringFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceInformationStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancePatchState": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstancePatchStateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstancePatchStateFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancePatchStateFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstancePatchStateFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancePatchStateFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstancePatchStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstancePatchStateOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InstancePatchStatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancePropertyFilterValueSet": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstancePropertyStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InstancePropertyStringFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancePropertyStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InstanceRole": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceState": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceTagName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidActivation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidActivationId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAggregatorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAllowedPatternException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAssociationVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAutomationExecutionParametersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAutomationSignalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidAutomationStatusUpdateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidCommandId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDeleteInventoryParametersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDeletionIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocumentContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocumentOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocumentSchemaVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocumentType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidDocumentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidFilterKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidFilterOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidFilterValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInstanceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInstanceInformationFilterValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInstancePropertyFilterValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInventoryGroupException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInventoryItemContextException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidInventoryRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidItemContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidKeyId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidNextToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidNotificationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidOptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidOutputFolder": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidOutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidPermissionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidPluginName": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidPolicyAttributeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidPolicyTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidResourceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidResourceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidResultAttributeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidTargetMaps": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidTypeNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvalidUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryAggregator": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryAggregatorExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryAggregatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryAttributeDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InventoryDeletionLastStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryDeletionLastStatusUpdateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#InventoryDeletionStartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#InventoryDeletionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InventoryDeletionStatusItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryDeletionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryDeletionSummaryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryDeletionSummaryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryDeletionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryItemAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryItemAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryItemAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItemCaptureTime": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItemContentContext": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#InventoryItemContentHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItemEntry": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#InventoryItemEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryItemSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryItemSchemaResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryItemSchemaVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItemTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryItemTypeNameFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryQueryOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InventoryResultEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryResultEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryResultEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#InventoryResultItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InventoryResultItemKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InventoryResultItemMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#InventorySchemaDeleteOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#InventoryTypeDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#InvocationDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#InvocationTraceOutput": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#IsSubTypeSchema": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#ItemContentMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ItemSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#KeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#LabelParameterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#LabelParameterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterVersionLabelLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterVersionNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#LabelParameterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#LabelParameterVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#LastResourceDataSyncMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#LastResourceDataSyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#LastResourceDataSyncTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#LastSuccessfulResourceDataSyncTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#ListAssociationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListAssociationVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListAssociationVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListAssociationVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListCommandInvocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListCommandInvocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidCommandId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListCommandInvocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListCommandInvocationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListCommands": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListCommandsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidCommandId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListCommandsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListCommandsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListComplianceItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListComplianceItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListComplianceItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListComplianceItemsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListComplianceSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListComplianceSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListComplianceSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListComplianceSummariesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocumentMetadataHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListDocumentMetadataHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListDocumentMetadataHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocumentMetadataHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocumentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListDocumentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListDocumentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocumentVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilterKey"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListDocumentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListInventoryEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListInventoryEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListInventoryEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListInventoryEntriesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListNodesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListNodesSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListNodesSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListNodesSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListNodesSummaryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsItemEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListOpsItemEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListOpsItemEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsItemEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsItemRelatedItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListOpsItemRelatedItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListOpsItemRelatedItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsItemRelatedItemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListOpsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataInvalidArgumentException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListOpsMetadataMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ListOpsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListOpsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListResourceComplianceSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListResourceComplianceSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidFilter"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListResourceComplianceSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListResourceComplianceSummariesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListResourceDataSync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListResourceDataSyncRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncInvalidConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListResourceDataSyncRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListResourceDataSyncResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ListTagsForResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#LoggingInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowAllowUnassociatedTargets": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowAutomationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowCutoff": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowDurationHours": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionStatusDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskIdentityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskInvocationId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskInvocationIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskInvocationIdentityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowExecutionTaskInvocationParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowIdentityForTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowIdentityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowLambdaClientContext": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowLambdaParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowLambdaPayload": {
+      "type": "blob"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowLambdaQualifier": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowOffset": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowRunCommandParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowSchedule": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowSearchMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowStepFunctionsInput": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowStepFunctionsName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowStepFunctionsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowStringDateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskCutoffBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskInvocationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParameterValueExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskTargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTaskType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaintenanceWindowsForTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MalformedResourcePolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ManagedInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ManagedStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#MaxConcurrency": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaxDocumentSizeExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MaxErrors": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaxResultsEC2Compatible": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#MaxSessionDuration": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#MetadataKeysToDeleteList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#MetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#MetadataValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#MetadataValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ModifyDocumentPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ModifyDocumentPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DocumentLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#DocumentPermissionLimit"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidPermissionType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ModifyDocumentPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ModifyDocumentPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Node": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NodeAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeAggregator": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NodeAggregatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NodeAggregatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NodeAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NodeCaptureTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#NodeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NodeFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NodeFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NodeFilterOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NodeFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NodeId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NodeOrganizationalUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeOrganizationalUnitPath": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeOwnerInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NodeRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NodeSummary": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#NodeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NodeType": {
+      "type": "union"
+    },
+    "com.amazonaws.ssm#NodeTypeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NonCompliantSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NormalStringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#NotificationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#NotificationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#NotificationEvent": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#NotificationEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#NotificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OperatingSystem": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsAggregator": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsAggregatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsAggregatorType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsAggregatorValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsAggregatorValueKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsAggregatorValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#OpsDataAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsDataTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsEntityItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsEntityItemCaptureTime": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsEntityItemEntry": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#OpsEntityItemEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsEntityItemKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsEntityItemMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#OpsEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsFilterOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemDataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemDataValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemDataValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemEventFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemEventMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#OpsItemEventSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemEventSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemInvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#OpsItemNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemNotification": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemNotifications": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemOperationalData": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#OpsItemOpsDataKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemParameterNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAssociationId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAssociationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAssociationResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAssociationResourceUri": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemAssociationType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemRelatedItemsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#OpsItemSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemSource": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#OpsItemSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsItemSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsItemTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsItemType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsMetadataFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsMetadataFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsMetadataFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsMetadataFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsMetadataInvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataKeyLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OpsMetadataNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsMetadataResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OpsMetadataTooManyUpdatesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsResultAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OpsResultAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#OutputSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#OutputSourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OutputSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#OwnerInformation": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PSParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PSParameterSelector": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PSParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PSParameterVersion": {
+      "type": "long"
+    },
+    "com.amazonaws.ssm#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterDataType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterInlinePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterLabelList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterMaxVersionLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterPatternMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterPolicies": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterStringFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterStringFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterStringFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterStringQueryOption": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterTier": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParameterVersionLabelLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParameterVersionNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Parameters": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#ParametersFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ParametersFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ParametersFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParametersFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ParametersFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ParentStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Patch": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchAdvisoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchAdvisoryIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchArch": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchAvailableSecurityUpdateCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchBaselineIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchBaselineIdentityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchBaselineMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchBugzillaId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchBugzillaIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchCVEId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchCVEIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchCVEIds": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchClassification": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchComplianceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchComplianceDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchComplianceDataState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchComplianceLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchComplianceMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchComplianceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchContentUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchCriticalNonCompliantCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchDeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchEpoch": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchFailedCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchFilterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchGroupPatchBaselineMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchGroupPatchBaselineMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchInstalledCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchInstalledOtherCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchInstalledPendingRebootCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchInstalledRejectedCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchKbNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchLanguage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchMissingCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchMsrcNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchMsrcSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchNotApplicableCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchOperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchOrchestratorFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchOrchestratorFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchOrchestratorFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchOrchestratorFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchOrchestratorFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchOtherNonCompliantCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchProduct": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchProductFamily": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchProperty": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchPropertyEntry": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#PatchRelease": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchRepository": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchRuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchSecurityNonCompliantCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchSet": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PatchSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchSourceConfiguration": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchSourceProduct": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchSourceProductList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PatchStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PatchStringDateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchUnreportedNotApplicableCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#PatchVendor": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PatchVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PlatformName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PlatformType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#PlatformTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#PlatformVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PoliciesLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PolicyHash": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Product": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ProgressCounters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutComplianceItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#PutComplianceItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#ComplianceTypeCountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidItemContentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceType"
+        },
+        {
+          "target": "com.amazonaws.ssm#ItemSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#TotalSizeLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#PutComplianceItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutComplianceItemsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutInventory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#PutInventoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#CustomSchemaCountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInventoryItemContextException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidItemContentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTypeNameException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ItemContentMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ItemSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#SubTypeCountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#TotalSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedInventoryItemContextException"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedInventorySchemaVersionException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#PutInventoryMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#PutInventoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutInventoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutParameter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#PutParameterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#HierarchyLevelLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#HierarchyTypeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ssm#IncompatiblePolicyException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAllowedPatternException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidKeyId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidPolicyAttributeException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidPolicyTypeException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterMaxVersionLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterPatternMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ssm#PoliciesLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedParameterType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#PutParameterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutParameterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#MalformedResourcePolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourcePolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RebootOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#Regions": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#RegisterDefaultPatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#RegisterDefaultPatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#RegisterDefaultPatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterDefaultPatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterPatchBaselineForPatchGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#RegisterPatchBaselineForPatchGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#RegisterPatchBaselineForPatchGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterPatchBaselineForPatchGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterTargetWithMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#RegisterTargetWithMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#RegisterTargetWithMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterTargetWithMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterTaskWithMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#RegisterTaskWithMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#FeatureNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#RegisterTaskWithMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegisterTaskWithMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegistrationLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#RegistrationMetadataItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RegistrationMetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#RegistrationMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#RegistrationMetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#RegistrationsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#RelatedOpsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RelatedOpsItems": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#RemainingCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#RemoveTagsFromResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidResourceType"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#RemoveTagsFromResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RemoveTagsFromResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#RequireType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResetServiceSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ResetServiceSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ServiceSettingNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ResetServiceSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResetServiceSettingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResolvedTargets": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceComplianceSummaryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceComplianceSummaryItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResourceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ResourceCountByStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncAWSKMSKeyARN": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncAwsOrganizationsSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncCountExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncCreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncDestinationDataSharing": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncDestinationDataSharingType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncEnableAllOpsDataSources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncIncludeFutureRegions": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncInvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncLastModifiedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncOrganizationSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncOrganizationalUnit": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncOrganizationalUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncOrganizationalUnitList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncS3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncS3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncS3Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncS3Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncS3Region": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncSourceRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncSourceRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncSourceWithState": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncState": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceDataSyncType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourcePolicyConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourcePolicyInvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourcePolicyLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourcePolicyMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ResourcePolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResourcePolicyParameterNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ResourceTypeForTagging": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#ResponseCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ResultAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResultAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ResumeSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#ResumeSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#ResumeSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ResumeSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ReviewInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ReviewInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ReviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#Reviewer": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Runbook": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Runbooks": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#S3OutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#S3OutputUrl": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#S3Region": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ScheduleOffset": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#ScheduledWindowExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ScheduledWindowExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#SendAutomationSignal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#SendAutomationSignalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationStepNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAutomationSignalException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#SendAutomationSignalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SendAutomationSignalResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SendCommand": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#SendCommandRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DuplicateInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidNotificationConfig"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidOutputFolder"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidParameters"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidRole"
+        },
+        {
+          "target": "com.amazonaws.ssm#MaxDocumentSizeExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#UnsupportedPlatformType"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#SendCommandRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SendCommandResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ServiceRole": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ServiceSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ServiceSettingId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ServiceSettingNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ServiceSettingValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SessionDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SessionFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#SessionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#SessionFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#SessionManagerCloudWatchOutputUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionManagerOutputUrl": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SessionManagerParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionManagerParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionManagerParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#SessionManagerParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#SessionManagerS3OutputUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#SessionOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#SessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#SessionTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SessionTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SeveritySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#SharedDocumentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SignalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#SnapshotDownloadUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SnapshotId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#StandardErrorContent": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StandardOutputContent": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StartAccessRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartAccessRequestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartAccessRequestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartAccessRequestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartAssociationsOnce": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartAssociationsOnceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAssociation"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartAssociationsOnceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartAssociationsOnceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartAutomationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartAutomationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationDefinitionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationDefinitionVersionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAutomationExecutionParametersException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTarget"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartAutomationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartAutomationExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartChangeRequestExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartChangeRequestExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationDefinitionNotApprovedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationDefinitionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationDefinitionVersionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAutomationExecutionParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartChangeRequestExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartChangeRequestExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartExecutionPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartExecutionPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartExecutionPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartExecutionPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StartSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#TargetNotConnected"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StartSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StartSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StatusAdditionalInfo": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StatusDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StatusName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StatusUnchanged": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StepExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StepExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StepExecutionFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#StepExecutionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#StepExecutionFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StepExecutionFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#StepExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#StepPreviewMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#StopAutomationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#StopAutomationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AutomationExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAutomationStatusUpdateException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#StopAutomationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StopAutomationExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#StopType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssm#StreamUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#String": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#String1to256": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StringDateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#SubTypeCountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TargetCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#TargetInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TargetKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TargetLocations": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TargetLocationsURL": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ssm#TargetMapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetMapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetMapValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TargetMaps": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TargetNotConnected": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TargetParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TargetPreview": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TargetPreviewList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TargetType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TargetValues": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#Targets": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#TerminateSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#TerminateSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#TerminateSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TerminateSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#TokenValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#TooManyTagsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TooManyUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#TotalCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssm#TotalSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#UnlabelParameterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UnlabelParameterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#ParameterVersionNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UnlabelParameterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnlabelParameterVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedCalendarException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedFeatureRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedInventoryItemContextException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedInventorySchemaVersionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedOperatingSystem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedParameterType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UnsupportedPlatformType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#AssociationVersionLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidAssociationVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidOutputLocation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidParameters"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidSchedule"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTarget"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidTargetMaps"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidUpdate"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateAssociationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateAssociationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#AssociationDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        },
+        {
+          "target": "com.amazonaws.ssm#StatusUnchanged"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateAssociationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateAssociationStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DocumentVersionLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.ssm#DuplicateDocumentContent"
+        },
+        {
+          "target": "com.amazonaws.ssm#DuplicateDocumentVersionName"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentContent"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentOperation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#MaxDocumentSizeExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateDocumentDefaultVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateDocumentDefaultVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateDocumentDefaultVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocumentDefaultVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocumentMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateDocumentMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocument"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentOperation"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateDocumentMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocumentMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateDocumentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateMaintenanceWindowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateMaintenanceWindowTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTargetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateMaintenanceWindowTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateMaintenanceWindowTaskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateManagedInstanceRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateManagedInstanceRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#InvalidInstanceId"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateManagedInstanceRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateManagedInstanceRoleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateOpsItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateOpsItemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsItemNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateOpsItemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateOpsItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateOpsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateOpsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataInvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataKeyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssm#OpsMetadataTooManyUpdatesException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateOpsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateOpsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdatePatchBaseline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdatePatchBaselineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#DoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdatePatchBaselineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdatePatchBaselineResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateResourceDataSync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateResourceDataSyncRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.ssm#ResourceDataSyncNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateResourceDataSyncRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateResourceDataSyncResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateServiceSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssm#UpdateServiceSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssm#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.ssm#ServiceSettingNotFound"
+        },
+        {
+          "target": "com.amazonaws.ssm#TooManyUpdates"
+        }
+      ]
+    },
+    "com.amazonaws.ssm#UpdateServiceSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#UpdateServiceSettingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ValidNextStep": {
+      "type": "string"
+    },
+    "com.amazonaws.ssm#ValidNextStepList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssm#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssm#Version": {
+      "type": "string"
+    }
+  }
+}

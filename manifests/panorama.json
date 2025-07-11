@@ -1,0 +1,1418 @@
+{
+  "shapes": {
+    "com.amazonaws.panorama#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#AlternateSoftwareMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#AlternateSoftwares": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ApplicationInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceHealthStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstanceStatusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ApplicationInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.panorama#Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Certificates": {
+      "type": "blob"
+    },
+    "com.amazonaws.panorama#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ConflictExceptionErrorArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ConflictExceptionErrorArgumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ConnectionType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#CreateApplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#CreateApplicationInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#CreateApplicationInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreateApplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreateJobForDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#CreateJobForDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#CreateJobForDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreateJobForDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreateNodeFromTemplateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#CreateNodeFromTemplateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#CreateNodeFromTemplateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreateNodeFromTemplateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#CreatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#CreatePackageImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#CreatePackageImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#CreatePackageImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreatePackageImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#CreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.panorama#CurrentSoftware": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DefaultGateway": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DefaultRuntimeContextDevice": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeleteDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DeleteDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DeleteDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeleteDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeletePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DeletePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DeletePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeletePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeregisterPackageVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DeregisterPackageVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DeregisterPackageVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeregisterPackageVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeApplicationInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstanceDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeApplicationInstanceDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstanceDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstanceDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeApplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeDeviceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeDeviceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeDeviceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeDeviceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeNodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeNodeFromTemplateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribeNodeFromTemplateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribeNodeFromTemplateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeNodeFromTemplateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeNodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribeNodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribePackageImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribePackageImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribePackageImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackageImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackageVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#DescribePackageVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#DescribePackageVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DescribePackageVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DesiredState": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeviceAggregatedStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceBrand": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceConnectionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#DeviceJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeviceJobConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#DeviceJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#DeviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#DeviceName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceReportedStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceSerialNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DeviceType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Dns": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#DnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#EthernetPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#EthernetStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#HwAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ImageVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#InputPortList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#IotThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#IpAddressOrServerName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#JobList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#JobResourceTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#JobResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#JobTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#JobType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#LastUpdatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.panorama#LatestAlternateSoftware": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#LatestDeviceJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#LatestSoftware": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#LeaseExpirationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceDependencies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListApplicationInstanceDependenciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceDependenciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceDependenciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceNodeInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListApplicationInstanceNodeInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceNodeInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListApplicationInstanceNodeInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListApplicationInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListApplicationInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListApplicationInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListApplicationInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListDevicesJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListDevicesJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListDevicesJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListDevicesJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListDevicesSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ListNodeFromTemplateJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListNodeFromTemplateJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListNodeFromTemplateJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListNodeFromTemplateJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListPackageImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListPackageImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListPackageImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListPackageImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListPackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListPackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListPackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ManifestOverridesPayload": {
+      "type": "union"
+    },
+    "com.amazonaws.panorama#ManifestOverridesPayloadData": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ManifestPayload": {
+      "type": "union"
+    },
+    "com.amazonaws.panorama#ManifestPayloadData": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#MarkLatestPatch": {
+      "type": "boolean"
+    },
+    "com.amazonaws.panorama#Mask": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#MaxConnections": {
+      "type": "integer"
+    },
+    "com.amazonaws.panorama#MaxSize25": {
+      "type": "integer"
+    },
+    "com.amazonaws.panorama#NameFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NetworkConnectionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NetworkPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NetworkStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Node": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeAssetName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeFromTemplateJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeFromTemplateJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#NodeFromTemplateJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeFromTemplateJobStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeInputPort": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeInstanceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#NodeInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeOutputPort": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodePackageArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodePackageId": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodePackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodePackagePatchVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodePackageVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodeSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NodeSignalList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#NodeSignalValue": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NodesList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#NtpPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#NtpServerList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#NtpServerName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#NtpStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#OTAJobConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#Object": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#OmniCloudServiceLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Panorama"
+        }
+      }
+    },
+    "com.amazonaws.panorama#OutPutS3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#OutputPortList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#PackageImportJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageImportJobInputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageImportJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#PackageImportJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageImportJobOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageImportJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PackageImportJobStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PackageImportJobType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#PackageListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageObjects": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#PackageOwnerAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PackageVersionInputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageVersionOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#PackageVersionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PackageVersionStatusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PortDefaultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PortName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PortType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PrincipalArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#PrincipalArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ProvisionDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#ProvisionDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#ProvisionDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ProvisionDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#RegisterPackageVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#RegisterPackageVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#RegisterPackageVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#RegisterPackageVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#RemoveApplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#RemoveApplicationInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#RemoveApplicationInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#RemoveApplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ReportedRuntimeContextState": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ReportedRuntimeContextStates": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.panorama#RuntimeContextName": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#RuntimeRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#SignalApplicationInstanceNodeInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#SignalApplicationInstanceNodeInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#SignalApplicationInstanceNodeInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#SignalApplicationInstanceNodeInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#SortOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#StaticIpConnectionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#StatusFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#StorageLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#String": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.panorama#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TemplateKey": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TemplateParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.panorama#TemplateType": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TemplateValue": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.panorama#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#UpdateCreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.panorama#UpdateDeviceMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.panorama#UpdateDeviceMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.panorama#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.panorama#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.panorama#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.panorama#UpdateDeviceMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#UpdateDeviceMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#UpdateProgress": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ValidationExceptionErrorArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ValidationExceptionErrorArgumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.panorama#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.panorama#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.panorama#Version": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,2482 @@
+{
+  "shapes": {
+    "com.amazonaws.chime#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#AccountSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#AccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#AccountType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#AlexaForBusinessMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Alpha2CountryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#AssociatePhoneNumberWithUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#AssociatePhoneNumberWithUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#AssociatePhoneNumberWithUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#AssociatePhoneNumberWithUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#AssociateSigninDelegateGroupsWithAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#AssociateSigninDelegateGroupsWithAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#AssociateSigninDelegateGroupsWithAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#AssociateSigninDelegateGroupsWithAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchCreateRoomMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchCreateRoomMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchCreateRoomMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchCreateRoomMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchDeletePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchDeletePhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchDeletePhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchDeletePhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchSuspendUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchSuspendUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchSuspendUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchSuspendUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUnsuspendUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchUnsuspendUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchUnsuspendUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUnsuspendUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUpdatePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchUpdatePhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchUpdatePhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUpdatePhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#BatchUpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#BatchUpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BatchUpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.chime#Bot": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#BotList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#BotType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#BusinessCallingSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CallingName": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#CallingNameStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ConversationRetentionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateBotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateBotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateBotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateMeetingDialOut": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateMeetingDialOutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateMeetingDialOutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateMeetingDialOutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreatePhoneNumberOrder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreatePhoneNumberOrderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreatePhoneNumberOrderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreatePhoneNumberOrderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateRoomMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateRoomMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateRoomMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateRoomMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeleteAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DeleteAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DeleteAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeleteAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeleteEventsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DeleteEventsConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DeleteEventsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeletePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DeletePhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DeletePhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeleteRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DeleteRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DeleteRoomMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DeleteRoomMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DeleteRoomMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DeleteRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DisassociatePhoneNumberFromUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DisassociatePhoneNumberFromUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DisassociatePhoneNumberFromUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DisassociatePhoneNumberFromUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DisassociateSigninDelegateGroupsFromAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#DisassociateSigninDelegateGroupsFromAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#DisassociateSigninDelegateGroupsFromAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#DisassociateSigninDelegateGroupsFromAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#E164PhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#E164PhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#EmailStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#EventsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetBotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetBotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetBotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetEventsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetEventsConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetEventsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetEventsConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetGlobalSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetPhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetPhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetPhoneNumberOrder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetPhoneNumberOrderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetPhoneNumberOrderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetPhoneNumberOrderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetPhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetPhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetPhoneNumberSettings": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetPhoneNumberSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetRetentionSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetRetentionSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetRetentionSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetRetentionSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetUserSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#GetUserSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#GetUserSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GetUserSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#GuidString": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#Invite": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#InviteList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#InviteStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#InviteUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#InviteUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#InviteUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#InviteUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Iso8601Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.chime#JoinTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#License": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#LicenseList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#ListAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListBots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListBotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListBotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListBotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListPhoneNumberOrders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListPhoneNumberOrdersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListPhoneNumberOrdersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListPhoneNumberOrdersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListPhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListPhoneNumbersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListPhoneNumbersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListPhoneNumbersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListRoomMemberships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListRoomMembershipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListRoomMembershipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListRoomMembershipsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListRooms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListRoomsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListRoomsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListRoomsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListSupportedPhoneNumberCountries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListSupportedPhoneNumberCountriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListSupportedPhoneNumberCountriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListSupportedPhoneNumberCountriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#LogoutUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#LogoutUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#LogoutUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#LogoutUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#MemberError": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#MemberErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#MemberType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#MembershipItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#MembershipItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#NonEmptyStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.chime#OrderedPhoneNumber": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#OrderedPhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#OrderedPhoneNumberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumber": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#PhoneNumberAssociationName": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumberCapabilities": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberCountriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#PhoneNumberCountry": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberError": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#PhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#PhoneNumberMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.chime#PhoneNumberOrder": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PhoneNumberOrderList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#PhoneNumberOrderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumberProductType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumberType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#PhoneNumberTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#ProfileServiceMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.chime#PutEventsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#PutEventsConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#PutEventsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PutEventsConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PutRetentionSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#PutRetentionSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#PutRetentionSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#PutRetentionSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RedactConversationMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#RedactConversationMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#RedactConversationMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RedactConversationMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RedactRoomMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#RedactRoomMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#RedactRoomMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RedactRoomMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RegenerateSecurityToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#RegenerateSecurityTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#RegenerateSecurityTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RegenerateSecurityTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RegistrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#ResetPersonalPIN": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#ResetPersonalPINRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#ResetPersonalPINRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ResetPersonalPINResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RestorePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#RestorePhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#RestorePhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RestorePhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ResultMax": {
+      "type": "integer"
+    },
+    "com.amazonaws.chime#RetentionDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.chime#RetentionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#Room": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RoomList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#RoomMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#RoomMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#RoomMembershipRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#RoomRetentionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#SearchAvailablePhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#SearchAvailablePhoneNumbersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#SearchAvailablePhoneNumbersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#SearchAvailablePhoneNumbersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#ServiceFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#SigninDelegateGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#SigninDelegateGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#String": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#TelephonySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#ThrottledClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#TollFreePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.chime#UCBuzzConsoleService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Chime"
+        }
+      }
+    },
+    "com.amazonaws.chime#UnauthorizedClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UnprocessableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateBotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateBotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateBotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateGlobalSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateGlobalSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdatePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdatePhoneNumberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberRequestItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberRequestItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdatePhoneNumberSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdatePhoneNumberSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateRoomMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateRoomMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateRoomMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateRoomMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateUserRequestItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateUserRequestItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UpdateUserSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.chime#UpdateUserSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.chime#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.chime#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.chime#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.chime#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.chime#ThrottledClientException"
+        },
+        {
+          "target": "com.amazonaws.chime#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.chime#UpdateUserSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UserEmailList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UserError": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UserErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UserIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.chime#UserSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.chime#UserType": {
+      "type": "enum"
+    },
+    "com.amazonaws.chime#VoiceConnectorSettings": {
+      "type": "structure"
+    }
+  }
+}

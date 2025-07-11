@@ -1,0 +1,3633 @@
+{
+  "shapes": {
+    "com.amazonaws.iotsitewise#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#AWSIoTSiteWise": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTSiteWise"
+        }
+      }
+    },
+    "com.amazonaws.iotsitewise#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AccessPolicySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AccessPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ActionDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ActionDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ActionPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ActionPayloadString": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ActionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ActionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AdaptiveIngestion": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#AggregateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AggregateTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AggregatedDoubleValue": {
+      "type": "double"
+    },
+    "com.amazonaws.iotsitewise#AggregatedValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AggregatedValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#Aggregates": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Alarms": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModelPath": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModelPathSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModelSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetCompositeModels": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#AssetHierarchies": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetHierarchy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetHierarchyInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelPath": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelPathSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelCompositeModels": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelHierarchies": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelHierarchy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelHierarchyDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelHierarchyDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertyDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertyDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertyPath": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertyPathSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelPropertySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetModelStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetModelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetModelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetModelVersionFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#AssetModelVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyPath": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyPathSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyValueHistory": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetPropertyValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetRelationshipSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetRelationshipSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetRelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#AssetStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssociateAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#AssociateAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#AssociateAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssociateTimeSeriesToAssetProperty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#AssociateTimeSeriesToAssetPropertyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#AssociateTimeSeriesToAssetPropertyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AssociatedAssetsSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#AssociatedAssetsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#AuthMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchAssociateProjectAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchAssociateProjectAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchAssociateProjectAssetsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchAssociateProjectAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchAssociateProjectAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchDisassociateProjectAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchDisassociateProjectAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchDisassociateProjectAssetsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchDisassociateProjectAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchDisassociateProjectAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchEntryCompletionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesSkippedEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesSkippedEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesSuccessEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregatesSuccessEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistorySkippedEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistorySkippedEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistorySuccessEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistorySuccessEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueSkippedEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueSkippedEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueSuccessEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueSuccessEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#BatchPutAssetPropertyValueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyValueErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyValueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BatchPutAssetPropertyValueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#BooleanValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CapabilityConfiguration": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CapabilityNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CapabilitySyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#Citation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Citations": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ColumnInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ColumnName": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ColumnNames": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ColumnType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ColumnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#CompositeModelProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CompositionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CompositionRelationship": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#CompositionRelationshipItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CompositionRelationshipSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#CompositionRelationshipSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ComputeLocation": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ConfigurationErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ConfigurationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ConfigurationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ConflictingOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Content": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ConversationId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CoreDeviceOperatingSystem": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#CoreDeviceThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CreateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateAssetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModelCompositeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateAssetModelCompositeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModelCompositeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModelCompositeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAssetModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateBulkImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateBulkImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateBulkImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateBulkImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreatePortal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreatePortalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreatePortalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreatePortalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CreateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Csv": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#CustomID": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#CustomerManagedS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DashboardDefinition": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#DashboardSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#DashboardSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DataSetReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DatasetSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DatasetSourceFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#DatasetSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#DatasetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#DatasetStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DatasetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#DatasetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Datum": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DatumList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#DefaultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#DeleteAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteAssetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModelCompositeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteAssetModelCompositeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModelCompositeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModelCompositeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteFilesAfterImport": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#DeleteGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeletePortal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeletePortalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeletePortalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeletePortalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DeleteTimeSeries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DeleteTimeSeriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DeleteTimeSeriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetCompositeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAssetCompositeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetCompositeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetCompositeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAssetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModelCompositeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAssetModelCompositeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModelCompositeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModelCompositeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetProperty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeAssetPropertyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetPropertyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetPropertyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeBulkImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeBulkImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeBulkImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeBulkImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDefaultEncryptionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeDefaultEncryptionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeDefaultEncryptionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeDefaultEncryptionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeGatewayCapabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeGatewayCapabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeGatewayCapabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeGatewayCapabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeLoggingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribePortal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribePortalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribePortalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribePortalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeStorageConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeStorageConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeStorageConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeStorageConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeTimeSeries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DescribeTimeSeriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DescribeTimeSeriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DescribeTimeSeriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#DetailedError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DetailedErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#DetailedErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#DetailedErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#DisallowIngestNullNaN": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#DisassociateAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DisassociateAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DisassociateAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DisassociateTimeSeriesFromAssetProperty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#DisassociateTimeSeriesFromAssetPropertyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#DisassociateTimeSeriesFromAssetPropertyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#DisassociatedDataStorageState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ETag": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#Email": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#EntryId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ErrorReportLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ExcludeProperties": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#ExecuteAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ExecuteActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ExecuteActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ExecuteActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ExecuteQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ExecuteQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ExecuteQueryMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#ExecuteQueryNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ExecuteQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ExecuteQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Expression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ExpressionVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ExpressionVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ExternalId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#File": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#FileFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Files": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ForwardingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ForwardingConfigState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#GatewayCapabilitySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#GatewayCapabilitySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GatewayName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#GatewayPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GatewaySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#GatewaySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GatewayVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyAggregates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#GetAssetPropertyAggregatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyAggregatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyAggregatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#GetAssetPropertyValueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueAggregatesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#GetAssetPropertyValueHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueHistoryMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetAssetPropertyValueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetInterpolatedAssetPropertyValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#GetInterpolatedAssetPropertyValuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#GetInterpolatedAssetPropertyValuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GetInterpolatedAssetPropertyValuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Greengrass": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GreengrassV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#GroupIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#IAMRoleIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#IAMUserIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ID": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#IDs": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#IamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#Identity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#IdentityId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#IdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#Image": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ImageFile": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ImageFileData": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotsitewise#ImageFileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ImageLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InterpolatedAssetPropertyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InterpolatedAssetPropertyValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#InterpolationType": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#Interval": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#IntervalInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.iotsitewise#IntervalWindowInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.iotsitewise#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InvocationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InvokeAssistant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#InvokeAssistantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#InvokeAssistantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#InvokeAssistantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#IotCoreThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#JobConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#JobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#JobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#KendraSourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelCompositeModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetModelCompositeModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelCompositeModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelCompositeModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetModelPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelPropertiesFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelPropertiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetModelsTypeFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ListAssetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetPropertiesFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ListAssetPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetPropertiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetRelationships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetRelationshipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetRelationshipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetRelationshipsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssetsFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ListAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssociatedAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListAssociatedAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListAssociatedAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListAssociatedAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListBulkImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListBulkImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListBulkImportJobsFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ListBulkImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListBulkImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListCompositionRelationships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListCompositionRelationshipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListCompositionRelationshipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListCompositionRelationshipsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListDashboards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListDashboardsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListDashboardsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListDashboardsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListGateways": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListGatewaysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListGatewaysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListGatewaysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListPortals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListPortalsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListPortalsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListPortalsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListProjectAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListProjectAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListProjectAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListProjectAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListTimeSeries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#ListTimeSeriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#ListTimeSeriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListTimeSeriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ListTimeSeriesType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#LoggingLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#LoggingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Macro": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#MaxInterpolatedResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#Measurement": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MeasurementProcessingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MessageInput": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MetricProcessingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MetricWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MonitorErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#MonitorErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#MonitorErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#MultiLayerStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#NumberOfDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#Offset": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#OffsetInNanos": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#Parquet": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#PortalClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PortalResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PortalState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#PortalStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PortalSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#PortalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PortalTools": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#PortalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#PortalTypeConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.iotsitewise#PortalTypeEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PortalTypeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PreconditionFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ProjectResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ProjectSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#ProjectSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Property": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PropertyAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PropertyDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#PropertyNotification": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PropertyNotificationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#PropertyNotificationTopic": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PropertyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PropertyUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PropertyValueBooleanValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#PropertyValueDoubleValue": {
+      "type": "double"
+    },
+    "com.amazonaws.iotsitewise#PropertyValueIntegerValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsitewise#PropertyValueNullValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PropertyValueStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#PutAssetPropertyValueEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#PutAssetPropertyValueEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutDefaultEncryptionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#PutDefaultEncryptionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#PutDefaultEncryptionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutDefaultEncryptionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#PutLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#PutLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutLoggingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutStorageConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#PutStorageConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#PutStorageConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#PutStorageConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Qualities": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#Quality": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#QueryStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#QueryTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#RawValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#Reference": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Resolution": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ResponseStream": {
+      "type": "union"
+    },
+    "com.amazonaws.iotsitewise#RestrictedDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#RestrictedName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#RetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Row": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Rows": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#SSOApplicationId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ScalarType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ScalarValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#SelectAll": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#SiemensIE": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#SourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#StorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#String": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iotsitewise#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#TargetResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TargetResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TimeInNanos": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TimeInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.iotsitewise#TimeOrdering": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#TimeSeriesId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#TimeSeriesSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#TimeSeriesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotsitewise#Timestamps": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsitewise#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Trace": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Transform": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TransformProcessingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#TraversalDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#TraversalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsitewise#TumblingWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Unlimited": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsitewise#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateAssetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModelCompositeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateAssetModelCompositeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModelCompositeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModelCompositeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetProperty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateAssetPropertyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetPropertyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateDashboardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateDashboardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateDashboardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateGatewayCapabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateGatewayCapabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateGatewayCapabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateGatewayCapabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdatePortal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdatePortalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#ConflictingOperationException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdatePortalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdatePortalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsitewise#UpdateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsitewise#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsitewise#UpdateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#UpdateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#UserIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#VariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#VariableValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Variant": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsitewise#WarmTierRetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsitewise#WarmTierState": {
+      "type": "enum"
+    }
+  }
+}

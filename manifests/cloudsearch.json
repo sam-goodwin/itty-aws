@@ -1,0 +1,973 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudsearch#A9SearchCloudConfigService2013": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudSearch"
+        }
+      }
+    },
+    "com.amazonaws.cloudsearch#APIVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#AccessPoliciesStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#AlgorithmicStemming": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#AnalysisOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#AnalysisScheme": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#AnalysisSchemeLanguage": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#AnalysisSchemeStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#AnalysisSchemeStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#AvailabilityOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#BaseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudsearch#BuildSuggesters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#BuildSuggestersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#BuildSuggestersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#BuildSuggestersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#CreateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#CreateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#CreateDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DateArrayOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DateOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineAnalysisScheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DefineAnalysisSchemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DefineAnalysisSchemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineAnalysisSchemeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DefineExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DefineExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineIndexField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DefineIndexFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DefineIndexFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineIndexFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineSuggester": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DefineSuggesterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DefineSuggesterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DefineSuggesterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteAnalysisScheme": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DeleteAnalysisSchemeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DeleteAnalysisSchemeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteAnalysisSchemeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DeleteDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DeleteDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DeleteExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DeleteExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteIndexField": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DeleteIndexFieldRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DeleteIndexFieldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteIndexFieldResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteSuggester": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DeleteSuggesterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DeleteSuggesterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DeleteSuggesterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeAnalysisSchemes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeAnalysisSchemesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeAnalysisSchemesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeAnalysisSchemesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeAvailabilityOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeAvailabilityOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeAvailabilityOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeAvailabilityOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeDomainEndpointOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeDomainEndpointOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeDomainEndpointOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeDomainEndpointOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeExpressions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeExpressionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeExpressionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeExpressionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeIndexFields": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeIndexFieldsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeIndexFieldsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeIndexFieldsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeScalingParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeScalingParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeScalingParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeScalingParametersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeServiceAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeServiceAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeServiceAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeServiceAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeSuggesters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#DescribeSuggestersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#DescribeSuggestersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DescribeSuggestersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DisabledOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DocumentSuggesterOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DomainEndpointOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DomainEndpointOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DomainId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#DomainNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#DomainNameMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudsearch#DomainStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DomainStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudsearch#DoubleArrayOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DoubleOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#DynamicFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#DynamicFieldNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#Expression": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ExpressionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ExpressionStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#ExpressionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#FieldNameCommaList": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#FieldNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#FieldValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#IndexDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#IndexDocumentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#IndexDocumentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#IndexDocumentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#IndexField": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#IndexFieldStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#IndexFieldStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#IndexFieldType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#InstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudsearch#IntArrayOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#IntOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#InvalidTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#LatLonOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#Limits": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ListDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#ListDomainNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#LiteralArrayOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#LiteralOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudsearch#MaximumPartitionCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudsearch#MaximumReplicationCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudsearch#MultiAZ": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudsearch#OptionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#OptionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#PartitionCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudsearch#PartitionInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ScalingParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ScalingParametersStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#SearchInstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#ServiceEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#ServiceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#StandardName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#StandardNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudsearch#Suggester": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#SuggesterFuzzyMatching": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#SuggesterStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#SuggesterStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudsearch#TLSSecurityPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudsearch#TextArrayOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#TextOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UIntValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudsearch#UpdateAvailabilityOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#UpdateAvailabilityOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#UpdateAvailabilityOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateAvailabilityOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateDomainEndpointOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#UpdateDomainEndpointOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#UpdateDomainEndpointOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateDomainEndpointOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateScalingParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#UpdateScalingParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#UpdateScalingParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateScalingParametersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateServiceAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudsearch#UpdateServiceAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudsearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudsearch#UpdateServiceAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateServiceAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#UpdateTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudsearch#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudsearch#Word": {
+      "type": "string"
+    }
+  }
+}

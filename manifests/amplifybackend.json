@@ -1,0 +1,1022 @@
+{
+  "shapes": {
+    "com.amazonaws.amplifybackend#AdditionalConstraintsElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#AmplifyBackend": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AmplifyBackend"
+        }
+      }
+    },
+    "com.amazonaws.amplifybackend#AuthResources": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#AuthenticatedElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#BackendAPIAppSyncAuthSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendAPIAuthType": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendAPIConflictResolution": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendAPIResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendAuthAppleProviderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendAuthSocialProviderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendJobRespObj": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BackendStoragePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CloneBackend": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CloneBackendRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CloneBackendRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CloneBackendResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackend": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateBackendRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAPI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateBackendAPIRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAPIRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAPIResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateBackendAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthForgotPasswordConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthIdentityPoolConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthMFAConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthOAuthConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthPasswordPolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthUserPoolConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendAuthVerificationMessageConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateBackendConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateBackendConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateBackendStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateBackendStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendStorageResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateBackendStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#CreateTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#CreateTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#CreateTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackend": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#DeleteBackendRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAPI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#DeleteBackendAPIRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAPIRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAPIResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#DeleteBackendAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#DeleteBackendStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteBackendStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#DeleteTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#DeleteTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeleteTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#DeliveryMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#EmailSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GatewayTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GenerateBackendAPIModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GenerateBackendAPIModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GenerateBackendAPIModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GenerateBackendAPIModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackend": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendAPIRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPIModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendAPIModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPIModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPIModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPIRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendAPIResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetBackendStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetBackendStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendStorageResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetBackendStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#GetTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#GetTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#GetTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ImportBackendAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#ImportBackendAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#ImportBackendAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ImportBackendAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ImportBackendStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#ImportBackendStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#ImportBackendStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ImportBackendStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ListBackendJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#ListBackendJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#ListBackendJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ListBackendJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ListOfAdditionalConstraintsElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfAuthenticatedElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfBackendAPIAuthType": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfBackendJobRespObj": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfMfaTypesElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfOAuthScopesElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfRequiredSignUpAttributesElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfS3BucketInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOfUnAuthenticatedElement": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.amplifybackend#ListS3Buckets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#ListS3BucketsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#ListS3BucketsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#ListS3BucketsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#LoginAuthConfigReqObj": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#MFAMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#MfaTypesElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#OAuthGrantType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#OAuthScopesElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#RemoveAllBackends": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#RemoveAllBackendsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#RemoveAllBackendsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#RemoveAllBackendsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#RemoveBackendConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#RemoveBackendConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#RemoveBackendConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#RemoveBackendConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#RequiredSignUpAttributesElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#ResolutionStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#ResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#S3BucketInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#Service": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#ServiceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#SignInMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#SmsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#SocialProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UnAuthenticatedElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAPI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#UpdateBackendAPIRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAPIRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAPIResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#UpdateBackendAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthForgotPasswordConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthIdentityPoolConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthMFAConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthOAuthConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthPasswordPolicyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthUserPoolConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendAuthVerificationMessageConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#UpdateBackendConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#UpdateBackendJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplifybackend#UpdateBackendStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplifybackend#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GatewayTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendStorageResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#UpdateBackendStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplifybackend#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplifybackend#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.amplifybackend#__integerMin1Max25": {
+      "type": "integer"
+    },
+    "com.amazonaws.amplifybackend#__string": {
+      "type": "string"
+    }
+  }
+}

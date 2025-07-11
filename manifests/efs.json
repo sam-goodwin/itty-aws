@@ -1,0 +1,1187 @@
+{
+  "shapes": {
+    "com.amazonaws.efs#AccessPointAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#AccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#AccessPointDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#AccessPointDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#AccessPointId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#AccessPointLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#AccessPointNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#AvailabilityZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#AvailabilityZoneName": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#AvailabilityZonesMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#Backup": {
+      "type": "boolean"
+    },
+    "com.amazonaws.efs#BackupPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#BackupPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#BadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#BypassPolicyLockoutSafetyCheck": {
+      "type": "boolean"
+    },
+    "com.amazonaws.efs#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreateAccessPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#CreateAccessPointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.efs#AccessPointLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#CreateAccessPointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreateFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#CreateFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#InsufficientThroughputCapacity"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ThroughputLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#UnsupportedAvailabilityZone"
+        }
+      ]
+    },
+    "com.amazonaws.efs#CreateFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreateMountTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#CreateMountTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AvailabilityZonesMismatch"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#IpAddressInUse"
+        },
+        {
+          "target": "com.amazonaws.efs#MountTargetConflict"
+        },
+        {
+          "target": "com.amazonaws.efs#NetworkInterfaceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#NoFreeAddressesInSubnet"
+        },
+        {
+          "target": "com.amazonaws.efs#SecurityGroupLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#SecurityGroupNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#SubnetNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#UnsupportedAvailabilityZone"
+        }
+      ]
+    },
+    "com.amazonaws.efs#CreateMountTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreateReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#CreateReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InsufficientThroughputCapacity"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ReplicationNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#ThroughputLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#UnsupportedAvailabilityZone"
+        },
+        {
+          "target": "com.amazonaws.efs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#CreateReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreateTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#CreateTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#CreateTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#CreationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#DeleteAccessPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteAccessPointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteAccessPointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeleteFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemInUse"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteFileSystemPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteFileSystemPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteFileSystemPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeleteFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeleteMountTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteMountTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#DependencyTimeout"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#MountTargetNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteMountTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeleteReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ReplicationNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeleteTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DeleteTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DeleteTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DeletionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#DependencyTimeout": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeAccessPoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeAccessPointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeAccessPointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeAccessPointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeAccountPreferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeAccountPreferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeAccountPreferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeAccountPreferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeBackupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeBackupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#PolicyNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeBackupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeFileSystemPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeFileSystemPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#PolicyNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeFileSystemPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeFileSystems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeFileSystemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeFileSystemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeFileSystemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeLifecycleConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeLifecycleConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeLifecycleConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeMountTargetSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeMountTargetSecurityGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectMountTargetState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#MountTargetNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeMountTargetSecurityGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeMountTargetSecurityGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeMountTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeMountTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#MountTargetNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeMountTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeMountTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeReplicationConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeReplicationConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ReplicationNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeReplicationConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeReplicationConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#DescribeTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#DescribeTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DescribeTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#DestinationToCreate": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#Destinations": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#DestinationsToCreate": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#Encrypted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.efs#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#FileSystemAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#FileSystemDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#FileSystemId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#FileSystemInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemNullableSizeValue": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#FileSystemPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemProtectionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#FileSystemSizeValue": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#Gid": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#IncorrectFileSystemLifeCycleState": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#IncorrectMountTargetState": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#InsufficientThroughputCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#InvalidPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#IpAddressInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Ipv6Address": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#LifeCycleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#LifecycleConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#LifecyclePolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#LifecyclePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#MagnolioAPIService_v20150201": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EFS"
+        }
+      }
+    },
+    "com.amazonaws.efs#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.efs#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.efs#ModifyMountTargetSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#ModifyMountTargetSecurityGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectMountTargetState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#MountTargetNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#SecurityGroupLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#SecurityGroupNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.efs#ModifyMountTargetSecurityGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#MountTargetConflict": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#MountTargetCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.efs#MountTargetDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#MountTargetDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#MountTargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#MountTargetNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#NetworkInterfaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#NetworkInterfaceLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#NoFreeAddressesInSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#OwnerGid": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#OwnerUid": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#Path": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#PerformanceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Permissions": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#PolicyNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#PosixUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ProvisionedThroughputInMibps": {
+      "type": "double"
+    },
+    "com.amazonaws.efs#PutAccountPreferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#PutAccountPreferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#PutAccountPreferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#PutAccountPreferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#PutBackupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#PutBackupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#PutBackupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#PutFileSystemPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#PutFileSystemPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#InvalidPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.efs#PutFileSystemPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#PutLifecycleConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#PutLifecycleConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#PutLifecycleConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#RegionName": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#ReplicationAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ReplicationConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ReplicationConfigurationDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#ReplicationNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ReplicationOverwriteProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#ReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Resource": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#ResourceIdPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ResourceIdType": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Resources": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#RootDirectory": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#SecondaryGids": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#SecurityGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#SecurityGroupLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#SecurityGroupNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#SubnetNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.efs#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ThroughputLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ThroughputMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.efs#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.efs#TooManyRequests": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#TransitionToArchiveRules": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#TransitionToIARules": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#TransitionToPrimaryStorageClassRules": {
+      "type": "enum"
+    },
+    "com.amazonaws.efs#Uid": {
+      "type": "long"
+    },
+    "com.amazonaws.efs#UnsupportedAvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#AccessPointNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.efs#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#UpdateFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#UpdateFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InsufficientThroughputCapacity"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ThroughputLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#TooManyRequests"
+        }
+      ]
+    },
+    "com.amazonaws.efs#UpdateFileSystemProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.efs#UpdateFileSystemProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.efs#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.efs#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.efs#IncorrectFileSystemLifeCycleState"
+        },
+        {
+          "target": "com.amazonaws.efs#InsufficientThroughputCapacity"
+        },
+        {
+          "target": "com.amazonaws.efs#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.efs#ReplicationAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.efs#ThroughputLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.efs#TooManyRequests"
+        }
+      ]
+    },
+    "com.amazonaws.efs#UpdateFileSystemProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#UpdateFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.efs#VpcId": {
+      "type": "string"
+    }
+  }
+}

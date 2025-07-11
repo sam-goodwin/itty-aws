@@ -1,0 +1,5552 @@
+{
+  "shapes": {
+    "com.amazonaws.codecommit#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ActorDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#AdditionalData": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#Approval": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ApprovalRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleContent": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleNameAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleOverriddenEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateContent": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateNameAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ApprovalRulesNotSatisfiedList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ApprovalRulesSatisfiedList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ApprovalState": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ApprovalStateChangedEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ApprovalStateRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Approved": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#AssociateApprovalRuleTemplateWithRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#AssociateApprovalRuleTemplateWithRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRuleTemplatesAssociatedWithRepositoryException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#AssociateApprovalRuleTemplateWithRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#AuthorDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositoriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRepositoryNamesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNamesRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositoriesError": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositoriesErrorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositoriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositoriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDescribeMergeConflicts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#BatchDescribeMergeConflictsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxConflictFilesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxMergeHunksException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMergeOptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeOptionRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#BatchDescribeMergeConflictsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDescribeMergeConflictsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BatchDescribeMergeConflictsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDescribeMergeConflictsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositoriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRepositoryNamesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNamesRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositoriesError": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositoriesErrorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositoriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetCommits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#BatchGetCommitsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitIdsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdsListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#BatchGetCommitsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetCommitsErrorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BatchGetCommitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetCommitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#BatchGetRepositoriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRepositoryNamesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNamesRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#BatchGetRepositoriesError": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetRepositoriesErrorCodeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#BatchGetRepositoriesErrorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BatchGetRepositoriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BatchGetRepositoriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BeforeCommitIdAndAfterCommitIdAreSameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BlobIdDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BlobIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BlobMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BranchDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BranchInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BranchName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#BranchNameExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BranchNameIsTagNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#BranchNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#BranchNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CallerReactions": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#CannotDeleteApprovalRuleFromTemplateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CannotModifyApprovalRuleFromTemplateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CapitalBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#ChangeTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ClientRequestTokenRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CloneUrlHttp": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#CloneUrlSsh": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#CodeCommit_20150413": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CodeCommit"
+        }
+      }
+    },
+    "com.amazonaws.codecommit#Comment": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentContentSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentDeletedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#CommentIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentNotCreatedByCallerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Comments": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#CommentsForComparedCommit": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentsForComparedCommitData": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#CommentsForPullRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommentsForPullRequestData": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#Commit": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#CommitIdDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitIdsInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#CommitIdsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitIdsListRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitMessageLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CommitName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#CommitObjectsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#CommitRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ConcurrentReferenceUpdateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Conflict": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ConflictDetailLevelTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ConflictMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ConflictMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ConflictResolution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ConflictResolutionStrategyTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#Conflicts": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#Content": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#Count": {
+      "type": "integer"
+    },
+    "com.amazonaws.codecommit#CreateApprovalRuleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreateApprovalRuleTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NumberOfRuleTemplatesExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreateApprovalRuleTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateApprovalRuleTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreateBranchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchNameExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreateBranchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreateCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DirectoryNameConflictsWithFileNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentAndSourceFileSpecifiedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileEntryRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileModeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileNameConflictsWithDirectoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FilePathConflictsWithSubmodulePathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidDeletionParameterException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidParentCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NoChangeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdOutdatedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PutFileEntryConflictException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RestrictedSourceFileException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#SamePathRequestException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#SourceFileOrContentRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreateCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreatePullRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreatePullRequestInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ClientRequestTokenRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#IdempotencyParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidClientRequestTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReferenceNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTargetException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTargetsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTitleException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumOpenPullRequestsExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleRepositoriesInPullRequestException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReferenceDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReferenceNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReferenceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#SourceAndDestinationAreSameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TargetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TargetsRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TitleRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreatePullRequestApprovalRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreatePullRequestApprovalRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleNameAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NumberOfRulesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreatePullRequestApprovalRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreatePullRequestApprovalRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreatePullRequestInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreatePullRequestOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreateRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyInvalidIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyInvalidUsageException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidSystemTagUsageException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTagsMapException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#OperationNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreateRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateRepositoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateUnreferencedMergeCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#CreateUnreferencedMergeCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileModeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMergeOptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeOptionRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementTypeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#CreateUnreferencedMergeCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreateUnreferencedMergeCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#CreationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codecommit#Date": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#DefaultBranchCannotBeDeletedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteApprovalRuleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeleteApprovalRuleTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateInUseException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeleteApprovalRuleTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteApprovalRuleTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeleteBranchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DefaultBranchCannotBeDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeleteBranchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteBranchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteCommentContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeleteCommentContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommentDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeleteCommentContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteCommentContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeleteFileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidParentCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdOutdatedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeleteFileEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#DeleteFileEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteFileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteFileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeletePullRequestApprovalRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeletePullRequestApprovalRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CannotDeleteApprovalRuleFromTemplateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeletePullRequestApprovalRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeletePullRequestApprovalRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DeleteRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DeleteRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DeleteRepositoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DescribeMergeConflicts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DescribeMergeConflictsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxMergeHunksException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMergeOptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeOptionRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DescribeMergeConflictsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DescribeMergeConflictsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DescribePullRequestEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DescribePullRequestEventsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ActorDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidActorArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestEventTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DescribePullRequestEventsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DescribePullRequestEventsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#Difference": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DifferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#DirectoryNameConflictsWithFileNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#DisassociateApprovalRuleTemplateFromRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#DisassociateApprovalRuleTemplateFromRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#DisassociateApprovalRuleTemplateFromRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Email": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyInvalidIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyInvalidUsageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EncryptionKeyUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#EvaluatePullRequestApprovalRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#EvaluatePullRequestApprovalRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionNotCurrentException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#EvaluatePullRequestApprovalRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EvaluatePullRequestApprovalRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Evaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#EventDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codecommit#ExceptionName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#File": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileContent": {
+      "type": "blob"
+    },
+    "com.amazonaws.codecommit#FileContentAndSourceFileSpecifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileContentSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileEntryRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#FileMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileModeRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileModeTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#FileModes": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileNameConflictsWithDirectoryNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FilePathConflictsWithSubmodulePathException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FilePaths": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#FileSize": {
+      "type": "long"
+    },
+    "com.amazonaws.codecommit#FileSizes": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FileVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FilesMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#Folder": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FolderContentSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FolderDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#FolderList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#GetApprovalRuleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetApprovalRuleTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetApprovalRuleTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetApprovalRuleTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetBlobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BlobIdDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BlobIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBlobIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetBlobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetBlobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetBranchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetBranchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetBranchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetCommentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommentDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetCommentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentReactions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetCommentReactionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommentDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReactionUserArnException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetCommentReactionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentReactionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentsForComparedCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetCommentsForComparedCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetCommentsForComparedCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentsForComparedCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentsForPullRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetCommentsForPullRequestInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetCommentsForPullRequestInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommentsForPullRequestOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitIdDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetDifferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetDifferencesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetDifferencesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetDifferencesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetFileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetFileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetFileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetFolderInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetFolderInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetFolderOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetMergeCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetMergeCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeConflicts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetMergeConflictsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidDestinationCommitSpecifierException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxConflictFilesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMergeOptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidSourceCommitSpecifierException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeOptionRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetMergeConflictsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeConflictsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetMergeOptionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetMergeOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetMergeOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetPullRequestInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetPullRequestApprovalStates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetPullRequestApprovalStatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetPullRequestApprovalStatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequestApprovalStatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequestInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequestOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequestOverrideState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetPullRequestOverrideStateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetPullRequestOverrideStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetPullRequestOverrideStateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetRepositoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetRepositoryTriggers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#GetRepositoryTriggersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#GetRepositoryTriggersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#GetRepositoryTriggersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#HunkContent": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#IdempotencyParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidActorArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalRuleContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalRuleNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalRuleTemplateContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalRuleTemplateDescriptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidApprovalStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidAuthorArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidBlobIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidBranchNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidClientRequestTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidCommentIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidCommitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidCommitIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidConflictDetailLevelException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidConflictResolutionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidContinuationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidDeletionParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidDescriptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidDestinationCommitSpecifierException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidEmailException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidFileLocationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidFileModeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidFilePositionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidMaxConflictFilesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidMaxMergeHunksException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidMaxResultsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidMergeOptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidOrderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidOverrideStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidParentCommitIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidPathException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidPullRequestEventTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidPullRequestIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidPullRequestStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidPullRequestStatusUpdateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidReactionUserArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidReactionValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidReferenceNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRelativeFileVersionEnumException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidReplacementContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidReplacementTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryDescriptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerBranchNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerCustomDataException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerDestinationArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerEventsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRepositoryTriggerRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidResourceArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRevisionIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidRuleContentSha256Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidSortByException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidSourceCommitSpecifierException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidSystemTagUsageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTagKeysListException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTagsMapException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTargetBranchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTargetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTargetsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#InvalidTitleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#IsBinaryFile": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#IsCommentDeleted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsContentConflict": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsFileModeConflict": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsHunkConflict": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsMergeable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsMerged": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsMove": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#IsObjectTypeConflict": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#KeepEmptyFolders": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#LastModifiedDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codecommit#Limit": {
+      "type": "integer"
+    },
+    "com.amazonaws.codecommit#LineNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.codecommit#ListApprovalRuleTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListApprovalRuleTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListApprovalRuleTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListApprovalRuleTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListAssociatedApprovalRuleTemplatesForRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListAssociatedApprovalRuleTemplatesForRepositoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListAssociatedApprovalRuleTemplatesForRepositoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListAssociatedApprovalRuleTemplatesForRepositoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListBranches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListBranchesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListBranchesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListBranchesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListFileCommitHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListFileCommitHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListFileCommitHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListFileCommitHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListPullRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListPullRequestsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#AuthorDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidAuthorArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestStatusException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListPullRequestsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListPullRequestsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListRepositoriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidOrderException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidSortByException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListRepositoriesForApprovalRuleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListRepositoriesForApprovalRuleTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidContinuationTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidMaxResultsException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListRepositoriesForApprovalRuleTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListRepositoriesForApprovalRuleTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListRepositoriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListRepositoriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidResourceArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ResourceArnRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ManualMergeRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codecommit#MaximumBranchesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumFileEntriesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumItemsToCompareExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumNumberOfApprovalsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumOpenPullRequestsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumRepositoryNamesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumRepositoryTriggersExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MaximumRuleTemplatesAssociatedWithRepositoryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesByFastForward": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergeBranchesByFastForwardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTargetBranchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergeBranchesByFastForwardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesByFastForwardOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesBySquash": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergeBranchesBySquashInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileModeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTargetBranchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementTypeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergeBranchesBySquashInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesBySquashOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesByThreeWay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergeBranchesByThreeWayInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileModeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTargetBranchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementTypeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergeBranchesByThreeWayInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeBranchesByThreeWayOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeHunk": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeHunkDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeHunks": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#MergeMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeOperations": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeOptionRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergeOptionTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#MergeOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#MergePullRequestByFastForward": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergePullRequestByFastForwardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestApprovalRulesNotSatisfiedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReferenceDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipOfSourceReferenceIsDifferentException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergePullRequestByFastForwardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergePullRequestByFastForwardOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergePullRequestBySquash": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergePullRequestBySquashInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestApprovalRulesNotSatisfiedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementTypeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipOfSourceReferenceIsDifferentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergePullRequestBySquashInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergePullRequestBySquashOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergePullRequestByThreeWay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#MergePullRequestByThreeWayInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ConcurrentReferenceUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictDetailLevelException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidConflictResolutionStrategyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReplacementTypeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ManualMergeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumConflictResolutionEntriesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumFileContentToLoadExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumItemsToCompareExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestApprovalRulesNotSatisfiedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReplacementTypeRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipOfSourceReferenceIsDifferentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TipsDivergenceExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#MergePullRequestByThreeWayInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MergePullRequestByThreeWayOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#Mode": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#MultipleConflictResolutionEntriesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#MultipleRepositoriesInPullRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#NameLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#NoChangeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#NumberOfConflicts": {
+      "type": "integer"
+    },
+    "com.amazonaws.codecommit#NumberOfRuleTemplatesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#NumberOfRulesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ObjectId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ObjectSize": {
+      "type": "long"
+    },
+    "com.amazonaws.codecommit#ObjectTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ObjectTypes": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#OperationNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#OrderEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#OriginApprovalRuleTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Overridden": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codecommit#OverrideAlreadySetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#OverridePullRequestApprovalRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#OverridePullRequestApprovalRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidOverrideStatusException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#OverrideAlreadySetException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#OverrideStatusRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionNotCurrentException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#OverridePullRequestApprovalRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#OverrideStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#OverrideStatusRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ParentCommitDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ParentCommitIdOutdatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ParentCommitIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ParentList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#Path": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#PathDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PathRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Position": {
+      "type": "long"
+    },
+    "com.amazonaws.codecommit#PostCommentForComparedCommit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PostCommentForComparedCommitInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BeforeCommitIdAndAfterCommitIdAreSameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ClientRequestTokenRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#IdempotencyParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidClientRequestTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileLocationException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFilePositionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRelativeFileVersionEnumException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PostCommentForComparedCommitInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PostCommentForComparedCommitOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PostCommentForPullRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PostCommentForPullRequestInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BeforeCommitIdAndAfterCommitIdAreSameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ClientRequestTokenRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#IdempotencyParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidClientRequestTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileLocationException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFilePositionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRelativeFileVersionEnumException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PostCommentForPullRequestInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PostCommentForPullRequestOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PostCommentReply": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PostCommentReplyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ClientRequestTokenRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#IdempotencyParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidClientRequestTokenException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PostCommentReplyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PostCommentReplyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestAlreadyClosedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestApprovalRulesNotSatisfiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestCannotBeApprovedByAuthorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestCreatedEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#PullRequestEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#PullRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#PullRequestIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#PullRequestIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestMergedStateChangedEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestSourceReferenceUpdatedEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestStatusChangedEventMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#PullRequestStatusRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PullRequestTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#PutCommentReaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PutCommentReactionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommentDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidReactionValueException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReactionLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ReactionValueRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PutCommentReactionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PutFileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameIsTagNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommitMessageLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DirectoryNameConflictsWithFileNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FileNameConflictsWithDirectoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FilePathConflictsWithSubmodulePathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#FolderContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidDeletionParameterException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidEmailException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidFileModeException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidParentCommitIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPathException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#NameLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdOutdatedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ParentCommitIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PathRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#SameFileContentException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PutFileEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#PutFileEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutFileEntryConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutFileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutFileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutRepositoryTriggers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#PutRepositoryTriggersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerCustomDataException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerDestinationArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerEventsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerRegionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumBranchesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRepositoryTriggersExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerBranchNameListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerDestinationArnRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerEventsListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggersListRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#PutRepositoryTriggersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#PutRepositoryTriggersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReactionCountsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codecommit#ReactionEmoji": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ReactionForComment": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReactionLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReactionShortCode": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ReactionUnicode": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ReactionUsersList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ReactionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ReactionValueFormats": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReactionValueRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReactionsForCommentList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ReferenceDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReferenceName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ReferenceNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReferenceTypeNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RelativeFileVersionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ReplaceContentEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#ReplaceContentEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReplacementContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ReplacementTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#ReplacementTypeRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryNameExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryNameIdPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryNameIdPairList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryNamesRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryNotAssociatedWithPullRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryNotFoundList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerBranchNameListRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerCustomData": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerDestinationArnRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerEventEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerEventsListRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerExecutionFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerExecutionFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerExecutionFailureMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerName": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggerNameRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggersConfigurationId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggersList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RepositoryTriggersListRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#ResourceArnRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RestrictedSourceFileException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RevisionChildren": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RevisionDag": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#RevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#RevisionIdRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RevisionNotCurrentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#RuleContentSha256": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#SameFileContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SamePathRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SetFileModeEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#SetFileModeEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SortByEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.codecommit#SourceAndDestinationAreSameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SourceFileOrContentRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SourceFileSpecifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SubModule": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SubModuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#SymbolicLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#SymbolicLinkList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#TagKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#TagKeysListRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TagPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidResourceArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidSystemTagUsageException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTagsMapException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ResourceArnRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagsMapRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codecommit#TagsMapRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.codecommit#TargetRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TargetsRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TestRepositoryTriggers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#TestRepositoryTriggersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerCustomDataException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerDestinationArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerEventsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryTriggerRegionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumBranchesExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumRepositoryTriggersExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerBranchNameListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerDestinationArnRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerEventsListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggerNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryTriggersListRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#TestRepositoryTriggersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TestRepositoryTriggersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TipOfSourceReferenceIsDifferentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TipsDivergenceExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#Title": {
+      "type": "string"
+    },
+    "com.amazonaws.codecommit#TitleRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidResourceArnException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidSystemTagUsageException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTagKeysListException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ResourceArnRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagKeysListRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRuleContentSha256Exception"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateDescription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateDescriptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateDescriptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateDescriptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateNameInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleTemplateNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleTemplateNameException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateNameInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateApprovalRuleTemplateNameOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateCommentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#CommentContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentContentSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDeletedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CommentNotCreatedByCallerException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidCommentIdException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateCommentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateCommentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateDefaultBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateDefaultBranchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#BranchDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BranchNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidBranchNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateDefaultBranchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestApprovalRuleContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdatePullRequestApprovalRuleContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleContentRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ApprovalRuleNameRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CannotModifyApprovalRuleFromTemplateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleContentException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalRuleNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRuleContentSha256Exception"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestApprovalRuleContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestApprovalRuleContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestApprovalState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdatePullRequestApprovalStateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#ApprovalStateRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidApprovalStateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MaximumNumberOfApprovalsExceededException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestCannotBeApprovedByAuthorException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RevisionNotCurrentException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestApprovalStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestDescription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdatePullRequestDescriptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestDescriptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestDescriptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdatePullRequestStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestStatusException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestStatusUpdateException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestStatusRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestTitle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdatePullRequestTitleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidPullRequestIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidTitleException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PullRequestIdRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TitleRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestTitleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdatePullRequestTitleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryDescription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateRepositoryDescriptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryDescriptionException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryDescriptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateRepositoryEncryptionKeyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#EncryptionIntegrityChecksFailedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyDisabledException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyInvalidIdException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyInvalidUsageException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyRequiredException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EncryptionKeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryEncryptionKeyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryEncryptionKeyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codecommit#UpdateRepositoryNameInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codecommit#InvalidRepositoryNameException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameExistsException"
+        },
+        {
+          "target": "com.amazonaws.codecommit#RepositoryNameRequiredException"
+        }
+      ]
+    },
+    "com.amazonaws.codecommit#UpdateRepositoryNameInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#UserInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.codecommit#blob": {
+      "type": "blob"
+    }
+  }
+}

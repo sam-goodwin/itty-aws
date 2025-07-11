@@ -1,0 +1,2059 @@
+{
+  "shapes": {
+    "com.amazonaws.apigatewayv2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#AccessLogSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#Api": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ApiGatewayV2": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ApiGatewayV2"
+        }
+      }
+    },
+    "com.amazonaws.apigatewayv2#ApiMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#AuthorizationScopes": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#AuthorizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#Authorizer": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#AuthorizerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#ContentHandlingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#Cors": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CorsHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#CorsMethodList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#CorsOriginList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#CreateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateApiMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateApiMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateApiMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateApiMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateAuthorizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegrationResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateIntegrationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRoute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateRouteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateRouteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRouteResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateRouteResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateRouteResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRouteResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRouteResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateRoutingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateRoutingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateRoutingRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateStageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#CreateVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#CreateVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#CreateVpcLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteAccessLogSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteAccessLogSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteAccessLogSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteApiMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteApiMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteApiMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteCorsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteCorsConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteCorsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteRoute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteRouteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteRequestParameter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteRouteRequestParameterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteRequestParameterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteRouteResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteRouteSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteRouteSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteRoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteRoutingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteRoutingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#DeleteVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#DeleteVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeleteVpcLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#DomainName": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DomainNameConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#DomainNameConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#DomainNameStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#ExportApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#ExportApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#ExportApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ExportApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ExportedApi": {
+      "type": "blob"
+    },
+    "com.amazonaws.apigatewayv2#GetApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetApiMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetApiMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetApiMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApiMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApiMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetApiMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetApiMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApiMappingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetApisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetApisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetApisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetAuthorizersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetAuthorizersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetDomainNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetDomainNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetDomainNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetIntegrationResponsesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponsesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResponsesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModelTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetModelTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetModelTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModelTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRoute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetRouteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetRouteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetRouteResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetRouteResponsesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponsesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResponsesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRouteResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRoutes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetRoutesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetRoutesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRoutesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetRoutingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetRoutingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetRoutingRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetStageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetStages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetStagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetStagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetStagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#GetVpcLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#GetVpcLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#IdentitySourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#ImportApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#ImportApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#ImportApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ImportApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#IntegerWithLengthBetween0And3600": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#IntegerWithLengthBetween50And30000": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#IntegerWithLengthBetweenMinus1And86400": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#Integration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#IntegrationParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#IntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#IntegrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#JWTConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ListRoutingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#ListRoutingRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#ListRoutingRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ListRoutingRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#LoggingLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#Model": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#MutualTlsAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#MutualTlsAuthenticationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ParameterConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#PassthroughBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#ProtocolType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#PutRoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#PutRoutingRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#PutRoutingRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#PutRoutingRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ReimportApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#ReimportApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#ReimportApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ReimportApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ResetAuthorizersCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#ResetAuthorizersCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#ResetAuthorizersCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#ResponseParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#Route": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RouteModels": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#RouteParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#RouteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RouteSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RouteSettingsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#RoutingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleActionInvokeApi": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleMatchBasePaths": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleMatchHeaderValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRuleMatchHeaders": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#RoutingRulePriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#SecurityPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#SelectionExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#SelectionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#Stage": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#StageVariablesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween0And1024": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween0And2048": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween0And32K": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And1024": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And128": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And1600": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And256": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And512": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#StringWithLengthBetween1And64": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#TemplateMap": {
+      "type": "map"
+    },
+    "com.amazonaws.apigatewayv2#TlsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#TlsConfigInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateApiMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateApiMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateApiMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateApiMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateAuthorizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegrationResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateIntegrationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateRoute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateRouteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateRouteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateRouteResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateRouteResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateRouteResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateRouteResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateRouteResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateStageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewayv2#UpdateVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewayv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewayv2#UpdateVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UpdateVpcLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#UriWithLengthBetween1And2048": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#VpcLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewayv2#VpcLinkStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#VpcLinkVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigatewayv2#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apigatewayv2#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.apigatewayv2#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigatewayv2#__listOfApi": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfApiMapping": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfAuthorizer": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfDeployment": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfDomainName": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfIntegration": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfIntegrationResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfModel": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRoute": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRouteResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRoutingRule": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRoutingRuleAction": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRoutingRuleCondition": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfRoutingRuleMatchHeaderValue": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfSelectionKey": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfStage": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOfVpcLink": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.apigatewayv2#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewayv2#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

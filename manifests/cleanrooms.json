@@ -1,0 +1,3624 @@
+{
+  "shapes": {
+    "com.amazonaws.cleanrooms#AWSBastionControlPlaneServiceLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CleanRooms"
+        }
+      }
+    },
+    "com.amazonaws.cleanrooms#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AccessDeniedExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AdditionalAnalyses": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AdditionalAnalysesResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AggregateColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AggregateColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AggregateFunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AggregationConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AggregationConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AggregationType": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AllowedAdditionalAnalyses": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AllowedAnalysesList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AllowedAnalysisProviderList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AllowedColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AllowedResultReceivers": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalysisMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalysisParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleColumnNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleCustom": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleIdMappingTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRulePolicy": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRulePolicyV1": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalysisRuleTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisSource": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#AnalysisSourceMetadata": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArnOrQueryWildcard": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArtifactList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArtifactMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateArtifacts": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateText": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationStatusDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationStatusDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationStatusReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationStatusReasonList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#AnalysisTemplateValidationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalysisType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AnalyticsEngine": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#AthenaDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AthenaOutputLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AthenaTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#AthenaTableReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#AthenaWorkGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplateError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplateErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetCollaborationAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#BatchGetSchemaInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRuleError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRuleErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BatchGetSchemaOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BilledJobResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#BilledResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CleanroomsArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#Collaboration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationAnalysisTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationAnalysisTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationAnalysisTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationAnalysisTemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#CollaborationConfiguredAudienceModelAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationConfiguredAudienceModelAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationConfiguredAudienceModelAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#CollaborationIdNamespaceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationIdNamespaceAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationIdNamespaceAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#CollaborationJobLogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#CollaborationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#CollaborationPrivacyBudgetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationPrivacyBudgetSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationPrivacyBudgetTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationPrivacyBudgetTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationPrivacyBudgetTemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CollaborationQueryLogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#CollaborationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#CollaborationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CollaborationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#Column": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ColumnTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ComputeConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfigurationDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredAudienceModelAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAnalysisRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAnalysisRulePolicy": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAnalysisRulePolicyV1": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAnalysisRuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAnalysisRuleTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRuleAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRuleCustom": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRuleList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRulePolicy": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRulePolicyV1": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationAnalysisRuleTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConfiguredTableSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConflictExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ConsolidatedPolicy": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ConsolidatedPolicyAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConsolidatedPolicyCustom": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConsolidatedPolicyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ConsolidatedPolicyV1": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#CreateAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateCollaboration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateCollaborationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateCollaborationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateCollaborationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredAudienceModelAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateConfiguredAudienceModelAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredAudienceModelAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredAudienceModelAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateConfiguredTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateConfiguredTableAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateConfiguredTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateIdMappingTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateIdMappingTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateIdMappingTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateIdMappingTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateIdNamespaceAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateIdNamespaceAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateIdNamespaceAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateIdNamespaceAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreateMembershipInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreateMembershipInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreateMembershipOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreatePrivacyBudgetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#CreatePrivacyBudgetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#CreatePrivacyBudgetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CreatePrivacyBudgetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#CustomMLMemberAbilities": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#CustomMLMemberAbility": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#DataEncryptionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteCollaboration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteCollaborationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteCollaborationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteCollaborationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredAudienceModelAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteConfiguredAudienceModelAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredAudienceModelAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredAudienceModelAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteConfiguredTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteConfiguredTableAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteConfiguredTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteIdMappingTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteIdMappingTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteIdMappingTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteIdMappingTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteIdNamespaceAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteIdNamespaceAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteIdNamespaceAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteIdNamespaceAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteMemberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteMemberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeleteMembershipInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeleteMembershipInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeleteMembershipOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeletePrivacyBudgetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#DeletePrivacyBudgetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#DeletePrivacyBudgetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DeletePrivacyBudgetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyAggregationExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyAggregationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPreviewAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPreviewAggregationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPreviewParametersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPrivacyBudget": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPrivacyBudgetAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPrivacyBudgetAggregationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyPrivacyImpact": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacySensitivityParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacySensitivityParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyTemplateParametersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyTemplateParametersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DifferentialPrivacyTemplateUpdateParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DirectAnalysisConfigurationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#Epsilon": {
+      "type": "integer"
+    },
+    "com.amazonaws.cleanrooms#FilterableMemberStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#GenericResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#GetAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaboration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetCollaborationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetCollaborationAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationConfiguredAudienceModelAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetCollaborationConfiguredAudienceModelAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationConfiguredAudienceModelAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationConfiguredAudienceModelAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationIdNamespaceAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetCollaborationIdNamespaceAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationIdNamespaceAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationIdNamespaceAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationPrivacyBudgetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetCollaborationPrivacyBudgetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationPrivacyBudgetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetCollaborationPrivacyBudgetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredAudienceModelAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetConfiguredAudienceModelAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredAudienceModelAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredAudienceModelAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetConfiguredTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetConfiguredTableAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetConfiguredTableAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociationAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetConfiguredTableAssociationAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociationAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociationAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetConfiguredTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetIdMappingTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetIdMappingTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetIdMappingTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetIdMappingTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetIdNamespaceAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetIdNamespaceAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetIdNamespaceAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetIdNamespaceAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetMembershipInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetMembershipInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetMembershipOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetPrivacyBudgetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetPrivacyBudgetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetPrivacyBudgetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetPrivacyBudgetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetProtectedJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetProtectedJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetProtectedJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetProtectedJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetProtectedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetProtectedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetProtectedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetProtectedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetSchemaInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetSchemaAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#GetSchemaAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#GetSchemaAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetSchemaAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetSchemaInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GetSchemaOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#GlueDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#GlueTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#GlueTableReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#Hash": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#HashList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#IdMappingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableInputReferenceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableInputReferenceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableInputReferenceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableInputSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableInputSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableSchemaTypeProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdMappingTableSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#IdMappingWorkflowsSupported": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationInputReferenceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationInputReferenceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationInputReferenceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationInputReferencePropertiesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#IdNamespaceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#JobComputePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#JoinOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#JoinOperatorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#JoinRequiredOption": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#KMSKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ListAnalysisTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListAnalysisTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListAnalysisTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListAnalysisTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationAnalysisTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationAnalysisTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationAnalysisTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationAnalysisTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationConfiguredAudienceModelAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationConfiguredAudienceModelAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationConfiguredAudienceModelAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationConfiguredAudienceModelAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationIdNamespaceAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationIdNamespaceAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationIdNamespaceAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationIdNamespaceAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationPrivacyBudgetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListCollaborationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListCollaborationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredAudienceModelAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListConfiguredAudienceModelAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredAudienceModelAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredAudienceModelAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTableAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListConfiguredTableAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTableAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTableAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListConfiguredTablesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTablesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListConfiguredTablesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListIdMappingTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListIdMappingTablesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListIdMappingTablesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListIdMappingTablesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListIdNamespaceAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListIdNamespaceAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListIdNamespaceAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListIdNamespaceAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListMembersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListMembersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListMembersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListMemberships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListMembershipsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListMembershipsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListMembershipsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgetTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListPrivacyBudgetTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgetTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgetTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListPrivacyBudgetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListPrivacyBudgetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListProtectedJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListProtectedJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListProtectedJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListProtectedJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListProtectedQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListProtectedQueriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListProtectedQueriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListProtectedQueriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListSchemasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListSchemasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListSchemasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MLMemberAbilities": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MLPaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cleanrooms#MemberAbilities": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#MemberAbility": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#MemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#MemberSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MemberStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#MemberSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MemberSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#Membership": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#MembershipIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#MembershipJobComputePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipJobLogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#MembershipMLPaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipModelInferencePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipModelTrainingPaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipPaymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipProtectedJobOutputConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#MembershipProtectedJobResultConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipProtectedQueryOutputConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#MembershipProtectedQueryResultConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipQueryComputePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipQueryLogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#MembershipResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#MembershipStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#MembershipSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#MembershipSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ModelInferencePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ModelTrainingPaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cleanrooms#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#PaymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PopulateIdMappingTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#PopulateIdMappingTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#PopulateIdMappingTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PopulateIdMappingTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PreviewPrivacyImpact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#PreviewPrivacyImpactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#PreviewPrivacyImpactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PreviewPrivacyImpactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PreviewPrivacyImpactParametersInput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudget": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateAutoRefresh": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateParametersInput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateParametersOutput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetTemplateUpdateParameters": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#PrivacyBudgetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#PrivacyImpact": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobAnalysisType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobConfigurationDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobDirectAnalysisConfigurationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobMemberOutputConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobMemberOutputConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobMemberOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobOutput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobOutputConfigurationInput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobOutputConfigurationOutput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobReceiverAccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobReceiverConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobReceiverConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobResultConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobResultConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobS3Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobS3OutputConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobS3OutputConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobSingleMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedJobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryDistributeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryDistributeOutputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryDistributeOutputConfigurationLocation": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryDistributeOutputConfigurationLocations": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryMemberOutputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryMemberOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryOutput": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryOutputConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryResultConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryS3Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryS3OutputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQuerySQLParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQuerySingleMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQuerySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQuerySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ProtectedQueryType": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#QueryComputePaymentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#QueryConstraint": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#QueryConstraintList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#QueryConstraintRequireOverlap": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#QueryTables": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ReceiverAccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ReceiverConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ReceiverConfigurationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ResourceAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ResultFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ScalarFunctions": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ScalarFunctionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#Schema": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SchemaAnalysisRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaAnalysisRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SchemaAnalysisRuleRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaConfiguration": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#SchemaConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatusDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatusDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatusReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatusReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#SchemaStatusReasonList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SchemaSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SchemaType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#SchemaTypeProperties": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#SecretsManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#SelectedAnalysisMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#SelectedAnalysisMethods": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeAccountIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeSchemaName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeTableReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeTableSchema": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeTableSchemaList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#SnowflakeTableSchemaV1": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#StartProtectedJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#StartProtectedJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#StartProtectedJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#StartProtectedJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#StartProtectedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#StartProtectedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#StartProtectedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#StartProtectedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#TableAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#TableAliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#TableDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#TableReference": {
+      "type": "union"
+    },
+    "com.amazonaws.cleanrooms#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cleanrooms#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#TargetProtectedJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cleanrooms#TargetProtectedQueryStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateAnalysisTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateAnalysisTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateAnalysisTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateAnalysisTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateCollaboration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateCollaborationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateCollaborationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateCollaborationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredAudienceModelAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateConfiguredAudienceModelAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredAudienceModelAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredAudienceModelAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateConfiguredTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateConfiguredTableAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationAnalysisRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationAnalysisRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationAnalysisRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationAnalysisRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateConfiguredTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateIdMappingTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateIdMappingTableInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateIdMappingTableInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateIdMappingTableOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateIdNamespaceAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateIdNamespaceAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateIdNamespaceAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateIdNamespaceAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateMembershipInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateMembershipInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateMembershipOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdatePrivacyBudgetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdatePrivacyBudgetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdatePrivacyBudgetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdatePrivacyBudgetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateProtectedJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cleanrooms#UpdateProtectedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cleanrooms#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cleanrooms#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UpdateProtectedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#UsersNoisePerQuery": {
+      "type": "integer"
+    },
+    "com.amazonaws.cleanrooms#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.cleanrooms#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cleanrooms#WorkerComputeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cleanrooms#WorkerComputeType": {
+      "type": "enum"
+    }
+  }
+}

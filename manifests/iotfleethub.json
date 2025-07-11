@@ -1,0 +1,283 @@
+{
+  "shapes": {
+    "com.amazonaws.iotfleethub#AWSIoTFleetHub": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTFleetHub"
+        }
+      }
+    },
+    "com.amazonaws.iotfleethub#ApplicationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleethub#ApplicationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleethub#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#DescribeApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#DescribeApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#DescribeApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#DescribeApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#SsoClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleethub#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iotfleethub#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleethub#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#Timestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleethub#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleethub#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleethub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleethub#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleethub#Url": {
+      "type": "string"
+    }
+  }
+}

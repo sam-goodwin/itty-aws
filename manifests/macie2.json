@@ -1,0 +1,3466 @@
+{
+  "shapes": {
+    "com.amazonaws.macie2#AcceptInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#AcceptInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#AcceptInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AcceptInvitationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AccessControlList": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AccountDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AccountLevelPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AdminAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AdminStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AllowListCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AllowListStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AllowListStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AllowListSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AllowsUnencryptedObjectUploads": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ApiCallDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AssumedRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AutoEnableMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryAccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryAccountUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryAccountUpdateError": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryAccountUpdateErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryMonitoringStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AutomatedDiscoveryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AvailabilityCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#AwsAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#AwsService": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BatchGetCustomDataIdentifierSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BatchGetCustomDataIdentifiers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#BatchGetCustomDataIdentifiersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#BatchGetCustomDataIdentifiersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BatchGetCustomDataIdentifiersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BatchUpdateAutomatedDiscoveryAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#BatchUpdateAutomatedDiscoveryAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#BatchUpdateAutomatedDiscoveryAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BatchUpdateAutomatedDiscoveryAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BlockPublicAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketCountByEffectivePermission": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketCountByEncryptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketCountBySharedAccessType": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketCountPolicyAllowsUnencryptedObjectUploads": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketCriteria": {
+      "type": "map"
+    },
+    "com.amazonaws.macie2#BucketCriteriaAdditionalProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketLevelPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketMetadataErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#BucketPermissionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketPublicAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketServerSideEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketSortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#BucketStatisticsBySensitivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Cell": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Cells": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#ClassificationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ClassificationExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ClassificationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ClassificationResultStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ClassificationScopeId": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#ClassificationScopeName": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#ClassificationScopeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ClassificationScopeUpdateOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateAllowList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateAllowListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateAllowListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateAllowListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateClassificationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateClassificationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateClassificationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateClassificationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateCustomDataIdentifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateCustomDataIdentifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateCustomDataIdentifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateCustomDataIdentifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateFindingsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateFindingsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateFindingsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateFindingsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateSampleFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#CreateSampleFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#CreateSampleFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CreateSampleFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CriteriaBlockForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CriteriaForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Criterion": {
+      "type": "map"
+    },
+    "com.amazonaws.macie2#CriterionAdditionalProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Currency": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#CustomDataIdentifierSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CustomDataIdentifiers": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CustomDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#CustomDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#DailySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DataIdentifierSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#DataIdentifierType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#DayOfWeek": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#DeclineInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeclineInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeclineInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeclineInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DefaultDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DefaultDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#DeleteAllowList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeleteAllowListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeleteAllowListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteAllowListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteCustomDataIdentifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeleteCustomDataIdentifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeleteCustomDataIdentifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteCustomDataIdentifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteFindingsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeleteFindingsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeleteFindingsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteFindingsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeleteInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeleteInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DeleteMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DeleteMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DeleteMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeBuckets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DescribeBucketsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DescribeBucketsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeBucketsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeClassificationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DescribeClassificationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DescribeClassificationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeClassificationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DescribeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DescribeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DescribeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DetectedDataDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Detection": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisableMacie": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DisableMacieRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DisableMacieRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisableMacieResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DisableOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DisableOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisableOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateFromAdministratorAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DisassociateFromAdministratorAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DisassociateFromAdministratorAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateFromAdministratorAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateFromMasterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DisassociateFromMasterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DisassociateFromMasterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateFromMasterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#DisassociateMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#DisassociateMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DisassociateMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#DomainDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#EffectivePermission": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#EnableMacie": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#EnableMacieRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#EnableMacieRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#EnableMacieResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#EnableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#EnableOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#EnableOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#EnableOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FederatedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Finding": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#FindingAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#FindingActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingActor": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#FindingCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#FindingPublishingFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingStatisticsSortAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingStatisticsSortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#FindingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingsFilterAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#FindingsFilterListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAdministratorAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetAdministratorAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetAdministratorAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAdministratorAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAllowList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetAllowListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetAllowListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAllowListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAutomatedDiscoveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetAutomatedDiscoveryConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetAutomatedDiscoveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetAutomatedDiscoveryConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetBucketStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetBucketStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetBucketStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetBucketStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetClassificationExportConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetClassificationExportConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetClassificationExportConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetClassificationExportConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetClassificationScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetClassificationScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetClassificationScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetClassificationScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetCustomDataIdentifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetCustomDataIdentifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetCustomDataIdentifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetCustomDataIdentifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetFindingStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetFindingStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetFindingsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetFindingsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetFindingsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingsPublicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetFindingsPublicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetFindingsPublicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingsPublicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetInvitationsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetInvitationsCountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetInvitationsCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetInvitationsCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMacieSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetMacieSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetMacieSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMacieSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMasterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetMasterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetMasterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMasterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetResourceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetResourceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetResourceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetResourceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetRevealConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetRevealConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetRevealConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetRevealConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetSensitiveDataOccurrencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#UnprocessableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrencesAvailability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetSensitiveDataOccurrencesAvailabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrencesAvailabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrencesAvailabilityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitiveDataOccurrencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitivityInspectionTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetSensitivityInspectionTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetSensitivityInspectionTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetSensitivityInspectionTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetUsageStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetUsageStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetUsageStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetUsageStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetUsageTotals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#GetUsageTotalsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#GetUsageTotalsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GetUsageTotalsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#GroupBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#GroupCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IamUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Invitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IpAddressDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IpCity": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IpCountry": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IpGeoLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IpOwner": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#IsDefinedInJob": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#IsMonitoredByJob": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#JobComparator": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#JobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#JobScheduleFrequency": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#JobScopeTerm": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#JobScopingBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#JobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#JobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#KeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#KeyValuePairList": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#LastRunErrorStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#LastRunErrorStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ListAllowLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListAllowListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListAllowListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListAllowListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListAutomatedDiscoveryAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListAutomatedDiscoveryAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListAutomatedDiscoveryAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListAutomatedDiscoveryAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListClassificationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListClassificationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListClassificationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListClassificationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListClassificationScopes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListClassificationScopesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListClassificationScopesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListClassificationScopesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListCustomDataIdentifiers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListCustomDataIdentifiersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListCustomDataIdentifiersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListCustomDataIdentifiersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListFindingsFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListFindingsFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListFindingsFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListFindingsFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListJobsFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListJobsFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ListJobsFilterTerm": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListJobsSortAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ListJobsSortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListManagedDataIdentifiers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListManagedDataIdentifiersRequest"
+      }
+    },
+    "com.amazonaws.macie2#ListManagedDataIdentifiersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListManagedDataIdentifiersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListOrganizationAdminAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListOrganizationAdminAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListOrganizationAdminAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListOrganizationAdminAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListResourceProfileArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListResourceProfileArtifactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListResourceProfileArtifactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListResourceProfileArtifactsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListResourceProfileDetections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListResourceProfileDetectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListResourceProfileDetectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListResourceProfileDetectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListSensitivityInspectionTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListSensitivityInspectionTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#ListSensitivityInspectionTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListSensitivityInspectionTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#ListTagsForResourceRequest"
+      }
+    },
+    "com.amazonaws.macie2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Macie2": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Macie2"
+        }
+      }
+    },
+    "com.amazonaws.macie2#MacieStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ManagedDataIdentifierSelector": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ManagedDataIdentifierSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#MatchingBucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#MatchingResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.macie2#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#MonthlySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#ObjectCountByEncryptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ObjectLevelStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Occurrences": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#OrderBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#OriginType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#Page": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Pages": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#PolicyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#PutClassificationExportConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#PutClassificationExportConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#PutClassificationExportConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#PutClassificationExportConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#PutFindingsPublicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#PutFindingsPublicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#PutFindingsPublicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#PutFindingsPublicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Ranges": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Records": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#RelationshipStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#ReplicationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ResourceProfileArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ResourceStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ResourcesAffected": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#RetrievalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#RetrievalMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#RevealConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#RevealRequestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#RevealStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#S3Bucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3BucketCriteriaForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3BucketDefinitionForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#S3BucketOwner": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3ClassificationScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3ClassificationScopeExclusion": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3ClassificationScopeExclusionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3ClassificationScopeUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3JobDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#S3WordsList": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ScopeFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#Scoping": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#SearchResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#SearchResourcesBucketCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesComparator": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SearchResourcesCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesCriteriaBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesSimpleCriterion": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesSimpleCriterionKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SearchResourcesSortAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SearchResourcesSortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesTagCriterion": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SearchResourcesTagCriterionPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SecurityHubConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SensitiveData": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#SensitiveDataItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SensitiveDataItemCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SensitiveDataOccurrences": {
+      "type": "map"
+    },
+    "com.amazonaws.macie2#SensitivityAggregations": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SensitivityInspectionTemplateExcludes": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SensitivityInspectionTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#SensitivityInspectionTemplateIncludes": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SensitivityInspectionTemplatesEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ServerSideEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ServiceLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SessionContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SessionContextAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SessionIssuer": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Severity": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SeverityDescription": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SeverityLevel": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SeverityLevelList": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#SharedAccess": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SimpleCriterionForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SimpleCriterionKeyForJob": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SimpleScopeTerm": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#SortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#Statistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#SuppressDataIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagCriterionForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagCriterionPairForJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.macie2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#TagResourceRequest"
+      }
+    },
+    "com.amazonaws.macie2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagScopeTerm": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TagTarget": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#TagValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TestCustomDataIdentifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#TestCustomDataIdentifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#TestCustomDataIdentifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TestCustomDataIdentifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#TimeRange": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.macie2#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UnavailabilityReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#Unit": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UnprocessableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UnprocessedAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UntagResourceRequest"
+      }
+    },
+    "com.amazonaws.macie2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateAllowList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateAllowListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateAllowListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateAllowListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateAutomatedDiscoveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateAutomatedDiscoveryConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateAutomatedDiscoveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateAutomatedDiscoveryConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateClassificationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateClassificationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateClassificationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateClassificationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateClassificationScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateClassificationScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateClassificationScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateClassificationScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateFindingsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateFindingsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateFindingsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateFindingsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateMacieSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateMacieSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateMacieSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateMacieSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateMemberSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateMemberSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateMemberSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateMemberSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateResourceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateResourceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateResourceProfileDetections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateResourceProfileDetectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateResourceProfileDetectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateResourceProfileDetectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateResourceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateResourceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateRetrievalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateRevealConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateRevealConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateRevealConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateRevealConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateSensitivityInspectionTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.macie2#UpdateSensitivityInspectionTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.macie2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.macie2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.macie2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.macie2#UpdateSensitivityInspectionTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UpdateSensitivityInspectionTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageByAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageStatisticsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageStatisticsFilterComparator": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UsageStatisticsFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UsageStatisticsSortBy": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageStatisticsSortKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UsageTotal": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UsageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UserIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UserIdentityRoot": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#UserIdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.macie2#UserPausedDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#WeeklySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.macie2#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.macie2#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.macie2#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.macie2#__listOfAdminAccount": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfAllowListSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfAutomatedDiscoveryAccount": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfAutomatedDiscoveryAccountUpdate": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfAutomatedDiscoveryAccountUpdateError": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfBatchGetCustomDataIdentifierSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfBucketMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfClassificationScopeSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfCriteriaForJob": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfCustomDataIdentifierSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfDetectedDataDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfDetection": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfFinding": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfFindingType": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfFindingsFilterListItem": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfGroupCount": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfInvitation": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfJobScopeTerm": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfJobSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfKeyValuePair": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfListJobsFilterTerm": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfManagedDataIdentifierSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfMatchingResource": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfMember": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfResourceProfileArtifact": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfS3BucketDefinitionForJob": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfS3BucketName": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfSearchResourcesCriteria": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfSearchResourcesTagCriterionPair": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfSensitivityInspectionTemplatesEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfSuppressDataIdentifier": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfTagCriterionPairForJob": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfTagValuePair": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUnavailabilityReasonCode": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUnprocessedAccount": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUsageByAccount": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUsageRecord": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUsageStatisticsFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOfUsageTotal": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.macie2#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.macie2#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max1024PatternSS": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max128": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max128Pattern": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max2048": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max512PatternSS": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin1Max64PatternW": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin22Max22PatternAZ0922": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin3Max255PatternAZaZ093255": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__stringMin71Max89PatternArnAwsAwsCnAwsUsGovMacie2AZ19920D12AllowListAZ0922": {
+      "type": "string"
+    },
+    "com.amazonaws.macie2#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

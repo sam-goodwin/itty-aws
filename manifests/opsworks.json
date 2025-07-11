@@ -1,0 +1,1668 @@
+{
+  "shapes": {
+    "com.amazonaws.opsworks#AgentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AgentVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#App": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AppAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#AppAttributesKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#AppType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Apps": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#Architecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#AssignInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#AssignInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#AssignInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AssignVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#AssignVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#AssignVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AssociateElasticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#AssociateElasticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#AssociateElasticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AttachElasticLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#AttachElasticLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#AttachElasticLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AutoScalingThresholds": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#AutoScalingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#BlockDeviceMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#BlockDeviceMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.opsworks#ChefConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CloneStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CloneStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CloneStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CloneStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsInitialPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsLogStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsLogStreams": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#CloudWatchLogsTimeZone": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Command": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Commands": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#CreateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateAppResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateDeploymentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateLayer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateLayerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateLayerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateLayerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateUserProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#CreateUserProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#CreateUserProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#CreateUserProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DailyAutoScalingSchedule": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DataSources": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#DateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeleteAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeleteAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeleteInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeleteInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeleteInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeleteLayer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeleteLayerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeleteLayerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeleteStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeleteStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeleteStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeleteUserProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeleteUserProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeleteUserProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeploymentCommand": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeploymentCommandArgs": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#DeploymentCommandName": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Deployments": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#DeregisterEcsCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeregisterEcsClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeregisterEcsClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeregisterElasticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeregisterElasticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeregisterElasticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeregisterInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeregisterInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeregisterInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeregisterRdsDbInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeregisterRdsDbInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeregisterRdsDbInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DeregisterVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DeregisterVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DeregisterVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeAgentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeAgentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeAgentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeAgentVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeAppsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeCommands": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeCommandsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeCommandsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeCommandsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeDeploymentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeEcsClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeEcsClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeEcsClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeEcsClustersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeElasticIps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeElasticIpsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeElasticIpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeElasticIpsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeElasticLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeElasticLoadBalancersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeElasticLoadBalancersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeElasticLoadBalancersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeInstancesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeLayers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeLayersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeLayersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeLayersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeLoadBasedAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeLoadBasedAutoScalingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeLoadBasedAutoScalingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeLoadBasedAutoScalingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeMyUserProfile": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.opsworks#DescribeMyUserProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeOperatingSystems": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.opsworks#DescribeOperatingSystemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeRaidArrays": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeRaidArraysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeRaidArraysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeRaidArraysResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeRdsDbInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeRdsDbInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeRdsDbInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeRdsDbInstancesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeServiceErrors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeServiceErrorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeServiceErrorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeServiceErrorsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStackProvisioningParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeStackProvisioningParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeStackProvisioningParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStackProvisioningParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStackSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeStackSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeStackSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStackSummaryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeStacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeStacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeStacksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeTimeBasedAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeTimeBasedAutoScalingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeTimeBasedAutoScalingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeTimeBasedAutoScalingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeUserProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeUserProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeUserProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeUserProfilesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeVolumes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DescribeVolumesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DescribeVolumesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DescribeVolumesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DetachElasticLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DetachElasticLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DetachElasticLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#DisassociateElasticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#DisassociateElasticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#DisassociateElasticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.opsworks#EbsBlockDevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#EcsCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#EcsClusters": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#ElasticIp": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ElasticIps": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#ElasticLoadBalancer": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ElasticLoadBalancers": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#EnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#EnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#GetHostnameSuggestion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#GetHostnameSuggestionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#GetHostnameSuggestionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#GetHostnameSuggestionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#GrantAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#GrantAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#GrantAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#GrantAccessResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Hour": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#InstanceIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Instances": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#InstancesCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.opsworks#Layer": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#LayerAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#LayerAttributesKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#LayerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Layers": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#LifecycleEventConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ListTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#LoadBasedAutoScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#LoadBasedAutoScalingConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.opsworks#Minute": {
+      "type": "integer"
+    },
+    "com.amazonaws.opsworks#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#OperatingSystem": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#OperatingSystemConfigurationManager": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#OperatingSystemConfigurationManagers": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#OperatingSystems": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#OpsWorks_20130218": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "OpsWorks"
+        }
+      }
+    },
+    "com.amazonaws.opsworks#Parameters": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Permissions": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#RaidArray": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RaidArrays": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#RdsDbInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RdsDbInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#RebootInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RebootInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RebootInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Recipes": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterEcsCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RegisterEcsClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RegisterEcsClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterEcsClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterElasticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RegisterElasticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RegisterElasticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterElasticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RegisterInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RegisterInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterRdsDbInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RegisterRdsDbInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RegisterRdsDbInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#RegisterVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#RegisterVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RegisterVolumeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ReportedOs": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#RootDeviceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#SelfUserProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ServiceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ServiceErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#SetLoadBasedAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#SetLoadBasedAutoScalingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#SetLoadBasedAutoScalingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#SetPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#SetPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#SetPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#SetTimeBasedAutoScaling": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#SetTimeBasedAutoScalingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#SetTimeBasedAutoScalingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#ShutdownEventConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#SslConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Stack": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#StackAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#StackAttributesKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#StackConfigurationManager": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#StackSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#Stacks": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#StartInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#StartInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#StartInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#StartStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#StartStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#StartStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#StopInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#StopInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#StopInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#StopStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#StopStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#StopStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#String": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#Strings": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#Switch": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opsworks#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.opsworks#TemporaryCredential": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#TimeBasedAutoScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#TimeBasedAutoScalingConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#UnassignInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UnassignInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UnassignInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UnassignVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UnassignVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UnassignVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateElasticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateElasticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateElasticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateLayer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateLayerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateLayerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateMyUserProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateMyUserProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateMyUserProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateRdsDbInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateRdsDbInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateRdsDbInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateUserProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateUserProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateUserProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UpdateVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opsworks#UpdateVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opsworks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opsworks#UpdateVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UserProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#UserProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#ValidForInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.opsworks#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#VirtualizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#VolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opsworks#VolumeConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#VolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opsworks#Volumes": {
+      "type": "list"
+    },
+    "com.amazonaws.opsworks#WeeklyAutoScalingSchedule": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "shapes": {
+    "com.amazonaws.scheduler#AWSChronosService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Scheduler"
+        }
+      }
+    },
+    "com.amazonaws.scheduler#ActionAfterCompletion": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#AssignPublicIp": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#AwsVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CapacityProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#CapacityProviderStrategy": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#CapacityProviderStrategyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CapacityProviderStrategyItemBase": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#CapacityProviderStrategyItemWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CreateSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#CreateScheduleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#CreateScheduleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#CreateScheduleGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#CreateScheduleGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CreateScheduleGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CreateScheduleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CreateScheduleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#CreationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.scheduler#DeadLetterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#DeleteSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#DeleteScheduleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#DeleteScheduleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#DeleteScheduleGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#DeleteScheduleGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#DeleteScheduleGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#DeleteScheduleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#DeleteScheduleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#DetailType": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#EcsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#EnableECSManagedTags": {
+      "type": "boolean"
+    },
+    "com.amazonaws.scheduler#EnableExecuteCommand": {
+      "type": "boolean"
+    },
+    "com.amazonaws.scheduler#EndDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.scheduler#EventBridgeParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#FlexibleTimeWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#FlexibleTimeWindowMode": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#GetSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#GetScheduleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#GetScheduleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#GetScheduleGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#GetScheduleGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#GetScheduleGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#GetScheduleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#GetScheduleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#Group": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#KinesisParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#LastModificationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.scheduler#LaunchType": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ListScheduleGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#ListScheduleGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#ListScheduleGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ListScheduleGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ListSchedules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#ListSchedulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#ListSchedulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ListSchedulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#MaximumEventAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#MaximumRetryAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#MaximumWindowInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#MessageGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#NamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#PlacementConstraintExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PlacementConstraintType": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#PlacementStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#PlacementStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#PlacementStrategyField": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PlacementStrategyType": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PlatformVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#PropagateTags": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#RetryPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#SageMakerPipelineParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#SageMakerPipelineParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#SageMakerPipelineParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#SageMakerPipelineParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#SageMakerPipelineParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#Schedule": {
+      "type": "resource"
+    },
+    "com.amazonaws.scheduler#ScheduleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleExpressionTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleGroup": {
+      "type": "resource"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupState": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#ScheduleState": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ScheduleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#SecurityGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#SqsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#StartDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.scheduler#Subnet": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.scheduler#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#TagResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.scheduler#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#TargetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#TargetInput": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#TargetPartitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#TargetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#TaskCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.scheduler#TaskDefinitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.scheduler#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#UpdateSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.scheduler#UpdateScheduleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.scheduler#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.scheduler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.scheduler#UpdateScheduleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#UpdateScheduleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.scheduler#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

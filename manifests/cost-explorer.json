@@ -1,0 +1,1922 @@
+{
+  "shapes": {
+    "com.amazonaws.costexplorer#AWSInsightsIndexService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Cost Explorer"
+        }
+      }
+    },
+    "com.amazonaws.costexplorer#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AccountScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#AmortizedRecurringFee": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AmortizedUpfrontFee": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AnalysisDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnalysisId": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AnalysisIds": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#AnalysisNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnalysisStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#AnalysisSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnalysisSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#AnalysisType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#Anomalies": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#Anomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnomalyDateInterval": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnomalyFeedbackType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#AnomalyMonitor": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnomalyMonitors": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#AnomalyScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnomalySubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#AnomalySubscriptionFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#AnomalySubscriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ApproximateUsageRecordsPerService": {
+      "type": "map"
+    },
+    "com.amazonaws.costexplorer#ApproximationDimension": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AttributeType": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#Attributes": {
+      "type": "map"
+    },
+    "com.amazonaws.costexplorer#BackfillLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#BillExpirationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#BillingViewArn": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#CommitmentPurchaseAnalysisConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ComparisonMetricValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ComparisonMetrics": {
+      "type": "map"
+    },
+    "com.amazonaws.costexplorer#Context": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagBackfillRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagBackfillRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagBackfillStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagStatusEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostAllocationTagsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#CostAndUsageComparison": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostAndUsageComparisons": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostAndUsageComparisonsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#CostCategory": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryInheritedValueDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryInheritedValueDimensionName": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategoryMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#CostCategoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#CostCategoryNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategoryProcessingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryProcessingStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategoryReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryReferencesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategoryRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryRuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategoryRuleVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategoryRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRuleParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRuleParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRuleParameterValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRuleParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRuleTargetsList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategorySplitChargeRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostCategoryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategoryStatusComponent": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#CostCategoryValue": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#CostCategoryValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostCategoryValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostComparisonDriver": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostComparisonDrivers": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CostComparisonDriversMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#CostDriver": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CostDrivers": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#Coverage": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CoverageByTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CoverageCost": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CoverageHours": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CoverageHoursPercentage": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#CoverageNormalizedUnits": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CoverageNormalizedUnitsPercentage": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#CoveragesByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#CreateAnomalyMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#CreateAnomalyMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#CreateAnomalyMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CreateAnomalyMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CreateAnomalySubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#CreateAnomalySubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownMonitorException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#CreateAnomalySubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CreateAnomalySubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CreateCostCategoryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#CreateCostCategoryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#CreateCostCategoryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CreateCostCategoryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#CurrentInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DataUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DateInterval": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalyMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#DeleteAnomalyMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownMonitorException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalyMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalyMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalySubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#DeleteAnomalySubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownSubscriptionException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalySubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteAnomalySubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteCostCategoryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#DeleteCostCategoryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#DeleteCostCategoryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DeleteCostCategoryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DescribeCostCategoryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#DescribeCostCategoryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#DescribeCostCategoryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DescribeCostCategoryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Dimension": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#DimensionValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DimensionValuesWithAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DimensionValuesWithAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#DiskResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#DynamoDBCapacityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#EBSResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#EC2InstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#EC2ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#EC2ResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#EC2Specification": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ESInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ElastiCacheInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Entity": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#Estimated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.costexplorer#Expression": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Expressions": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#FindingReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#FindingReasonCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ForecastResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ForecastResultsByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#GenerationExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GenerationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#GenerationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GenerationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#GenericBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.costexplorer#GenericDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.costexplorer#GenericString": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#GetAnomalies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetAnomaliesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetAnomaliesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetAnomaliesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetAnomalyMonitors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetAnomalyMonitorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownMonitorException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetAnomalyMonitorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetAnomalyMonitorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetAnomalySubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetAnomalySubscriptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownSubscriptionException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetAnomalySubscriptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetAnomalySubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetApproximateUsageRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetApproximateUsageRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetApproximateUsageRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetApproximateUsageRecordsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCommitmentPurchaseAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCommitmentPurchaseAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#AnalysisNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCommitmentPurchaseAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCommitmentPurchaseAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostAndUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BillExpirationException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#RequestChangedException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageComparisons": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostAndUsageComparisonsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageComparisonsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageComparisonsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageWithResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostAndUsageWithResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BillExpirationException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#RequestChangedException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageWithResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostAndUsageWithResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostCategoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BillExpirationException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#RequestChangedException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostCategoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostCategoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostComparisonDrivers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostComparisonDriversRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostComparisonDriversRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostComparisonDriversResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetCostForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetCostForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetCostForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetDimensionValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetDimensionValuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BillExpirationException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#RequestChangedException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetDimensionValuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetDimensionValuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationCoverage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetReservationCoverageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetReservationCoverageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationCoverageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationPurchaseRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetReservationPurchaseRecommendationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetReservationPurchaseRecommendationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationPurchaseRecommendationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationUtilization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetReservationUtilizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetReservationUtilizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetReservationUtilizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetRightsizingRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetRightsizingRecommendationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetRightsizingRecommendationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetRightsizingRecommendationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlanPurchaseRecommendationDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetSavingsPlanPurchaseRecommendationDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlanPurchaseRecommendationDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlanPurchaseRecommendationDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansCoverage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetSavingsPlansCoverageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansCoverageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansCoverageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansPurchaseRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetSavingsPlansPurchaseRecommendationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansPurchaseRecommendationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansPurchaseRecommendationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetSavingsPlansUtilizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilizationDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetSavingsPlansUtilizationDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilizationDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilizationDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetSavingsPlansUtilizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BillExpirationException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#RequestChangedException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetUsageForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#GetUsageForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnresolvableUsageUnitException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#GetUsageForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GetUsageForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Granularity": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GroupDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#GroupDefinitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#GroupDefinitionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#GroupDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#Impact": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#InstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#Keys": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCommitmentPurchaseAnalyses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListCommitmentPurchaseAnalysesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListCommitmentPurchaseAnalysesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCommitmentPurchaseAnalysesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTagBackfillHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListCostAllocationTagBackfillHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTagBackfillHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTagBackfillHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListCostAllocationTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostAllocationTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostCategoryDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListCostCategoryDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListCostCategoryDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListCostCategoryDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListSavingsPlansPurchaseRecommendationGeneration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListSavingsPlansPurchaseRecommendationGenerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListSavingsPlansPurchaseRecommendationGenerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListSavingsPlansPurchaseRecommendationGenerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#LookbackPeriodInDays": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#MatchOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#MatchOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#MemoryDBInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Metric": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#MetricAmount": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#MetricNames": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#MetricUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#MetricValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Metrics": {
+      "type": "map"
+    },
+    "com.amazonaws.costexplorer#MetricsOverLookbackPeriod": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ModifyRecommendationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#MonitorArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#MonitorDimension": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#MonitorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#NetRISavings": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#NetworkResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#NextPageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#NonNegativeInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#NonNegativeLong": {
+      "type": "long"
+    },
+    "com.amazonaws.costexplorer#NullableNonNegativeDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.costexplorer#NumericOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#OfferingClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#OnDemandCost": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#OnDemandCostOfRIHoursUsed": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#OnDemandHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#OnDemandNormalizedUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#PaymentOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#PlatformDifference": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#PlatformDifferences": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#PredictionIntervalLevel": {
+      "type": "integer"
+    },
+    "com.amazonaws.costexplorer#ProvideAnomalyFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#ProvideAnomalyFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#ProvideAnomalyFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ProvideAnomalyFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#PurchasedHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#PurchasedUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#RDSInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RICostForUnusedHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#RealizedSavings": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#RecommendationDetailData": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RecommendationDetailHourlyMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RecommendationDetailId": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#RecommendationId": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#RecommendationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#RecommendationTarget": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#RedshiftInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RequestChangedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationAggregates": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationCoverageGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationCoverageGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ReservationGroupKey": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ReservationGroupValue": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendationDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationPurchaseRecommendations": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ReservationUtilizationGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservationUtilizationGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ReservedCapacityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ReservedHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ReservedNormalizedUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ResourceTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ResourceTagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ResourceTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#ResourceTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ResultByTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ResultsByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#RightsizingRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RightsizingRecommendationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RightsizingRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#RightsizingRecommendationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RightsizingRecommendationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RightsizingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#RootCause": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RootCauseImpact": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#RootCauses": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlanArn": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#SavingsPlans": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansAmortizedCommitment": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansCommitment": {
+      "type": "double"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansCoverage": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansCoverageData": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansCoverages": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansDataTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansId": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseAnalysisConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseAnalysisDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseRecommendationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseRecommendationDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseRecommendationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansPurchaseRecommendationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansSavings": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansToAdd": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansToExclude": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilizationAggregates": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilizationByTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilizationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilizationDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SavingsPlansUtilizationsByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SearchString": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#ServiceSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SortDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SortDefinitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#SortDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#StartCommitmentPurchaseAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#StartCommitmentPurchaseAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GenerationExistsException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#StartCommitmentPurchaseAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#StartCommitmentPurchaseAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#StartCostAllocationTagBackfill": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#StartCostAllocationTagBackfillRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#BackfillLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#StartCostAllocationTagBackfillRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#StartCostAllocationTagBackfillResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#StartSavingsPlansPurchaseRecommendationGeneration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#StartSavingsPlansPurchaseRecommendationGenerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#DataUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GenerationExistsException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#StartSavingsPlansPurchaseRecommendationGenerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#StartSavingsPlansPurchaseRecommendationGenerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#Subscriber": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#SubscriberAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#SubscriberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#SubscriberType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#Subscribers": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#SupportedSavingsPlansType": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TagValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TagValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#TargetInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TargetInstancesList": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#TermInYears": {
+      "type": "enum"
+    },
+    "com.amazonaws.costexplorer#TerminateRecommendationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TotalActualHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TotalActualUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TotalAmortizedFee": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TotalImpactFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#TotalPotentialRISavings": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TotalRunningHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#TotalRunningNormalizedUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UnknownMonitorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UnknownSubscriptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UnrealizedSavings": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UnresolvableUsageUnitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UnusedHours": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UnusedUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalyMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#UpdateAnomalyMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownMonitorException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalyMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalyMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalySubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#UpdateAnomalySubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownMonitorException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UnknownSubscriptionException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalySubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateAnomalySubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatusError": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatusErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateCostCategoryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.costexplorer#UpdateCostCategoryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.costexplorer#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.costexplorer#UpdateCostCategoryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UpdateCostCategoryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UsageServices": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#UtilizationByTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.costexplorer#UtilizationPercentage": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UtilizationPercentageInUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#UtilizationsByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.costexplorer#YearMonthDay": {
+      "type": "string"
+    },
+    "com.amazonaws.costexplorer#ZonedDateTime": {
+      "type": "string"
+    }
+  }
+}

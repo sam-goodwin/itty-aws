@@ -1,0 +1,2540 @@
+{
+  "shapes": {
+    "com.amazonaws.appstream#AccessEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AccessEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AccessEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#AccountPassword": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Action": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AppBlockBuilder": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderAppBlockAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderAppBlockAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderPlatformType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AppBlockBuilderStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlockState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AppBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AppVisibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ApplicationAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ApplicationAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ApplicationFleetAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ApplicationFleetAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ApplicationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ApplicationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Applications": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AppstreamAgentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#AssociateAppBlockBuilderAppBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#AssociateAppBlockBuilderAppBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#AssociateAppBlockBuilderAppBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateAppBlockBuilderAppBlockResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateApplicationFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#AssociateApplicationFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#AssociateApplicationFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateApplicationFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateApplicationToEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#AssociateApplicationToEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#AssociateApplicationToEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateApplicationToEntitlementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#AssociateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#AssociateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AssociateFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#AwsAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#BatchAssociateUserStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#BatchAssociateUserStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#BatchAssociateUserStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#BatchAssociateUserStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#BatchDisassociateUserStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#BatchDisassociateUserStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#BatchDisassociateUserStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#BatchDisassociateUserStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appstream#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appstream#CertificateBasedAuthProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CertificateBasedAuthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ComputeCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ComputeCapacityStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CopyImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CopyImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CopyImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CopyImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateAppBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateAppBlockBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilderStreamingURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateAppBlockBuilderStreamingURLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilderStreamingURLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlockBuilderStreamingURLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateAppBlockResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateDirectoryConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateDirectoryConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateDirectoryConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateDirectoryConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#EntitlementAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateEntitlementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateImageBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateImageBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateImageBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateImageBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateImageBuilderStreamingURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateImageBuilderStreamingURLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateImageBuilderStreamingURLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateImageBuilderStreamingURLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateStreamingURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateStreamingURLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateStreamingURLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateStreamingURLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateThemeForStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateThemeForStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateThemeForStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateThemeForStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUpdatedImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateUpdatedImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateUpdatedImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUpdatedImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUsageReportSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateUsageReportSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateUsageReportSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUsageReportSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#CreateUserResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteAppBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteAppBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteAppBlockBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteAppBlockBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteAppBlockBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteAppBlockBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteAppBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteAppBlockResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteDirectoryConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteDirectoryConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteDirectoryConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteDirectoryConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteEntitlementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteImageBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteImageBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteImageBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImageBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImagePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteImagePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteImagePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImagePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteThemeForStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteThemeForStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteThemeForStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteThemeForStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteUsageReportSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteUsageReportSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteUsageReportSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteUsageReportSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DeleteUserResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuilderAppBlockAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeAppBlockBuilderAppBlockAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuilderAppBlockAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuilderAppBlockAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuilders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeAppBlockBuildersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuildersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlockBuildersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeAppBlocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeAppBlocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeAppBlocksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeApplicationFleetAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeApplicationFleetAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeApplicationFleetAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeApplicationFleetAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeApplicationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeDirectoryConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeDirectoryConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeDirectoryConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeDirectoryConfigsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeEntitlements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeEntitlementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeEntitlementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeEntitlementsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeFleetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeFleetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeFleetsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImageBuilders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeImageBuildersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeImageBuildersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImageBuildersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImagePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeImagePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeImagePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImagePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeImagesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appstream#DescribeImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeImagesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeSessionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeStacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeStacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeStacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeStacksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeThemeForStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeThemeForStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeThemeForStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeThemeForStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUsageReportSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeUsageReportSubscriptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeUsageReportSubscriptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUsageReportSubscriptionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUserStackAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeUserStackAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeUserStackAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUserStackAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DescribeUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DescribeUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DescribeUsersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#DirectoryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DirectoryConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#DirectoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#DirectoryNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#DisableUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DisableUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DisableUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisableUserResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateAppBlockBuilderAppBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DisassociateAppBlockBuilderAppBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DisassociateAppBlockBuilderAppBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateAppBlockBuilderAppBlockResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DisassociateApplicationFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFromEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DisassociateApplicationFromEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFromEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateApplicationFromEntitlementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#DisassociateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#DisassociateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisassociateFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Domain": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#DomainJoinInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#DynamicAppProvidersEnabled": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#EmbedHostDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#EmbedHostDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#EnableUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#EnableUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#EnableUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EnableUserResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EntitledApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EntitledApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#Entitlement": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EntitlementAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EntitlementAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#EntitlementAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#EntitlementList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#EntitlementNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ErrorDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#ExpireSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#ExpireSessionRequest"
+      }
+    },
+    "com.amazonaws.appstream#ExpireSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ExpireSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#FeedbackURL": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Fleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#FleetAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#FleetAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#FleetError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#FleetErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#FleetErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#FleetList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#FleetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#FleetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#Image": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ImageBuilder": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ImageBuilderList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ImageBuilderState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ImageBuilderStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ImageBuilderStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ImageList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ImagePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ImageSharedWithOthers": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ImageState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ImageStateChangeReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ImageStateChangeReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#IncompatibleImageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.appstream#InvalidAccountStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#InvalidRoleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#LastReportGenerationExecutionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#LastReportGenerationExecutionErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#LatestAppstreamAgentVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListAssociatedFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#ListAssociatedFleetsRequest"
+      }
+    },
+    "com.amazonaws.appstream#ListAssociatedFleetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListAssociatedFleetsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListAssociatedStacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#ListAssociatedStacksRequest"
+      }
+    },
+    "com.amazonaws.appstream#ListAssociatedStacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListAssociatedStacksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListEntitledApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#ListEntitledApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#ListEntitledApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListEntitledApplicationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.appstream#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appstream#MessageAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#Metadata": {
+      "type": "map"
+    },
+    "com.amazonaws.appstream#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#NetworkAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#OperationNotPermittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#OrganizationalUnitDistinguishedName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#OrganizationalUnitDistinguishedNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#PackagingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#PhotonAdminProxyService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppStream"
+        }
+      }
+    },
+    "com.amazonaws.appstream#PlatformType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#Platforms": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#PreferredProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#RedirectURL": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#RegionName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#RequestLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ResourceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ResourceErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ResourceNotAvailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ScriptDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ServiceAccountCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#SessionConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#SessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#SessionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#SettingsGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#SharedImagePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#SharedImagePermissionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#Stack": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StackAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#StackAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#StackError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StackErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#StackErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#StackList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#StartAppBlockBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StartAppBlockBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StartAppBlockBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StartAppBlockBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StartFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StartFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StartFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StartFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StartImageBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StartImageBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StartImageBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StartImageBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopAppBlockBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StopAppBlockBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StopAppBlockBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopAppBlockBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StopFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StopFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopImageBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#StopImageBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#StopImageBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StopImageBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StorageConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StorageConnectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#StorageConnectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#StreamView": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#StreamingExperienceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#StreamingUrlUserId": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#String": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.appstream#Theme": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ThemeAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ThemeAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ThemeFooterLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#ThemeFooterLinkDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#ThemeFooterLinkURL": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#ThemeFooterLinks": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#ThemeState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ThemeStyling": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#ThemeTitleText": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appstream#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateAppBlockBuilder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateAppBlockBuilderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateAppBlockBuilderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateAppBlockBuilderResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateDirectoryConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateDirectoryConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateDirectoryConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateDirectoryConfigResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#EntitlementNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateEntitlementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#RequestLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateFleetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateImagePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateImagePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateImagePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateImagePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#IncompatibleImageException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateThemeForStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appstream#UpdateThemeForStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appstream#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidAccountStatusException"
+        },
+        {
+          "target": "com.amazonaws.appstream#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.appstream#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appstream#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.appstream#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appstream#UpdateThemeForStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UpdateThemeForStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UsageReportExecutionErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#UsageReportSchedule": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#UsageReportSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UsageReportSubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#UsbDeviceFilterString": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#UsbDeviceFilterStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UserAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#UserSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UserSettingList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#UserStackAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UserStackAssociationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appstream#UserStackAssociationErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#UserStackAssociationErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#UserStackAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appstream#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.appstream#VisibilityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appstream#VpcConfig": {
+      "type": "structure"
+    }
+  }
+}

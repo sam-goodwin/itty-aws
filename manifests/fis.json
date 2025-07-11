@@ -1,0 +1,1147 @@
+{
+  "shapes": {
+    "com.amazonaws.fis#AccountTargeting": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ActionId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ActionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ActionParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ActionParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ActionParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ActionParameterRequired": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fis#ActionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ActionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ActionTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ActionTargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ActionTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ActionsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#CloudWatchLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#CreateExperimentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateActionInputMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateExperimentOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateLogConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateReportConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateStopConditionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateStopConditionInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateTargetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateExperimentTemplateTargetInputMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#CreateTargetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#CreateTargetAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#CreateTargetAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreateTargetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#DeleteExperimentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#DeleteExperimentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#DeleteExperimentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#DeleteExperimentTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#DeleteTargetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#DeleteTargetAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#DeleteTargetAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#DeleteTargetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#EmptyTargetResolutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#Experiment": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionEndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#ExperimentActionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentActionParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionStartAfter": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionStartAfterList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentActionStartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#ExperimentActionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#ExperimentActionStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentActionTargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentActionTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentCloudWatchLogsLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentEndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#ExperimentError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentErrorAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentErrorLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportConfigurationCloudWatchDashboard": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportConfigurationCloudWatchDashboardList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentReportConfigurationDataSources": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportConfigurationOutputs": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportConfigurationOutputsS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentReportReason": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentReportS3Report": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportS3ReportArn": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentReportS3ReportList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentReportS3ReportType": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentReportState": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentReportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#ExperimentS3LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentStartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#ExperimentState": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#ExperimentStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentStopCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentStopConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTargetAccountConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTargetAccountConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTargetAccountConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTargetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTargetFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTargetFilterPath": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTargetFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTargetFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTargetParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTargetParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTargetParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTargetSelectionMode": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionStartAfter": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionStartAfterList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionTargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTemplateActionTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateCloudWatchLogsLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateCloudWatchLogsLogConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateExperimentOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationCloudWatchDashboard": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationCloudWatchDashboardList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationDataSources": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationDataSourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationOutputs": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateReportConfigurationOutputsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateS3LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateS3LogConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateStopCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateStopConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilterInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilterPath": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetInputFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ExperimentTemplateTargetSelectionMode": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#FaultInjectionSimulator": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "fis"
+        }
+      }
+    },
+    "com.amazonaws.fis#GetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperimentTargetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetExperimentTargetAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetExperimentTargetAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperimentTargetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperimentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetExperimentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetExperimentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetExperimentTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetSafetyLever": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetSafetyLeverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetSafetyLeverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetSafetyLeverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetTargetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetTargetAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetTargetAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetTargetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetTargetResourceType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#GetTargetResourceTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#GetTargetResourceTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#GetTargetResourceTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#LastUpdateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fis#ListActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListActionsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentResolvedTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListExperimentResolvedTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListExperimentResolvedTargetsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListExperimentResolvedTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentResolvedTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentTargetAccountConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListExperimentTargetAccountConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListExperimentTargetAccountConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentTargetAccountConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListExperimentTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListExperimentTemplatesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListExperimentTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperiments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListExperimentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListExperimentsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListExperimentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListExperimentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListTagsForResourceRequest"
+      }
+    },
+    "com.amazonaws.fis#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTargetAccountConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListTargetAccountConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListTargetAccountConfigurationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListTargetAccountConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTargetAccountConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTargetResourceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#ListTargetResourceTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#ListTargetResourceTypesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#ListTargetResourceTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ListTargetResourceTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#LogSchemaVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.fis#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ReportConfigurationCloudWatchDashboardIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ReportConfigurationCloudWatchDashboardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ReportConfigurationCloudWatchDashboardInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ReportConfigurationDuration": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ReportConfigurationS3Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ReportConfigurationS3OutputInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ReportConfigurationS3OutputPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ResolvedTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ResolvedTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ResourceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#SafetyLever": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#SafetyLeverId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#SafetyLeverState": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#SafetyLeverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#SafetyLeverStatusInput": {
+      "type": "enum"
+    },
+    "com.amazonaws.fis#SafetyLeverStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#StartExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#StartExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#StartExperimentExperimentOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#StartExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#StartExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#StopConditionSource": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#StopConditionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#StopExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#StopExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#StopExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#StopExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#TagResourceRequest"
+      }
+    },
+    "com.amazonaws.fis#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetAccountConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TargetAccountConfigurationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetAccountConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#TargetAccountConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TargetAccountConfigurationsCount": {
+      "type": "long"
+    },
+    "com.amazonaws.fis#TargetAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetInformationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetInformationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#TargetInformationValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetResourceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TargetResourceTypeDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetResourceTypeId": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetResourceTypeParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TargetResourceTypeParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetResourceTypeParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#TargetResourceTypeParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.fis#TargetResourceTypeParameterRequired": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fis#TargetResourceTypeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#TargetResourceTypeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#UntagResourceRequest"
+      }
+    },
+    "com.amazonaws.fis#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#UpdateExperimentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateActionInputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateActionInputMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateExperimentOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateLogConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateReportConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateStopConditionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateStopConditionInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateTargetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateExperimentTemplateTargetInputMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fis#UpdateSafetyLeverState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#UpdateSafetyLeverStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#UpdateSafetyLeverStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateSafetyLeverStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateSafetyLeverStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateTargetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fis#UpdateTargetAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.fis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.fis#UpdateTargetAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#UpdateTargetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fis#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

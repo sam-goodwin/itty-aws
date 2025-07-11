@@ -1,0 +1,4690 @@
+{
+  "shapes": {
+    "com.amazonaws.redshift#AcceptReservedNodeExchange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AcceptReservedNodeExchangeInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidReservedNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AcceptReservedNodeExchangeInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AcceptReservedNodeExchangeOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccessToClusterDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccessToSnapshotDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccountAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccountAttributeList": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccountWithRestoreAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AccountsWithRestoreAccessList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#AddPartner": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#PartnerIntegrationInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#PartnerNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedPartnerIntegrationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AquaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AquaConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#AquaStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#AssociateDataShareConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AssociateDataShareConsumerMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AssociateDataShareConsumerMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AssociatedClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#Association": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AttributeValueTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthenticationProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthenticationProfileAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthenticationProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AuthenticationProfileNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#AuthenticationProfileNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthenticationProfileQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#AuthorizeClusterSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AuthorizeClusterSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthorizationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AuthorizeClusterSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizeClusterSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizeDataShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AuthorizeDataShareMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AuthorizeDataShareMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizeEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AuthorizeEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointAuthorizationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointAuthorizationsPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthorizationStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AuthorizeEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizeSnapshotAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#AuthorizeSnapshotAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthorizationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#AuthorizeSnapshotAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizeSnapshotAccessResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizedAudienceList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AuthorizedTokenIssuer": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AuthorizedTokenIssuerList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#BatchDeleteClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#BatchDeleteClusterSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#BatchDeleteRequestSizeExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#BatchDeleteClusterSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchDeleteClusterSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchDeleteRequestSizeExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchModifyClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#BatchModifyClusterSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#BatchModifyClusterSnapshotsLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#BatchModifyClusterSnapshotsLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchModifyClusterSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchModifyClusterSnapshotsOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#BatchSnapshotOperationErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#BatchSnapshotOperationErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.redshift#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.redshift#BucketNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CancelResize": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CancelResizeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResizeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CancelResizeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CertificateAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CertificateAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterAssociatedToSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterDbRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterDbRevisionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterDbRevisionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterExtendedCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterIamRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterIamRoleList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterNodesList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterOnLatestRevisionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterParameterStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSnapshotCopyStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterSubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClusterVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ClusterVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ConflictPolicyUpdateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ConsumerIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#CopyClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CopyClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CopyClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CopyClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CopyToRegionDisabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateAuthenticationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateAuthenticationProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthenticationProfileRequestFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateAuthenticationProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateAuthenticationProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterTrackFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidElasticIpFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#Ipv6CidrBlockNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationNotExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateClusterSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateClusterSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSecurityGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateClusterSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateClusterSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateClusterSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateCustomDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateCustomDomainAssociationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomCnameAssociationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateCustomDomainAssociationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateCustomDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AccessToClusterDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointsPerAuthorizationLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointsPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionAlreadyExistFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionCategoryNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionEventIdNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionSeverityNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateHsmClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateHsmClientCertificateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateHsmClientCertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateHsmClientCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateHsmConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateHsmConfigurationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateHsmConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateHsmConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#IntegrationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationSourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationTargetNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateRedshiftIdcApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateRedshiftIdcApplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateRedshiftIdcApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateRedshiftIdcApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateScheduledActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduledActionFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduleFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionTypeUnsupportedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateScheduledActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateSnapshotCopyGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateSnapshotCopyGrantMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyGrantAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyGrantQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateSnapshotCopyGrantMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateSnapshotCopyGrantResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateSnapshotSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateSnapshotScheduleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduleFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduleDefinitionTypeUnsupportedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateSnapshotScheduleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateTagsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateTagsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CreateUsageLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#CreateUsageLimitMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidUsageLimitFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UsageLimitAlreadyExistsFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#CreateUsageLimitMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CustomCnameAssociationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CustomDomainAssociationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CustomDomainAssociationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#CustomDomainCertificateArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#CustomDomainNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#CustomerStorageMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DataShare": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DataShareAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DataShareAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DataShareList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DataShareStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#DataShareStatusForConsumer": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#DataShareStatusForProducer": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#DataShareType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#DataTransferProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DbGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DeauthorizeDataShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeauthorizeDataShareMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeauthorizeDataShareMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DefaultClusterParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeferredMaintenanceWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeferredMaintenanceWindowsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DeleteAuthenticationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteAuthenticationProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthenticationProfileRequestFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteAuthenticationProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteAuthenticationProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteClusterSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteClusterSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterSnapshotMessageList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DeleteClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteClusterSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteClusterSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSubnetStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteClusterSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteCustomDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteCustomDomainAssociationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomCnameAssociationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomDomainAssociationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteCustomDomainAssociationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidEndpointStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidSubscriptionStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteHsmClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteHsmClientCertificateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidHsmClientCertificateStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteHsmClientCertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteHsmConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteHsmConfigurationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidHsmConfigurationStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteHsmConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationConflictStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeletePartner": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#PartnerIntegrationInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#PartnerNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedPartnerIntegrationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteRedshiftIdcApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteRedshiftIdcApplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationNotExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteRedshiftIdcApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteResourcePolicyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteResourcePolicyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteScheduledActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteScheduledActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteSnapshotCopyGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteSnapshotCopyGrantMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidSnapshotCopyGrantStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyGrantNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteSnapshotCopyGrantMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteSnapshotSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteSnapshotScheduleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotScheduleStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteSnapshotScheduleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteTagsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteTagsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeleteUsageLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeleteUsageLimitMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UsageLimitNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeleteUsageLimitMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DependentServiceAccessDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DependentServiceRequestThrottlingFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DependentServiceUnavailableFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeregisterNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DeregisterNamespaceInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DeregisterNamespaceInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DeregisterNamespaceOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeAccountAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeAccountAttributesMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeAccountAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeAuthenticationProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeAuthenticationProfilesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthenticationProfileRequestFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeAuthenticationProfilesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeAuthenticationProfilesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterDbRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterDbRevisionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterDbRevisionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterSecurityGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterSecurityGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterTracks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterTracksMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterTrackFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClusterTracksMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusterVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClusterVersionsMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeClusterVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeCustomDomainAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeCustomDomainAssociationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#CustomDomainAssociationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeCustomDomainAssociationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeDataSharesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeDataSharesForConsumerMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForConsumerMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForConsumerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForProducer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeDataSharesForProducerMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForProducerMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataSharesForProducerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataSharesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDataSharesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDefaultClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeDefaultClusterParametersMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeDefaultClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeDefaultClusterParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeEndpointAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeEndpointAuthorizationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeEndpointAuthorizationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeEventCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeEventCategoriesMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeEventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeEventSubscriptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeEventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeHsmClientCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeHsmClientCertificatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeHsmClientCertificatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeHsmConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeHsmConfigurationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeHsmConfigurationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeInboundIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeInboundIntegrationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeInboundIntegrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeIntegrationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeIntegrationsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeIntegrationsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DescribeIntegrationsFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#DescribeIntegrationsFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#DescribeIntegrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeLoggingStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeLoggingStatusMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeLoggingStatusMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeNodeConfigurationOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeNodeConfigurationOptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AccessToSnapshotDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeNodeConfigurationOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeOrderableClusterOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeOrderableClusterOptionsMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeOrderableClusterOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribePartners": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribePartnersInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedPartnerIntegrationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribePartnersInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribePartnersOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeRedshiftIdcApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeRedshiftIdcApplicationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationNotExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeRedshiftIdcApplicationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeRedshiftIdcApplicationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeReservedNodeExchangeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeReservedNodeExchangeStatusInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeExchangeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeReservedNodeExchangeStatusInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeReservedNodeExchangeStatusOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeReservedNodeOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeReservedNodeOfferingsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeReservedNodeOfferingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeReservedNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeReservedNodesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeReservedNodesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeResize": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeResizeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResizeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeResizeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeScheduledActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeScheduledActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeScheduledActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeSnapshotCopyGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeSnapshotCopyGrantsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyGrantNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeSnapshotCopyGrantsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeSnapshotSchedules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeSnapshotSchedulesMessage"
+      }
+    },
+    "com.amazonaws.redshift#DescribeSnapshotSchedulesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeSnapshotSchedulesOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeStorage": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.redshift#DescribeTableRestoreStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeTableRestoreStatusMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TableRestoreNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeTableRestoreStatusMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeTagsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeTagsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DescribeUsageLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DescribeUsageLimitsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DescribeUsageLimitsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#DisableLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DisableLoggingMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DisableLoggingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DisableSnapshotCopy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DisableSnapshotCopyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyAlreadyDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DisableSnapshotCopyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DisableSnapshotCopyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#DisassociateDataShareConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#DisassociateDataShareConsumerMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#DisassociateDataShareConsumerMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.redshift#DoubleOptional": {
+      "type": "double"
+    },
+    "com.amazonaws.redshift#EC2SecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EC2SecurityGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ElasticIpStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EligibleTracksToUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EnableLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#EnableLoggingMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#BucketNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientS3BucketPolicyFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidS3BucketNameFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidS3KeyPrefixFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#EnableLoggingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EnableSnapshotCopy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#EnableSnapshotCopyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CopyToRegionDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IncompatibleOrderableOptions"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyAlreadyEnabledFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyGrantNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnknownSnapshotCopyRegionFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#EnableSnapshotCopyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EnableSnapshotCopyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EncryptionContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.redshift#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAccessList": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAccesses": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EndpointAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAuthorization": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAuthorizationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAuthorizationList": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointAuthorizations": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EndpointAuthorizationsPerClusterLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointsPerAuthorizationLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EndpointsPerClusterLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventCategoriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EventCategoriesMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventCategoriesMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventInfoMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventInfoMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventSubscriptionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventSubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#EventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#EventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#FailoverPrimaryCompute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#FailoverPrimaryComputeInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#FailoverPrimaryComputeInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#FailoverPrimaryComputeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetClusterCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#GetClusterCredentialsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#GetClusterCredentialsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetClusterCredentialsWithIAM": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#GetClusterCredentialsWithIAMMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#GetClusterCredentialsWithIAMMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeConfigurationOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#GetReservedNodeExchangeConfigurationOptionsInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidReservedNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeConfigurationOptionsInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeConfigurationOptionsOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#GetReservedNodeExchangeOfferingsInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidReservedNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeOfferingsInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetReservedNodeExchangeOfferingsOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#GetResourcePolicyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidPolicyFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#GetResourcePolicyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#GetResourcePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmClientCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmClientCertificateAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmClientCertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#HsmClientCertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmClientCertificateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmClientCertificateQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmConfigurationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#HsmConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmConfigurationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmConfigurationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#HsmStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IPRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IPRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#IamRoleArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#IdcDisplayNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#IdentityNamespaceString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#ImpactRankingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ImportTablesCompleted": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ImportTablesInProgress": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ImportTablesNotStarted": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#InProgressTableRestoreQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InboundIntegration": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InboundIntegrationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#InboundIntegrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#InboundIntegrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IncompatibleOrderableOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InsufficientClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InsufficientS3BucketPolicyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshift#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshift#Integration": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#IntegrationConflictOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationConflictStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#IntegrationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#IntegrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#IntegrationName": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#IntegrationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationSourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationTargetNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#IntegrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidAuthenticationProfileRequestFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidAuthorizationStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterSnapshotScheduleStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterSubnetGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterSubnetStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidClusterTrackFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidDataShareFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidElasticIpFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidEndpointStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidHsmClientCertificateStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidHsmConfigurationStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidNamespaceFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidPolicyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidReservedNodeStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidRestoreFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidRetentionPeriodFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidS3BucketNameFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidS3KeyPrefixFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidScheduleFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidScheduledActionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidSnapshotCopyGrantStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidSubscriptionStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidTableRestoreArgumentFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidTagFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidUsageLimitFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Ipv6CidrBlockNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#LakeFormationQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#LakeFormationScopeUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.redshift#LakeFormationServiceIntegrations": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#LimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ListRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ListRecommendationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ListRecommendationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ListRecommendationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#LogDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#LogTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#LoggingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.redshift#LongOptional": {
+      "type": "long"
+    },
+    "com.amazonaws.redshift#MaintenanceTrack": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ModifyAquaConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyAquaInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyAquaInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyAquaOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyAuthenticationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyAuthenticationProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthenticationProfileQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthenticationProfileRequestFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyAuthenticationProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyAuthenticationProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomCnameAssociationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterTrackFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidElasticIpFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#Ipv6CidrBlockNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TableLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOptionFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterDbRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterDbRevisionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterOnLatestRevisionFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterDbRevisionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterDbRevisionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterIamRoles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterIamRolesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterIamRolesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterIamRolesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterMaintenance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterMaintenanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterMaintenanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterMaintenanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterSnapshotSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterSnapshotScheduleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotScheduleStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterSnapshotScheduleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyClusterSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubnetAlreadyInUse"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyClusterSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyClusterSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyCustomDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyCustomDomainAssociationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomCnameAssociationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#CustomDomainAssociationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyCustomDomainAssociationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyCustomDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidSubscriptionStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionCategoryNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionEventIdNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SubscriptionSeverityNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#IntegrationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationConflictStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyRedshiftIdcApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyRedshiftIdcApplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#DependentServiceAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#RedshiftIdcApplicationNotExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyRedshiftIdcApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyRedshiftIdcApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyScheduledActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduledActionFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduleFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ScheduledActionTypeUnsupportedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyScheduledActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifySnapshotCopyRetentionPeriod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifySnapshotCopyRetentionPeriodMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRetentionPeriodFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotCopyDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifySnapshotCopyRetentionPeriodMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifySnapshotCopyRetentionPeriodResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifySnapshotSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifySnapshotScheduleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidScheduleFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleUpdateInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifySnapshotScheduleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ModifyUsageLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ModifyUsageLimitMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidUsageLimitFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UsageLimitNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ModifyUsageLimitMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NamespaceIdentifierUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.redshift#NamespaceRegistrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NetworkInterfaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOptionsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOptionsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOptionsFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#NodeConfigurationOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NumberOfNodesPerClusterLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#NumberOfNodesQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#OperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#OrderableClusterOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#OrderableClusterOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#OrderableClusterOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ParameterApplyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationPartnerName": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#PartnerIntegrationStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#PartnerNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PauseCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#PauseClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#PauseClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PauseClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PendingActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#PendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ProvisionedIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PurchaseReservedNodeOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#PurchaseReservedNodeOfferingMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#PurchaseReservedNodeOfferingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PurchaseReservedNodeOfferingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#PutResourcePolicyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ConflictPolicyUpdateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidPolicyFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#PutResourcePolicyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#PutResourcePolicyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReadWriteAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RebootCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RebootClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RebootClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RebootClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RecommendedAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RecommendedActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RecommendedActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplicationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplicationNotExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RedshiftIdcApplicationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RedshiftServiceVersion20121201": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Redshift"
+        }
+      }
+    },
+    "com.amazonaws.redshift#ReferenceLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReferenceLinkList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RegisterNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RegisterNamespaceInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidNamespaceFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RegisterNamespaceInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RegisterNamespaceOutputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RejectDataShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RejectDataShareMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#InvalidDataShareFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RejectDataShareMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeConfigurationOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeConfigurationOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ReservedNodeExchangeActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ReservedNodeExchangeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeExchangeStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeExchangeStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ReservedNodeExchangeStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ReservedNodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ReservedNodeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeOfferingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ReservedNodeOfferingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodeQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ReservedNodesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResetClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ResetClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ResetClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResizeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ResizeClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidReservedNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOptionFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ResizeClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResizeClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResizeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResizeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResizeProgressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResourcePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RestorableNodeTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RestoreFromClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RestoreFromClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AccessToSnapshotDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceUnavailableFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmClientCertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#HsmConfigurationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterTrackFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidElasticIpFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidReservedNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTagFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#Ipv6CidrBlockNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesPerClusterLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#NumberOfNodesQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeAlreadyMigratedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ReservedNodeOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#SnapshotScheduleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#TagLimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedOperation"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RestoreFromClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RestoreFromClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RestoreStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RestoreTableFromClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RestoreTableFromClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InProgressTableRestoreQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidTableRestoreArgumentFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RestoreTableFromClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RestoreTableFromClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResumeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#ResumeClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#ResumeClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ResumeClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevisionTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevisionTargetsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#RevokeClusterSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RevokeClusterSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RevokeClusterSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevokeClusterSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevokeEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RevokeEndpointAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointAuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#EndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidAuthorizationStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidEndpointStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RevokeEndpointAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevokeSnapshotAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RevokeSnapshotAccessMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#AccessToSnapshotDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#ClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RevokeSnapshotAccessMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RevokeSnapshotAccessResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RotateEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#RotateEncryptionKeyMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#DependentServiceRequestThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#RotateEncryptionKeyMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#RotateEncryptionKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#S3AccessGrantsScopeUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.redshift#S3AccessGrantsServiceIntegrations": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#S3KeyPrefixValue": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#SNSInvalidTopicFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SNSNoAuthorizationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SNSTopicArnNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduleDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ScheduleDefinitionTypeUnsupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ScheduledAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ScheduledActionFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ScheduledActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ScheduledActionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ScheduledActionTimeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ScheduledActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionTypeUnsupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledActionTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ScheduledActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ScheduledSnapshotTimeList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SecondaryClusterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#ServerlessIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#ServiceAuthorization": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#ServiceIntegrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ServiceIntegrationsUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.redshift#Snapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotAttributeToSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#SnapshotCopyAlreadyDisabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyAlreadyEnabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyDisabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrantAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrantList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrantMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrantNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotCopyGrantQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotErrorMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotScheduleAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SnapshotScheduleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotScheduleQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotScheduleUpdateInProgressFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotSortingEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SnapshotSortingEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SortByOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#SourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#SourceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#String": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubnetAlreadyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SubscriptionAlreadyExistFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubscriptionCategoryNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubscriptionEventIdNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubscriptionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SubscriptionSeverityNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SupportedOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SupportedOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#SupportedPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#SupportedPlatformsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.redshift#TableLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TableRestoreNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TableRestoreStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TableRestoreStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TableRestoreStatusMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TableRestoreStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TagLimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TagValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TaggedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TaggedResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TaggedResourceListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#TargetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.redshift#TrackList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#TrackListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UnauthorizedOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UnauthorizedPartnerIntegrationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UnknownSnapshotCopyRegionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UnsupportedOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UnsupportedOptionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UpdatePartnerStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshift#UpdatePartnerStatusInputMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshift#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#PartnerNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnauthorizedPartnerIntegrationFault"
+        },
+        {
+          "target": "com.amazonaws.redshift#UnsupportedOperationFault"
+        }
+      ]
+    },
+    "com.amazonaws.redshift#UpdatePartnerStatusInputMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UpdateTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UsageLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UsageLimitAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UsageLimitBreachAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#UsageLimitFeatureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#UsageLimitLimitType": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#UsageLimitList": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UsageLimitNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#UsageLimitPeriod": {
+      "type": "enum"
+    },
+    "com.amazonaws.redshift#UsageLimits": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ValueStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#VpcEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#VpcEndpointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#VpcIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#VpcSecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#VpcSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshift#VpcSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshift#ZeroETLIntegrationStatus": {
+      "type": "enum"
+    }
+  }
+}

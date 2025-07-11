@@ -1,0 +1,2317 @@
+{
+  "shapes": {
+    "com.amazonaws.kms#AWSAccountIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#AlgorithmSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#AliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#AliasListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#AliasNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#AttestationDocumentType": {
+      "type": "blob"
+    },
+    "com.amazonaws.kms#BackingKeyIdResponseType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#BackingKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#BooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kms#CancelKeyDeletion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#CancelKeyDeletionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#CancelKeyDeletionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CancelKeyDeletionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CiphertextType": {
+      "type": "blob"
+    },
+    "com.amazonaws.kms#CloudHsmClusterIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#CloudHsmClusterInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CloudHsmClusterInvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CloudHsmClusterNotActiveException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CloudHsmClusterNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CloudHsmClusterNotRelatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ConnectCustomKeyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ConnectCustomKeyStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ConnectCustomKeyStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ConnectCustomKeyStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ConnectionErrorCodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#ConnectionStateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#CreateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#CreateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidAliasNameException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#CreateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateCustomKeyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#CreateCustomKeyStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNameInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#IncorrectTrustAnchorException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyIncorrectAuthenticationCredentialException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyInvalidResponseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriEndpointInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriUnreachableException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#CreateCustomKeyStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateCustomKeyStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#CreateGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#CreateGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#CreateKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.kms#TagException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksKeyAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksKeyInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksKeyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#CreateKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CreateKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomKeyStoreHasCMKsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomKeyStoreIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#CustomKeyStoreInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomKeyStoreNameInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomKeyStoreNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#CustomKeyStoreNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomKeyStoreType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#CustomKeyStoresList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#CustomKeyStoresListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#CustomerMasterKeySpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#DataKeyPairSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#DataKeySpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#DateType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.kms#Decrypt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DecryptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#IncorrectKeyException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidCiphertextException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DecryptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DecryptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeleteAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DeleteAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DeleteAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeleteCustomKeyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DeleteCustomKeyStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreHasCMKsException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DeleteCustomKeyStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeleteCustomKeyStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeleteImportedKeyMaterial": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DeleteImportedKeyMaterialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DeleteImportedKeyMaterialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeleteImportedKeyMaterialResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DependencyTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeriveSharedSecret": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DeriveSharedSecretRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DeriveSharedSecretRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DeriveSharedSecretResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DescribeCustomKeyStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DescribeCustomKeyStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DescribeCustomKeyStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DescribeCustomKeyStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DescribeKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DescribeKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DescribeKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DescribeKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#DisableKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DisableKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DisableKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DisableKeyRotation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DisableKeyRotationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DisableKeyRotationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DisconnectCustomKeyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#DisconnectCustomKeyStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#DisconnectCustomKeyStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DisconnectCustomKeyStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#DryRunOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#EnableKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#EnableKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#EnableKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#EnableKeyRotation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#EnableKeyRotationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#EnableKeyRotationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#Encrypt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#EncryptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#EncryptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#EncryptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#EncryptionAlgorithmSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#EncryptionAlgorithmSpecList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#EncryptionContextKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#EncryptionContextType": {
+      "type": "map"
+    },
+    "com.amazonaws.kms#EncryptionContextValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#ErrorMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#ExpirationModelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#ExpiredImportTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateDataKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateDataKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateDataKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateDataKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyPairResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyPairWithoutPlaintext": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateDataKeyPairWithoutPlaintextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateDataKeyPairWithoutPlaintextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyPairWithoutPlaintextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyWithoutPlaintext": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateDataKeyWithoutPlaintextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateDataKeyWithoutPlaintextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateDataKeyWithoutPlaintextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateMac": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateMacRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateMacRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateMacResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateRandom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GenerateRandomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GenerateRandomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GenerateRandomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetKeyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GetKeyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GetKeyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetKeyPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetKeyRotationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GetKeyRotationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GetKeyRotationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetKeyRotationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetParametersForImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GetParametersForImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GetParametersForImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetParametersForImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#GetPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#GetPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GetPublicKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GrantConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GrantIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#GrantList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#GrantListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#GrantNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#GrantOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#GrantOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#GrantTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#GrantTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#ImportKeyMaterial": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ImportKeyMaterialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#ExpiredImportTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#IncorrectKeyMaterialException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidCiphertextException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidImportTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ImportKeyMaterialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ImportKeyMaterialResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ImportState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#ImportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#IncludeKeyMaterial": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#IncorrectKeyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#IncorrectKeyMaterialException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#IncorrectTrustAnchorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidAliasNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidCiphertextException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidGrantIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidGrantTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidImportTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidKeyUsageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#InvalidMarkerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KMSInternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KMSInvalidMacException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KMSInvalidSignatureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KMSInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KeyAgreementAlgorithmSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyAgreementAlgorithmSpecList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#KeyEncryptionMechanism": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#KeyListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KeyManagerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyMaterialDescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#KeyMaterialState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KeySpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#KeyStorePasswordType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#KeyUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#KeyUsageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#LimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.kms#ListAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListGrantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantIdException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListGrantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListGrantsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeyPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListKeyPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListKeyPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeyPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeyRotations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListKeyRotationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListKeyRotationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeyRotationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListResourceTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListResourceTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListResourceTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListResourceTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ListRetirableGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ListRetirableGrantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidMarkerException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ListRetirableGrantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#MacAlgorithmSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#MacAlgorithmSpecList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#MarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#MessageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#MultiRegionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#MultiRegionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#MultiRegionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#MultiRegionKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#NullableBooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kms#NumberOfBytesType": {
+      "type": "integer"
+    },
+    "com.amazonaws.kms#OriginType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#PendingWindowInDaysType": {
+      "type": "integer"
+    },
+    "com.amazonaws.kms#PlaintextType": {
+      "type": "blob"
+    },
+    "com.amazonaws.kms#PolicyNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#PolicyNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#PolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#PrincipalIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#PublicKeyType": {
+      "type": "blob"
+    },
+    "com.amazonaws.kms#PutKeyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#PutKeyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#PutKeyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ReEncrypt": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ReEncryptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#IncorrectKeyException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidCiphertextException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ReEncryptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ReEncryptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RecipientInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RegionType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#ReplicateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ReplicateKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#TagException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ReplicateKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ReplicateKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RetireGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#RetireGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantIdException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#RetireGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RevokeGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#RevokeGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantIdException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#RevokeGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RotateKeyOnDemand": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#RotateKeyOnDemandRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#RotateKeyOnDemandRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RotateKeyOnDemandResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#RotationPeriodInDaysType": {
+      "type": "integer"
+    },
+    "com.amazonaws.kms#RotationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#RotationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#RotationsListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ScheduleKeyDeletion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#ScheduleKeyDeletionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#ScheduleKeyDeletionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#ScheduleKeyDeletionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#Sign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#SignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#SignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#SignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#SigningAlgorithmSpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#SigningAlgorithmSpecList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#TagException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#TagKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.kms#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#TagException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#TagValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#TrentService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "KMS"
+        }
+      }
+    },
+    "com.amazonaws.kms#TrustAnchorCertificateType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#TagException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UpdateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#UpdateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#UpdateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UpdateCustomKeyStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#UpdateCustomKeyStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#CloudHsmClusterNotRelatedException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNameInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#CustomKeyStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyIncorrectAuthenticationCredentialException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyInvalidResponseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriEndpointInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyUriUnreachableException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceInvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.kms#XksProxyVpcEndpointServiceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#UpdateCustomKeyStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UpdateCustomKeyStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UpdateKeyDescription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#UpdateKeyDescriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#UpdateKeyDescriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#UpdatePrimaryRegion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#UpdatePrimaryRegionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kms#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#UpdatePrimaryRegionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#Verify": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#VerifyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DependencyTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidSignatureException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#VerifyMac": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kms#VerifyMacRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kms#DisabledException"
+        },
+        {
+          "target": "com.amazonaws.kms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidGrantTokenException"
+        },
+        {
+          "target": "com.amazonaws.kms#InvalidKeyUsageException"
+        },
+        {
+          "target": "com.amazonaws.kms#KeyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInternalException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidMacException"
+        },
+        {
+          "target": "com.amazonaws.kms#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kms#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kms#VerifyMacRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#VerifyMacResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#VerifyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#VerifyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#WrappingKeySpec": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#XksKeyAlreadyInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksKeyConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksKeyInvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksKeyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyAuthenticationAccessKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksProxyAuthenticationCredentialType": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyAuthenticationRawSecretAccessKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksProxyConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyConnectivityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kms#XksProxyIncorrectAuthenticationCredentialException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyInvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyInvalidResponseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyUriEndpointInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyUriEndpointType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksProxyUriInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyUriPathType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksProxyUriUnreachableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyVpcEndpointServiceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyVpcEndpointServiceInvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kms#XksProxyVpcEndpointServiceNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kms#XksProxyVpcEndpointServiceNotFoundException": {
+      "type": "structure"
+    }
+  }
+}

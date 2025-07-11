@@ -1,0 +1,1117 @@
+{
+  "shapes": {
+    "com.amazonaws.firehose#AWSKMSKeyARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessCollectionEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonOpenSearchServerlessS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceClusterEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceDomainARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceIndexRotationPeriod": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#AmazonopensearchserviceTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#AuthenticationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#BlockSizeBytes": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.firehose#BucketARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#BufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#CatalogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#CloudWatchLoggingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ClusterJDBCURL": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ColumnToJsonKeyMappings": {
+      "type": "map"
+    },
+    "com.amazonaws.firehose#CompressionFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Connectivity": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ContentEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#CopyCommand": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#CopyOptions": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#CreateDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#CreateDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidKMSResourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#CreateDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#CreateDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#CustomTimeZone": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#Data": {
+      "type": "blob"
+    },
+    "com.amazonaws.firehose#DataFormatConversionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DataTableColumns": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DataTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DatabaseColumnIncludeOrExcludeList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DatabaseColumnList": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DatabaseEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DatabaseIncludeOrExcludeList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DatabaseList": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DatabasePort": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#DatabaseSnapshotInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseSnapshotInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DatabaseSourceAuthenticationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseSourceVPCConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseSurrogateKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DatabaseTableIncludeOrExcludeList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DatabaseTableList": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DatabaseTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DatabaseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DefaultDocumentIdFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DeleteDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#DeleteDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#DeleteDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DeleteDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DeliveryStartTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.firehose#DeliveryStreamARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DeliveryStreamDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DeliveryStreamEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DeliveryStreamEncryptionConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DeliveryStreamEncryptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DeliveryStreamFailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DeliveryStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DeliveryStreamNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DeliveryStreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DeliveryStreamType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#DeliveryStreamVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DescribeDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#DescribeDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#DescribeDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DescribeDeliveryStreamInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#DescribeDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Deserializer": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DestinationDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DestinationId": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#DestinationTableConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DestinationTableConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#DirectPutSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DirectPutSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DocumentIdOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#DynamicPartitioningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ElasticsearchBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ElasticsearchClusterEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ElasticsearchDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchDomainARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ElasticsearchIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ElasticsearchIndexRotationPeriod": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ElasticsearchRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ElasticsearchRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ElasticsearchS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ElasticsearchTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ErrorOutputPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ExtendedS3DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ExtendedS3DestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ExtendedS3DestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#FailureDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#FileExtension": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#Firehose_20150804": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Firehose"
+        }
+      }
+    },
+    "com.amazonaws.firehose#GlueDataCatalogARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HECAcknowledgmentTimeoutInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#HECEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HECEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#HECToken": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HiveJsonSerDe": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointAccessKey": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HttpEndpointAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HttpEndpointAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HttpEndpointBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#HttpEndpointBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#HttpEndpointCommonAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointCommonAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#HttpEndpointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#HttpEndpointRequestConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#HttpEndpointRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#HttpEndpointS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#HttpEndpointUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#IcebergDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#IcebergDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#IcebergDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#IcebergS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#InputFormatConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#IntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#InvalidKMSResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#InvalidSourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#KMSEncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#KeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#KinesisStreamARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#KinesisStreamSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#KinesisStreamSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ListDeliveryStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#ListDeliveryStreamsInput"
+      }
+    },
+    "com.amazonaws.firehose#ListDeliveryStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ListDeliveryStreamsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ListDeliveryStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ListOfNonEmptyStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#ListOfNonEmptyStringsWithoutWhitespace": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#ListTagsForDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#ListTagsForDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#ListTagsForDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ListTagsForDeliveryStreamInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ListTagsForDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ListTagsForDeliveryStreamOutputTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#LogStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#MSKClusterARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#MSKSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#MSKSourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#NoEncryptionConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#NonEmptyStringWithoutWhitespace": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#NonNegativeIntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#OpenXJsonSerDe": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#OrcCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#OrcFormatVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#OrcRowIndexStride": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#OrcSerDe": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#OrcStripeSizeBytes": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#OutputFormatConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ParquetCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ParquetPageSizeBytes": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#ParquetSerDe": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ParquetWriterVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#PartitionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PartitionFields": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#PartitionSpec": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Password": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ProcessingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Processor": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ProcessorList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#ProcessorParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ProcessorParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#ProcessorParameterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ProcessorParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ProcessorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#Proportion": {
+      "type": "double"
+    },
+    "com.amazonaws.firehose#PutRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#PutRecordInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidKMSResourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidSourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#PutRecordBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#PutRecordBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidKMSResourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidSourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#PutRecordBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PutRecordBatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PutRecordBatchRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#PutRecordBatchResponseEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PutRecordBatchResponseEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#PutRecordInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PutRecordOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#PutResponseRecordId": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ReadFromTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.firehose#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RedshiftDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RedshiftDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RedshiftDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RedshiftRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#RedshiftRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RedshiftS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#RetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#RoleARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#S3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#S3DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#S3DestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#S3DestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SSLMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#SchemaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SchemaEvolutionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SecretARN": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SecretsManagerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#Serializer": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SnapshotRequestedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#SnapshotStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#SnowflakeAccountUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SnowflakeBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SnowflakeContentColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeDataLoadingOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#SnowflakeDatabase": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeKeyPassphrase": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeMetaDataColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakePrivateKey": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakePrivateLinkVpceId": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SnowflakeRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeRole": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeRoleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SnowflakeS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#SnowflakeSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeTable": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeUser": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SnowflakeVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkBufferingHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkBufferingIntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SplunkBufferingSizeInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SplunkDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkDestinationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkDestinationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkRetryDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#SplunkRetryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#SplunkS3BackupMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.firehose#StartDeliveryStreamEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#StartDeliveryStreamEncryptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidKMSResourceException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#StartDeliveryStreamEncryptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#StartDeliveryStreamEncryptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#StopDeliveryStreamEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#StopDeliveryStreamEncryptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#StopDeliveryStreamEncryptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#StopDeliveryStreamEncryptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#StringWithLettersDigitsUnderscoresDots": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#TableCreationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#TagDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#TagDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#TagDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#TagDeliveryStreamInputTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#TagDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.firehose#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#ThroughputHintInMBs": {
+      "type": "integer"
+    },
+    "com.amazonaws.firehose#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.firehose#TopicName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#UntagDeliveryStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#UntagDeliveryStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#UntagDeliveryStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#UntagDeliveryStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#UpdateDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.firehose#UpdateDestinationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.firehose#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.firehose#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.firehose#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.firehose#UpdateDestinationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#UpdateDestinationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#VpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#VpcConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.firehose#VpcEndpointServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.firehose#WarehouseLocation": {
+      "type": "string"
+    }
+  }
+}

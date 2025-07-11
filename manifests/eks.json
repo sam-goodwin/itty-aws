@@ -1,0 +1,2247 @@
+{
+  "shapes": {
+    "com.amazonaws.eks#AMITypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#AWSWesleyFrontend": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EKS"
+        }
+      }
+    },
+    "com.amazonaws.eks#AccessConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AccessEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AccessPoliciesList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AccessPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AccessScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AccessScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#AdditionalInfoMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eks#Addon": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonCompatibilityDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonCompatibilityDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AddonHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonIssue": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonIssueCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#AddonIssueList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AddonPodIdentityAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonPodIdentityAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AddonPodIdentityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonPodIdentityConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AddonStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#AddonVersionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AddonVersionInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Addons": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AssociateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#AssociateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#AssociateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociateEncryptionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#AssociateEncryptionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#AssociateEncryptionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociateEncryptionConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociateIdentityProviderConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#AssociateIdentityProviderConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#AssociateIdentityProviderConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociateIdentityProviderConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AssociatedAccessPoliciesList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#AssociatedAccessPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AuthenticationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#AutoScalingGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#AutoScalingGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#BlockStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.eks#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.eks#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#Capacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#CapacityTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#Category": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#CategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClientStat": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClientStats": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClusterHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClusterIssue": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClusterIssueCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ClusterIssueList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#ClusterName": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#ClusterStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ClusterVersionInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ClusterVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#ClusterVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#Compatibilities": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Compatibility": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ComputeConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ComputeConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ConnectorConfigProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ConnectorConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ConnectorConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ControlPlanePlacementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ControlPlanePlacementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateAccessConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateAccessEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateAccessEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateAccessEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateAccessEntryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateAddon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateAddonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateAddonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateAddonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.eks#UnsupportedAvailabilityZoneException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateEksAnywhereSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateEksAnywhereSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateEksAnywhereSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateEksAnywhereSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateFargateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateFargateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#UnsupportedAvailabilityZoneException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateFargateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateFargateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateNodegroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreateNodegroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreateNodegroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreateNodegroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreatePodIdentityAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#CreatePodIdentityAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#CreatePodIdentityAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#CreatePodIdentityAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteAccessEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteAccessEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteAccessEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteAccessEntryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteAddon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteAddonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteAddonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteAddonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteEksAnywhereSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteEksAnywhereSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteEksAnywhereSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteEksAnywhereSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteFargateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteFargateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteFargateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteFargateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteNodegroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeleteNodegroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeleteNodegroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeleteNodegroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeletePodIdentityAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeletePodIdentityAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeletePodIdentityAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeletePodIdentityAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeprecationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeprecationDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#DeregisterCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DeregisterClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DeregisterClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DeregisterClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAccessEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeAccessEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeAccessEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAccessEntryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeAddonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeAddonConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeAddonConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeAddonConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddonConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddonVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeAddonVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeAddonVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeAddonVersionsRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#DescribeAddonVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeClusterVersionMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#DescribeClusterVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeClusterVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeClusterVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeClusterVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeEksAnywhereSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeEksAnywhereSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeEksAnywhereSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeEksAnywhereSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeFargateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeFargateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeFargateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeFargateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeIdentityProviderConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeIdentityProviderConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeIdentityProviderConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeIdentityProviderConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeInsight": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeInsightRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeInsightRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeInsightResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeNodegroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeNodegroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeNodegroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeNodegroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribePodIdentityAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribePodIdentityAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribePodIdentityAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribePodIdentityAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DescribeUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DescribeUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DescribeUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DisassociateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DisassociateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DisassociateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DisassociateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DisassociateIdentityProviderConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#DisassociateIdentityProviderConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#DisassociateIdentityProviderConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#DisassociateIdentityProviderConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionLicenseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionName": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionStatusValues": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionTerm": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#EksAnywhereSubscriptionTermUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ElasticLoadBalancing": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#EncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#EncryptionConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#FargateProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#FargateProfileHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#FargateProfileIssue": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#FargateProfileIssueCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#FargateProfileIssueList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#FargateProfileLabel": {
+      "type": "map"
+    },
+    "com.amazonaws.eks#FargateProfileSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#FargateProfileSelectors": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#FargateProfileStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#FargateProfilesRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#Identity": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#IdentityProviderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#IdentityProviderConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#IdentityProviderConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#IncludeClustersList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Insight": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InsightCategorySpecificSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InsightResourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InsightResourceDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#InsightStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InsightStatusValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#InsightStatusValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#InsightSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#InsightSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InsightsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#IpFamily": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#Issue": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#IssueList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#KubernetesNetworkConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#KubernetesNetworkConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#LaunchTemplateSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#License": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#LicenseList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#ListAccessEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListAccessEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListAccessEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAccessEntriesRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListAccessEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAccessPoliciesRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAddons": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListAddonsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListAddonsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAddonsRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListAddonsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAssociatedAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListAssociatedAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListAssociatedAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListAssociatedAccessPoliciesRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListAssociatedAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListClustersRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListEksAnywhereSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListEksAnywhereSubscriptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListEksAnywhereSubscriptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListEksAnywhereSubscriptionsRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListEksAnywhereSubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListFargateProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListFargateProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListFargateProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListFargateProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListIdentityProviderConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListIdentityProviderConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListIdentityProviderConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListIdentityProviderConfigsRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListIdentityProviderConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListInsightsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListInsightsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListInsightsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListNodegroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListNodegroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListNodegroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListNodegroupsRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListNodegroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListPodIdentityAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListPodIdentityAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListPodIdentityAssociationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListPodIdentityAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListPodIdentityAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#ListUpdatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#ListUpdatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ListUpdatesRequestMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ListUpdatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#LogSetup": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#LogSetups": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#LogTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#Logging": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#MarketplaceInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodeRepairConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Nodegroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodegroupHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodegroupIssueCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#NodegroupResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodegroupScalingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodegroupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#NodegroupUpdateConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#NodegroupUpdateStrategies": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#NonZeroInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#OIDC": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#OidcIdentityProviderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#OidcIdentityProviderConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#OutpostConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#OutpostConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#PercentCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#PodIdentityAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#PodIdentityAssociationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#PodIdentityAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Provider": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RegisterCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#RegisterClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourcePropagationDelayException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#RegisterClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RegisterClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemoteAccessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemoteNetworkConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemoteNetworkConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemoteNodeNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemoteNodeNetworkList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#RemotePodNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RemotePodNetworkList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#ResolveConflicts": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ResourcePropagationDelayException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#ServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#StorageConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#StorageConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#String": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#SupportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eks#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#Taint": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#TaintEffect": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.eks#UnsupportedAvailabilityZoneException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#Update": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateAccessConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateAccessEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateAccessEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateAccessEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateAccessEntryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateAddon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateAddonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateAddonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateAddonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateClusterConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateClusterConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateClusterConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateClusterConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateClusterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateClusterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        },
+        {
+          "target": "com.amazonaws.eks#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateClusterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateClusterVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateEksAnywhereSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateEksAnywhereSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateEksAnywhereSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateEksAnywhereSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateLabelsPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateNodegroupConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateNodegroupConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateNodegroupConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateNodegroupConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateNodegroupVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdateNodegroupVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#ClientException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdateNodegroupVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateNodegroupVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateParam": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateParamType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#UpdateParams": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#UpdatePodIdentityAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eks#UpdatePodIdentityAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eks#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.eks#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.eks#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eks#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.eks#UpdatePodIdentityAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdatePodIdentityAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#UpdateTaintsPayload": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpdateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#UpgradePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#UpgradePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#VersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#VpcConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#VpcConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ZeroCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.eks#ZonalShiftConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#ZonalShiftConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eks#configStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.eks#labelKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#labelValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#labelsKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.eks#labelsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eks#requiredClaimsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#requiredClaimsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eks#requiredClaimsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#taintKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#taintValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eks#taintsList": {
+      "type": "list"
+    }
+  }
+}

@@ -1,0 +1,517 @@
+{
+  "shapes": {
+    "com.amazonaws.transcribestreaming#Alternative": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#AlternativeList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#AudioChunk": {
+      "type": "blob"
+    },
+    "com.amazonaws.transcribestreaming#AudioEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#AudioStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.transcribestreaming#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#CallAnalyticsTranscriptResultStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#CategoryEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ChannelDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ChannelDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#ChannelId": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#CharacterOffsets": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ClinicalNoteGenerationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ClinicalNoteGenerationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ClinicalNoteGenerationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#Confidence": {
+      "type": "double"
+    },
+    "com.amazonaws.transcribestreaming#ConfigurationEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ContentIdentificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#ContentRedactionOutput": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#ContentRedactionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.transcribestreaming#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.transcribestreaming#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#EntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#GetMedicalScribeStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribestreaming#GetMedicalScribeStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribestreaming#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribestreaming#GetMedicalScribeStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#GetMedicalScribeStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#IssueDetected": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#IssuesDetected": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#Item": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#ItemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#KMSEncryptionContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.transcribestreaming#KMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#LanguageIdentification": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#LanguageOptions": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#LanguageWithScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.transcribestreaming#MatchedCategoryDetails": {
+      "type": "map"
+    },
+    "com.amazonaws.transcribestreaming#MediaEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MediaSampleRateHertz": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#MedicalAlternative": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalAlternativeList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalContentIdentificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeAudioEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeChannelDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeChannelDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeChannelId": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeConfigurationEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeEncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeInputStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeMediaEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeMediaSampleRateHertz": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeNoteTemplate": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeParticipantRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribePostStreamAnalyticsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribePostStreamAnalyticsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeResultStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeSessionControlEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeSessionControlEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeStreamDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeStreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeTranscriptEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeTranscriptItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeTranscriptItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeTranscriptItemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeTranscriptSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalScribeVocabularyFilterMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#MedicalTranscript": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalTranscriptEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#MedicalTranscriptResultStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#ModelName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.transcribestreaming#NumberOfChannels": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribestreaming#PartialResultsStability": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#ParticipantRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#PiiEntityTypes": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#PointsOfInterest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#PostCallAnalyticsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#ResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#Sentiment": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#Specialty": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#Stable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.transcribestreaming#StartCallAnalyticsStreamTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribestreaming#StartCallAnalyticsStreamTranscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribestreaming#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribestreaming#StartCallAnalyticsStreamTranscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartCallAnalyticsStreamTranscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalScribeStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribestreaming#StartMedicalScribeStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribestreaming#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalScribeStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalScribeStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalStreamTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribestreaming#StartMedicalStreamTranscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribestreaming#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalStreamTranscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartMedicalStreamTranscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartStreamTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribestreaming#StartStreamTranscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribestreaming#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribestreaming#StartStreamTranscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#StartStreamTranscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#String": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#TimestampRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#TimestampRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribestreaming#Transcribe": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Transcribe Streaming"
+        }
+      }
+    },
+    "com.amazonaws.transcribestreaming#Transcript": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#TranscriptEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#TranscriptResultStream": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribestreaming#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#UtteranceEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribestreaming#VocabularyFilterMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribestreaming#VocabularyFilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#VocabularyFilterNames": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#VocabularyName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribestreaming#VocabularyNames": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "shapes": {
+    "com.amazonaws.mediastore#AllowedHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#AllowedMethods": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#AllowedOrigins": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ContainerARN": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ContainerAccessLoggingEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.mediastore#ContainerInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ContainerLevelMetrics": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediastore#ContainerList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#ContainerListLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediastore#ContainerName": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ContainerNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ContainerPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ContainerStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediastore#CorsPolicy": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#CorsPolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#CorsRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#CreateContainer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#CreateContainerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#CreateContainerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#CreateContainerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteContainer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DeleteContainerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DeleteContainerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteContainerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteContainerPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DeleteContainerPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DeleteContainerPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteContainerPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteCorsPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DeleteCorsPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#CorsPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DeleteCorsPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteCorsPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DeleteLifecyclePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DeleteLifecyclePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteLifecyclePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteMetricPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DeleteMetricPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DeleteMetricPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DeleteMetricPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DescribeContainer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#DescribeContainerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#DescribeContainerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#DescribeContainerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ExposeHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#GetContainerPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#GetContainerPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#GetContainerPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetContainerPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetCorsPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#GetCorsPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#CorsPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#GetCorsPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetCorsPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#GetLifecyclePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#GetLifecyclePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetLifecyclePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetMetricPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#GetMetricPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#GetMetricPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#GetMetricPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#Header": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#LifecyclePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ListContainers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#ListContainersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#ListContainersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ListContainersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#MaxAgeSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediastore#MediaStore_20170901": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MediaStore"
+        }
+      }
+    },
+    "com.amazonaws.mediastore#MethodName": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediastore#MetricPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#MetricPolicyRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#MetricPolicyRules": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#ObjectGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#ObjectGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#Origin": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#PolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutContainerPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#PutContainerPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#PutContainerPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutContainerPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutCorsPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#PutCorsPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#PutCorsPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutCorsPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#PutLifecyclePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#PutLifecyclePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutLifecyclePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutMetricPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#PutMetricPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#PutMetricPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#PutMetricPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#StartAccessLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#StartAccessLoggingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#StartAccessLoggingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#StartAccessLoggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#StopAccessLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#StopAccessLoggingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#StopAccessLoggingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#StopAccessLoggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediastore#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.mediastore#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.mediastore#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediastore#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediastore#ContainerInUseException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ContainerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediastore#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.mediastore#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediastore#UntagResourceOutput": {
+      "type": "structure"
+    }
+  }
+}

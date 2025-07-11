@@ -1,0 +1,976 @@
+{
+  "shapes": {
+    "com.amazonaws.acmpca#ACMPrivateCA": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ACM PCA"
+        }
+      }
+    },
+    "com.amazonaws.acmpca#ASN1PrintableString64": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#ASN1Subject": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#AWSPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#AccessDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#AccessDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#AccessMethod": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#AccessMethodType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#ActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#ApiPassthrough": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#AuditReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#AuditReportResponseFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#AuditReportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#Base64String1To4096": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.acmpca#CertificateAuthorities": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#CertificateAuthority": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CertificateAuthorityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CertificateAuthorityStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#CertificateAuthorityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#CertificateAuthorityUsageMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#CertificateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#CertificateBodyBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acmpca#CertificateChain": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#CertificateChainBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acmpca#CertificateMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CertificatePolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#CnameString": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CountryCodeString": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#CreateCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthorityAuditReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#CreateCertificateAuthorityAuditReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthorityAuditReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthorityAuditReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CreateCertificateAuthorityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CreatePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#CreatePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#PermissionAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#CreatePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CrlConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CrlDistributionPointExtensionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CrlPathString": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#CrlType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#CsrBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acmpca#CsrBody": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#CsrExtensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CustomAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CustomAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#CustomExtension": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#CustomExtensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#CustomObjectIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#DeleteCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#DeleteCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#DeleteCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DeletePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#DeletePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#DeletePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#DeletePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LockoutPreventedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#DeletePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#DescribeCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthorityAuditReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#DescribeCertificateAuthorityAuditReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthorityAuditReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthorityAuditReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#DescribeCertificateAuthorityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#EdiPartyName": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ExtendedKeyUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ExtendedKeyUsageList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#ExtendedKeyUsageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#Extensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#FailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#GeneralName": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GeneralNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#GetCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#GetCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#GetCertificateAuthorityCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCsr": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#GetCertificateAuthorityCsrRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCsrRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetCertificateAuthorityCsrResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#ImportCertificateAuthorityCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#ImportCertificateAuthorityCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#CertificateMismatchException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#MalformedCertificateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#ImportCertificateAuthorityCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#Integer1To5000": {
+      "type": "integer"
+    },
+    "com.amazonaws.acmpca#InvalidArgsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#InvalidTagException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#IssueCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#IssueCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#MalformedCSRException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#IssueCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#IssueCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#KeyAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#KeyStorageSecurityStandard": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#KeyUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListCertificateAuthorities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#ListCertificateAuthoritiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#ListCertificateAuthoritiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListCertificateAuthoritiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#ListPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#ListPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#LockoutPreventedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#MalformedCSRException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#MalformedCertificateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.acmpca#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#OcspConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#OtherName": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#PermanentDeletionTimeInDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.acmpca#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#PermissionAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#PermissionList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#PolicyInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#PolicyQualifierId": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#PolicyQualifierInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#PolicyQualifierInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#PositiveLong": {
+      "type": "long"
+    },
+    "com.amazonaws.acmpca#Principal": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#PutPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#PutPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LockoutPreventedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#PutPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#Qualifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#RequestAlreadyProcessedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#RequestFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#RequestInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ResourceOwner": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#RestoreCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#RestoreCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#RestoreCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#RevocationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#RevocationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#RevokeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#RevokeCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestAlreadyProcessedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#RevokeCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#S3BucketName3To255": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#S3ObjectAcl": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#SigningAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.acmpca#String": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String128": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String16": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String1To256": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String253": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String256": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String3": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String39": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String40": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String5": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#String64": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.acmpca#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#TagCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#TagCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#TagCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.acmpca#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.acmpca#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#UntagCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#UntagCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#UntagCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#UpdateCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acmpca#UpdateCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acmpca#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acmpca#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acmpca#UpdateCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#Validity": {
+      "type": "structure"
+    },
+    "com.amazonaws.acmpca#ValidityPeriodType": {
+      "type": "enum"
+    }
+  }
+}

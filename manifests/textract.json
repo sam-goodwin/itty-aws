@@ -1,0 +1,1490 @@
+{
+  "shapes": {
+    "com.amazonaws.textract#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Adapter": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AdapterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AdapterId": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AdapterList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#AdapterName": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AdapterOverview": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AdapterPage": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AdapterPages": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#AdapterVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AdapterVersionDatasetConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AdapterVersionEvaluationMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AdapterVersionEvaluationMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#AdapterVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#AdapterVersionOverview": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AdapterVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#AdapterVersionStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#Adapters": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#AdaptersConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#AnalyzeDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#AnalyzeDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#HumanLoopQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#AnalyzeDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeExpense": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#AnalyzeExpenseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#AnalyzeExpenseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeExpenseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeID": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#AnalyzeIDRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#AnalyzeIDDetections": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeIDRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#AnalyzeIDResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Angle": {
+      "type": "float"
+    },
+    "com.amazonaws.textract#AutoUpdate": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#BadDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Block": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#BlockList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#BlockType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#BoundingBox": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ContentClassifier": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#ContentClassifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#CreateAdapter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#CreateAdapterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#CreateAdapterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#CreateAdapterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#CreateAdapterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#CreateAdapterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#CreateAdapterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#CreateAdapterVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.textract#DeleteAdapter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#DeleteAdapterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#DeleteAdapterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DeleteAdapterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DeleteAdapterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#DeleteAdapterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#DeleteAdapterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DeleteAdapterVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DetectDocumentText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#DetectDocumentTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#DetectDocumentTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DetectDocumentTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DetectedSignature": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DetectedSignatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#Document": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DocumentGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DocumentGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#DocumentLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DocumentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#DocumentPages": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#DocumentTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#EntityTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#EvaluationMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseCurrency": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ExpenseField": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ExpenseGroupProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExpenseGroupPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ExpenseType": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Extraction": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ExtractionList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#FeatureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#FeatureTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.textract#FlowDefinitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#Geometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetAdapter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetAdapterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetAdapterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetAdapterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetAdapterVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetAdapterVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetAdapterVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetAdapterVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetDocumentAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetDocumentAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidJobIdException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetDocumentAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetDocumentAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetDocumentTextDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetDocumentTextDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidJobIdException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetDocumentTextDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetDocumentTextDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetExpenseAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetExpenseAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidJobIdException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetExpenseAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetExpenseAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetLendingAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetLendingAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidJobIdException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetLendingAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetLendingAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetLendingAnalysisSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#GetLendingAnalysisSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidJobIdException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#GetLendingAnalysisSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#GetLendingAnalysisSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#HumanLoopActivationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#HumanLoopActivationReason": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#HumanLoopActivationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#HumanLoopArn": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#HumanLoopConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#HumanLoopDataAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#HumanLoopName": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#HumanLoopQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#IdList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#IdentityDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#IdentityDocumentField": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#IdentityDocumentFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#IdentityDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ImageBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.textract#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#InvalidJobIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#InvalidKMSKeyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#InvalidS3ObjectException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#JobTag": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#KMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#LendingDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LendingDetectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#LendingDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LendingField": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LendingFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#LendingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LendingResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#LendingSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LineItemFields": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LineItemGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#LineItemGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#LineItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ListAdapterVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#ListAdapterVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#ListAdapterVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ListAdapterVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ListAdapters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#ListAdaptersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#ListAdaptersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ListAdaptersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.textract#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#NormalizedValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#NotificationChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#OutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#PageClassification": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#PageList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#Pages": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#Percent": {
+      "type": "float"
+    },
+    "com.amazonaws.textract#Point": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Polygon": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#Prediction": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#PredictionList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#ProvisionedThroughputExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Queries": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#QueriesConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Query": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#QueryInput": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#QueryPage": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#QueryPages": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#Relationship": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#RelationshipList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#RelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#S3ObjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#SNSTopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#SelectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#SignatureDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#SignatureDetectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#SplitDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#SplitDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#StartDocumentAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#StartDocumentAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#StartDocumentAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartDocumentAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartDocumentTextDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#StartDocumentTextDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#StartDocumentTextDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartDocumentTextDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartExpenseAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#StartExpenseAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#StartExpenseAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartExpenseAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartLendingAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#StartLendingAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#BadDocumentException"
+        },
+        {
+          "target": "com.amazonaws.textract#DocumentTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.textract#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidKMSKeyException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.textract#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#UnsupportedDocumentException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#StartLendingAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StartLendingAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#String": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#SynthesizedJsonHumanLoopActivationConditionsEvaluationResults": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.textract#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.textract#TextType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#Textract": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Textract"
+        }
+      }
+    },
+    "com.amazonaws.textract#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.textract#UndetectedDocumentTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#UndetectedSignature": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UndetectedSignatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.textract#UnsupportedDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UpdateAdapter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.textract#UpdateAdapterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.textract#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.textract#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.textract#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.textract#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.textract#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.textract#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.textract#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.textract#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.textract#UpdateAdapterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#UpdateAdapterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#ValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.textract#Warning": {
+      "type": "structure"
+    },
+    "com.amazonaws.textract#Warnings": {
+      "type": "list"
+    }
+  }
+}

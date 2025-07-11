@@ -1,0 +1,934 @@
+{
+  "shapes": {
+    "com.amazonaws.elastictranscoder#AccessControl": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AccessControls": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Artwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Artworks": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Ascending": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AspectRatio": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioBitDepth": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioBitOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioBitRate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioChannels": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioCodec": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioCodecOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#AudioCodecProfile": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioPackingMode": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#AudioSampleRate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#AudioSigned": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Base64EncodedString": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CancelJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CaptionFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CaptionFormatFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#CaptionFormatPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#CaptionFormats": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#CaptionMergePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#CaptionSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CaptionSources": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Captions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Clip": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CodecOption": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#CodecOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.elastictranscoder#Composition": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#CreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#CreateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#CreateJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreateJobOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#CreateJobPlaylist": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreateJobPlaylists": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#CreateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#CreatePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#CreatePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreatePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreatePreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#CreatePresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#CreatePresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#CreatePresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#DeletePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#DeletePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#DeletePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#DeletePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#DeletePreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#DeletePresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#DeletePresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#DeletePresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#DetectedProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Digits": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#DigitsOrAuto": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Encryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#EncryptionMode": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#EtsCustomerService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Elastic Transcoder"
+        }
+      }
+    },
+    "com.amazonaws.elastictranscoder#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#ExceptionMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Filename": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#FixedGOP": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#FloatString": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#FrameRate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Grantee": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#GranteeType": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#HlsContentProtection": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#HlsContentProtectionMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#HorizontalAlign": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#IncompatibleVersionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#InputCaptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Interlaced": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#JobAlbumArt": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#JobContainer": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#JobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#JobInputs": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#JobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#JobOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#JobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#JobWatermark": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#JobWatermarks": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Jobs": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#JpgOrPng": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#KeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#KeyIdGuid": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#KeyStoragePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#KeyframesMaxDist": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByPipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ListJobsByPipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByPipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByPipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ListJobsByStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListJobsByStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListPipelines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ListPipelinesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ListPipelinesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListPipelinesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListPresets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ListPresetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ListPresetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ListPresetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#LongKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#MaxFrameRate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#MergePolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#NonEmptyBase64EncodedString": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Notifications": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.elastictranscoder#NullableLong": {
+      "type": "long"
+    },
+    "com.amazonaws.elastictranscoder#OneTo512String": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Opacity": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#OutputKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#PaddingPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Permissions": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Pipeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PipelineOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PipelineStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Pipelines": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#PixelsOrPercent": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#PlayReadyDrm": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PlayReadyDrmFormatString": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Playlist": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PlaylistFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Playlists": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Preset": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PresetContainer": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#PresetType": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#PresetWatermark": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#PresetWatermarkId": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#PresetWatermarks": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#Presets": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#ReadJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ReadJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ReadJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ReadJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ReadPipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ReadPipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ReadPipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ReadPipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ReadPreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#ReadPresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#ReadPresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ReadPresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Resolution": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Role": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Rotate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#SizingPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#SnsTopic": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#SnsTopics": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#StorageClass": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#String": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Success": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Target": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#TestRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#TestRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#TestRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#TestRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#ThumbnailPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#ThumbnailResolution": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#Thumbnails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Time": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#TimeOffset": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#TimeSpan": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Timing": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#UpdatePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#UpdatePipelineNotificationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineNotificationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineNotificationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elastictranscoder#UpdatePipelineStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elastictranscoder#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#IncompatibleVersionException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UpdatePipelineStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#UserMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.elastictranscoder#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#VerticalAlign": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#VideoBitRate": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#VideoCodec": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#VideoParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Warning": {
+      "type": "structure"
+    },
+    "com.amazonaws.elastictranscoder#Warnings": {
+      "type": "list"
+    },
+    "com.amazonaws.elastictranscoder#WatermarkKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#WatermarkSizingPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#ZeroTo255String": {
+      "type": "string"
+    },
+    "com.amazonaws.elastictranscoder#ZeroTo512String": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,517 @@
+{
+  "shapes": {
+    "com.amazonaws.account#AcceptPrimaryEmailUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#AcceptPrimaryEmailUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#AcceptPrimaryEmailUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#AcceptPrimaryEmailUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#Account": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Account"
+        }
+      }
+    },
+    "com.amazonaws.account#AccountCreatedDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.account#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.account#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.account#AccountNameResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.account#AddressLine": {
+      "type": "string"
+    },
+    "com.amazonaws.account#AlternateContact": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#AlternateContactResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.account#AlternateContactType": {
+      "type": "string"
+    },
+    "com.amazonaws.account#City": {
+      "type": "string"
+    },
+    "com.amazonaws.account#CompanyName": {
+      "type": "string"
+    },
+    "com.amazonaws.account#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ContactInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ContactInformationPhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.account#ContactInformationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.account#CountryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.account#DeleteAlternateContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#DeleteAlternateContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#DeleteAlternateContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#DisableRegion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#DisableRegionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#DisableRegionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#DistrictOrCounty": {
+      "type": "string"
+    },
+    "com.amazonaws.account#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.account#EnableRegion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#EnableRegionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#EnableRegionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#FullName": {
+      "type": "string"
+    },
+    "com.amazonaws.account#GetAccountInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#GetAccountInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#GetAccountInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetAccountInformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetAlternateContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#GetAlternateContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#GetAlternateContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetAlternateContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetContactInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#GetContactInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#GetContactInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetContactInformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetPrimaryEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#GetPrimaryEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#GetPrimaryEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetPrimaryEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetRegionOptStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#GetRegionOptStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#GetRegionOptStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#GetRegionOptStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ListRegions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#ListRegionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#ListRegionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ListRegionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.account#Otp": {
+      "type": "string"
+    },
+    "com.amazonaws.account#PhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.account#PostalCode": {
+      "type": "string"
+    },
+    "com.amazonaws.account#PrimaryEmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.account#PrimaryEmailResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.account#PrimaryEmailUpdateStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.account#PutAccountName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#PutAccountNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#PutAccountNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#PutAlternateContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#PutAlternateContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#PutAlternateContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#PutContactInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#PutContactInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#PutContactInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#Region": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#RegionName": {
+      "type": "string"
+    },
+    "com.amazonaws.account#RegionOptList": {
+      "type": "list"
+    },
+    "com.amazonaws.account#RegionOptResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.account#RegionOptStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.account#RegionOptStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.account#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.account#StartPrimaryEmailUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.account#StartPrimaryEmailUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.account#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.account#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.account#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.account#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.account#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.account#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.account#StartPrimaryEmailUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#StartPrimaryEmailUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#StateOrRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.account#Title": {
+      "type": "string"
+    },
+    "com.amazonaws.account#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.account#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.account#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.account#WebsiteUrl": {
+      "type": "string"
+    }
+  }
+}

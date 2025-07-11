@@ -1,0 +1,3303 @@
+{
+  "shapes": {
+    "com.amazonaws.clouddirectory#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AddFacetToObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#AddFacetToObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#AddFacetToObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AddFacetToObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AmazonCloudDirectory_20170111": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudDirectory"
+        }
+      }
+    },
+    "com.amazonaws.clouddirectory#ApplySchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ApplySchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#SchemaAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ApplySchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ApplySchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#Arns": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#AttachObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#AttachObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#AttachObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#AttachPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotPolicyException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#AttachPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachToIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#AttachToIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#IndexedAttributeMissingException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotIndexException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#AttachToIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachToIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachTypedLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#AttachTypedLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#AttachTypedLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttachTypedLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttributeKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttributeKeyAndValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttributeKeyAndValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#AttributeKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#AttributeNameAndValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#AttributeNameAndValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#AttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#BatchAddFacetToObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAddFacetToObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachToIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachToIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachTypedLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchAttachTypedLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchCreateIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchCreateIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchCreateObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchCreateObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDeleteObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDeleteObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachFromIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachFromIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachTypedLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchDetachTypedLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetLinkAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetLinkAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetObjectAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetObjectInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchGetObjectInformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListAttachedIndices": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListAttachedIndicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListIncomingTypedLinks": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListIncomingTypedLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectChildren": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectChildrenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectParentPaths": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectParentPathsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectParents": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectParentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListObjectPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListOutgoingTypedLinks": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListOutgoingTypedLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListPolicyAttachments": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchListPolicyAttachmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchLookupPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchLookupPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchOperationIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.clouddirectory#BatchRead": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#BatchReadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#BatchReadException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReadExceptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#BatchReadOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReadOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#BatchReadOperationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReadOperationResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#BatchReadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReadSuccessfulResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchReferenceName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#BatchRemoveFacetFromObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchRemoveFacetFromObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchUpdateLinkAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchUpdateLinkAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchUpdateObjectAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchUpdateObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchWrite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#BatchWriteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#BatchWriteException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#BatchWriteException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteExceptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteOperationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteOperationResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BatchWriteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#BinaryAttributeValue": {
+      "type": "blob"
+    },
+    "com.amazonaws.clouddirectory#Bool": {
+      "type": "boolean"
+    },
+    "com.amazonaws.clouddirectory#BooleanAttributeValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.clouddirectory#CannotListParentOfRootException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ConsistencyLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#CreateDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateDirectoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidRuleException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UnsupportedIndexTypeException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UnsupportedIndexTypeException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#SchemaAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateTypedLinkFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#CreateTypedLinkFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidRuleException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#CreateTypedLinkFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#CreateTypedLinkFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.clouddirectory#DatetimeAttributeValue": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.clouddirectory#DeleteDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DeleteDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryDeletedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotDisabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DeleteDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteDirectoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DeleteFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DeleteFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DeleteObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ObjectNotDetachedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DeleteObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DeleteSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#StillContainsLinksException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DeleteSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteTypedLinkFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DeleteTypedLinkFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DeleteTypedLinkFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DeleteTypedLinkFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachFromIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DetachFromIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotIndexException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ObjectAlreadyDetachedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DetachFromIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachFromIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DetachObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotNodeException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DetachObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DetachPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotPolicyException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DetachPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DetachTypedLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DetachTypedLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DetachTypedLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#Directory": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DirectoryAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DirectoryArn": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#DirectoryDeletedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DirectoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#DirectoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#DirectoryNotDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DirectoryNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DirectoryState": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#DisableDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#DisableDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryDeletedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#DisableDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#DisableDirectoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#EnableDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#EnableDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryDeletedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#EnableDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#EnableDirectoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#Facet": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetAttributeUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#FacetInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#FacetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#FacetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#FacetStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#FacetValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetAppliedSchemaVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetAppliedSchemaVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetAppliedSchemaVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetAppliedSchemaVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetDirectoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetLinkAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetLinkAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetLinkAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetLinkAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetObjectAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetObjectAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetObjectAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetObjectInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetObjectInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetObjectInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetObjectInformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetSchemaAsJson": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetSchemaAsJsonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetSchemaAsJsonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetSchemaAsJsonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetTypedLinkFacetInformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#GetTypedLinkFacetInformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#GetTypedLinkFacetInformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#GetTypedLinkFacetInformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#IncompatibleSchemaException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#IndexAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#IndexAttachmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#IndexedAttributeMissingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidAttachmentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidFacetUpdateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidRuleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidSchemaDocException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#InvalidTaggingRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LinkAttributeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LinkAttributeUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LinkAttributeUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#LinkName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LinkNameToObjectIdentifierMap": {
+      "type": "map"
+    },
+    "com.amazonaws.clouddirectory#ListAppliedSchemaArns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListAppliedSchemaArnsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListAppliedSchemaArnsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListAppliedSchemaArnsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListAttachedIndices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListAttachedIndicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListAttachedIndicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListAttachedIndicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListDevelopmentSchemaArns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListDevelopmentSchemaArnsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListDevelopmentSchemaArnsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListDevelopmentSchemaArnsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListDirectories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListDirectoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListDirectoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListDirectoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListFacetAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListFacetAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListFacetAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListFacetAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListFacetNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListFacetNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListFacetNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListFacetNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListIncomingTypedLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListIncomingTypedLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListIncomingTypedLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListIncomingTypedLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotIndexException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListManagedSchemaArns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListManagedSchemaArnsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListManagedSchemaArnsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListManagedSchemaArnsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListObjectAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListObjectAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectChildren": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListObjectChildrenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotNodeException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListObjectChildrenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectChildrenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectParentPaths": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListObjectParentPathsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListObjectParentPathsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectParentPathsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectParents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListObjectParentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CannotListParentOfRootException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListObjectParentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectParentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListObjectPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListObjectPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListObjectPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListOutgoingTypedLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListOutgoingTypedLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListOutgoingTypedLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListOutgoingTypedLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListPolicyAttachments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListPolicyAttachmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#NotPolicyException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListPolicyAttachmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListPolicyAttachmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListPublishedSchemaArns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListPublishedSchemaArnsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListPublishedSchemaArnsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListPublishedSchemaArnsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidTaggingRequestException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListTypedLinkFacetAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#ListTypedLinkFacetNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ListTypedLinkFacetNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LookupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#LookupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#LookupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#LookupPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#NotIndexException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#NotNodeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#NotPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#NumberAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#NumberResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.clouddirectory#ObjectAlreadyDetachedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectAttributeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectAttributeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectAttributeRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#ObjectAttributeUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectAttributeUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#ObjectIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#ObjectIdentifierAndLinkNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#ObjectIdentifierAndLinkNameTuple": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#ObjectIdentifierToLinkNameMap": {
+      "type": "map"
+    },
+    "com.amazonaws.clouddirectory#ObjectNotDetachedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ObjectType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#PathString": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#PathToObjectIdentifiers": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PathToObjectIdentifiersList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#PolicyAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PolicyAttachmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#PolicyToPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PolicyToPathList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#PolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#PublishSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#PublishSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#SchemaAlreadyPublishedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#PublishSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PublishSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PutSchemaFromJson": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#PutSchemaFromJsonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidRuleException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidSchemaDocException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#PutSchemaFromJsonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#PutSchemaFromJsonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#RangeMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#RemoveFacetFromObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#RemoveFacetFromObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#RemoveFacetFromObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#RemoveFacetFromObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#RequiredAttributeBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#RetryableConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#RuleKey": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#RuleMap": {
+      "type": "map"
+    },
+    "com.amazonaws.clouddirectory#RuleParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#RuleParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.clouddirectory#RuleParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#RuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#SchemaAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#SchemaAlreadyPublishedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#SchemaFacet": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#SchemaFacetList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#SchemaJsonDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#SchemaName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#SelectorObjectReference": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#StillContainsLinksException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#StringAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidTaggingRequestException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#TagsNumberResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.clouddirectory#TypedAttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.clouddirectory#TypedAttributeValueRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkAttributeDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkAttributeDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkAttributeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkAttributeRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkFacet": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkFacetAttributeUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkFacetAttributeUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkName": {
+      "type": "string"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkSchemaAndFacetName": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkSpecifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#TypedLinkSpecifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.clouddirectory#UnsupportedIndexTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidTaggingRequestException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.clouddirectory#UpdateFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpdateFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidFacetUpdateException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidRuleException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpdateFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateLinkAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpdateLinkAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpdateLinkAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateLinkAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateObjectAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpdateObjectAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DirectoryNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LinkNameAlreadyInUseException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpdateObjectAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateObjectAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpdateSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpdateSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateTypedLinkFacet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpdateTypedLinkFacetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#FacetValidationException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidFacetUpdateException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidRuleException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpdateTypedLinkFacetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpdateTypedLinkFacetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpgradeAppliedSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpgradeAppliedSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#IncompatibleSchemaException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#SchemaAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpgradeAppliedSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpgradeAppliedSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpgradePublishedSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.clouddirectory#UpgradePublishedSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.clouddirectory#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#IncompatibleSchemaException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#InvalidAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RetryableConflictException"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.clouddirectory#UpgradePublishedSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#UpgradePublishedSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.clouddirectory#Version": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,1450 @@
+{
+  "shapes": {
+    "com.amazonaws.sms#AWSServerMigrationService_V2016_10_24": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SMS"
+        }
+      }
+    },
+    "com.amazonaws.sms#AmiId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppIdWithValidation": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppIds": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#AppLaunchConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#AppLaunchStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#AppLaunchStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppReplicationConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#AppReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#AppReplicationStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#AppStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#AppSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#AppValidationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#AppValidationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#AppValidationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#AppValidationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#Apps": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#AssociatePublicIpAddress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#AutoLaunch": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Command": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Connector": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ConnectorCapability": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ConnectorCapabilityList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ConnectorId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ConnectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ConnectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ConnectorVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#CreateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#CreateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#CreateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#CreateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#CreateReplicationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#CreateReplicationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#NoConnectorsAvailableException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#ReplicationJobAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sms#ServerCannotBeReplicatedException"
+        },
+        {
+          "target": "com.amazonaws.sms#TemporarilyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#CreateReplicationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#CreateReplicationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteAppLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteAppLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteAppLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppLaunchConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteAppReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteAppReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppReplicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppValidationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteAppValidationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteAppValidationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteAppValidationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteReplicationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteReplicationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#ReplicationJobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteReplicationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteReplicationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteServerCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DeleteServerCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DeleteServerCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DeleteServerCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#DisassociateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#DisassociateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#DisassociateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DisassociateConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#DryRunOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#EC2KeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Encrypted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ExecutionTimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#ForceStopAppReplication": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#ForceTerminateApp": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#Frequency": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#GenerateChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GenerateChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GenerateChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GenerateChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GenerateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GenerateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GenerateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GenerateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetAppLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetAppLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetAppLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppLaunchConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetAppReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetAppReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppReplicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppValidationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetAppValidationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetAppValidationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppValidationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppValidationOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetAppValidationOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetAppValidationOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetAppValidationOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetReplicationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetReplicationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetReplicationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetReplicationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetReplicationRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetReplicationRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetReplicationRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetReplicationRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#GetServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#GetServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#GetServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ImportAppCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#ImportAppCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#ImportAppCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ImportAppCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ImportServerCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#ImportServerCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#NoConnectorsAvailableException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#ImportServerCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ImportServerCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ImportedAppId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#InternalError": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#LaunchApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#LaunchAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#LaunchAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#LaunchAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#LaunchDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#LaunchOrder": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#LicenseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ListApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#ListAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#ListAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ListAppsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#LogicalId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#MacAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#MissingRequiredParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#NoConnectorsAvailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#NonEmptyStringWithMaxLen255": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#NotificationContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#NotifyAppValidationOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#NotifyAppValidationOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#NotifyAppValidationOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#NotifyAppValidationOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#NumberOfRecentAmisToKeep": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#OperationNotPermittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#OutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#PutAppLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#PutAppLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#PutAppLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#PutAppLaunchConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#PutAppReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#PutAppReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#PutAppReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#PutAppReplicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#PutAppValidationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#PutAppValidationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#PutAppValidationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#PutAppValidationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationJobAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ReplicationJobNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationJobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ReplicationJobStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationJobTerminated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#ReplicationRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationRunId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationRunLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationRunList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ReplicationRunStage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationRunStageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ReplicationRunStageProgress": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationRunState": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ReplicationRunStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ReplicationRunType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#RoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#RunOnce": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sms#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#S3KeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#SSMOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#SSMValidationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ScriptType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#SecurityGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Server": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerCannotBeReplicatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerCatalogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ServerGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ServerGroupLaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerGroupLaunchConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ServerGroupReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerGroupReplicationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerGroupValidationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerGroupValidationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ServerLaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerLaunchConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerReplicationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerReplicationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ServerValidationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerValidationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ServerValidationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ServerValidationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StackId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#StackName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#StartAppReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#StartAppReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#StartAppReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StartAppReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StartOnDemandAppReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#StartOnDemandAppReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#StartOnDemandAppReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StartOnDemandAppReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StartOnDemandReplicationRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#StartOnDemandReplicationRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#DryRunOperationException"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#ReplicationRunLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#StartOnDemandReplicationRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StartOnDemandReplicationRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StopAppReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#StopAppReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#StopAppReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#StopAppReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#Subnet": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#TemporarilyUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#TerminateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#TerminateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#TerminateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#TerminateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sms#TotalServerGroups": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#TotalServers": {
+      "type": "integer"
+    },
+    "com.amazonaws.sms#UnauthorizedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UpdateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#UpdateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#UpdateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UpdateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UpdateReplicationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sms#UpdateReplicationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sms#InternalError"
+        },
+        {
+          "target": "com.amazonaws.sms#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.sms#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.sms#ReplicationJobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sms#ServerCannotBeReplicatedException"
+        },
+        {
+          "target": "com.amazonaws.sms#TemporarilyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.sms#UnauthorizedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.sms#UpdateReplicationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UpdateReplicationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UserData": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#UserDataValidationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#VPC": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ValidationId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#ValidationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#ValidationOutputList": {
+      "type": "list"
+    },
+    "com.amazonaws.sms#ValidationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#ValidationStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmManagerId": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmManagerName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmManagerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sms#VmName": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmPath": {
+      "type": "string"
+    },
+    "com.amazonaws.sms#VmServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#VmServerAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.sms#VmServerAddressList": {
+      "type": "list"
+    }
+  }
+}

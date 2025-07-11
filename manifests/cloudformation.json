@@ -1,0 +1,2909 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudformation#AcceptTermsAndConditions": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#Account": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AccountFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#AccountGateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#AccountGateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#AccountGateStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AccountLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#AccountLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#AccountsUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ActivateOrganizationsAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ActivateOrganizationsAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ActivateOrganizationsAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ActivateOrganizationsAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ActivateType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ActivateTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ActivateTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ActivateTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#AfterContext": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AfterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AllowedValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AllowedValues": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#AttributeChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#AutoDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#AutoDeploymentNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#AutoUpdate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#BatchDescribeTypeConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#BatchDescribeTypeConfigurationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeConfigurationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#BatchDescribeTypeConfigurationsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#BatchDescribeTypeConfigurationsErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#BatchDescribeTypeConfigurationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#BatchDescribeTypeConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#BeforeContext": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#BeforeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#BoxedMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#CFNRegistryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CallAs": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#CancelUpdateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CancelUpdateStackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CancelUpdateStackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Capabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#CapabilitiesReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Capability": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#Category": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#CausingEntity": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Change": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ChangeSetHook": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeSetHookResourceTargetDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeSetHookTargetDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeSetHooks": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ChangeSetHooksStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ChangeSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ChangeSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ChangeSetNameOrId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ChangeSetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ChangeSetStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ChangeSetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ChangeSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ChangeSetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ChangeSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#Changes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#CloudFormation": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudFormation"
+        }
+      }
+    },
+    "com.amazonaws.cloudformation#ConcurrencyMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ConcurrentResourcesLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ConfigurationSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ContinueUpdateRollback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ContinueUpdateRollbackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ContinueUpdateRollbackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ContinueUpdateRollbackOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateChangeSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#InsufficientCapabilitiesException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CreateChangeSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateChangeSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateGeneratedTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateGeneratedTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ConcurrentResourcesLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CreateGeneratedTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateGeneratedTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateStackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#InsufficientCapabilitiesException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CreateStackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateStackInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationIdAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StaleRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CreateStackInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackRefactor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateStackRefactorInput"
+      }
+    },
+    "com.amazonaws.cloudformation#CreateStackRefactorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackRefactorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#CreateStackSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CreatedButModifiedException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#NameAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#CreateStackSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreateStackSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreatedButModifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudformation#DeactivateOrganizationsAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeactivateOrganizationsAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeactivateOrganizationsAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeactivateOrganizationsAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeactivateType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeactivateTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeactivateTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeactivateTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeleteChangeSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidChangeSetStatusException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeleteChangeSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteChangeSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteGeneratedTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeleteGeneratedTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ConcurrentResourcesLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GeneratedTemplateNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeleteGeneratedTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeleteStackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeleteStackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteStackInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeleteStackInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationIdAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StaleRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeleteStackInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteStackInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteStackSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeleteStackSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotEmptyException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeleteStackSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeleteStackSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeletionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#DeletionTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudformation#DeploymentTargets": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeprecatedStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#DeregisterType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DeregisterTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DeregisterTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DeregisterTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeAccountLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeAccountLimitsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeAccountLimitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeAccountLimitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeChangeSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ChangeSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSetHooks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeChangeSetHooksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ChangeSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSetHooksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSetHooksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeChangeSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeGeneratedTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeGeneratedTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#GeneratedTemplateNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeGeneratedTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeGeneratedTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeOrganizationsAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeOrganizationsAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeOrganizationsAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeOrganizationsAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribePublisher": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribePublisherInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribePublisherInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribePublisherOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeResourceScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeResourceScanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeResourceScanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeResourceScanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackDriftDetectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackDriftDetectionStatusInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStackDriftDetectionStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackDriftDetectionStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackEventsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStackEventsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackEventsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackInstanceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackInstanceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeStackInstanceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackInstanceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackRefactor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackRefactorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackRefactorNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeStackRefactorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackRefactorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackResourceInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourceDrifts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackResourceDriftsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourceDriftsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourceDriftsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackResourcesInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeStackSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackSetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStackSetOperationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeStackSetOperationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackSetOperationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStackSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeStacksInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DescribeStacksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeStacksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeTypeRegistration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DescribeTypeRegistrationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DescribeTypeRegistrationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DescribeTypeRegistrationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#DetailedStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#DetectStackDrift": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DetectStackDriftInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DetectStackDriftInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectStackDriftOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectStackResourceDrift": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DetectStackResourceDriftInput"
+      }
+    },
+    "com.amazonaws.cloudformation#DetectStackResourceDriftInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectStackResourceDriftOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectStackSetDrift": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#DetectStackSetDriftInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#DetectStackSetDriftInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectStackSetDriftOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#DetectionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#DifferenceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#DisableRollback": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#DriftedStackInstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#EnableStackCreation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#EnableTerminationProtection": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#EstimateTemplateCost": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#EstimateTemplateCostInput"
+      }
+    },
+    "com.amazonaws.cloudformation#EstimateTemplateCostInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#EstimateTemplateCostOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#EvaluationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#EventId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ExecuteChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ExecuteChangeSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ChangeSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#InsufficientCapabilitiesException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#InvalidChangeSetStatusException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ExecuteChangeSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ExecuteChangeSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ExecuteStackRefactor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ExecuteStackRefactorInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ExecuteStackRefactorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ExecutionRoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ExecutionStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Export": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ExportName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ExportValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Exports": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#FailedStackInstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#FailureToleranceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#FailureTolerancePercentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateDeletionPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#GeneratedTemplateUpdateReplacePolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#GetGeneratedTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#GetGeneratedTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#GeneratedTemplateNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#GetGeneratedTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetGeneratedTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetStackPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#GetStackPolicyInput"
+      }
+    },
+    "com.amazonaws.cloudformation#GetStackPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetStackPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#GetTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ChangeSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#GetTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetTemplateSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#GetTemplateSummaryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#GetTemplateSummaryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#GetTemplateSummaryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#HandlerErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#HookFailureMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#HookInvocationCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#HookInvocationPoint": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#HookResultId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookResultNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#HookResultSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#HookResultSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#HookStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#HookStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookTargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#HookTargetTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookTypeConfigurationVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#HookTypeVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#IdentityProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ImportExistingResources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#ImportStacksToStackSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ImportStacksToStackSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationIdAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StaleRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ImportStacksToStackSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ImportStacksToStackSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Imports": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#InProgressStackInstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#InSyncStackInstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#IncludeNestedStacks": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#IncludePropertyValues": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#InsufficientCapabilitiesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#InvalidChangeSetStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#InvalidStateTransitionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#IsActivated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#IsDefaultConfiguration": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#IsDefaultVersion": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#JazzLogicalResourceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#JazzResourceIdentifierProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudformation#JazzResourceIdentifierPropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#JazzResourceIdentifierPropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#LastUpdatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudformation#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#LimitName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#LimitValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ListChangeSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListChangeSetsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListChangeSetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListChangeSetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListExports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListExportsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListExportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListExportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListGeneratedTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListGeneratedTemplatesInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListGeneratedTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListGeneratedTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListHookResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListHookResultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#HookResultNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListHookResultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListHookResultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListHookResultsTargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ListImports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListImportsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListImportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListImportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScanRelatedResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListResourceScanRelatedResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListResourceScanRelatedResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScanRelatedResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScanResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListResourceScanResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListResourceScanResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScanResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListResourceScansInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListResourceScansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListResourceScansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackInstanceResourceDrifts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackInstanceResourceDriftsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackInstanceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListStackInstanceResourceDriftsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackInstanceResourceDriftsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListStackInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackRefactorActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackRefactorActionsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListStackRefactorActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackRefactorActionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackRefactors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackRefactorsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListStackRefactorsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackRefactorsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackResourcesInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListStackResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetAutoDeploymentTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackSetAutoDeploymentTargetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListStackSetAutoDeploymentTargetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetAutoDeploymentTargetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperationResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackSetOperationResultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperationResultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperationResultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackSetOperationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetOperationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStackSetsInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListStackSetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStackSetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListStacksInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ListStacksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListStacksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypeRegistrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListTypeRegistrationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListTypeRegistrationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypeRegistrationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypeVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListTypeVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListTypeVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypeVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ListTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#ListTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ListTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#LoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#LogicalIdHierarchy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#LogicalResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#LogicalResourceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#MajorVersion": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudformation#ManagedByStack": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#ManagedExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ManagedExecutionNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#MaxConcurrentCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#MaxConcurrentPercentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#Metadata": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ModuleInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#MonitoringTimeInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#NameAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#NoEcho": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#NotificationARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#NotificationARNs": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#NumberOfResources": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#OnFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#OnStackFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#OperationIdAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OperationInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OperationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OperationResultFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OperationResultFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#OperationResultFilterValues": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#OperationResultFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#OperationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#OperationStatusCheckFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OptionalSecureUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#OrganizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#OrganizationalUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#OrganizationalUnitIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#OutputKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#OutputValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Outputs": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ParameterConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ParameterDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ParameterDeclarations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Parameters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#PercentageCompleted": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudformation#PermissionModels": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#PhysicalResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PhysicalResourceIdContext": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#PhysicalResourceIdContextKeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#PolicyAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#PrivateTypeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Properties": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PropertyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PropertyDifference": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#PropertyDifferences": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#PropertyName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PropertyPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ProvisioningType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#PublicVersionNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PublishType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#PublishTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#PublishTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#PublishTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#PublisherId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PublisherName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PublisherProfile": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#PublisherStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RecordHandlerProgress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#RecordHandlerProgressInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationStatusCheckFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#RecordHandlerProgressInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RecordHandlerProgressOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RefreshAllResources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RegionConcurrencyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#RegisterPublisher": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#RegisterPublisherInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#RegisterPublisherInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RegisterPublisherOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RegisterType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#RegisterTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#RegisterTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RegisterTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RegistrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#RegistrationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RegistrationTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#RegistryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#RelatedResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#Replacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#RequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RequiredActivatedType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RequiredActivatedTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#RequiredProperty": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#RequiresRecreation": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ResourceAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ResourceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceChangeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceChangeDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifierProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifierPropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifierPropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifierSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifierSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceModel": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourcePropertyPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceScanId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceScanInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceScanLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceScanNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ResourceScanStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceScanSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceScanSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceScannerMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourceSignalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ResourceSignalUniqueId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ResourceStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceTargetDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceToImport": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ResourceToSkip": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceTypeFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceTypeFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourceTypePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ResourceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourcesFailed": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesPending": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesProcessing": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesRead": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesScanned": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesSucceeded": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#ResourcesToImport": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ResourcesToSkip": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#RetainExceptOnCreate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#RetainResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#RetainStacks": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#RetainStacksNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#RetainStacksOnAccountRemovalNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#RoleARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RoleARN2": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#RollbackConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RollbackStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#RollbackStackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#RollbackStackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RollbackStackOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RollbackTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#RollbackTriggers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#S3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#ScanFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ScanFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ScanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ScannedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ScannedResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ScannedResourceIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#ScannedResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#Scope": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#SetStackPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#SetStackPolicyInput"
+      }
+    },
+    "com.amazonaws.cloudformation#SetStackPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SetTypeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#SetTypeConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#SetTypeConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SetTypeConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SetTypeDefaultVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#SetTypeDefaultVersionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#SetTypeDefaultVersionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SetTypeDefaultVersionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SignalResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#SignalResourceInput"
+      }
+    },
+    "com.amazonaws.cloudformation#SignalResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Stack": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackDriftDetectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackDriftDetectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackDriftDetectionStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackDriftInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackDriftInformationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackDriftStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackIdsUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackInstanceComprehensiveStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackInstanceDetailedStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackInstanceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackInstanceFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackInstanceFilterValues": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackInstanceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackInstanceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackInstanceResourceDriftsSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackInstanceResourceDriftsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackInstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackInstanceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackInstanceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackNameOrId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackPolicyBody": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackPolicyDuringUpdateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackPolicyDuringUpdateURL": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackPolicyURL": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackRefactorAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackRefactorActionEntity": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackRefactorActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackRefactorActions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackRefactorDetection": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackRefactorExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackRefactorExecutionStatusFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackRefactorId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackRefactorNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackRefactorResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackRefactorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackRefactorStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackRefactorSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackRefactorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackRefactorTagResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackRefactorUntagResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResourceDrift": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResourceDriftInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResourceDriftInformationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResourceDriftStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackResourceDriftStatusFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackResourceDriftStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackResourceDrifts": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackResourceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackResources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetARN": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSetAutoDeploymentTargetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSetAutoDeploymentTargetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetDriftDetectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetDriftDetectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetDriftStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSetNameOrId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSetNotEmptyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationResultStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationResultSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationResultSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationStatusDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSetOperationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackSetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StackStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#StackStatusFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StackSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StackSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Stacks": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StageList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#StaleRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StartResourceScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#StartResourceScanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ResourceScanLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#StartResourceScanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StartResourceScanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#StopStackSetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#StopStackSetOperationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#StopStackSetOperationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#StopStackSetOperationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#SupportedMajorVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#SupportedMajorVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TemplateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TemplateFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#TemplateParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TemplateParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TemplateProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TemplateStage": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#TemplateStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TemplateSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TemplateSummaryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TemplateURL": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TestType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#TestTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#CFNRegistryException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TypeNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#TestTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TestTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ThirdPartyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#ThirdPartyTypeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TimeoutMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudformation#TokenAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TotalStackInstancesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#TotalWarnings": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudformation#TransformName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TransformsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TreatUnrecognizedResourceTypesAsWarnings": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeConfiguration": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TypeConfigurationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeHierarchy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TypeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#TypeTestsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#TypeTestsStatusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#TypeVersionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#TypeVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UnprocessedTypeConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#UpdateGeneratedTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#UpdateGeneratedTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GeneratedTemplateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#UpdateGeneratedTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateGeneratedTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#UpdateStackInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InsufficientCapabilitiesException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TokenAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#UpdateStackInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStackInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#UpdateStackInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationIdAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackInstanceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StaleRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#UpdateStackInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStackInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStackOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStackSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#UpdateStackSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudformation#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationIdAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackInstanceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StackSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StaleRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudformation#UpdateStackSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateStackSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateTerminationProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#UpdateTerminationProtectionInput"
+      }
+    },
+    "com.amazonaws.cloudformation#UpdateTerminationProtectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#UpdateTerminationProtectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#UsePreviousTemplate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#UsePreviousValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudformation#ValidateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudformation#ValidateTemplateInput"
+      }
+    },
+    "com.amazonaws.cloudformation#ValidateTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#ValidateTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudformation#VersionBump": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#Visibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#WarningDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#WarningDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#WarningProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudformation#WarningProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudformation#WarningType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudformation#Warnings": {
+      "type": "structure"
+    }
+  }
+}

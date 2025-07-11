@@ -1,0 +1,1783 @@
+{
+  "shapes": {
+    "com.amazonaws.ses#AccountSendingPausedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#AddHeaderAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#Address": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ArrivalDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ses#BehaviorOnMXFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#Body": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#BounceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#BounceMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#BounceSmtpReplyCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#BounceStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#BounceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#BouncedRecipientInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#BouncedRecipientInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#BulkEmailDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#BulkEmailDestinationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#BulkEmailDestinationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#BulkEmailDestinationStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#BulkEmailStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#CannotDeleteException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#Charset": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Cidr": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#CloneReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CloneReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CloneReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CloneReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CloudWatchDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CloudWatchDimensionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CloudWatchDimensionConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ConfigurationSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ConfigurationSetAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ConfigurationSetAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#ConfigurationSetAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ConfigurationSetDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ConfigurationSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ConfigurationSetSendingPausedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ConfigurationSets": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ConnectAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ConnectInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Content": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#Counter": {
+      "type": "long"
+    },
+    "com.amazonaws.ses#CreateConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidConfigurationSetException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#EventDestinationAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidCloudWatchDestinationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidFirehoseDestinationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidSNSDestinationException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateConfigurationSetTrackingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateConfigurationSetTrackingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidTrackingOptionsException"
+        },
+        {
+          "target": "com.amazonaws.ses#TrackingOptionsAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateConfigurationSetTrackingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateConfigurationSetTrackingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailInvalidContentException"
+        },
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailTemplateAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#FromEmailAddressNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateReceiptFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateReceiptFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateReceiptRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidLambdaFunctionException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidS3ConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidSnsTopicException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateReceiptRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#CreateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidTemplateException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#CreateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CreateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CustomMailFromStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#CustomRedirectDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#CustomVerificationEmailInvalidContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CustomVerificationEmailTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CustomVerificationEmailTemplateAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CustomVerificationEmailTemplateDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#CustomVerificationEmailTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#DefaultDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#EventDestinationDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetTrackingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteConfigurationSetTrackingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#TrackingOptionsDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetTrackingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteConfigurationSetTrackingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteCustomVerificationEmailTemplateRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteIdentityRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteIdentityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteIdentityPolicyRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteIdentityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteIdentityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteReceiptFilterRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteReceiptFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteReceiptRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DeleteReceiptRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#CannotDeleteException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DeleteReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteTemplateRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeleteVerifiedEmailAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DeleteVerifiedEmailAddressRequest"
+      }
+    },
+    "com.amazonaws.ses#DeleteVerifiedEmailAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DeliveryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeActiveReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DescribeActiveReceiptRuleSetRequest"
+      }
+    },
+    "com.amazonaws.ses#DescribeActiveReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeActiveReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DescribeConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DescribeConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeReceiptRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DescribeReceiptRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DescribeReceiptRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeReceiptRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#DescribeReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#DescribeReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DescribeReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#DiagnosticCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#DimensionValueSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#DkimAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ses#Domain": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#DsnAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#DsnStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ses#Error": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#EventDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#EventDestinationAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#EventDestinationDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#EventDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#EventDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#EventTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#Explanation": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ExtensionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ExtensionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ExtensionFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ExtensionFieldValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#FailureRedirectionURL": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#FromAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#FromEmailAddressNotVerifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetAccountSendingEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.ses#GetAccountSendingEnabledResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailTemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#GetCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetCustomVerificationEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityDkimAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetIdentityDkimAttributesRequest"
+      }
+    },
+    "com.amazonaws.ses#GetIdentityDkimAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityDkimAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityMailFromDomainAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetIdentityMailFromDomainAttributesRequest"
+      }
+    },
+    "com.amazonaws.ses#GetIdentityMailFromDomainAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityMailFromDomainAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityNotificationAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetIdentityNotificationAttributesRequest"
+      }
+    },
+    "com.amazonaws.ses#GetIdentityNotificationAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityNotificationAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetIdentityPoliciesRequest"
+      }
+    },
+    "com.amazonaws.ses#GetIdentityPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityVerificationAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetIdentityVerificationAttributesRequest"
+      }
+    },
+    "com.amazonaws.ses#GetIdentityVerificationAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetIdentityVerificationAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetSendQuota": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.ses#GetSendQuotaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetSendStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.ses#GetSendStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#GetTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#TemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#GetTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#GetTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#HeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#HtmlPart": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#IAMRoleARN": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Identity": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#IdentityDkimAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#IdentityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#IdentityMailFromDomainAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#IdentityNotificationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#IdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#IdentityVerificationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidCloudWatchDestinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidConfigurationSetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidDeliveryOptionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidFirehoseDestinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidLambdaFunctionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidRenderingParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidS3ConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidSNSDestinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidSnsTopicException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidTemplateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvalidTrackingOptionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#InvocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#KinesisFirehoseDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#LambdaAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#LastAttemptDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ses#LastFreshStart": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ses#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListConfigurationSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListConfigurationSetsRequest"
+      }
+    },
+    "com.amazonaws.ses#ListConfigurationSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListConfigurationSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListCustomVerificationEmailTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListCustomVerificationEmailTemplatesRequest"
+      }
+    },
+    "com.amazonaws.ses#ListCustomVerificationEmailTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListCustomVerificationEmailTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListIdentities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListIdentitiesRequest"
+      }
+    },
+    "com.amazonaws.ses#ListIdentitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListIdentitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListIdentityPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListIdentityPoliciesRequest"
+      }
+    },
+    "com.amazonaws.ses#ListIdentityPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListIdentityPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListReceiptFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListReceiptFiltersRequest"
+      }
+    },
+    "com.amazonaws.ses#ListReceiptFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListReceiptFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListReceiptRuleSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListReceiptRuleSetsRequest"
+      }
+    },
+    "com.amazonaws.ses#ListReceiptRuleSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListReceiptRuleSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ListTemplatesRequest"
+      }
+    },
+    "com.amazonaws.ses#ListTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ListVerifiedEmailAddresses": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.ses#ListVerifiedEmailAddressesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#MailFromDomainAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ses#MailFromDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#MailFromDomainNotVerifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#Max24HourSend": {
+      "type": "double"
+    },
+    "com.amazonaws.ses#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.ses#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ses#MaxSendRate": {
+      "type": "double"
+    },
+    "com.amazonaws.ses#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#MessageData": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#MessageDsn": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#MessageId": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#MessageRejected": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#MessageTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#MessageTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#MessageTagName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#MessageTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#MissingRenderingAttributeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#NotificationAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ses#NotificationTopic": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#NotificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#PolicyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ses#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#PolicyNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ProductionAccessNotGrantedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#PutConfigurationSetDeliveryOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#PutConfigurationSetDeliveryOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidDeliveryOptionsException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#PutConfigurationSetDeliveryOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#PutConfigurationSetDeliveryOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#PutIdentityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#PutIdentityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#InvalidPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#PutIdentityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#PutIdentityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#RawMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#RawMessageData": {
+      "type": "blob"
+    },
+    "com.amazonaws.ses#ReceiptAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReceiptActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ReceiptFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReceiptFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ReceiptFilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ReceiptFilterPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#ReceiptIpFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReceiptRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReceiptRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ReceiptRuleNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ReceiptRuleSetMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReceiptRuleSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ReceiptRuleSetsLists": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#ReceiptRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#Recipient": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#RecipientDsnFields": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#RecipientsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#RemoteMta": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#RenderedTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ReorderReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#ReorderReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#ReorderReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReorderReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#ReportingMta": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#ReputationOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#RuleDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#RuleOrRuleSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#RuleSetDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#S3Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#SNSAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SNSActionEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#SNSDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendBounce": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendBounceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendBounceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendBounceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendBulkTemplatedEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendBulkTemplatedEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AccountSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.ses#TemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendBulkTemplatedEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendBulkTemplatedEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendCustomVerificationEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendCustomVerificationEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#FromEmailAddressNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.ses#ProductionAccessNotGrantedException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendCustomVerificationEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendCustomVerificationEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendDataPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#SendEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AccountSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendRawEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendRawEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AccountSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendRawEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendRawEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendTemplatedEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SendTemplatedEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#AccountSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetSendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.ses#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.ses#TemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SendTemplatedEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SendTemplatedEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SentLast24Hours": {
+      "type": "double"
+    },
+    "com.amazonaws.ses#SetActiveReceiptRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetActiveReceiptRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SetActiveReceiptRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetActiveReceiptRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityDkimEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetIdentityDkimEnabledRequest"
+      }
+    },
+    "com.amazonaws.ses#SetIdentityDkimEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityDkimEnabledResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityFeedbackForwardingEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetIdentityFeedbackForwardingEnabledRequest"
+      }
+    },
+    "com.amazonaws.ses#SetIdentityFeedbackForwardingEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityFeedbackForwardingEnabledResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityHeadersInNotificationsEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetIdentityHeadersInNotificationsEnabledRequest"
+      }
+    },
+    "com.amazonaws.ses#SetIdentityHeadersInNotificationsEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityHeadersInNotificationsEnabledResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityMailFromDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetIdentityMailFromDomainRequest"
+      }
+    },
+    "com.amazonaws.ses#SetIdentityMailFromDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityMailFromDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityNotificationTopic": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetIdentityNotificationTopicRequest"
+      }
+    },
+    "com.amazonaws.ses#SetIdentityNotificationTopicRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetIdentityNotificationTopicResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetReceiptRulePosition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#SetReceiptRulePositionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#RuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#SetReceiptRulePositionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SetReceiptRulePositionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#SimpleEmailService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SES"
+        }
+      }
+    },
+    "com.amazonaws.ses#StopAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#StopScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#Subject": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#SubjectPart": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#SuccessRedirectionURL": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Template": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TemplateContent": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#TemplateData": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#TemplateDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TemplateMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TemplateMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#TestRenderTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#TestRenderTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#InvalidRenderingParameterException"
+        },
+        {
+          "target": "com.amazonaws.ses#MissingRenderingAttributeException"
+        },
+        {
+          "target": "com.amazonaws.ses#TemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#TestRenderTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TestRenderTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TextPart": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ses#TlsPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#TrackingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TrackingOptionsAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#TrackingOptionsDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateAccountSendingEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateAccountSendingEnabledRequest"
+      }
+    },
+    "com.amazonaws.ses#UpdateAccountSendingEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#EventDestinationDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidCloudWatchDestinationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidFirehoseDestinationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidSNSDestinationException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetReputationMetricsEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateConfigurationSetReputationMetricsEnabledRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetReputationMetricsEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetSendingEnabled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateConfigurationSetSendingEnabledRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetSendingEnabledRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetTrackingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateConfigurationSetTrackingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#ConfigurationSetDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidTrackingOptionsException"
+        },
+        {
+          "target": "com.amazonaws.ses#TrackingOptionsDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetTrackingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateConfigurationSetTrackingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailInvalidContentException"
+        },
+        {
+          "target": "com.amazonaws.ses#CustomVerificationEmailTemplateDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#FromEmailAddressNotVerifiedException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateReceiptRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateReceiptRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#InvalidLambdaFunctionException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidS3ConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.ses#InvalidSnsTopicException"
+        },
+        {
+          "target": "com.amazonaws.ses#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.ses#RuleSetDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateReceiptRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateReceiptRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#UpdateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ses#InvalidTemplateException"
+        },
+        {
+          "target": "com.amazonaws.ses#TemplateDoesNotExistException"
+        }
+      ]
+    },
+    "com.amazonaws.ses#UpdateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#UpdateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerificationAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ses#VerificationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ses#VerificationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ses#VerificationTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.ses#VerifyDomainDkim": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#VerifyDomainDkimRequest"
+      }
+    },
+    "com.amazonaws.ses#VerifyDomainDkimRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyDomainDkimResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyDomainIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#VerifyDomainIdentityRequest"
+      }
+    },
+    "com.amazonaws.ses#VerifyDomainIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyDomainIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyEmailAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#VerifyEmailAddressRequest"
+      }
+    },
+    "com.amazonaws.ses#VerifyEmailAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ses#VerifyEmailIdentityRequest"
+      }
+    },
+    "com.amazonaws.ses#VerifyEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#VerifyEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ses#WorkmailAction": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,1545 @@
+{
+  "shapes": {
+    "com.amazonaws.sns#ActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#AddPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#AddPermissionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#AddPermissionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#AmazonSimpleNotificationService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SNS"
+        }
+      }
+    },
+    "com.amazonaws.sns#AuthorizationErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#BatchEntryIdsNotDistinctException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#BatchRequestTooLongException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#BatchResultErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#BatchResultErrorEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#Binary": {
+      "type": "blob"
+    },
+    "com.amazonaws.sns#CheckIfPhoneNumberIsOptedOut": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#CheckIfPhoneNumberIsOptedOutInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#CheckIfPhoneNumberIsOptedOutInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CheckIfPhoneNumberIsOptedOutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ConcurrentAccessException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ConfirmSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ConfirmSubscriptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#FilterPolicyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ReplayLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#SubscriptionLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ConfirmSubscriptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ConfirmSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreatePlatformApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#CreatePlatformApplicationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#CreatePlatformApplicationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreatePlatformApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreatePlatformEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#CreatePlatformEndpointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#CreatePlatformEndpointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreateSMSSandboxPhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#CreateSMSSandboxPhoneNumberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#OptedOutException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.sns#UserErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#CreateSMSSandboxPhoneNumberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreateSMSSandboxPhoneNumberResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreateTopic": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#CreateTopicInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#StaleTagException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.sns#TopicLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#CreateTopicInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#CreateTopicResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#DelegatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#DeleteEndpointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#DeleteEndpointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#DeletePlatformApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#DeletePlatformApplicationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#DeletePlatformApplicationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#DeleteSMSSandboxPhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#DeleteSMSSandboxPhoneNumberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.sns#UserErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#DeleteSMSSandboxPhoneNumberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#DeleteSMSSandboxPhoneNumberResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#DeleteTopic": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#DeleteTopicInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#StaleTagException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#DeleteTopicInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#EmptyBatchRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Endpoint2": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#EndpointDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#FilterPolicyLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetDataProtectionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetDataProtectionPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetDataProtectionPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetDataProtectionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetEndpointAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetEndpointAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetEndpointAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetEndpointAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetPlatformApplicationAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetPlatformApplicationAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetPlatformApplicationAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetPlatformApplicationAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSMSAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetSMSAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetSMSAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSMSAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSMSSandboxAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetSMSSandboxAccountStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetSMSSandboxAccountStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSMSSandboxAccountStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSubscriptionAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetSubscriptionAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetSubscriptionAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetSubscriptionAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetTopicAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#GetTopicAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#GetTopicAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#GetTopicAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InvalidBatchEntryIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InvalidSecurityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Iso2CountryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#KMSAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#KMSDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#KMSInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#KMSNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#KMSOptInRequired": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#KMSThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#LanguageCodeString": {
+      "type": "enum"
+    },
+    "com.amazonaws.sns#ListEndpointsByPlatformApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListEndpointsByPlatformApplicationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListEndpointsByPlatformApplicationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListEndpointsByPlatformApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListOfEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#ListOfPlatformApplications": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#ListOriginationNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListOriginationNumbersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.sns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListOriginationNumbersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListOriginationNumbersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListPhoneNumbersOptedOut": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListPhoneNumbersOptedOutInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListPhoneNumbersOptedOutInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListPhoneNumbersOptedOutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListPlatformApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListPlatformApplicationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListPlatformApplicationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListPlatformApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListSMSSandboxPhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListSMSSandboxPhoneNumbersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListSMSSandboxPhoneNumbersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListSMSSandboxPhoneNumbersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListString": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#ListSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListSubscriptionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListSubscriptionsByTopic": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListSubscriptionsByTopicInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListSubscriptionsByTopicInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListSubscriptionsByTopicResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListSubscriptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListSubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListTopics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#ListTopicsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#ListTopicsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ListTopicsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#MapStringToString": {
+      "type": "map"
+    },
+    "com.amazonaws.sns#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.sns#MaxItemsListOriginationNumbers": {
+      "type": "integer"
+    },
+    "com.amazonaws.sns#MessageAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sns#MessageAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#NumberCapability": {
+      "type": "enum"
+    },
+    "com.amazonaws.sns#NumberCapabilityList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#OTPCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#OptInPhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#OptInPhoneNumberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#OptInPhoneNumberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#OptInPhoneNumberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#OptedOutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#PhoneNumberInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PhoneNumberInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#PhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#PhoneNumberString": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#PlatformApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PlatformApplicationDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Publish": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#PublishInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#EndpointDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#PlatformApplicationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#PublishBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#PublishBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#BatchEntryIdsNotDistinctException"
+        },
+        {
+          "target": "com.amazonaws.sns#BatchRequestTooLongException"
+        },
+        {
+          "target": "com.amazonaws.sns#EmptyBatchRequestException"
+        },
+        {
+          "target": "com.amazonaws.sns#EndpointDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidBatchEntryIdException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.sns#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#PlatformApplicationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.sns#TooManyEntriesInBatchRequestException"
+        },
+        {
+          "target": "com.amazonaws.sns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#PublishBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PublishBatchRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PublishBatchRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#PublishBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PublishBatchResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PublishBatchResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#PublishInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PublishResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#PutDataProtectionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#PutDataProtectionPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#PutDataProtectionPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#RemovePermissionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#RemovePermissionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ReplayLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#RouteType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sns#SMSSandboxPhoneNumber": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SMSSandboxPhoneNumberList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#SMSSandboxPhoneNumberVerificationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sns#SetEndpointAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SetEndpointAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SetEndpointAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SetPlatformApplicationAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SetPlatformApplicationAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SetPlatformApplicationAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SetSMSAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SetSMSAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SetSMSAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SetSMSAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SetSubscriptionAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SetSubscriptionAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#FilterPolicyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ReplayLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SetSubscriptionAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SetTopicAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SetTopicAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SetTopicAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#StaleTagException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#String": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#Subscribe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#SubscribeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#FilterPolicyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ReplayLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#SubscriptionLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#SubscribeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SubscribeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SubscriptionAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sns#SubscriptionLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#SubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#TagLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#TagPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#StaleTagException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#ThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sns#TooManyEntriesInBatchRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#Topic": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TopicAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sns#TopicLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#TopicsList": {
+      "type": "list"
+    },
+    "com.amazonaws.sns#Unsubscribe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#UnsubscribeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidSecurityException"
+        },
+        {
+          "target": "com.amazonaws.sns#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#UnsubscribeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#ConcurrentAccessException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#StaleTagException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sns#TagPolicyException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#UserErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#VerificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#VerifySMSSandboxPhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sns#VerifySMSSandboxPhoneNumberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sns#AuthorizationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.sns#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.sns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sns#ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.sns#VerificationException"
+        }
+      ]
+    },
+    "com.amazonaws.sns#VerifySMSSandboxPhoneNumberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#VerifySMSSandboxPhoneNumberResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sns#account": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#action": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#attributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#attributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#authenticateOnUnsubscribe": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sns#delegate": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#label": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#message": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#messageId": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#messageStructure": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#nextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#protocol": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#subject": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#subscriptionARN": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#token": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#topicARN": {
+      "type": "string"
+    },
+    "com.amazonaws.sns#topicName": {
+      "type": "string"
+    }
+  }
+}

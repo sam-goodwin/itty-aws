@@ -1,0 +1,3771 @@
+{
+  "shapes": {
+    "com.amazonaws.inspector2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AccountAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AccountAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AccountIdFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AccountIdSet": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AccountSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AccountState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AccountStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AggCounts": {
+      "type": "long"
+    },
+    "com.amazonaws.inspector2#AggregationFindingType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AggregationRequest": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#AggregationResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AggregationResponse": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#AggregationResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AggregationType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AmiAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AmiAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AmiId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AmiSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Architecture": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ArchitectureList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AssociateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AssociateConfigurationRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AssociateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#AssociateMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#AssociateMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AssociateMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AssociationResultStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#AssociationResultStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AtigData": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AuthorizationUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AutoEnable": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEc2InstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEcrContainerAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEcrContainerAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEcrContainerImageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEcrContainerSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#AwsEcsMetadataDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEksMetadataDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEksWorkloadInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#AwsEksWorkloadInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#AwsLambdaFunctionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchAssociateCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchAssociateCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchAssociateCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchAssociateCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchDisassociateCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchDisassociateCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchDisassociateCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchDisassociateCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchGetAccountStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchGetAccountStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetAccountStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetCodeSnippet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchGetCodeSnippetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchGetCodeSnippetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetCodeSnippetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetFindingDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchGetFindingDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchGetFindingDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetFindingDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetFreeTrialInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchGetFreeTrialInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchGetFreeTrialInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetFreeTrialInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetMemberEc2DeepInspectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchGetMemberEc2DeepInspectionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchGetMemberEc2DeepInspectionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchGetMemberEc2DeepInspectionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchUpdateMemberEc2DeepInspectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#BatchUpdateMemberEc2DeepInspectionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#BatchUpdateMemberEc2DeepInspectionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BatchUpdateMemberEc2DeepInspectionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#BenchmarkProfile": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#BenchmarkVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CancelFindingsReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CancelFindingsReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CancelFindingsReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CancelFindingsReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CancelSbomExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CancelSbomExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CancelSbomExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CancelSbomExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CheckCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#CheckIdFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisCheckAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisCheckAggregationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisFindingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisFindingArnFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisFindingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisFindingStatusComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisFindingStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisFindingStatusFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisNumberFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisNumberFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisOwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisReportFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisReportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisResultStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisResultStatusComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisResultStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisResultStatusFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisRuleDetails": {
+      "type": "blob"
+    },
+    "com.amazonaws.inspector2#CisRuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScan": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisScanArnFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisScanConfigurationArnFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanConfigurationsSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanDateFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisScanNameFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanResultDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanResultDetailsFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanResultDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScanResultDetailsSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanResultsAggregatedByChecksFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanResultsAggregatedByChecksSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanResultsAggregatedByTargetResourceFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanResultsAggregatedByTargetResourceSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanResultsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#CisScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanStatusComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisScanStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisScanStatusFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisScheduledByFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisSecurityLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisSecurityLevelComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisSecurityLevelFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisSecurityLevelFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisSessionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisSessionMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisSortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisStringComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisTagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector2#CisTargetResourceAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisTargetResourceAggregationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CisTargetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisTargetStatusComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisTargetStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisTargetStatusReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CisTargetStatusReasonFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisTargets": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisaAction": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CisaData": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CisaDateAdded": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#CisaDateDue": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ClusterDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ClusterDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ClusterForImageFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ClusterInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ClusterInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ClusterMetadata": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#CodeFilePath": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeLine": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeLineList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryIntegrationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryOnDemandScan": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeRepositoryProviderType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeRepositorySortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#CodeSecurityClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeSecurityIntegrationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeSecurityIntegrationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSecurityResource": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#CodeSecurityScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSecurityScanConfigurationAssociationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CodeSecurityScanConfigurationAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSecurityScanConfigurationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CodeSecurityScanConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSecurityUuid": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeSnippetError": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSnippetErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CodeSnippetErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CodeSnippetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CodeSnippetResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CodeVulnerabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CommitId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Component": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ComponentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ComponentType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ComputePlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ConfigurationLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ContinuousIntegrationScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ContinuousIntegrationScanEvent": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#ContinuousIntegrationScanSupportedEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Counts": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CountsList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CoverageDateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoverageDateFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CoverageFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoverageMapComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CoverageMapFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoverageMapFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CoverageNumberFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoverageNumberFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CoverageResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CoverageStringComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CoverageStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoverageStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CoverageStringInput": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CoveredResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CoveredResources": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CreateCisScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateCisScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateCisScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCisScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCisTargets": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateCodeSecurityIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateFindingsReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateFindingsReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateFindingsReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateFindingsReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateGitLabSelfManagedIntegrationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateIntegrationDetail": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#CreateSbomExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#CreateSbomExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#CreateSbomExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CreateSbomExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Currency": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Cvss2": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Cvss2BaseScore": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#Cvss2ScoringVector": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Cvss3": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Cvss3BaseScore": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#Cvss3ScoringVector": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CvssScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CvssScoreAdjustment": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CvssScoreAdjustmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#CvssScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#CvssScoreList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Cwe": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#CweList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Cwes": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DailySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DateFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DateTimeTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#Day": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#DaysList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DelegatedAdmin": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DelegatedAdminAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DelegatedAdminAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DelegatedAdminStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#DeleteCisScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DeleteCisScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DeleteCisScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteCisScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DeleteCodeSecurityIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DeleteCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DeleteFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DeleteFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DeleteFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DescribeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DescribeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DescribeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DescribeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DetectionPlatforms": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DetectorTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Disable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DisableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DisableDelegatedAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DisableDelegatedAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DisableDelegatedAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisableDelegatedAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisableResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DisableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisassociateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisassociateConfigurationRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#DisassociateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#DisassociateMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#DisassociateMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#DisassociateMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2ConfigurationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2DeepInspectionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Ec2InstanceAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2InstanceAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2InstanceSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Ec2Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2Platform": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Ec2ScanMode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Ec2ScanModeState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Ec2ScanModeStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EcrConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EcrConfigurationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EcrContainerImageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EcrPullDateRescanDuration": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EcrPullDateRescanMode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EcrRepositoryMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EcrRescanDuration": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EcrRescanDurationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EcrRescanDurationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EcrScanFrequency": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Enable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#EnableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#EnableDelegatedAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#EnableDelegatedAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#EnableDelegatedAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EnableDelegatedAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EnableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EnableResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#EnableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Epss": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EpssDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EpssScore": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#EpssScoreValue": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Evidence": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#EvidenceDetail": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EvidenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#EvidenceRule": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#EvidenceSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ExecutionRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ExploitAvailable": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ExploitObserved": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ExploitabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ExternalReportStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FailedAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FailedAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FailedAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FailedAssociationResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FailedMemberAccountEc2DeepInspectionStatusState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FailedMemberAccountEc2DeepInspectionStatusStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FilterAction": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FilterArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FilterArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FilterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FilterReason": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Finding": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FindingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FindingArns": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FindingDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FindingDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FindingDetailsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FindingDetailsErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingDetailsErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FindingList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FindingStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FindingTypeAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FindingTypeAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FindingTypeSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FirstSeen": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#FixAvailable": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FreeTrialAccountInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FreeTrialAccountInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FreeTrialInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FreeTrialInfoError": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#FreeTrialInfoErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FreeTrialInfoErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FreeTrialInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#FreeTrialStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FreeTrialType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FrequencyExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#FunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GetCisScanReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetCisScanReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetCisScanReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCisScanReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCisScanResultDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetCisScanResultDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetCisScanResultDetailsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#GetCisScanResultDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCisScanResultDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetClustersForImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetClustersForImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetClustersForImageNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GetClustersForImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetClustersForImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetCodeSecurityIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetCodeSecurityScanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetCodeSecurityScanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetDelegatedAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetDelegatedAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetDelegatedAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetDelegatedAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetEc2DeepInspectionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetEc2DeepInspectionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetEc2DeepInspectionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetEc2DeepInspectionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetEncryptionKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetEncryptionKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetEncryptionKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetFindingsReportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetFindingsReportStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetFindingsReportStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetFindingsReportStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetSbomExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#GetSbomExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#GetSbomExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GetSbomExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#GitHubAuthCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GitHubInstallationId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GitLabAccessToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GitLabAuthCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#GroupKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ImageHash": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ImageLayerAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ImageLayerAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ImageLayerSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ImageTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Inspector2": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Inspector2"
+        }
+      }
+    },
+    "com.amazonaws.inspector2#InspectorScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#InstanceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#IntegrationName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#IntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#IntegrationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#IntegrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#IpV4Address": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#IpV4AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#IpV6Address": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#IpV6AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#LambdaFunctionAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LambdaFunctionAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LambdaFunctionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LambdaFunctionSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#LambdaLayerAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LambdaLayerAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LambdaLayerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#LambdaLayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#LambdaLayerSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#LambdaVpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#LastSeen": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#LayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ListAccountPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListAccountPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListAccountPermissionsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListAccountPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListAccountPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCisScanConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCisScanConfigurationsFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanConfigurationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListCisScanConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByChecks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCisScanResultsAggregatedByChecksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByChecksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByChecksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByTargetResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCisScanResultsAggregatedByTargetResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByTargetResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScanResultsAggregatedByTargetResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCisScansRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCisScansDetailLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#ListCisScansFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScansMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListCisScansRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScansResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCisScansSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCodeSecurityIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCodeSecurityScanConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCoverage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCoverageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCoverageMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListCoverageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCoverageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCoverageStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListCoverageStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListCoverageStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListCoverageStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListDelegatedAdminAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListDelegatedAdminAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListDelegatedAdminAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListDelegatedAdminAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListDelegatedAdminMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListFilterMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListFindingAggregations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListFindingAggregationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListFindingAggregationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListFindingAggregationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListFindingAggregationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListFindingsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListMembersMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListUsageTotals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ListUsageTotalsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ListUsageTotalsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#ListUsageTotalsNextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ListUsageTotalsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ListUsageTotalsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#MapComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#MapFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#MapFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#MapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#MapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#MemberAccountEc2DeepInspectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#MemberAccountEc2DeepInspectionStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#MemberAccountEc2DeepInspectionStatusState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#MemberAccountEc2DeepInspectionStatusStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#MemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#MeteringAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#MeteringAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#MonthlyCostEstimate": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#MonthlySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#NetworkPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#NetworkProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#NetworkReachabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#NonEmptyStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#NumberFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#NumberFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#OneAccountIdFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#OneTimeSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Operation": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#OwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PackageAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PackageArchitecture": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageEpoch": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#PackageFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PackageFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#PackageManager": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageRelease": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PackageVulnerabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Path": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PathList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#PeriodicScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PeriodicScanFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Permissions": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Platform": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#PlatformFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#PlatformVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#PortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PortRangeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#PortRangeFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Product": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ProjectCodeSecurityScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ProjectContinuousIntegrationScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ProjectContinuousIntegrationScanConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ProjectId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ProjectPeriodicScanConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ProjectPeriodicScanConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ProjectSelectionScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ReferenceUrls": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#RelatedVulnerabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#RelatedVulnerability": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#RelationshipStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Remediation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ReportFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ReportTargetAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ReportingErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#RepositoryAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#RepositoryAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#RepositorySortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResetEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#ResetEncryptionKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#ResetEncryptionKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResetEncryptionKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResourceIdFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ResourceMapComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResourceMapFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceMapFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceScanMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceScanType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResourceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceStringComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResourceStringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ResourceStringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ResourceStringInput": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ResourceTagFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#RiskScore": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector2#RuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#RuleSetCategories": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#RuleSetCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#Runtime": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SbomReportFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanMode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ScanStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ScanType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Schedule": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#ScopeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SearchVulnerabilities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#SearchVulnerabilitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#SearchVulnerabilitiesFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SearchVulnerabilitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SearchVulnerabilitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#SendCisSessionHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#SendCisSessionHealthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#SendCisSessionHealthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SendCisSessionHealthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SendCisSessionTelemetry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#SendCisSessionTelemetryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#SendCisSessionTelemetryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SendCisSessionTelemetryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Service": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Severity": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SeverityCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SortField": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SortOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SourceLayerHash": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#StartCisSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#StartCisSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#StartCisSessionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StartCisSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StartCisSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StartCodeSecurityScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#StartCodeSecurityScanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#StartCodeSecurityScanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StartCodeSecurityScanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#State": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#StatusCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Step": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StepList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#StopCisMessageProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StopCisSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#StopCisSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#StopCisSessionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StopCisSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StopCisSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StopCisSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#StringComparison": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#StringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#StringFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#StringInput": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#SuccessfulAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SuccessfulAssociationResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#SuggestedFix": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#SuggestedFixes": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TagComparison": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector2#TagFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TagValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Target": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TargetAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TargetAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TargetResourceTags": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector2#TargetResourceTagsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TargetResourceTagsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TargetStatusFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TargetStatusReasonFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Targets": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Time": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TimeOfDay": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#TitleAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TitleAggregationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#TitleFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#TitleSortBy": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Tool": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Tools": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Ttp": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Ttps": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCisScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateCisScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateCisScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCisScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCisTargets": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateCodeSecurityIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityScanConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateCodeSecurityScanConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityScanConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateCodeSecurityScanConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateEc2DeepInspectionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateEc2DeepInspectionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateEc2DeepInspectionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateEc2DeepInspectionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateEncryptionKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateEncryptionKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateEncryptionKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateGitHubIntegrationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateGitLabSelfManagedIntegrationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateIntegrationDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.inspector2#UpdateOrgEc2DeepInspectionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateOrgEc2DeepInspectionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateOrgEc2DeepInspectionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateOrgEc2DeepInspectionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector2#UpdateOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.inspector2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector2#UpdateOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UpdateOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#Usage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UsageAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#UsageAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#UsageList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#UsageTotal": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#UsageTotalList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#UsageType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#UsageValue": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector2#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#ValidationExceptionFields": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#Vendor": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VendorCreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#VendorSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VendorUpdatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector2#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Vulnerabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#Vulnerability": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#VulnerabilityDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnerabilityId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnerabilityIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#VulnerabilityReferenceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnerabilityReferenceUrls": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#VulnerabilitySource": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnerabilitySourceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#VulnerablePackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector2#VulnerablePackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector2#VulnerablePackageRemediation": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector2#WeeklySchedule": {
+      "type": "structure"
+    }
+  }
+}

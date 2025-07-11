@@ -1,0 +1,954 @@
+{
+  "shapes": {
+    "com.amazonaws.kafkaconnect#ApacheKafkaCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ApacheKafkaClusterDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#AutoScaling": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#AutoScalingDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#AutoScalingUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#Capacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CapacityDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CapacityUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CloudWatchLogsLogDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CloudWatchLogsLogDeliveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorConfigurationUpdate": {
+      "type": "map"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationState": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationStepState": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationStepType": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorOperationType": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorState": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#ConnectorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#CreateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#CreateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateCustomPlugin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#CreateCustomPluginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#CreateCustomPluginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateCustomPluginResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateWorkerConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#CreateWorkerConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#CreateWorkerConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CreateWorkerConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPlugin": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginFileDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginLocationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginRevisionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginState": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#CustomPluginSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DeleteConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DeleteConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteCustomPlugin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DeleteCustomPluginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DeleteCustomPluginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteCustomPluginResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteWorkerConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DeleteWorkerConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DeleteWorkerConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DeleteWorkerConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DescribeConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnectorOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DescribeConnectorOperationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnectorOperationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnectorOperationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeCustomPlugin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DescribeCustomPluginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DescribeCustomPluginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeCustomPluginResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeWorkerConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#DescribeWorkerConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#DescribeWorkerConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#DescribeWorkerConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#FirehoseLogDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#FirehoseLogDeliveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterClientAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterClientAuthenticationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterClientAuthenticationType": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterEncryptionInTransit": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterEncryptionInTransitDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#KafkaClusterEncryptionInTransitType": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#KafkaConnect": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "KafkaConnect"
+        }
+      }
+    },
+    "com.amazonaws.kafkaconnect#ListConnectorOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#ListConnectorOperationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#ListConnectorOperationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListConnectorOperationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#ListConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#ListConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListCustomPlugins": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#ListCustomPluginsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#ListCustomPluginsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListCustomPluginsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListWorkerConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#ListWorkerConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#ListWorkerConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ListWorkerConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#LogDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#LogDeliveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafkaconnect#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#Plugin": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#PluginDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ProvisionedCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ProvisionedCapacityDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ProvisionedCapacityUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#S3LocationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#S3LogDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#S3LogDeliveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleInPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleInPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleInPolicyUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleOutPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleOutPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ScaleOutPolicyUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#StateDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.kafkaconnect#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#UpdateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafkaconnect#UpdateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafkaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafkaconnect#UpdateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#UpdateConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#Vpc": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#VpcDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfigurationRevisionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfigurationRevisionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfigurationState": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#WorkerConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerLogDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerLogDeliveryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#WorkerSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafkaconnect#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kafkaconnect#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafkaconnect#__integerMin1Max100": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafkaconnect#__integerMin1Max8": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafkaconnect#__listOfConnectorOperationStep": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfConnectorOperationSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfConnectorSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfCustomPluginSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfPlugin": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfPluginDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOfWorkerConfigurationSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.kafkaconnect#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.kafkaconnect#__longMin1": {
+      "type": "long"
+    },
+    "com.amazonaws.kafkaconnect#__sensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#__stringMax1024": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#__stringMin1Max128": {
+      "type": "string"
+    },
+    "com.amazonaws.kafkaconnect#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

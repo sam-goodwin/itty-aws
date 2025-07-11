@@ -1,0 +1,1829 @@
+{
+  "shapes": {
+    "com.amazonaws.iottwinmaker#AWSIoTTwinMaker": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTTwinMaker"
+        }
+      }
+    },
+    "com.amazonaws.iottwinmaker#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#BatchPutPropertyError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#BatchPutPropertyErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#BatchPutPropertyValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#BatchPutPropertyValuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#BatchPutPropertyValuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#BatchPutPropertyValuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iottwinmaker#BundleInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#BundleName": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#CancelMetadataTransferJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CancelMetadataTransferJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CancelMetadataTransferJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CancelMetadataTransferJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ColumnDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ColumnDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ColumnType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ComponentPath": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ComponentPropertyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentPropertyGroupRequests": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#ComponentPropertyGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentPropertyGroupResponses": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#ComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ComponentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentTypeId": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ComponentTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ComponentTypeSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ComponentTypeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ComponentUpdateType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ComponentUpdatesMapRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#ComponentsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#ComponentsMapRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentTypesRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentTypesResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentUpdatesMapRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#CompositeComponentsMapRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#Configuration": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ConnectorFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ConnectorTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateComponentType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateComponentTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateComponentTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateComponentTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateMetadataTransferJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateMetadataTransferJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateMetadataTransferJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateMetadataTransferJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateScene": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateSceneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateSceneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateSceneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateSyncJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateSyncJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateSyncJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateSyncJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#CreateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#CreateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#CreateWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DataConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DataValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DataValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#DataValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#DeleteComponentType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#DeleteComponentTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#DeleteComponentTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteComponentTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#DeleteEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#DeleteEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteScene": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#DeleteSceneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#DeleteSceneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteSceneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteSyncJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#DeleteSyncJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#DeleteSyncJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteSyncJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#DeleteWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#DeleteWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DeleteWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#DestinationType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.iottwinmaker#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#EntityName": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#EntityPropertyReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#EntitySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#EntitySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Entries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Errors": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ExecuteQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ExecuteQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ExecuteQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ExecuteQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Expression": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ExtendsFrom": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ExternalIdProperty": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#FilterByAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FilterByAssetModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FilterByComponentType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FilterByEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#FunctionsRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#FunctionsResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#GeneratedSceneMetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#GetComponentType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetComponentTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetComponentTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetComponentTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetMetadataTransferJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetMetadataTransferJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetMetadataTransferJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetMetadataTransferJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetPricingPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetPricingPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPricingPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetPropertyValueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConnectorFailureException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConnectorTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValueHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetPropertyValueHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConnectorFailureException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConnectorTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValueHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValueHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetPropertyValueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetScene": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetSceneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetSceneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetSceneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetSyncJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetSyncJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetSyncJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetSyncJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#GetWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#GetWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GetWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#GroupType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#IdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.iottwinmaker#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#InterpolationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#InterpolationType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#IntervalInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.iottwinmaker#IotSiteWiseSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#IotSiteWiseSourceConfigurationFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#IotSiteWiseSourceConfigurationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#IotTwinMakerDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#IotTwinMakerSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#IotTwinMakerSourceConfigurationFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#IotTwinMakerSourceConfigurationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#LambdaFunction": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#LinkedService": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#LinkedServices": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ListComponentTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListComponentTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListComponentTypesFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#ListComponentTypesFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ListComponentTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListComponentTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListEntitiesFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#ListEntitiesFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ListEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListMetadataTransferJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListMetadataTransferJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListMetadataTransferJobsFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#ListMetadataTransferJobsFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ListMetadataTransferJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListMetadataTransferJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListPropertiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListScenes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListScenesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListScenesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListScenesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListSyncJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListSyncJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListSyncJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListSyncJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListSyncResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListSyncResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListSyncResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListSyncResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#ListWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#ListWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ListWorkspacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.iottwinmaker#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iottwinmaker#MetadataTransferJobProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#MetadataTransferJobState": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#MetadataTransferJobStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#MetadataTransferJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#MetadataTransferJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Order": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#OrderBy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#OrderByList": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#OrderByTime": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ParentEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ParentEntityUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#ParentEntityUpdateType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PricingBundles": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#PricingMode": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PricingPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PricingTier": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PropertyDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyDefinitionsRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyDefinitionsResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PropertyFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#PropertyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyGroupUpdateType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PropertyGroupsRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyGroupsResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyLatestValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyLatestValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyNames": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#PropertyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyRequests": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyResponses": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#PropertySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyTableValue": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#PropertyUpdateType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#PropertyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyValueEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyValueHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#PropertyValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#PropertyValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#QueryResultValue": {
+      "type": "document"
+    },
+    "com.amazonaws.iottwinmaker#QueryServiceMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iottwinmaker#QueryStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#QueryTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Relationship": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#RelationshipValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#RequiredProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Row": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#RowData": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#Rows": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#S3DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#S3DestinationLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#S3Location": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#S3SourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#S3SourceLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#S3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SceneCapabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SceneCapability": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SceneError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SceneErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SceneMetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#SceneMetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SceneSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SceneSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Scope": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SelectedPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SiteWiseExternalId": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SourceConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#State": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Status": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#String": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SyncJobState": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SyncJobStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SyncJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SyncJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceState": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#SyncResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#SyncSource": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#TabularConditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#TabularPropertyValue": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#TabularPropertyValues": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iottwinmaker#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Time": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iottwinmaker#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#TwinMakerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateComponentType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UpdateComponentTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UpdateComponentTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateComponentTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UpdateEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UpdateEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdatePricingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UpdatePricingPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UpdatePricingPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdatePricingPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#UpdateScene": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UpdateSceneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UpdateSceneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateSceneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iottwinmaker#UpdateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iottwinmaker#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iottwinmaker#UpdateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#UpdateWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iottwinmaker#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#WorkspaceDeleteMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iottwinmaker#WorkspaceSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iottwinmaker#WorkspaceSummary": {
+      "type": "structure"
+    }
+  }
+}

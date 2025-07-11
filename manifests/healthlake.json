@@ -1,0 +1,515 @@
+{
+  "shapes": {
+    "com.amazonaws.healthlake#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#AuthorizationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.healthlake#BoundedLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ClientTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#CmkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#ConfigurationMetadata": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#CreateFHIRDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#CreateFHIRDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#CreateFHIRDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#CreateFHIRDatastoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DatastoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#DatastoreFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DatastoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#DatastoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#DatastoreProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DatastorePropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.healthlake#DatastoreStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#DeleteFHIRDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#DeleteFHIRDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#DeleteFHIRDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DeleteFHIRDatastoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#DescribeFHIRDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#DescribeFHIRDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRDatastoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#DescribeFHIRExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#DescribeFHIRExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#DescribeFHIRImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#DescribeFHIRImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#DescribeFHIRImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#EncryptionKeyID": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ErrorCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#ErrorCause": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ExportJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ExportJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.healthlake#FHIRVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#GenericDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.healthlake#GenericLong": {
+      "type": "long"
+    },
+    "com.amazonaws.healthlake#HealthLake": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "HealthLake"
+        }
+      }
+    },
+    "com.amazonaws.healthlake#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#IdentityProviderConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ImportJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ImportJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.healthlake#InputDataConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.healthlake#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#JobName": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#JobProgressReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#KmsEncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ListFHIRDatastores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#ListFHIRDatastoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#ListFHIRDatastoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListFHIRDatastoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListFHIRExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#ListFHIRExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#ListFHIRExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListFHIRExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListFHIRImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#ListFHIRImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#ListFHIRImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListFHIRImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#MaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.healthlake#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#OutputDataConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.healthlake#PreloadDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#PreloadDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.healthlake#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#S3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#S3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#SseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#StartFHIRExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#StartFHIRExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#StartFHIRExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#StartFHIRExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#StartFHIRImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#StartFHIRImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#StartFHIRImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#StartFHIRImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#String": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.healthlake#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.healthlake#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.healthlake#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.healthlake#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.healthlake#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.healthlake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.healthlake#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.healthlake#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

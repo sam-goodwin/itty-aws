@@ -1,0 +1,102 @@
+{
+  "shapes": {
+    "com.amazonaws.apigatewaymanagementapi#ApiGatewayManagementApi": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ApiGatewayManagementApi"
+        }
+      }
+    },
+    "com.amazonaws.apigatewaymanagementapi#Data": {
+      "type": "blob"
+    },
+    "com.amazonaws.apigatewaymanagementapi#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewaymanagementapi#DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#GoneException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewaymanagementapi#DeleteConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#GetConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewaymanagementapi#GetConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#GoneException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewaymanagementapi#GetConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#GetConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#GoneException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#Identity": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#PayloadTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#PostToConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigatewaymanagementapi#PostToConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#GoneException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#PayloadTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.apigatewaymanagementapi#PostToConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigatewaymanagementapi#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.apigatewaymanagementapi#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

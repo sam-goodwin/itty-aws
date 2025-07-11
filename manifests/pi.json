@@ -1,0 +1,551 @@
+{
+  "shapes": {
+    "com.amazonaws.pi#AcceptLanguage": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#AdditionalMetricsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#AdditionalMetricsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pi#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#AnalysisReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#AnalysisReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#AnalysisReportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#AnalysisReportSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#AnalysisStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#AuthorizedActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.pi#ContextType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#CreatePerformanceAnalysisReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#CreatePerformanceAnalysisReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#CreatePerformanceAnalysisReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#CreatePerformanceAnalysisReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#Data": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DataList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DeletePerformanceAnalysisReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#DeletePerformanceAnalysisReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#DeletePerformanceAnalysisReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DeletePerformanceAnalysisReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DescribeDimensionKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#DescribeDimensionKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#DescribeDimensionKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DescribeDimensionKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#DescriptiveMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pi#DescriptiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#DetailStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#DimensionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DimensionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DimensionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DimensionGroupDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DimensionGroupDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DimensionKeyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DimensionKeyDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DimensionKeyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#DimensionKeyDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#DimensionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pi#DimensionsMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.pi#ErrorString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#FeatureMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#FeatureMetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pi#FeatureStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#FineGrainedAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#GetDimensionKeyDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#GetDimensionKeyDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#GetDimensionKeyDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetDimensionKeyDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetPerformanceAnalysisReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#GetPerformanceAnalysisReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#GetPerformanceAnalysisReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetPerformanceAnalysisReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetResourceMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#GetResourceMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#GetResourceMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetResourceMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetResourceMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#GetResourceMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#GetResourceMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#GetResourceMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ISOTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.pi#IdentifierString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#Insight": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#InsightList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.pi#InternalServiceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#Limit": {
+      "type": "integer"
+    },
+    "com.amazonaws.pi#ListAvailableResourceDimensions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#ListAvailableResourceDimensionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#ListAvailableResourceDimensionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListAvailableResourceDimensionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListAvailableResourceMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#ListAvailableResourceMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#ListAvailableResourceMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListAvailableResourceMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListPerformanceAnalysisReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#ListPerformanceAnalysisReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#ListPerformanceAnalysisReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListPerformanceAnalysisReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#MarkdownString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.pi#MetricDimensionGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#MetricDimensionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#MetricKeyDataPoints": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#MetricKeyDataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#MetricQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#MetricQueryFilterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pi#MetricQueryList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#MetricTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#MetricValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#NotAuthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#PerformanceInsightsMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#PerformanceInsightsv20180227": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "PI"
+        }
+      }
+    },
+    "com.amazonaws.pi#PeriodAlignment": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#RecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#RequestString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#RequestedDimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#ResponsePartitionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ResponsePartitionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#ResponseResourceMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ResponseResourceMetricKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#ResponseResourceMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#SanitizedString": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#SanitizedStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#ServiceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#Severity": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#String": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.pi#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pi#TextFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.pi#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pi#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pi#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.pi#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.pi#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.pi#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pi#UntagResourceResponse": {
+      "type": "structure"
+    }
+  }
+}

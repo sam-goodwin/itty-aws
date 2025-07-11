@@ -1,0 +1,237 @@
+{
+  "shapes": {
+    "com.amazonaws.applicationcostprofiler#AWSApplicationCostProfiler": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ApplicationCostProfiler"
+        }
+      }
+    },
+    "com.amazonaws.applicationcostprofiler#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#DeleteReportDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#DeleteReportDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#DeleteReportDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#DeleteReportDefinitionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.applicationcostprofiler#GetReportDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#GetReportDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#GetReportDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#GetReportDefinitionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ImportApplicationUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#ImportApplicationUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#ImportApplicationUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ImportApplicationUsageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ImportId": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.applicationcostprofiler#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ListReportDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#ListReportDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#ListReportDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ListReportDefinitionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#PutReportDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#PutReportDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#PutReportDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#PutReportDefinitionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ReportDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ReportDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.applicationcostprofiler#ReportDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#ReportFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.applicationcostprofiler#ReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#S3BucketRegion": {
+      "type": "enum"
+    },
+    "com.amazonaws.applicationcostprofiler#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#S3Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#SourceS3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.applicationcostprofiler#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.applicationcostprofiler#UpdateReportDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.applicationcostprofiler#UpdateReportDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.applicationcostprofiler#UpdateReportDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#UpdateReportDefinitionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.applicationcostprofiler#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

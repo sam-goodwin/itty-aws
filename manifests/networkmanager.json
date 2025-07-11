@@ -1,0 +1,3435 @@
+{
+  "shapes": {
+    "com.amazonaws.networkmanager#AWSAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#AWSLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AcceptAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#AcceptAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#AcceptAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AcceptAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#AccountStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AccountStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#AssociateConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#AssociateConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#AssociateConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateCustomerGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#AssociateCustomerGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#AssociateCustomerGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateCustomerGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#AssociateLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#AssociateLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateTransitGatewayConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#AssociateTransitGatewayConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#AssociateTransitGatewayConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AssociateTransitGatewayConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Attachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AttachmentError": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#AttachmentErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#AttachmentErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#AttachmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#AttachmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#AttachmentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#AttachmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#Bandwidth": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#BgpOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.networkmanager#ChangeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ChangeSetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectAttachmentOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeer": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerAssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerBgpConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerBgpConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectPeerSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#Connection": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ConnectionHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ConnectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ConnectionIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ConstrainedString": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ConstrainedStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChangeEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChangeEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChangeEventValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkChangeValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkEdge": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkEdgeList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkNetworkFunctionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkNetworkFunctionGroupIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkNetworkFunctionGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyAlias": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyError": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkPolicyVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkSegmentEdgeIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkSegmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CoreNetworkSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CreateConnectAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateConnectAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateConnectAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateConnectAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateCoreNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateCoreNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CoreNetworkPolicyException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateCoreNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateCoreNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateDirectConnectGatewayAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateDirectConnectGatewayAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateDirectConnectGatewayAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateDirectConnectGatewayAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateGlobalNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateGlobalNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateGlobalNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateGlobalNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateSiteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateSiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateSiteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateSiteToSiteVpnAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateSiteToSiteVpnAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateSiteToSiteVpnAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateSiteToSiteVpnAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayPeering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateTransitGatewayPeeringRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayPeeringRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayPeeringResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayRouteTableAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateTransitGatewayRouteTableAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayRouteTableAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateTransitGatewayRouteTableAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateVpcAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#CreateVpcAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#CreateVpcAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CreateVpcAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CustomerGatewayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#CustomerGatewayArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CustomerGatewayAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#CustomerGatewayAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#CustomerGatewayAssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.networkmanager#DeleteAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteCoreNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetworkPolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteCoreNetworkPolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetworkPolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetworkPolicyVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteCoreNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteGlobalNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteGlobalNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteGlobalNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteGlobalNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeletePeering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeletePeeringRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeletePeeringRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeletePeeringResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeleteSiteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeleteSiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeleteSiteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeregisterTransitGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DeregisterTransitGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DeregisterTransitGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeregisterTransitGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DescribeGlobalNetworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DescribeGlobalNetworksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DescribeGlobalNetworksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DescribeGlobalNetworksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DeviceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#DeviceId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#DeviceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#DeviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#DeviceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#DirectConnectGatewayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#DirectConnectGatewayAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DisassociateConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DisassociateConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateCustomerGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DisassociateCustomerGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DisassociateCustomerGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateCustomerGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DisassociateLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DisassociateLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateTransitGatewayConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#DisassociateTransitGatewayConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#DisassociateTransitGatewayConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#DisassociateTransitGatewayConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#EdgeOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#EdgeSet": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#EdgeSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ExceptionContextKey": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ExceptionContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.networkmanager#ExceptionContextValue": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ExecuteCoreNetworkChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ExecuteCoreNetworkChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ExecuteCoreNetworkChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ExecuteCoreNetworkChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ExternalRegionCode": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ExternalRegionCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#FilterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.networkmanager#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#GetConnectAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetConnectAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetConnectAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectPeer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetConnectPeerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetConnectPeerAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetConnectPeerAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetConnectPeerAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectPeerAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectPeerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectPeerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetCoreNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetCoreNetworkChangeEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetCoreNetworkChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetCoreNetworkPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCoreNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCustomerGatewayAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetCustomerGatewayAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetCustomerGatewayAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetCustomerGatewayAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetDirectConnectGatewayAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetDirectConnectGatewayAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetDirectConnectGatewayAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetDirectConnectGatewayAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetLinkAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetLinkAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetLinkAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetLinkAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetLinksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceCounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetNetworkResourceCountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceCountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceCountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceRelationships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetNetworkResourceRelationshipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceRelationshipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourceRelationshipsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetNetworkResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkRoutes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetNetworkRoutesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetNetworkRoutesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkRoutesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkTelemetry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetNetworkTelemetryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetNetworkTelemetryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetNetworkTelemetryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetRouteAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetRouteAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetRouteAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetRouteAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetSiteToSiteVpnAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetSiteToSiteVpnAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetSiteToSiteVpnAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetSiteToSiteVpnAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetSites": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetSitesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetSitesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetSitesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayConnectPeerAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetTransitGatewayConnectPeerAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayConnectPeerAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayConnectPeerAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayPeering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetTransitGatewayPeeringRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayPeeringRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayPeeringResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRegistrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetTransitGatewayRegistrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRegistrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRegistrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRouteTableAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetTransitGatewayRouteTableAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRouteTableAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetTransitGatewayRouteTableAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetVpcAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#GetVpcAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#GetVpcAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GetVpcAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GlobalNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#GlobalNetworkArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#GlobalNetworkId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#GlobalNetworkIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#GlobalNetworkList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#GlobalNetworkState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.networkmanager#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Link": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#LinkArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#LinkAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#LinkAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#LinkAssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#LinkId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#LinkIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#LinkList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#LinkState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ListAttachments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListAttachmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListAttachmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListAttachmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListConnectPeers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListConnectPeersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListConnectPeersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListConnectPeersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworkPolicyVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListCoreNetworkPolicyVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworkPolicyVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworkPolicyVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListCoreNetworksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListCoreNetworksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListOrganizationServiceAccessStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListOrganizationServiceAccessStatusRequest"
+      }
+    },
+    "com.amazonaws.networkmanager#ListOrganizationServiceAccessStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListOrganizationServiceAccessStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListPeerings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListPeeringsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListPeeringsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListPeeringsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.networkmanager#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.networkmanager#NetworkFunctionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkFunctionGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NetworkFunctionGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#NetworkManager": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "NetworkManager"
+        }
+      }
+    },
+    "com.amazonaws.networkmanager#NetworkResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkResourceCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkResourceCountList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NetworkResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NetworkResourceMetadataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.networkmanager#NetworkResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkRoute": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkRouteDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkRouteDestinationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NetworkRouteList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NetworkTelemetry": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#NetworkTelemetryList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#OrganizationAwsServiceAccessStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#OrganizationId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#OrganizationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PathComponent": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PathComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#Peering": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PeeringError": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PeeringErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#PeeringErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#PeeringId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#PeeringList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#PeeringState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#PeeringType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#PermissionsErrorContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ProposedNetworkFunctionGroupChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ProposedSegmentChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PutCoreNetworkPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#PutCoreNetworkPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CoreNetworkPolicyException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#PutCoreNetworkPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PutCoreNetworkPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ReasonContextKey": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ReasonContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.networkmanager#ReasonContextValue": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#RegisterTransitGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#RegisterTransitGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#RegisterTransitGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RegisterTransitGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RejectAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#RejectAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#RejectAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RejectAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Relationship": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RelationshipList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RestoreCoreNetworkPolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#RestoreCoreNetworkPolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#RestoreCoreNetworkPolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RestoreCoreNetworkPolicyVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysis": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisCompletion": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisCompletionReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisCompletionResultCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisEndpointOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisEndpointOptionsSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteAnalysisStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#RouteTableIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#RouteTableType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteType": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#RouteTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#SLRDeploymentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#SegmentActionServiceInsertion": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#SendViaMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#ServerSideString": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ServiceInsertionAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ServiceInsertionActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ServiceInsertionSegments": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#Site": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#SiteArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#SiteId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#SiteIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#SiteList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#SiteState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#SiteToSiteVpnAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#StartOrganizationServiceAccessUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#StartOrganizationServiceAccessUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#StartOrganizationServiceAccessUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#StartOrganizationServiceAccessUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#StartRouteAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#StartRouteAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#StartRouteAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#StartRouteAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#SubnetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#SubnetArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#SynthesizedJsonCoreNetworkPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#SynthesizedJsonResourcePolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayAttachmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayAttachmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayConnectPeerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayConnectPeerArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayConnectPeerAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayConnectPeerAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayConnectPeerAssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayPeering": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayPeeringAttachmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRegistration": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRegistrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRegistrationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRegistrationStateReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRouteTableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#TransitGatewayRouteTableAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#TunnelProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateCoreNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateCoreNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateCoreNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateCoreNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateDirectConnectGatewayAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateDirectConnectGatewayAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateDirectConnectGatewayAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateDirectConnectGatewayAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateGlobalNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateGlobalNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateGlobalNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateGlobalNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateLinkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateNetworkResourceMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateNetworkResourceMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateNetworkResourceMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateNetworkResourceMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateSite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateSiteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateSiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateSiteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateVpcAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.networkmanager#UpdateVpcAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.networkmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.networkmanager#UpdateVpcAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#UpdateVpcAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.networkmanager#Via": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#VpcArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#VpcAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#VpcOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#VpnConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.networkmanager#WhenSentTo": {
+      "type": "structure"
+    },
+    "com.amazonaws.networkmanager#WhenSentToSegmentsList": {
+      "type": "list"
+    },
+    "com.amazonaws.networkmanager#WithEdgeOverridesList": {
+      "type": "list"
+    }
+  }
+}

@@ -1,0 +1,2685 @@
+{
+  "shapes": {
+    "com.amazonaws.ecs#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AgentUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#AmazonEC2ContainerServiceV20141113": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ECS"
+        }
+      }
+    },
+    "com.amazonaws.ecs#ApplicationProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#AssignPublicIp": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Attachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AttachmentDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#AttachmentStateChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AttachmentStateChanges": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Attachments": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AttributeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Attributes": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#AutoScalingGroupProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AutoScalingGroupProviderUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#AvailabilityZoneRebalancing": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#AwsVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#BlockedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ecs#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ecs#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#CPUArchitecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#CapacityProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CapacityProviderField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#CapacityProviderFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#CapacityProviderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#CapacityProviderStrategy": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#CapacityProviderStrategyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CapacityProviderStrategyItemBase": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#CapacityProviderStrategyItemWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#CapacityProviderUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#CapacityProviders": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterContainsContainerInstancesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterContainsServicesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterContainsTasksException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ClusterFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ClusterNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterServiceConnectDefaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterServiceConnectDefaultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ClusterSettingName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ClusterSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Clusters": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Compatibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#CompatibilityList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Connectivity": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerCondition": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ContainerDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerDependencies": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerImages": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerInstanceField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ContainerInstanceFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerInstanceHealthStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerInstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ContainerInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ContainerRestartPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerStateChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ContainerStateChanges": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Containers": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#CreateCapacityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#CreateCapacityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#CreateCapacityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateCapacityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#CreateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformTaskDefinitionIncompatibilityException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformUnknownException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#CreateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateTaskSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#CreateTaskSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformTaskDefinitionIncompatibilityException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformUnknownException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#CreateTaskSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreateTaskSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#CreatedAt": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteAccountSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteAccountSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteAccountSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteAccountSettingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TargetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteCapacityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteCapacityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteCapacityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteCapacityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterContainsContainerInstancesException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterContainsServicesException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterContainsTasksException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteTaskDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteTaskDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteTaskDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteTaskDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteTaskSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeleteTaskSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TaskSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeleteTaskSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeleteTaskSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentAlarms": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentCircuitBreaker": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentController": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentControllerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#DeploymentEphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeploymentRolloutState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Deployments": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#DeregisterContainerInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeregisterContainerInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeregisterContainerInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeregisterContainerInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeregisterTaskDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DeregisterTaskDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DeregisterTaskDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeregisterTaskDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeCapacityProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeCapacityProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeCapacityProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeCapacityProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeContainerInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeContainerInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeContainerInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeContainerInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServiceDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeServiceDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeServiceDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServiceDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServiceRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeServiceRevisionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeServiceRevisionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServiceRevisionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTaskDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeTaskDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeTaskDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTaskDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTaskSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeTaskSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeTaskSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTaskSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DescribeTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DescribeTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DescribeTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DesiredStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DeviceCgroupPermission": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#DeviceCgroupPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#DevicesList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#DiscoverPollEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#DiscoverPollEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#DiscoverPollEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DiscoverPollEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#DockerLabelsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ecs#DockerVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.ecs#Duration": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#EBSKMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#EBSResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#EBSSnapshotId": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#EBSTagSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#EBSTagSpecifications": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#EBSVolumeType": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#ECSVolumeName": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#EFSAuthorizationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#EFSAuthorizationConfigIAM": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#EFSTransitEncryption": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#EFSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#EnvironmentFile": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#EnvironmentFileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#EnvironmentFiles": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#EnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#EphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ExecuteCommand": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ExecuteCommandRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TargetNotConnectedException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ExecuteCommandConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ExecuteCommandLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ExecuteCommandLogging": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ExecuteCommandRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ExecuteCommandResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#FSxWindowsFileServerAuthorizationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#FSxWindowsFileServerVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Failure": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Failures": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#FirelensConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#FirelensConfigurationOptionsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ecs#FirelensConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#GetTaskProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#GetTaskProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#GetTaskProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#GetTaskProtectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#GpuIds": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#HealthCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#HealthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#HostEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#HostEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#HostVolumeProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#InferenceAccelerator": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#InferenceAcceleratorOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#InferenceAcceleratorOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#InferenceAccelerators": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#InstanceHealthCheckResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#InstanceHealthCheckResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#InstanceHealthCheckState": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#InstanceHealthCheckType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#IntegerList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#IpcMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#KernelCapabilities": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#KeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#LaunchType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#LinuxParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListContainerInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListContainerInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListContainerInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListContainerInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServiceDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListServiceDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListServiceDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServiceDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListServicesByNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListServicesByNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListServicesByNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServicesByNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTaskDefinitionFamilies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListTaskDefinitionFamiliesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListTaskDefinitionFamiliesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTaskDefinitionFamiliesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTaskDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListTaskDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListTaskDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTaskDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#ListTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#ListTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ListTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#LoadBalancer": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#LoadBalancers": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#LogConfigurationOptionsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ecs#LogDriver": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.ecs#ManagedAgent": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ManagedAgentName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ManagedAgentStateChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ManagedAgentStateChanges": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ManagedAgents": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ManagedDraining": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ManagedScaling": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ManagedScalingInstanceWarmupPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#ManagedScalingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ManagedScalingStepSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#ManagedScalingTargetCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#ManagedStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ManagedTerminationProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#MissingVersionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#MountPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#MountPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#NamespaceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#NetworkBinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#NetworkBindings": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#NetworkMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#NoUpdateAvailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#OSFamily": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PidMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PlacementConstraintType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#PlacementStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#PlacementStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PlacementStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PlatformDevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PlatformDeviceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PlatformDevices": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#PlatformTaskDefinitionIncompatibilityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PlatformUnknownException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PortMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PortMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#PortNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.ecs#PropagateTags": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ProtectedTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ProtectedTasks": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ProxyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ProxyConfigurationProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ProxyConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#PutAccountSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#PutAccountSettingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#PutAccountSettingDefault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#PutAccountSettingDefaultRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#PutAccountSettingDefaultRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutAccountSettingDefaultResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutAccountSettingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutAccountSettingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#PutAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AttributeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TargetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#PutAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutClusterCapacityProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#PutClusterCapacityProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#PutClusterCapacityProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#PutClusterCapacityProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RegisterContainerInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#RegisterContainerInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#RegisterContainerInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RegisterContainerInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RegisterTaskDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#RegisterTaskDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#RegisterTaskDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RegisterTaskDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RepositoryCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RequiresAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ResourceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ResourceRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ResourceRequirements": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Resources": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Rollback": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RunTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#RunTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#BlockedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformTaskDefinitionIncompatibilityException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformUnknownException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#RunTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RunTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#RuntimePlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Scale": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ScaleUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#SchedulingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Scope": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Secret": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SecretList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#ServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectClientAlias": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectClientAliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceConnectConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectService": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceConnectServiceResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectServiceResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceConnectTlsCertificateAuthority": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceConnectTlsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentAlarms": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentBrief": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentCircuitBreaker": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentRollbackMonitorsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceDeployments": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceDeploymentsBrief": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#ServiceFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceManagedEBSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceNotActiveException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceRegistries": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceRegistry": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceRevisionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceRevisions": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceRevisionsSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#ServiceVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#ServiceVolumeConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Services": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Setting": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SettingName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#SettingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Settings": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#StabilityStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#StartTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#StartTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#StartTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#StartTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Statistics": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#StopServiceDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#StopServiceDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceDeploymentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#StopServiceDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#StopServiceDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#StopServiceDeploymentStopType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#StopTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#StopTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#StopTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#StopTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#String": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.ecs#SubmitAttachmentStateChanges": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#SubmitAttachmentStateChangesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#SubmitAttachmentStateChangesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SubmitAttachmentStateChangesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SubmitContainerStateChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#SubmitContainerStateChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#SubmitContainerStateChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SubmitContainerStateChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SubmitTaskStateChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#SubmitTaskStateChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#SubmitTaskStateChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SubmitTaskStateChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SystemControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#SystemControls": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ecs#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TargetNotConnectedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TargetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Task": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskDefinitionFamilyStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskDefinitionField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskDefinitionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskDefinitionPlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskDefinitionPlacementConstraintType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskDefinitionPlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskDefinitionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskEphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskFilesystemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskManagedEBSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskManagedEBSVolumeTerminationPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskSetField": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskSetFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskSetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskSets": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TaskStopCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#TaskVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TaskVolumeConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#Tasks": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TimeoutConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ecs#Tmpfs": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#TmpfsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#TransportProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#Ulimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UlimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#UlimitName": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#UnsupportedFeatureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateCapacityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateCapacityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateCapacityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateCapacityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateClusterSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateClusterSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateClusterSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateClusterSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateContainerAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateContainerAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#MissingVersionException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NoUpdateAvailableException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateContainerAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateContainerAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateContainerInstancesState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateContainerInstancesStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateContainerInstancesStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateContainerInstancesStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#NamespaceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformTaskDefinitionIncompatibilityException"
+        },
+        {
+          "target": "com.amazonaws.ecs#PlatformUnknownException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateServicePrimaryTaskSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateServicePrimaryTaskSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TaskSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateServicePrimaryTaskSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateServicePrimaryTaskSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateTaskProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateTaskProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateTaskProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateTaskProtectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateTaskSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ecs#UpdateTaskSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ecs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClientException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ClusterNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServerException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotActiveException"
+        },
+        {
+          "target": "com.amazonaws.ecs#ServiceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#TaskSetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ecs#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.ecs#UpdateTaskSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#UpdateTaskSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#VersionConsistency": {
+      "type": "enum"
+    },
+    "com.amazonaws.ecs#VersionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#VolumeFrom": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#VolumeFromList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#VolumeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ecs#VpcLatticeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ecs#VpcLatticeConfigurations": {
+      "type": "list"
+    }
+  }
+}

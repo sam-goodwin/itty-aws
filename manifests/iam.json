@@ -1,0 +1,4524 @@
+{
+  "shapes": {
+    "com.amazonaws.iam#AWSIdentityManagementV20100508": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IAM"
+        }
+      }
+    },
+    "com.amazonaws.iam#AccessAdvisorUsageGranularityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#AccessDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AccessDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#AccessKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AccessKeyLastUsed": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AccessKeyMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ActionNameListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ActionNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#AddClientIDToOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AddClientIDToOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AddClientIDToOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AddRoleToInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AddRoleToInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AddRoleToInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AddUserToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AddUserToGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AddUserToGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ArnListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#AttachGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AttachGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyNotAttachableException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AttachGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AttachRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AttachRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyNotAttachableException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AttachRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AttachUserPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#AttachUserPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyNotAttachableException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#AttachUserPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AttachedPermissionsBoundary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#AttachedPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#BootstrapDatum": {
+      "type": "blob"
+    },
+    "com.amazonaws.iam#CallerIsNotManagementAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CertificationKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#CertificationMapType": {
+      "type": "map"
+    },
+    "com.amazonaws.iam#CertificationValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ChangePassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ChangePasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidUserTypeException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PasswordPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ChangePasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ColumnNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ConcurrentModificationMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ContextEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ContextEntryListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ContextKeyNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ContextKeyNamesResultListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ContextKeyTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#ContextKeyValueListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ContextKeyValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#CreateAccessKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateAccessKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateAccessKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateAccessKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateAccountAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateAccountAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateAccountAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateInstanceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateLoginProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateLoginProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PasswordPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateLoginProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateLoginProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#OpenIdIdpCommunicationErrorException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateOpenIDConnectProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreatePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreatePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreatePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreatePolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreatePolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreatePolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreatePolicyVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateSAMLProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateServiceLinkedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateServiceLinkedRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateServiceLinkedRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateServiceLinkedRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateServiceSpecificCredential": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateServiceSpecificCredentialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateServiceSpecificCredentialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateServiceSpecificCredentialResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateVirtualMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#CreateVirtualMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#CreateVirtualMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CreateVirtualMFADeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CredentialReportExpiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CredentialReportNotPresentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#CredentialReportNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeactivateMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeactivateMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeactivateMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteAccessKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteAccessKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteAccessKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteAccountAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteAccountAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteAccountAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteAccountPasswordPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteLoginProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteLoginProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteLoginProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeletePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeletePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeletePolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeletePolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeletePolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteRolePermissionsBoundary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteRolePermissionsBoundaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteRolePermissionsBoundaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteSSHPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteSSHPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteSSHPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteServiceLinkedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteServiceLinkedRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteServiceLinkedRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteServiceLinkedRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteServiceSpecificCredential": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteServiceSpecificCredentialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteServiceSpecificCredentialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteSigningCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteSigningCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteSigningCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteUserPermissionsBoundary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteUserPermissionsBoundaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteUserPermissionsBoundaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteUserPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteUserPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteUserPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeleteVirtualMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DeleteVirtualMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteConflictException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DeleteVirtualMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeletionTaskFailureReasonType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DeletionTaskIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#DeletionTaskStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#DetachGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DetachGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DetachGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DetachRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DetachRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DetachRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DetachUserPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DetachUserPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DetachUserPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootCredentialsManagement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DisableOrganizationsRootCredentialsManagementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceAccessNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootCredentialsManagementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootCredentialsManagementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#DisableOrganizationsRootSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceAccessNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DisableOrganizationsRootSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DuplicateCertificateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#DuplicateSSHPublicKeyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EnableMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#EnableMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidAuthenticationCodeException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#EnableMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootCredentialsManagement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#EnableOrganizationsRootCredentialsManagementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException"
+        },
+        {
+          "target": "com.amazonaws.iam#CallerIsNotManagementAccountException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceAccessNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootCredentialsManagementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootCredentialsManagementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#EnableOrganizationsRootSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException"
+        },
+        {
+          "target": "com.amazonaws.iam#CallerIsNotManagementAccountException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceAccessNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EnableOrganizationsRootSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EntityAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EntityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EntityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EntityTemporarilyUnmodifiableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EvalDecisionDetailsType": {
+      "type": "map"
+    },
+    "com.amazonaws.iam#EvalDecisionSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#EvaluationResultsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#FeatureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#FeaturesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#GenerateCredentialReport": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GenerateCredentialReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GenerateOrganizationsAccessReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GenerateOrganizationsAccessReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ReportGenerationLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GenerateOrganizationsAccessReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GenerateOrganizationsAccessReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GenerateServiceLastAccessedDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GenerateServiceLastAccessedDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GenerateServiceLastAccessedDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GenerateServiceLastAccessedDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccessKeyLastUsed": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetAccessKeyLastUsedRequest"
+      }
+    },
+    "com.amazonaws.iam#GetAccessKeyLastUsedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccessKeyLastUsedResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccountAuthorizationDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetAccountAuthorizationDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetAccountAuthorizationDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccountAuthorizationDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccountPasswordPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetAccountPasswordPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetAccountSummary": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetAccountSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetContextKeysForCustomPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetContextKeysForCustomPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetContextKeysForCustomPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetContextKeysForPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetContextKeysForPrincipalPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetContextKeysForPrincipalPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetContextKeysForPrincipalPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetCredentialReport": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#CredentialReportExpiredException"
+        },
+        {
+          "target": "com.amazonaws.iam#CredentialReportNotPresentException"
+        },
+        {
+          "target": "com.amazonaws.iam#CredentialReportNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetCredentialReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetGroupPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetInstanceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetLoginProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetLoginProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetLoginProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetLoginProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetMFADeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetOpenIDConnectProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetOrganizationsAccessReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetOrganizationsAccessReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetOrganizationsAccessReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetOrganizationsAccessReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetPolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetPolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetPolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetPolicyVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetRolePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetSAMLProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetSSHPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetSSHPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnrecognizedPublicKeyEncodingException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetSSHPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetSSHPublicKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServerCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetServiceLastAccessedDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetailsWithEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetServiceLastAccessedDetailsWithEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetailsWithEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLastAccessedDetailsWithEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLinkedRoleDeletionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetServiceLinkedRoleDeletionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetServiceLinkedRoleDeletionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetServiceLinkedRoleDeletionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetUserPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#GetUserPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#GetUserPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetUserPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GetUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#GroupDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InstanceProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InvalidAuthenticationCodeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InvalidCertificateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InvalidPublicKeyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#InvalidUserTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#KeyPairMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#LineNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#ListAccessKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListAccessKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListAccessKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAccessKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAccountAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListAccountAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListAccountAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAccountAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedGroupPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListAttachedGroupPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListAttachedGroupPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedGroupPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedRolePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListAttachedRolePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListAttachedRolePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedRolePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedUserPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListAttachedUserPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListAttachedUserPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListAttachedUserPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListEntitiesForPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListEntitiesForPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListEntitiesForPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListEntitiesForPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroupPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListGroupPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListGroupPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroupPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListGroupsForUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListGroupsForUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListGroupsForUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroupsForUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfileTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListInstanceProfileTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListInstanceProfileTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfileTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListInstanceProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListInstanceProfilesForRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListInstanceProfilesForRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListInstanceProfilesForRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfilesForRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListInstanceProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListMFADeviceTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListMFADeviceTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListMFADeviceTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListMFADeviceTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListMFADevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListMFADevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListMFADevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListMFADevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProviderTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListOpenIDConnectProviderTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProviderTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProviderTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListOpenIDConnectProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOpenIDConnectProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOrganizationsFeatures": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListOrganizationsFeaturesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#AccountNotManagementOrDelegatedAdministratorException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceAccessNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListOrganizationsFeaturesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListOrganizationsFeaturesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListPoliciesGrantingServiceAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListPoliciesGrantingServiceAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListPoliciesGrantingServiceAccessEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPoliciesGrantingServiceAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPoliciesGrantingServiceAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPolicyTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListPolicyTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListPolicyTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPolicyTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPolicyVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListPolicyVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListPolicyVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListPolicyVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRolePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListRolePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListRolePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRolePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRoleTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListRoleTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListRoleTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRoleTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRoles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListRolesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListRolesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListRolesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSAMLProviderTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListSAMLProviderTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListSAMLProviderTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSAMLProviderTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSAMLProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListSAMLProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListSAMLProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSAMLProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSSHPublicKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListSSHPublicKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListSSHPublicKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSSHPublicKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServerCertificateTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListServerCertificateTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListServerCertificateTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServerCertificateTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServerCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListServerCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListServerCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServerCertificatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServiceSpecificCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListServiceSpecificCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListServiceSpecificCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListServiceSpecificCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSigningCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListSigningCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListSigningCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListSigningCertificatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUserPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListUserPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListUserPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUserPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUserTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListUserTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListUserTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUserTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListVirtualMFADevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ListVirtualMFADevicesRequest"
+      }
+    },
+    "com.amazonaws.iam#ListVirtualMFADevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ListVirtualMFADevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#LoginProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#MFADevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#MalformedCertificateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ManagedPolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ManagedPolicyDetailListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#NoSuchEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#OpenIDConnectProviderListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#OpenIDConnectProviderListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#OpenIDConnectProviderUrlType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#OpenIdIdpCommunicationErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#OrganizationIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#OrganizationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#OrganizationNotInAllFeaturesModeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#OrganizationsDecisionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PasswordPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PasswordPolicyViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PermissionsBoundaryAttachmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#PermissionsBoundaryDecisionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#Policy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyEvaluationDecisionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#PolicyEvaluationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyGrantingServiceAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyGroupListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#PolicyIdentifierType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#PolicyNotAttachableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyRoleListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#PolicySourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#PolicyUsageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#PolicyUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PolicyUserListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#PolicyVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#Position": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PutGroupPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#PutGroupPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#PutGroupPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PutRolePermissionsBoundary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#PutRolePermissionsBoundaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyNotAttachableException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#PutRolePermissionsBoundaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PutRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#PutRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#PutRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PutUserPermissionsBoundary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#PutUserPermissionsBoundaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyNotAttachableException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#PutUserPermissionsBoundaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#PutUserPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#PutUserPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#PutUserPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ReasonType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#RegionNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#RemoveClientIDFromOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#RemoveClientIDFromOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#RemoveClientIDFromOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#RemoveRoleFromInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#RemoveRoleFromInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#RemoveRoleFromInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#RemoveUserFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#RemoveUserFromGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#RemoveUserFromGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ReportContentType": {
+      "type": "blob"
+    },
+    "com.amazonaws.iam#ReportFormatType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#ReportGenerationLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ReportStateDescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ReportStateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#ResetServiceSpecificCredential": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ResetServiceSpecificCredentialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ResetServiceSpecificCredentialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ResetServiceSpecificCredentialResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ResourceHandlingOptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ResourceNameListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ResourceNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#ResourceSpecificResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ResourceSpecificResultListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ResyncMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#ResyncMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidAuthenticationCodeException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#ResyncMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#Role": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#RoleDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#RoleLastUsed": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#RoleUsageListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#RoleUsageType": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SAMLMetadataDocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#SAMLPrivateKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SAMLProviderListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SAMLProviderListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#SAMLProviderNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#SSHPublicKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SSHPublicKeyListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#SSHPublicKeyMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServerCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServerCertificateMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceAccessNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceLastAccessed": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceSpecificCredential": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceSpecificCredentialMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#ServiceSpecificCredentialsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#ServicesLastAccessed": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#SetDefaultPolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#SetDefaultPolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#SetDefaultPolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SetSecurityTokenServicePreferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#SetSecurityTokenServicePreferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#SetSecurityTokenServicePreferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SigningCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SimulateCustomPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#SimulateCustomPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyEvaluationException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#SimulateCustomPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SimulatePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SimulatePrincipalPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#SimulatePrincipalPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PolicyEvaluationException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#SimulatePrincipalPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#SimulationPolicyListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#Statement": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#StatementListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TagUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#TagUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#TagUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TrackedActionLastAccessed": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#TrackedActionsLastAccessed": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#UnmodifiableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UnrecognizedPublicKeyEncodingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagMFADevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagMFADeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagMFADeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagOpenIDConnectProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagOpenIDConnectProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagOpenIDConnectProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UntagUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UntagUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UntagUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateAccessKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateAccessKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateAccessKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateAccountPasswordPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateAccountPasswordPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateAccountPasswordPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateAssumeRolePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateAssumeRolePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateAssumeRolePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateLoginProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateLoginProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#PasswordPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateLoginProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateOpenIDConnectProviderThumbprint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateOpenIDConnectProviderThumbprintRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateOpenIDConnectProviderThumbprintRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateRoleDescription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateRoleDescriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateRoleDescriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateRoleDescriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateSAMLProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateSAMLProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateSAMLProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateSAMLProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateSSHPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateSSHPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateSSHPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateServiceSpecificCredential": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateServiceSpecificCredentialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateServiceSpecificCredentialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateSigningCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateSigningCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateSigningCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityTemporarilyUnmodifiableException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadSSHPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UploadSSHPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#DuplicateSSHPublicKeyException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidPublicKeyException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#UnrecognizedPublicKeyEncodingException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UploadSSHPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadSSHPublicKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadServerCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UploadServerCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.iam#KeyPairMismatchException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedCertificateException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UploadServerCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadServerCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadSigningCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iam#UploadSigningCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iam#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.iam#DuplicateCertificateException"
+        },
+        {
+          "target": "com.amazonaws.iam#EntityAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iam#InvalidCertificateException"
+        },
+        {
+          "target": "com.amazonaws.iam#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iam#MalformedCertificateException"
+        },
+        {
+          "target": "com.amazonaws.iam#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.iam#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.iam#UploadSigningCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UploadSigningCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#UserDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#VirtualMFADevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.iam#accessKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#accessKeyMetadataListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#accessKeySecretType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#accountAliasListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#accountAliasType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#allUsers": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iam#arnType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#assertionEncryptionModeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#assignmentStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#attachedPoliciesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#attachmentCountType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#authenticationCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#booleanObjectType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iam#booleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iam#certificateBodyType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#certificateChainType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#certificateIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#certificateListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#clientIDListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#clientIDType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#credentialAgeDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#credentialReportExpiredExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#credentialReportNotPresentExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#credentialReportNotReadyExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#customSuffixType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#dateType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iam#deleteConflictMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#duplicateCertificateMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#duplicateSSHPublicKeyMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#encodingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#entityAlreadyExistsMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#entityDetailsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#entityListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#entityNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#entityTemporarilyUnmodifiableMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#existingUserNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#globalEndpointTokenVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#groupDetailListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#groupListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#groupNameListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#groupNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#idType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#instanceProfileListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#instanceProfileNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#integerType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#invalidAuthenticationCodeMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#invalidCertificateMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#invalidInputMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#invalidPublicKeyMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#invalidUserTypeMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#jobIDType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#jobStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#keyPairMismatchMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#limitExceededMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#listPolicyGrantingServiceAccessResponseListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#malformedCertificateMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#malformedPolicyDocumentMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#markerType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#maxItemsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#maxPasswordAgeType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#mfaDeviceListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#minimumPasswordLengthType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#noSuchEntityMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#openIdIdpCommunicationErrorExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#organizationsEntityPathType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#organizationsPolicyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#passwordPolicyViolationMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#passwordReusePreventionType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#passwordType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#pathPrefixType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#pathType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyDescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyDetailListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#policyDocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyDocumentVersionListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#policyEvaluationErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyGrantingServiceAccessListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#policyListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#policyNameListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#policyNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyNotAttachableMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyOwnerEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#policyPathType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#policyScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#policyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#policyVersionIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#privateKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#privateKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#privateKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#publicKeyFingerprintType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#publicKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#publicKeyMaterialType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#reportGenerationLimitExceededMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#responseMarkerType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#roleDescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#roleDetailListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#roleListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#roleMaxSessionDurationType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#roleNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serialNumberType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serverCertificateMetadataListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#serverCertificateNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceCredentialAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceCredentialSecret": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceFailureExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceNamespaceListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#serviceNamespaceType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceNotSupportedMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#servicePassword": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceSpecificCredentialId": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#serviceUserName": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#sortKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#statusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#stringType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#summaryKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iam#summaryMapType": {
+      "type": "map"
+    },
+    "com.amazonaws.iam#summaryValueType": {
+      "type": "integer"
+    },
+    "com.amazonaws.iam#tagKeyListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#tagKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#tagListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#tagValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#thumbprintListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#thumbprintType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#unmodifiableEntityMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#unrecognizedPublicKeyEncodingMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#userDetailListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#userListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#userNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.iam#virtualMFADeviceListType": {
+      "type": "list"
+    },
+    "com.amazonaws.iam#virtualMFADeviceName": {
+      "type": "string"
+    }
+  }
+}

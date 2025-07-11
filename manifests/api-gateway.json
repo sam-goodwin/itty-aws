@@ -1,0 +1,3698 @@
+{
+  "shapes": {
+    "com.amazonaws.apigateway#AccessAssociationSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#AccessLogSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ApiKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ApiKeyIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ApiKeySourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#ApiKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ApiKeysFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#ApiStage": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Authorizer": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#AuthorizerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#Authorizers": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#BackplaneControlService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "API Gateway"
+        }
+      }
+    },
+    "com.amazonaws.apigateway#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#BasePathMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#BasePathMappings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.apigateway#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apigateway#CacheClusterSize": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#CacheClusterStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#CanarySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ClientCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ClientCertificates": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#ContentHandlingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#CreateApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateBasePathMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateBasePathMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateBasePathMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateDocumentationPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateDocumentationPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateDocumentationPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateDocumentationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateDocumentationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateDocumentationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateDomainNameAccessAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateDomainNameAccessAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateDomainNameAccessAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateRequestValidator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateRequestValidatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateRequestValidatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateUsagePlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateUsagePlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateUsagePlanKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateUsagePlanKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateUsagePlanKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateUsagePlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#CreateVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#CreateVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#CreateVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteBasePathMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteBasePathMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteBasePathMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteClientCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteClientCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteDocumentationPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteDocumentationPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteDocumentationPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteDocumentationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteDocumentationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteDocumentationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteDomainNameAccessAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteDomainNameAccessAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteDomainNameAccessAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteGatewayResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteGatewayResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteGatewayResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteMethodResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteMethodResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteMethodResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteRequestValidator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteRequestValidatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteRequestValidatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteUsagePlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteUsagePlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteUsagePlanKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteUsagePlanKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteUsagePlanKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteUsagePlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeleteVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#DeleteVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#DeleteVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DeploymentCanarySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Deployments": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationPartIds": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationPartLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationPartLocationStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.apigateway#DocumentationPartType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#DocumentationParts": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DocumentationVersions": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DomainName": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DomainNameAccessAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DomainNameAccessAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#DomainNameStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#DomainNames": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.apigateway#EndpointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#ExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#FlushStageAuthorizersCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#FlushStageAuthorizersCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#FlushStageAuthorizersCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#FlushStageCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#FlushStageCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#FlushStageCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GatewayResponseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#GatewayResponses": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GenerateClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GenerateClientCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GenerateClientCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetApiKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetApiKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetApiKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetAuthorizers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetAuthorizersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetAuthorizersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetBasePathMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetBasePathMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetBasePathMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetBasePathMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetBasePathMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetBasePathMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetClientCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetClientCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetClientCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetClientCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetClientCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDocumentationPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDocumentationPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDocumentationPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDocumentationParts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDocumentationPartsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDocumentationPartsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDocumentationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDocumentationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDocumentationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDocumentationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDocumentationVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDocumentationVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDomainNameAccessAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDomainNameAccessAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDomainNameAccessAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetDomainNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetDomainNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetGatewayResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetGatewayResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetGatewayResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetGatewayResponses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetGatewayResponsesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetGatewayResponsesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetMethodResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetMethodResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetMethodResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetModelTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetModelTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetModelTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetRequestValidator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetRequestValidatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetRequestValidatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetRequestValidators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetRequestValidatorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetRequestValidatorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetRestApis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetRestApisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetRestApisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetSdk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetSdkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetSdkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetSdkType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetSdkTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetSdkTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetSdkTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetSdkTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetSdkTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetStages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetStagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetStagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetUsagePlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetUsagePlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetUsagePlanKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetUsagePlanKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetUsagePlanKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetUsagePlanKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetUsagePlanKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetUsagePlanKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetUsagePlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetUsagePlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetUsagePlansRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetUsagePlansRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#GetVpcLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#GetVpcLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#GetVpcLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ImportApiKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#ImportApiKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#ImportApiKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ImportDocumentationParts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#ImportDocumentationPartsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#ImportDocumentationPartsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ImportRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#ImportRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#ImportRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigateway#Integration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#IntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#IntegrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ListOfARNs": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfApiKey": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfApiStage": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfAuthorizer": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfBasePathMapping": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfClientCertificate": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfDeployment": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfDocumentationPart": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfDocumentationVersion": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfDomainName": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfDomainNameAccessAssociation": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfEndpointType": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfGatewayResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfLong": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfModel": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfPatchOperation": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfRequestValidator": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfResource": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfRestApi": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfSdkConfigurationProperty": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfSdkType": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfStage": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfStageKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfString": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfUsage": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfUsagePlan": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfUsagePlanKey": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#ListOfVpcLink": {
+      "type": "list"
+    },
+    "com.amazonaws.apigateway#LocationStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.apigateway#MapOfApiStageThrottleSettings": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfIntegrationResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfKeyUsages": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfMethod": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfMethodResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfMethodSettings": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfMethodSnapshot": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfStringToBoolean": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfStringToList": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#MapOfStringToString": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#Method": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#MethodResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#MethodSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#MethodSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Model": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Models": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#MutualTlsAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#MutualTlsAuthenticationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apigateway#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.apigateway#Op": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#PatchOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PathToMapOfMethodSnapshot": {
+      "type": "map"
+    },
+    "com.amazonaws.apigateway#ProviderARN": {
+      "type": "string"
+    },
+    "com.amazonaws.apigateway#PutGatewayResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutGatewayResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutGatewayResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PutIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PutIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PutMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PutMethodResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutMethodResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutMethodResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#PutMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#PutRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#PutRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#PutRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#QuotaPeriodType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#QuotaSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RejectDomainNameAccessAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#RejectDomainNameAccessAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#RejectDomainNameAccessAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RequestValidator": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RequestValidators": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ResourceOwner": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#Resources": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RestApi": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RestApis": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#RoutingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#SdkConfigurationProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#SdkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#SdkType": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#SdkTypes": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#SecurityPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Stage": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#StageKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Stages": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#StatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.apigateway#String": {
+      "type": "string"
+    },
+    "com.amazonaws.apigateway#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Tags": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Template": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#TestInvokeAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#TestInvokeAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#TestInvokeAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#TestInvokeAuthorizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#TestInvokeMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#TestInvokeMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#TestInvokeMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#TestInvokeMethodResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#ThrottleSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.apigateway#TlsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UnauthorizedCacheControlHeaderStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateAuthorizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateAuthorizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateAuthorizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateBasePathMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateBasePathMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateBasePathMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateClientCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateClientCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateClientCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateDocumentationPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateDocumentationPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateDocumentationPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateDocumentationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateDocumentationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateDocumentationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateGatewayResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateGatewayResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateGatewayResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateIntegrationResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateIntegrationResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateIntegrationResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateMethodResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateMethodResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateMethodResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateRequestValidator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateRequestValidatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateRequestValidatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateStageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateStageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateUsagePlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateUsagePlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateUsagePlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UpdateVpcLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apigateway#UpdateVpcLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apigateway#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.apigateway#UpdateVpcLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#Usage": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UsagePlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UsagePlanKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UsagePlanKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#UsagePlans": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#VpcLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.apigateway#VpcLinkStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apigateway#VpcLinks": {
+      "type": "structure"
+    }
+  }
+}

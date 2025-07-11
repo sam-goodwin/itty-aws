@@ -1,0 +1,242 @@
+{
+  "shapes": {
+    "com.amazonaws.dynamodbstreams#AttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodbstreams#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#AttributeValue": {
+      "type": "union"
+    },
+    "com.amazonaws.dynamodbstreams#BinaryAttributeValue": {
+      "type": "blob"
+    },
+    "com.amazonaws.dynamodbstreams#BinarySetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#BooleanAttributeValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodbstreams#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dynamodbstreams#DescribeStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodbstreams#DescribeStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodbstreams#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodbstreams#DescribeStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#DescribeStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#DynamoDBStreams_20120810": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DynamoDB Streams"
+        }
+      }
+    },
+    "com.amazonaws.dynamodbstreams#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#ExpiredIteratorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#GetRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodbstreams#GetRecordsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodbstreams#ExpiredIteratorException"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#TrimmedDataAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodbstreams#GetRecordsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#GetRecordsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#GetShardIterator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodbstreams#GetShardIteratorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodbstreams#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#TrimmedDataAccessException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodbstreams#GetShardIteratorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#GetShardIteratorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#Identity": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#KeySchema": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#KeySchemaAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#KeySchemaElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#KeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodbstreams#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#ListAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#ListStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dynamodbstreams#ListStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dynamodbstreams#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dynamodbstreams#ListStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#ListStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#MapAttributeValue": {
+      "type": "map"
+    },
+    "com.amazonaws.dynamodbstreams#NullAttributeValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dynamodbstreams#NumberAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#NumberSetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#OperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodbstreams#PositiveIntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.dynamodbstreams#PositiveLongObject": {
+      "type": "long"
+    },
+    "com.amazonaws.dynamodbstreams#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#RecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#SequenceNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#SequenceNumberRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#Shard": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#ShardDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#ShardId": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#ShardIterator": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#ShardIteratorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodbstreams#Stream": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#StreamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#StreamDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#StreamList": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#StreamRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.dynamodbstreams#StreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodbstreams#StreamViewType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dynamodbstreams#String": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#StringAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#StringSetAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.dynamodbstreams#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.dynamodbstreams#TrimmedDataAccessException": {
+      "type": "structure"
+    }
+  }
+}

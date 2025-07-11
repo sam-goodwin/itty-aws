@@ -1,0 +1,2773 @@
+{
+  "shapes": {
+    "com.amazonaws.necco.coral#CfnSshPublicKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.necco.coral#CfnUserProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#AddressAllocationId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#AddressAllocationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#AgreementId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#AgreementResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#AgreementStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#As2ConnectorConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#As2ConnectorSecretId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#As2Id": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#As2Transport": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#As2Transports": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#CallbackToken": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CertDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.transfer#CertSerial": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#Certificate": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CertificateBodyType": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CertificateChainType": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CertificateId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CertificateIds": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#CertificateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#CertificateStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#CertificateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#CertificateUsageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#CompressionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ConnectorFileTransferResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ConnectorFileTransferResults": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ConnectorId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ConnectorResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#ConnectorSecurityPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CopyStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateAgreement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateAgreementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateAgreementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateAgreementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateWebApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateWebAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateWebAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateWebAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#CreateWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#CreateWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CreateWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CustomDirectoriesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CustomStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#CustomStepStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#CustomStepTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#CustomStepTimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#DateImported": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.transfer#DecryptStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteAgreement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteAgreementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteAgreementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteHostKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteHostKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteHostKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#DeleteProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteSshPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteSshPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteSshPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteWebApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteWebAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteWebAppCustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteWebAppCustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteWebAppCustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteWebAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DeleteWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DeleteWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DeleteWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeAgreement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeAgreementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeAgreementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeAgreementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeHostKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeHostKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeHostKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeHostKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeSecurityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeSecurityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeSecurityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeSecurityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWebApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeWebAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeWebAppCustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeWebAppCustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeWebAppCustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWebAppCustomizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWebAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWebAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#DescribeWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#DescribeWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribeWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedAgreement": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedHostKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedIdentityCenterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedSecurityPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedWebApp": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedWebAppCustomization": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#DescribedWebAppIdentityProviderDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.transfer#DescribedWorkflow": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#DirectoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#DirectoryListingOptimization": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#Domain": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#EfsFileLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#EfsFileSystemId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#EfsPath": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#EncryptionAlg": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#EndpointDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#EnforceMessageSigningType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ExecutionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ExecutionErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ExecutionErrorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ExecutionResults": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ExecutionStepResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ExecutionStepResults": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ExternalId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#FailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#FileLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#FilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#FilePaths": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#Fips": {
+      "type": "boolean"
+    },
+    "com.amazonaws.transfer#Function": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HomeDirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HomeDirectoryMapEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#HomeDirectoryMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#HomeDirectoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#HostKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HostKeyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HostKeyFingerprint": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HostKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#HostKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#IdentityCenterApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#IdentityCenterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#IdentityCenterInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#IdentityProviderDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#IdentityProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ImportCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ImportCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ImportCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ImportCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ImportHostKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ImportHostKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ImportHostKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ImportHostKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ImportSshPublicKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ImportSshPublicKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ImportSshPublicKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ImportSshPublicKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#InputFileLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#InternalServiceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ListAccesses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListAccessesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListAccessesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListAccessesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListAgreements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListAgreementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListAgreementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListAgreementsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListCertificatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListFileTransferResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListFileTransferResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListFileTransferResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListFileTransferResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListHostKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListHostKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListHostKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListHostKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListSecurityPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListSecurityPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListSecurityPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListSecurityPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListWebApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListWebAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListWebAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListWebAppsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListWorkflows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#ListWorkflowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#ListWorkflowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListWorkflowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedAccesses": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedAgreement": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedAgreements": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedCertificates": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedConnectors": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedExecutions": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedHostKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedHostKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedServers": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedUsers": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedWebApp": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedWebApps": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListedWorkflow": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ListedWorkflows": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ListingId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#LoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#MapEntry": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#MapTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#MapType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#MaxConcurrentConnections": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#MdnResponse": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#MdnSigningAlg": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#MessageSubject": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#MoveId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#NullableRole": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#OnPartialUploadWorkflowDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#OnUploadWorkflowDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#OutputFileName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#OverwriteExisting": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#PassiveIp": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#PosixId": {
+      "type": "long"
+    },
+    "com.amazonaws.transfer#PosixProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#PostAuthenticationLoginBanner": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#PreAuthenticationLoginBanner": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#PreserveContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#PreserveFilenameType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#PrivateKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ProfileId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ProfileResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#ProfileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#ProtocolDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#Protocols": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#Resource": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ResourceExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#Response": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#RetryAfterSeconds": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#Role": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3Etag": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3FileLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#S3InputFileLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3StorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#S3Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#S3TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#S3Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#S3VersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SecondaryGids": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SecretId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SecurityPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SecurityPolicyNames": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SecurityPolicyOption": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SecurityPolicyOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SecurityPolicyProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#SecurityPolicyProtocols": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SecurityPolicyResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#SendWorkflowStepState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#SendWorkflowStepStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#SendWorkflowStepStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#SendWorkflowStepStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ServerId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ServerResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#ServiceErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ServiceManagedEgressIpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#ServiceManagedEgressIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#ServiceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SetStatOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#SftpAuthenticationMethods": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#SftpConnectorConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#SftpConnectorConnectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#SftpConnectorHostKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SftpConnectorTrustedHostKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SftpConnectorTrustedHostKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SigningAlg": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#SourceFileLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SourceIp": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SshPublicKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#SshPublicKeyBody": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SshPublicKeyCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#SshPublicKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SshPublicKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#StartDirectoryListing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StartDirectoryListingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StartDirectoryListingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartDirectoryListingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartFileTransfer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StartFileTransferRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StartFileTransferRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartFileTransferResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartRemoteDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StartRemoteDeleteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StartRemoteDeleteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartRemoteDeleteResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartRemoteMove": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StartRemoteMoveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StartRemoteMoveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartRemoteMoveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StartServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StartServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StartServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#StatusCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#StepResultOutputsJson": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#StopServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#StopServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#StopServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#StructuredLogDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TagStepDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.transfer#TestConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#TestConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#TestConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TestConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TestIdentityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#TestIdentityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#TestIdentityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TestIdentityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#TlsSessionResumptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#TransferId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#TransferService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Transfer"
+        }
+      }
+    },
+    "com.amazonaws.transfer#TransferTableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateAgreement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateAgreementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateAgreementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateAgreementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateHostKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateHostKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateHostKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateHostKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceExistsException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateWebApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateWebAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateWebAppCustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transfer#UpdateWebAppCustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transfer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transfer#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.transfer#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.transfer#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.transfer#UpdateWebAppCustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateWebAppCustomizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateWebAppIdentityCenterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateWebAppIdentityProviderDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.transfer#UpdateWebAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UpdateWebAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#UserCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#UserDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#UserPassword": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#UserResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#VpcEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WebAppAccessEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WebAppCustomizationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#WebAppEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WebAppEndpointPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#WebAppFaviconFile": {
+      "type": "blob"
+    },
+    "com.amazonaws.transfer#WebAppId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WebAppIdentityProviderDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.transfer#WebAppLogoFile": {
+      "type": "blob"
+    },
+    "com.amazonaws.transfer#WebAppResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#WebAppTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WebAppUnitCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.transfer#WebAppUnits": {
+      "type": "union"
+    },
+    "com.amazonaws.transfer#WorkflowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WorkflowDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#WorkflowDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#WorkflowId": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WorkflowResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.transfer#WorkflowStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.transfer#WorkflowStepName": {
+      "type": "string"
+    },
+    "com.amazonaws.transfer#WorkflowStepType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transfer#WorkflowSteps": {
+      "type": "list"
+    }
+  }
+}

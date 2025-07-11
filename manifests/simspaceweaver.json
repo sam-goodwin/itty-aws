@@ -1,0 +1,605 @@
+{
+  "shapes": {
+    "com.amazonaws.simspaceweaver#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#AppPortMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ClockStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ClockTargetStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#CloudWatchLogsLogGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#CreateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#CreateSnapshotInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#CreateSnapshotInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#CreateSnapshotOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#DeleteAppInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#DeleteAppInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DeleteAppOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DeleteSimulation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#DeleteSimulationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#DeleteSimulationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DeleteSimulationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DescribeApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#DescribeAppInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#DescribeAppInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DescribeAppOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DescribeSimulation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#DescribeSimulationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#DescribeSimulationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DescribeSimulationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#Domain": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#LaunchCommandList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#LaunchOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#LifecycleManagementStrategy": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ListApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#ListAppsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#ListAppsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ListAppsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ListSimulations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#ListSimulationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#ListSimulationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ListSimulationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#LiveSimulationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#LogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#LogDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#LogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#LoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#ObjectKeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#OptionalString": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#PortNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.simspaceweaver#PositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.simspaceweaver#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimSpaceWeaver": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SimSpaceWeaver"
+        }
+      }
+    },
+    "com.amazonaws.simspaceweaver#SimSpaceWeaverArn": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#SimSpaceWeaverLongResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#SimSpaceWeaverResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#Simulation": {
+      "type": "resource"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppEndpointInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppPortMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#SimulationAppTargetStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#SimulationClock": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimulationClockList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#SimulationList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#SimulationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#SimulationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#SimulationTargetStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#StartApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StartAppInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StartAppInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StartAppOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StartClock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StartClockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StartClockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StartClockOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StartSimulation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StartSimulationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StartSimulationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StartSimulationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StopAppInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StopAppInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopAppOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopClock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StopClockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StopClockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopClockOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopSimulation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#StopSimulationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#StopSimulationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#StopSimulationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.simspaceweaver#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.simspaceweaver#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#TimeToLiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.simspaceweaver#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.simspaceweaver#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.simspaceweaver#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.simspaceweaver#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.simspaceweaver#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.simspaceweaver#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

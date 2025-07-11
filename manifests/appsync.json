@@ -1,0 +1,2620 @@
+{
+  "shapes": {
+    "com.amazonaws.appsync#AWSDeepdishControlPlaneService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppSync"
+        }
+      }
+    },
+    "com.amazonaws.appsync#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AdditionalAuthenticationProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AdditionalAuthenticationProviders": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#Api": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiCache": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiCacheStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ApiCacheType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ApiCachingBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ApiKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiKeyLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiKeyValidityOutOfBoundsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#ApiLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ApiName": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#Apis": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#AppSyncRuntime": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#AssociateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#AssociateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateMergedGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#AssociateMergedGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#AssociateMergedGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateMergedGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateSourceGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#AssociateSourceGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#AssociateSourceGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociateSourceGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#AuthMode": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AuthModes": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#AuthProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AuthProviders": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#AuthorizationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#AuthorizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#AwsIamConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#BadRequestDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#BadRequestReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.appsync#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appsync#BooleanValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appsync#CacheHealthMetricsConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#CachingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CachingKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#CertificateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#ChannelNamespace": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ChannelNamespaces": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#CodeError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CodeErrorColumn": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#CodeErrorLine": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#CodeErrorLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CodeErrorSpan": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#CodeErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#CognitoConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CognitoUserPoolConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ConflictDetectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ConflictHandlerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#Context": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#CreateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateApiCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateApiCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateApiCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateApiCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#ApiKeyLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ApiKeyValidityOutOfBoundsException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateApiKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateChannelNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateChannelNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateChannelNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateChannelNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#ApiLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#CreateTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#CreateTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#CreateTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelField": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelFieldType": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelFieldTypeValues": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelFields": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelIndexFields": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModelIndexes": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionModels": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DataSourceIntrospectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#DataSourceLevelMetricsBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#DataSourceLevelMetricsConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#DataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#DataSources": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appsync#DefaultAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#DeleteApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteApiCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteApiCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteApiCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteApiCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteApiKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteChannelNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteChannelNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteChannelNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteChannelNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DeleteTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DeleteTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeleteTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DeltaSyncConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#DisassociateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DisassociateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DisassociateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DisassociateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DisassociateMergedGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DisassociateMergedGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DisassociateMergedGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DisassociateMergedGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DisassociateSourceGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#DisassociateSourceGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#DisassociateSourceGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DisassociateSourceGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#DomainNameConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#DomainNameConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#DynamodbDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ElasticsearchDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EnhancedMetricsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EnvironmentVariableKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#EnvironmentVariableMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appsync#EnvironmentVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#EvaluateCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#EvaluateCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#EvaluateCodeErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EvaluateCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EvaluateCodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EvaluateMappingTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#EvaluateMappingTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#EvaluateMappingTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EvaluateMappingTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EvaluationResult": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#EventBridgeDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EventConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EventLogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#EventLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#FieldLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#FlushApiCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#FlushApiCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#FlushApiCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#FlushApiCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#FunctionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#Functions": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#FunctionsIds": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#GetApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetApiAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetApiAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetApiAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetApiAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetApiCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetApiCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetApiCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetApiCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetChannelNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetChannelNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetChannelNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetChannelNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetDataSourceIntrospection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetDataSourceIntrospectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetDataSourceIntrospectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDataSourceIntrospectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetGraphqlApiEnvironmentVariables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetGraphqlApiEnvironmentVariablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetGraphqlApiEnvironmentVariablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetGraphqlApiEnvironmentVariablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetIntrospectionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetIntrospectionSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#GraphQLSchemaException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetIntrospectionSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetIntrospectionSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetSchemaCreationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetSchemaCreationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetSchemaCreationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetSchemaCreationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetSourceApiAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetSourceApiAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetSourceApiAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetSourceApiAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#GetTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#GetTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GetTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GraphQLApiIntrospectionConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#GraphQLApiType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#GraphQLApiVisibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#GraphQLSchemaException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GraphqlApi": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#GraphqlApis": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#HandlerBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#HandlerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#HandlerConfigs": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#HttpDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#Integration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#InvokeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#LambdaAuthorizerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#LambdaConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#LambdaConflictHandlerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#LambdaDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListApiKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListApiKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListApiKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListApiKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListApis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListApisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListApisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListApisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListChannelNamespaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListChannelNamespacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListChannelNamespacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListChannelNamespacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListDataSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListDataSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListDataSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListDomainNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListDomainNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListDomainNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListFunctions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListFunctionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListFunctionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListFunctionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListGraphqlApis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListGraphqlApisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListGraphqlApisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListGraphqlApisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListResolvers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListResolversRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListResolversByFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListResolversByFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListResolversByFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListResolversByFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListResolversRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListResolversResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListSourceApiAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListSourceApiAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListSourceApiAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListSourceApiAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListTypesByAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#ListTypesByAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#ListTypesByAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTypesByAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ListTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#LogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#Logs": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.appsync#MapOfStringToString": {
+      "type": "map"
+    },
+    "com.amazonaws.appsync#MappingTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#MaxBatchSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#MergeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#OpenIDConnectConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#OpenSearchServiceDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#OperationLevelMetricsConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#OutErrors": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#OutputType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#OwnerContact": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#Ownership": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#PipelineConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#PutGraphqlApiEnvironmentVariables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#PutGraphqlApiEnvironmentVariablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#PutGraphqlApiEnvironmentVariablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#PutGraphqlApiEnvironmentVariablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#QueryDepthLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#RdsDataApiConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#RdsDataApiConfigDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#RdsDataApiConfigResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#RdsDataApiConfigSecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#RdsHttpEndpointConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#RelationalDatabaseDataSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#RelationalDatabaseSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#Resolver": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#ResolverCountLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#ResolverKind": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ResolverLevelMetricsBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ResolverLevelMetricsConfig": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#Resolvers": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#RuntimeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#SchemaStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#SourceApiAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#SourceApiAssociationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#SourceApiAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#SourceApiAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#SourceApiAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#StartDataSourceIntrospection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#StartDataSourceIntrospectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#StartDataSourceIntrospectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#StartDataSourceIntrospectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#StartSchemaCreation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#StartSchemaCreationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#StartSchemaCreationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#StartSchemaCreationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#StartSchemaMerge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#StartSchemaMergeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#StartSchemaMergeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#StartSchemaMergeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#Stash": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#String": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#SyncConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#TTL": {
+      "type": "integer"
+    },
+    "com.amazonaws.appsync#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appsync#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#Template": {
+      "type": "string"
+    },
+    "com.amazonaws.appsync#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appsync#Type": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#TypeDefinitionFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.appsync#TypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appsync#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateApiCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateApiCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateApiCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApiCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApiKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateApiKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#ApiKeyValidityOutOfBoundsException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateApiKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApiKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateChannelNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateChannelNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateChannelNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateChannelNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateDomainName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateDomainNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateDomainNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateDomainNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateGraphqlApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateGraphqlApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateGraphqlApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateGraphqlApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateResolver": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateResolverRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateResolverRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateResolverResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateSourceApiAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateSourceApiAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateSourceApiAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateSourceApiAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appsync#UpdateTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appsync#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appsync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.appsync#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.appsync#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appsync#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.appsync#UpdateTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UpdateTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appsync#UserPoolConfig": {
+      "type": "structure"
+    }
+  }
+}

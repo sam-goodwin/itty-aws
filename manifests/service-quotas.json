@@ -1,0 +1,919 @@
+{
+  "shapes": {
+    "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#AppliedLevelEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#AssociateServiceQuotaTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#AssociateServiceQuotaTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#OrganizationNotInAllFeaturesModeException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#AssociateServiceQuotaTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#AssociateServiceQuotaTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#AwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#CreateSupportCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#CreateSupportCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#CreateSupportCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#CreateSupportCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#CustomerServiceEngagementId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicequotas#DeleteServiceQuotaIncreaseRequestFromTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#DeleteServiceQuotaIncreaseRequestFromTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#DeleteServiceQuotaIncreaseRequestFromTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#DeleteServiceQuotaIncreaseRequestFromTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#DependencyAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#DisassociateServiceQuotaTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#DisassociateServiceQuotaTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceQuotaTemplateNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#DisassociateServiceQuotaTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#DisassociateServiceQuotaTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#ErrorReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#GetAWSDefaultServiceQuota": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#GetAWSDefaultServiceQuotaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#GetAWSDefaultServiceQuotaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetAWSDefaultServiceQuotaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetAssociationForServiceQuotaTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#GetAssociationForServiceQuotaTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceQuotaTemplateNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#GetAssociationForServiceQuotaTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetAssociationForServiceQuotaTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetRequestedServiceQuotaChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#GetRequestedServiceQuotaChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#GetRequestedServiceQuotaChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetRequestedServiceQuotaChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetServiceQuota": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#GetServiceQuotaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#GetServiceQuotaIncreaseRequestFromTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#GetServiceQuotaIncreaseRequestFromTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#GetServiceQuotaIncreaseRequestFromTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetServiceQuotaIncreaseRequestFromTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetServiceQuotaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GetServiceQuotaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#GlobalQuota": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicequotas#IllegalArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#InputTagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#InputTags": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#InvalidResourceStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListAWSDefaultServiceQuotas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListAWSDefaultServiceQuotasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListAWSDefaultServiceQuotasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListAWSDefaultServiceQuotasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryByQuota": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryByQuotaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryByQuotaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryByQuotaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotaIncreaseRequestsInTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListServiceQuotaIncreaseRequestsInTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotaIncreaseRequestsInTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotaIncreaseRequestsInTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListServiceQuotasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServiceQuotasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicequotas#MetricDimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#MetricDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#MetricDimensionsMapDefinition": {
+      "type": "map"
+    },
+    "com.amazonaws.servicequotas#MetricInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#NoAvailableOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#NoSuchResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#OrganizationNotInAllFeaturesModeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#OutputTags": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#PeriodUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#PeriodValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicequotas#PutServiceQuotaIncreaseRequestIntoTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#PutServiceQuotaIncreaseRequestIntoTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#QuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#PutServiceQuotaIncreaseRequestIntoTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#PutServiceQuotaIncreaseRequestIntoTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#QuotaAdjustable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicequotas#QuotaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaCode": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaContextId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaContextInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#QuotaContextScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#QuotaContextScopeType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#QuotaMetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaMetricNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#QuotaUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#QuotaValue": {
+      "type": "double"
+    },
+    "com.amazonaws.servicequotas#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#RequestServiceQuotaIncrease": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#RequestServiceQuotaIncreaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DependencyAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#QuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#RequestServiceQuotaIncreaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#RequestServiceQuotaIncreaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#RequestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#RequestedServiceQuotaChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#RequestedServiceQuotaChangeHistoryListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#Requester": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#ServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceInfoListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#ServiceQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotaIncreaseRequestInTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotaIncreaseRequestInTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotaListDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotaTemplateAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotaTemplateNotInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#ServiceQuotasV20190624": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Service Quotas"
+        }
+      }
+    },
+    "com.amazonaws.servicequotas#Statistic": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#SupportCaseAllowed": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicequotas#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#TagPolicyViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TagPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicequotas#TemplatesNotAvailableInRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicequotas#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicequotas#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#IllegalArgumentException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#NoSuchResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.servicequotas#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicequotas#UntagResourceResponse": {
+      "type": "structure"
+    }
+  }
+}

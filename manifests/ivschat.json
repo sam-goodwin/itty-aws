@@ -1,0 +1,646 @@
+{
+  "shapes": {
+    "com.amazonaws.ivschat#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#AmazonInteractiveVideoServiceChat": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ivschat"
+        }
+      }
+    },
+    "com.amazonaws.ivschat#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ChatToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ChatTokenAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ivschat#ChatTokenCapabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#ChatTokenCapability": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#CloudWatchLogsDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateChatToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#CreateChatTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#CreateChatTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateChatTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#CreateLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#CreateLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateLoggingConfigurationState": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#CreateRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#CreateRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#CreateRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#CreateRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DeleteLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#DeleteLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#DeleteLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DeleteMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#DeleteMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#DeleteMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DeleteMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DeleteRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#DeleteRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#DeleteRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DeliveryStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#DestinationConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.ivschat#DisconnectUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#DisconnectUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#DisconnectUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#DisconnectUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#EventAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.ivschat#EventName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#FallbackResult": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#FirehoseDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#GetLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#GetLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#GetLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#GetLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#GetRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#GetRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#GetRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#GetRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ID": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#Limit": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#ListLoggingConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#ListLoggingConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#ListLoggingConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ListLoggingConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ListRooms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#ListRoomsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#ListRoomsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ListRoomsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationID": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationState": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#LoggingConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#MaxLoggingConfigurationResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#MaxRoomResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#MessageID": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#MessageReviewHandler": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#PendingVerification": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#RoomArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#RoomID": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#RoomIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#RoomList": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#RoomMaxMessageLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#RoomMaxMessageRatePerSecond": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#RoomName": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#RoomSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#S3DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#SendEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#SendEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#SendEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#SendEventResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#SessionDurationInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.ivschat#String": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.ivschat#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#Time": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ivschat#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UpdateLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#UpdateLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#UpdateLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UpdateLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UpdateLoggingConfigurationState": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#UpdateRoom": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ivschat#UpdateRoomRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ivschat#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#PendingVerification"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ivschat#UpdateRoomRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UpdateRoomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#UserID": {
+      "type": "string"
+    },
+    "com.amazonaws.ivschat#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.ivschat#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.ivschat#ValidationExceptionReason": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,3621 @@
+{
+  "shapes": {
+    "com.amazonaws.imagebuilder#AccountAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#AdditionalInstanceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Ami": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#AmiDistributionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#AmiList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#AmiNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.imagebuilder#BuildType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#CallRateLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CancelImageCreation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CancelImageCreationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CancelImageCreationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CancelImageCreationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CancelLifecycleExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CancelLifecycleExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CancelLifecycleExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CancelLifecycleExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#Component": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ComponentData": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ComponentState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ComponentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ComponentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ComponentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ComponentVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentVersionArnOrBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ComponentVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ContainerDistributionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ContainerList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ContainerRecipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ContainerRecipeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ContainerRecipeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ContainerRecipeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ContainerRepositoryService": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ContainerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#CreateComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidVersionNumberException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateContainerRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateContainerRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidVersionNumberException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateContainerRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateContainerRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateDistributionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateDistributionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateDistributionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateDistributionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateImagePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateImagePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateImagePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImagePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImageRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateImageRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidVersionNumberException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateImageRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImageRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateInfrastructureConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateInfrastructureConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateInfrastructureConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateInfrastructureConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#CreateWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidVersionNumberException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#CreateWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CreateWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CvssScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CvssScoreAdjustment": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CvssScoreAdjustmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#CvssScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#CvssScoreList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#DateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#DateTimeTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.imagebuilder#DeleteComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteContainerRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteContainerRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteContainerRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteContainerRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteDistributionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteDistributionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteDistributionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteDistributionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteImagePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteImagePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteImagePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImagePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImageRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteImageRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteImageRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImageRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteInfrastructureConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteInfrastructureConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteInfrastructureConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteInfrastructureConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#DeleteWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceDependencyException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#DeleteWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DeleteWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DiskImageFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#Distribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DistributionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DistributionConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#DistributionConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#DistributionConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#DistributionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#DistributionTimeoutMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#DockerFileTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#EbsInstanceBlockDeviceSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#EbsIopsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#EbsVolumeSizeInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#EbsVolumeThroughput": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#EbsVolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#EcrConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#EmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#FastLaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#FastLaunchConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#FastLaunchLaunchTemplateSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#FastLaunchSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetComponentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetComponentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetComponentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetComponentPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetContainerRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetContainerRecipePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetContainerRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetDistributionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetDistributionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetDistributionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetDistributionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetImagePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetImagePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetImagePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImagePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImagePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetImagePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetImagePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImagePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetImageRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetImageRecipePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetInfrastructureConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetInfrastructureConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetInfrastructureConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetInfrastructureConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetLifecycleExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetLifecycleExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetLifecycleExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetLifecycleExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetMarketplaceResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetMarketplaceResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetMarketplaceResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetMarketplaceResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetWorkflowExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowStepExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#GetWorkflowStepExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowStepExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#GetWorkflowStepExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#HttpPutResponseHopLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#HttpTokens": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Image": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageBuildMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImageBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImageBuilderArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImagePackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImagePackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImagePipeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImagePipelineAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImagePipelineArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImagePipelineList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageRecipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageRecipeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImageRecipeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageRecipeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFinding": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingAggregationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingsFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageScanFindingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageScanState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ImageScanningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ImageState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ImageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImageTestsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageTestsTimeoutMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#ImageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ImageVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImageVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImageVersionArnOrBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ImageVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ImportComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ImportComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidVersionNumberException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ImportComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImportComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImportDiskImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ImportDiskImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ImportDiskImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImportDiskImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImportVmImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ImportVmImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ImportVmImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ImportVmImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InfrastructureConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InfrastructureConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InfrastructureConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InfrastructureConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#InlineComponentData": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InlineDockerFileTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InlineWorkflowData": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InspectorScoreDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InstanceBlockDeviceMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InstanceBlockDeviceMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#InstanceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InstanceMetadataOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InstanceProfileNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#InstanceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#InvalidVersionNumberException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LaunchPermissionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LaunchTemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LaunchTemplateConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LaunchTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#LicenseConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#LicenseConfigurationArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourceActionName": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionResourcesImpactedSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionSnapshotResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionSnapshotResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecycleExecutionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailActionIncludeResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailExclusionRules": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailExclusionRulesAmis": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailExclusionRulesAmisLastLaunched": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailExclusionRulesAmisLastLaunchedValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailFilterRetainAtLeast": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetailFilterValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyResourceSelection": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyResourceSelectionRecipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyResourceSelectionRecipes": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#LifecyclePolicyTimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ListComponentBuildVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListComponentBuildVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListComponentBuildVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListComponentBuildVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListContainerRecipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListContainerRecipesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListContainerRecipesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListContainerRecipesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListDistributionConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListDistributionConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListDistributionConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListDistributionConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageBuildVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImageBuildVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImageBuildVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageBuildVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImagePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImagePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelineImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImagePipelineImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelineImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelineImagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImagePipelinesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelinesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagePipelinesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageRecipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImageRecipesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImageRecipesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageRecipesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindingAggregations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImageScanFindingAggregationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindingAggregationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindingAggregationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImageScanFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImageScanFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListImagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListInfrastructureConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListInfrastructureConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListInfrastructureConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListInfrastructureConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutionResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListLifecycleExecutionResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutionResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutionResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListLifecycleExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecycleExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecyclePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListLifecyclePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListLifecyclePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListLifecyclePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWaitingWorkflowSteps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListWaitingWorkflowStepsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListWaitingWorkflowStepsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWaitingWorkflowStepsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowBuildVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListWorkflowBuildVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowBuildVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowBuildVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListWorkflowExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowStepExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListWorkflowStepExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowStepExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowStepExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#ListWorkflowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ListWorkflowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Logging": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#MarketplaceResourceLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#MarketplaceResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#MaxParallelLaunches": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#NonEmptyStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#NonNegativeDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.imagebuilder#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.imagebuilder#OnWorkflowFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#OrganizationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#OrganizationArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#OrganizationalUnitArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#OrganizationalUnitArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#OsVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#OsVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#OutputResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Ownership": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#PackageArchitecture": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#PackageEpoch": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#PackageVulnerabilityDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ParallelGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#PipelineExecutionStartCondition": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#PipelineStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#Placement": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Platform": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ProductCodeId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ProductCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#ProductCodeListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ProductCodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#PutComponentPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#PutComponentPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#PutComponentPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutComponentPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutContainerRecipePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#PutContainerRecipePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#PutContainerRecipePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutContainerRecipePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutImagePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#PutImagePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#PutImagePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutImagePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutImageRecipePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#PutImageRecipePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#PutImageRecipePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#PutImageRecipePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#Remediation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#RemediationRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceDependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourcePolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#ResourceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceStateUpdateExclusionRules": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceStateUpdateIncludeResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#ResourceTagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.imagebuilder#RestrictedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#RoleNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#S3ExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#S3Logs": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Schedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#SendWorkflowStepAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#SendWorkflowStepActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#SendWorkflowStepActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#SendWorkflowStepActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#SeverityCountNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.imagebuilder#SeverityCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#SnsTopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#SourceLayerHash": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#SsmParameterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#SsmParameterConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#SsmParameterDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#SsmParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#StartImagePipelineExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#StartImagePipelineExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#StartImagePipelineExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#StartImagePipelineExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#StartResourceStateUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#StartResourceStateUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#StartResourceStateUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#StartResourceStateUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#SystemsManagerAgent": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.imagebuilder#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#TargetContainerRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#TargetResourceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#TenancyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateDistributionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#UpdateDistributionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#UpdateDistributionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateDistributionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateImagePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#UpdateImagePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#UpdateImagePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateImagePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateInfrastructureConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#UpdateInfrastructureConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#UpdateInfrastructureConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateInfrastructureConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.imagebuilder#UpdateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.imagebuilder#CallRateLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ClientException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.imagebuilder#UpdateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#UpdateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#UserDataOverride": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#VersionNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#VulnerabilityId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#VulnerabilityIdAggregation": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#VulnerabilityIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#VulnerablePackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#VulnerablePackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#Workflow": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowData": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowExecutionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowExecutionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowExecutionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowNameArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowState": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepAction": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecutionRollbackStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepExecutionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepInputs": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepName": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepOutputs": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowStepTimeoutSecondsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.imagebuilder#WorkflowSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowType": {
+      "type": "enum"
+    },
+    "com.amazonaws.imagebuilder#WorkflowVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.imagebuilder#WorkflowVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowVersionArnOrBuildVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#WorkflowVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.imagebuilder#WorkflowWildcardVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.imagebuilder#imagebuilder": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "imagebuilder"
+        }
+      }
+    }
+  }
+}

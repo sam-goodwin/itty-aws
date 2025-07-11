@@ -1,0 +1,964 @@
+{
+  "shapes": {
+    "com.amazonaws.comprehendmedical#AnyLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#AttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#AttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#BoundedLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#Characters": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ClientRequestTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#ComprehendMedicalAsyncJobFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ComprehendMedicalAsyncJobProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ComprehendMedicalAsyncJobPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ComprehendMedical_20181030": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ComprehendMedical"
+        }
+      }
+    },
+    "com.amazonaws.comprehendmedical#DescribeEntitiesDetectionV2Job": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DescribeEntitiesDetectionV2JobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DescribeEntitiesDetectionV2JobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeEntitiesDetectionV2JobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeICD10CMInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DescribeICD10CMInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DescribeICD10CMInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeICD10CMInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribePHIDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DescribePHIDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DescribePHIDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribePHIDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeRxNormInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DescribeRxNormInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DescribeRxNormInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeRxNormInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeSNOMEDCTInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DescribeSNOMEDCTInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DescribeSNOMEDCTInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DescribeSNOMEDCTInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DetectEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DetectEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectEntitiesV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DetectEntitiesV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DetectEntitiesV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectEntitiesV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectPHI": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#DetectPHIRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#DetectPHIRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#DetectPHIResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#EntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#EntitySubType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMConcept": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMConceptList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMEntityCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMRelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMTrait": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMTraitList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ICD10CMTraitName": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#InferICD10CM": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#InferICD10CMRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#InferICD10CMRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InferICD10CMResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InferRxNorm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#InferRxNormRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#InferRxNormRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InferRxNormResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InferSNOMEDCT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#InferSNOMEDCTRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidEncodingException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TextSizeLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#InferSNOMEDCTRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InferSNOMEDCTResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehendmedical#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InvalidEncodingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#JobName": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#KMSKey": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ListEntitiesDetectionV2Jobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#ListEntitiesDetectionV2JobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#ListEntitiesDetectionV2JobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListEntitiesDetectionV2JobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListICD10CMInferenceJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#ListICD10CMInferenceJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#ListICD10CMInferenceJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListICD10CMInferenceJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListPHIDetectionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#ListPHIDetectionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#ListPHIDetectionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListPHIDetectionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListRxNormInferenceJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#ListRxNormInferenceJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#ListRxNormInferenceJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListRxNormInferenceJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListSNOMEDCTInferenceJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#ListSNOMEDCTInferenceJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#ListSNOMEDCTInferenceJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ListSNOMEDCTInferenceJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#ManifestFilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#MaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.comprehendmedical#ModelVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#OntologyLinkingBoundedLengthString": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#OutputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RxNormAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RxNormAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#RxNormAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#RxNormConcept": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RxNormConceptList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#RxNormEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RxNormEntityCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#RxNormEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#RxNormEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#RxNormTrait": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#RxNormTraitList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#RxNormTraitName": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTConcept": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTConceptList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTEntityCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTRelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTTrait": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTTraitList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#SNOMEDCTTraitName": {
+      "type": "enum"
+    },
+    "com.amazonaws.comprehendmedical#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartEntitiesDetectionV2Job": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StartEntitiesDetectionV2JobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StartEntitiesDetectionV2JobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartEntitiesDetectionV2JobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartICD10CMInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StartICD10CMInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StartICD10CMInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartICD10CMInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartPHIDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StartPHIDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StartPHIDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartPHIDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartRxNormInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StartRxNormInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StartRxNormInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartRxNormInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartSNOMEDCTInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StartSNOMEDCTInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StartSNOMEDCTInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StartSNOMEDCTInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopEntitiesDetectionV2Job": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StopEntitiesDetectionV2JobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StopEntitiesDetectionV2JobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopEntitiesDetectionV2JobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopICD10CMInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StopICD10CMInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StopICD10CMInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopICD10CMInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopPHIDetectionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StopPHIDetectionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StopPHIDetectionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopPHIDetectionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopRxNormInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StopRxNormInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StopRxNormInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopRxNormInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopSNOMEDCTInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.comprehendmedical#StopSNOMEDCTInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.comprehendmedical#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.comprehendmedical#StopSNOMEDCTInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#StopSNOMEDCTInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#String": {
+      "type": "string"
+    },
+    "com.amazonaws.comprehendmedical#TextSizeLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.comprehendmedical#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#Trait": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#TraitList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#UnmappedAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.comprehendmedical#UnmappedAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.comprehendmedical#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

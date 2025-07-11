@@ -1,0 +1,1248 @@
+{
+  "shapes": {
+    "com.amazonaws.appconfig#AccountSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ActionInvocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ActionInvocations": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ActionPoint": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#ActionsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfig#AmazonAppConfig": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppConfig"
+        }
+      }
+    },
+    "com.amazonaws.appconfig#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#Applications": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#AppliedExtension": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#AppliedExtensions": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#BadRequestDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.appconfig#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#BadRequestReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.appconfig#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appconfig#BytesMeasure": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ConfigurationProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ConfigurationProfileSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ConfigurationProfileSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ConfigurationProfileType": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ConfigurationProfiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateConfigurationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateConfigurationProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateConfigurationProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateDeploymentStrategy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateDeploymentStrategyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateDeploymentStrategyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateExtensionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateExtensionAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateExtensionAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateExtensionAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateExtensionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#CreateHostedConfigurationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#CreateHostedConfigurationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#CreateHostedConfigurationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteConfigurationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteConfigurationProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteConfigurationProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteDeploymentStrategy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteDeploymentStrategyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteDeploymentStrategyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteExtensionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteExtensionAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteExtensionAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteExtensionAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteExtensionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeleteHostedConfigurationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#DeleteHostedConfigurationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#DeleteHostedConfigurationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeletionProtectionCheck": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#DeletionProtectionDuration": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfig#DeletionProtectionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeploymentEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeploymentEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#DeploymentEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#DeploymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#DeploymentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#DeploymentStrategies": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeploymentStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#DeploymentStrategyId": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#DeploymentStrategyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#DeploymentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Deployments": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#DynamicParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#DynamicParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfig#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#EnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#EnvironmentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#Environments": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Extension": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ExtensionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ExtensionAssociationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ExtensionAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ExtensionAssociations": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ExtensionOrParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ExtensionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ExtensionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Extensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.appconfig#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetConfigurationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetConfigurationProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetConfigurationProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetDeploymentStrategy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetDeploymentStrategyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetDeploymentStrategyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetExtensionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetExtensionAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetExtensionAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetExtensionAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetExtensionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GetHostedConfigurationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#GetHostedConfigurationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#GetHostedConfigurationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#GrowthFactor": {
+      "type": "float"
+    },
+    "com.amazonaws.appconfig#GrowthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#HostedConfigurationVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#HostedConfigurationVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#HostedConfigurationVersionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#HostedConfigurationVersions": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfig#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#InvalidConfigurationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#InvalidConfigurationDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#Iso8601DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appconfig#KmsKeyIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#KmsKeyIdentifierOrEmpty": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListConfigurationProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListConfigurationProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListConfigurationProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListDeploymentStrategies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListDeploymentStrategiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListDeploymentStrategiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListExtensionAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListExtensionAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListExtensionAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListExtensions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListExtensionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListExtensionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListHostedConfigurationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListHostedConfigurationVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListHostedConfigurationVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#LongName": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfig#MinutesBetween0And24Hours": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfig#Monitor": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#MonitorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfig#ParameterValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfig#PayloadTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Percentage": {
+      "type": "float"
+    },
+    "com.amazonaws.appconfig#QueryName": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ReplicateTo": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ResourceTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#StartDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#StartDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#StartDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#StopDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#StopDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#StopDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#String": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#StringWithLengthBetween0And32768": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#StringWithLengthBetween1And2048": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#StringWithLengthBetween1And255": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#StringWithLengthBetween1And64": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfig#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#TriggeredBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateConfigurationProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateConfigurationProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateConfigurationProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateDeploymentStrategy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateDeploymentStrategyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateDeploymentStrategyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateExtensionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateExtensionAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#UpdateExtensionAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#UpdateExtensionAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#UpdateExtensionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#ValidateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfig#ValidateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfig#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfig#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfig#ValidateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#Validator": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfig#ValidatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#ValidatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appconfig#ValidatorTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appconfig#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfig#VersionLabel": {
+      "type": "string"
+    }
+  }
+}

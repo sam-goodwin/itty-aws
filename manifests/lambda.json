@@ -1,0 +1,2809 @@
+{
+  "shapes": {
+    "com.amazonaws.lambda#AWSGirApiService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Lambda"
+        }
+      }
+    },
+    "com.amazonaws.lambda#AccountLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AccountUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#AddLayerVersionPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#AddLayerVersionPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PolicyLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#AddLayerVersionPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AddLayerVersionPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AddPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#AddPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PolicyLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#AddPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AddPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AdditionalVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#AdditionalVersionWeights": {
+      "type": "map"
+    },
+    "com.amazonaws.lambda#Alias": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#AliasConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#AliasRoutingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AllowCredentials": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lambda#AllowMethodsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#AllowOriginsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#AllowedPublishers": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#AmazonManagedKafkaEventSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ApplicationLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Architecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#ArchitecturesList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#BatchSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#BisectBatchOnFunctionError": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lambda#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.lambda#BlobStream": {
+      "type": "blob"
+    },
+    "com.amazonaws.lambda#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lambda#CodeSigningConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CodeSigningConfigArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#CodeSigningConfigId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#CodeSigningConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#CodeSigningConfigNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CodeSigningPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CodeSigningPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#CodeStorageExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CodeVerificationFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CollectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#CompatibleArchitectures": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#CompatibleRuntimes": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#Concurrency": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Cors": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#CreateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#CreateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#CreateCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#CreateCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateEventSourceMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#CreateEventSourceMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#CreateEventSourceMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#CreateFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeSigningConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#CodeStorageExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#CodeVerificationFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidCodeSignatureException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#CreateFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateFunctionUrlConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#CreateFunctionUrlConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#CreateFunctionUrlConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#CreateFunctionUrlConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lambda#DeadLetterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteEventSourceMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteEventSourceMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteEventSourceMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteFunctionCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteFunctionCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeSigningConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteFunctionCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteFunctionConcurrency": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteFunctionConcurrencyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteFunctionConcurrencyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteFunctionEventInvokeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteFunctionEventInvokeConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteFunctionEventInvokeConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteFunctionUrlConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteFunctionUrlConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteFunctionUrlConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteLayerVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteLayerVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteLayerVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DeleteProvisionedConcurrencyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#DeleteProvisionedConcurrencyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#DeleteProvisionedConcurrencyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#DestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#DestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#DocumentDBEventSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EC2AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EC2ThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EC2UnexpectedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EFSIOException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EFSMountConnectivityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EFSMountFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EFSMountTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ENILimitReachedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lambda#EndPointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#EndpointLists": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#Endpoints": {
+      "type": "map"
+    },
+    "com.amazonaws.lambda#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EnvironmentError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EnvironmentVariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#EnvironmentVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#EnvironmentVariables": {
+      "type": "map"
+    },
+    "com.amazonaws.lambda#EphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EphemeralStorageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#EventSourceMappingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#EventSourceMappingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EventSourceMappingMetric": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#EventSourceMappingMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#EventSourceMappingMetricsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#EventSourceMappingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#EventSourcePosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#EventSourceToken": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FileSystemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FileSystemConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FileSystemConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FilterCriteriaError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FilterCriteriaErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FilterCriteriaErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FullDocument": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#FunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FunctionArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FunctionCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FunctionCodeLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FunctionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FunctionEventInvokeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FunctionEventInvokeConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FunctionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FunctionResponseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#FunctionResponseTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FunctionUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FunctionUrlAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#FunctionUrlConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#FunctionUrlConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#FunctionUrlQualifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#FunctionVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetEventSourceMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetEventSourceMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetEventSourceMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionConcurrency": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionConcurrencyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionConcurrencyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionConcurrencyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionEventInvokeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionEventInvokeConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionEventInvokeConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionRecursionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionRecursionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionRecursionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionRecursionConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionUrlConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetFunctionUrlConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetFunctionUrlConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetFunctionUrlConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetLayerVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetLayerVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetLayerVersionByArn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetLayerVersionByArnRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetLayerVersionByArnRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetLayerVersionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetLayerVersionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetLayerVersionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetLayerVersionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetLayerVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetLayerVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetProvisionedConcurrencyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetProvisionedConcurrencyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ProvisionedConcurrencyConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetProvisionedConcurrencyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetProvisionedConcurrencyConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetRuntimeManagementConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#GetRuntimeManagementConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#GetRuntimeManagementConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#GetRuntimeManagementConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Handler": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Header": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#HeadersList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#HttpStatus": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#ImageConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ImageConfigError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ImageConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#InvalidCodeSignatureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidRequestContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidRuntimeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidSecurityGroupIDException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidSubnetIDException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvalidZipFileException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Invoke": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#InvocationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#EC2AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EC2ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EC2UnexpectedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSIOException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountConnectivityException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountFailureException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ENILimitReachedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidRequestContentException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidRuntimeException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidSecurityGroupIDException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidSubnetIDException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidZipFileException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#RecursiveInvocationException"
+        },
+        {
+          "target": "com.amazonaws.lambda#RequestTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SubnetIPAddressLimitReachedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lambda#UnsupportedMediaTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#InvokeAsync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#InvokeAsyncRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidRequestContentException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidRuntimeException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#InvokeAsyncRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeAsyncResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#InvokeResponseStreamUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeWithResponseStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#InvokeWithResponseStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#EC2AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EC2ThrottledException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EC2UnexpectedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSIOException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountConnectivityException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountFailureException"
+        },
+        {
+          "target": "com.amazonaws.lambda#EFSMountTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ENILimitReachedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidRequestContentException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidRuntimeException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidSecurityGroupIDException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidSubnetIDException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidZipFileException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.lambda#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#RecursiveInvocationException"
+        },
+        {
+          "target": "com.amazonaws.lambda#RequestTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SnapStartTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lambda#SubnetIPAddressLimitReachedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lambda#UnsupportedMediaTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#InvokeWithResponseStreamCompleteEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeWithResponseStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeWithResponseStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#InvokeWithResponseStreamResponseEvent": {
+      "type": "union"
+    },
+    "com.amazonaws.lambda#KMSAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KMSDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KMSInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KMSKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#KMSNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KafkaSchemaRegistryAccessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KafkaSchemaRegistryAccessConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#KafkaSchemaRegistryAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#KafkaSchemaRegistryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KafkaSchemaValidationAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#KafkaSchemaValidationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#KafkaSchemaValidationConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#LastUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#LastUpdateStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LastUpdateStatusReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Layer": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LayerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#LayerName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LayerPermissionAllowedAction": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LayerPermissionAllowedPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LayerVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LayerVersionContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LayerVersionContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LayerVersionNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.lambda#LayerVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#LayerVersionsListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LayersList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#LayersListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LayersReferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#LicenseInfo": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ListAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListCodeSigningConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListCodeSigningConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListCodeSigningConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListCodeSigningConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListEventSourceMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListEventSourceMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListEventSourceMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListEventSourceMappingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionEventInvokeConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListFunctionEventInvokeConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListFunctionEventInvokeConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionEventInvokeConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionUrlConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListFunctionUrlConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListFunctionUrlConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionUrlConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListFunctionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListFunctionsByCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListFunctionsByCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListFunctionsByCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionsByCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListFunctionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListLayerVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListLayerVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListLayerVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListLayerVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListLayers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListLayersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListLayersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListLayersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListProvisionedConcurrencyConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListProvisionedConcurrencyConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListProvisionedConcurrencyConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListProvisionedConcurrencyConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListVersionsByFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#ListVersionsByFunctionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#ListVersionsByFunctionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ListVersionsByFunctionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#LocalMountPath": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LogFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#LogGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#LoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.lambda#MasterRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#MaxAge": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaxFunctionEventInvokeConfigListItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaxLayerListItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaxListItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaxProvisionedConcurrencyConfigListItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumBatchingWindowInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumConcurrency": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumEventAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumNumberOfPollers": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumRecordAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumRetryAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MaximumRetryAttemptsEventSourceMapping": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#MemorySize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#Method": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#MinimumNumberOfPollers": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#NameSpacedFunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#NamespacedFunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#NamespacedStatementId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#NonNegativeInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lambda#OnFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#OnSuccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#OrganizationId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Origin": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#PackageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#ParallelizationFactor": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#Pattern": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#PolicyLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#PreconditionFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Principal": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#PrincipalOrgID": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ProvisionedConcurrencyConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#ProvisionedConcurrencyConfigListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ProvisionedConcurrencyConfigNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ProvisionedConcurrencyStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#ProvisionedPollerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PublishLayerVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PublishLayerVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeStorageExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PublishLayerVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PublishLayerVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PublishVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PublishVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeStorageExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PublishVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutFunctionCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeSigningConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutFunctionCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionConcurrency": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutFunctionConcurrencyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutFunctionConcurrencyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionEventInvokeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutFunctionEventInvokeConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutFunctionEventInvokeConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionRecursionConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutFunctionRecursionConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutFunctionRecursionConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutFunctionRecursionConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutProvisionedConcurrencyConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutProvisionedConcurrencyConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutProvisionedConcurrencyConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutProvisionedConcurrencyConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutRuntimeManagementConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#PutRuntimeManagementConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#PutRuntimeManagementConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#PutRuntimeManagementConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Qualifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Queue": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Queues": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#RecursiveInvocationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#RecursiveLoop": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#RemoveLayerVersionPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#RemoveLayerVersionPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#RemoveLayerVersionPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#RemovePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#RemovePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#RequestTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ReservedConcurrentExecutions": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ResourceConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ResourceNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#ResponseStreamingInvocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Runtime": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#RuntimeVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#RuntimeVersionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#RuntimeVersionError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ScalingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SchemaRegistryEventRecordFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#SchemaRegistryUri": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#SelfManagedEventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SelfManagedKafkaEventSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SigningProfileVersionArns": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#SnapStart": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SnapStartApplyOn": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#SnapStartException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SnapStartNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SnapStartOptimizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#SnapStartResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SnapStartTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SourceAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SourceAccessConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#SourceAccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#SourceOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#StateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#StateReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#StatementId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#String": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#SubnetIPAddressLimitReachedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#SystemLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#TaggableResource": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.lambda#TagsError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#TagsErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#TagsErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#ThrottleReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Timeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#Timestamp": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#Topic": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Topics": {
+      "type": "list"
+    },
+    "com.amazonaws.lambda#TracingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#TracingConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#TracingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#TumblingWindowInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#UnqualifiedFunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#UnreservedConcurrentExecutions": {
+      "type": "integer"
+    },
+    "com.amazonaws.lambda#UnsupportedMediaTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateCodeSigningConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateCodeSigningConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateCodeSigningConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateCodeSigningConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateEventSourceMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateEventSourceMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateEventSourceMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateFunctionCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateFunctionCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeSigningConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#CodeStorageExceededException"
+        },
+        {
+          "target": "com.amazonaws.lambda#CodeVerificationFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidCodeSignatureException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateFunctionCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateFunctionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateFunctionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#CodeSigningConfigNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#CodeVerificationFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidCodeSignatureException"
+        },
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateFunctionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateFunctionEventInvokeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateFunctionEventInvokeConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateFunctionEventInvokeConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateFunctionUrlConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lambda#UpdateFunctionUrlConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lambda#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lambda#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lambda#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.lambda#UpdateFunctionUrlConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateFunctionUrlConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#UpdateRuntimeOn": {
+      "type": "enum"
+    },
+    "com.amazonaws.lambda#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#VpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#VpcConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lambda#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.lambda#Weight": {
+      "type": "double"
+    },
+    "com.amazonaws.lambda#WorkingDirectory": {
+      "type": "string"
+    }
+  }
+}

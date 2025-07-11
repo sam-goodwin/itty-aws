@@ -1,0 +1,1508 @@
+{
+  "shapes": {
+    "com.amazonaws.ram#AcceptResourceShareInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#AcceptResourceShareInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationAlreadyAcceptedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationAlreadyRejectedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationExpiredException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#AcceptResourceShareInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AcceptResourceShareInvitationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AmazonResourceSharing": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RAM"
+        }
+      }
+    },
+    "com.amazonaws.ram#AssociateResourceShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#AssociateResourceShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#AssociateResourceSharePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#AssociateResourceSharePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#AssociateResourceSharePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AssociateResourceSharePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AssociateResourceShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AssociateResourceShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AssociatedPermission": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#AssociatedPermissionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ram#CreatePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#CreatePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidPolicyException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedPolicyTemplateException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#PermissionAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.ram#PermissionLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#CreatePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#CreatePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#CreatePermissionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#CreatePermissionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidPolicyException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedPolicyTemplateException"
+        },
+        {
+          "target": "com.amazonaws.ram#PermissionVersionsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#CreatePermissionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#CreatePermissionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#CreateResourceShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#CreateResourceShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#TagLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#TagPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#CreateResourceShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#CreateResourceShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ram#DeletePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#DeletePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#DeletePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DeletePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DeletePermissionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#DeletePermissionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#DeletePermissionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DeletePermissionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DeleteResourceShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#DeleteResourceShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#DeleteResourceShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DeleteResourceShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DisassociateResourceShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#DisassociateResourceShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#DisassociateResourceSharePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#DisassociateResourceSharePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#DisassociateResourceSharePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DisassociateResourceSharePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DisassociateResourceShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#DisassociateResourceShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#EnableSharingWithAwsOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#EnableSharingWithAwsOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#EnableSharingWithAwsOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#EnableSharingWithAwsOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#GetPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#GetPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetPermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourcePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#GetResourcePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#GetResourcePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourcePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceShareAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#GetResourceShareAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#GetResourceShareAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceShareAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceShareInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#GetResourceShareInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidMaxResultsException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#GetResourceShareInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceShareInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#GetResourceSharesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#GetResourceSharesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#GetResourceSharesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.ram#InvalidClientTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidMaxResultsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidResourceTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#InvalidStateTransitionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPendingInvitationResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListPendingInvitationResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationAlreadyRejectedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationExpiredException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListPendingInvitationResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPendingInvitationResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissionAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListPermissionAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListPermissionAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissionAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListPermissionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListPermissionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPrincipals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListPrincipalsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListPrincipalsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListPrincipalsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListReplacePermissionAssociationsWork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListReplacePermissionAssociationsWorkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListReplacePermissionAssociationsWorkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListReplacePermissionAssociationsWorkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResourceSharePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListResourceSharePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListResourceSharePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResourceSharePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResourceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListResourceTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListResourceTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResourceTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ListResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidResourceTypeException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ListResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ListResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#MalformedArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#MalformedPolicyTemplateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ram#MissingRequiredParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#OperationNotPermittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PermissionAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PermissionArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#PermissionFeatureSet": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#PermissionLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PermissionName": {
+      "type": "string"
+    },
+    "com.amazonaws.ram#PermissionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#PermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#PermissionTypeFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#PermissionVersionsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.ram#PolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#Principal": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PrincipalArnOrIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#PrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#PromotePermissionCreatedFromPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#PromotePermissionCreatedFromPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#PromotePermissionCreatedFromPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PromotePermissionCreatedFromPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PromoteResourceShareCreatedFromPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#PromoteResourceShareCreatedFromPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidStateTransitionException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnmatchedPolicyPermissionException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#PromoteResourceShareCreatedFromPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#PromoteResourceShareCreatedFromPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#RejectResourceShareInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#RejectResourceShareInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationAlreadyAcceptedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationAlreadyRejectedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceShareInvitationExpiredException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#RejectResourceShareInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#RejectResourceShareInvitationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#ReplacePermissionAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsWork": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsWorkIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsWorkList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ReplacePermissionAssociationsWorkStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceArnNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceOwner": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceRegionScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceRegionScopeFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceShare": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceShareAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceShareAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceShareAssociationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceShareFeatureSet": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceShareInvitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationAlreadyAcceptedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationAlreadyRejectedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationArnNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationExpiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceShareInvitationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceShareLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceSharePermissionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceSharePermissionList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ResourceSharePermissionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ResourceShareStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ram#ServerInternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ServiceNameAndResourceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#ServiceNameAndResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#SetDefaultPermissionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#SetDefaultPermissionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#SetDefaultPermissionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#SetDefaultPermissionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#SourceArnOrAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#String": {
+      "type": "string"
+    },
+    "com.amazonaws.ram#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ram#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#TagLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#TagPolicyViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ResourceArnNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#TagLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ram#TagPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ram#TagValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.ram#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UnknownResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UnmatchedPolicyPermissionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UpdateResourceShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ram#UpdateResourceShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ram#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.ram#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#MalformedArnException"
+        },
+        {
+          "target": "com.amazonaws.ram#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.ram#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServerInternalException"
+        },
+        {
+          "target": "com.amazonaws.ram#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.ram#UnknownResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.ram#UpdateResourceShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ram#UpdateResourceShareResponse": {
+      "type": "structure"
+    }
+  }
+}

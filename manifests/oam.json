@@ -1,0 +1,501 @@
+{
+  "shapes": {
+    "com.amazonaws.oam#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#CreateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#CreateLinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#CreateLinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#CreateLinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#CreateSink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#CreateSinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#CreateSinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#CreateSinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#DeleteLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#DeleteLinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#DeleteLinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#DeleteLinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#DeleteSink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#DeleteSinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#DeleteSinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#DeleteSinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#GetLinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#GetLinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetLinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetSink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#GetSinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#GetSinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetSinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetSinkPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#GetSinkPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#GetSinkPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#GetSinkPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#IncludeTags": {
+      "type": "boolean"
+    },
+    "com.amazonaws.oam#InternalServiceFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#LabelTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#LinkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListAttachedLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#ListAttachedLinksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#ListAttachedLinksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListAttachedLinksItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListAttachedLinksItems": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#ListAttachedLinksMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.oam#ListAttachedLinksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#ListLinksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#ListLinksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListLinksItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListLinksItems": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#ListLinksMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.oam#ListLinksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListSinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#ListSinksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#ListSinksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListSinksItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListSinksItems": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#ListSinksMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.oam#ListSinksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.oam#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#LogGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#LogsFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#MetricConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#MetricsFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#MissingRequiredParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#PutSinkPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#PutSinkPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#PutSinkPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#PutSinkPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.oam#ResourceTypesInput": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#ResourceTypesOutput": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#SinkName": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#SinkPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.oam#TagMapInput": {
+      "type": "map"
+    },
+    "com.amazonaws.oam#TagMapOutput": {
+      "type": "map"
+    },
+    "com.amazonaws.oam#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.oam#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.oam#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.oam#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.oam#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#UpdateLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.oam#UpdateLinkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.oam#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.oam#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.oam#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.oam#UpdateLinkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#UpdateLinkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.oam#oamservice": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "OAM"
+        }
+      }
+    }
+  }
+}

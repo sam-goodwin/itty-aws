@@ -1,0 +1,2206 @@
+{
+  "shapes": {
+    "com.amazonaws.elasticloadbalancingv2#ALPNPolicyNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ActionOrder": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ActionTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Actions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddListenerCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#AddListenerCertificatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CertificateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyCertificatesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddListenerCertificatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddListenerCertificatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#AddTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateTagKeysException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTrustStoreRevocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#AddTrustStoreRevocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidRevocationContentException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RevocationContentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTrustStoreRevocationEntriesException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTrustStoreRevocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AddTrustStoreRevocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AdministrativeOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AdvertiseTrustStoreCaNamesEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AllocationId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AllocationIdNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AlpnPolicyName": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AlpnPolicyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AnomalyDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AnomalyResultEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionAuthenticationRequestExtraParams": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionAuthenticationRequestParamName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionAuthenticationRequestParamValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionConditionalBehaviorEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionScope": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionSessionCookieName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionSessionTimeout": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionUserPoolArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionUserPoolClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateCognitoActionUserPoolDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionAuthenticationRequestExtraParams": {
+      "type": "map"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionAuthenticationRequestParamName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionAuthenticationRequestParamValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionAuthorizationEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionClientSecret": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionConditionalBehaviorEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionIssuer": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionScope": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionSessionCookieName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionSessionTimeout": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionTokenEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionUseExistingClientSecret": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AuthenticateOidcActionUserInfoEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AvailabilityZoneNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#AvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CaCertificatesBundleNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CanonicalHostedZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityDecreaseRequestsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityReservationPendingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityReservationStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityReservationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityUnits": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityUnitsDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CapacityUnitsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CertificateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CertificateNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Cipher": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CipherName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CipherPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Ciphers": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ConditionFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateListener": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#CreateListenerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ALPNPolicyNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CertificateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateListenerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#IncompatibleProtocolsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidLoadBalancerActionException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SSLPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupAssociationLimitException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyActionsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyCertificatesException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyListenersException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyUniqueTargetGroupsPerLoadBalancerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateListenerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateListenerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#CreateLoadBalancerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AllocationIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AvailabilityZoneNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateLoadBalancerNameException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateTagKeysException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSchemeException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSecurityGroupException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSubnetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SubnetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyLoadBalancersException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateLoadBalancerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateLoadBalancerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#CreateRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#IncompatibleProtocolsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidLoadBalancerActionException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#PriorityInUseException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupAssociationLimitException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyActionsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRulesException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetGroupsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyUniqueTargetGroupsPerLoadBalancerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTargetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#CreateTargetGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateTargetGroupNameException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetGroupsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTargetGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTargetGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTrustStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#CreateTrustStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CaCertificatesBundleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateTagKeysException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateTrustStoreNameException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidCaCertificatesBundleException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTrustStoresException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTrustStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreateTrustStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticloadbalancingv2#CustomerOwnedIpv4Pool": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DNSName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DecreaseRequestsRemaining": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Default": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteAssociationSameAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteListener": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteListenerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteListenerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteListenerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteLoadBalancerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteLoadBalancerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteLoadBalancerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteSharedTrustStoreAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteSharedTrustStoreAssociationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteAssociationSameAccountException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociationNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteSharedTrustStoreAssociationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteSharedTrustStoreAssociationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTargetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteTargetGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTargetGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTargetGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTrustStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeleteTrustStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreInUseException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTrustStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeleteTrustStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeregisterTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DeregisterTargetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidTargetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeregisterTargetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DeregisterTargetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeAccountLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeAccountLimitsInput"
+      }
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeAccountLimitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeAccountLimitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeListenerAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeListenerCertificatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerCertificatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenerCertificatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListeners": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeListenersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeListenersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancerAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancerAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancerAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancerAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeSSLPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeSSLPoliciesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SSLPolicyNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeSSLPoliciesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeSSLPoliciesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealthInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#HealthUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidTargetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealthInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealthInputIncludeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealthOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreAssociationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreAssociationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreAssociationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocationResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RevocationIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoresInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoresInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoresOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DuplicateListenerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DuplicateLoadBalancerNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DuplicateTagKeysException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DuplicateTargetGroupNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#DuplicateTrustStoreNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ElasticLoadBalancing_v10": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Elastic Load Balancing v2"
+        }
+      }
+    },
+    "com.amazonaws.elasticloadbalancingv2#EnablePrefixForIpv6SourceNatEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ErrorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#FixedResponseActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#FixedResponseActionContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#FixedResponseActionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#FixedResponseActionStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ForwardActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#GetResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreCaCertificatesBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#GetTrustStoreCaCertificatesBundleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreCaCertificatesBundleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreCaCertificatesBundleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreRevocationContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#GetTrustStoreRevocationContentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RevocationIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreRevocationContentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GetTrustStoreRevocationContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#GrpcCode": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthCheckEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthCheckIntervalSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthCheckPort": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthCheckThresholdCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthCheckTimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HealthUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HostHeaderConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HttpCode": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HttpHeaderConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HttpHeaderConditionName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#HttpRequestMethodConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IPv6Address": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IgnoreClientCertificateExpiry": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IncompatibleProtocolsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InsufficientCapacityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidCaCertificatesBundleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidLoadBalancerActionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidRevocationContentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidSchemeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidSecurityGroupException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidSubnetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#InvalidTargetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IpamPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IpamPools": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#IsDefault": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LastModifiedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Limit": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Limits": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListOfDescribeTargetHealthIncludeOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListOfString": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Listener": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Listeners": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancer": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAddress": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerNames": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerSchemeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerState": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancerTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#LoadBalancers": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Matcher": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Max": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#MinimumLoadBalancerCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#MitigationInEffectEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Mode": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CapacityDecreaseRequestsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CapacityReservationPendingException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CapacityUnitsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InsufficientCapacityException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#PriorRequestNotCompleteException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyIpPools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyIpPoolsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyIpPoolsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyIpPoolsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListener": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyListenerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ALPNPolicyNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CertificateNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DuplicateListenerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#IncompatibleProtocolsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidLoadBalancerActionException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SSLPolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupAssociationLimitException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyActionsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyCertificatesException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyListenersException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyUniqueTargetGroupsPerLoadBalancerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListenerAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyListenerAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListenerAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListenerAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListenerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyListenerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyLoadBalancerAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyLoadBalancerAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyLoadBalancerAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyLoadBalancerAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#IncompatibleProtocolsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidLoadBalancerActionException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupAssociationLimitException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyActionsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyUniqueTargetGroupsPerLoadBalancerException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTrustStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#ModifyTrustStoreInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CaCertificatesBundleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidCaCertificatesBundleException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTrustStoreInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ModifyTrustStoreOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#MutualAuthenticationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#NumberOfCaCertificates": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#NumberOfRevokedEntries": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#OutpostId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Path": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#PathPatternConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#PriorRequestNotCompleteException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#PriorityInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#PrivateIPv4Address": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ProtocolEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ProtocolVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#QueryStringConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#QueryStringKeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#QueryStringKeyValuePairList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionHost": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionPath": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionPort": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionQuery": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RedirectActionStatusCodeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RegisterTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#RegisterTargetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidTargetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#RegisterTargetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RegisterTargetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveIpamPoolEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveIpamPools": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveListenerCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#RemoveListenerCertificatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveListenerCertificatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveListenerCertificatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#RemoveTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ListenerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTrustStoreRevocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#RemoveTrustStoreRevocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RevocationIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTrustStoreRevocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RemoveTrustStoreRevocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ResetCapacityReservation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ResourceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationContentNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationContents": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationId": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationIdNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RevocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RuleArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RuleCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RuleConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RulePriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RulePriorityList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#RulePriorityPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Rules": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SSLPolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetIpAddressType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#SetIpAddressTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSubnetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetIpAddressTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetIpAddressTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetRulePriorities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#SetRulePrioritiesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#OperationNotPermittedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#PriorityInUseException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RuleNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetRulePrioritiesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetRulePrioritiesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#SetSecurityGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSecurityGroupException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSecurityGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSecurityGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSubnets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticloadbalancingv2#SetSubnetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AllocationIdNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AvailabilityZoneNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CapacityReservationPendingException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidConfigurationRequestException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#InvalidSubnetException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#LoadBalancerNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SubnetNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSubnetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SetSubnetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SourceIpConditionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SourceNatIpv6Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SourceNatIpv6Prefixes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslPolicyNames": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SslProtocols": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#StateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#String": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#StringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SubnetMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SubnetMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#SubnetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetAdministrativeOverrideReasonEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetAdministrativeOverrideStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupAssociationLimitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupIpAddressTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupNames": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupStickinessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupStickinessDurationSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupStickinessEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupTuple": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroupWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetHealthDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetHealthDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetHealthReasonEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetHealthStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TargetTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyActionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyCertificatesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyListenersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyLoadBalancersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyRegistrationsForTargetIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyRulesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyTargetGroupsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyTargetsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyTrustStoreRevocationEntriesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyTrustStoresException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TooManyUniqueTargetGroupsPerLoadBalancerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TotalRevokedEntries": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStore": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreArns": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociationResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociationStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreNames": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreRevocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreRevocations": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStoreStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticloadbalancingv2#TrustStores": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#UnsupportedProtocolException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ZonalCapacityReservationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ZonalCapacityReservationStates": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticloadbalancingv2#ZoneName": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,1269 @@
+{
+  "shapes": {
+    "com.amazonaws.shield#AWSShield_20160616": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Shield"
+        }
+      }
+    },
+    "com.amazonaws.shield#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AccessDeniedForDependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ApplicationLayerAutomaticResponseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ApplicationLayerAutomaticResponseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#AssociateDRTLogBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#AssociateDRTLogBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#AccessDeniedForDependencyException"
+        },
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#LimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.shield#NoAssociatedRoleException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#AssociateDRTLogBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateDRTLogBucketResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateDRTRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#AssociateDRTRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#AccessDeniedForDependencyException"
+        },
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#AssociateDRTRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateDRTRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#AssociateHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#LimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#AssociateHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateProactiveEngagementDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#AssociateProactiveEngagementDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#AssociateProactiveEngagementDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AssociateProactiveEngagementDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackId": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#AttackLayer": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#AttackProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#AttackProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackPropertyIdentifier": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#AttackStatisticsDataItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackStatisticsDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#AttackSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#AttackSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.shield#AttackVectorDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackVectorDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#AttackVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AttackVolumeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#AutoRenew": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#BlockAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ContactNotes": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#Contributor": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CountAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#CreateProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#LimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#CreateProtectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#CreateProtectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#LimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#CreateProtectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateProtectionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateProtectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#CreateSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#CreateSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#CreateSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DeleteProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DeleteProtectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DeleteProtectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DeleteProtectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteProtectionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteProtectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DeleteSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#LockedSubscriptionException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DeleteSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DeleteSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeAttack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeAttackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeAttackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeAttackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeAttackStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeAttackStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeAttackStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeAttackStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeDRTAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeDRTAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeDRTAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeDRTAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeEmergencyContactSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeEmergencyContactSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeEmergencyContactSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeEmergencyContactSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeProtectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeProtectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeProtectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeProtectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeProtectionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeProtectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeProtectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DescribeSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DescribeSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DescribeSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisableApplicationLayerAutomaticResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DisableApplicationLayerAutomaticResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DisableApplicationLayerAutomaticResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisableApplicationLayerAutomaticResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisableProactiveEngagement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DisableProactiveEngagementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DisableProactiveEngagementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisableProactiveEngagementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateDRTLogBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DisassociateDRTLogBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#AccessDeniedForDependencyException"
+        },
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#NoAssociatedRoleException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DisassociateDRTLogBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateDRTLogBucketResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateDRTRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DisassociateDRTRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DisassociateDRTRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateDRTRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#DisassociateHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#DisassociateHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#DisassociateHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.shield#DurationInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.shield#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#EmergencyContact": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#EmergencyContactList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#EnableApplicationLayerAutomaticResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#EnableApplicationLayerAutomaticResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#LimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#EnableApplicationLayerAutomaticResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#EnableApplicationLayerAutomaticResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#EnableProactiveEngagement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#EnableProactiveEngagementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#EnableProactiveEngagementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#EnableProactiveEngagementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#GetSubscriptionState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#GetSubscriptionStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#GetSubscriptionStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#GetSubscriptionStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#HealthCheckArn": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#HealthCheckId": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#HealthCheckIds": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#InclusionProtectionFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#InclusionProtectionGroupFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.shield#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#InvalidResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#Limit": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#LimitNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.shield#LimitType": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#Limits": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#LimitsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListAttacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#ListAttacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#ListAttacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListAttacksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListProtectionGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#ListProtectionGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#ListProtectionGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListProtectionGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListProtections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#ListProtectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#ListProtectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListProtectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListResourcesInProtectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#ListResourcesInProtectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#ListResourcesInProtectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListResourcesInProtectionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#LockedSubscriptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#LogBucket": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#LogBucketList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.shield#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.shield#Mitigation": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#MitigationList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#NoAssociatedRoleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#OptimisticLockException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#PhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#ProactiveEngagementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#ProtectedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#ProtectedResourceTypeFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#Protection": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionGroupAggregation": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#ProtectionGroupAggregationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ProtectionGroupArbitraryPatternLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#ProtectionGroupIdFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ProtectionGroupLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionGroupMembers": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ProtectionGroupPattern": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#ProtectionGroupPatternFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ProtectionGroupPatternTypeLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ProtectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#ProtectionLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ProtectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#ProtectionNameFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#Protections": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#ResourceArnFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ResourceArnFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ResourceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ResponseAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#String": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#SubResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#SubResourceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#SubResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#SubscriptionLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#SubscriptionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#SummarizedAttackVector": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#SummarizedAttackVectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#SummarizedCounter": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#SummarizedCounterList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#TimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.shield#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.shield#TopContributors": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#Unit": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateApplicationLayerAutomaticResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#UpdateApplicationLayerAutomaticResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#UpdateApplicationLayerAutomaticResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateApplicationLayerAutomaticResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateEmergencyContactSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#UpdateEmergencyContactSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#UpdateEmergencyContactSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateEmergencyContactSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateProtectionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#UpdateProtectionGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#UpdateProtectionGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateProtectionGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.shield#UpdateSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.shield#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.shield#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.shield#LockedSubscriptionException"
+        },
+        {
+          "target": "com.amazonaws.shield#OptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.shield#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.shield#UpdateSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#UpdateSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.shield#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.shield#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.shield#errorMessage": {
+      "type": "string"
+    }
+  }
+}

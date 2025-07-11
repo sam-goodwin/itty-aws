@@ -1,0 +1,121 @@
+{
+  "shapes": {
+    "com.amazonaws.appconfigdata#AppConfigData": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppConfigData"
+        }
+      }
+    },
+    "com.amazonaws.appconfigdata#BadRequestDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.appconfigdata#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#BadRequestReason": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#ConfigurationSession": {
+      "type": "resource"
+    },
+    "com.amazonaws.appconfigdata#GetLatestConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfigdata#GetLatestConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfigdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfigdata#GetLatestConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#GetLatestConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfigdata#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#InvalidParameterDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#InvalidParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfigdata#InvalidParameterProblem": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#OptionalPollSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.appconfigdata#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#SensitiveBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.appconfigdata#StartConfigurationSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appconfigdata#StartConfigurationSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appconfigdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appconfigdata#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appconfigdata#StartConfigurationSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#StartConfigurationSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#String": {
+      "type": "string"
+    },
+    "com.amazonaws.appconfigdata#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appconfigdata#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appconfigdata#Token": {
+      "type": "string"
+    }
+  }
+}

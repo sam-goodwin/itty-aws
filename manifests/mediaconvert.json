@@ -1,0 +1,3638 @@
+{
+  "shapes": {
+    "com.amazonaws.mediaconvert#AacAudioDescriptionBroadcasterMix": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacCodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacCodingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacRateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacRawFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AacSpecification": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AacVbrQuality": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3BitstreamMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3CodingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3DynamicRangeCompressionLine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3DynamicRangeCompressionProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3DynamicRangeCompressionRf": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3LfeFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3MetadataControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Ac3Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AccelerationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AccelerationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AccelerationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AdvancedInputFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AdvancedInputFilterAddTexture": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AdvancedInputFilterSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AdvancedInputFilterSharpen": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AfdSignaling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AiffSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AllowedRenditionSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AlphaBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AncillaryConvert608To708": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AncillarySourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AncillaryTerminateCaptions": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AntiAlias": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AssociateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#AssociateCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#AssociateCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AssociateCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioChannelTag": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioChannelTaggingSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioCodec": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioCodecSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioDefaultSelection": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioDurationCorrection": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioLanguageCodeControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioNormalizationAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioNormalizationAlgorithmControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioNormalizationLoudnessLogging": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioNormalizationPeakCalculation": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioNormalizationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioSelectorGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AudioSelectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AudioTypeControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AutomatedAbrRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AutomatedAbrSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AutomatedEncodingSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Av1AdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1BitDepth": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1FilmGrainSynthesis": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1QvbrSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Av1RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Av1Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Av1SpatialAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvailBlanking": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraFramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraFramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraInterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraSlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraTelecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraUhdQualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#AvcIntraUhdSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#BandwidthReductionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#BandwidthReductionFilterSharpening": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BandwidthReductionFilterStrength": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BillingTagsSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurnInSubtitleStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleAlignment": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleApplyFontColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleBackgroundColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleFallbackFont": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleFontColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleOutlineColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleShadowColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#BurninSubtitleTeletextSpacing": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CancelJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionDescriptionPreset": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CaptionSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceByteRateLimit": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceConvertPaintOnToPopOn": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceFramerate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CaptionSourceUpconvertSTLToTeletext": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ChannelMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ChromaPositionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ClipLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmafAdditionalManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmafClientCache": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafCodecSpecification": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafEncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmafEncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmafImageBasedTrickPlay": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafImageBasedTrickPlaySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmafInitializationVectorInManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafIntervalCadence": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafKeyProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafManifestCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafManifestDurationFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafMpdManifestBandwidthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafMpdProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafPtsOffsetHandlingForBFrames": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafSegmentControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafSegmentLengthControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafStreamInfResolution": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafTargetDurationCompatibilityMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafVideoCompositionOffsets": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafWriteDASHManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafWriteHLSManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmafWriteSegmentTimelineInRepresentation": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcAudioDuration": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcAudioTrackType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcDescriptiveVideoServiceFlag": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcIFrameOnlyManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcKlvMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcManifestMetadataSignaling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcScte35Esam": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcScte35Source": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CmfcTimedMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CmfcTimedMetadataBoxVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Codec": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ColorConversion3DLUTSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ColorCorrector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ColorMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ColorPrimaries": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ColorSpace": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ColorSpaceConversion": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ColorSpaceUsage": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Commitment": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ContainerSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ContainerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CopyProtectionAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#CreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#CreateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#CreateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreateJobTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#CreateJobTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#CreateJobTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreateJobTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreatePreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#CreatePresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#CreatePresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreatePresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreateQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#CreateQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#CreateQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#CreateQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DashAdditionalManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DashIsoEncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DashIsoGroupAudioChannelConfigSchemeIdUri": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DashIsoHbbtvCompliance": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoImageBasedTrickPlay": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoImageBasedTrickPlaySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DashIsoIntervalCadence": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoMpdManifestBandwidthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoMpdProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoPlaybackDeviceCompatibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoPtsOffsetHandlingForBFrames": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoSegmentControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoSegmentLengthControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoVideoCompositionOffsets": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashIsoWriteSegmentTimelineInRepresentation": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DashManifestStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DataProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DecryptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DeinterlaceAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Deinterlacer": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeinterlacerControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DeinterlacerMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DeleteJobTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DeleteJobTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DeleteJobTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeleteJobTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DeletePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DeletePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeletePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeletePreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DeletePresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DeletePresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeletePresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeleteQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DeleteQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DeleteQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DeleteQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DescribeEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DescribeEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DescribeEndpointsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DescribeEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DescribeEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DisassociateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#DisassociateCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#DisassociateCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DisassociateCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DolbyVision": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DolbyVisionLevel6Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DolbyVisionLevel6Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DolbyVisionMapping": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DolbyVisionProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DropFrameTimecode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbNitSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DvbSdtSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DvbSubDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DvbSubSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DvbSubSubtitleFallbackFont": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleAlignment": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleApplyFontColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleBackgroundColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleFontColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleOutlineColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleShadowColor": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitleTeletextSpacing": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbSubtitlingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DvbTdtSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DvbddsHandling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#DynamicAudioSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#DynamicAudioSelectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosBitstreamMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosCodingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosDialogueIntelligence": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosDownmixControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosDynamicRangeCompressionLine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosDynamicRangeCompressionRf": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosDynamicRangeControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosMeteringMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosStereoDownmix": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AtmosSurroundExMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3AttenuationControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3BitstreamMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3CodingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3DcFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3DynamicRangeCompressionLine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3DynamicRangeCompressionRf": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3LfeControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3LfeFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3MetadataControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3PassthroughControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3PhaseControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Eac3StereoDownmix": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3SurroundExMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Eac3SurroundMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#EmbeddedConvert608To708": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#EmbeddedDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#EmbeddedSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#EmbeddedTerminateCaptions": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#EmbeddedTimecodeOverride": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#EncryptionContractConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#EsamManifestConfirmConditionNotification": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#EsamSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#EsamSignalProcessingNotification": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ExtendedDataServices": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#F4vMoovPlacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#F4vSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#FileGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#FileSourceConvert608To708": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#FileSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#FileSourceTimeDeltaUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#FlacSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#FontScript": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ForceIncludeRenditionSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#FrameCaptureSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#FrameMetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#FrameRate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#GetJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#GetJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetJobTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#GetJobTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#GetJobTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetJobTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetPreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#GetPresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#GetPresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetPresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#GetQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#GetQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GetQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#GifFramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#GifFramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#GifSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#H264AdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264CodecLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264CodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264DynamicSubGop": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264EndOfStreamMarkers": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264EntropyEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264FieldEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264FlickerAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264GopBReference": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264GopSizeUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264InterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264ParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264QualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264QvbrSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#H264RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264RepeatPps": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264SaliencyAwareEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264ScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264SceneChangeDetect": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#H264SlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264SpatialAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264Syntax": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264Telecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264TemporalAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264UnregisteredSeiTimecode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H264WriteMp4PackagingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265AdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265AlternateTransferFunctionSei": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265CodecLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265CodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265Deblocking": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265DynamicSubGop": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265EndOfStreamMarkers": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265FlickerAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265GopBReference": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265GopSizeUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265InterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265ParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265QualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265QvbrSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#H265RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265SampleAdaptiveOffsetFilterMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265ScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265SceneChangeDetect": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#H265SlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265SpatialAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265Telecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265TemporalAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265TemporalIds": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265Tiles": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265UnregisteredSeiTimecode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#H265WriteMp4PackagingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HDRToSDRToneMapper": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Hdr10Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Hdr10Plus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsAdMarkers": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsAdditionalManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsAudioOnlyContainer": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsAudioOnlyHeader": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsAudioTrackType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsCaptionLanguageMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsCaptionLanguageSetting": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsCaptionSegmentLengthControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsClientCache": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsCodecSpecification": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsDescriptiveVideoServiceFlag": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsDirectoryStructure": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsEncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsEncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsIFrameOnlyManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsImageBasedTrickPlay": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsImageBasedTrickPlaySettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsInitializationVectorInManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsIntervalCadence": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsKeyProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsManifestCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsManifestDurationFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsOfflineEncrypted": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsOutputSelection": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsProgramDateTime": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsProgressiveWriteHlsManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsRenditionGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsSegmentControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsSegmentLengthControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#HlsStreamInfResolution": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsTargetDurationCompatibilityMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HlsTimedMetadataId3Frame": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#HopDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Id3Insertion": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ImageInserter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ImscAccessibilitySubs": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ImscDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ImscStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Input": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InputClipping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InputDeblockFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputDecryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InputDenoiseFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputFilterEnable": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputPsiControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputRotate": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputSampleRange": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputScanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InputTimecodeSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#InputVideoGenerator": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InsertableImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#JobEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#JobMessages": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#JobPhase": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#JobSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#JobTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#JobTemplateListBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#JobTemplateSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#KantarWatermarkSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ListJobTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListJobTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListJobTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListJobTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListPresets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListPresetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListPresetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListPresetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListQueues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListQueuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListQueuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListQueuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ListVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ListVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ListVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#M2tsAudioBufferModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsAudioDuration": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsBufferModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsDataPtsControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsEbpAudioInterval": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsEbpPlacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsEsRateInPes": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsForceTsVideoEbpOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsKlvMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsNielsenId3": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsPcrControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsPreventBufferUnderflow": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsRateMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsScte35Esam": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#M2tsScte35Source": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsSegmentationMarkers": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsSegmentationStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M2tsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#M3u8AudioDuration": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M3u8DataPtsControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M3u8NielsenId3": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M3u8PcrControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M3u8Scte35Source": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#M3u8Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MatrixCoefficients": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MediaConvert": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MediaConvert"
+        }
+      }
+    },
+    "com.amazonaws.mediaconvert#Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MinBottomRenditionSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MinTopRenditionSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MotionImageInserter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MotionImageInsertionFramerate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MotionImageInsertionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MotionImageInsertionOffset": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MotionImagePlayback": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovClapAtom": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovCslgAtom": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovMpeg2FourCCControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovPaddingControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovReference": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MovSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Mp2Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Mp3RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mp3Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Mp4C2paManifest": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mp4CslgAtom": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mp4FreeSpaceBox": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mp4MoovPlacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mp4Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MpdAccessibilityCaptionHints": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdAudioDuration": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdCaptionContainerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdKlvMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdManifestMetadataSignaling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdScte35Esam": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdScte35Source": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MpdTimedMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MpdTimedMetadataBoxVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2AdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2CodecLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2CodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2DynamicSubGop": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2GopSizeUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2InterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2IntraDcPrecision": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2ParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2QualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2ScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2SceneChangeDetect": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2SlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2SpatialAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2Syntax": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2Telecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Mpeg2TemporalAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothAdditionalManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothAudioDeduplication": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothEncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothFragmentLengthControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MsSmoothManifestEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MxfAfdSignaling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MxfProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MxfSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#MxfXavcDurationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#MxfXavcProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NexGuardFileMarkerSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NielsenActiveWatermarkProcessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NielsenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NielsenNonLinearWatermarkSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NielsenSourceWatermarkStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NielsenUniqueTicPerAudioTrackType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NoiseFilterPostTemporalSharpening": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NoiseFilterPostTemporalSharpeningStrength": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NoiseReducer": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NoiseReducerFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#NoiseReducerFilterSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NoiseReducerSpatialFilterSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NoiseReducerTemporalFilterSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OpusSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Order": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputChannelMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputGroupDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputGroupSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#OutputGroupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#OutputSdt": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#OutputSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#PadVideo": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#PartnerWatermarking": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Policy": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Preset": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#PresetListBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#PresetSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#PresetSpeke20Audio": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#PresetSpeke20Video": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#PricingPlan": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Probe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#ProbeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#ProbeInputFile": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ProbeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ProbeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ProbeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ProresChromaSampling": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresCodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresFramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresFramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresInterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ProresSlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ProresTelecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#PutPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#PutPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#PutPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#PutPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Queue": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#QueueListBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#QueueStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#QueueTransition": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Rectangle": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#RemixSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#RemoveRubyReserveAttributes": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#RenewalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#RequiredFlag": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ReservationPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ReservationPlanSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ReservationPlanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ResourceTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#RespondToAfd": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#RuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#S3DestinationAccessControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#S3DestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#S3EncryptionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#S3ObjectCannedAcl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#S3ServerSideEncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#S3StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#SampleRangeConversion": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#ScalingBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#SccDestinationFramerate": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#SccDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SearchJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#SearchJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#SearchJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SearchJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#ServiceOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SimulateReservedQueue": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#SpekeKeyProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SpekeKeyProviderCmaf": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SrtDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#SrtStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#StaticKeyProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#StatusUpdateInterval": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TeletextDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TeletextPageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TeletextSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TimecodeBurnin": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TimecodeBurninPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TimecodeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TimecodeSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TimecodeTrack": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TimedMetadata": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TimedMetadataInsertion": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Timing": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Track": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TrackMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TrackSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TrackType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TransferCharacteristics": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TsPtsOffset": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#TtmlDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#TtmlStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedFourcc": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedFramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedFramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedInterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UncompressedSlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UncompressedTelecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdateJobTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#UpdateJobTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#UpdateJobTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdateJobTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdatePreset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#UpdatePresetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#UpdatePresetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdatePresetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdateQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconvert#UpdateQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconvert#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconvert#UpdateQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#UpdateQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Vc3Class": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3InterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3ScanTypeConversionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Vc3SlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vc3Telecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VchipAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VideoCodec": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VideoCodecSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlay": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayCrop": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayInputClipping": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayPlayBackMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayPosition": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayTransition": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoOverlayUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VideoPreprocessor": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#VideoTimecodeInsertion": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#VorbisSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Vp8FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp8FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp8ParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp8QualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp8RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp8Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Vp9FramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp9FramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp9ParControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp9QualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp9RateControlMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Vp9Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#WarningGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#WatermarkingStrength": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#WavFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#WavSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#WebvttAccessibilitySubs": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#WebvttDestinationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#WebvttHlsSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#WebvttStylePassthrough": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kIntraCbgProfileClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kIntraCbgProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kIntraVbrProfileClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kIntraVbrProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kProfileBitrateClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kProfileCodecProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kProfileQualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#Xavc4kProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#XavcAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcEntropyEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcFlickerAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcFramerateControl": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcFramerateConversionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcGopBReference": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcHdIntraCbgProfileClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcHdIntraCbgProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#XavcHdProfileBitrateClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcHdProfileQualityTuningLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcHdProfileSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#XavcHdProfileTelecine": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcInterlaceMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconvert#XavcSlowPal": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcSpatialAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#XavcTemporalAdaptiveQuantization": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconvert#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMin0": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMin0Max1": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMin0Max2147483647": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMin1Max10": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative59Max0": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative60Max3": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative60Max6": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative60MaxNegative1": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative6Max3": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__doubleMinNegative8Max0": {
+      "type": "double"
+    },
+    "com.amazonaws.mediaconvert#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max0": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max1": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max10": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max100": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max1000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max10000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max1152000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max128": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max1466400000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max15": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max16": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max2147483647": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max255": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max3": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max30": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max30000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max3600": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max4": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max4000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max4194303": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max47185920": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max5": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max500": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max50000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max65534": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max65535": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max7": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max8": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max9": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max96": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin0Max99": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin100000Max100000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max1152000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max1466400000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max288000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max30000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max300000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1000Max480000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin100Max1000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin10Max48": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin16000Max320000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin16000Max48000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin16Max24": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max1": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max10": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max100": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max10000000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max1001": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max150": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max17895697": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max2": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max20": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max2048": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max2147483640": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max2147483647": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max31": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max32": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max4": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max4096": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max512": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max6": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max60000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max64": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin1Max8": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin22050Max48000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin24Max60000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin25Max10000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin25Max2000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin2Max2147483647": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin2Max4096": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32000Max192000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32000Max3024000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32000Max384000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32000Max48000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32Max8182": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin32Max8192": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin384000Max1024000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin3Max15": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin48000Max48000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin4Max12": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin50Max86400000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin6000Max1024000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin64000Max640000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin8000Max192000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin8000Max96000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin8Max12": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin8Max4096": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin90Max105": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin920Max1023": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMin96Max600": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative10000Max10000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative1000Max1000": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative180Max180": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative1Max10": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative1Max2147483647": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative1Max3": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative2147483648Max2147483647": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative2Max3": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative50Max50": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative5Max10": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative60Max6": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__integerMinNegative70Max0": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconvert#__listOfAllowedRenditionSize": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfAudioChannelTag": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfAudioDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfAutomatedAbrRule": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfCaptionDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfCaptionDescriptionPreset": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfCmafAdditionalManifest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfColorConversion3DLUTSetting": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfDashAdditionalManifest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfEndpoint": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfForceIncludeRenditionSize": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfFrameMetricType": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfHlsAdMarkers": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfHlsAdditionalManifest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfHlsCaptionLanguageMapping": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfHopDestination": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfId3Insertion": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfInput": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfInputClipping": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfInputTemplate": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfInsertableImage": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfJob": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfJobEngineVersion": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfJobTemplate": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfMsSmoothAdditionalManifest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfOutput": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfOutputChannelMapping": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfOutputDetail": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfOutputGroup": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfOutputGroupDetail": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfPreset": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfProbeInputFile": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfProbeResult": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfQueue": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfQueueTransition": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfServiceOverride": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfTeletextPageType": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfTrack": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfTrackMapping": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfVideoOverlay": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfVideoOverlayInputClipping": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfVideoOverlayTransition": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOfWarningGroup": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__doubleMinNegative60Max6": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__integer": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__integerMin1Max2147483647": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__integerMin32Max8182": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__integerMinNegative60Max6": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__stringMin1": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__stringPattern09aFAF809aFAF409aFAF409aFAF409aFAF12": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__listOf__stringPatternS3ASSETMAPXml": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconvert#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.mediaconvert#__mapOfAudioSelector": {
+      "type": "map"
+    },
+    "com.amazonaws.mediaconvert#__mapOfAudioSelectorGroup": {
+      "type": "map"
+    },
+    "com.amazonaws.mediaconvert#__mapOfCaptionSelector": {
+      "type": "map"
+    },
+    "com.amazonaws.mediaconvert#__mapOfDynamicAudioSelector": {
+      "type": "map"
+    },
+    "com.amazonaws.mediaconvert#__mapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.mediaconvert#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMax1000": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMax2048": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMax2048PatternS3Https": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMax256": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin0": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin11Max11Pattern01D20305D205D": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3BmpBMPPngPNGHttpsBmpBMPPngPNG": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3BmpBMPPngPNGTgaTGAHttpsBmpBMPPngPNGTgaTGA": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3CubeCUBEHttpsCubeCUBE": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3Mov09PngHttpsMov09Png": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTTHttpsSccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTT": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin14PatternS3XmlXMLHttpsXmlXML": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin16Max24PatternAZaZ0922AZaZ0916": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max100000": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max20": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max2048PatternArnAZSecretsmanagerWD12SecretAZAZ09": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max256": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max50": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1Max50PatternAZAZ09": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin24Max512PatternAZaZ0902": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin32Max32Pattern09aFAF32": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin3Max3Pattern1809aFAF09aEAE": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin3Max3PatternAZaZ3": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin6Max8Pattern09aFAF609aFAF2": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringMin9Max19PatternAZ26EastWestCentralNorthSouthEastWest1912": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern010920405090509092": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern010920405090509092090909": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern01D20305D205D": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern0940191020191209301": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern09aFAF809aFAF409aFAF409aFAF409aFAF12": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPattern0xAFaF0908190908": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternAZaZ0902": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternAZaZ0932": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternAZaZ23AZaZ": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternAZaZ23AZaZ09": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternArnAwsUsGovAcm": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternDD": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternHttps": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternHttpsD": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternHttpsKantarmedia": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternIdentityAZaZ26AZaZ09163": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternS3": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternS3ASSETMAPXml": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternS3Https": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternS3TtfHttpsTtf": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternSNManifestConfirmConditionNotificationNS": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternSNSignalProcessingNotificationNS": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternW": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__stringPatternWS": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconvert#__timestampUnix": {
+      "type": "timestamp"
+    }
+  }
+}

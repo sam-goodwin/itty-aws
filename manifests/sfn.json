@@ -1,0 +1,1625 @@
+{
+  "shapes": {
+    "com.amazonaws.sfn#AWSStepFunctions": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SFN"
+        }
+      }
+    },
+    "com.amazonaws.sfn#ActivityAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#ActivityListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityScheduleFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityScheduledEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityStartedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivitySucceededEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityTimedOutEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ActivityWorkerLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#AliasDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#AssignedVariables": {
+      "type": "map"
+    },
+    "com.amazonaws.sfn#AssignedVariablesDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#BilledDuration": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#BilledMemoryUsed": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#BillingDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CharacterRestrictedName": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#CloudWatchEventsExecutionDataDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CloudWatchLogsLogGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ConnectorParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#CreateActivity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#CreateActivityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ActivityAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.sfn#ActivityLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidEncryptionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidName"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#TooManyTags"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#CreateActivityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CreateActivityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CreateStateMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#CreateStateMachineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidDefinition"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidEncryptionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidName"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidTracingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.sfn#TooManyTags"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#CreateStateMachineAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#CreateStateMachineAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidName"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#CreateStateMachineAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CreateStateMachineAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CreateStateMachineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#CreateStateMachineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#Definition": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#DeleteActivity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DeleteActivityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DeleteActivityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteActivityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DeleteStateMachineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DeleteStateMachineAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DeleteStateMachineAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DeleteStateMachineAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachineAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachineVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DeleteStateMachineVersionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DeleteStateMachineVersionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DeleteStateMachineVersionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeActivity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeActivityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ActivityDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeActivityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeActivityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeMapRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeMapRunInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeMapRunInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeMapRunOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeStateMachineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeStateMachineAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeStateMachineAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeStateMachineAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachineAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachineForExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#DescribeStateMachineForExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#DescribeStateMachineForExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachineForExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#DescribeStateMachineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#EvaluationFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#EvaluationFailureLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#EventId": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#ExecutionAbortedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#ExecutionListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionNotRedrivable": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionRedriveFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ExecutionRedriveStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ExecutionRedrivenEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionStartedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ExecutionSucceededEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ExecutionTimedOutEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#GetActivityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#GetActivityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ActivityDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#ActivityWorkerLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#GetActivityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#GetActivityTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#GetExecutionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#GetExecutionHistoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#GetExecutionHistoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#GetExecutionHistoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#HTTPBody": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HTTPHeaders": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HTTPMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HTTPProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HTTPStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HTTPStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#HistoryEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#HistoryEventExecutionDataDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#HistoryEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#HistoryEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#Identity": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#IncludeExecutionData": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#IncludeExecutionDataGetExecutionHistory": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#IncludedData": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#InspectionData": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InspectionDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InspectionDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InspectionLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#InvalidArn": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidLoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidName": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#InvalidTracingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#KmsAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#KmsDataKeyReusePeriodSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#KmsInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#KmsKeyState": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#KmsThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionScheduleFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionScheduledEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionStartFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionSucceededEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LambdaFunctionTimedOutEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListActivitiesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListActivitiesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListActivitiesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListExecutionsPageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ListMapRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListMapRunsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListMapRunsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListMapRunsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachineAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListStateMachineAliasesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListStateMachineAliasesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachineAliasesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListStateMachineVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListStateMachineVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachineVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListStateMachinesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListStateMachinesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListStateMachinesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LogDestinationList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#LogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#LoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#LongArn": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#LongObject": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#MapIterationEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunExecutionCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunItemCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#MapRunList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#MapRunListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunRedrivenEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunStartedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MapRunStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#MapStateStartedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#MaxConcurrency": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#MissingRequiredParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#PageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#Publish": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#PublishStateMachineVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#PublishStateMachineVersionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#PublishStateMachineVersionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#PublishStateMachineVersionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#RedriveCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#RedriveExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#RedriveExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#ExecutionLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.sfn#ExecutionNotRedrivable"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#RedriveExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#RedriveExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ResourceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#RevealSecrets": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#ReverseOrder": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#RevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#RoutingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#RoutingConfigurationListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskFailure": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#SendTaskFailureInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskTimedOut"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#SendTaskFailureInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskFailureOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskHeartbeat": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#SendTaskHeartbeatInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskTimedOut"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#SendTaskHeartbeatInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskHeartbeatOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskSuccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#SendTaskSuccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidOutput"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidToken"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#TaskTimedOut"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#SendTaskSuccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SendTaskSuccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SensitiveCause": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#SensitiveData": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#SensitiveDataJobInput": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#SensitiveError": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StartExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#StartExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.sfn#ExecutionLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidExecutionInput"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidName"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#StartExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StartExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StartSyncExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#StartSyncExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidExecutionInput"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidName"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineTypeNotSupported"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#StartSyncExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StartSyncExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateEnteredEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateExitedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineAliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#StateMachineAliasListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineDeleting": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#StateMachineListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#StateMachineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#StateMachineTypeNotSupported": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateMachineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#StateMachineVersionListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StateName": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#StopExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#StopExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ExecutionDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#StopExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#StopExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#SyncExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#TooManyTags"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#TaskCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskDoesNotExist": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskScheduledEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskStartFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskStartedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskSubmitFailedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskSubmittedEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskSucceededEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskTimedOut": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskTimedOutEventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TaskToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#TestExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#TestState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#TestStateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidDefinition"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidExecutionInput"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#TestStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TestStateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TimeoutInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sfn#ToleratedFailureCount": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#ToleratedFailurePercentage": {
+      "type": "float"
+    },
+    "com.amazonaws.sfn#TooManyTags": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#TraceHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#TracingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#URL": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#UnsignedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#UnsignedLong": {
+      "type": "long"
+    },
+    "com.amazonaws.sfn#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateMapRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#UpdateMapRunInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#UpdateMapRunInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateMapRunOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateStateMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#UpdateStateMachineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidDefinition"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidEncryptionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidTracingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.sfn#KmsThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.sfn#MissingRequiredParameter"
+        },
+        {
+          "target": "com.amazonaws.sfn#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDoesNotExist"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#UpdateStateMachineAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#UpdateStateMachineAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sfn#InvalidArn"
+        },
+        {
+          "target": "com.amazonaws.sfn#ResourceNotFound"
+        },
+        {
+          "target": "com.amazonaws.sfn#StateMachineDeleting"
+        },
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#UpdateStateMachineAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateStateMachineAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateStateMachineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#UpdateStateMachineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sfn#ValidateStateMachineDefinitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sfn#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionDiagnostic": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionDiagnosticList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionMaxResult": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionResultCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#ValidateStateMachineDefinitionTruncated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sfn#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.sfn#VariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#VariableNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sfn#VariableReferences": {
+      "type": "map"
+    },
+    "com.amazonaws.sfn#VariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#VersionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sfn#VersionWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.sfn#includedDetails": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sfn#truncated": {
+      "type": "boolean"
+    }
+  }
+}

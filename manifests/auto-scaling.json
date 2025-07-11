@@ -1,0 +1,2110 @@
+{
+  "shapes": {
+    "com.amazonaws.autoscaling#AcceleratorCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AcceleratorManufacturer": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#AcceleratorManufacturers": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AcceleratorName": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#AcceleratorNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AcceleratorTotalMemoryMiBRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AcceleratorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#AcceleratorTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ActiveInstanceRefreshNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Activities": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ActivitiesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Activity": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ActivityIds": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ActivityType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AdjustmentType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AdjustmentTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#Alarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AlarmList": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AlarmSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Alarms": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AllowedInstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#AllowedInstanceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AnyPrintableAsciiStringMaxLen4000": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#AsciiStringMaxLen255": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#AssociatePublicIpAddress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#AttachInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#AttachInstancesQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#AttachInstancesQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancerTargetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#AttachLoadBalancerTargetGroupsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancerTargetGroupsResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancerTargetGroupsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#AttachLoadBalancersType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancersResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachLoadBalancersType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachTrafficSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#AttachTrafficSourcesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#AttachTrafficSourcesResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AttachTrafficSourcesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoRollback": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupDesiredCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupMaxSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupMinSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupNamesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupPredictedCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupState": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AutoScalingGroupsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoScalingInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoScalingInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AutoScalingInstancesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AutoScalingNotificationTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#AutoScaling_2011_01_01": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Auto Scaling"
+        }
+      }
+    },
+    "com.amazonaws.autoscaling#AvailabilityZoneDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AvailabilityZoneImpairmentPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#AvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#BakeTime": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#BareMetal": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#BaselineEbsBandwidthMbpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BaselinePerformanceFactorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BatchDeleteScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#BatchDeleteScheduledActionType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#BatchDeleteScheduledActionAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BatchDeleteScheduledActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BatchPutScheduledUpdateGroupAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#BatchPutScheduledUpdateGroupActionType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#AlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#BatchPutScheduledUpdateGroupActionAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BatchPutScheduledUpdateGroupActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsDeleteOnTermination": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsEncrypted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsIops": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsThroughput": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsVolumeSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceEbsVolumeType": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#BlockDeviceMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#BurstablePerformance": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#CancelInstanceRefresh": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#CancelInstanceRefreshType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ActiveInstanceRefreshNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#CancelInstanceRefreshAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CancelInstanceRefreshType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CapacityDistributionStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#CapacityForecast": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CapacityRebalanceEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#CapacityReservationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#CapacityReservationPreference": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#CapacityReservationResourceGroupArns": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#CapacityReservationSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CapacityReservationTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CheckpointDelay": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#CheckpointPercentages": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ClassicLinkVPCSecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#CompleteLifecycleAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#CompleteLifecycleActionType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#CompleteLifecycleActionAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CompleteLifecycleActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Context": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#Cooldown": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#CpuManufacturer": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#CpuManufacturers": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#CpuPerformanceFactorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CreateAutoScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#CreateAutoScalingGroupType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#AlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#CreateAutoScalingGroupType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CreateLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#CreateLaunchConfigurationType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#AlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#CreateLaunchConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CreateOrUpdateTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#CreateOrUpdateTagsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#AlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#CreateOrUpdateTagsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#CustomizedMetricSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DefaultInstanceWarmup": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#DeleteAutoScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteAutoScalingGroupType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteAutoScalingGroupType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#LaunchConfigurationNameType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteLifecycleHook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteLifecycleHookType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteLifecycleHookAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteLifecycleHookType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteNotificationConfigurationType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteNotificationConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeletePolicyType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeletePolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteScheduledActionType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteScheduledActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteTagsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteTagsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteWarmPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DeleteWarmPoolType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DeleteWarmPoolAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DeleteWarmPoolType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeAccountLimits": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeAccountLimitsAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeAdjustmentTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeAdjustmentTypesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeAutoScalingGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#AutoScalingGroupNamesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeAutoScalingInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeAutoScalingInstancesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeAutoScalingInstancesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeAutoScalingNotificationTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeAutoScalingNotificationTypesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeInstanceRefreshes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeInstanceRefreshesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeInstanceRefreshesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeInstanceRefreshesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLaunchConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#LaunchConfigurationNamesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeLifecycleHookTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeLifecycleHookTypesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLifecycleHooks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeLifecycleHooksType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeLifecycleHooksAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLifecycleHooksType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancerTargetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeLoadBalancerTargetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancerTargetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancerTargetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeLoadBalancersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeLoadBalancersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeMetricCollectionTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeMetricCollectionTypesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeNotificationConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeNotificationConfigurationsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeNotificationConfigurationsAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeNotificationConfigurationsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribePoliciesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribePoliciesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeScalingActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeScalingActivitiesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeScalingActivitiesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeScalingProcessTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeScheduledActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeScheduledActionsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeScheduledActionsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeTagsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeTagsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeTerminationPolicyTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeTerminationPolicyTypesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeTrafficSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeTrafficSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeTrafficSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeTrafficSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeWarmPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DescribeWarmPoolType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DescribeWarmPoolAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DescribeWarmPoolType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DesiredConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DetachInstancesQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DetachInstancesAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachInstancesQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancerTargetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DetachLoadBalancerTargetGroupsType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancerTargetGroupsResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancerTargetGroupsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DetachLoadBalancersType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancersResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachLoadBalancersType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachTrafficSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DetachTrafficSourcesType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DetachTrafficSourcesResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DetachTrafficSourcesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DisableMetricsCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#DisableMetricsCollectionQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#DisableMetricsCollectionQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#DisableScaleIn": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#Ebs": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#EbsOptimized": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#EnableMetricsCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#EnableMetricsCollectionQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#EnableMetricsCollectionQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#EnabledMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#EnabledMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#EnterStandby": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#EnterStandbyQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#EnterStandbyAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#EnterStandbyQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#EstimatedInstanceWarmup": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#ExcludedInstance": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#ExcludedInstanceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ExecutePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#ExecutePolicyType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#ExecutePolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ExitStandby": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#ExitStandbyQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#ExitStandbyAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ExitStandbyQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#FailedScheduledUpdateGroupActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#FailedScheduledUpdateGroupActionRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ForceDelete": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#GetPredictiveScalingForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#GetPredictiveScalingForecastType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#GetPredictiveScalingForecastAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#GetPredictiveScalingForecastType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#GlobalTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#HealthCheckGracePeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#HeartbeatTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#HonorCooldown": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#ImpairedZoneHealthCheckBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#IncludeDeletedGroups": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#IncludeInstances": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceGeneration": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#InstanceGenerations": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#InstanceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#InstanceMaintenancePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceMetadataEndpointState": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#InstanceMetadataHttpPutResponseHopLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#InstanceMetadataHttpTokensState": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#InstanceMetadataOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceMonitoring": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceProtected": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#InstanceRefresh": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshIds": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshInProgressFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshLivePoolProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshProgressDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshWarmPoolProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceRefreshes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#InstanceRequirements": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstanceReusePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Instances": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#InstancesDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#InstancesToUpdate": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#IntPercent": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#IntPercent100To200": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#IntPercent100To200Resettable": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#IntPercentResettable": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#InvalidNextToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#IrreversibleInstanceRefreshFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchConfigurationNameType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchConfigurationNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LaunchConfigurationNamesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LaunchConfigurationsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#LaunchTemplateOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LaunchTemplateSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LifecycleActionResult": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#LifecycleActionToken": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#LifecycleHook": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LifecycleHookNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LifecycleHookSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LifecycleHookSpecifications": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LifecycleHooks": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LifecycleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#LifecycleTransition": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#LimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LoadBalancerNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LoadBalancerState": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LoadBalancerStates": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LoadBalancerTargetGroupState": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LoadBalancerTargetGroupStates": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LoadForecast": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#LoadForecasts": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#LocalStorage": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#LocalStorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#LocalStorageTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MaxGroupPreparedCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MaxInstanceLifetime": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MaxNumberOfAutoScalingGroups": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MaxNumberOfLaunchConfigurations": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MemoryGiBPerVCpuRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MemoryMiBRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricCollectionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricCollectionTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MetricDataQueries": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MetricDataQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricDimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#MetricDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#MetricDimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MetricGranularityInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MetricGranularityType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricGranularityTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#MetricNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#MetricScale": {
+      "type": "double"
+    },
+    "com.amazonaws.autoscaling#MetricStat": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MetricStatistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#MetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#MetricUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#Metrics": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#MinAdjustmentMagnitude": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MinAdjustmentStep": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#MixedInstanceSpotPrice": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#MixedInstancesPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#MonitoringEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#NetworkBandwidthGbpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#NetworkInterfaceCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#NoDevice": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#NonZeroIntPercent": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#NotificationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#NotificationTargetResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#NullablePositiveDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.autoscaling#NullablePositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#NumberOfAutoScalingGroups": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#NumberOfLaunchConfigurations": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#OnDemandBaseCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#OnDemandPercentageAboveBaseCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#Overrides": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PerformanceFactorReferenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PerformanceFactorReferenceSetRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PoliciesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PolicyARNType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PolicyIncrement": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#PolicyNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PolicyTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PredefinedLoadMetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#PredefinedMetricPairType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#PredefinedMetricSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredefinedScalingMetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingCustomizedCapacityMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingCustomizedLoadMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingCustomizedScalingMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingForecastTimestamps": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingForecastValues": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingMaxCapacityBreachBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingMaxCapacityBuffer": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingMetricSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingMetricSpecifications": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingPredefinedLoadMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingPredefinedMetricPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingPredefinedScalingMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PredictiveScalingSchedulingBufferTime": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#ProcessNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ProcessType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Processes": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ProcessesType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Progress": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#PropagateAtLaunch": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#ProtectedFromScaleIn": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#PutLifecycleHook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#PutLifecycleHookType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#PutLifecycleHookAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutLifecycleHookType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#PutNotificationConfigurationType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#PutNotificationConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#PutScalingPolicyType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#PutScalingPolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutScheduledUpdateGroupAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#PutScheduledUpdateGroupActionType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#AlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#PutScheduledUpdateGroupActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutWarmPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#PutWarmPoolType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#PutWarmPoolAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#PutWarmPoolType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RecordLifecycleActionHeartbeat": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#RecordLifecycleActionHeartbeatType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#RecordLifecycleActionHeartbeatAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RecordLifecycleActionHeartbeatType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RefreshInstanceWarmup": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#RefreshPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RefreshStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#ResourceContentionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ResourceInUseFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#ResumeProcesses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#ScalingProcessQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#ReturnData": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#ReuseOnScaleIn": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#RollbackDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RollbackInstanceRefresh": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#RollbackInstanceRefreshType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ActiveInstanceRefreshNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#IrreversibleInstanceRefreshFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#RollbackInstanceRefreshAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#RollbackInstanceRefreshType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScaleInProtectedInstances": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#ScalingActivityInProgressFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScalingActivityStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#ScalingPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScalingPolicyEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#ScalingProcessQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScheduledActionNames": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ScheduledActionsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScheduledUpdateGroupAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScheduledUpdateGroupActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ScheduledUpdateGroupActionRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ScheduledUpdateGroupActions": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#ServiceLinkedRoleFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#SetDesiredCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#SetDesiredCapacityType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#SetDesiredCapacityType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#SetInstanceHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#SetInstanceHealthQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#SetInstanceHealthQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#SetInstanceProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#SetInstanceProtectionQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#SetInstanceProtectionAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#SetInstanceProtectionQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#ShouldDecrementDesiredCapacity": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#ShouldRespectGracePeriod": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#SkipMatching": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#SkipZonalShiftValidation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.autoscaling#SpotInstancePools": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#SpotPrice": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#StandbyInstances": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#StartInstanceRefresh": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#StartInstanceRefreshType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#InstanceRefreshInProgressFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#StartInstanceRefreshAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#StartInstanceRefreshType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#StepAdjustment": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#StepAdjustments": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#String": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#SuspendProcesses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#ScalingProcessQuery"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResourceInUseFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#SuspendedProcess": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#SuspendedProcesses": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TagDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TagDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TagsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TargetGroupARNs": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TargetTrackingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TargetTrackingMetricDataQueries": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TargetTrackingMetricDataQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TargetTrackingMetricStat": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TerminateInstanceInAutoScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#TerminateInstanceInAutoScalingGroupType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#TerminateInstanceInAutoScalingGroupType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TerminationPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TimestampType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.autoscaling#TotalLocalStorageGBRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TrafficSourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TrafficSourceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#TrafficSourceStates": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#TrafficSources": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#UpdateAutoScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.autoscaling#UpdateAutoScalingGroupType"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.autoscaling#ResourceContentionFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ScalingActivityInProgressFault"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ServiceLinkedRoleFailure"
+        }
+      ]
+    },
+    "com.amazonaws.autoscaling#UpdateAutoScalingGroupType": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#UpdatePlacementGroupParam": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#VCpuCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.autoscaling#WarmPoolConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.autoscaling#WarmPoolMinSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#WarmPoolSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.autoscaling#WarmPoolState": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#WarmPoolStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.autoscaling#XmlString": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen1023": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen1600": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen19": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen2047": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen255": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen32": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen5000": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen511": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMaxLen64": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMetricLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringMetricStat": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#XmlStringUserData": {
+      "type": "string"
+    },
+    "com.amazonaws.autoscaling#ZonalShiftEnabled": {
+      "type": "boolean"
+    }
+  }
+}

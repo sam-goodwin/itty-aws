@@ -1,0 +1,504 @@
+{
+  "shapes": {
+    "com.amazonaws.mwaa#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#AirflowConfigurationOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.mwaa#AirflowIdentity": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#AirflowVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#AmazonMWAA": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MWAA"
+        }
+      }
+    },
+    "com.amazonaws.mwaa#CeleryExecutorQueue": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#CloudWatchLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ConfigKey": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ConfigValue": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#CreateCliToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#CreateCliTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#CreateCliTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreateCliTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#CreateEnvironmentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#CreateEnvironmentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreateEnvironmentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreateWebLoginToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#CreateWebLoginTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#CreateWebLoginTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreateWebLoginTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#CreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.mwaa#DeleteEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#DeleteEnvironmentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#DeleteEnvironmentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#DeleteEnvironmentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#Dimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#Dimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#EndpointManagement": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#EnvironmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#EnvironmentClass": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#EnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#EnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#EnvironmentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#GetEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#GetEnvironmentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#GetEnvironmentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#GetEnvironmentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#Hostname": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#IamIdentity": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#InvokeRestApi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#InvokeRestApiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#RestApiClientException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#RestApiServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#InvokeRestApiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#InvokeRestApiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#KmsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#LastUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#ListEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#ListEnvironmentsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#ListEnvironmentsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#ListEnvironmentsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#LoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#LoggingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#LoggingEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.mwaa#LoggingLevel": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#MaxWebservers": {
+      "type": "integer"
+    },
+    "com.amazonaws.mwaa#MaxWorkers": {
+      "type": "integer"
+    },
+    "com.amazonaws.mwaa#MetricData": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#MetricDatum": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#MinWebservers": {
+      "type": "integer"
+    },
+    "com.amazonaws.mwaa#MinWorkers": {
+      "type": "integer"
+    },
+    "com.amazonaws.mwaa#ModuleLoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#ModuleLoggingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#PublishMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#PublishMetricsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#PublishMetricsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#PublishMetricsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#RelativePath": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#RestApiClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#RestApiMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#RestApiPath": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#RestApiRequestBody": {
+      "type": "document"
+    },
+    "com.amazonaws.mwaa#RestApiResponse": {
+      "type": "document"
+    },
+    "com.amazonaws.mwaa#RestApiServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#S3BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#Schedulers": {
+      "type": "integer"
+    },
+    "com.amazonaws.mwaa#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#SecurityGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#StatisticSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.mwaa#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.mwaa#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#Unit": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UpdateCreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.mwaa#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mwaa#UpdateEnvironmentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mwaa#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.mwaa#UpdateEnvironmentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UpdateEnvironmentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UpdateError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UpdateNetworkConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#UpdateSource": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#UpdateStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mwaa#VpcEndpointServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#WebserverAccessMode": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#WebserverUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#WeeklyMaintenanceWindowStart": {
+      "type": "string"
+    },
+    "com.amazonaws.mwaa#WorkerReplacementStrategy": {
+      "type": "string"
+    }
+  }
+}

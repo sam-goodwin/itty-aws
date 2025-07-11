@@ -1,0 +1,996 @@
+{
+  "shapes": {
+    "com.amazonaws.mturk#AcceptQualificationRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#AcceptQualificationRequestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#AcceptQualificationRequestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#AcceptQualificationRequestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ApproveAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ApproveAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ApproveAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ApproveAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#Assignment": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#AssignmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#AssignmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#AssignmentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#AssociateQualificationWithWorker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#AssociateQualificationWithWorkerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#AssociateQualificationWithWorkerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#AssociateQualificationWithWorkerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#BonusPayment": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#BonusPaymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.mturk#Comparator": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#CountryParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#CreateAdditionalAssignmentsForHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateAdditionalAssignmentsForHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateAdditionalAssignmentsForHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateAdditionalAssignmentsForHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHITType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateHITTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateHITTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHITTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHITWithHITType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateHITWithHITTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateHITWithHITTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateHITWithHITTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateWorkerBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#CreateWorkerBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#CreateWorkerBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CreateWorkerBlockResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#CurrencyAmount": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#CustomerId": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#CustomerIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#DeleteHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#DeleteHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#DeleteHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DeleteHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DeleteQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#DeleteQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#DeleteQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DeleteQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DeleteWorkerBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#DeleteWorkerBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#DeleteWorkerBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DeleteWorkerBlockResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DisassociateQualificationFromWorker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#DisassociateQualificationFromWorkerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#DisassociateQualificationFromWorkerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#DisassociateQualificationFromWorkerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#EventTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#GetAccountBalance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetAccountBalanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetAccountBalanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetAccountBalanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetFileUploadURL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetFileUploadURLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetFileUploadURLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetFileUploadURLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetQualificationScore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetQualificationScoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetQualificationScoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetQualificationScoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#GetQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#GetQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#GetQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#HIT": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#HITAccessActions": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#HITLayoutParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#HITLayoutParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#HITList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#HITReviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#HITStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.mturk#IntegerList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#ListAssignmentsForHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListAssignmentsForHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListAssignmentsForHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListAssignmentsForHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListBonusPayments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListBonusPaymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListBonusPaymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListBonusPaymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListHITs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListHITsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListHITsForQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListHITsForQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListHITsForQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListHITsForQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListHITsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListHITsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListQualificationRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListQualificationRequestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListQualificationRequestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListQualificationRequestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListQualificationTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListQualificationTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListQualificationTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListQualificationTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListReviewPolicyResultsForHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListReviewPolicyResultsForHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListReviewPolicyResultsForHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListReviewPolicyResultsForHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListReviewableHITs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListReviewableHITsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListReviewableHITsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListReviewableHITsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListWorkerBlocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListWorkerBlocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListWorkerBlocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListWorkerBlocksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListWorkersWithQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#ListWorkersWithQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#ListWorkersWithQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ListWorkersWithQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#Locale": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#LocaleList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.mturk#MTurkRequesterServiceV20170117": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MTurk"
+        }
+      }
+    },
+    "com.amazonaws.mturk#NotificationSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#NotificationTransport": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#NotifyWorkers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#NotifyWorkersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#NotifyWorkersFailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#NotifyWorkersFailureStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#NotifyWorkersFailureStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#NotifyWorkersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#NotifyWorkersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#ParameterMapEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ParameterMapEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#PolicyParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#PolicyParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#Qualification": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#QualificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#QualificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#QualificationRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#QualificationRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#QualificationRequirementList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#QualificationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#QualificationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#QualificationTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#QualificationTypeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#RejectAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#RejectAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#RejectAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#RejectAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#RejectQualificationRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#RejectQualificationRequestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#RejectQualificationRequestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#RejectQualificationRequestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#RequestError": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ResultSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.mturk#ReviewActionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ReviewActionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#ReviewActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#ReviewPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ReviewPolicyLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#ReviewPolicyLevelList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#ReviewReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ReviewResultDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ReviewResultDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#ReviewableHITStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mturk#SendBonus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#SendBonusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#SendBonusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#SendBonusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#SendTestEventNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#SendTestEventNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#SendTestEventNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#SendTestEventNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#ServiceFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#String": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.mturk#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.mturk#TurkErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.mturk#UpdateExpirationForHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#UpdateExpirationForHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#UpdateExpirationForHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateExpirationForHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateHITReviewStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#UpdateHITReviewStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#UpdateHITReviewStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateHITReviewStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateHITTypeOfHIT": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#UpdateHITTypeOfHITRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#UpdateHITTypeOfHITRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateHITTypeOfHITResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateNotificationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#UpdateNotificationSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#UpdateNotificationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateNotificationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateQualificationType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mturk#UpdateQualificationTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mturk#RequestError"
+        },
+        {
+          "target": "com.amazonaws.mturk#ServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.mturk#UpdateQualificationTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#UpdateQualificationTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#WorkerBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.mturk#WorkerBlockList": {
+      "type": "list"
+    }
+  }
+}

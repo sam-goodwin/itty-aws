@@ -1,0 +1,1276 @@
+{
+  "shapes": {
+    "com.amazonaws.greengrassv2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociateClientDeviceWithCoreDeviceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociateClientDeviceWithCoreDeviceEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#AssociateClientDeviceWithCoreDeviceErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociateClientDeviceWithCoreDeviceErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#AssociateServiceRoleToAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#AssociateServiceRoleToAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#AssociateServiceRoleToAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociateServiceRoleToAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociatedClientDevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#AssociatedClientDeviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#BatchAssociateClientDeviceWithCoreDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#BatchAssociateClientDeviceWithCoreDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#BatchAssociateClientDeviceWithCoreDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#BatchAssociateClientDeviceWithCoreDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#BatchDisassociateClientDeviceFromCoreDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#BatchDisassociateClientDeviceFromCoreDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#BatchDisassociateClientDeviceFromCoreDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#BatchDisassociateClientDeviceFromCoreDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CPU": {
+      "type": "double"
+    },
+    "com.amazonaws.greengrassv2#CancelDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#CancelDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#CancelDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CancelDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ClientTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#CloudComponentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#CloudComponentStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#Component": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentCandidate": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentCandidateList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ComponentConfigurationPath": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentConfigurationPathList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ComponentConfigurationString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentConfigurationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentDependencyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#ComponentDependencyRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentDependencyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#ComponentDeploymentSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentDeploymentSpecifications": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#ComponentLatestVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ComponentNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentPlatformList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ComponentRunWith": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentVersionARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ComponentVersionListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ComponentVersionRequirementMap": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#ComponentVersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ComponentVisibilityScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ConnectivityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CoreDevice": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CoreDeviceArchitectureString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#CoreDevicePlatformString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#CoreDeviceRuntimeString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#CoreDeviceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#CoreDeviceThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#CoreDevicesList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#CreateComponentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#CreateComponentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#RequestAlreadyInProgressException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#CreateComponentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CreateComponentVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#RequestAlreadyInProgressException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#CreateDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DefaultMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#DeleteComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#DeleteComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#DeleteComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeleteCoreDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#DeleteCoreDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#DeleteCoreDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeleteDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#DeleteDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#DeleteDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeploymentComponentUpdatePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeploymentComponentUpdatePolicyAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#DeploymentConfigurationValidationPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeploymentFailureHandlingPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#DeploymentHistoryFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#DeploymentID": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#DeploymentIoTJobConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeploymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#DeploymentName": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#DeploymentNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#DeploymentPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#DescribeComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#DescribeComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#DescribeComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DescribeComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#DisassociateClientDeviceFromCoreDeviceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DisassociateClientDeviceFromCoreDeviceEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#DisassociateClientDeviceFromCoreDeviceErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DisassociateClientDeviceFromCoreDeviceErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#DisassociateServiceRoleFromAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#DisassociateServiceRoleFromAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#DisassociateServiceRoleFromAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#DisassociateServiceRoleFromAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentErrorStack": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentErrorType": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentErrorTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentStatusDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#EffectiveDeploymentsList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#FileSystemPath": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#GGCVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#GenericV2ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#GetComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetComponentVersionArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetComponentVersionArtifactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetComponentVersionArtifactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetComponentVersionArtifactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetConnectivityInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetConnectivityInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetConnectivityInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetConnectivityInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetCoreDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetCoreDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetCoreDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetCoreDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetServiceRoleForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#GetServiceRoleForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#GetServiceRoleForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GetServiceRoleForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#GreengrassV2": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "GreengrassV2"
+        }
+      }
+    },
+    "com.amazonaws.greengrassv2#InstalledComponent": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#InstalledComponentLifecycleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#InstalledComponentLifecycleStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#InstalledComponentLifecycleStatusCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#InstalledComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#InstalledComponentTopologyFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#IoTJobAbortAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#IoTJobAbortConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobAbortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobAbortCriteriaList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#IoTJobAbortThresholdPercentage": {
+      "type": "double"
+    },
+    "com.amazonaws.greengrassv2#IoTJobExecutionFailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#IoTJobExecutionsRolloutConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobExponentialRolloutRate": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#IoTJobInProgressTimeoutInMinutes": {
+      "type": "long"
+    },
+    "com.amazonaws.greengrassv2#IoTJobMaxExecutionsPerMin": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#IoTJobMinimumNumberOfExecutedThings": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#IoTJobNumberOfThings": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#IoTJobRateIncreaseCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTJobRolloutBaseRatePerMinute": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#IoTJobRolloutIncrementFactor": {
+      "type": "double"
+    },
+    "com.amazonaws.greengrassv2#IoTJobTimeoutConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#IoTThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#IotEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#IsLatestForTarget": {
+      "type": "boolean"
+    },
+    "com.amazonaws.greengrassv2#IsRoot": {
+      "type": "boolean"
+    },
+    "com.amazonaws.greengrassv2#LambdaContainerParams": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaDeviceList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#LambdaDeviceMount": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaEnvironmentVariables": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#LambdaEventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaEventSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#LambdaEventSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#LambdaExecArg": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#LambdaExecArgsList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#LambdaExecutionParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaFilesystemPermission": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#LambdaFunctionRecipeSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaInputPayloadEncodingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#LambdaIsolationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#LambdaLinuxProcessParams": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LambdaVolumeList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#LambdaVolumeMount": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#LifecycleStateDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ListClientDevicesAssociatedWithCoreDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListClientDevicesAssociatedWithCoreDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListClientDevicesAssociatedWithCoreDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListClientDevicesAssociatedWithCoreDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListComponentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListComponentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListComponentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListComponentVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListCoreDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListCoreDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListCoreDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListCoreDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListEffectiveDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListEffectiveDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListEffectiveDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListEffectiveDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListInstalledComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListInstalledComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListInstalledComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListInstalledComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#Memory": {
+      "type": "long"
+    },
+    "com.amazonaws.greengrassv2#NextTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#NullableString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#OptionalBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.greengrassv2#OptionalInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#PlatformAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#PortNumberInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#PublisherString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#RecipeBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.greengrassv2#RecipeOutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#RequestAlreadyInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ResolveComponentCandidates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#ResolveComponentCandidatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#ResolveComponentCandidatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ResolveComponentCandidatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ResolvedComponentVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ResolvedComponentVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrassv2#S3EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#String": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#SystemResourceLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrassv2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#TargetARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ThingGroupARN": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.greengrassv2#TopicString": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrassv2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#UpdateConnectivityInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrassv2#UpdateConnectivityInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrassv2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.greengrassv2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrassv2#UpdateConnectivityInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#UpdateConnectivityInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrassv2#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrassv2#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#VendorGuidance": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrassv2#connectivityInfoList": {
+      "type": "list"
+    }
+  }
+}

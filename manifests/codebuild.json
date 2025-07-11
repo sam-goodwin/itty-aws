@@ -1,0 +1,1760 @@
+{
+  "shapes": {
+    "com.amazonaws.codebuild#AccountLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#AccountSuspendedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ArtifactNamespace": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ArtifactPackaging": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ArtifactsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#AuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#AutoRetryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchDeleteBuilds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchDeleteBuildsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchDeleteBuildsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchDeleteBuildsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetBuildBatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetBuildBatchesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetBuildBatchesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetBuildBatchesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetBuilds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetBuildsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetBuildsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetBuildsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetCommandExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetCommandExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetCommandExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetCommandExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetFleetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetFleetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetFleetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetProjectsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetProjectsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetProjectsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetReportGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetReportGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetReportGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetReportGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetReportsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetReportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetReportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetSandboxes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#BatchGetSandboxesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#BatchGetSandboxesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchGetSandboxesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BatchReportModeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#BatchRestrictions": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codebuild#BucketOwnerAccess": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#Build": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildArtifacts": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildArtifactsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildBatchFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildBatchIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildBatchPhase": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildBatchPhaseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#BuildBatchPhases": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildBatches": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildNotDeleted": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildPhase": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildPhaseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#BuildPhases": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildReportArns": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildStatusConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#BuildTimeOut": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#Builds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#BuildsNotDeleted": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#CacheMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#CacheType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#CloudWatchLogsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CodeBuild_20161006": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CodeBuild"
+        }
+      }
+    },
+    "com.amazonaws.codebuild#CodeCoverage": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CodeCoverageReportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CodeCoverages": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#CommandExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CommandExecutionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#CommandExecutions": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#CommandType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ComputeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ComputeTypesAllowed": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#CreateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#CreateFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#CreateFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#CreateProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#CreateProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateReportGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#CreateReportGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#CreateReportGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateReportGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#CreateWebhookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#OAuthProviderException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#CreateWebhookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CreateWebhookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#CredentialProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#DebugSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteBuildBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteBuildBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteBuildBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteBuildBatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteReportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteReportGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteReportGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteReportGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteReportGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteReportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteReportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteSourceCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteSourceCredentialsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteSourceCredentialsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteSourceCredentialsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DeleteWebhookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#OAuthProviderException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DeleteWebhookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DeleteWebhookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DescribeCodeCoverages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DescribeCodeCoveragesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DescribeCodeCoveragesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DescribeCodeCoveragesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DescribeTestCases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#DescribeTestCasesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#DescribeTestCasesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DescribeTestCasesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DockerServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#DockerServerStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#EnvironmentImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#EnvironmentImages": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#EnvironmentLanguage": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#EnvironmentLanguages": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#EnvironmentPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#EnvironmentPlatforms": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#EnvironmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#EnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#EnvironmentVariableType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#EnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ExportedEnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ExportedEnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FileSystemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FilterGroup": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FilterGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#Fleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#FleetArns": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FleetCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#FleetContextCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetName": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#FleetNames": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FleetOverflowBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetProxyRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#FleetProxyRuleBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetProxyRuleEffectType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetProxyRuleEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FleetProxyRuleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetProxyRules": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FleetScalingMetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetScalingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetSortByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#FleetStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#FleetStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#Fleets": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#FleetsAllowed": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#GetReportGroupTrend": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#GetReportGroupTrendInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#GetReportGroupTrendInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#GetReportGroupTrendOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#GetResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#GetResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#GetResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#GitCloneDepth": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#GitSubmodulesConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Identifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ImagePullCredentialsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ImageVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ImportSourceCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ImportSourceCredentialsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ImportSourceCredentialsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ImportSourceCredentialsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#InvalidateProjectCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#InvalidateProjectCacheInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#InvalidateProjectCacheInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#InvalidateProjectCacheOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#KeyInput": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#LanguageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ListBuildBatches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListBuildBatchesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListBuildBatchesForProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListBuildBatchesForProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListBuildBatchesForProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildBatchesForProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildBatchesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildBatchesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuilds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListBuildsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListBuildsForProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListBuildsForProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListBuildsForProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildsForProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListBuildsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListCommandExecutionsForSandbox": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListCommandExecutionsForSandboxInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListCommandExecutionsForSandboxInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListCommandExecutionsForSandboxOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListCuratedEnvironmentImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListCuratedEnvironmentImagesInput"
+      }
+    },
+    "com.amazonaws.codebuild#ListCuratedEnvironmentImagesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListCuratedEnvironmentImagesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListFleetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListFleetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListFleetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListProjectsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListProjectsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListProjectsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReportGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListReportGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListReportGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReportGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListReportsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListReportsForReportGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListReportsForReportGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListReportsForReportGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReportsForReportGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReportsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListReportsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSandboxes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListSandboxesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListSandboxesForProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListSandboxesForProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListSandboxesForProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSandboxesForProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSandboxesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSandboxesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSharedProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListSharedProjectsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListSharedProjectsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSharedProjectsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSharedReportGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListSharedReportGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListSharedReportGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSharedReportGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSourceCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#ListSourceCredentialsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#ListSourceCredentialsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ListSourceCredentialsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#LogsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#LogsConfigStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#LogsLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#MachineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#NonNegativeInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#OAuthProviderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#Percentage": {
+      "type": "double"
+    },
+    "com.amazonaws.codebuild#PhaseContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#PhaseContexts": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#PlatformType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#Project": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectArns": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectArtifacts": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectArtifactsList": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectBadge": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectBuildBatchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectCache": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectCacheModes": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#ProjectEnvironment": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectFileSystemLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectFileSystemLocations": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectFleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#ProjectNames": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectSecondarySourceVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectSortByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ProjectSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectSourceVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ProjectSources": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProjectVisibilityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#Projects": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ProxyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#PutResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#PutResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#PutResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#RegistryCredential": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Report": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ReportArns": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ReportCodeCoverageSortByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportExportConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ReportExportConfigType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ReportGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ReportGroupArns": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ReportGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#ReportGroupSortByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportGroupStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportGroupTrendFieldType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportGroupTrendRawDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ReportGroupTrendStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ReportGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ReportPackagingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportStatusCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.codebuild#ReportStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#ReportWithRawData": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Reports": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ResolvedArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ResolvedSecondaryArtifacts": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#RetryBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#RetryBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#RetryBuildBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#RetryBuildBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#RetryBuildBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#RetryBuildBatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#RetryBuildBatchType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#RetryBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#RetryBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#S3LogsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#S3ReportExportConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SSMSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Sandbox": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SandboxIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#SandboxSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SandboxSessionPhase": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SandboxSessionPhases": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#Sandboxes": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#ScalingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ScalingConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ScopeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#SensitiveNonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#ServerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#SharedResourceSortByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#SortOrderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#SourceAuth": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SourceAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#SourceCredentialsInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#SourceCredentialsInfos": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#StartBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StartBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StartBuildBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StartBuildBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StartBuildBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartBuildBatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartCommandExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StartCommandExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StartCommandExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartCommandExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartSandbox": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StartSandboxInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StartSandboxConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StartSandboxConnectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StartSandboxConnectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartSandboxConnectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartSandboxInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StartSandboxOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#StopBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StopBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StopBuildBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StopBuildBatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StopBuildBatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StopBuildBatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StopBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StopBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StopSandbox": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#StopSandboxInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#StopSandboxInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#StopSandboxOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#String": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#TargetTrackingScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#TargetTrackingScalingConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#TestCase": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#TestCaseFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#TestCases": {
+      "type": "list"
+    },
+    "com.amazonaws.codebuild#TestReportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#TimeOut": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codebuild#UpdateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#UpdateFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#AccountLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#UpdateFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#UpdateProjectInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#UpdateProjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateProjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateProjectVisibility": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#UpdateProjectVisibilityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#UpdateProjectVisibilityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateProjectVisibilityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateReportGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#UpdateReportGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#UpdateReportGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateReportGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codebuild#UpdateWebhookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codebuild#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#OAuthProviderException"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codebuild#UpdateWebhookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#UpdateWebhookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#ValueInput": {
+      "type": "string"
+    },
+    "com.amazonaws.codebuild#VpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#Webhook": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#WebhookBuildType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#WebhookFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codebuild#WebhookFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#WebhookScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#WebhookStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codebuild#WrapperBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codebuild#WrapperDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.codebuild#WrapperInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.codebuild#WrapperLong": {
+      "type": "long"
+    }
+  }
+}

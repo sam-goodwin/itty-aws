@@ -1,0 +1,376 @@
+{
+  "shapes": {
+    "com.amazonaws.lexruntimeservice#AWSDeepSenseRunTimeService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Lex Runtime Service"
+        }
+      }
+    },
+    "com.amazonaws.lexruntimeservice#Accept": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextTimeToLive": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextTimeToLiveInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextTurnsToLive": {
+      "type": "integer"
+    },
+    "com.amazonaws.lexruntimeservice#ActiveContextsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimeservice#BadGatewayException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#BlobStream": {
+      "type": "blob"
+    },
+    "com.amazonaws.lexruntimeservice#BotAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#BotName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#BotVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#Button": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ButtonTextStringWithLength": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#ButtonValueStringWithLength": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#ConfirmationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#DeleteSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimeservice#DeleteSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimeservice#DeleteSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#DeleteSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#DependencyFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#DialogAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#DialogActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#DialogState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.lexruntimeservice#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#FulfillmentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#GenericAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#GetSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimeservice#GetSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimeservice#GetSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#GetSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#HttpContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#IntentConfidence": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#IntentList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimeservice#IntentName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#IntentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#IntentSummaryCheckpointLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#IntentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimeservice#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#LoopDetectedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#MessageFormatType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimeservice#NotAcceptableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#PostContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimeservice#PostContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LoopDetectedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotAcceptableException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#UnsupportedMediaTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimeservice#PostContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PostContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PostText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimeservice#PostTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LoopDetectedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimeservice#PostTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PostTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PredictedIntent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PutSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimeservice#PutSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotAcceptableException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimeservice#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimeservice#PutSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#PutSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#RequestTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#ResponseCard": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SensitiveStringUnbounded": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SentimentLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#SentimentScore": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#String": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimeservice#StringUrlWithLength": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#StringWithLength": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SynthesizedJsonActiveContextsString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SynthesizedJsonAttributesString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#SynthesizedJsonString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#Text": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#UnsupportedMediaTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimeservice#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimeservice#genericAttachmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimeservice#listOfButtons": {
+      "type": "list"
+    }
+  }
+}

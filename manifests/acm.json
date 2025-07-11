@@ -1,0 +1,665 @@
+{
+  "shapes": {
+    "com.amazonaws.acm#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#AddTagsToCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#AddTagsToCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acm#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.acm#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#AddTagsToCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#AvailabilityErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#CertificateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#CertificateBodyBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acm#CertificateChain": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#CertificateChainBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acm#CertificateDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#CertificateExport": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#CertificateManagedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#CertificateManager": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ACM"
+        }
+      }
+    },
+    "com.amazonaws.acm#CertificateOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#CertificateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#CertificateStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#CertificateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#CertificateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#CertificateTransparencyLoggingPreference": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#CertificateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DeleteCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#DeleteCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.acm#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#DeleteCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DescribeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#DescribeCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#DescribeCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DescribeCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#DomainNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#DomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#DomainValidation": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DomainValidationList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#DomainValidationOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#DomainValidationOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#ExpiryEventsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ExportCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#ExportCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#ExportCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ExportCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ExtendedKeyUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ExtendedKeyUsageFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#ExtendedKeyUsageList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#ExtendedKeyUsageName": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#ExtendedKeyUsageNames": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#FailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#Filters": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#GetAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#GetAccountConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#GetCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#GetCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#GetCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#GetCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#HttpRedirect": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#ImportCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#ImportCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acm#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acm#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#ImportCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ImportCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InUseList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#InvalidArgsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InvalidArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InvalidDomainValidationOptionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#InvalidTagException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#KeyAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#KeyAlgorithmList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#KeyUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#KeyUsageFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#KeyUsageList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#KeyUsageName": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#KeyUsageNames": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ListCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#ListCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArgsException"
+        },
+        {
+          "target": "com.amazonaws.acm#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#ListCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ListCertificatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ListTagsForCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#ListTagsForCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#ListTagsForCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ListTagsForCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.acm#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.acm#PassphraseBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acm#PcaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#PositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.acm#PrivateKey": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#PrivateKeyBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.acm#PutAccountConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#PutAccountConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.acm#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.acm#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#PutAccountConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RecordType": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#RemoveTagsFromCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#RemoveTagsFromCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acm#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#RemoveTagsFromCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RenewCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#RenewCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#RequestInProgressException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#RenewCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RenewalEligibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#RenewalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#RenewalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RequestCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#RequestCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidDomainValidationOptionsException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidTagException"
+        },
+        {
+          "target": "com.amazonaws.acm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acm#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.acm#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#RequestCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RequestCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RequestInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ResendValidationEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#ResendValidationEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidDomainValidationOptionsException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#ResendValidationEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ResourceRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RevocationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#RevokeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#RevokeCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.acm#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.acm#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#RevokeCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#RevokeCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ServiceErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#SortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.acm#String": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.acm#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#TagPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#UpdateCertificateOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.acm#UpdateCertificateOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.acm#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.acm#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.acm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.acm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.acm#UpdateCertificateOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ValidationEmailList": {
+      "type": "list"
+    },
+    "com.amazonaws.acm#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.acm#ValidationExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.acm#ValidationMethod": {
+      "type": "enum"
+    }
+  }
+}

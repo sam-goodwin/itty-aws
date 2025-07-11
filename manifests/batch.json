@@ -1,0 +1,1238 @@
+{
+  "shapes": {
+    "com.amazonaws.batch#AWSBatchV20160810": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Batch"
+        }
+      }
+    },
+    "com.amazonaws.batch#ArrayJobDependency": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#ArrayJobStatusSummary": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#ArrayProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ArrayPropertiesDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ArrayPropertiesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#AssignPublicIp": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#AttemptContainerDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#AttemptDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#AttemptDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#AttemptEcsTaskDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#AttemptTaskContainerDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.batch#CEState": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CEStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CEType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CRAllocationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CRType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CRUpdateAllocationStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CancelJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#ComputeEnvironmentDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ComputeEnvironmentDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ComputeEnvironmentOrder": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ComputeEnvironmentOrders": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ComputeResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ComputeResourceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ConsumableResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ConsumableResourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ConsumableResourceRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ConsumableResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ConsumableResourceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ContainerDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ContainerOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ContainerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ContainerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateComputeEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#CreateComputeEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#CreateComputeEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateComputeEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateConsumableResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#CreateConsumableResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#CreateConsumableResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateConsumableResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateJobQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#CreateJobQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#CreateJobQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateJobQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateSchedulingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#CreateSchedulingPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#CreateSchedulingPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#CreateSchedulingPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteComputeEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DeleteComputeEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DeleteComputeEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteComputeEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteConsumableResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DeleteConsumableResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DeleteConsumableResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteConsumableResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteJobQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DeleteJobQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DeleteJobQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteJobQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteSchedulingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DeleteSchedulingPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DeleteSchedulingPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeleteSchedulingPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeregisterJobDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DeregisterJobDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DeregisterJobDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeregisterJobDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeComputeEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeComputeEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeComputeEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeComputeEnvironmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeConsumableResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeConsumableResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeConsumableResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeConsumableResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeJobDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeJobDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobQueues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeJobQueuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeJobQueuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobQueuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeSchedulingPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#DescribeSchedulingPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#DescribeSchedulingPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DescribeSchedulingPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#DeviceCgroupPermission": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#DeviceCgroupPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#DevicesList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EFSAuthorizationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EFSAuthorizationConfigIAM": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#EFSTransitEncryption": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#EFSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Ec2Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Ec2ConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EcsProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EcsPropertiesDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EcsPropertiesOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EcsTaskDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EcsTaskProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksAnnotationsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#EksAttemptContainerDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksAttemptContainerDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksAttemptDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksAttemptDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainer": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksContainerEnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerEnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksContainerOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksContainerResourceRequirements": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerSecurityContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerVolumeMount": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksContainerVolumeMounts": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksContainers": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EksEmptyDir": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksHostPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksLabelsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#EksLimits": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#EksMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPersistentVolumeClaim": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPodProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPodPropertiesDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPodPropertiesOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPropertiesDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksPropertiesOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksRequests": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#EksSecret": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EksVolumes": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EnvironmentVariables": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#EphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EvaluateOnExit": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#EvaluateOnExitList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#FairsharePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#FargatePlatformConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#FirelensConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#FirelensConfigurationOptionsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#FirelensConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.batch#FrontOfQueueDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#FrontOfQueueJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#FrontOfQueueJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#GetJobQueueSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#GetJobQueueSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#GetJobQueueSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#GetJobQueueSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Host": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ImageIdOverride": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#ImagePullSecret": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ImagePullSecrets": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ImageType": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.batch#JQState": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JQStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JobDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobDefinitionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JobDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobDependencyList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobExecutionTimeoutMinutes": {
+      "type": "long"
+    },
+    "com.amazonaws.batch#JobQueueDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobQueueDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobStateTimeLimitAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobStateTimeLimitActions": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobStateTimeLimitActionsAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JobStateTimeLimitActionsState": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#JobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#JobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#JobTimeout": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#KeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#KeyValuesPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#KubernetesVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#LaunchTemplateSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#LaunchTemplateSpecificationOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#LaunchTemplateSpecificationOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#LinuxParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListAttemptEcsTaskDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListAttemptTaskContainerDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListConsumableResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#ListConsumableResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#ListConsumableResourcesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListConsumableResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListConsumableResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListEcsTaskDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListEcsTaskProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#ListJobsByConsumableResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResourceFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListJobsByConsumableResourceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListJobsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListSchedulingPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#ListSchedulingPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#ListSchedulingPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListSchedulingPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ListTaskContainerDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListTaskContainerOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListTaskContainerProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ListTaskPropertiesOverride": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#LogConfigurationOptionsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#LogDriver": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.batch#MountPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#MountPoints": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NetworkInterfaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#NodeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NodeOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NodeProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NodePropertiesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NodePropertyOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#NodePropertyOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#NodeRangeProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#NodeRangeProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#OrchestrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#ParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#PlatformCapability": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#PlatformCapabilityList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#Quantity": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#RegisterJobDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#RegisterJobDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#RegisterJobDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#RegisterJobDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#RepositoryCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ResourceRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ResourceRequirements": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#RetryAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#RetryStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#RuntimePlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#SchedulingPolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#SchedulingPolicyDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#SchedulingPolicyListingDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#SchedulingPolicyListingDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#Secret": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#SecretList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#ServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ShareAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#ShareAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#String": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#SubmitJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#SubmitJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#SubmitJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#SubmitJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#TagKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.batch#TagrisTagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.batch#TaskContainerDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TaskContainerDependencyList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#TaskContainerDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TaskContainerOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TaskContainerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TaskPropertiesOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TerminateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#TerminateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#TerminateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TerminateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Tmpfs": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#TmpfsList": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#Ulimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Ulimits": {
+      "type": "list"
+    },
+    "com.amazonaws.batch#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateComputeEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#UpdateComputeEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#UpdateComputeEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateComputeEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateConsumableResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#UpdateConsumableResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#UpdateConsumableResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateConsumableResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateJobQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#UpdateJobQueueRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#UpdateJobQueueRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateJobQueueResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdatePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateSchedulingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.batch#UpdateSchedulingPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.batch#ClientException"
+        },
+        {
+          "target": "com.amazonaws.batch#ServerException"
+        }
+      ]
+    },
+    "com.amazonaws.batch#UpdateSchedulingPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UpdateSchedulingPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#UserdataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.batch#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.batch#Volumes": {
+      "type": "list"
+    }
+  }
+}

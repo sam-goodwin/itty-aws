@@ -1,0 +1,280 @@
+{
+  "shapes": {
+    "com.amazonaws.pricing#AWSPriceListService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Pricing"
+        }
+      }
+    },
+    "com.amazonaws.pricing#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#AttributeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#AttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.pricing#CurrencyCode": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#DescribeServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pricing#DescribeServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pricing#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.pricing#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.pricing#DescribeServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#DescribeServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#EffectiveDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.pricing#ExpiredNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#Field": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#FileFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#FileFormats": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#FilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pricing#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#FormatVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#GetAttributeValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pricing#GetAttributeValuesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pricing#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.pricing#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.pricing#GetAttributeValuesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#GetAttributeValuesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#GetPriceListFileUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pricing#GetPriceListFileUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pricing#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.pricing#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.pricing#GetPriceListFileUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#GetPriceListFileUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#GetProducts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pricing#GetProductsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pricing#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.pricing#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.pricing#GetProductsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#GetProductsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#ListPriceLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pricing#ListPriceListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pricing#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.pricing#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.pricing#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pricing#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.pricing#ListPriceListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#ListPriceListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.pricing#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#PriceList": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#PriceListArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#PriceListJsonItems": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#PriceLists": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#RegionCode": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#ServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#ServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.pricing#String": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#SynthesizedJsonPriceListJsonItem": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pricing#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.pricing#errorMessage": {
+      "type": "string"
+    }
+  }
+}

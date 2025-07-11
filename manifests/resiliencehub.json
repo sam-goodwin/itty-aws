@@ -1,0 +1,2550 @@
+{
+  "shapes": {
+    "com.amazonaws.resiliencehub#AcceptGroupingRecommendationEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AcceptGroupingRecommendationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AcceptResourceGroupingRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#AcceptResourceGroupingRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#AcceptResourceGroupingRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AcceptResourceGroupingRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AddDraftAppVersionResourceMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#AddDraftAppVersionResourceMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#AddDraftAppVersionResourceMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AddDraftAppVersionResourceMappingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AdditionalInfoMap": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#AdditionalInfoValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#Alarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AlarmRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AlarmRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AlarmReferenceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AlarmType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#App": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppAssessment": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppAssessmentScheduleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AppAssessmentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppAssessmentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppComplianceStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AppComponent": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppComponentCompliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppComponentList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppComponentNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppDriftStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AppInputSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppInputSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AppSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AppSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppTemplateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#AppVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AppVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AssessmentCompliance": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#AssessmentInvoker": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AssessmentRiskRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AssessmentRiskRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AssessmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#AssessmentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#AssessmentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#AwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#AwsResilienceHub": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "resiliencehub"
+        }
+      }
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusFailedEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusFailedEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusSuccessfulEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatusSuccessfulEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.resiliencehub#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ComplianceDrift": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ComplianceDriftList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ComplianceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ComponentCompliancesList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ComponentRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ComponentRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ConditionOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ConfigRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ConfigRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ConfigRecommendationOptimizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Cost": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CostFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#CreateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#CreateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#CreateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionAppComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#CreateAppVersionAppComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionAppComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionAppComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#CreateAppVersionResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateAppVersionResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateRecommendationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#CreateRecommendationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#CreateRecommendationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateRecommendationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateResiliencyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#CreateResiliencyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#CreateResiliencyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CreateResiliencyPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#CurrencyCode": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#CustomerId": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#DataLocationConstraint": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteAppAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteAppAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteAppAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppInputSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteAppInputSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteAppInputSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppInputSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionAppComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteAppVersionAppComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionAppComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionAppComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteAppVersionResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteAppVersionResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteRecommendationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteRecommendationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteRecommendationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteRecommendationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteResiliencyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DeleteResiliencyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DeleteResiliencyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DeleteResiliencyPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionAppComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppVersionAppComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionAppComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionAppComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppVersionResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResourcesResolutionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppVersionResourcesResolutionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResourcesResolutionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResourcesResolutionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeAppVersionTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeAppVersionTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeDraftAppVersionResourcesImportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeDraftAppVersionResourcesImportStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeDraftAppVersionResourcesImportStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeDraftAppVersionResourcesImportStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeMetricsExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeMetricsExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeMetricsExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeMetricsExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeResiliencyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeResiliencyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeResiliencyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeResiliencyPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeResourceGroupingRecommendationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#DescribeResourceGroupingRecommendationTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#DescribeResourceGroupingRecommendationTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DescribeResourceGroupingRecommendationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DifferenceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#DisruptionCompliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#DisruptionPolicy": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#DisruptionResiliencyScore": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#DisruptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#DocumentName": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.resiliencehub#DriftStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#DriftType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#EksNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EksNamespaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#EksSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#EksSourceClusterNamespace": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#EksSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#EntityDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EntityName": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EntityName255": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EntityNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#EntityVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ErrorDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#EstimatedCostTier": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#EventSubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ExcludeRecommendationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#Experiment": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#FailedGroupingRecommendationEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#FailedGroupingRecommendationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#FailurePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Field": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#FieldAggregationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#GroupingAppComponent": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#GroupingRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#GroupingRecommendationConfidenceLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#GroupingRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#GroupingRecommendationRejectionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#GroupingRecommendationStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#GroupingResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#GroupingResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#HaArchitecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#IamRoleArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#IamRoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ImportResourcesToDraftAppVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ImportResourcesToDraftAppVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ImportResourcesToDraftAppVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ImportResourcesToDraftAppVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.resiliencehub#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.resiliencehub#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAlarmRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAlarmRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAlarmRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAlarmRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentComplianceDrifts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppAssessmentComplianceDriftsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentComplianceDriftsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentComplianceDriftsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentResourceDrifts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppAssessmentResourceDriftsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentResourceDriftsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentResourceDriftsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppAssessmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppAssessmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentCompliances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppComponentCompliancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentCompliancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentCompliancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppComponentRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppComponentRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppInputSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppInputSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppInputSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppInputSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionAppComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppVersionAppComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionAppComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionAppComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResourceMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppVersionResourceMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResourceMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResourceMappingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppVersionResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListAppsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListRecommendationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListRecommendationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListRecommendationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListRecommendationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListResiliencyPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListResiliencyPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListResiliencyPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListResiliencyPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListResourceGroupingRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListResourceGroupingRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListResourceGroupingRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListResourceGroupingRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListSopRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListSopRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListSopRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListSopRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListSuggestedResiliencyPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListSuggestedResiliencyPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListSuggestedResiliencyPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListSuggestedResiliencyPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListTestRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListTestRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListTestRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListTestRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListUnsupportedAppVersionResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ListUnsupportedAppVersionResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ListUnsupportedAppVersionResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ListUnsupportedAppVersionResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#LogicalResourceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.resiliencehub#LongOptional": {
+      "type": "long"
+    },
+    "com.amazonaws.resiliencehub#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.resiliencehub#MetricsExportStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#PermissionModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PermissionModelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#PhysicalIdentifierType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#PhysicalResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PhysicalResourceId": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PhysicalResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#PublishAppVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#PublishAppVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#PublishAppVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PublishAppVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PutDraftAppVersionTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#PutDraftAppVersionTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#PutDraftAppVersionTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#PutDraftAppVersionTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RecommendationCompliance": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#RecommendationComplianceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#RecommendationDisruptionCompliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RecommendationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RecommendationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RecommendationItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RecommendationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#RecommendationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RecommendationTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RecommendationTemplateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#RecommendationTemplateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RejectGroupingRecommendationEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RejectGroupingRecommendationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RejectResourceGroupingRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#RejectResourceGroupingRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#RejectResourceGroupingRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RejectResourceGroupingRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RemoveDraftAppVersionResourceMappings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#RemoveDraftAppVersionResourceMappingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#RemoveDraftAppVersionResourceMappingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RemoveDraftAppVersionResourceMappingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#RenderRecommendationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#RenderRecommendationTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ResiliencyPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ResiliencyPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResiliencyPolicyTier": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResiliencyScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResiliencyScoreType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResolveAppVersionResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#ResolveAppVersionResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#ResolveAppVersionResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResolveAppVersionResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceDrift": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceDriftList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ResourceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ResourceErrorsDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceImportStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResourceImportStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResourceMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#ResourceMappingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ResourceResolutionStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResourceSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ResourcesGroupingRecGenStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.resiliencehub#Row": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#RowList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#S3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ScoringComponentResiliencyScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#ScoringComponentResiliencyScores": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#Seconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.resiliencehub#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#SopRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#SopRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#SopServiceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#Sort": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#SortList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#SpecReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#StartAppAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#StartAppAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#StartAppAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#StartAppAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#StartMetricsExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#StartMetricsExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#StartMetricsExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#StartMetricsExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#StartResourceGroupingRecommendationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#StartResourceGroupingRecommendationTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#StartResourceGroupingRecommendationTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#StartResourceGroupingRecommendationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#String1024": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#String128WithoutWhitespace": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#String2048": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#String255": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#String255List": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#String500": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#SuggestedChangesList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.resiliencehub#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#TemplateFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#TerraformSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#TerraformSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#TestRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#TestRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#TestRisk": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#TestType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resiliencehub#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.resiliencehub#UnsupportedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UnsupportedResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UpdateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UpdateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UpdateAppVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionAppComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UpdateAppVersionAppComponentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionAppComponentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionAppComponentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UpdateAppVersionResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateAppVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateRecommendationStatusItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateRecommendationStatusRequestEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.resiliencehub#UpdateRecommendationStatusRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateResiliencyPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resiliencehub#UpdateResiliencyPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resiliencehub#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.resiliencehub#UpdateResiliencyPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#UpdateResiliencyPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.resiliencehub#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.resiliencehub#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

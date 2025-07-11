@@ -1,0 +1,3412 @@
+{
+  "shapes": {
+    "com.amazonaws.configservice#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#AccountAggregationSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AccountAggregationSourceAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AccountAggregationSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#AggregateComplianceByConfigRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateComplianceByConfigRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregateComplianceByConformancePack": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateComplianceByConformancePackList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregateComplianceCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateComplianceCountList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackCompliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceSummaryFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceSummaryGroupKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#AggregateConformancePackComplianceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregateEvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregateEvaluationResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregateResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregatedSourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregatedSourceStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregatedSourceStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#AggregatedSourceStatusTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregatedSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#AggregationAuthorization": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregationAuthorizationList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AggregatorFilterResourceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregatorFilterServicePrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregatorFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#AggregatorFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AggregatorRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#AllSupported": {
+      "type": "boolean"
+    },
+    "com.amazonaws.configservice#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Annotation": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#AssociateResourceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#AssociateResourceTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#AssociateResourceTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AssociateResourceTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#AutoRemediationAttemptSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.configservice#AutoRemediationAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#AvailabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#AwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#BaseConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#BaseConfigurationItems": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#BaseResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#BatchGetAggregateResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#BatchGetAggregateResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#BatchGetAggregateResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#BatchGetAggregateResourceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#BatchGetResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#BatchGetResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#BatchGetResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#BatchGetResourceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.configservice#ChannelName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ChronologicalOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Compliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceByConfigRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceByConfigRules": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ComplianceByResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceByResources": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ComplianceContributorCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceResourceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ComplianceScore": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ComplianceSummariesByResourceType": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ComplianceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceSummaryByResourceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ComplianceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ComplianceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigExportDeliveryInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigRuleComplianceFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigRuleComplianceSummaryFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigRuleComplianceSummaryGroupKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConfigRuleEvaluationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigRuleEvaluationStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigRuleNames": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigRuleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConfigRules": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigSnapshotDeliveryProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigStreamDeliveryInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Configuration": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigurationAggregator": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationAggregatorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigurationAggregatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationAggregatorName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigurationAggregatorNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationItemCaptureTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#ConfigurationItemDeliveryTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#ConfigurationItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationItemMD5Hash": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigurationItemStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorder": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConfigurationRecorderSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConfigurationStateId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackArn": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceResourceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceScores": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceScoresFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackComplianceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConformancePackConfigRuleNames": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackEvaluationFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackEvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConformancePackInputParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackInputParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConformancePackNameFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackNamesToSummarizeList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackRuleCompliance": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackRuleComplianceList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackRuleEvaluationResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackState": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ConformancePackStatusDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ConformancePackStatusDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ConformancePackStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ConformancePackTemplateValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ControlsList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#CosmosPageLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#CustomPolicyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#DebugLogDeliveryAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#DeleteAggregationAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteAggregationAuthorizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteAggregationAuthorizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteConfigurationAggregator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteConfigurationAggregatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteConfigurationAggregatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteConformancePack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteConformancePackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteConformancePackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteDeliveryChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteDeliveryChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#LastDeliveryChannelDeleteFailedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchDeliveryChannelException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteDeliveryChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteEvaluationResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteEvaluationResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteEvaluationResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteEvaluationResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteOrganizationConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteOrganizationConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteOrganizationConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteOrganizationConformancePack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteOrganizationConformancePackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteOrganizationConformancePackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeletePendingAggregationRequest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeletePendingAggregationRequestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeletePendingAggregationRequestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteRemediationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteRemediationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchRemediationConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#RemediationInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteRemediationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteRemediationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteRemediationExceptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteRemediationExceptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchRemediationExceptionException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteRemediationExceptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteRemediationExceptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoRunningConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteRetentionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteRetentionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchRetentionConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteRetentionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteServiceLinkedConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteServiceLinkedConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteServiceLinkedConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteServiceLinkedConfigurationRecorderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteStoredQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeleteStoredQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeleteStoredQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeleteStoredQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeliverConfigSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DeliverConfigSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoRunningConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchDeliveryChannelException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DeliverConfigSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeliverConfigSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeliveryChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeliveryChannelList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#DeliveryChannelNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#DeliveryChannelStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DeliveryChannelStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#DeliveryS3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#DeliveryS3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#DeliveryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConfigRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeAggregateComplianceByConfigRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConfigRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConfigRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConformancePacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeAggregateComplianceByConformancePacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConformancePacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeAggregateComplianceByConformancePacksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeAggregationAuthorizations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeAggregationAuthorizationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeAggregationAuthorizationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeAggregationAuthorizationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeComplianceByConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeComplianceByConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeComplianceByConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeComplianceByConfigRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeComplianceByResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeComplianceByResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeComplianceByResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeComplianceByResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigRuleEvaluationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigRuleEvaluationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigRuleEvaluationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigRuleEvaluationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigRulesFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregatorSourcesStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigurationAggregatorSourcesStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregatorSourcesStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregatorSourcesStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigurationAggregatorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregatorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationAggregatorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecorderStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigurationRecorderStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecorderStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecorderStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecorders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConfigurationRecordersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecordersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConfigurationRecordersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePackCompliance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConformancePackComplianceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleInConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConformancePackException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConformancePackComplianceLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#DescribeConformancePackComplianceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePackComplianceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePackStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConformancePackStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConformancePackStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePackStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeConformancePacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConformancePackException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeConformancePacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeConformancePacksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannelStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeDeliveryChannelStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchDeliveryChannelException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannelStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannelStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeDeliveryChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchDeliveryChannelException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeDeliveryChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRuleStatuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeOrganizationConfigRuleStatusesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRuleStatusesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRuleStatusesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeOrganizationConfigRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConfigRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePackStatuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeOrganizationConformancePackStatusesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePackStatusesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePackStatusesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePacks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeOrganizationConformancePacksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePacksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeOrganizationConformancePacksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribePendingAggregationRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribePendingAggregationRequestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribePendingAggregationRequestsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#DescribePendingAggregationRequestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribePendingAggregationRequestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeRemediationConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.configservice#DescribeRemediationConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationExceptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeRemediationExceptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeRemediationExceptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationExceptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationExecutionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeRemediationExecutionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchRemediationConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeRemediationExecutionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRemediationExecutionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRetentionConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DescribeRetentionConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchRetentionConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DescribeRetentionConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DescribeRetentionConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#DisassociateResourceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#DisassociateResourceTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#DisassociateResourceTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DisassociateResourceTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#DiscoveredResourceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#EarlierTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#EmptiableStringWithCharLimit256": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Evaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationContextIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#EvaluationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#EvaluationModeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationModes": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationResultIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationResultQualifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#EvaluationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#EvaluationTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#Evaluations": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#EventSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ExcludedAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ExclusionByResourceTypes": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ExecutionControls": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Expression": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ExternalEvaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#FailedDeleteRemediationExceptionsBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#FailedDeleteRemediationExceptionsBatches": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#FailedRemediationBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#FailedRemediationBatches": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#FailedRemediationExceptionBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#FailedRemediationExceptionBatches": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#FieldInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#FieldInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#GetAggregateComplianceDetailsByConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetAggregateComplianceDetailsByConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetAggregateComplianceDetailsByConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateComplianceDetailsByConfigRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateConfigRuleComplianceSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetAggregateConfigRuleComplianceSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetAggregateConfigRuleComplianceSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateConfigRuleComplianceSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateConformancePackComplianceSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetAggregateConformancePackComplianceSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetAggregateConformancePackComplianceSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateConformancePackComplianceSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateDiscoveredResourceCounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetAggregateDiscoveredResourceCountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetAggregateDiscoveredResourceCountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateDiscoveredResourceCountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetAggregateResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OversizedConfigurationItemException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceNotDiscoveredException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetAggregateResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetAggregateResourceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetComplianceDetailsByConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByConfigRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetComplianceDetailsByResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceDetailsByResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceSummaryByConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.configservice#GetComplianceSummaryByConfigRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceSummaryByResourceType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetComplianceSummaryByResourceTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetComplianceSummaryByResourceTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetComplianceSummaryByResourceTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetConformancePackComplianceDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleInConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConformancePackException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceDetailsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetConformancePackComplianceSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConformancePackException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetConformancePackComplianceSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetCustomRulePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetCustomRulePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetCustomRulePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetCustomRulePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetDiscoveredResourceCounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetDiscoveredResourceCountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetDiscoveredResourceCountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetDiscoveredResourceCountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationConfigRuleDetailedStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetOrganizationConfigRuleDetailedStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetOrganizationConfigRuleDetailedStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationConfigRuleDetailedStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationConformancePackDetailedStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetOrganizationConformancePackDetailedStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConformancePackException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetOrganizationConformancePackDetailedStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationConformancePackDetailedStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationCustomRulePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetOrganizationCustomRulePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetOrganizationCustomRulePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetOrganizationCustomRulePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetResourceConfigHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetResourceConfigHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidTimeRangeException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceNotDiscoveredException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetResourceConfigHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetResourceConfigHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetResourceEvaluationSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetResourceEvaluationSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetResourceEvaluationSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetResourceEvaluationSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetStoredQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#GetStoredQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#GetStoredQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GetStoredQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GroupByAPILimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#GroupedResourceCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#GroupedResourceCountList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#IdempotentParameterMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#IncludeGlobalResourceTypes": {
+      "type": "boolean"
+    },
+    "com.amazonaws.configservice#InsufficientDeliveryPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InsufficientPermissionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#InvalidConfigurationRecorderNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidDeliveryChannelNameException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidExpressionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidLimitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidRecordingGroupException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidResultTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidRoleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidS3KeyPrefixException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidS3KmsKeyArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidSNSTopicARNException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#InvalidTimeRangeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#LastDeliveryChannelDeleteFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#LastUpdatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#LaterTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#Limit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListAggregateDiscoveredResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListAggregateDiscoveredResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListAggregateDiscoveredResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListAggregateDiscoveredResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListConfigurationRecorders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListConfigurationRecordersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListConfigurationRecordersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListConfigurationRecordersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListConformancePackComplianceScores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListConformancePackComplianceScoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListConformancePackComplianceScoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListConformancePackComplianceScoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListDiscoveredResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListDiscoveredResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListDiscoveredResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListDiscoveredResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListResourceEvaluations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListResourceEvaluationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidTimeRangeException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListResourceEvaluationsPageItemLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#ListResourceEvaluationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListResourceEvaluationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListStoredQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListStoredQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListStoredQueriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListStoredQueriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.configservice#MaxActiveResourcesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfConfigRulesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfConfigurationRecordersExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfConformancePacksExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfDeliveryChannelsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfOrganizationConfigRulesExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfOrganizationConformancePacksExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxNumberOfRetentionConfigurationsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#MaximumExecutionFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#MemberAccountRuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#MemberAccountStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#MessageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#NoAvailableConfigurationRecorderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoAvailableDeliveryChannelException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoAvailableOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoRunningConfigurationRecorderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchBucketException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchConfigRuleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchConfigRuleInConformancePackException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchConfigurationAggregatorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchConfigurationRecorderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchConformancePackException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchDeliveryChannelException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchOrganizationConfigRuleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchOrganizationConformancePackException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchRemediationConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchRemediationExceptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#NoSuchRetentionConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrderingTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#OrganizationAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationAggregationSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationAllFeaturesNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleDetailedStatus": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleNames": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleTriggerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleTriggerTypeNoSN": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleTriggerTypeNoSNs": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRuleTriggerTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConfigRules": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePack": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackDetailedStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackDetailedStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackNames": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePackTemplateValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationConformancePacks": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#OrganizationCustomPolicyRuleMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationCustomPolicyRuleMetadataNoPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationCustomRuleMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationManagedRuleMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationResourceDetailedStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#OrganizationResourceDetailedStatusFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#OrganizationResourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#OrganizationRuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#OversizedConfigurationItemException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Owner": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#PageSizeLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#PendingAggregationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PendingAggregationRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#PolicyRuntime": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#PolicyText": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#PutAggregationAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutAggregationAuthorizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutAggregationAuthorizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutAggregationAuthorizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfConfigRulesExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConfigurationAggregator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutConfigurationAggregatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAllFeaturesNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutConfigurationAggregatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConfigurationAggregatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidConfigurationRecorderNameException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidRecordingGroupException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidRoleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfConfigurationRecordersExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#UnmodifiableEntityException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConformancePack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutConformancePackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ConformancePackTemplateValidationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfConformancePacksExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutConformancePackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutConformancePackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutDeliveryChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutDeliveryChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientDeliveryPolicyException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidDeliveryChannelNameException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidS3KeyPrefixException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidS3KmsKeyArnException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidSNSTopicARNException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfDeliveryChannelsExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchBucketException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutDeliveryChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutEvaluations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutEvaluationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidResultTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutEvaluationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutEvaluationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutExternalEvaluation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutExternalEvaluationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutExternalEvaluationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutExternalEvaluationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutOrganizationConfigRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutOrganizationConfigRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfOrganizationConfigRulesExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAllFeaturesNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutOrganizationConfigRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutOrganizationConfigRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutOrganizationConformancePack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutOrganizationConformancePackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfOrganizationConformancePacksExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoAvailableOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationAllFeaturesNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.configservice#OrganizationConformancePackTemplateValidationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutOrganizationConformancePackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutOrganizationConformancePackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRemediationConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutRemediationConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutRemediationConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRemediationConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRemediationExceptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutRemediationExceptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutRemediationExceptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRemediationExceptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxActiveResourcesExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoRunningConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRetentionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutRetentionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#MaxNumberOfRetentionConfigurationsExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutRetentionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutRetentionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutServiceLinkedConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutServiceLinkedConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutServiceLinkedConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutServiceLinkedConfigurationRecorderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutStoredQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#PutStoredQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.configservice#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#PutStoredQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#PutStoredQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#QueryArn": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#QueryDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#QueryExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#QueryId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#QueryInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#QueryName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#RecorderName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#RecorderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#RecordingFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#RecordingGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RecordingMode": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RecordingModeOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RecordingModeOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RecordingModeResourceTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RecordingScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#RecordingStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RecordingStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ReevaluateConfigRuleNames": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RelatedEvent": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#RelatedEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#Relationship": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RelationshipList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RelationshipName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#RemediationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RemediationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationExceptionResourceKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationExceptionResourceKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RemediationExceptions": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RemediationExecutionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#RemediationExecutionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationExecutionStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RemediationExecutionStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationExecutionStepState": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#RemediationExecutionSteps": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RemediationInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationParameterValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RemediationParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.configservice#RemediationTargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ResourceConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceConfiguration": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceConfigurationSchemaType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ResourceCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceCountFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceCountGroupKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ResourceCounts": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceCreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#ResourceDeletionTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.configservice#ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceEvaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceEvaluationFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceEvaluationId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceEvaluationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ResourceEvaluations": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceIdentifiersList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceNotDiscoveredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#ResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceTypeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ResourceTypeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceTypesScope": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#ResourceValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ResourceValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#Results": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RetentionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#RetentionConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RetentionConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#RetentionConfigurationNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#RetentionPeriodInDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#RuleLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.configservice#SSMDocumentName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#SSMDocumentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#SchemaVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Scope": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SelectAggregateResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#SelectAggregateResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidExpressionException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationAggregatorException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#SelectAggregateResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SelectAggregateResourceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SelectResourceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#SelectResourceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidExpressionException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidLimitException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#SelectResourceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SelectResourceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ServicePrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ServicePrincipalValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#ServicePrincipalValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#SortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.configservice#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#SourceDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#SsmControls": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StackArn": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StarlingDoveService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Config Service"
+        }
+      }
+    },
+    "com.amazonaws.configservice#StartConfigRulesEvaluation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#StartConfigRulesEvaluationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigRuleException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#StartConfigRulesEvaluationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartConfigRulesEvaluationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#StartConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoAvailableDeliveryChannelException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#StartConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartRemediationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#StartRemediationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#InsufficientPermissionsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.configservice#NoSuchRemediationConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#StartRemediationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartRemediationExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartResourceEvaluation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#StartResourceEvaluationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#IdempotentParameterMismatch"
+        },
+        {
+          "target": "com.amazonaws.configservice#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#StartResourceEvaluationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StartResourceEvaluationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StaticParameterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#StaticValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StatusDetailFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StopConfigurationRecorder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#StopConfigurationRecorderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#NoSuchConfigurationRecorderException"
+        },
+        {
+          "target": "com.amazonaws.configservice#UnmodifiableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#StopConfigurationRecorderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StoredQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StoredQueryMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#StoredQueryMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#String": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit1024": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit128": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit2048": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit256": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit256Min0": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit64": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#StringWithCharLimit768": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#SupplementaryConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.configservice#SupplementaryConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#SupplementaryConfigurationValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.configservice#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.configservice#TagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#TemplateBody": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#TemplateS3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#TemplateSSMDocumentDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#TimeWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#UnmodifiableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#UnprocessedResourceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.configservice#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.configservice#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.configservice#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.configservice#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.configservice#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.configservice#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.configservice#Version": {
+      "type": "string"
+    }
+  }
+}

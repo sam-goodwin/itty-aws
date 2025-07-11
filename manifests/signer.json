@@ -1,0 +1,779 @@
+{
+  "shapes": {
+    "com.amazonaws.signer#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#AddProfilePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#AddProfilePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#AddProfilePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#AddProfilePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.signer#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#CancelSigningProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#CancelSigningProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#CancelSigningProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Category": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#CertificateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#CertificateHashes": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#DescribeSigningJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#DescribeSigningJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#DescribeSigningJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#DescribeSigningJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#EncryptionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#EncryptionAlgorithmOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#EncryptionAlgorithms": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#GetRevocationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#GetRevocationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#GetRevocationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#GetRevocationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#GetSigningPlatform": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#GetSigningPlatformRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#GetSigningPlatformRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#GetSigningPlatformResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#GetSigningProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#GetSigningProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#GetSigningProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#GetSigningProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#HashAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#HashAlgorithmOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#HashAlgorithms": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#ImageFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#ImageFormats": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.signer#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ListProfilePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#ListProfilePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#ListProfilePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListProfilePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#ListSigningJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#ListSigningJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningPlatforms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#ListSigningPlatformsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#ListSigningPlatformsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningPlatformsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#ListSigningProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#ListSigningProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListSigningProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.signer#MaxSizeInMB": {
+      "type": "integer"
+    },
+    "com.amazonaws.signer#Metadata": {
+      "type": "map"
+    },
+    "com.amazonaws.signer#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Payload": {
+      "type": "blob"
+    },
+    "com.amazonaws.signer#Permission": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Permissions": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#PlatformId": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#PolicySizeBytes": {
+      "type": "integer"
+    },
+    "com.amazonaws.signer#Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ProfileName": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ProfileVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#PutSigningProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#PutSigningProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#PutSigningProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#PutSigningProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RemoveProfilePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#RemoveProfilePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#RemoveProfilePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RemoveProfilePermissionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RequestedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RevocationReasonString": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#RevokeSignature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#RevokeSignatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#RevokeSignatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RevokeSigningProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#RevokeSigningProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#RevokeSigningProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#RevokedEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#S3SignedObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#S3Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ServiceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SignPayload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#SignPayloadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#SignPayloadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SignPayloadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SignatureValidityPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SignedObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningConfigurationOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningImageFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningJobRevocationRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#SigningMaterial": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#SigningParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#SigningParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.signer#SigningPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningPlatformOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningPlatforms": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#SigningProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningProfileRevocationRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#SigningProfileStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#SigningProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#SigningStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#StartSigningJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#StartSigningJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.signer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#StartSigningJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#StartSigningJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#StatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#Statuses": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#String": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.signer#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.signer#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.signer#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.signer#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.signer#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.signer#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.signer#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.signer#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.signer#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.signer#ValidityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.signer#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.signer#WallabyService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "signer"
+        }
+      }
+    },
+    "com.amazonaws.signer#bool": {
+      "type": "boolean"
+    }
+  }
+}

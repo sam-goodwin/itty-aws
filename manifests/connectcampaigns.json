@@ -1,0 +1,842 @@
+{
+  "shapes": {
+    "com.amazonaws.connectcampaigns#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#AgentlessDialerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#AmazonConnectCampaignService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ConnectCampaigns"
+        }
+      }
+    },
+    "com.amazonaws.connectcampaigns#AnswerMachineDetectionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#Attributes": {
+      "type": "map"
+    },
+    "com.amazonaws.connectcampaigns#BandwidthAllocation": {
+      "type": "double"
+    },
+    "com.amazonaws.connectcampaigns#Campaign": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#CampaignArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#CampaignFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#CampaignId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#CampaignIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#CampaignName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#CampaignState": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#CampaignSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#CampaignSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ContactFlowId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#CreateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#CreateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#CreateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#CreateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DeleteCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#DeleteCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#DeleteCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DeleteConnectInstanceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#DeleteConnectInstanceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#DeleteConnectInstanceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DeleteInstanceOnboardingJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#DeleteInstanceOnboardingJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#DeleteInstanceOnboardingJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DescribeCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#DescribeCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#DescribeCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DescribeCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DestinationPhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#DialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#DialRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#DialRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#DialerConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.connectcampaigns#DialingCapacity": {
+      "type": "double"
+    },
+    "com.amazonaws.connectcampaigns#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.connectcampaigns#EncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#EncryptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#EncryptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#FailedCampaignStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#FailedCampaignStateResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#FailedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#FailedRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#FailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#GetCampaignStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#GetCampaignStateBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateBatchFailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetCampaignStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetConnectInstanceConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#GetConnectInstanceConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#GetConnectInstanceConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetConnectInstanceConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetInstanceOnboardingJobStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#GetInstanceOnboardingJobStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#GetInstanceOnboardingJobStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#GetInstanceOnboardingJobStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InstanceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#InstanceIdFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InstanceIdFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#InstanceOnboardingJobFailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#InstanceOnboardingJobStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InstanceOnboardingJobStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InvalidCampaignStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ListCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#ListCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#ListCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ListCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectcampaigns#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#OutboundCallConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#PauseCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#PauseCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidCampaignStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#PauseCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#PredictiveDialerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ProgressiveDialerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#PutDialRequestBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#PutDialRequestBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidCampaignStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#PutDialRequestBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#PutDialRequestBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#QueueId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ResumeCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#ResumeCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidCampaignStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#ResumeCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ServiceLinkedRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#SourcePhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#StartCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#StartCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidCampaignStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#StartCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#StartInstanceOnboardingJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#StartInstanceOnboardingJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#StartInstanceOnboardingJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#StartInstanceOnboardingJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#StopCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#StopCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InvalidCampaignStateException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#StopCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#SuccessfulCampaignStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#SuccessfulCampaignStateResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#SuccessfulRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#SuccessfulRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectcampaigns#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.connectcampaigns#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.connectcampaigns#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.connectcampaigns#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignDialerConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#UpdateCampaignDialerConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignDialerConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#UpdateCampaignNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignOutboundCallConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcampaigns#UpdateCampaignOutboundCallConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcampaigns#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcampaigns#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectcampaigns#UpdateCampaignOutboundCallConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectcampaigns#XAmazonErrorType": {
+      "type": "string"
+    }
+  }
+}

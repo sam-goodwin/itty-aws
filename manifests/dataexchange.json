@@ -1,0 +1,1451 @@
+{
+  "shapes": {
+    "com.amazonaws.dataexchange#AcceptDataGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#AcceptDataGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#AcceptDataGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AcceptDataGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AcceptanceStateFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#AcceptanceStateFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ApiDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ApiGatewayApiAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#AssetDestinationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AssetDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AssetEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AssetName": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#AssetSourceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AssetType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#AutoExportRevisionDestinationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AutoExportRevisionToS3RequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateDataGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CreateDataGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CreateDataGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateDataGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateDataSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CreateDataSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CreateDataSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateDataSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateEventAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CreateEventActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ServiceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CreateEventActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateEventActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CreateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CreateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#CreateRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#CreateRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateS3DataAccessFromS3BucketRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#CreateS3DataAccessFromS3BucketResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DataExchange": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DataExchange"
+        }
+      }
+    },
+    "com.amazonaws.dataexchange#DataGrantAcceptanceState": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DataGrantArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DataGrantDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DataGrantId": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DataGrantName": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DataGrantSummaryEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DataSetEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DataUpdateRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DatabaseLFTagPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DatabaseLFTagPolicyAndPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DatabaseLFTagPolicyPermission": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#DeleteAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#DeleteAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#DeleteAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DeleteDataGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#DeleteDataGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#DeleteDataGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DeleteDataSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#DeleteDataSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#DeleteDataSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DeleteEventAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#DeleteEventActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#DeleteEventActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DeleteRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#DeleteRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#DeleteRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#DeprecationRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#Details": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#EventActionEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExceptionCause": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ExportAssetToSignedUrlRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportAssetToSignedUrlResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportAssetsToS3RequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportAssetsToS3ResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportRevisionsToS3RequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportRevisionsToS3ResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ExportServerSideEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetDataGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetDataGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetDataGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetDataGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetDataSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetDataSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetDataSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetDataSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetEventAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetEventActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetEventActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetEventActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetReceivedDataGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetReceivedDataGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetReceivedDataGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetReceivedDataGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#GetRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#GetRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GetRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#GrantDistributionScope": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ImportAssetFromApiGatewayApiRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetFromApiGatewayApiResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetFromSignedUrlJobErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetFromSignedUrlRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetFromSignedUrlResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromLakeFormationTagPolicyRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromLakeFormationTagPolicyResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromRedshiftDataSharesRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromRedshiftDataSharesResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromS3RequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ImportAssetsFromS3ResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#JobEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#JobError": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#JobErrorLimitName": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#JobErrorResourceTypes": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#KmsKeyToGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LFPermission": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#LFResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LFResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#LFTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LFTagPolicyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LakeFormationDataPermissionAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LakeFormationDataPermissionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LakeFormationDataPermissionType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#LakeFormationTagPolicyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#LimitName": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ListDataGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListDataGrantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListDataGrantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListDataGrantsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListDataSetRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListDataSetRevisionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListDataSetRevisionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListDataSetRevisionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListDataSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListDataSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListDataSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListDataSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListEventActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListEventActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListEventActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListEventActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListOfAssetDestinationEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfAssetEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfAssetSourceEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfDataGrantSummaryEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfDataSetEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfDatabaseLFTagPolicyPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfEventActionEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfJobEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfJobError": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfKmsKeysToGrant": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfLFPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfLFTagValues": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfLFTags": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfLakeFormationTagPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfReceivedDataGrantSummariesEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfRedshiftDataShareAssetSourceEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfRedshiftDataShares": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfRevisionDestinationEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfRevisionEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfS3DataAccesses": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfSchemaChangeDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOfTableTagPolicyLFPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.dataexchange#ListReceivedDataGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListReceivedDataGrantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListReceivedDataGrantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListReceivedDataGrantsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListRevisionAssets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListRevisionAssetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#ListRevisionAssetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListRevisionAssetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#ListTagsForResourceRequest"
+      }
+    },
+    "com.amazonaws.dataexchange#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#MapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.dataexchange#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.dataexchange#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#NotificationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#NotificationType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#Origin": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#OriginDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ProtocolType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ReceivedDataGrantSummariesEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ReceiverPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#RedshiftDataShareAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RedshiftDataShareAssetSourceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RedshiftDataShareDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ResponseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RevisionDestinationEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RevisionEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RevisionPublished": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RevokeRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#RevokeRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#RevokeRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RevokeRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#S3DataAccessAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#S3DataAccessAssetSourceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#S3DataAccessDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#S3SnapshotAsset": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SchemaChangeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SchemaChangeRequestDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SchemaChangeType": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ScopeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SendApiAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#SendApiAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#SendApiAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SendApiAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SendDataSetNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#SendDataSetNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#SendDataSetNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SendDataSetNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#SenderPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ServerSideEncryptionTypes": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#ServiceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#StartJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#StartJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#StartJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#StartJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#State": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#TableLFTagPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#TableLFTagPolicyAndPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#TableTagPolicyLFPermission": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#TagResourceRequest"
+      }
+    },
+    "com.amazonaws.dataexchange#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dataexchange#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#UntagResourceRequest"
+      }
+    },
+    "com.amazonaws.dataexchange#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateAsset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#UpdateAssetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#UpdateAssetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateAssetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateDataSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#UpdateDataSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#UpdateDataSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateDataSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateEventAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#UpdateEventActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#UpdateEventActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateEventActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dataexchange#UpdateRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dataexchange#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.dataexchange#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.dataexchange#UpdateRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#UpdateRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dataexchange#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dataexchange#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.dataexchange#__doubleMin0": {
+      "type": "double"
+    },
+    "com.amazonaws.dataexchange#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#__stringMin0Max16384": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#__stringMin0Max4096": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#__stringMin10Max512": {
+      "type": "string"
+    },
+    "com.amazonaws.dataexchange#__stringMin24Max24PatternAZaZ094AZaZ092AZaZ093": {
+      "type": "string"
+    }
+  }
+}

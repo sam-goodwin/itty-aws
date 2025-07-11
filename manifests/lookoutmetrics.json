@@ -1,0 +1,1443 @@
+{
+  "shapes": {
+    "com.amazonaws.lookoutmetrics#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ActivateAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ActivateAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ActivateAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ActivateAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AggregationFunction": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#Alert": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AlertDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AlertFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AlertName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AlertStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#AlertSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AlertSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#AlertType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectionTaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectionTaskStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorConfigSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorDataQualityMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorDataQualityMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorFailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyDetectorSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroupStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroupTimeSeries": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AnomalyGroupTimeSeriesFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AppFlowConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaDataCatalog": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaS3ResultsPath": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AthenaWorkGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#AttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AutoDetectionMetricSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#AutoDetectionS3SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#BackTestAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#BackTestAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#BackTestAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#BackTestAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#BackTestConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#BinaryAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#BinaryListAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lookoutmetrics#CSVFileCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#Charset": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#CloudWatchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#Confidence": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ContributionMatrix": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateAlert": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#CreateAlertRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#CreateAlertRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateAlertResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#CreateAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#CreateAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateMetricSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#CreateMetricSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#CreateMetricSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CreateMetricSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#CsvFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DataItem": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DataQualityMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DataQualityMetricDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DataQualityMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DataQualityMetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#DatabaseHost": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DatabasePort": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutmetrics#DateTimeFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DeactivateAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DeactivateAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DeactivateAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DeactivateAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAlert": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DeleteAlertRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAlertRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAlertResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DeleteAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DeleteAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#Delimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAlert": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DescribeAlertRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAlertRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAlertResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectionExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectionExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectionExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectionExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeMetricSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DescribeMetricSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DescribeMetricSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DescribeMetricSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectMetricSetConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#DetectMetricSetConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#DetectMetricSetConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectMetricSetConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedCsvFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedField": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedFileFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedJsonFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedMetricSetConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedMetricSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DetectedS3SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionContribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionContributionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionNameValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionNameValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionValueContribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionValueContributionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#DimensionValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.lookoutmetrics#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#ExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#ExecutionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#FieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#FileFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#FilterOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#FlowName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#Frequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#GetAnomalyGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#GetAnomalyGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#GetAnomalyGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetAnomalyGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetDataQualityMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#GetDataQualityMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#GetDataQualityMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetDataQualityMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#GetFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#GetFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetSampleData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#GetSampleDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#GetSampleDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#GetSampleDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#HeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#HeaderValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#HistoricalDataPath": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#HistoricalDataPathList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutmetrics#InterMetricImpactDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#InterMetricImpactList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ItemizedMetricStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ItemizedMetricStatsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#JsonFileCompression": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#JsonFormatDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#LambdaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAlerts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListAlertsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListAlertsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAlertsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListAnomalyDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyDetectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupRelatedMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListAnomalyGroupRelatedMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupRelatedMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupRelatedMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListAnomalyGroupSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupSummariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupTimeSeries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListAnomalyGroupTimeSeriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupTimeSeriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListAnomalyGroupTimeSeriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListMetricSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListMetricSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListMetricSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListMetricSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#LookoutMetrics": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "LookoutMetrics"
+        }
+      }
+    },
+    "com.amazonaws.lookoutmetrics#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutmetrics#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricChangePercentage": {
+      "type": "double"
+    },
+    "com.amazonaws.lookoutmetrics#MetricLevelImpact": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricLevelImpactList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#MetricNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetDataQualityMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetDataQualityMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetDimensionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetDimensionFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSetSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#MetricSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#MetricValue": {
+      "type": "double"
+    },
+    "com.amazonaws.lookoutmetrics#MetricValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#NumberAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#NumberListAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Offset": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutmetrics#PoirotSecretManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#PutFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#PutFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#PutFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#PutFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#QuotaCode": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#QuoteSymbol": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RDSDatabaseIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RDSDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RDSSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#RedshiftClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RedshiftDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RedshiftSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#RelatedColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#RelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#S3SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#SNSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#SampleDataS3SourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#SampleRow": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#SampleRows": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Score": {
+      "type": "double"
+    },
+    "com.amazonaws.lookoutmetrics#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#SensitivityThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutmetrics#ServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#SnsFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#StringAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#StringListAttributeValue": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lookoutmetrics#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TemplatedPath": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TemplatedPathList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#TimeSeries": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#TimeSeriesFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#TimeSeriesFeedbackList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#TimeSeriesId": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TimeSeriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lookoutmetrics#TimestampColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#TimestampList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#TimestampString": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutmetrics#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAlert": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#UpdateAlertRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAlertRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAlertResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#UpdateAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateMetricSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutmetrics#UpdateMetricSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutmetrics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.lookoutmetrics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutmetrics#UpdateMetricSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#UpdateMetricSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutmetrics#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutmetrics#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutmetrics#VpcConfiguration": {
+      "type": "structure"
+    }
+  }
+}

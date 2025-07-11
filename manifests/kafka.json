@@ -1,0 +1,2066 @@
+{
+  "shapes": {
+    "com.amazonaws.kafka#AmazonMskCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BatchAssociateScramSecret": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#BatchAssociateScramSecretRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#BatchAssociateScramSecretRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BatchAssociateScramSecretResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BatchDisassociateScramSecret": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#BatchDisassociateScramSecretRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#BatchDisassociateScramSecretRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BatchDisassociateScramSecretResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerAZDistribution": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#BrokerCountUpdateInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerEBSVolumeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerLogs": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerNodeGroupInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerNodeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#BrokerSoftwareInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClientAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClientBroker": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ClientVpcConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CloudWatchLogs": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationStepInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationV2Provisioned": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationV2Serverless": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterOperationV2Summary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ClusterState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ClusterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#CompatibleKafkaVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConfigurationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConfigurationRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConfigurationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConnectivityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConsumerGroupReplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ConsumerGroupReplicationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ControllerNodeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateClusterV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#CreateClusterV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#CreateClusterV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateClusterV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#CreateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#CreateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateReplicator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#CreateReplicatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#CreateReplicatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateReplicatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateVpcConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#CreateVpcConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#CreateVpcConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CreateVpcConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#CustomerActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DeleteClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DeleteClusterPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DeleteClusterPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DeleteClusterPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteClusterPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DeleteConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DeleteConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteReplicator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DeleteReplicatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DeleteReplicatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteReplicatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteVpcConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DeleteVpcConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DeleteVpcConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DeleteVpcConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeClusterOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeClusterOperationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeClusterOperationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterOperationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterOperationV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeClusterOperationV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeClusterOperationV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterOperationV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeClusterV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeClusterV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeClusterV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeConfigurationRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeConfigurationRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeConfigurationRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeConfigurationRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeReplicator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeReplicatorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeReplicatorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeReplicatorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeVpcConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#DescribeVpcConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#DescribeVpcConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#DescribeVpcConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#EBSStorageInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#EncryptionAtRest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#EncryptionInTransit": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#EncryptionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#EnhancedMonitoring": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Firehose": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetBootstrapBrokers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#GetBootstrapBrokersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#GetBootstrapBrokersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetBootstrapBrokersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetClusterPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#GetClusterPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#GetClusterPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetClusterPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetCompatibleKafkaVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#GetCompatibleKafkaVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#GetCompatibleKafkaVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#GetCompatibleKafkaVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Iam": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#JmxExporter": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#JmxExporterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Kafka": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Kafka"
+        }
+      }
+    },
+    "com.amazonaws.kafka#KafkaCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#KafkaClusterClientVpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#KafkaClusterDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#KafkaClusterSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#KafkaVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#KafkaVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ListClientVpcConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListClientVpcConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListClientVpcConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClientVpcConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClusterOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListClusterOperationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListClusterOperationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClusterOperationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClusterOperationsV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListClusterOperationsV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListClusterOperationsV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClusterOperationsV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClustersV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListClustersV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListClustersV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListClustersV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListConfigurationRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListConfigurationRevisionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListConfigurationRevisionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListConfigurationRevisionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListKafkaVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListKafkaVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListKafkaVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListKafkaVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListReplicators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListReplicatorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListReplicatorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListReplicatorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListScramSecrets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListScramSecretsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListScramSecretsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListScramSecretsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListVpcConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#ListVpcConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#ListVpcConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ListVpcConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#LoggingInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafka#MutableClusterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#NodeExporter": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#NodeExporterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#NodeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#NodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#OpenMonitoring": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#OpenMonitoringInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Prometheus": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#PrometheusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Provisioned": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ProvisionedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ProvisionedThroughput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#PublicAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#PutClusterPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#PutClusterPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#PutClusterPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#PutClusterPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#RebootBroker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#RebootBrokerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#RebootBrokerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#RebootBrokerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#RejectClientVpcConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#RejectClientVpcConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#RejectClientVpcConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#RejectClientVpcConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationInfoDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationInfoSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationStartingPosition": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationStartingPositionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ReplicationStateInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationTopicNameConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ReplicationTopicNameConfigurationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ReplicatorState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#ReplicatorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#S3": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Sasl": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Scram": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Serverless": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ServerlessClientAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ServerlessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ServerlessSasl": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#StateInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#StorageInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#StorageMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#TargetCompressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#Tls": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#TopicReplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#TopicReplicationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#Unauthenticated": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UnprocessedScramSecret": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateBrokerCountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateBrokerCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateBrokerStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateBrokerStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateBrokerTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateBrokerTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateBrokerTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateClusterConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateClusterConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateClusterConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateClusterConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateClusterKafkaVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateClusterKafkaVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateClusterKafkaVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateClusterKafkaVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateConnectivity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateConnectivityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateConnectivityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateConnectivityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateMonitoring": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateMonitoringRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateMonitoringRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateMonitoringResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateReplicationInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateReplicationInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateReplicationInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateReplicationInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateSecurity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateSecurityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateSecurityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateSecurityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kafka#UpdateStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kafka#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.kafka#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.kafka#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kafka#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kafka#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.kafka#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kafka#UpdateStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UpdateStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UserIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#UserIdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#VpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectionInfoServerless": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kafka#VpcConnectivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectivityClientAuthentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectivityIam": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectivitySasl": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectivityScram": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#VpcConnectivityTls": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#ZookeeperNodeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kafka#__blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.kafka#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kafka#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.kafka#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafka#__integerMin1Max15": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafka#__integerMin1Max16384": {
+      "type": "integer"
+    },
+    "com.amazonaws.kafka#__listOfBrokerEBSVolumeInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfClientVpcConnection": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfCluster": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfClusterInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfClusterOperationInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfClusterOperationStep": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfClusterOperationV2Summary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfCompatibleKafkaVersion": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfConfigurationRevision": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfKafkaCluster": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfKafkaClusterDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfKafkaClusterSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfKafkaVersion": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfNodeInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfReplicationInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfReplicationInfoDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfReplicationInfoSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfReplicatorSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfUnprocessedScramSecret": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfVpcConfig": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOfVpcConnection": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOf__double": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOf__stringMax249": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__listOf__stringMax256": {
+      "type": "list"
+    },
+    "com.amazonaws.kafka#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.kafka#__mapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.kafka#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMax1024": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMax249": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMax256": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMin1Max128": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMin1Max128Pattern09AZaZ09AZaZ0": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMin1Max64": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__stringMin5Max32": {
+      "type": "string"
+    },
+    "com.amazonaws.kafka#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

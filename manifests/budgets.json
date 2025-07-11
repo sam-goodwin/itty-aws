@@ -1,0 +1,1168 @@
+{
+  "shapes": {
+    "com.amazonaws.budgets#AWSBudgetServiceGateway": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Budgets"
+        }
+      }
+    },
+    "com.amazonaws.budgets#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ActionHistories": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#ActionHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ActionHistoryDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ActionId": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#ActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#ActionSubType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#ActionThreshold": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#Actions": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#AdjustmentPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.budgets#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#ApprovalModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#AutoAdjustData": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#AutoAdjustType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#Budget": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#BudgetName": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#BudgetNotificationsForAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#BudgetNotificationsForAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#BudgetPerformanceHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#BudgetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#BudgetedAndActualAmounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#BudgetedAndActualAmountsList": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#Budgets": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#CalculatedSpend": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#CostCategoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#CostCategoryValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CostFilters": {
+      "type": "map"
+    },
+    "com.amazonaws.budgets#CostTypes": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#CreateBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreationLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#CreateBudgetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#CreateBudgetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreationLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#CreateBudgetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateBudgetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#CreateNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreationLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#CreateNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#CreateSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreationLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#CreateSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreateSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#CreationLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Definition": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DeleteBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DeleteBudgetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DeleteBudgetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ResourceLockedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DeleteBudgetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteBudgetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DeleteNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DeleteNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DeleteSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DeleteSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DeleteSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionHistories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetActionHistoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionHistoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionHistoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetActionsForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetActionsForBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetActionsForBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetNotificationsForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetNotificationsForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetNotificationsForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetNotificationsForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetPerformanceHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetPerformanceHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetPerformanceHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetPerformanceHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeBudgetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeBudgetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeBudgetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeNotificationsForBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeNotificationsForBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeNotificationsForBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeNotificationsForBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeSubscribersForNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#DescribeSubscribersForNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#DescribeSubscribersForNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#DescribeSubscribersForNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Dimension": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#DimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#DimensionValues": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#DuplicateRecordException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#ExecuteBudgetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#ExecuteBudgetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ResourceLockedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#ExecuteBudgetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ExecuteBudgetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ExecutionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#ExpiredNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Expression": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ExpressionDimensionValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Expressions": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#GenericString": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#GenericTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.budgets#Group": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#HistoricalOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#IamActionDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#InstanceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#MatchOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#MatchOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.budgets#MaxResultsBudgetNotifications": {
+      "type": "integer"
+    },
+    "com.amazonaws.budgets#MaxResultsDescribeBudgets": {
+      "type": "integer"
+    },
+    "com.amazonaws.budgets#Metric": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#Metrics": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Notification": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#NotificationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#NotificationThreshold": {
+      "type": "double"
+    },
+    "com.amazonaws.budgets#NotificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#NotificationWithSubscribers": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#NotificationWithSubscribersList": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#Notifications": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.budgets#NumericValue": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#PlannedBudgetLimits": {
+      "type": "map"
+    },
+    "com.amazonaws.budgets#PolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#ResourceLockedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ResourceTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#ResourceTagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#ResourceTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#ResourceTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Role": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Roles": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#ScpActionDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Spend": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#SsmActionDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#Subscriber": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#SubscriberAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Subscribers": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#SubscriptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#TagValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#TargetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#ThresholdType": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#TimePeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#TimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.budgets#UnitValue": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateBudget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#UpdateBudgetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#UpdateBudgetAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#UpdateBudgetActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ResourceLockedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#UpdateBudgetActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateBudgetActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateBudgetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateBudgetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#UpdateNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#UpdateNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.budgets#UpdateSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.budgets#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.budgets#DuplicateRecordException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.budgets#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.budgets#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.budgets#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.budgets#UpdateSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#UpdateSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.budgets#User": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Users": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.budgets#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.budgets#errorMessage": {
+      "type": "string"
+    }
+  }
+}

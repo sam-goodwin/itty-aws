@@ -1,0 +1,3963 @@
+{
+  "shapes": {
+    "com.amazonaws.rekognition#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AgeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Asset": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Assets": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#AssociateFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#AssociateFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#AssociateFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AssociateFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AssociatedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AssociatedFacesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Attribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Attributes": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#AudioMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AudioMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#AuditImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#AuditImages": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#AuditImagesLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#Beard": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#BlackFrame": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#BodyPart": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#BodyParts": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rekognition#BoundingBox": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#BoundingBoxHeight": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#BoundingBoxWidth": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#Celebrity": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CelebrityDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CelebrityList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#CelebrityRecognition": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CelebrityRecognitionSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#CelebrityRecognitions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Challenge": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ChallengePreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ChallengePreferences": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ChallengeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#CollectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#CollectionIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#CompareFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CompareFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CompareFacesMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CompareFacesMatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#CompareFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CompareFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CompareFacesUnmatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ComparedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ComparedFaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ComparedSourceImageFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ConnectedHomeLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ConnectedHomeLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ConnectedHomeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ConnectedHomeSettingsForUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ContentClassifier": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ContentClassifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ContentModerationAggregateBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ContentModerationDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ContentModerationDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ContentModerationSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ContentType": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ContentTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#CopyProjectVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CopyProjectVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CopyProjectVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CopyProjectVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CoversBodyPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateFaceLivenessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateFaceLivenessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateFaceLivenessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateFaceLivenessSessionRequestSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateFaceLivenessSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateProjectVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateProjectVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateProjectVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateProjectVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CustomLabel": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CustomLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#CustomizationFeature": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#CustomizationFeatureConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CustomizationFeatureContentModerationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#CustomizationFeatures": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DatasetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#DatasetChanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DatasetEntry": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#DatasetLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#DatasetLabelDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetLabelDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DatasetLabelStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DatasetMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DatasetSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DatasetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#DatasetStatusMessageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#DatasetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.rekognition#Degree": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#DeleteCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteProjectPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteProjectPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteProjectPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProjectPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProjectVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteProjectVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteProjectVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteProjectVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DeleteUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DescribeCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DescribeCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeProjectVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DescribeProjectVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DescribeProjectVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeProjectVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DescribeProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DescribeProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DescribeStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DescribeStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DescribeStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectCustomLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectCustomLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectCustomLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectCustomLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectLabelsFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DetectLabelsFeatureName": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#DetectLabelsImageBackground": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsImageForeground": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsImageProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsImagePropertiesSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsImageQuality": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsMaxDominantColors": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#DetectLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectLabelsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectModerationLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectModerationLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#HumanLoopQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectModerationLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectModerationLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectProtectiveEquipment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectProtectiveEquipmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectProtectiveEquipmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectProtectiveEquipmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DetectTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DetectTextFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DetectionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DisassociateFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DisassociateFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DisassociateFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DisassociateFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DisassociatedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DisassociatedFacesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DistributeDataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DistributeDatasetEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#DistributeDatasetEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#DistributeDatasetEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DistributeDatasetEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DistributeDatasetMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#DominantColor": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#DominantColors": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Emotion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#EmotionName": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Emotions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#EquipmentDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#EquipmentDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ExtendedPaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ExternalImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#EyeDirection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#EyeOpen": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Eyeglasses": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Face": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceAttributes": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#FaceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#FaceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceMatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceModelVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceOccluded": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#FaceSearchSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#FaceSearchSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#FlowDefinitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Gender": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GenderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#GeneralLabelsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#GeneralLabelsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#GeneralLabelsSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Geometry": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetCelebrityInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetCelebrityInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetCelebrityInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetCelebrityInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetCelebrityRecognition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetCelebrityRecognitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetCelebrityRecognitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetCelebrityRecognitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetContentModeration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetContentModerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetContentModerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetContentModerationRequestMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetContentModerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetFaceDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetFaceDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceLivenessSessionResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetFaceLivenessSessionResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#SessionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetFaceLivenessSessionResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceLivenessSessionResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceSearch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetFaceSearchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetFaceSearchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetFaceSearchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetLabelDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetLabelDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetLabelDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetLabelDetectionRequestMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetLabelDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetMediaAnalysisJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetMediaAnalysisJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetMediaAnalysisJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetMediaAnalysisJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetPersonTracking": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetPersonTrackingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetPersonTrackingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetPersonTrackingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetSegmentDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetSegmentDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetSegmentDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetSegmentDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetTextDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#GetTextDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#GetTextDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GetTextDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#GroundTruthBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.rekognition#GroundTruthManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#HasErrors": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rekognition#HumanLoopActivationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#HumanLoopActivationReason": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#HumanLoopActivationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#HumanLoopArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#HumanLoopConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#HumanLoopDataAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#HumanLoopName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#HumanLoopQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Image": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ImageBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.rekognition#ImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ImageQuality": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ImageTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#IndexFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#IndexFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#IndexFacesModelVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#IndexFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#IndexFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InferenceUnits": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Instances": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidImageFormatException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidManifestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidPolicyRevisionIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#InvalidS3ObjectException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#IsLabeled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rekognition#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#JobTag": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#KinesisDataArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#KinesisDataStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#KinesisVideoArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#KinesisVideoStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#KinesisVideoStreamFragmentNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#KinesisVideoStreamStartSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#KnownGender": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#KnownGenderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Label": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LabelAlias": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LabelAliases": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#LabelCategories": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#LabelCategory": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LabelDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LabelDetectionAggregateBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#LabelDetectionFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#LabelDetectionFeatureName": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#LabelDetectionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LabelDetectionSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#LabelDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Labels": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Landmark": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LandmarkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Landmarks": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListCollections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListCollectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListCollectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListCollectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListDatasetEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListDatasetEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListDatasetEntriesPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ListDatasetEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListDatasetEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListDatasetLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListDatasetLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListDatasetLabelsPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ListDatasetLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListDatasetLabelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListMediaAnalysisJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListMediaAnalysisJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListMediaAnalysisJobsPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ListMediaAnalysisJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListMediaAnalysisJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListProjectPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListProjectPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListProjectPoliciesPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ListProjectPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListProjectPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListStreamProcessors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListStreamProcessorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListStreamProcessorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListStreamProcessorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LivenessImageBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.rekognition#LivenessOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#LivenessS3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#LivenessSessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#LivenessSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MatchedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MaxDurationInSecondsULong": {
+      "type": "long"
+    },
+    "com.amazonaws.rekognition#MaxFaces": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#MaxFacesToIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#MaxPixelThreshold": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#MaxUserResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisDetectModerationLabelsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobFailureCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisManifestSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisModelVersions": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisOperationsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisOutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisResults": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#MediaAnalysisS3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#MinCoveragePercentage": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#ModerationLabel": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ModerationLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#MouthOpen": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Mustache": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#NotificationChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#OrientationCorrection": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#OutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Parent": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Parents": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Percent": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#PersonDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PersonDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PersonDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#PersonIndex": {
+      "type": "long"
+    },
+    "com.amazonaws.rekognition#PersonMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PersonMatches": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#PersonTrackingSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Point": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Polygon": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Pose": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProjectArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectAutoUpdate": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ProjectDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProjectDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectNames": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProjectPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProjectPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProjectPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectPolicyRevisionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ProjectVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectVersionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProjectVersionDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProjectVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ProjectVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ProjectVersionsPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ProjectsPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentBodyPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentPerson": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentPersonIds": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentPersons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentSummarizationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ProtectiveEquipmentTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ProvisionedThroughputExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PutProjectPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#PutProjectPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidPolicyRevisionIdException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#PutProjectPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#PutProjectPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#QualityFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Reason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#Reasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#RecognizeCelebrities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#RecognizeCelebritiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#RecognizeCelebritiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#RecognizeCelebritiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#RegionOfInterest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#RegionsOfInterest": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#RekognitionService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Rekognition"
+        }
+      }
+    },
+    "com.amazonaws.rekognition#RekognitionUniqueId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ResourceNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#S3ObjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#SNSTopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#SearchFaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#SearchFacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#SearchFacesByImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#SearchFacesByImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#SearchFacesByImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchFacesByImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchFacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchFacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#SearchUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#SearchUsersByImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#SearchUsersByImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ImageTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidImageFormatException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#SearchUsersByImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchUsersByImageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchedFaceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SearchedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SegmentConfidence": {
+      "type": "float"
+    },
+    "com.amazonaws.rekognition#SegmentDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SegmentDetections": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#SegmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#SegmentTypeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SegmentTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#SegmentTypesInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SessionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#ShotSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Smile": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartCelebrityRecognition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartCelebrityRecognitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartCelebrityRecognitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartCelebrityRecognitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartContentModeration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartContentModerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartContentModerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartContentModerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartFaceDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartFaceDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartFaceDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartFaceDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartFaceSearch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartFaceSearchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartFaceSearchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartFaceSearchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartLabelDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartLabelDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartLabelDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartLabelDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartMediaAnalysisJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartMediaAnalysisJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidManifestException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartMediaAnalysisJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartMediaAnalysisJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartPersonTracking": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartPersonTrackingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartPersonTrackingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartPersonTrackingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartProjectVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartProjectVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartProjectVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartProjectVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartSegmentDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartSegmentDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartSegmentDetectionFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartSegmentDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartSegmentDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartShotDetectionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartStreamProcessorSessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#StartTechnicalCueDetectionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartTextDetection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StartTextDetectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidS3ObjectException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#VideoTooLargeException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StartTextDetectionFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartTextDetectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StartTextDetectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#StopProjectVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StopProjectVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StopProjectVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StopProjectVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StopStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#StopStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#StopStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StopStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessingStartSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessingStopSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessor": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#StreamProcessorDataSharingPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#StreamProcessorName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#StreamProcessorNotificationChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorParameterToDelete": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#StreamProcessorParametersToDelete": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#StreamProcessorSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorSettingsForUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#StreamProcessorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#String": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Summary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Sunglasses": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#SynthesizedJsonHumanLoopActivationConditionsEvaluationResults": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.rekognition#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#TechnicalCueSegment": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TechnicalCueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#TestingData": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TestingDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TextDetection": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TextDetectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#TextDetectionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TextDetectionResults": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#TextTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Timecode": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Timestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.rekognition#TrainingData": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#TrainingDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.rekognition#ULong": {
+      "type": "long"
+    },
+    "com.amazonaws.rekognition#UnindexedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UnindexedFaces": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsearchedFace": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UnsearchedFaceReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#UnsearchedFaceReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsearchedFacesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceAssociationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceAssociationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDeletion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDeletionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDeletionReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDeletionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDisassociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDisassociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDisassociationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#UnsuccessfulFaceDisassociationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UpdateDatasetEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#UpdateDatasetEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#UpdateDatasetEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UpdateDatasetEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UpdateStreamProcessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rekognition#UpdateStreamProcessorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rekognition#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.rekognition#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.rekognition#UpdateStreamProcessorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UpdateStreamProcessorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#Urls": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UserFaceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UserMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#UserMatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#UserStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#ValidationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#VersionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#VersionName": {
+      "type": "string"
+    },
+    "com.amazonaws.rekognition#VersionNames": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#Versions": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#Video": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#VideoColorRange": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#VideoJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rekognition#VideoMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rekognition#VideoMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.rekognition#VideoTooLargeException": {
+      "type": "structure"
+    }
+  }
+}

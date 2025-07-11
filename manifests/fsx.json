@@ -1,0 +1,2601 @@
+{
+  "shapes": {
+    "com.amazonaws.fsx#AWSAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AWSSimbaAPIService_v20180301": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "FSx"
+        }
+      }
+    },
+    "com.amazonaws.fsx#AccessPointAlreadyOwnedByYou": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AccessPointPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#ActiveDirectoryBackupAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ActiveDirectoryError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ActiveDirectoryErrorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#ActiveDirectoryFullyQualifiedName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AdminPassword": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AdministrativeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AdministrativeActionFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AdministrativeActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#AdministrativeActions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#Aggregate": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AggregateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AggregateListMultiplier": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#Aggregates": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#Alias": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AliasLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#Aliases": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#AlternateDNSName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AlternateDNSNames": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#ArchivePath": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#AssociateFileSystemAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#AssociateFileSystemAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#AssociateFileSystemAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AssociateFileSystemAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AutoExportPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AutoImportPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AutoImportPolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#AutocommitPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#AutocommitPeriodType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#AutocommitPeriodValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#AutomaticBackupRetentionDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#Backup": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupBeingCopied": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#BackupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#BackupInProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#BackupNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupRestoring": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BackupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#Backups": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#BadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#BatchImportMetaDataOnCreate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#CancelDataRepositoryTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CancelDataRepositoryTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryTaskEnded"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryTaskNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CancelDataRepositoryTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CancelDataRepositoryTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CapacityToRelease": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#CompletionReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CoolingPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#CopyBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CopyBackupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BackupNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleRegionForMultiAZ"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidDestinationKmsKey"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidRegion"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidSourceKmsKey"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#SourceBackupUnavailable"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CopyBackupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CopyBackupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CopySnapshotAndUpdateVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CopySnapshotAndUpdateVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CopySnapshotAndUpdateVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CopySnapshotAndUpdateVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CopyTagsToDataRepositoryAssociations": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#CreateAggregateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateAndAttachS3AccessPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateAndAttachS3AccessPointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#AccessPointAlreadyOwnedByYou"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidAccessPoint"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#TooManyAccessPoints"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateAndAttachS3AccessPointOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateAndAttachS3AccessPointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateAndAttachS3AccessPointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateAndAttachS3AccessPointS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateBackupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BackupInProgress"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateBackupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateBackupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateDataRepositoryAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateDataRepositoryTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryTaskExecuting"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateDataRepositoryTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateFileCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidNetworkSettings"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidPerUnitStorageThroughput"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingFileCacheConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateFileCacheDataRepositoryAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#CreateFileCacheLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#ActiveDirectoryError"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidExportPath"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidImportPath"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidNetworkSettings"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidPerUnitStorageThroughput"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingFileSystemConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateFileSystemFromBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateFileSystemFromBackupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#ActiveDirectoryError"
+        },
+        {
+          "target": "com.amazonaws.fsx#BackupNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidNetworkSettings"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidPerUnitStorageThroughput"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingFileSystemConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateFileSystemFromBackupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemFromBackupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemLustreMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemOntapConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateFileSystemWindowsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateOntapVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateOpenZFSOriginSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateOpenZFSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateSnaplockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateStorageVirtualMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateStorageVirtualMachineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#ActiveDirectoryError"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateStorageVirtualMachineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateStorageVirtualMachineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateSvmActiveDirectoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingVolumeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#StorageVirtualMachineNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateVolumeFromBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#CreateVolumeFromBackupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BackupNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingVolumeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#StorageVirtualMachineNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#CreateVolumeFromBackupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateVolumeFromBackupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreateVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fsx#DNSName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DailyTime": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DataCompressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DataRepositoryAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryAssociationId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DataRepositoryAssociationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DataRepositoryAssociationNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DataRepositoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DataRepositoryTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskEnded": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskExecuting": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskPath": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DataRepositoryTaskType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DataRepositoryTasks": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DeleteBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteBackupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BackupBeingCopied"
+        },
+        {
+          "target": "com.amazonaws.fsx#BackupInProgress"
+        },
+        {
+          "target": "com.amazonaws.fsx#BackupNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#BackupRestoring"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteBackupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteBackupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteDataInFileSystem": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#DeleteDataRepositoryAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteDataRepositoryAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryAssociationNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteDataRepositoryAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteDataRepositoryAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteFileCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileCacheNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteFileCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteFileSystemLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemLustreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemOpenZFSOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemOpenZFSOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemOpenZFSResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemWindowsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteFileSystemWindowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteOpenZFSVolumeOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DeleteOpenZFSVolumeOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DeleteSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#SnapshotNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteStorageVirtualMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteStorageVirtualMachineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#StorageVirtualMachineNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteStorageVirtualMachineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteStorageVirtualMachineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DeleteVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DeleteVolumeOntapConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteVolumeOntapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteVolumeOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DeleteVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeBackupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BackupNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeBackupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeBackupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeDataRepositoryAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryAssociationNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidDataRepositoryType"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeDataRepositoryTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryTaskNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeDataRepositoryTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileCaches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeFileCachesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileCacheNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeFileCachesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileCachesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileSystemAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeFileSystemAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeFileSystemAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileSystemAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileSystems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeFileSystemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeFileSystemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeFileSystemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeS3AccessPointAttachments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeS3AccessPointAttachmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#S3AccessPointAttachmentNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeS3AccessPointAttachmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeS3AccessPointAttachmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeSharedVpcConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeSharedVpcConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeSharedVpcConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeSharedVpcConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#SnapshotNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeSnapshotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeStorageVirtualMachines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeStorageVirtualMachinesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#StorageVirtualMachineNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeStorageVirtualMachinesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeStorageVirtualMachinesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeVolumes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DescribeVolumesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DescribeVolumesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DescribeVolumesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DetachAndDeleteS3AccessPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DetachAndDeleteS3AccessPointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#S3AccessPointAttachmentNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DetachAndDeleteS3AccessPointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DetachAndDeleteS3AccessPointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DirectoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DirectoryPassword": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DirectoryUserName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#DisassociateFileSystemAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#DisassociateFileSystemAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#DisassociateFileSystemAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DisassociateFileSystemAliasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DiskIopsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#DiskIopsConfigurationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DnsIps": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#DriveCacheType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#DurationSinceLastAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#EndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fsx#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#EventTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FailedCount": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#FileCache": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheCreating": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheDataRepositoryAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#FileCacheIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FileCacheLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileCacheLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheLustreDeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileCacheLustreMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheNFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileCacheType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileCaches": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FileSystem": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemAdministratorsGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#FileSystemEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemEndpoints": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemFailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemGID": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#FileSystemId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#FileSystemIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FileSystemLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileSystemLustreMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemMaintenanceOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileSystemMaintenanceOperations": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FileSystemNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FileSystemSecondaryGIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#FileSystemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FileSystemTypeVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#FileSystemUID": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#FileSystems": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#FilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#Flag": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#FlexCacheEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#GeneralARN": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#HAPairs": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#IncludeShared": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#IncompatibleParameterError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#IncompatibleRegionForMultiAZ": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InputOntapVolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#IntegerNoMax": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#IntegerNoMaxFromNegativeOne": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#IntegerRecordSizeKiB": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidAccessPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidDataRepositoryType": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidDestinationKmsKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidExportPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidImportPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidNetworkSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidPerUnitStorageThroughput": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidRegion": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#InvalidSourceKmsKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#Iops": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#IpAddressRange": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#JunctionPath": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#LastUpdatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fsx#LifecycleTransitionReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LimitedMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#NotServiceResourceError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceDoesNotSupportTagging"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LustreAccessAuditLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#LustreDeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#LustreFileSystemConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LustreFileSystemMountName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#LustreLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LustreLogCreateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LustreNoSquashNid": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#LustreNoSquashNids": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#LustreReadCacheConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#LustreReadCacheSizingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#LustreRootSquash": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#LustreRootSquashConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#Megabytes": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#MegabytesPerSecond": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#MetadataConfigurationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#MetadataIops": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#MetadataStorageCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#MissingFileCacheConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#MissingFileSystemConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#MissingVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#NFSDataRepositoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#NetBiosAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#NetworkInterfaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#NetworkInterfaceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#NfsVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#NotServiceResourceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OntapDeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OntapEndpointIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#OntapFileSystemConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OntapVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OntapVolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSClientConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSClientConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#OpenZFSClients": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#OpenZFSCopyStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSCreateRootVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSDataCompressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSDeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSFileSystemConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSFileSystemIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSFileSystemUserType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSNfsExport": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSNfsExportOption": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#OpenZFSNfsExportOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#OpenZFSNfsExports": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#OpenZFSOriginSnapshotConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSPosixFileSystemUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSQuotaType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSReadCacheConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSReadCacheSizingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#OpenZFSUserAndGroupQuotas": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#OpenZFSUserOrGroupQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OpenZFSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#OrganizationalUnitDistinguishedName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#Parameter": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#PerUnitStorageThroughput": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#PrivilegedDelete": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#ProgressPercent": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#ReadOnly": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fsx#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#ReleaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ReleaseFileSystemNfsV3Locks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#ReleaseFileSystemNfsV3LocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#ReleaseFileSystemNfsV3LocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ReleaseFileSystemNfsV3LocksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ReleasedCapacity": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#RemainingTransferBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#ReportFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#ReportScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#RepositoryDnsIps": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#RequestTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fsx#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#ResourceDoesNotSupportTagging": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ResourceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#RestoreOpenZFSVolumeOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#RestoreOpenZFSVolumeOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#RestoreVolumeFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#RestoreVolumeFromSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#RestoreVolumeFromSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#RestoreVolumeFromSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#RetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#RetentionPeriodType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#RetentionPeriodValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#RouteTableId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#RouteTableIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#S3AccessPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3AccessPointAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentNames": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachments": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentsFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentsFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#S3AccessPointAttachmentsFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#S3AccessPointOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3AccessPointVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#S3DataRepositoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SecurityStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#SelfManagedActiveDirectoryAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SelfManagedActiveDirectoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SelfManagedActiveDirectoryConfigurationUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#ServiceLimit": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#ServiceLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SizeInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#SnaplockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SnaplockRetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SnaplockType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#Snapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SnapshotFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SnapshotFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#SnapshotFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SnapshotFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SnapshotFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SnapshotId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SnapshotIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SnapshotLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#SnapshotName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SnapshotNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SnapshotPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#Snapshots": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SourceBackupId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SourceBackupUnavailable": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StartMisconfiguredStateRecovery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#StartMisconfiguredStateRecoveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#StartMisconfiguredStateRecoveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StartMisconfiguredStateRecoveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fsx#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#StorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachine": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineRootVolumeSecurityStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachineSubtype": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#StorageVirtualMachines": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SubDirectoriesPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#SucceededCount": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#SvmActiveDirectoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SvmEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#SvmEndpoints": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#NotServiceResourceError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceDoesNotSupportTagging"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#TaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#TaskIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#ThroughputCapacityMbps": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#ThroughputCapacityPerHAPair": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#TieringPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#TieringPolicyName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#TooManyAccessPoints": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#TotalConstituents": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#TotalCount": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#TotalTransferBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#Unit": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#UnsupportedOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#NotServiceResourceError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceDoesNotSupportTagging"
+        },
+        {
+          "target": "com.amazonaws.fsx#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateDataRepositoryAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateDataRepositoryAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#DataRepositoryAssociationNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateDataRepositoryAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateDataRepositoryAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateFileCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileCacheNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingFileCacheConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateFileCacheLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateFileSystemRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#FileSystemNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InvalidNetworkSettings"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingFileSystemConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#ServiceLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateFileSystemLustreConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemLustreMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemOntapConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemOpenZFSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateFileSystemWindowsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateOntapVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateOpenZFSVolumeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateOpenZFSVolumeOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#UpdateOpenZFSVolumeOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#UpdateSharedVpcConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateSharedVpcConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateSharedVpcConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateSharedVpcConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateSnaplockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#SnapshotNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateStorageVirtualMachine": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateStorageVirtualMachineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#StorageVirtualMachineNotFound"
+        },
+        {
+          "target": "com.amazonaws.fsx#UnsupportedOperation"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateStorageVirtualMachineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateStorageVirtualMachineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateSvmActiveDirectoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fsx#UpdateVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fsx#BadRequest"
+        },
+        {
+          "target": "com.amazonaws.fsx#IncompatibleParameterError"
+        },
+        {
+          "target": "com.amazonaws.fsx#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.fsx#MissingVolumeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#VolumeNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.fsx#UpdateVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#UpdateVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#Value": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#VerboseFlag": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#VolumeCapacity": {
+      "type": "integer"
+    },
+    "com.amazonaws.fsx#VolumeCapacityBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.fsx#VolumeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#VolumeFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#VolumeFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#VolumeFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#VolumeFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#VolumeId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#VolumeIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#VolumeLifecycle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#VolumeName": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#VolumeNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#VolumePath": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#VolumeStyle": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#VolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#Volumes": {
+      "type": "list"
+    },
+    "com.amazonaws.fsx#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#WeeklyTime": {
+      "type": "string"
+    },
+    "com.amazonaws.fsx#WindowsAccessAuditLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#WindowsAuditLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#WindowsAuditLogCreateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.fsx#WindowsDeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fsx#WindowsFileSystemConfiguration": {
+      "type": "structure"
+    }
+  }
+}

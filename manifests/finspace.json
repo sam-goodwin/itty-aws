@@ -1,0 +1,2188 @@
+{
+  "shapes": {
+    "com.amazonaws.finspace#AWSHabaneroManagementService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "finspace"
+        }
+      }
+    },
+    "com.amazonaws.finspace#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#AttachedClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#AttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.finspace#AutoScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#AutoScalingMetric": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#AutoScalingMetricTarget": {
+      "type": "double"
+    },
+    "com.amazonaws.finspace#AvailabilityZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#AvailabilityZoneIds": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#CapacityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ChangeRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#ChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#ChangesetId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ChangesetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ClientTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ClusterNodeCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#CodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CooldownTime": {
+      "type": "double"
+    },
+    "com.amazonaws.finspace#CpuCount": {
+      "type": "double"
+    },
+    "com.amazonaws.finspace#CreateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxChangeset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxChangesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxChangesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxChangesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxDataview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxDataviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxDataviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxDataviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxScalingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxScalingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxScalingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#CreateKxVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#CreateKxVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CreateKxVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#CustomDNSConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#CustomDNSServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DataBundleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#DataBundleArns": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#DatabaseArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#DbPath": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#DbPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#DeleteEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxClusterNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxClusterNodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxClusterNodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxClusterNodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxDataview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxDataviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxDataviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxDataviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxScalingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxScalingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxScalingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#DeleteKxVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#DeleteKxVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#DeleteKxVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#EmailId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#Environment": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#EnvironmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#EnvironmentErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#EnvironmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#EnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#EnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#EnvironmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#ErrorDetails": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#ErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ErrorMessage2": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ExecutionRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#FederationAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#FederationAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#FederationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#FederationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#FederationProviderName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#FinSpaceTaggableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#GetEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxChangeset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxChangesetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxChangesetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxChangesetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxConnectionString": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxConnectionStringRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxConnectionStringRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxConnectionStringResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxDataview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxDataviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxDataviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxDataviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxScalingGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxScalingGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxScalingGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxScalingGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#GetKxVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#GetKxVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#GetKxVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#IPAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#IcmpTypeCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#IcmpTypeOrCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#IdType": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#InitializationScriptFilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KmsKeyARN": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxAttachedCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxAttachedClusters": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxAzMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxCacheStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxCacheStorageConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxCacheStorageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#KxCacheStorageType": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxChangesetListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxChangesets": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxClusterCodeDeploymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxClusterCodeDeploymentStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxClusterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxClusterName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxClusterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxClusterNodeIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxClusterStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxClusterStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxClusterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxClusters": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxCommandLineArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxCommandLineArgumentKey": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxCommandLineArgumentValue": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxCommandLineArguments": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDatabaseCacheConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDatabaseCacheConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDatabaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDatabaseConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDatabaseListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDatabases": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDataviewActiveVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDataviewActiveVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDataviewConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDataviewListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDataviewName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxDataviewSegmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDataviewSegmentConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDataviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxDataviewStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxDataviews": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxDeploymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxDeploymentStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxEnvironment": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxEnvironmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxEnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxEnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxHostType": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxNAS1Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxNAS1Size": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#KxNAS1Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxNodeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxNodeSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxSavedownStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxSavedownStorageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#KxSavedownStorageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxScalingGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxScalingGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxScalingGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxScalingGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxScalingGroupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxUserArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxUserList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#KxUserNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#KxVolumeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxVolumeName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxVolumeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxVolumeStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#KxVolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#KxVolumes": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListEnvironmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxChangesets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxChangesetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxChangesetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxChangesetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxClusterNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxClusterNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxClusterNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxClusterNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxDataviews": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxDataviewsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxDataviewsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxDataviewsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxEnvironmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxScalingGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxScalingGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxScalingGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxScalingGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxVolumes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListKxVolumesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListKxVolumesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListKxVolumesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#MemoryMib": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#NameString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#NetworkACLConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#NetworkACLEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#NodeCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#NodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#PortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#Protocol": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ReleaseLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ResultLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#RuleAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#RuleNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#S3Path": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SamlMetadataDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#SecurityGroupIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SegmentConfigurationDbPathList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#SignedKxConnectionString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SmsDomainUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#SubnetIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#SuperuserParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.finspace#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TickerplantLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TickerplantLogVolumes": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.finspace#TransitGatewayConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#TransitGatewayID": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxClusterCodeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxClusterCodeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxClusterCodeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxClusterCodeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxClusterDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxClusterDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxClusterDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxClusterDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxDataview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxDataviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxDataviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxDataviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironmentNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxEnvironmentNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironmentNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironmentNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxVolume": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.finspace#UpdateKxVolumeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.finspace#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.finspace#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.finspace#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.finspace#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.finspace#UpdateKxVolumeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#UpdateKxVolumeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#ValidCIDRBlock": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ValidCIDRSpace": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ValidHostname": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ValidIPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#VersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#VolumeName": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#VolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#Volumes": {
+      "type": "list"
+    },
+    "com.amazonaws.finspace#VpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.finspace#VpcIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#arn": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#booleanValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.finspace#dnsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#numBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.finspace#numChangesets": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#numFiles": {
+      "type": "integer"
+    },
+    "com.amazonaws.finspace#stringValueLength1to255": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#tgwStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.finspace#url": {
+      "type": "string"
+    },
+    "com.amazonaws.finspace#urn": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "shapes": {
+    "com.amazonaws.sts#AWSSecurityTokenServiceV20110615": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "STS"
+        }
+      }
+    },
+    "com.amazonaws.sts#AssumeRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#AssumeRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.sts#PackedPolicyTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#AssumeRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoleWithSAML": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#AssumeRoleWithSAMLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#IDPRejectedClaimException"
+        },
+        {
+          "target": "com.amazonaws.sts#InvalidIdentityTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.sts#PackedPolicyTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#AssumeRoleWithSAMLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoleWithSAMLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoleWithWebIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#AssumeRoleWithWebIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#IDPCommunicationErrorException"
+        },
+        {
+          "target": "com.amazonaws.sts#IDPRejectedClaimException"
+        },
+        {
+          "target": "com.amazonaws.sts#InvalidIdentityTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.sts#PackedPolicyTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#AssumeRoleWithWebIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoleWithWebIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRoot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#AssumeRootRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#AssumeRootRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumeRootResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#AssumedRoleUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#Audience": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#Credentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#DecodeAuthorizationMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#DecodeAuthorizationMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#InvalidAuthorizationMessageException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#DecodeAuthorizationMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#DecodeAuthorizationMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#ExpiredTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#FederatedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetAccessKeyInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#GetAccessKeyInfoRequest"
+      }
+    },
+    "com.amazonaws.sts#GetAccessKeyInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetAccessKeyInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetCallerIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#GetCallerIdentityRequest"
+      }
+    },
+    "com.amazonaws.sts#GetCallerIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetCallerIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetFederationToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#GetFederationTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.sts#PackedPolicyTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#GetFederationTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetFederationTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetSessionToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sts#GetSessionTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sts#RegionDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.sts#GetSessionTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#GetSessionTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#IDPCommunicationErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#IDPRejectedClaimException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#InvalidAuthorizationMessageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#InvalidIdentityTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#Issuer": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#NameQualifier": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#PackedPolicyTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#PolicyDescriptorType": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#ProvidedContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#ProvidedContextsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sts#RegionDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#RootDurationSecondsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.sts#SAMLAssertionType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#Subject": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#SubjectType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sts#TargetPrincipalType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#accessKeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#accessKeySecretType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#accountType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#arnType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#assumedRoleIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#clientTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#contextAssertionType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#dateType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sts#decodedMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#durationSecondsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.sts#encodedMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#expiredIdentityTokenMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#externalIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#federatedIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#idpCommunicationErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#idpRejectedClaimMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#invalidAuthorizationMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#invalidIdentityTokenMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#malformedPolicyDocumentMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#nonNegativeIntegerType": {
+      "type": "integer"
+    },
+    "com.amazonaws.sts#packedPolicyTooLargeMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#policyDescriptorListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sts#regionDisabledMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#roleDurationSecondsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.sts#roleSessionNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#serialNumberType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#sessionPolicyDocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#sourceIdentityType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#tagKeyListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sts#tagKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#tagListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sts#tagValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#tokenCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#tokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#unrestrictedSessionPolicyDocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#urlType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#userIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#userNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.sts#webIdentitySubjectType": {
+      "type": "string"
+    }
+  }
+}

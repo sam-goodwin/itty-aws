@@ -1,0 +1,556 @@
+{
+  "shapes": {
+    "com.amazonaws.qldb#AmazonQLDB": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "QLDB"
+        }
+      }
+    },
+    "com.amazonaws.qldb#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.qldb#CancelJournalKinesisStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#CancelJournalKinesisStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#CancelJournalKinesisStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#CancelJournalKinesisStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#CreateLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#CreateLedgerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#CreateLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#CreateLedgerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DeleteLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#DeleteLedgerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#DeleteLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DeletionProtection": {
+      "type": "boolean"
+    },
+    "com.amazonaws.qldb#DescribeJournalKinesisStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#DescribeJournalKinesisStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#DescribeJournalKinesisStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DescribeJournalKinesisStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DescribeJournalS3Export": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#DescribeJournalS3ExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#DescribeJournalS3ExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DescribeJournalS3ExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DescribeLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#DescribeLedgerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#DescribeLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#DescribeLedgerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#Digest": {
+      "type": "blob"
+    },
+    "com.amazonaws.qldb#EncryptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#ErrorCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#ExportJournalToS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ExportJournalToS3Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#ExportJournalToS3Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ExportJournalToS3Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ExportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#GetBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#GetBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#GetBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#GetBlockResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#GetDigest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#GetDigestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#GetDigestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#GetDigestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#GetRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#GetRevisionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#GetRevisionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#GetRevisionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#IonText": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#JournalKinesisStreamDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#JournalKinesisStreamDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.qldb#JournalS3ExportDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#JournalS3ExportList": {
+      "type": "list"
+    },
+    "com.amazonaws.qldb#KinesisConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#KmsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#LedgerEncryptionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#LedgerList": {
+      "type": "list"
+    },
+    "com.amazonaws.qldb#LedgerName": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#LedgerState": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#LedgerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalKinesisStreamsForLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ListJournalKinesisStreamsForLedgerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#ListJournalKinesisStreamsForLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalKinesisStreamsForLedgerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalS3Exports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ListJournalS3ExportsRequest"
+      }
+    },
+    "com.amazonaws.qldb#ListJournalS3ExportsForLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ListJournalS3ExportsForLedgerRequest"
+      }
+    },
+    "com.amazonaws.qldb#ListJournalS3ExportsForLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalS3ExportsForLedgerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalS3ExportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListJournalS3ExportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListLedgers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ListLedgersRequest"
+      }
+    },
+    "com.amazonaws.qldb#ListLedgersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListLedgersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.qldb#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#OutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#PermissionsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ResourcePreconditionNotMetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#S3EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#S3ExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#S3ObjectEncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#S3Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#StreamJournalToKinesis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#StreamJournalToKinesisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourcePreconditionNotMetException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#StreamJournalToKinesisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#StreamJournalToKinesisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#StreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#StreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.qldb#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.qldb#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.qldb#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.qldb#UniqueId": {
+      "type": "string"
+    },
+    "com.amazonaws.qldb#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#UpdateLedger": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#UpdateLedgerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#UpdateLedgerPermissionsMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.qldb#UpdateLedgerPermissionsModeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.qldb#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.qldb#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.qldb#UpdateLedgerPermissionsModeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#UpdateLedgerPermissionsModeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#UpdateLedgerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#UpdateLedgerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.qldb#ValueHolder": {
+      "type": "structure"
+    }
+  }
+}

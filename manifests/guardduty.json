@@ -1,0 +1,2827 @@
+{
+  "shapes": {
+    "com.amazonaws.guardduty#AcceptAdministratorInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#AcceptAdministratorInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#AcceptAdministratorInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AcceptAdministratorInvitationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AcceptInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#AcceptInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#AcceptInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AcceptInvitationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccessControlList": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccessKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccessKeyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccountDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccountDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AccountFreeTrialInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccountFreeTrialInfos": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#AccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AccountLevelPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AccountStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Actor": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ActorIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ActorProcess": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Actors": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AdditionalSequenceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AddonDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AdminAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AdminAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AdminStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Administrator": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AffectedResources": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#AgentDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Anomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AnomalyObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AnomalyProfileFeatureObjects": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#AnomalyProfileFeatures": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#AnomalyProfiles": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#AnomalyUnusual": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AnomalyUnusualBehaviorFeature": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#ArchiveFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ArchiveFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ArchiveFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ArchiveFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AutoEnableMembers": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#AutonomousSystem": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#AwsApiCallAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Behavior": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#BlockPublicAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.guardduty#BucketLevelPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#BucketPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#City": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#CloudTrailConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ClusterStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ContainerFindingResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ContainerImageUid": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ContainerInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ContainerUid": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ContainerUids": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Containers": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#CountByCoverageStatus": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#CountByResourceType": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#CountBySeverity": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#Country": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageEc2InstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageEcsClusterDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageEksClusterDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageFilterCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageFilterCriterion": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageFilterCriterionKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#CoverageFilterCriterionList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#CoverageResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageResources": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#CoverageSortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageSortKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#CoverageStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CoverageStatisticsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#CoverageStatisticsTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#CoverageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#CreateDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateMalwareProtectionPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateMalwareProtectionPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateMalwareProtectionPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateMalwareProtectionPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateProtectedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreatePublishingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreatePublishingDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreatePublishingDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreatePublishingDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateS3BucketResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateSampleFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateSampleFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateSampleFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateSampleFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateThreatIntelSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#CreateThreatIntelSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#CreateThreatIntelSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#CreateThreatIntelSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Criterion": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#CriterionKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DNSLogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DataSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DataSourceConfigurations": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DataSourceConfigurationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DataSourceFreeTrial": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DataSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DataSourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DataSourcesFreeTrial": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DateStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeclineInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeclineInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeclineInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeclineInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DefaultServerSideEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteMalwareProtectionPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteMalwareProtectionPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteMalwareProtectionPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeletePublishingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeletePublishingDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeletePublishingDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeletePublishingDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteThreatIntelSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DeleteThreatIntelSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DeleteThreatIntelSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DeleteThreatIntelSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribeMalwareScans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DescribeMalwareScansRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DescribeMalwareScansRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribeMalwareScansResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DescribeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DescribeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribePublishingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DescribePublishingDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DescribePublishingDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DescribePublishingDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Destinations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Detection": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DetectorAdditionalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DetectorAdditionalConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DetectorAdditionalConfigurationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DetectorAdditionalConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DetectorFeature": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DetectorFeatureConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DetectorFeatureConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DetectorFeatureConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DetectorFeatureConfigurationsResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DetectorFeatureResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DetectorId": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#DetectorIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#DetectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#DisableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DisableOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DisableOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisableOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateFromAdministratorAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DisassociateFromAdministratorAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DisassociateFromAdministratorAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateFromAdministratorAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateFromMasterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DisassociateFromMasterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DisassociateFromMasterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateFromMasterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#DisassociateMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#DisassociateMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DisassociateMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DnsRequestAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#DomainDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.guardduty#EbsSnapshotPreservation": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#EbsVolumeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EbsVolumeScanDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EbsVolumesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Ec2Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Ec2InstanceUid": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#Ec2InstanceUids": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Ec2NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Ec2NetworkInterfaceUids": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#EcsClusterDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EcsTaskDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EksCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EksClusterDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Email": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#EnableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#EnableOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#EnableOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EnableOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#EndpointIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Eq": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Equals": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Evidence": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FargateDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FeatureAdditionalConfiguration": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FeatureStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Feedback": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FilePaths": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FilterAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FilterCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FilterCriterion": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FilterCriterionList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FilterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#FilterNames": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FilterRank": {
+      "type": "integer"
+    },
+    "com.amazonaws.guardduty#Finding": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FindingCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FindingId": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#FindingIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FindingPublishingFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FindingResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FindingStatisticType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#FindingStatisticTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FindingStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FindingType": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#FindingTypeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FindingTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Findings": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FlagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FlowLogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FreeTrialFeatureConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#FreeTrialFeatureConfigurationsResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#FreeTrialFeatureResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#GeoLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetAdministratorAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetAdministratorAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetAdministratorAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetAdministratorAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetCoverageStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetCoverageStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetCoverageStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetCoverageStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFindingsStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetFindingsStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetFindingsStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetFindingsStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetInvitationsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetInvitationsCountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetInvitationsCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetInvitationsCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMalwareProtectionPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetMalwareProtectionPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetMalwareProtectionPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMalwareProtectionPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMalwareScanSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetMalwareScanSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetMalwareScanSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMalwareScanSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMasterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetMasterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetMasterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMasterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMemberDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetMemberDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetMemberDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMemberDetectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetOrganizationStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetOrganizationStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetRemainingFreeTrialDays": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetRemainingFreeTrialDaysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetRemainingFreeTrialDaysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetRemainingFreeTrialDaysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetThreatIntelSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetThreatIntelSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetThreatIntelSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetThreatIntelSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetUsageStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#GetUsageStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#GetUsageStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GetUsageStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#GroupByType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#GroupedByAccount": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#GroupedByDate": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#GroupedByFindingType": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#GroupedByResource": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#GroupedBySeverity": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#GuardDutyAPIService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "GuardDuty"
+        }
+      }
+    },
+    "com.amazonaws.guardduty#GuardDutyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#HighestSeverityThreatDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#HostPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#IamInstanceProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ImpersonatedUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Indicator": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#IndicatorTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#IndicatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#IndicatorValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#IndicatorValues": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Indicators": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#InstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#InstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.guardduty#IntegerValueWithMax": {
+      "type": "integer"
+    },
+    "com.amazonaws.guardduty#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Invitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Invitations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#InviteMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#InviteMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#InviteMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#InviteMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#IpSetFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#IpSetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#IpSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Ipv6Addresses": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Issues": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ItemPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ItemPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#KubernetesApiCallAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesAuditLogsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesAuditLogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesDataSourceFreeTrial": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesPermissionCheckedDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesResourcesTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#KubernetesRoleBindingDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesRoleDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesUserDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesWorkload": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#KubernetesWorkloadDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#LambdaDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Lineage": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#LineageObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListCoverage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListCoverageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListCoverageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListCoverageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListDetectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListIPSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListIPSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListIPSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListIPSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListMalwareProtectionPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListMalwareProtectionPlansRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListMalwareProtectionPlansRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListMalwareProtectionPlansResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListOrganizationAdminAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListOrganizationAdminAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListOrganizationAdminAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListOrganizationAdminAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListPublishingDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListPublishingDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListPublishingDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListPublishingDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListThreatIntelSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#ListThreatIntelSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#ListThreatIntelSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ListThreatIntelSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#LocalIpDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#LocalPortDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#LoginAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#LoginAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.guardduty#LongValue": {
+      "type": "long"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionDataSourceFreeTrial": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanObjectPrefixesList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanStatusReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanStatusReasonsList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanTaggingAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlanTaggingActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#MalwareProtectionPlansSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MalwareScanDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ManagementType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#MapEquals": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Master": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.guardduty#MaxResults100": {
+      "type": "integer"
+    },
+    "com.amazonaws.guardduty#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberAdditionalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberAdditionalConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberAdditionalConfigurationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MemberAdditionalConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MemberDataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberDataSourceConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MemberFeaturesConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberFeaturesConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#MemberFeaturesConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MemberFeaturesConfigurationsResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Members": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MemoryRegionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#MfaStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#Neq": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#NetworkConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#NetworkConnectionAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#NetworkDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#NetworkEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#NetworkEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#NetworkGeoLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#NotEquals": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ObservationTexts": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Observations": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrderBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#OrgFeature": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#OrgFeatureAdditionalConfiguration": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#OrgFeatureStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Organization": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationAdditionalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationAdditionalConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationAdditionalConfigurationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationAdditionalConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationDataSourceConfigurations": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationDataSourceConfigurationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationEbsVolumes": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationEbsVolumesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureStatisticsAdditionalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureStatisticsAdditionalConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationFeatureStatisticsResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationFeaturesConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationFeaturesConfigurationsResults": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#OrganizationKubernetesAuditLogsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationKubernetesAuditLogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationKubernetesConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationKubernetesConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationMalwareProtectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationMalwareProtectionConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationS3LogsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationS3LogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationScanEc2InstanceWithFindings": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationScanEc2InstanceWithFindingsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#OrganizationStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Owner": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PermissionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PortProbeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PortProbeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PortProbeDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#PositiveLong": {
+      "type": "long"
+    },
+    "com.amazonaws.guardduty#PrivateIpAddressDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PrivateIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ProcessDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ProcessName": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ProcessPath": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ProcessSha256": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ProductCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ProductCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ProfileSubtype": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ProfileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#PublicAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PublicAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#PublicAccessStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#PublicAclIgnoreBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#PublicBucketRestrictBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#PublishingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#RdsDbInstanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RdsDbUserDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RdsLimitlessDbDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RdsLoginAttemptAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RemoteAccountDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RemoteIpDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RemotePortDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#ResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ResourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ResourceStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ResourceUids": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ResourceV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Resources": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#RuntimeContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#RuntimeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3Bucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3BucketDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3BucketDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#S3LogsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3LogsConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3ObjectDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#S3ObjectDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#S3ObjectUids": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Scan": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanConditionPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanCriterion": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#ScanCriterionKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ScanDetections": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanEc2InstanceWithFindings": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanEc2InstanceWithFindingsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanFilePath": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanResourceCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ScanResultDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ScanThreatName": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ScanThreatNames": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ScanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ScannedItemCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Scans": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#SecurityContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#Sequence": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SequenceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ServiceAdditionalInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SessionNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#SeverityStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Signal": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SignalDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#SignalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#Signals": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#SortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#SourceIps": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Sources": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#StartMalwareScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#StartMalwareScanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#StartMalwareScanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#StartMalwareScanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#StartMonitoringMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#StartMonitoringMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#StartMonitoringMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#StartMonitoringMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#StopMonitoringMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#StopMonitoringMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#StopMonitoringMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#StopMonitoringMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#String": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.guardduty#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.guardduty#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Threat": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ThreatDetectedByName": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ThreatIntelSetFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ThreatIntelSetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ThreatIntelSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#ThreatIntelligenceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#ThreatIntelligenceDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ThreatNames": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Threats": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#ThreatsDetectedItemCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.guardduty#Total": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#TriggerDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UnarchiveFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UnarchiveFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UnarchiveFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UnarchiveFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UnprocessedAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UnprocessedAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UnprocessedDataSourcesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateFindingsFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateFindingsFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateFindingsFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateFindingsFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateMalwareProtectionPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateMalwareProtectionPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateMalwareProtectionPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateMalwareScanSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateMalwareScanSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateMalwareScanSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateMalwareScanSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateMemberDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateMemberDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateMemberDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateMemberDetectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateProtectedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdatePublishingDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdatePublishingDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdatePublishingDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdatePublishingDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateS3BucketResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateThreatIntelSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.guardduty#UpdateThreatIntelSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.guardduty#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.guardduty#UpdateThreatIntelSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UpdateThreatIntelSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageAccountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageAccountResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageDataSourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageDataSourceResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageFeature": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#UsageFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageFeatureResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageFeatureResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageResourceResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageStatisticType": {
+      "type": "enum"
+    },
+    "com.amazonaws.guardduty#UsageStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageTopAccountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageTopAccountsByFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#UsageTopAccountsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#UsageTopAccountsResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#Volume": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#VolumeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#VolumeDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#VolumeMount": {
+      "type": "structure"
+    },
+    "com.amazonaws.guardduty#VolumeMounts": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#Volumes": {
+      "type": "list"
+    },
+    "com.amazonaws.guardduty#VpcConfig": {
+      "type": "structure"
+    }
+  }
+}

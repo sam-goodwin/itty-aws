@@ -1,0 +1,2089 @@
+{
+  "shapes": {
+    "com.amazonaws.drs#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#AccountID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#AccountIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#AccountResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#Accounts": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#AgentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#AssociateSourceNetworkStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#AssociateSourceNetworkStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#AssociateSourceNetworkStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#AssociateSourceNetworkStackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#AwsAvailabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#AwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#BoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#CPU": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CfnStackName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ConversionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#ConversionProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#Cpus": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#CreateExtendedSourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#CreateExtendedSourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#CreateExtendedSourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateExtendedSourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#CreateLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#CreateLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateLaunchConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#CreateReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#CreateReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateSourceNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#CreateSourceNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#CreateSourceNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#CreateSourceNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationErrorString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#DataReplicationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationInfoReplicatedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationInfoReplicatedDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DataReplicationInitiation": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationInitiationStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DataReplicationInitiationStepName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#DataReplicationInitiationStepStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#DataReplicationInitiationSteps": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DataReplicationState": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#DeleteJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteLaunchAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteLaunchActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteLaunchActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteLaunchActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteLaunchConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteRecoveryInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteRecoveryInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteRecoveryInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteReplicationConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteSourceNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteSourceNetworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteSourceNetworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteSourceNetworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteSourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DeleteSourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DeleteSourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DeleteSourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeJobLogItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeJobLogItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeJobLogItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeJobLogItemsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeJobsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeJobsRequestFiltersJobIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DescribeJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeLaunchConfigurationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeLaunchConfigurationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeLaunchConfigurationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeLaunchConfigurationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoveryInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeRecoveryInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeRecoveryInstancesItems": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DescribeRecoveryInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoveryInstancesRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoveryInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoverySnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeRecoverySnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeRecoverySnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoverySnapshotsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeRecoverySnapshotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeReplicationConfigurationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeReplicationConfigurationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeReplicationConfigurationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeReplicationConfigurationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceNetworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeSourceNetworksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeSourceNetworksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceNetworksRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceNetworksRequestFiltersIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DescribeSourceNetworksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DescribeSourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DescribeSourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceServersRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DescribeSourceServersRequestFiltersIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#DescribeSourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DisconnectRecoveryInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DisconnectRecoveryInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DisconnectRecoveryInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#DisconnectSourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#DisconnectSourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#DisconnectSourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#Disk": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#Disks": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#EC2InstanceID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#EC2InstanceState": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#EC2InstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#EbsSnapshot": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#EbsSnapshotsList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#EbsVolumeID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ElasticDisasterRecoveryService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "drs"
+        }
+      }
+    },
+    "com.amazonaws.drs#EventResourceData": {
+      "type": "union"
+    },
+    "com.amazonaws.drs#ExportSourceNetworkCfnTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ExportSourceNetworkCfnTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ExportSourceNetworkCfnTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ExportSourceNetworkCfnTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ExtensionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#FailbackLaunchType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#FailbackReplicationError": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#FailbackState": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#GetFailbackReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#GetFailbackReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#GetFailbackReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#GetFailbackReplicationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#GetLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#GetLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#GetLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#GetReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#GetReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#GetReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#IPsList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ISO8601DatetimeString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ISO8601DurationString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#IdentificationHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#InitializeService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#InitializeServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#InitializeServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#InitializeServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#InitiatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#JobID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#JobLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#JobLogEvent": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#JobLogEventData": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#JobLogs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#JobResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#JobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#JobType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#JobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LargeBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LastLaunchResult": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LastLaunchType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchActionCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionId": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LaunchActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionOrder": {
+      "type": "integer"
+    },
+    "com.amazonaws.drs#LaunchActionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchActionParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#LaunchActionResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchActionRunId": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionRunStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionRuns": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LaunchActionType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActionVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchActions": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LaunchActionsRequestFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchActionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchConfigurationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchConfigurationTemplateID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchConfigurationTemplateIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LaunchConfigurationTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#LaunchConfigurationTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#LaunchDisposition": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#LaunchIntoInstanceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LaunchStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#Licensing": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LifeCycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LifeCycleLastLaunch": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#LifeCycleLastLaunchInitiated": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListExtensibleSourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ListExtensibleSourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ListExtensibleSourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListExtensibleSourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListLaunchActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ListLaunchActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ListLaunchActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListLaunchActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListStagingAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ListStagingAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ListStagingAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListStagingAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#MaxResultsReplicatingSourceServers": {
+      "type": "integer"
+    },
+    "com.amazonaws.drs#MaxResultsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.drs#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#OS": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#OriginEnvironment": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#OutpostARN": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#PITPolicy": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#PITPolicyRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#PITPolicyRuleUnits": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ParticipatingResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ParticipatingResourceID": {
+      "type": "union"
+    },
+    "com.amazonaws.drs#ParticipatingResources": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ParticipatingServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ParticipatingServers": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#PositiveInteger": {
+      "type": "long"
+    },
+    "com.amazonaws.drs#ProductCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ProductCodeId": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ProductCodeMode": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ProductCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#PutLaunchAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#PutLaunchActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#PutLaunchActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#PutLaunchActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInfoReplicatedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInfoReplicatedDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInitiation": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInitiationStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInitiationStepName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInitiationStepStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationInitiationSteps": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDataReplicationState": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoveryInstanceFailback": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoveryInstanceIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoveryInstanceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryInstanceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#RecoveryInstancesForTerminationRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoveryLifeCycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoveryResult": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoverySnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RecoverySnapshotID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#RecoverySnapshotsList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#RecoverySnapshotsOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationDataPlaneRouting": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationDefaultLargeStagingDiskType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationEbsEncryption": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationReplicatedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationReplicatedDiskStagingDiskType": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationReplicatedDisks": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationTemplateID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationTemplateIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#ReplicationConfigurationTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ReplicationDirection": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ReplicationServersSecurityGroupsIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ReplicationStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#RetryDataReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#RetryDataReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#RetryDataReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ReverseReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#ReverseReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#ReverseReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ReverseReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SecurityGroupID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#SensitiveBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SmallBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#SourceCloudProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SourceNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SourceNetworkData": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SourceNetworkID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#SourceNetworkResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#SourceNetworksList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#SourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SourceServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#SourceServerARN": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#SourceServerID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#SourceServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#SourceServerResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.drs#SourceServersList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#SsmDocumentName": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#StagingArea": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StagingSourceServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StagingSourceServersList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#StartFailbackLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StartFailbackLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StartFailbackLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartFailbackLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartFailbackRequestRecoveryInstanceIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#StartRecovery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StartRecoveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StartRecoveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartRecoveryRequestSourceServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartRecoveryRequestSourceServers": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#StartRecoveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StartReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StartReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartSourceNetworkRecovery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StartSourceNetworkRecoveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StartSourceNetworkRecoveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartSourceNetworkRecoveryRequestNetworkEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#StartSourceNetworkRecoveryRequestNetworkEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartSourceNetworkRecoveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartSourceNetworkReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StartSourceNetworkReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StartSourceNetworkReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StartSourceNetworkReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StopFailback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StopFailbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StopFailbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StopReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StopReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StopReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StopReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StopSourceNetworkReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#StopSourceNetworkReplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#StopSourceNetworkReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StopSourceNetworkReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#StrictlyPositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.drs#SubnetID": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#TagsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#TargetInstanceTypeRightSizingMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#TerminateRecoveryInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#TerminateRecoveryInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#TerminateRecoveryInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#TerminateRecoveryInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UninitializedAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateFailbackReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UpdateFailbackReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UpdateFailbackReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateLaunchConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UpdateLaunchConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UpdateLaunchConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateLaunchConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UpdateLaunchConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UpdateLaunchConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateLaunchConfigurationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateReplicationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UpdateReplicationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UpdateReplicationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#UpdateReplicationConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.drs#UpdateReplicationConfigurationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.drs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.drs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.drs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.drs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.drs#UninitializedAccountException"
+        },
+        {
+          "target": "com.amazonaws.drs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.drs#UpdateReplicationConfigurationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.drs#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.drs#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#VolumeStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.drs#VolumeToConversionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#VolumeToProductCodes": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#VolumeToSizeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.drs#VpcID": {
+      "type": "string"
+    }
+  }
+}

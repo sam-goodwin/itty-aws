@@ -1,0 +1,345 @@
+{
+  "shapes": {
+    "com.amazonaws.ebs#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#AccessDeniedExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#Block": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#BlockData": {
+      "type": "blob"
+    },
+    "com.amazonaws.ebs#BlockIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#BlockSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#BlockToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#Blocks": {
+      "type": "list"
+    },
+    "com.amazonaws.ebs#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ebs#ChangedBlock": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ChangedBlocks": {
+      "type": "list"
+    },
+    "com.amazonaws.ebs#ChangedBlocksCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#Checksum": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#ChecksumAggregationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#ChecksumAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#CompleteSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#CompleteSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#CompleteSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#CompleteSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ConcurrentLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#DataLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#Ebs": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EBS"
+        }
+      }
+    },
+    "com.amazonaws.ebs#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#GetSnapshotBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#GetSnapshotBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#GetSnapshotBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#GetSnapshotBlockResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#ListChangedBlocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#ListChangedBlocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#ListChangedBlocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ListChangedBlocksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ListSnapshotBlocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#ListSnapshotBlocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#ListSnapshotBlocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ListSnapshotBlocksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#OwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#PageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#Progress": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#PutSnapshotBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#PutSnapshotBlockRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#PutSnapshotBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#PutSnapshotBlockResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#RequestThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#RequestThrottledExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ResourceNotFoundExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#SSEType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ServiceQuotaExceededExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#SnapshotId": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#StartSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ebs#StartSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ebs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ConcurrentLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ebs#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ebs#RequestThrottledException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ebs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ebs#StartSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#StartSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ebs#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.ebs#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ebs#Timeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.ebs#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ebs#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.ebs#VolumeSize": {
+      "type": "long"
+    }
+  }
+}

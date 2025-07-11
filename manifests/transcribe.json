@@ -1,0 +1,1493 @@
+{
+  "shapes": {
+    "com.amazonaws.transcribe#AbsoluteTimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#BaseModelName": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.transcribe#CLMLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsFeature": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsSkippedFeature": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsSkippedFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#CallAnalyticsSkippedReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#CategoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#CategoryProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CategoryPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#ChannelDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ChannelDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#ChannelId": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#ClinicalNoteGenerationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ContentRedaction": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateCallAnalyticsCategory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#CreateCallAnalyticsCategoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#CreateCallAnalyticsCategoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateCallAnalyticsCategoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateLanguageModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#CreateLanguageModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#CreateLanguageModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateLanguageModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateMedicalVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#CreateMedicalVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#CreateMedicalVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateMedicalVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#CreateVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#CreateVocabularyFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#CreateVocabularyFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#CreateVocabularyFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateVocabularyFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#CreateVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DataAccessRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsCategory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteCallAnalyticsCategoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsCategoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsCategoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteCallAnalyticsJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteCallAnalyticsJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteLanguageModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteLanguageModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteLanguageModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteMedicalScribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteMedicalScribeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteMedicalScribeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteMedicalTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteMedicalTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteMedicalTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteMedicalVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteMedicalVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteMedicalVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteVocabularyFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DeleteVocabularyFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DeleteVocabularyFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DeleteVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DescribeLanguageModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#DescribeLanguageModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#DescribeLanguageModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DescribeLanguageModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#DurationInSeconds": {
+      "type": "float"
+    },
+    "com.amazonaws.transcribe#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsCategory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetCallAnalyticsCategoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsCategoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsCategoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetCallAnalyticsJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetCallAnalyticsJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalScribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetMedicalScribeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetMedicalScribeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalScribeJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetMedicalTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetMedicalTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalTranscriptionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetMedicalVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetMedicalVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetMedicalVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetTranscriptionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetVocabularyFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#GetVocabularyFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#GetVocabularyFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetVocabularyFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#GetVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#IdentifiedLanguageScore": {
+      "type": "float"
+    },
+    "com.amazonaws.transcribe#InputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#InputType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#InterruptionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#JobExecutionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#KMSEncryptionContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.transcribe#KMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#LanguageCodeItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#LanguageCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#LanguageIdSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#LanguageIdSettingsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.transcribe#LanguageModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#LanguageOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListCallAnalyticsCategoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsCategoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsCategoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListCallAnalyticsJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListCallAnalyticsJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListLanguageModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListLanguageModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListLanguageModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListLanguageModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalScribeJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListMedicalScribeJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListMedicalScribeJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalScribeJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalTranscriptionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListMedicalTranscriptionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListMedicalTranscriptionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalTranscriptionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalVocabularies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListMedicalVocabulariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListMedicalVocabulariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListMedicalVocabulariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListTranscriptionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListTranscriptionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListTranscriptionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListTranscriptionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListVocabularies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListVocabulariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListVocabulariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListVocabulariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListVocabularyFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#ListVocabularyFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#ListVocabularyFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ListVocabularyFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MaxAlternatives": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#MaxSpeakers": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#Media": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MediaFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MediaSampleRateHertz": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#MedicalContentIdentificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MedicalMediaSampleRateHertz": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#MedicalScribeChannelDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalScribeChannelDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#MedicalScribeChannelId": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#MedicalScribeJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalScribeJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MedicalScribeJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#MedicalScribeJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalScribeLanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MedicalScribeNoteTemplate": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MedicalScribeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalScribeParticipantRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#MedicalScribeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalTranscript": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalTranscriptionJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalTranscriptionJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#MedicalTranscriptionJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#MedicalTranscriptionSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ModelName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#ModelSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#ModelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#Models": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#NonTalkTimeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#OutputBucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#OutputKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#OutputLocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#ParticipantRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#Phrase": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#Phrases": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#PiiEntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#PiiEntityTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#RedactionOutput": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#RedactionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#RelativeTimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Rule": {
+      "type": "union"
+    },
+    "com.amazonaws.transcribe#RuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#SentimentFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#SentimentValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#SentimentValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Specialty": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#StartCallAnalyticsJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#StartCallAnalyticsJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#StartCallAnalyticsJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartCallAnalyticsJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartMedicalScribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#StartMedicalScribeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#StartMedicalScribeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartMedicalScribeJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartMedicalTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#StartMedicalTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#StartMedicalTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartMedicalTranscriptionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartTranscriptionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#StartTranscriptionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#StartTranscriptionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#StartTranscriptionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#String": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#StringTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#SubtitleFileUris": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#SubtitleFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#SubtitleFormats": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#SubtitleOutputStartIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.transcribe#Subtitles": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#SubtitlesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Summarization": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#TimestampMilliseconds": {
+      "type": "long"
+    },
+    "com.amazonaws.transcribe#ToxicityCategories": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#ToxicityCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#ToxicityDetection": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#ToxicityDetectionSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Transcribe": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Transcribe"
+        }
+      }
+    },
+    "com.amazonaws.transcribe#TranscribeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#Transcript": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TranscriptFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TranscriptFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#TranscriptionJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#TranscriptionJobName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#TranscriptionJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#TranscriptionJobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#TranscriptionJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateCallAnalyticsCategory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#UpdateCallAnalyticsCategoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#UpdateCallAnalyticsCategoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateCallAnalyticsCategoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateMedicalVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#UpdateMedicalVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#UpdateMedicalVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateMedicalVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateVocabulary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#UpdateVocabularyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#UpdateVocabularyFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.transcribe#UpdateVocabularyFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.transcribe#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.transcribe#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.transcribe#UpdateVocabularyFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateVocabularyFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateVocabularyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#UpdateVocabularyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#Vocabularies": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#VocabularyFilterInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#VocabularyFilterMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#VocabularyFilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#VocabularyFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.transcribe#VocabularyInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.transcribe#VocabularyName": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#VocabularyState": {
+      "type": "enum"
+    },
+    "com.amazonaws.transcribe#Word": {
+      "type": "string"
+    },
+    "com.amazonaws.transcribe#Words": {
+      "type": "list"
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "extends": "../../tsconfig.json",
-  "include": ["src"],
-  "exclude": ["lib", "node_modules"],
-  "compilerOptions": {
-    "outDir": "lib"
-  }
-}

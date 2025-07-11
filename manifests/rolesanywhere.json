@@ -1,0 +1,720 @@
+{
+  "shapes": {
+    "com.amazonaws.rolesanywhere#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#AttributeMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#AttributeMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#CertificateField": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#CreateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#CreateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#CreateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#CreateTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#CreateTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#CreateTrustAnchorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#CredentialSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#CredentialSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#Crl": {
+      "type": "resource"
+    },
+    "com.amazonaws.rolesanywhere#CrlDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#CrlDetailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#CrlDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#DeleteAttributeMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#DeleteAttributeMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DeleteAttributeMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#DeleteAttributeMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#DeleteCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DeleteProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DeleteTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DisableCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DisableProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#DisableTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#EnableCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#EnableProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#EnableTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#GetCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#GetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#GetSubject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarSubjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#GetTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ScalarTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ImportCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ImportCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ImportCrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#InstanceProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#InstanceProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#InstancePropertyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.rolesanywhere#ListCrls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ListCrlsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ListProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListSubjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ListSubjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ListTrustAnchors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ListTrustAnchorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ManagedPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#MappingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#MappingRules": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#NotificationChannel": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#NotificationEvent": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSettingDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSettingDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSettingKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSettingKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#NotificationSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#Profile": {
+      "type": "resource"
+    },
+    "com.amazonaws.rolesanywhere#ProfileArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#ProfileDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ProfileDetailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ProfileDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#PutAttributeMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#PutAttributeMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#PutAttributeMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#PutAttributeMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#PutNotificationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#PutNotificationSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#PutNotificationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#PutNotificationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ResetNotificationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#ResetNotificationSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#ResetNotificationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ResetNotificationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#RoleArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#RolesAnywhere": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RolesAnywhere"
+        }
+      }
+    },
+    "com.amazonaws.rolesanywhere#ScalarCrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ScalarProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ScalarSubjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#ScalarTrustAnchorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#SourceData": {
+      "type": "union"
+    },
+    "com.amazonaws.rolesanywhere#SpecifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#Subject": {
+      "type": "resource"
+    },
+    "com.amazonaws.rolesanywhere#SubjectDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#SubjectDetailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#SubjectSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#SubjectSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchor": {
+      "type": "resource"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchorDetailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.rolesanywhere#TrustAnchorType": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#UpdateCrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#UpdateCrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#UpdateCrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#UpdateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#UpdateProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#UpdateProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#UpdateTrustAnchor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rolesanywhere#UpdateTrustAnchorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rolesanywhere#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rolesanywhere#UpdateTrustAnchorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rolesanywhere#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.rolesanywhere#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

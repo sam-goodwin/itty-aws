@@ -1,0 +1,3338 @@
+{
+  "shapes": {
+    "com.amazonaws.sesv2#AccountDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#AccountSuspendedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#AdditionalContactEmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AdditionalContactEmailAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#AdminEmail": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ArchiveArn": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ArchivingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Attachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#AttachmentContentDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AttachmentContentDisposition": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#AttachmentContentId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AttachmentContentTransferEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#AttachmentContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AttachmentFileName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#AttachmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#AttributesData": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BatchGetMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#BatchGetMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#BatchGetMetricDataQueries": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#BatchGetMetricDataQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BatchGetMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BatchGetMetricDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BehaviorOnMxFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#BlacklistEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#BlacklistEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BlacklistItemName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#BlacklistItemNames": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#BlacklistReport": {
+      "type": "map"
+    },
+    "com.amazonaws.sesv2#BlacklistingDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Body": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Bounce": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BounceSubType": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#BounceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#BulkEmailContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BulkEmailEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BulkEmailEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#BulkEmailEntryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#BulkEmailEntryResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#BulkEmailStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#CampaignId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#CancelExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CancelExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CancelExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CancelExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CaseId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Charset": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#CloudWatchDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CloudWatchDimensionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CloudWatchDimensionConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#Complaint": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ComplaintFeedbackType": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ComplaintSubType": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ConfigurationSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ConfigurationSetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Contact": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ContactLanguage": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ContactList": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ContactListDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ContactListImportAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ContactListName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Content": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Counter": {
+      "type": "long"
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateContactList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateContactListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateContactListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateContactListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateCustomVerificationEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateDedicatedIpPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateDedicatedIpPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateDedicatedIpPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateDedicatedIpPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateDeliverabilityTestReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateDeliverabilityTestReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateDeliverabilityTestReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateDeliverabilityTestReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateEmailIdentityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateMultiRegionEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#CreateMultiRegionEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#CreateMultiRegionEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CreateMultiRegionEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CustomRedirectDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#CustomVerificationEmailTemplateMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#CustomVerificationEmailTemplatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DailyVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DailyVolumes": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DashboardAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DashboardOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DedicatedIp": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DedicatedIpList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DedicatedIpPool": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DefaultDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteContactList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteContactListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteContactListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteContactListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteCustomVerificationEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteDedicatedIpPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteDedicatedIpPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteDedicatedIpPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteDedicatedIpPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteEmailIdentityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteMultiRegionEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteMultiRegionEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteMultiRegionEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteMultiRegionEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteSuppressedDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#DeleteSuppressedDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#DeleteSuppressedDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeleteSuppressedDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeliverabilityDashboardAccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DeliverabilityTestReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DeliverabilityTestReports": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DeliverabilityTestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DeliverabilityTestSubject": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DeliveryEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DeliveryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Details": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DiagnosticCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DimensionValueSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Dimensions": {
+      "type": "map"
+    },
+    "com.amazonaws.sesv2#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DkimAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DkimSigningAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DkimSigningAttributesOrigin": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DkimSigningKeyLength": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DkimStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#DnsToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DnsTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#Domain": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#DomainDeliverabilityCampaign": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DomainDeliverabilityCampaignList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DomainDeliverabilityTrackingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DomainDeliverabilityTrackingOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#DomainIspPlacement": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#DomainIspPlacements": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailAddressFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EmailInsights": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EmailInsightsList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailSubject": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailSubjectFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailTemplateContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EmailTemplateData": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailTemplateHtml": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailTemplateMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EmailTemplateMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EmailTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailTemplateSubject": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EmailTemplateText": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sesv2#EnabledWrapper": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sesv2#EndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EngagementEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Esp": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Esps": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EventBridgeDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EventDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EventDestinationDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EventDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#EventDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#EventDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#EventTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ExportDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ExportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ExportDimensionValue": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ExportDimensions": {
+      "type": "map"
+    },
+    "com.amazonaws.sesv2#ExportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ExportJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ExportMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ExportMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ExportSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ExportStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ExportedRecordsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#FailedRecordsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#FailedRecordsS3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#FailureInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#FailureRedirectionURL": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#FeatureStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#FeedbackId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#GeneralEnforcementStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#GetAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetBlacklistReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetBlacklistReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetBlacklistReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetBlacklistReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetConfigurationSetEventDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetConfigurationSetEventDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetConfigurationSetEventDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetConfigurationSetEventDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetContactList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetContactListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetContactListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetContactListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetCustomVerificationEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDedicatedIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDedicatedIpPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDedicatedIpsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDedicatedIpsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityDashboardOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDeliverabilityDashboardOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityDashboardOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityDashboardOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityTestReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDeliverabilityTestReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityTestReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDeliverabilityTestReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDomainDeliverabilityCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDomainDeliverabilityCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDomainDeliverabilityCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDomainDeliverabilityCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDomainStatisticsReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetDomainStatisticsReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetDomainStatisticsReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetDomainStatisticsReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetEmailIdentityPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetEmailIdentityPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetEmailIdentityPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailIdentityPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetMessageInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetMessageInsightsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetMessageInsightsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetMessageInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetMultiRegionEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetMultiRegionEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetMultiRegionEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetMultiRegionEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetSuppressedDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#GetSuppressedDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#GetSuppressedDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GetSuppressedDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GuardianAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#GuardianOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#HttpsPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Identity": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#IdentityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#IdentityInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#IdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ImageUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ImportDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ImportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ImportDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ImportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ImportJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#InboxPlacementTrackingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#InsightsEmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#InsightsEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#InsightsEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Ip": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#IpList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#Isp": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#IspFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#IspName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#IspNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#IspPlacement": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#IspPlacements": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#KinesisFirehoseDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#LastDeliveryEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#LastEngagementEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#LastFreshStart": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sesv2#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListConfigurationSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListConfigurationSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListConfigurationSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListConfigurationSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListContactLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListContactListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListContactListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListContactListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListContacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListContactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListContactsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListContactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListContactsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListCustomVerificationEmailTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListCustomVerificationEmailTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListCustomVerificationEmailTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListCustomVerificationEmailTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDedicatedIpPools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListDedicatedIpPoolsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListDedicatedIpPoolsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDedicatedIpPoolsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDeliverabilityTestReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListDeliverabilityTestReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListDeliverabilityTestReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDeliverabilityTestReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDomainDeliverabilityCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListDomainDeliverabilityCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListDomainDeliverabilityCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListDomainDeliverabilityCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListEmailIdentities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListEmailIdentitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListEmailIdentitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListEmailIdentitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListEmailTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListEmailTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListEmailTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListEmailTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListManagementOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListMultiRegionEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListMultiRegionEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListMultiRegionEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListMultiRegionEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListOfContactLists": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ListOfContacts": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ListOfDedicatedIpPools": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#ListRecommendationFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ListRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListRecommendationsFilter": {
+      "type": "map"
+    },
+    "com.amazonaws.sesv2#ListRecommendationsFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#ListRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListSuppressedDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListSuppressedDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListSuppressedDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListSuppressedDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MailFromAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MailFromDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MailFromDomainNotVerifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MailFromDomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#MailType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Max24HourSend": {
+      "type": "double"
+    },
+    "com.amazonaws.sesv2#MaxDeliverySeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.sesv2#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#MaxSendRate": {
+      "type": "double"
+    },
+    "com.amazonaws.sesv2#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageContent": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MessageData": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MessageHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#MessageHeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MessageHeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MessageInsightsDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageInsightsExportMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#MessageInsightsFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageRejected": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MessageTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#MessageTagName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MessageTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Metric": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#MetricAggregation": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#MetricDataError": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MetricDataErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#MetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MetricDataResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#MetricDimensionName": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#MetricDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#MetricNamespace": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#MetricValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#MetricsDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MultiRegionEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#MultiRegionEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#NextTokenV2": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#OutboundMessageId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#OverallVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PageSizeV2": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#Percentage": {
+      "type": "double"
+    },
+    "com.amazonaws.sesv2#Percentage100Wrapper": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#PinpointDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PlacementStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#PolicyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.sesv2#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#PoolName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#PrimaryNameServer": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#PrivateKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ProcessedRecordsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.sesv2#PutAccountDedicatedIpWarmupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutAccountDedicatedIpWarmupAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutAccountDedicatedIpWarmupAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountDedicatedIpWarmupAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutAccountDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutAccountDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountSendingAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutAccountSendingAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutAccountSendingAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountSendingAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountSuppressionAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutAccountSuppressionAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutAccountSuppressionAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountSuppressionAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountVdmAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutAccountVdmAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutAccountVdmAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutAccountVdmAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetArchivingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetArchivingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetArchivingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetArchivingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetDeliveryOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetDeliveryOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetDeliveryOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetDeliveryOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetReputationOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetReputationOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetReputationOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetReputationOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSendingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetSendingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSendingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSendingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSuppressionOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetSuppressionOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSuppressionOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetSuppressionOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetTrackingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetTrackingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetTrackingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetTrackingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetVdmOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutConfigurationSetVdmOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetVdmOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutConfigurationSetVdmOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpInPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutDedicatedIpInPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpInPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpInPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpPoolScalingAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutDedicatedIpPoolScalingAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpPoolScalingAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpPoolScalingAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpWarmupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutDedicatedIpWarmupAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpWarmupAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDedicatedIpWarmupAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDeliverabilityDashboardOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutDeliverabilityDashboardOptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutDeliverabilityDashboardOptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutDeliverabilityDashboardOptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityConfigurationSetAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutEmailIdentityConfigurationSetAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityConfigurationSetAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityConfigurationSetAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutEmailIdentityDkimAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimSigningAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutEmailIdentityDkimSigningAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimSigningAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityDkimSigningAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityFeedbackAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutEmailIdentityFeedbackAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityFeedbackAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityFeedbackAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityMailFromAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutEmailIdentityMailFromAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityMailFromAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutEmailIdentityMailFromAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutSuppressedDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#PutSuppressedDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#PutSuppressedDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#PutSuppressedDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#QueryErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#QueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#QueryIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#RawAttachmentData": {
+      "type": "blob"
+    },
+    "com.amazonaws.sesv2#RawMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#RawMessageData": {
+      "type": "blob"
+    },
+    "com.amazonaws.sesv2#RblName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#RecommendationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#RecommendationImpact": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#RecommendationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#RecommendationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#RecommendationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Regions": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#RenderedEmailTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ReplacementEmailContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ReplacementTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ReportName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#ReputationOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ReviewDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ReviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Route": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#RouteDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Routes": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#RoutesDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#S3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#SOARecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#ScalingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Selector": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#SendBulkEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#SendBulkEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#SendBulkEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendBulkEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendCustomVerificationEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#SendCustomVerificationEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#SendCustomVerificationEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendCustomVerificationEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#SendEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#SendEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendingPausedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SendingPoolName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#SentLast24Hours": {
+      "type": "double"
+    },
+    "com.amazonaws.sesv2#SerialNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.sesv2#SimpleEmailService_v2": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SESv2"
+        }
+      }
+    },
+    "com.amazonaws.sesv2#SnsDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Subject": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#SubscriptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#SuccessRedirectionURL": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#SuppressedDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SuppressedDestinationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SuppressedDestinationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#SuppressedDestinationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SuppressionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SuppressionListDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#SuppressionListImportAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#SuppressionListReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#SuppressionListReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#SuppressionOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#Template": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TemplateContent": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#TestRenderEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#TestRenderEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#TestRenderEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TestRenderEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.sesv2#TimestampList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#TlsPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#Topic": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TopicFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TopicName": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#TopicPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#TopicPreferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#Topics": {
+      "type": "list"
+    },
+    "com.amazonaws.sesv2#TrackingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UnsubscribeAll": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sesv2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateContact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateContactRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateContactList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateContactListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateContactListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateContactListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateContactRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateContactResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateCustomVerificationEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateCustomVerificationEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateCustomVerificationEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateCustomVerificationEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateEmailIdentityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateEmailIdentityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateEmailIdentityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateEmailIdentityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sesv2#UpdateEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sesv2#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sesv2#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.sesv2#UpdateEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UpdateEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#UseCaseDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sesv2#UseDefaultIfPreferenceUnavailable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.sesv2#VdmAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#VdmOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#VerificationError": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#VerificationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#VerificationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#Volume": {
+      "type": "long"
+    },
+    "com.amazonaws.sesv2#VolumeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.sesv2#WarmupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.sesv2#WebsiteURL": {
+      "type": "string"
+    }
+  }
+}

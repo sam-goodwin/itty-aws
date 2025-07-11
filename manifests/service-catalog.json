@@ -1,0 +1,2829 @@
+{
+  "shapes": {
+    "com.amazonaws.servicecatalog#AWS242ServiceCatalogService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Service Catalog"
+        }
+      }
+    },
+    "com.amazonaws.servicecatalog#AcceptLanguage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#AcceptPortfolioShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AcceptPortfolioShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AcceptPortfolioShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AcceptPortfolioShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AccessLevelFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AccessLevelFilterKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#AccessLevelFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#AccessStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#AccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#AddTags": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#AllowedValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ApproximateCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#AssociateBudgetWithResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AssociateBudgetWithResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AssociateBudgetWithResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateBudgetWithResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociatePrincipalWithPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AssociatePrincipalWithPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AssociatePrincipalWithPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociatePrincipalWithPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateProductWithPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AssociateProductWithPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AssociateProductWithPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateProductWithPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateServiceActionWithProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AssociateServiceActionWithProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AssociateServiceActionWithProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateServiceActionWithProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateTagOptionWithResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#AssociateTagOptionWithResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#AssociateTagOptionWithResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AssociateTagOptionWithResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#BatchAssociateServiceActionWithProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#BatchAssociateServiceActionWithProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#BatchAssociateServiceActionWithProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#BatchAssociateServiceActionWithProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#BatchDisassociateServiceActionFromProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#BatchDisassociateServiceActionFromProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#BatchDisassociateServiceActionFromProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#BatchDisassociateServiceActionFromProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#BudgetDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#BudgetName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Budgets": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#CausingEntity": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ChangeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#CloudWatchDashboard": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CloudWatchDashboardName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#CloudWatchDashboards": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#CodeStarConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#CodeStarParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ConstraintDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ConstraintDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ConstraintDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ConstraintParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ConstraintSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ConstraintSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ConstraintType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#CopyOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#CopyOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#CopyProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CopyProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CopyProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CopyProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CopyProductStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#CreateConstraint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateConstraintInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateConstraintInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateConstraintOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreatePortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolioShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreatePortfolioShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolioShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreatePortfolioShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProvisionedProductPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateProvisionedProductPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateProvisionedProductPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProvisionedProductPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateTagOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#CreateTagOptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#CreateTagOptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreateTagOptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#CreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#DefaultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#DeleteConstraint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteConstraintInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteConstraintInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteConstraintOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeletePortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolioShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeletePortfolioShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolioShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeletePortfolioShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisionedProductPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteProvisionedProductPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisionedProductPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisionedProductPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteTagOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DeleteTagOptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DeleteTagOptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DeleteTagOptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeConstraint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeConstraintInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeConstraintInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeConstraintOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeCopyProductStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeCopyProductStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeCopyProductStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeCopyProductStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribePortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioShareStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribePortfolioShareStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioShareStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioShareStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioShareType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribePortfolioSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribePortfolioSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProductAsAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProductAsAdminInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProductAsAdminInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProductAsAdminOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProductView": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProductViewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProductViewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProductViewOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProvisionedProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProductPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProvisionedProductPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProductPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisionedProductPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeProvisioningParametersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningParametersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeProvisioningParametersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeRecordInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeRecordInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeRecordOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceActionExecutionParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeServiceActionExecutionParametersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceActionExecutionParametersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceActionExecutionParametersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeTagOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DescribeTagOptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DescribeTagOptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DescribeTagOptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#DisableAWSOrganizationsAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisableAWSOrganizationsAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisableAWSOrganizationsAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisableAWSOrganizationsAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisableTemplateValidation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#DisassociateBudgetFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisassociateBudgetFromResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisassociateBudgetFromResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateBudgetFromResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociatePrincipalFromPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisassociatePrincipalFromPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisassociatePrincipalFromPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociatePrincipalFromPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateProductFromPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisassociateProductFromPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisassociateProductFromPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateProductFromPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateServiceActionFromProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisassociateServiceActionFromProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisassociateServiceActionFromProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateServiceActionFromProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateTagOptionFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#DisassociateTagOptionFromResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#DisassociateTagOptionFromResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DisassociateTagOptionFromResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#DuplicateResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#EnableAWSOrganizationsAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#EnableAWSOrganizationsAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#EnableAWSOrganizationsAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#EnableAWSOrganizationsAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#EngineWorkflowFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#EngineWorkflowResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#EngineWorkflowStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#EngineWorkflowToken": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Error": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ErrorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#EvaluationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ExecuteProvisionedProductPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ExecuteProvisionedProductServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ExecuteProvisionedProductServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ExecutionParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#FailedServiceActionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#FailedServiceActionAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#GetAWSOrganizationsAccessStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#GetAWSOrganizationsAccessStatusInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#GetAWSOrganizationsAccessStatusInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#GetAWSOrganizationsAccessStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#GetProvisionedProductOutputs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#GetProvisionedProductOutputsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#GetProvisionedProductOutputsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#GetProvisionedProductOutputsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#HasDefaultPath": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#IgnoreErrors": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#ImportAsProvisionedProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ImportAsProvisionedProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ImportAsProvisionedProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ImportAsProvisionedProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#InstructionType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#InstructionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#InvalidParametersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#LastRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#LastSuccessfulSyncTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#LastSync": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#LastSyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#LastSyncStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#LastSyncTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#LaunchPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#LaunchPathSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#LaunchPathSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#LaunchPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListAcceptedPortfolioShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListAcceptedPortfolioSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListAcceptedPortfolioSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListAcceptedPortfolioSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListBudgetsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListBudgetsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListBudgetsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListBudgetsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListConstraintsForPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListConstraintsForPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListConstraintsForPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListConstraintsForPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListLaunchPaths": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListLaunchPathsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListLaunchPathsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListLaunchPathsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListOrganizationPortfolioAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListOrganizationPortfolioAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListOrganizationPortfolioAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListOrganizationPortfolioAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfolioAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListPortfolioAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListPortfolioAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfolioAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfolios": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListPortfoliosInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListPortfoliosForProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListPortfoliosForProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListPortfoliosForProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfoliosForProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfoliosInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPortfoliosOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPrincipalsForPortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListPrincipalsForPortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListPrincipalsForPortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListPrincipalsForPortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisionedProductPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListProvisionedProductPlansInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListProvisionedProductPlansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisionedProductPlansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListProvisioningArtifactsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifactsForServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListProvisioningArtifactsForServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifactsForServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifactsForServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifactsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListProvisioningArtifactsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListRecordHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListRecordHistoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListRecordHistoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListRecordHistoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListRecordHistorySearchFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListResourcesForTagOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListResourcesForTagOptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListResourcesForTagOptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListResourcesForTagOptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListServiceActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListServiceActionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListServiceActionsForProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListServiceActionsForProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListServiceActionsForProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListServiceActionsForProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListServiceActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListServiceActionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListStackInstancesForProvisionedProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListStackInstancesForProvisionedProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListStackInstancesForProvisionedProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListStackInstancesForProvisionedProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListTagOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ListTagOptionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ListTagOptionsFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListTagOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ListTagOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#LogicalResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Namespaces": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#NoEcho": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#NotificationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#NotificationArns": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#NotifyProvisionProductEngineWorkflowResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#NotifyProvisionProductEngineWorkflowResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#NotifyProvisionProductEngineWorkflowResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NotifyProvisionProductEngineWorkflowResultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NotifyTerminateProvisionedProductEngineWorkflowResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#NotifyTerminateProvisionedProductEngineWorkflowResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#NotifyTerminateProvisionedProductEngineWorkflowResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NotifyTerminateProvisionedProductEngineWorkflowResultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NotifyUpdateProvisionedProductEngineWorkflowResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#NotifyUpdateProvisionedProductEngineWorkflowResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#NotifyUpdateProvisionedProductEngineWorkflowResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NotifyUpdateProvisionedProductEngineWorkflowResultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#OperationNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#OrganizationNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#OrganizationNodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#OrganizationNodeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#OrganizationNodes": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#OutputDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#OutputKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#OutputKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#OutputValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Owner": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#PageSizeMax100": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#PageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ParameterConstraints": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ParameterType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PhysicalId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PhysicalResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PlanResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PortfolioDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PortfolioDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#PortfolioDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#PortfolioDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PortfolioName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PortfolioShareDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#PortfolioShareDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#PortfolioShareType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#Principal": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#PrincipalARN": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#Principals": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProductArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProductType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProductViewAggregationType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewAggregationValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProductViewAggregationValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProductViewAggregations": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ProductViewDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProductViewDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProductViewDistributor": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewFilterBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProductViewFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProductViewFilters": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ProductViewName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewShortDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProductViewSortBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProductViewSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProductViewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#PropertyKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#PropertyName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#PropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProviderName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ProvisionProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ProvisionProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductFilters": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlanDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlanName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlanStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlanSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductPlans": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductViewFilterBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductViewFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisionedProductViewFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactActive": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactCreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactGuidance": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactInfo": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactInfoKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactInfoValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactOutputKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactPropertyName": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactPropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactView": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifactViews": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningArtifacts": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ProvisioningPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RecordDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RecordDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#RecordError": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RecordErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#RecordOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RecordOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#RecordStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#RecordTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RecordTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RecordTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RecordTags": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#RecordType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RejectPortfolioShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#RejectPortfolioShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#RejectPortfolioShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#RejectPortfolioShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#Replacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#Repository": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RepositoryArtifactPath": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RepositoryBranch": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RequiresRecreation": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ResourceChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceChangeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceChangeDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ResourceChanges": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetailARN": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetailCreatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetailDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetailId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetailName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceTargetDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#RetainPhysicalResources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ScanProvisionedProducts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#ScanProvisionedProductsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#ScanProvisionedProductsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ScanProvisionedProductsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#Scope": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#SearchFilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SearchFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SearchProducts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#SearchProductsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#SearchProductsAsAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#SearchProductsAsAdminInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#SearchProductsAsAdminInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProductsAsAdminOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProductsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProductsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProvisionedProducts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#SearchProvisionedProductsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#SearchProvisionedProductsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProvisionedProductsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SearchProvisionedProductsPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionAssociationErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionAssociationErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDefinitionKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDefinitionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDefinitionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDefinitionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ServiceActionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ShareDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ShareError": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#ShareErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#ShareStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#SortField": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#SourceConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SourceConnectionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SourceConnectionParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#SourceProvisioningArtifactProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#SourceProvisioningArtifactPropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.servicecatalog#SourceRevision": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#StackInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#StackInstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#StackInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#StackSetAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#StackSetFailureToleranceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#StackSetFailureTolerancePercentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#StackSetMaxConcurrencyCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#StackSetMaxConcurrencyPercentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#StackSetOperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#StackSetRegions": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.servicecatalog#StatusDetail": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#String": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SuccessfulShares": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#SupportDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SupportEmail": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#SupportUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#TagOptionActive": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#TagOptionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TagOptionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#TagOptionId": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#TagOptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#TagOptionNotMigratedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TagOptionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#TagOptionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TagOptionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#TagOptionValues": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#TerminateProvisionedProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#TerminateProvisionedProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#TerminateProvisionedProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TerminateProvisionedProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#TotalResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.servicecatalog#UniqueTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#UniqueTagResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UniqueTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#UpdateConstraint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateConstraintInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateConstraintInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateConstraintOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolio": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdatePortfolioInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolioInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolioOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolioShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdatePortfolioShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolioShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdatePortfolioShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProduct": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateProvisionedProductInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProductInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProductOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProductProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateProvisionedProductPropertiesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProductPropertiesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisionedProductPropertiesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningArtifact": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateProvisioningArtifactInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningArtifactInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningArtifactOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#UpdateProvisioningPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateServiceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateServiceActionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateServiceActionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateServiceActionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateTagOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.servicecatalog#UpdateTagOptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.servicecatalog#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#InvalidParametersException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TagOptionNotMigratedException"
+        }
+      ]
+    },
+    "com.amazonaws.servicecatalog#UpdateTagOptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdateTagOptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UpdatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.servicecatalog#UsageInstruction": {
+      "type": "structure"
+    },
+    "com.amazonaws.servicecatalog#UsageInstructions": {
+      "type": "list"
+    },
+    "com.amazonaws.servicecatalog#UsePreviousValue": {
+      "type": "boolean"
+    },
+    "com.amazonaws.servicecatalog#UserArn": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#UserArnSession": {
+      "type": "string"
+    },
+    "com.amazonaws.servicecatalog#Verbose": {
+      "type": "boolean"
+    }
+  }
+}

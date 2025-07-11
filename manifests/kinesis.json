@@ -1,0 +1,1282 @@
+{
+  "shapes": {
+    "com.amazonaws.kinesis#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#AddTagsToStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#AddTagsToStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#AddTagsToStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kinesis#ChildShard": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ChildShardList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#Consumer": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ConsumerARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ConsumerCountObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ConsumerDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ConsumerList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#ConsumerName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ConsumerStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#CreateStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#CreateStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#CreateStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#Data": {
+      "type": "blob"
+    },
+    "com.amazonaws.kinesis#DecreaseStreamRetentionPeriod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DecreaseStreamRetentionPeriodInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DecreaseStreamRetentionPeriodInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DeleteResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DeleteResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DeleteStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DeleteStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DeleteStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DeregisterStreamConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DeregisterStreamConsumerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DeregisterStreamConsumerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DescribeLimitsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DescribeLimitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeLimitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DescribeStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DescribeStreamConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DescribeStreamConsumerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DescribeStreamConsumerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStreamConsumerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStreamInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#DescribeStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStreamSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DescribeStreamSummaryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DescribeStreamSummaryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DescribeStreamSummaryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#DisableEnhancedMonitoring": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#DisableEnhancedMonitoringInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#DisableEnhancedMonitoringInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#EnableEnhancedMonitoring": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#EnableEnhancedMonitoringInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#EnableEnhancedMonitoringInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#EnhancedMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#EnhancedMonitoringList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#EnhancedMonitoringOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ExpiredIteratorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ExpiredNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#GetRecordsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ExpiredIteratorException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#GetRecordsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetRecordsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#GetRecordsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#GetResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#GetResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetResourcePolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetShardIterator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#GetShardIteratorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#GetShardIteratorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#GetShardIteratorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#HashKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#HashKeyRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#IncreaseStreamRetentionPeriod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#IncreaseStreamRetentionPeriodInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#IncreaseStreamRetentionPeriodInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSAccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSOptInRequired": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KMSThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#KeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#Kinesis_20131202": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Kinesis"
+        }
+      }
+    },
+    "com.amazonaws.kinesis#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListShards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#ListShardsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#ListShardsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListShardsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ListShardsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListStreamConsumers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#ListStreamConsumersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#ListStreamConsumersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListStreamConsumersInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ListStreamConsumersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#ListStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#ExpiredNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#ListStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListStreamsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ListStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListTagsForStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#ListTagsForStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#ListTagsForStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ListTagsForStreamInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ListTagsForStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#MergeShards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#MergeShardsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#MergeShardsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#MetricsName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#MetricsNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#MillisBehindLatest": {
+      "type": "long"
+    },
+    "com.amazonaws.kinesis#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#OnDemandStreamCountLimitObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#OnDemandStreamCountObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#PartitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#PositiveIntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ProvisionedThroughputExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#PutRecordInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#PutRecordInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecordOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#PutRecordsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ProvisionedThroughputExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#PutRecordsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecordsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecordsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecordsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#PutRecordsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#PutRecordsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#PutResourcePolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#PutResourcePolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#RecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#RegisterStreamConsumer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#RegisterStreamConsumerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#RegisterStreamConsumerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#RegisterStreamConsumerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#RemoveTagsFromStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#RemoveTagsFromStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#RemoveTagsFromStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#RetentionPeriodHours": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ScalingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#SequenceNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#SequenceNumberRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#Shard": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ShardCountObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesis#ShardFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ShardFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#ShardId": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ShardIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#ShardIterator": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#ShardIteratorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#ShardList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#SplitShard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#SplitShardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#SplitShardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StartStreamEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#StartStreamEncryptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSAccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSDisabledException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSInvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSOptInRequired"
+        },
+        {
+          "target": "com.amazonaws.kinesis#KMSThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#StartStreamEncryptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StartingPosition": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StopStreamEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#StopStreamEncryptionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#StopStreamEncryptionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StreamARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#StreamDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StreamDescriptionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StreamMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#StreamModeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#StreamNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#StreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesis#StreamSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#StreamSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#SubscribeToShard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#SubscribeToShardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#SubscribeToShardEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#SubscribeToShardEventStream": {
+      "type": "union"
+    },
+    "com.amazonaws.kinesis#SubscribeToShardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#SubscribeToShardOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesis#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.kinesis#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesis#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.kinesis#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#UpdateShardCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#UpdateShardCountInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#UpdateShardCountInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#UpdateShardCountOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#UpdateStreamMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesis#UpdateStreamModeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesis#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesis#UpdateStreamModeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesis#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

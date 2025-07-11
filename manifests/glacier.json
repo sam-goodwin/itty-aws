@@ -1,0 +1,1017 @@
+{
+  "shapes": {
+    "com.amazonaws.glacier#AbortMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#AbortMultipartUploadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#AbortMultipartUploadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#AbortVaultLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#AbortVaultLockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#AbortVaultLockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#AccessControlPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#ActionCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#AddTagsToVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#AddTagsToVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#AddTagsToVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ArchiveCreationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CSVInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CSVOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CannedACL": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#CompleteMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#CompleteMultipartUploadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#CompleteMultipartUploadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CompleteVaultLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#CompleteVaultLockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#CompleteVaultLockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CreateVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#CreateVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#CreateVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#CreateVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DataRetrievalPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DataRetrievalRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DataRetrievalRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#DateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.glacier#DeleteArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DeleteArchiveInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DeleteArchiveInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DeleteVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DeleteVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DeleteVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DeleteVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DeleteVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DeleteVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DeleteVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DeleteVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DeleteVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DescribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DescribeJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DescribeJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DescribeVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#DescribeVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#DescribeVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#DescribeVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Encryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#ExpressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#FileHeaderInfo": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#GetDataRetrievalPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#GetDataRetrievalPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#GetDataRetrievalPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetDataRetrievalPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetJobOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#GetJobOutputInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#GetJobOutputInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetJobOutputOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#GetVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#GetVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultAccessPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#GetVaultLockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#GetVaultLockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultLockOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#GetVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#GetVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#GetVaultNotificationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Glacier": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Glacier"
+        }
+      }
+    },
+    "com.amazonaws.glacier#GlacierJobDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Grant": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Grantee": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#InitiateJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InsufficientCapacityException"
+        },
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#PolicyEnforcedException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#InitiateJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#InitiateMultipartUploadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#InitiateMultipartUploadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateMultipartUploadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateVaultLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#InitiateVaultLockInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#InitiateVaultLockInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InitiateVaultLockOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InputSerialization": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InsufficientCapacityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InventoryRetrievalJobDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#InventoryRetrievalJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#JobList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#JobParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListMultipartUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListMultipartUploadsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListMultipartUploadsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListMultipartUploadsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListParts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListPartsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListPartsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListPartsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListProvisionedCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListProvisionedCapacityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListProvisionedCapacityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListProvisionedCapacityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListTagsForVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListTagsForVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListTagsForVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListTagsForVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListVaults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#ListVaultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#ListVaultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ListVaultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#MissingParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#NotificationEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#NullableLong": {
+      "type": "long"
+    },
+    "com.amazonaws.glacier#OutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#OutputSerialization": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#PartList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#PartListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#PolicyEnforcedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ProvisionedCapacityDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ProvisionedCapacityList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#PurchaseProvisionedCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#PurchaseProvisionedCapacityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#PurchaseProvisionedCapacityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#PurchaseProvisionedCapacityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#QuoteFields": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#RemoveTagsFromVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#RemoveTagsFromVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#RemoveTagsFromVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#RequestTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#SelectParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#SetDataRetrievalPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#SetDataRetrievalPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#SetDataRetrievalPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#SetVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#SetVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#SetVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#SetVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#SetVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#SetVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#Size": {
+      "type": "long"
+    },
+    "com.amazonaws.glacier#StatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#Stream": {
+      "type": "blob"
+    },
+    "com.amazonaws.glacier#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.glacier#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.glacier#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.glacier#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.glacier#UploadArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#UploadArchiveInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#UploadArchiveInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#UploadListElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#UploadMultipartPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.glacier#UploadMultipartPartInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.glacier#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.glacier#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.glacier#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.glacier#UploadMultipartPartInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#UploadMultipartPartOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#UploadsList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#VaultAccessPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#VaultList": {
+      "type": "list"
+    },
+    "com.amazonaws.glacier#VaultLockPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#VaultNotificationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.glacier#boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.glacier#hashmap": {
+      "type": "map"
+    },
+    "com.amazonaws.glacier#httpstatus": {
+      "type": "integer"
+    },
+    "com.amazonaws.glacier#long": {
+      "type": "long"
+    },
+    "com.amazonaws.glacier#string": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "shapes": {
+    "com.amazonaws.polly#Alphabet": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#AudioStream": {
+      "type": "blob"
+    },
+    "com.amazonaws.polly#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.polly#DeleteLexicon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#DeleteLexiconInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#LexiconNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#DeleteLexiconInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#DeleteLexiconOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#DescribeVoices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#DescribeVoicesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#DescribeVoicesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#DescribeVoicesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#Engine": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#EngineList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#EngineNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#Gender": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#GetLexicon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#GetLexiconInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#LexiconNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#GetLexiconInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#GetLexiconOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#GetSpeechSynthesisTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#GetSpeechSynthesisTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#InvalidTaskIdException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.polly#SynthesisTaskNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#GetSpeechSynthesisTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#GetSpeechSynthesisTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#IncludeAdditionalLanguageCodes": {
+      "type": "boolean"
+    },
+    "com.amazonaws.polly#InvalidLexiconException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidS3BucketException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidS3KeyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidSampleRateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidSnsTopicArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidSsmlException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#InvalidTaskIdException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LanguageCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#LanguageCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#LanguageName": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#LanguageNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LastModified": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.polly#LexemesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.polly#Lexicon": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LexiconArn": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#LexiconAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LexiconContent": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#LexiconDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LexiconDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#LexiconName": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#LexiconNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#LexiconNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#LexiconSizeExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#ListLexicons": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#ListLexiconsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#ListLexiconsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#ListLexiconsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#ListSpeechSynthesisTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#ListSpeechSynthesisTasksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#ListSpeechSynthesisTasksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#ListSpeechSynthesisTasksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#MarksNotSupportedForFormatException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#MaxLexemeLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#MaxLexiconsNumberExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.polly#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#OutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#OutputS3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#OutputS3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#OutputUri": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#Parrot_v1": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Polly"
+        }
+      }
+    },
+    "com.amazonaws.polly#PutLexicon": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#PutLexiconInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#InvalidLexiconException"
+        },
+        {
+          "target": "com.amazonaws.polly#LexiconSizeExceededException"
+        },
+        {
+          "target": "com.amazonaws.polly#MaxLexemeLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.polly#MaxLexiconsNumberExceededException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.polly#UnsupportedPlsAlphabetException"
+        },
+        {
+          "target": "com.amazonaws.polly#UnsupportedPlsLanguageException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#PutLexiconInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#PutLexiconOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#RequestCharacters": {
+      "type": "integer"
+    },
+    "com.amazonaws.polly#SampleRate": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#ServiceFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#Size": {
+      "type": "integer"
+    },
+    "com.amazonaws.polly#SnsTopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#SpeechMarkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#SpeechMarkTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#SsmlMarksNotSupportedForTextTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#StartSpeechSynthesisTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#StartSpeechSynthesisTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#EngineNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidS3BucketException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidS3KeyException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidSampleRateException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidSnsTopicArnException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidSsmlException"
+        },
+        {
+          "target": "com.amazonaws.polly#LanguageNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.polly#LexiconNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.polly#MarksNotSupportedForFormatException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.polly#SsmlMarksNotSupportedForTextTypeException"
+        },
+        {
+          "target": "com.amazonaws.polly#TextLengthExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#StartSpeechSynthesisTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#StartSpeechSynthesisTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#SynthesisTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#SynthesisTaskNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#SynthesisTasks": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#SynthesizeSpeech": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.polly#SynthesizeSpeechInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.polly#EngineNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidSampleRateException"
+        },
+        {
+          "target": "com.amazonaws.polly#InvalidSsmlException"
+        },
+        {
+          "target": "com.amazonaws.polly#LanguageNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.polly#LexiconNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.polly#MarksNotSupportedForFormatException"
+        },
+        {
+          "target": "com.amazonaws.polly#ServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.polly#SsmlMarksNotSupportedForTextTypeException"
+        },
+        {
+          "target": "com.amazonaws.polly#TextLengthExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.polly#SynthesizeSpeechInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#SynthesizeSpeechOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#TaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#TaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#TaskStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#Text": {
+      "type": "string"
+    },
+    "com.amazonaws.polly#TextLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#TextType": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#UnsupportedPlsAlphabetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#UnsupportedPlsLanguageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#Voice": {
+      "type": "structure"
+    },
+    "com.amazonaws.polly#VoiceId": {
+      "type": "enum"
+    },
+    "com.amazonaws.polly#VoiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.polly#VoiceName": {
+      "type": "string"
+    }
+  }
+}

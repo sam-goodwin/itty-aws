@@ -1,0 +1,1905 @@
+{
+  "shapes": {
+    "com.amazonaws.forecast#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#AdditionalDataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#AdditionalDatasets": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#AmazonForecast": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "forecast"
+        }
+      }
+    },
+    "com.amazonaws.forecast#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#AttributeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#AttributeConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#AttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#AutoMLOverrideStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Baseline": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#BaselineMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#BaselineMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.forecast#CategoricalParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CategoricalParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Condition": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Configuration": {
+      "type": "map"
+    },
+    "com.amazonaws.forecast#ContinuousParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ContinuousParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#CreateAutoPredictor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateAutoPredictorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateAutoPredictorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateAutoPredictorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDatasetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDatasetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateDatasetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateDatasetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDatasetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateExplainability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateExplainabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateExplainabilityExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateExplainabilityExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateExplainabilityExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateExplainabilityExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateExplainabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateExplainabilityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateForecastExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateForecastExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateForecastExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateForecastExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreatePredictor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreatePredictorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreatePredictorBacktestExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreatePredictorBacktestExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreatePredictorBacktestExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreatePredictorBacktestExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreatePredictorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreatePredictorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateWhatIfAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateWhatIfAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateWhatIfForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecastExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#CreateWhatIfForecastExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecastExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecastExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#CreateWhatIfForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DataDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DatasetGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DatasetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#DatasetImportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DatasetImportJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#DatasetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DatasetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Datasets": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#DayOfMonth": {
+      "type": "integer"
+    },
+    "com.amazonaws.forecast#DayOfWeek": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteDatasetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteDatasetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteDatasetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteExplainability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteExplainabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteExplainabilityExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteExplainabilityExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteExplainabilityExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteExplainabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteForecastExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteForecastExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteForecastExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeletePredictor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeletePredictorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeletePredictorBacktestExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeletePredictorBacktestExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeletePredictorBacktestExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeletePredictorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteResourceTree": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteResourceTreeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteResourceTreeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteWhatIfAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteWhatIfAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteWhatIfAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteWhatIfForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteWhatIfForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteWhatIfForecastExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DeleteWhatIfForecastExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DeleteWhatIfForecastExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DeleteWhatIfForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeAutoPredictor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeAutoPredictorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeAutoPredictorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeAutoPredictorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDatasetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDatasetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeDatasetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeDatasetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDatasetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeExplainability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeExplainabilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeExplainabilityExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeExplainabilityExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeExplainabilityExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeExplainabilityExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeExplainabilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeExplainabilityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeForecastExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeForecastExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeForecastExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeForecastExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeMonitorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeMonitorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeMonitorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribePredictor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribePredictorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribePredictorBacktestExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribePredictorBacktestExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribePredictorBacktestExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribePredictorBacktestExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribePredictorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribePredictorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeWhatIfAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeWhatIfAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeWhatIfForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecastExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#DescribeWhatIfForecastExportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecastExportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecastExportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#DescribeWhatIfForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Detail": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Domain": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.forecast#EncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#ErrorMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ErrorMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#EvaluationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#EvaluationState": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#EvaluationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Explainabilities": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ExplainabilityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ExplainabilityExportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ExplainabilityExports": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ExplainabilityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ExplainabilitySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Featurization": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#FeaturizationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#FeaturizationMethod": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#FeaturizationMethodName": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#FeaturizationMethodParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.forecast#FeaturizationPipeline": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Featurizations": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#FieldStatistics": {
+      "type": "map"
+    },
+    "com.amazonaws.forecast#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#FilterConditionString": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ForecastDimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ForecastExportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ForecastExportJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ForecastSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ForecastType": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#ForecastTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Forecasts": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Format": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Frequency": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#GeolocationFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#GetAccuracyMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#GetAccuracyMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#GetAccuracyMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#GetAccuracyMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Hour": {
+      "type": "integer"
+    },
+    "com.amazonaws.forecast#HyperParameterTuningJobConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ImportMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#InputDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.forecast#IntegerParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#IntegerParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#KMSKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListDatasetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListDatasetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasetImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListDatasetImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListDatasetImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasetImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListExplainabilities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListExplainabilitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListExplainabilitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListExplainabilitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListExplainabilityExports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListExplainabilityExportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListExplainabilityExportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListExplainabilityExportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListForecastExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListForecastExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListForecastExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListForecastExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListForecasts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListForecastsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListForecastsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListForecastsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListMonitorEvaluations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListMonitorEvaluationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListMonitorEvaluationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListMonitorEvaluationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListMonitors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListMonitorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListMonitorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListMonitorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListPredictorBacktestExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListPredictorBacktestExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListPredictorBacktestExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListPredictorBacktestExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListPredictors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListPredictorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListPredictorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListPredictorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfAnalyses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListWhatIfAnalysesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListWhatIfAnalysesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfAnalysesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfForecastExports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListWhatIfForecastExportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListWhatIfForecastExportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfForecastExportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfForecasts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ListWhatIfForecastsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ListWhatIfForecastsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ListWhatIfForecastsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#LocalDateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.forecast#LongArn": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#LongArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.forecast#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#MetricResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#MetricResults": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Metrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#MonitorConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#MonitorDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#MonitorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#MonitorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Monitors": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Month": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Operation": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#OptimizationMetric": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#ParameterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#ParameterRanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#PredictorBacktestExportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorBacktestExportJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#PredictorBaseline": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorEvaluationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#PredictorEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorExecutionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorExecutions": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#PredictorMonitorEvaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#PredictorMonitorEvaluations": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#PredictorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Predictors": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#ReferencePredictorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#ResumeResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#ResumeResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#ResumeResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#S3Config": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#S3Path": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#ScalingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Schema": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#SchemaAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#SchemaAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#Statistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#StopResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#StopResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#StopResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#String": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#SupplementaryFeature": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#SupplementaryFeatures": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TestWindowDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TestWindowSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TestWindows": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TimeAlignmentBoundary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimePointGranularity": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#TimeSeriesCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimeSeriesConditions": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TimeSeriesGranularity": {
+      "type": "enum"
+    },
+    "com.amazonaws.forecast#TimeSeriesIdentifiers": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimeSeriesReplacementsDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimeSeriesSelector": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimeSeriesTransformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#TimeSeriesTransformations": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#TimeZone": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.forecast#TimestampFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#TrainingParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.forecast#Transformations": {
+      "type": "map"
+    },
+    "com.amazonaws.forecast#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#UpdateDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecast#UpdateDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecast#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecast#UpdateDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#UpdateDatasetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#UseGeolocationForTimeZone": {
+      "type": "boolean"
+    },
+    "com.amazonaws.forecast#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.forecast#Values": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WeightedQuantileLoss": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#WeightedQuantileLosses": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WhatIfAnalyses": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WhatIfAnalysisSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#WhatIfForecastArnListForExport": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WhatIfForecastExportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#WhatIfForecastExports": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WhatIfForecastSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecast#WhatIfForecasts": {
+      "type": "list"
+    },
+    "com.amazonaws.forecast#WindowSummary": {
+      "type": "structure"
+    }
+  }
+}

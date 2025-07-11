@@ -1,0 +1,3367 @@
+{
+  "shapes": {
+    "com.amazonaws.workspaces#AGAModeForDirectoryEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AGAModeForWorkSpaceEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AGAPreferredProtocolForDirectory": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AGAPreferredProtocolForWorkSpace": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#AcceptAccountLinkInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#AcceptAccountLinkInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#AcceptAccountLinkInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AcceptAccountLinkInvitationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccessEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccessEndpointConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccessEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#AccessEndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AccessPropertyValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AccountLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccountLinkList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#AccountLinkStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AccountModification": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AccountModificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ActiveDirectoryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ActiveUserSessions": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#ActualUserSessions": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#AddInName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#AddInUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#Alias": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#AlphanumericDashUnderscoreNonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#AmazonUuid": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#Application": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ApplicationAssociatedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ApplicationAssociatedResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ApplicationNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ApplicationResourceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ApplicationResourceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ApplicationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ApplicationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ApplicationSettingsStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AssociateConnectionAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#AssociateConnectionAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#AssociateConnectionAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociateConnectionAliasResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociateIpGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#AssociateIpGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#AssociateIpGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociateIpGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociateWorkspaceApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#AssociateWorkspaceApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ApplicationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ComputeNotCompatibleException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#IncompatibleApplicationsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperatingSystemNotCompatibleException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#AssociateWorkspaceApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociateWorkspaceApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociationErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AssociationStateReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#AuthorizeIpRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#AuthorizeIpRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#AuthorizeIpRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AuthorizeIpRulesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#AvailableUserSessions": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#AwsAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.workspaces#BundleAssociatedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#BundleAssociatedResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#BundleId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#BundleIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#BundleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#BundleOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#BundleResourceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#BundleResourceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#BundleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#Capacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CapacityStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CertificateAuthorityArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#CertificateBasedAuthProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CertificateBasedAuthStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ClientDeviceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ClientDeviceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ClientEmail": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ClientLocale": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ClientLoginMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ClientProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ClientPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ClientPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ClientUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#Compute": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ComputeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ComputeNotCompatibleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ComputeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ComputerName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ConnectClientAddIn": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ConnectClientAddInList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ConnectionAlias": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasPermission": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasPermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ConnectionAliasState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ConnectionIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ConnectionString": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#CopyWorkspaceImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CopyWorkspaceImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CopyWorkspaceImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CopyWorkspaceImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateAccountLinkInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateAccountLinkInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateAccountLinkInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateAccountLinkInvitationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateConnectClientAddIn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateConnectClientAddInRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceCreationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateConnectClientAddInRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateConnectClientAddInResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateConnectionAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateConnectionAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateConnectionAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateConnectionAliasResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateIpGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateIpGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceCreationFailedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateIpGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateIpGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateStandbyWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateStandbyWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateStandbyWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateStandbyWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateUpdatedWorkspaceImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateUpdatedWorkspaceImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateUpdatedWorkspaceImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateUpdatedWorkspaceImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateWorkspaceBundleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceBundleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceBundleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateWorkspaceImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspaceImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateWorkspacesPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#CreateWorkspacesPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#CreateWorkspacesPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspacesPoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#CreateWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DataReplication": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DataReplicationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancyAccountType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancyCidrRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancyManagementCidrRange": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancyModificationStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancySupportEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DedicatedTenancySupportResultEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DefaultClientBrandingAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DefaultImportClientBrandingAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DefaultLogo": {
+      "type": "blob"
+    },
+    "com.amazonaws.workspaces#DefaultOu": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DefaultWorkspaceCreationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeletableCertificateBasedAuthPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DeletableCertificateBasedAuthProperty": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DeletableSamlPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DeletableSamlProperty": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DeleteAccountLinkInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteAccountLinkInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteAccountLinkInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteAccountLinkInvitationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteClientBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteClientBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteClientBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteClientBrandingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteConnectClientAddIn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteConnectClientAddInRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteConnectClientAddInRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteConnectClientAddInResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteConnectionAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteConnectionAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteConnectionAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteConnectionAliasResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteIpGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteIpGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteIpGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteIpGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteWorkspaceBundleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceBundleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceBundleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeleteWorkspaceImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeleteWorkspaceImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeployWorkspaceApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeployWorkspaceApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#IncompatibleApplicationsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeployWorkspaceApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeployWorkspaceApplicationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeregisterWorkspaceDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DeregisterWorkspaceDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DeregisterWorkspaceDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DeregisterWorkspaceDirectoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeAccountModifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeAccountModificationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeAccountModificationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeAccountModificationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeAccountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeApplicationAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeApplicationAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeApplicationAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeApplicationAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeApplicationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeBundleAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeBundleAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeBundleAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeBundleAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeClientBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeClientBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeClientBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeClientBrandingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeClientProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeClientPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeClientPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeClientPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectClientAddIns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeConnectClientAddInsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeConnectClientAddInsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectClientAddInsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliasPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeConnectionAliasPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliasPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliasPermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeConnectionAliasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeConnectionAliasesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeImageAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeImageAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeImageAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeImageAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeIpGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeIpGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeIpGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeIpGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeTagsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceBundles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceBundlesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceBundlesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceBundlesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceDirectoriesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImagePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceImagePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImagePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImagePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceImagesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspaceSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaceSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesConnectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspacesConnectionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesConnectionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesConnectionStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspacesPoolSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolSessionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DescribeWorkspacesPoolsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilterOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesPoolsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DescribeWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DesiredUserSessions": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#DirectoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DirectoryIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DirectoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DirectoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#DisassociateConnectionAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DisassociateConnectionAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DisassociateConnectionAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisassociateConnectionAliasResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisassociateIpGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DisassociateIpGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DisassociateIpGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisassociateIpGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisassociateWorkspaceApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#DisassociateWorkspaceApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#DisassociateWorkspaceApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisassociateWorkspaceApplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#DisconnectTimeoutInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#DnsIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#Ec2ImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#EndpointEncryptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ErrorDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ErrorType": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ExceptionErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#FailedCreateStandbyWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#FailedCreateStandbyWorkspacesRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedCreateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#FailedCreateWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedRebootWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedRebuildWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedStartWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedStopWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedTerminateWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#FailedWorkspaceChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#GetAccountLink": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#GetAccountLinkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#GetAccountLinkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#GetAccountLinkResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#GlobalAcceleratorForDirectory": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#GlobalAcceleratorForWorkSpace": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IDCConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IdleDisconnectTimeoutInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#ImageAssociatedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ImageAssociatedResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ImagePermission": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ImagePermissions": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ImageResourceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ImageResourceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ImageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ImportClientBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ImportClientBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ImportClientBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ImportClientBrandingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ImportWorkspaceImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ImportWorkspaceImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ImportWorkspaceImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ImportWorkspaceImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IncompatibleApplicationsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#InternetFallbackProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#InternetFallbackProtocolList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#InvalidParameterValuesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#InvalidResourceStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#Ios2XLogo": {
+      "type": "blob"
+    },
+    "com.amazonaws.workspaces#Ios3XLogo": {
+      "type": "blob"
+    },
+    "com.amazonaws.workspaces#IosClientBrandingAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IosImportClientBrandingAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IosLogo": {
+      "type": "blob"
+    },
+    "com.amazonaws.workspaces#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpGroupDesc": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#IpGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpRevokedRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#IpRule": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpRuleDesc": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#IpRuleItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#IpRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#Limit": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#Limit50": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#LinkId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#LinkStatusFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ListAccountLinks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ListAccountLinksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ListAccountLinksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ListAccountLinksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ListAvailableManagementCidrRanges": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ListAvailableManagementCidrRangesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ListAvailableManagementCidrRangesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ListAvailableManagementCidrRangesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#LogUploadEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#LoginMessage": {
+      "type": "map"
+    },
+    "com.amazonaws.workspaces#ManagementCidrRangeConstraint": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#ManagementCidrRangeMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#MaxUserDurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#MaximumLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#MicrosoftEntraConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#MicrosoftEntraConfigTenantId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#MigrateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#MigrateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#MigrateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#MigrateWorkspaceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModificationResourceEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ModificationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModificationStateEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ModificationStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ModifyAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyAccountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyCertificateBasedAuthProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyCertificateBasedAuthPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyCertificateBasedAuthPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyCertificateBasedAuthPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyClientProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyClientPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyClientPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyClientPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyEndpointEncryptionMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyEndpointEncryptionModeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyEndpointEncryptionModeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyEndpointEncryptionModeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifySamlProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifySamlPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifySamlPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifySamlPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifySelfservicePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifySelfservicePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifySelfservicePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifySelfservicePermissionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyStreamingProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyStreamingPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyStreamingPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyStreamingPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceAccessProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyWorkspaceAccessPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceAccessPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceAccessPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceCreationProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyWorkspaceCreationPropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceCreationPropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceCreationPropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyWorkspacePropertiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UnsupportedWorkspaceConfigurationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyWorkspacePropertiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspacePropertiesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#ModifyWorkspaceStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ModifyWorkspaceStateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#NetworkAccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#OperatingSystem": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#OperatingSystemName": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#OperatingSystemNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#OperatingSystemNotCompatibleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#OperatingSystemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#OperationInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#OperationNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#PendingCreateStandbyWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#PendingCreateStandbyWorkspacesRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#PoolsRunningMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#ProtocolList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#RebootRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RebootWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#RebootWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RebootWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RebootWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RebootWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RebuildRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RebuildWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#RebuildWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RebuildWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RebuildWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RebuildWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ReconnectEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#RegisterWorkspaceDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RegisterWorkspaceDirectoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UnsupportedNetworkConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#WorkspacesDefaultRoleNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RegisterWorkspaceDirectoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RegisterWorkspaceDirectoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RegistrationCode": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#RejectAccountLinkInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RejectAccountLinkInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RejectAccountLinkInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RejectAccountLinkInvitationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RelatedWorkspaceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RelatedWorkspaces": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceAssociatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceCreationFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#ResourceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RestoreWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RestoreWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RestoreWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RestoreWorkspaceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RevokeIpRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#RevokeIpRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#RevokeIpRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RevokeIpRulesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RootStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#RootVolumeSizeGib": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#RunningMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#RunningModeAutoStopTimeoutInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SamlProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#SamlStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#SamlUserAccessUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SecretsManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SelfservicePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#SessionConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#SessionInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SettingsGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#Snapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#SnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StandbyWorkspace": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StandbyWorkspaceRelationshipType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#StandbyWorkspacesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StandbyWorkspacesProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StandbyWorkspacesPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StartWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StartWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#StartWorkspacesRequest"
+      }
+    },
+    "com.amazonaws.workspaces#StartWorkspacesPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#StartWorkspacesPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#StartWorkspacesPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StartWorkspacesPoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StartWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StartWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StopRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StopWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StopWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#StopWorkspacesRequest"
+      }
+    },
+    "com.amazonaws.workspaces#StopWorkspacesPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#StopWorkspacesPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#StopWorkspacesPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StopWorkspacesPoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StopWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StopWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StorageConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#StorageConnectorStatusEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#StorageConnectorTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#StorageConnectors": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#StreamingExperiencePreferredProtocolEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#StreamingProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#String2048": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#TargetWorkspaceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#Tenancy": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#TerminateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspaceRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#TerminateWorkspacesRequest"
+      }
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#TerminateWorkspacesPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPoolSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#TerminateWorkspacesPoolSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPoolSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesPoolSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TerminateWorkspacesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#TimeoutSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.workspaces#UnsupportedNetworkConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UnsupportedWorkspaceConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateConnectClientAddIn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateConnectClientAddInRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateConnectClientAddInRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateConnectClientAddInResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateConnectionAliasPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateConnectionAliasPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceAssociatedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateConnectionAliasPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateConnectionAliasPermissionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#UpdateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateRulesOfIpGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateRulesOfIpGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateRulesOfIpGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateRulesOfIpGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateWorkspaceBundleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceBundleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceBundleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceImagePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateWorkspaceImagePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceImagePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspaceImagePermissionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspacesPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workspaces#UpdateWorkspacesPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidParameterValuesException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#OperationNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workspaces#UpdateWorkspacesPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UpdateWorkspacesPoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UserIdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#UserSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UserSettingActionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#UserSettingPermissionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#UserSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#UserStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#UserVolumeSizeGib": {
+      "type": "integer"
+    },
+    "com.amazonaws.workspaces#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#VolumeEncryptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationLicenseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkSpaceApplicationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkSpaceAssociatedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkSpaceAssociatedResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#Workspace": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceAccessProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceBundle": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceBundleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceBundleName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceBundleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceConnectionStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceCreationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectory": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectoryDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectoryNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectoryState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceDirectoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageErrorDetailCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageIngestionProcess": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageRequiredTenancy": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceImageState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspaceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceResourceAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspaceResourceAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspaceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspaceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspacesDefaultRoleNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspacesIpGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspacesIpGroupsList": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspacesPool": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolError": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolIds": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolName": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolSessions": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolState": {
+      "type": "enum"
+    },
+    "com.amazonaws.workspaces#WorkspacesPoolUserId": {
+      "type": "string"
+    },
+    "com.amazonaws.workspaces#WorkspacesPools": {
+      "type": "list"
+    },
+    "com.amazonaws.workspaces#WorkspacesService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WorkSpaces"
+        }
+      }
+    }
+  }
+}

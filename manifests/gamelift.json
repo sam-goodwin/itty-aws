@@ -1,0 +1,4460 @@
+{
+  "shapes": {
+    "com.amazonaws.gamelift#AcceptMatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#AcceptMatchInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#AcceptMatchInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#AcceptMatchOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#AcceptanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Alias": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#AliasArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AliasId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AliasIdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AliasList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AnywhereConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ArnStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#AutoScalingGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#AwsCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#BackfillMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#BalancingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#BooleanModel": {
+      "type": "boolean"
+    },
+    "com.amazonaws.gamelift#Build": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#BuildArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#BuildId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#BuildIdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#BuildList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#BuildStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#CertificateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CertificateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ClaimFilterOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ClaimGameServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ClaimGameServerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#OutOfCapacityException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ClaimGameServerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ClaimGameServerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ComparisonOperatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Compute": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ComputeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ComputeAuthToken": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ComputeList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ComputeName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ComputeNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ComputeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ConnectionPortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerCommandStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerDependencyCondition": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerDependencyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerEnvironment": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerEnvironmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerFleet": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerFleetBillingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerFleetList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerFleetLocationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerFleetLocationAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerFleetLocationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerFleetRemoveAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerFleetRemoveAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerFleetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinitionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinitionName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinitionNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ContainerGroupDefinitionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerGroupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerHealthCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerHealthCheckInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerHealthCheckRetries": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerHealthCheckStartPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerHealthCheckTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerMemoryLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerMountPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerMountPointAccessLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerMountPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerOperatingSystem": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ContainerPathString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ContainerPortConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerPortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ContainerPortRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ContainerTotalMemoryLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ContainerTotalVcpuLimit": {
+      "type": "double"
+    },
+    "com.amazonaws.gamelift#ContainerVcpu": {
+      "type": "double"
+    },
+    "com.amazonaws.gamelift#CreateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateContainerFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateContainerFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateContainerFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateContainerFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateContainerGroupDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateContainerGroupDefinitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateContainerGroupDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateContainerGroupDefinitionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotReadyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateFleetLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateFleetLocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotReadyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateFleetLocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateFleetLocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateGameSessionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#FleetCapacityExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#IdempotentParameterMismatchException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateGameSessionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameSessionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameSessionQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateGameSessionQueueInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateGameSessionQueueInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateGameSessionQueueOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateLocationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateLocationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateLocationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateMatchmakingConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateMatchmakingRuleSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingRuleSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateMatchmakingRuleSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreatePlayerSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreatePlayerSessionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#GameSessionFullException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidGameSessionStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreatePlayerSessionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreatePlayerSessionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreatePlayerSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreatePlayerSessionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#GameSessionFullException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidGameSessionStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreatePlayerSessionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreatePlayerSessionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateScriptInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateScriptInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateScriptOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateVpcPeeringAuthorizationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringAuthorizationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringAuthorizationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#CreateVpcPeeringConnectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringConnectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CreateVpcPeeringConnectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#CustomEventData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#CustomInputLocationStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#CustomLocationNameOrArnModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#DeleteAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteContainerFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteContainerFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteContainerFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteContainerFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteContainerGroupDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteContainerGroupDefinitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteContainerGroupDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteContainerGroupDefinitionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteFleetLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteFleetLocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteFleetLocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteFleetLocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteGameSessionQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteGameSessionQueueInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteGameSessionQueueInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteGameSessionQueueOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteLocationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteLocationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteLocationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteMatchmakingConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteMatchmakingRuleSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingRuleSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteMatchmakingRuleSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteScalingPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteScriptInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteScriptInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteVpcPeeringAuthorizationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringAuthorizationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringAuthorizationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeleteVpcPeeringConnectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringConnectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeleteVpcPeeringConnectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeploymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeploymentDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeploymentId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#DeploymentImpairmentStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#DeploymentProtectionStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#DeregisterCompute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeregisterComputeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeregisterComputeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeregisterComputeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DeregisterGameServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DeregisterGameServerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DeregisterGameServerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeCompute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeComputeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeComputeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeComputeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeContainerFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeContainerFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeContainerFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeContainerFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeContainerGroupDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeContainerGroupDefinitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeContainerGroupDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeContainerGroupDefinitionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeEC2InstanceLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeEC2InstanceLimitsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeEC2InstanceLimitsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeEC2InstanceLimitsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetCapacityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetCapacityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetCapacityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetDeploymentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetDeploymentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetDeploymentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetEventsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetEventsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetEventsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetLocationAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetLocationCapacityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationCapacityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationCapacityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationUtilization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetLocationUtilizationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationUtilizationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetLocationUtilizationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetPortSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetPortSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetPortSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetPortSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetUtilization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeFleetUtilizationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeFleetUtilizationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeFleetUtilizationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameServerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServerInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameServerInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameServerInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServerInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameServerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameSessionDetailsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionDetailsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionDetailsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionPlacement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameSessionPlacementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionPlacementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionPlacementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionQueues": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameSessionQueuesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionQueuesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionQueuesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeGameSessionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeGameSessionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeInstancesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeInstancesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeInstancesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmaking": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeMatchmakingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeMatchmakingConfigurationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingConfigurationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingRuleSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeMatchmakingRuleSetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingRuleSetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeMatchmakingRuleSetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribePlayerSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribePlayerSessionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribePlayerSessionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribePlayerSessionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeRuntimeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeRuntimeConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeRuntimeConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeRuntimeConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeScalingPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeScalingPoliciesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeScalingPoliciesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeScalingPoliciesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeScriptInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeScriptInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeScriptOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringAuthorizations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeVpcPeeringAuthorizationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringAuthorizationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringAuthorizationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#DescribeVpcPeeringConnectionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringConnectionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DescribeVpcPeeringConnectionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DesiredPlayerSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#DesiredPlayerSessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#DnsName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#DnsNameInput": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.gamelift#DoubleObject": {
+      "type": "double"
+    },
+    "com.amazonaws.gamelift#EC2InstanceCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#EC2InstanceLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#EC2InstanceLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#EC2InstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#EventCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#EventCount": {
+      "type": "long"
+    },
+    "com.amazonaws.gamelift#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FilterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FilterInstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#FilterInstanceStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#FleetActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#FleetAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FleetAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetBinaryArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#FleetCapacity": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FleetCapacityExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FleetCapacityList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FleetDeployments": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#FleetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetIdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#FleetIdOrArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FleetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#FleetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#FleetUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#FleetUtilizationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#FlexMatchMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.gamelift#FreeText": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameLift": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "GameLift"
+        }
+      }
+    },
+    "com.amazonaws.gamelift#GameLiftAgentEndpointOutput": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameLiftServiceSdkEndpointOutput": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GamePropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GamePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GamePropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServer": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerClaimStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerConnectionInfo": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerContainerDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerContainerDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerContainerGroupCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerContainerGroupsPerInstance": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#GameServerData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerGroupAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerGroupActions": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameServerGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerGroupAutoScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerGroupDeleteOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerGroupInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerGroupNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerGroupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameServerHealthCheck": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameServerInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameServerInstanceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameServerInstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameServerProtectionPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServerUtilizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameServers": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionActivationTimeoutSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#GameSessionConnectionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionCreationLimitPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameSessionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSessionFullException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSessionPlacement": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionPlacementState": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameSessionQueue": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueDestinationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#GameSessionQueueNameOrArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#GameSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GameSessionStatusReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#GetComputeAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#GetComputeAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#GetComputeAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetComputeAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetComputeAuthToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#GetComputeAuthTokenInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#GetComputeAuthTokenInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetComputeAuthTokenOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetGameSessionLogUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#GetGameSessionLogUrlInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#GetGameSessionLogUrlInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetGameSessionLogUrlOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetInstanceAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#GetInstanceAccessInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#GetInstanceAccessInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#GetInstanceAccessOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#IdStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#IdempotentParameterMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ImageUriString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InstanceAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InstanceCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InstanceDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InstanceDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#InstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#InstancePathString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#InstanceRoleCredentialsProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#InstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InvalidFleetStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InvalidGameSessionStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#IpPermission": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#IpPermissionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#IpProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#IpRange": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LargeGameSessionData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LatencyMap": {
+      "type": "map"
+    },
+    "com.amazonaws.gamelift#LaunchParametersStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LaunchPathStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LaunchTemplateId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LaunchTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LaunchTemplateSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LaunchTemplateVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListAliases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListAliasesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListAliasesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListAliasesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListBuilds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListBuildsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListBuildsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListBuildsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListCompute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListComputeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListComputeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListComputeInputStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ListComputeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListContainerFleetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListContainerFleetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerFleetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListContainerGroupDefinitionVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionVersionsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListContainerGroupDefinitionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ListContainerGroupDefinitionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListFleetDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListFleetDeploymentsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListFleetDeploymentsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListFleetDeploymentsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListFleetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListFleetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListFleetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListGameServerGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListGameServerGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListGameServerGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListGameServerGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListGameServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListGameServersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListGameServersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListGameServersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListLocationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListLocationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListLocationsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ListLocationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListScripts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListScriptsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListScriptsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListScriptsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationArnModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LocationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#LocationFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationModelList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationOrderOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#LocationStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#LocationUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#LocationalDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LocationalDeployments": {
+      "type": "map"
+    },
+    "com.amazonaws.gamelift#LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#LogDestination": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#LogGroupArnStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchedPlayerSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#MatchedPlayerSessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakerData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingAcceptanceTimeoutInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfigurationNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakingConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#MatchmakingIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakingIdStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingRequestTimeoutInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#MatchmakingRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#MatchmakingRuleSetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingRuleSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakingRuleSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MatchmakingRuleSetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MatchmakingTicket": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#MatchmakingTicketList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MaxConcurrentGameSessionActivations": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#MaximumGameServerContainerGroupsPerInstance": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#MetricGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#MetricGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#MetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#MinimumHealthyPercentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#NonBlankAndLengthConstraintString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NonNegativeDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.gamelift#NonNegativeLimitedLengthDouble": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NonZeroAnd128MaxAsciiString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NonZeroAnd255MaxString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NonZeroAndMaxString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#NotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#OperatingSystem": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#OutOfCapacityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PingBeacon": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlacedPlayerSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlacedPlayerSessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlacementFallbackStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Player": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlayerAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.gamelift#PlayerAttributeString": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#PlayerAttributeStringDoubleMap": {
+      "type": "map"
+    },
+    "com.amazonaws.gamelift#PlayerAttributeStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#PlayerDataMap": {
+      "type": "map"
+    },
+    "com.amazonaws.gamelift#PlayerId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#PlayerIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerIdsForAcceptMatch": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerLatency": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlayerLatencyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerLatencyPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlayerLatencyPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PlayerSessionCreationPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#PlayerSessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#PlayerSessionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#PlayerSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#PolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#PortNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#PositiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#PositiveLong": {
+      "type": "long"
+    },
+    "com.amazonaws.gamelift#PriorityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PriorityConfigurationOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PriorityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#PriorityTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ProtectionPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#PutScalingPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#PutScalingPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#PutScalingPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#PutScalingPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#QueueArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#QueueCustomEventData": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#QueueSnsArnStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#RegisterCompute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#RegisterComputeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotReadyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#RegisterComputeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RegisterComputeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RegisterGameServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#RegisterGameServerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#RegisterGameServerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RegisterGameServerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RequestUploadCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#RequestUploadCredentialsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#RequestUploadCredentialsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RequestUploadCredentialsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ResolveAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ResolveAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ResolveAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ResolveAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ResourceCreationLimitPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ResumeGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ResumeGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ResumeGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ResumeGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RoutingStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#RoutingStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#RuleSetBody": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#RuleSetLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#RuntimeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ScalingAdjustmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#ScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ScalingPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ScalingStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Script": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ScriptArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ScriptId": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ScriptIdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#ScriptList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#SearchGameSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#SearchGameSessionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminalRoutingStrategyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#SearchGameSessionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#SearchGameSessionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ServerProcess": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ServerProcessList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#ServerSdkVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#SessionTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#Sha256": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#SnsArnStringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#StartFleetActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StartFleetActionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StartFleetActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartFleetActionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartGameSessionPlacement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StartGameSessionPlacementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StartGameSessionPlacementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartGameSessionPlacementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartMatchBackfill": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StartMatchBackfillInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StartMatchBackfillInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartMatchBackfillOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartMatchmaking": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StartMatchmakingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StartMatchmakingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StartMatchmakingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopFleetActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StopFleetActionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StopFleetActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopFleetActionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopGameSessionPlacement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StopGameSessionPlacementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StopGameSessionPlacementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopGameSessionPlacementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopMatchmaking": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#StopMatchmakingInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#StopMatchmakingInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StopMatchmakingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#StringModel": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#SupportContainerDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#SupportContainerDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#SupportContainerDefinitionInputList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#SupportContainerDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#SuspendGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#SuspendGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#SuspendGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#SuspendGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#TaggingFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TargetConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TargetTrackingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TerminalRoutingStrategyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TerminateGameSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#TerminateGameSessionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidGameSessionStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotReadyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#TerminateGameSessionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TerminateGameSessionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#TerminationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.gamelift#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.gamelift#UDPEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UnsupportedRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TaggingFailedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateAliasInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateAliasInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateAliasOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateBuild": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateBuildInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateBuildInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateBuildOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateContainerFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateContainerFleetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotReadyException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateContainerFleetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateContainerFleetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateContainerGroupDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateContainerGroupDefinitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateContainerGroupDefinitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateContainerGroupDefinitionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateFleetAttributesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateFleetAttributesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateFleetCapacityInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateFleetCapacityInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetCapacityOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetPortSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateFleetPortSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateFleetPortSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateFleetPortSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateGameServerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateGameServerGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateGameServerGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateGameServerGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameServerGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameServerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameServerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateGameSessionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidGameSessionStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateGameSessionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameSessionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameSessionQueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateGameSessionQueueInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateGameSessionQueueInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateGameSessionQueueOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateMatchmakingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateMatchmakingConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateMatchmakingConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateMatchmakingConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateRuntimeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateRuntimeConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidFleetStatusException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateRuntimeConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateRuntimeConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#UpdateScriptInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#UpdateScriptInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#UpdateScriptOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ValidateMatchmakingRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.gamelift#ValidateMatchmakingRuleSetInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.gamelift#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UnsupportedRegionException"
+        }
+      ]
+    },
+    "com.amazonaws.gamelift#ValidateMatchmakingRuleSetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#ValidateMatchmakingRuleSetOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#VpcPeeringAuthorization": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#VpcPeeringAuthorizationList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#VpcPeeringConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#VpcPeeringConnectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#VpcPeeringConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.gamelift#VpcSubnet": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#VpcSubnets": {
+      "type": "list"
+    },
+    "com.amazonaws.gamelift#WeightedCapacity": {
+      "type": "string"
+    },
+    "com.amazonaws.gamelift#WholeNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.gamelift#ZipBlob": {
+      "type": "blob"
+    }
+  }
+}

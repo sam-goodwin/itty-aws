@@ -1,0 +1,2213 @@
+{
+  "shapes": {
+    "com.amazonaws.mediaconnect#AddBridgeFlowSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeNetworkOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeNetworkSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeOutputs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddBridgeOutputsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddBridgeOutputsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeOutputsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddBridgeSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddBridgeSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddBridgeSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddEgressGatewayBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowMediaStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddFlowMediaStreamsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddFlowMediaStreamsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowMediaStreamsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowOutputs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddFlowOutputsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#AddFlowOutputs420Exception"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddFlowOutputs420Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowOutputsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowOutputsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddFlowSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddFlowSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowVpcInterfaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#AddFlowVpcInterfacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#AddFlowVpcInterfacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddFlowVpcInterfacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddIngressGatewayBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddMaintenance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddMediaStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#AddOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Algorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#AudioMonitoringSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BlackFrames": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Bridge": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#BridgeFlowOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeFlowSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeNetworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeNetworkSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgePlacement": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#BridgeResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#BridgeSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#BridgeState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Colorimetry": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ContentQualityAnalysisState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#CreateBridge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#CreateBridgeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#CreateBridge420Exception"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#CreateBridge420Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateBridgeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#CreateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#CreateFlow420Exception"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#CreateFlow420Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#CreateGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#CreateGateway420Exception"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#CreateGateway420Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#CreateGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteBridge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DeleteBridgeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DeleteBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteBridgeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DeleteFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DeleteFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DeleteGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DeleteGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeleteGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeregisterGatewayInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DeregisterGatewayInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DeregisterGatewayInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DeregisterGatewayInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeBridge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeBridgeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeBridgeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeFlowSourceMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceThumbnail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeFlowSourceThumbnailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceThumbnailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeFlowSourceThumbnailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeGateway": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeGatewayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeGatewayInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeGatewayInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeGatewayInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeGatewayInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeGatewayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeGatewayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeOfferingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#DescribeReservationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#DescribeReservationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DescribeReservationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DesiredState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DestinationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#DurationUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#EgressGatewayBridge": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#EncoderProfile": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#EncodingName": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#EncodingParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#EncodingParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Encryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Entitlement": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#EntitlementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#FailoverConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#FailoverMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Flow": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#FlowArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#FlowResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#FlowSize": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Fmtp": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#FmtpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#FrameResolution": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#FrozenFrames": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Gateway": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GatewayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#GatewayBridgeSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GatewayInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GatewayInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#GatewayInstanceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#GatewayNetwork": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GatewayResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#GatewayState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#GrantEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GrantFlowEntitlements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#GrantFlowEntitlementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#GrantFlowEntitlements420Exception"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#GrantFlowEntitlements420Exception": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GrantFlowEntitlementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#GrantFlowEntitlementsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#IngressGatewayBridge": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#InputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#InputConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#InstanceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Interface": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#InterfaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#KeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ListBridges": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListBridgesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListBridgesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListBridgesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListEntitlements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListEntitlementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListEntitlementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListEntitlementsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListFlows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListFlowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListFlowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListFlowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListGatewayInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListGatewayInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListGatewayInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListGatewayInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListGateways": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListGatewaysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListGatewaysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListGatewaysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListOfferingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListReservations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListReservationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListReservationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListReservationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListedBridge": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListedEntitlement": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListedFlow": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListedGateway": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ListedGatewayInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Maintenance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MaintenanceDay": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediaconnect#MediaConnect": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MediaConnect"
+        }
+      }
+    },
+    "com.amazonaws.mediaconnect#MediaStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamOutputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamOutputConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamSourceConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MediaStreamType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#MessageDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Messages": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MonitoringConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#MulticastSourceSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#NdiConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#NdiDiscoveryServerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#NdiState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#NetworkInterfaceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Offering": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#OfferingArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#OfferingResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#OutputStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#PriceUnits": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#PurchaseOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#PurchaseOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#PurchaseOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#PurchaseOfferingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Range": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveBridgeOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveBridgeSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveBridgeSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowMediaStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveFlowMediaStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowMediaStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowMediaStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveFlowOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveFlowSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowVpcInterface": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RemoveFlowVpcInterfaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowVpcInterfaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RemoveFlowVpcInterfaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Reservation": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ReservationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.mediaconnect#ReservationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediaconnect#ReservationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ResourceSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#RevokeFlowEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#RevokeFlowEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#RevokeFlowEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#RevokeFlowEntitlementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ScanMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#SetGatewayBridgeSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#SetSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#SilentAudio": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Source": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#SourcePriority": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#StartFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#StartFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#StartFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#StartFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#StopFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#StopFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#StopFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#StopFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Tcs": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#ThumbnailDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#ThumbnailState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediaconnect#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#Transport": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#TransportMediaInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#TransportStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#TransportStreamProgram": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateBridgeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeFlowSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeNetworkOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeNetworkSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateBridgeOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateBridgeSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateBridgeStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateBridgeStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateEgressGatewayBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFailoverConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowEntitlement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateFlowEntitlementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowEntitlementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowEntitlementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowMediaStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateFlowMediaStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowMediaStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowMediaStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowOutput": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateFlowOutputRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowOutputRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowOutputResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateFlowSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateFlowSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateGatewayBridgeSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateGatewayInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediaconnect#UpdateGatewayInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediaconnect#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.mediaconnect#UpdateGatewayInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateGatewayInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateIngressGatewayBridgeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#UpdateMaintenance": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#VideoMonitoringSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#VpcInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#VpcInterfaceAttachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#VpcInterfaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediaconnect#__listOfAddBridgeOutputRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfAddBridgeSourceRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfAddMediaStreamRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfAddOutputRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfAudioMonitoringSetting": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfBridgeOutput": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfBridgeSource": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfDestinationConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfDestinationConfigurationRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfEntitlement": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfGatewayNetwork": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfGrantEntitlementRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfInputConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfInputConfigurationRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfInteger": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfListedBridge": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfListedEntitlement": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfListedFlow": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfListedGateway": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfListedGatewayInstance": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMediaStream": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMediaStreamOutputConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMediaStreamOutputConfigurationRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMediaStreamSourceConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMediaStreamSourceConfigurationRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfMessageDetail": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfNdiDiscoveryServerConfig": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfOffering": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfOutput": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfReservation": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfSetSourceRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfSource": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfString": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfTransportStream": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfTransportStreamProgram": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfVideoMonitoringSetting": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfVpcInterface": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__listOfVpcInterfaceRequest": {
+      "type": "list"
+    },
+    "com.amazonaws.mediaconnect#__mapOfString": {
+      "type": "map"
+    }
+  }
+}

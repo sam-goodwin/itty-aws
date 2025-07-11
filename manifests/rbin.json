@@ -1,0 +1,371 @@
+{
+  "shapes": {
+    "com.amazonaws.rbin#AmazonRecycleBin": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "rbin"
+        }
+      }
+    },
+    "com.amazonaws.rbin#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ConflictExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#CreateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#CreateRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#CreateRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#CreateRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#DeleteRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#DeleteRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#DeleteRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#ExcludeResourceTags": {
+      "type": "list"
+    },
+    "com.amazonaws.rbin#GetRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#GetRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#GetRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#GetRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ListRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#ListRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#ListRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ListRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#LockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#LockRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#LockRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#LockRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#LockRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#LockState": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.rbin#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ResourceNotFoundExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ResourceTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#ResourceTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#ResourceTags": {
+      "type": "list"
+    },
+    "com.amazonaws.rbin#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#RetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#RetentionPeriodUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#RetentionPeriodValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.rbin#RuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#RuleIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#RuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#RuleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#RuleSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.rbin#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ServiceQuotaExceededExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rbin#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.rbin#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.rbin#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.rbin#UnlockDelay": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UnlockDelayUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.rbin#UnlockDelayValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.rbin#UnlockRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#UnlockRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#UnlockRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UnlockRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UpdateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rbin#UpdateRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rbin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.rbin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.rbin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.rbin#UpdateRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#UpdateRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rbin#ValidationExceptionReason": {
+      "type": "enum"
+    }
+  }
+}

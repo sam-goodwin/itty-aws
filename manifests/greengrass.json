@@ -1,0 +1,1824 @@
+{
+  "shapes": {
+    "com.amazonaws.greengrass#AssociateRoleToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#AssociateRoleToGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#AssociateRoleToGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#AssociateRoleToGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#AssociateServiceRoleToAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#AssociateServiceRoleToAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#AssociateServiceRoleToAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#AssociateServiceRoleToAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#BulkDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#BulkDeploymentMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#BulkDeploymentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#BulkDeploymentResults": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#BulkDeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#BulkDeployments": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#ConfigurationSyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#ConnectivityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Connector": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ConnectorDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Core": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CoreDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateConnectorDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateConnectorDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateConnectorDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateCoreDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateCoreDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateCoreDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateDeviceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateDeviceDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateDeviceDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateFunctionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateFunctionDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateFunctionDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateGroupCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateGroupCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateGroupCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroupCertificateAuthorityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroupVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateGroupVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateGroupVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateGroupVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateLoggerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateLoggerDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateLoggerDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateResourceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateResourceDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateResourceDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSoftwareUpdateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateSoftwareUpdateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateSoftwareUpdateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSoftwareUpdateJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateSubscriptionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#CreateSubscriptionDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#CreateSubscriptionDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DefinitionInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteConnectorDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteConnectorDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteConnectorDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteConnectorDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteCoreDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteCoreDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteCoreDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteCoreDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteDeviceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteDeviceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteDeviceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteDeviceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteFunctionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteFunctionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteFunctionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteFunctionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteLoggerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteLoggerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteLoggerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteLoggerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteResourceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteResourceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteResourceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteResourceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteSubscriptionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DeleteSubscriptionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DeleteSubscriptionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeleteSubscriptionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeploymentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#Deployments": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DeviceDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DisassociateRoleFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DisassociateRoleFromGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DisassociateRoleFromGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DisassociateRoleFromGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DisassociateServiceRoleFromAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#DisassociateServiceRoleFromAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#DisassociateServiceRoleFromAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#DisassociateServiceRoleFromAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#EncodingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#Function": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionConfigurationEnvironment": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionDefaultConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionDefaultExecutionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionExecutionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#FunctionIsolationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#FunctionRunAsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetAssociatedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetAssociatedRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetAssociatedRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetAssociatedRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetBulkDeploymentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetBulkDeploymentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetBulkDeploymentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetBulkDeploymentStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectivityInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetConnectivityInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetConnectivityInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectivityInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetConnectorDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetConnectorDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetConnectorDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetCoreDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetCoreDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetCoreDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetCoreDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetCoreDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetCoreDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetCoreDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetCoreDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeploymentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetDeploymentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetDeploymentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeploymentStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetDeviceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetDeviceDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetDeviceDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetFunctionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetFunctionDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetFunctionDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateAuthority": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetGroupCertificateAuthorityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateAuthorityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateAuthorityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetGroupCertificateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupCertificateConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetGroupVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetGroupVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetGroupVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetLoggerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetLoggerDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetLoggerDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetResourceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetResourceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetResourceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetResourceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetResourceDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetResourceDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetResourceDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetResourceDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetServiceRoleForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetServiceRoleForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetServiceRoleForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetServiceRoleForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetSubscriptionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinitionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetSubscriptionDefinitionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinitionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetSubscriptionDefinitionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetThingRuntimeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#GetThingRuntimeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#GetThingRuntimeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GetThingRuntimeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Greengrass": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Greengrass"
+        }
+      }
+    },
+    "com.amazonaws.greengrass#GroupCertificateAuthorityProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GroupInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GroupOwnerSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#GroupVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListBulkDeploymentDetailedReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListBulkDeploymentDetailedReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListBulkDeploymentDetailedReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListBulkDeploymentDetailedReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListBulkDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListBulkDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListBulkDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListBulkDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListConnectorDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListConnectorDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListConnectorDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListCoreDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListCoreDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListCoreDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListDeviceDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListDeviceDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListDeviceDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListFunctionDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListFunctionDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListFunctionDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroupCertificateAuthorities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListGroupCertificateAuthoritiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListGroupCertificateAuthoritiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroupCertificateAuthoritiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroupVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListGroupVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListGroupVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroupVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListGroupsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListLoggerDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListLoggerDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListLoggerDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListResourceDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListResourceDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListResourceDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListSubscriptionDefinitionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListSubscriptionDefinitionsRequest"
+      }
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListSubscriptionDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#LocalDeviceResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#LocalVolumeResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Logger": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#LoggerComponent": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#LoggerDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#LoggerLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#LoggerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#ResetDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#ResetDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#ResetDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ResetDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ResourceAccessPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ResourceDataContainer": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ResourceDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#ResourceDownloadOwnerSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#RuntimeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#S3MachineLearningModelResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#S3UrlSignerRole": {
+      "type": "string"
+    },
+    "com.amazonaws.greengrass#SageMakerMachineLearningModelResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#SecretsManagerSecretResourceData": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#SoftwareToUpdate": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#StartBulkDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#StartBulkDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#StartBulkDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#StartBulkDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#StopBulkDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#StopBulkDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#StopBulkDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#StopBulkDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#SubscriptionDefinitionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrass#Telemetry": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#TelemetryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#TelemetryConfigurationUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateAgentLogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#UpdateConnectivityInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateConnectivityInfoRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateConnectivityInfoRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateConnectivityInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateConnectorDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateConnectorDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateConnectorDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateConnectorDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateCoreDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateCoreDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateCoreDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateCoreDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateDeviceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateDeviceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateDeviceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateDeviceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateFunctionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateFunctionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateFunctionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateFunctionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateGroupCertificateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateGroupCertificateConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateGroupCertificateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateGroupCertificateConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateLoggerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateLoggerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateLoggerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateLoggerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateResourceDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateResourceDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateResourceDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateResourceDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateSubscriptionDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateSubscriptionDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateSubscriptionDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateSubscriptionDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#UpdateTargetsArchitecture": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#UpdateTargetsOperatingSystem": {
+      "type": "enum"
+    },
+    "com.amazonaws.greengrass#UpdateThingRuntimeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.greengrass#UpdateThingRuntimeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.greengrass#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.greengrass#InternalServerErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.greengrass#UpdateThingRuntimeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#UpdateThingRuntimeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#VersionInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.greengrass#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.greengrass#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.greengrass#__listOfConnectivityInfo": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfConnector": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfCore": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfDefinitionInformation": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfDevice": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfFunction": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfGroupCertificateAuthorityProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfGroupInformation": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfLogger": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfResource": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfResourceAccessPolicy": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfSubscription": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOfVersionInformation": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.greengrass#__mapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.greengrass#__string": {
+      "type": "string"
+    }
+  }
+}

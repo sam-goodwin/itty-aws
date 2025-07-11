@@ -1,0 +1,448 @@
+{
+  "shapes": {
+    "com.amazonaws.redshiftdata#ActiveSessionsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ActiveStatementsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#BatchExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#BatchExecuteStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#ActiveSessionsExceededException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ActiveStatementsExceededException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#BatchExecuteStatementException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#BatchExecuteStatementException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#BatchExecuteStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#BatchExecuteStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.redshiftdata#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.redshiftdata#BoxedDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.redshiftdata#BoxedLong": {
+      "type": "long"
+    },
+    "com.amazonaws.redshiftdata#CancelStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#CancelStatementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#DatabaseConnectionException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#CancelStatementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#CancelStatementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#ClusterIdentifierString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#ColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#ColumnMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ColumnMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#DatabaseConnectionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#DatabaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#DbGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#DescribeStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#DescribeStatementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#DescribeStatementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#DescribeStatementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#DescribeTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#DescribeTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#DatabaseConnectionException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#DescribeTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#DescribeTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#ExecuteStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#ActiveSessionsExceededException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ActiveStatementsExceededException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ExecuteStatementException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#ExecuteStatementException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ExecuteStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ExecuteStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#Field": {
+      "type": "union"
+    },
+    "com.amazonaws.redshiftdata#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#FormattedSqlRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#GetStatementResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#GetStatementResultRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#GetStatementResultRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#GetStatementResultResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#GetStatementResultV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#GetStatementResultV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#GetStatementResultV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#GetStatementResultV2Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshiftdata#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#ListDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#DatabaseConnectionException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#ListDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#ListSchemasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#DatabaseConnectionException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#ListSchemasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListStatements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#ListStatementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#ListStatementsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshiftdata#ListStatementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListStatementsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.redshiftdata#ListTablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.redshiftdata#DatabaseConnectionException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#QueryTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.redshiftdata#ListTablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ListTablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.redshiftdata#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshiftdata#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#QueryRecords": {
+      "type": "union"
+    },
+    "com.amazonaws.redshiftdata#QueryTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#RedshiftData": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Redshift Data"
+        }
+      }
+    },
+    "com.amazonaws.redshiftdata#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#ResultFormatString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#SchemaList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#SecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#SessionAliveSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.redshiftdata#SqlList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#SqlParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#SqlParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#SqlRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#StatementData": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#StatementList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#StatementNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#StatementStatusString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#StatementString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#StatementStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#StatusString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#String": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#SubStatementData": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#SubStatementList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#TableList": {
+      "type": "list"
+    },
+    "com.amazonaws.redshiftdata#TableMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.redshiftdata#WorkgroupNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.redshiftdata#bool": {
+      "type": "boolean"
+    }
+  }
+}

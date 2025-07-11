@@ -1,0 +1,1439 @@
+{
+  "shapes": {
+    "com.amazonaws.inspector#AccessDeniedErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AddAttributesToFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#AddAttributesToFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#AddAttributesToFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AddAttributesToFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AddRemoveAttributesFindingArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentAlreadyRunningAssessment": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AgentAlreadyRunningAssessmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AgentHealth": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#AgentHealthCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#AgentHealthCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentHealthList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AgentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentPreview": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AgentPreviewList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AgentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AgentsAlreadyRunningAssessmentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AmiId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#ArnCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#AssessmentRulesPackageArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunAgent": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunAgentList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRunDuration": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#AssessmentRunFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunFindingCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector#AssessmentRunInProgressArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRunInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRunName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AssessmentRunNotification": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunNotificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRunNotificationSnsStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#AssessmentRunState": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#AssessmentRunStateChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentRunStateChangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentRunStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentTargetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentTargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AssessmentTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentTemplateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssessmentTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssessmentTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AssessmentTemplateRulesPackageArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AssetAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AssetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#AttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AutoScalingGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#AutoScalingGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#BatchDescribeArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#BatchDescribeExclusionsArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Bool": {
+      "type": "boolean"
+    },
+    "com.amazonaws.inspector#CreateAssessmentTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#CreateAssessmentTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidCrossAccountRoleException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#CreateAssessmentTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateAssessmentTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateAssessmentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#CreateAssessmentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#CreateAssessmentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateAssessmentTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateExclusionsPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#CreateExclusionsPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#PreviewGenerationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#CreateExclusionsPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateExclusionsPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateResourceGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#CreateResourceGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#CreateResourceGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#CreateResourceGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DeleteAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DeleteAssessmentRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#AssessmentRunInProgressException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DeleteAssessmentRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DeleteAssessmentTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DeleteAssessmentTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#AssessmentRunInProgressException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DeleteAssessmentTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DeleteAssessmentTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DeleteAssessmentTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#AssessmentRunInProgressException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DeleteAssessmentTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeAssessmentRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeAssessmentRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeAssessmentTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeAssessmentTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeAssessmentTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeCrossAccountAccessRole": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeCrossAccountAccessRoleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeExclusions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeExclusionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeExclusionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeExclusionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeResourceGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeResourceGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeResourceGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeResourceGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeRulesPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#DescribeRulesPackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#DescribeRulesPackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DescribeRulesPackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#DurationRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#EventSubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Exclusion": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ExclusionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector#ExclusionPreview": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ExclusionPreviewList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#FailedItemDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#FailedItemErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#FailedItems": {
+      "type": "map"
+    },
+    "com.amazonaws.inspector#FilterRulesPackageArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Finding": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#FindingCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#FindingFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#FindingId": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#FindingList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#GetAssessmentReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#GetAssessmentReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#AssessmentRunInProgressException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.inspector#UnsupportedFeatureException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#GetAssessmentReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#GetAssessmentReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#GetExclusionsPreview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#GetExclusionsPreviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#GetExclusionsPreviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#GetExclusionsPreviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#GetTelemetryMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#GetTelemetryMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#GetTelemetryMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#GetTelemetryMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#Hostname": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#InspectorEvent": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#InspectorService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Inspector"
+        }
+      }
+    },
+    "com.amazonaws.inspector#InspectorServiceAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#InvalidCrossAccountRoleErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#InvalidCrossAccountRoleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#InvalidInputErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#IocConfidence": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#Ipv4Address": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#Ipv4AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Ipv6Addresses": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#KernelVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#LimitExceededErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentRunAgents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListAssessmentRunAgentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListAssessmentRunAgentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentRunAgentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListAssessmentRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListAssessmentRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListAssessmentTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListAssessmentTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListAssessmentTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListAssessmentTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListAssessmentTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListEventSubscriptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListEventSubscriptionsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#ListEventSubscriptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListEventSubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListExclusions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListExclusionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListExclusionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListExclusionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#ListParentArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ListReturnedArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ListRulesPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListRulesPackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListRulesPackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListRulesPackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#Locale": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.inspector#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#MessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#NamePattern": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#NoSuchEntityErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#NoSuchEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#NumericSeverity": {
+      "type": "double"
+    },
+    "com.amazonaws.inspector#NumericVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#OperatingSystem": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#PreviewAgents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#PreviewAgentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidCrossAccountRoleException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#PreviewAgentsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.inspector#PreviewAgentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#PreviewAgentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#PreviewGenerationInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#PreviewStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#PrivateIp": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#PrivateIpAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ProviderName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#RegisterCrossAccountAccessRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#RegisterCrossAccountAccessRoleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidCrossAccountRoleException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#RegisterCrossAccountAccessRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#RemoveAttributesFromFindings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#RemoveAttributesFromFindingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#RemoveAttributesFromFindingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#RemoveAttributesFromFindingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ReportFileFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#ReportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#ReportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#ResourceGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ResourceGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ResourceGroupTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ResourceGroupTags": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#RuleNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#RulesPackage": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#RulesPackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#RulesPackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#Scope": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#ScopeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ScopeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#ScopeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#SecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#ServiceTemporarilyUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#SetTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#SetTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#SetTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#Severity": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#SeverityList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#StartAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#StartAssessmentRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#AgentsAlreadyRunningAssessmentException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidCrossAccountRoleException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#StartAssessmentRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#StartAssessmentRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#StopAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.inspector#StopAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#StopAssessmentRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#StopAssessmentRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#SubscribeToEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#SubscribeToEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#SubscribeToEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#SubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#TelemetryMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#TelemetryMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Text": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.inspector#TimestampRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#UnsubscribeFromEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#UnsubscribeFromEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#UnsubscribeFromEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#UnsupportedFeatureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#UpdateAssessmentTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.inspector#UpdateAssessmentTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.inspector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InternalException"
+        },
+        {
+          "target": "com.amazonaws.inspector#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.inspector#NoSuchEntityException"
+        },
+        {
+          "target": "com.amazonaws.inspector#ServiceTemporarilyUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.inspector#UpdateAssessmentTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.inspector#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.inspector#UserAttributeKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#UserAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.inspector#Version": {
+      "type": "string"
+    }
+  }
+}

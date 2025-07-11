@@ -1,0 +1,676 @@
+{
+  "shapes": {
+    "com.amazonaws.cognitosync#AWSCognitoSyncService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Cognito Sync"
+        }
+      }
+    },
+    "com.amazonaws.cognitosync#AlreadyStreamedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#ApplicationArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#AssumeRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitosync#BulkPublish": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#BulkPublishRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#AlreadyStreamedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#DuplicateRequestException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#BulkPublishRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#BulkPublishResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#BulkPublishStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitosync#ClientContext": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#CognitoEventType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#CognitoStreams": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#Dataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DatasetList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#DatasetName": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cognitosync#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DeleteDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityPoolUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#DescribeIdentityPoolUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityPoolUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityPoolUsageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#DescribeIdentityUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DescribeIdentityUsageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#DeviceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#DuplicateRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#Events": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitosync#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#GetBulkPublishDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#GetBulkPublishDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#GetBulkPublishDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#GetBulkPublishDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#GetCognitoEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#GetCognitoEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#GetCognitoEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#GetCognitoEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#GetIdentityPoolConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#GetIdentityPoolConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#GetIdentityPoolConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#GetIdentityPoolConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#IdentityId": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#IdentityPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#IdentityPoolUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#IdentityPoolUsageList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#IdentityUsage": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitosync#IntegerString": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitosync#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#InvalidConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#InvalidLambdaFunctionOutputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#LambdaFunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#LambdaThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListIdentityPoolUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#ListIdentityPoolUsageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#ListIdentityPoolUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListIdentityPoolUsageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#ListRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#ListRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ListRecordsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.cognitosync#MergedDatasetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#NotAuthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#Operation": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitosync#Platform": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitosync#PushSync": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#PushToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#RecordKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#RecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#RecordPatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#RecordPatchList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitosync#RecordValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#RegisterDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#RegisterDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#RegisterDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#RegisterDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ResourceConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#SetCognitoEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#SetCognitoEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#SetCognitoEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#SetIdentityPoolConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#SetIdentityPoolConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#SetIdentityPoolConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#SetIdentityPoolConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#StreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#StreamingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitosync#String": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#SubscribeToDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#SubscribeToDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#SubscribeToDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#SubscribeToDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#SyncSessionToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitosync#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#UnsubscribeFromDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#UnsubscribeFromDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#UnsubscribeFromDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#UnsubscribeFromDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#UpdateRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitosync#UpdateRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitosync#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidLambdaFunctionOutputException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#LambdaThrottledException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceConflictException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitosync#UpdateRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitosync#UpdateRecordsResponse": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,2501 @@
+{
+  "shapes": {
+    "com.amazonaws.organizations#AWSOrganizationsNotInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AWSOrganizationsV20161128": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Organizations"
+        }
+      }
+    },
+    "com.amazonaws.organizations#AcceptHandshake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#AcceptHandshakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedForDependencyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeAlreadyInStateException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidHandshakeTransitionException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#AcceptHandshakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AcceptHandshakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccessDeniedForDependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccessDeniedForDependencyExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountAlreadyClosedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountAlreadyRegisteredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#AccountJoinedMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#AccountNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountNotRegisteredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountOwnerNotVerifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Accounts": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#AlreadyInOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AttachPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#AttachPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicatePolicyAttachmentException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyChangesInProgressException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyTypeNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#AttachPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#AwsManagedPolicy": {
+      "type": "boolean"
+    },
+    "com.amazonaws.organizations#CancelHandshake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CancelHandshakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeAlreadyInStateException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidHandshakeTransitionException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CancelHandshakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CancelHandshakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#Child": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ChildId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ChildNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ChildType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Children": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#CloseAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CloseAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountAlreadyClosedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CloseAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ConstraintViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ConstraintViolationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#CreateAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CreateAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#FinalizingOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CreateAccountFailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#CreateAccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#CreateAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateAccountRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#CreateAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateAccountState": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#CreateAccountStates": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#CreateAccountStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateAccountStatusNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateAccountStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#CreateGovCloudAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CreateGovCloudAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#FinalizingOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CreateGovCloudAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateGovCloudAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CreateOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedForDependencyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AlreadyInOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CreateOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateOrganizationalUnit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CreateOrganizationalUnitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicateOrganizationalUnitException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CreateOrganizationalUnitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreateOrganizationalUnitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#CreatePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicatePolicyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyTypeNotAvailableForOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#CreatePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#CreatePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DeclineHandshake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DeclineHandshakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeAlreadyInStateException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidHandshakeTransitionException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeclineHandshakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DeclineHandshakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DelegatedAdministrator": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DelegatedAdministrators": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#DelegatedService": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DelegatedServices": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#DeleteOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#OrganizationNotEmptyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeleteOrganizationalUnit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DeleteOrganizationalUnitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#OrganizationalUnitNotEmptyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#OrganizationalUnitNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeleteOrganizationalUnitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DeletePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeletePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ResourcePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeregisterDelegatedAdministrator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DeregisterDelegatedAdministratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DeregisterDelegatedAdministratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribeAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeCreateAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribeCreateAccountStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreateAccountStatusNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeCreateAccountStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeCreateAccountStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeEffectivePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribeEffectivePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#EffectivePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeEffectivePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeEffectivePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeHandshake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribeHandshakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeHandshakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeHandshakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeOrganizationalUnit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribeOrganizationalUnitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#OrganizationalUnitNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeOrganizationalUnitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeOrganizationalUnitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DescribePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DescribeResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ResourcePolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DescribeResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DestinationParentNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DetachPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DetachPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyChangesInProgressException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotAttachedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DetachPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DisableAWSServiceAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DisableAWSServiceAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DisableAWSServiceAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DisablePolicyType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#DisablePolicyTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyChangesInProgressException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyTypeNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.organizations#RootNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#DisablePolicyTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DisablePolicyTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DuplicateAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DuplicateHandshakeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DuplicateOrganizationalUnitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DuplicatePolicyAttachmentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#DuplicatePolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EffectivePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EffectivePolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EffectivePolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Email": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#EnableAWSServiceAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#EnableAWSServiceAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#EnableAWSServiceAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnableAllFeatures": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#EnableAllFeaturesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#EnableAllFeaturesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnableAllFeaturesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnablePolicyType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#EnablePolicyTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyChangesInProgressException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyTypeAlreadyEnabledException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyTypeNotAvailableForOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#RootNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#EnablePolicyTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnablePolicyTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnabledServicePrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#EnabledServicePrincipals": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ExceptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#FinalizingOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#GenericArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#Handshake": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeAlreadyInStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#HandshakeConstraintViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeConstraintViolationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#HandshakeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#HandshakeNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeNotes": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#HandshakeParties": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#HandshakeParty": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakePartyId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#HandshakePartyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#HandshakeResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#HandshakeResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#HandshakeResourceValue": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#HandshakeResources": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#HandshakeState": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Handshakes": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#IAMUserAccessToBilling": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#InvalidHandshakeTransitionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#InvalidInputExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#InviteAccountToOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#InviteAccountToOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountOwnerNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicateHandshakeException"
+        },
+        {
+          "target": "com.amazonaws.organizations#FinalizingOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#HandshakeConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#InviteAccountToOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#InviteAccountToOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#LeaveOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#MasterCannotLeaveOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListAWSServiceAccessForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListAWSServiceAccessForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListAWSServiceAccessForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListAWSServiceAccessForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListAccountsForParent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListAccountsForParentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListAccountsForParentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListAccountsForParentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListChildren": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListChildrenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListChildrenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListChildrenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListCreateAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListCreateAccountStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListCreateAccountStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListCreateAccountStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListDelegatedAdministrators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListDelegatedAdministratorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListDelegatedAdministratorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListDelegatedAdministratorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListDelegatedServicesForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListDelegatedServicesForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListDelegatedServicesForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListDelegatedServicesForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListHandshakesForAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListHandshakesForAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListHandshakesForAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListHandshakesForAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListHandshakesForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListHandshakesForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListHandshakesForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListHandshakesForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListOrganizationalUnitsForParent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListOrganizationalUnitsForParentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListOrganizationalUnitsForParentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListOrganizationalUnitsForParentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListParents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListParentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ChildNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListParentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListParentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListPoliciesForTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListPoliciesForTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListPoliciesForTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListPoliciesForTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListRoots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListRootsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListRootsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListRootsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListTargetsForPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#ListTargetsForPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#ListTargetsForPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ListTargetsForPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#MalformedPolicyDocumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#MasterCannotLeaveOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.organizations#MoveAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#MoveAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DestinationParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicateAccountException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#SourceParentNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#MoveAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#Organization": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#OrganizationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#OrganizationFeatureSet": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#OrganizationId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#OrganizationNotEmptyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#OrganizationalUnit": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#OrganizationalUnitArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#OrganizationalUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#OrganizationalUnitName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#OrganizationalUnitNotEmptyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#OrganizationalUnitNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#OrganizationalUnits": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#Parent": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ParentId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ParentNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ParentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Parents": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#Policies": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#Policy": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyChangesInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyContent": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyNotAttachedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#PolicyTargetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#PolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#PolicyTypeAlreadyEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTypeNotAvailableForOrganizationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTypeNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTypeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#PolicyTypeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PolicyTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#RegisterDelegatedAdministrator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#RegisterDelegatedAdministratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountAlreadyRegisteredException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#RegisterDelegatedAdministratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#RemoveAccountFromOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#RemoveAccountFromOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AccountNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#MasterCannotLeaveOrganizationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#RemoveAccountFromOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ResourcePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ResourcePolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ResourcePolicyContent": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ResourcePolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#ResourcePolicyNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ResourcePolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#RoleName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#Root": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#RootArn": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#RootId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#RootName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#RootNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#Roots": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#ServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#ServicePrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#SourceParentNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#TaggableResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.organizations#TargetName": {
+      "type": "string"
+    },
+    "com.amazonaws.organizations#TargetNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.organizations#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.organizations#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UnsupportedAPIEndpointException": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TargetNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UpdateOrganizationalUnit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#UpdateOrganizationalUnitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicateOrganizationalUnitException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#OrganizationalUnitNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#UpdateOrganizationalUnitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UpdateOrganizationalUnitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UpdatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.organizations#UpdatePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.organizations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.organizations#AWSOrganizationsNotInUseException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ConstraintViolationException"
+        },
+        {
+          "target": "com.amazonaws.organizations#DuplicatePolicyException"
+        },
+        {
+          "target": "com.amazonaws.organizations#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.organizations#MalformedPolicyDocumentException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyChangesInProgressException"
+        },
+        {
+          "target": "com.amazonaws.organizations#PolicyNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.organizations#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.organizations#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.organizations#UnsupportedAPIEndpointException"
+        }
+      ]
+    },
+    "com.amazonaws.organizations#UpdatePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.organizations#UpdatePolicyResponse": {
+      "type": "structure"
+    }
+  }
+}

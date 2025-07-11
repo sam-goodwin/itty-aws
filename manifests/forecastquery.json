@@ -1,0 +1,130 @@
+{
+  "shapes": {
+    "com.amazonaws.forecastquery#AmazonForecastRuntime": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "forecastquery"
+        }
+      }
+    },
+    "com.amazonaws.forecastquery#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#DataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#DateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.forecastquery#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#Filters": {
+      "type": "map"
+    },
+    "com.amazonaws.forecastquery#Forecast": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#LongArn": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#Predictions": {
+      "type": "map"
+    },
+    "com.amazonaws.forecastquery#QueryForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecastquery#QueryForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecastquery#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecastquery#QueryForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#QueryForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#QueryWhatIfForecast": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.forecastquery#QueryWhatIfForecastRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.forecastquery#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.forecastquery#QueryWhatIfForecastRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#QueryWhatIfForecastResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.forecastquery#Statistic": {
+      "type": "string"
+    },
+    "com.amazonaws.forecastquery#TimeSeries": {
+      "type": "list"
+    },
+    "com.amazonaws.forecastquery#Timestamp": {
+      "type": "string"
+    }
+  }
+}

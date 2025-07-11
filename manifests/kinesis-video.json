@@ -1,0 +1,1185 @@
+{
+  "shapes": {
+    "com.amazonaws.kinesisvideo#APIName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#AccountChannelLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#AccountStreamLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ChannelInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ChannelInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#ChannelName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#ChannelNameCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ChannelProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#ChannelRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#ChannelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#ClientLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#ConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#CreateSignalingChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#CreateSignalingChannelInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#AccountChannelLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagsPerResourceExceededLimitException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#CreateSignalingChannelInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#CreateSignalingChannelOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#CreateStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#CreateStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccountStreamLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DeviceStreamLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidDeviceException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagsPerResourceExceededLimitException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#CreateStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#CreateStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DataEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#DataRetentionChangeInHours": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#DataRetentionInHours": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#DeleteAfterUpload": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kinesisvideo#DeleteEdgeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DeleteEdgeConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#StreamEdgeConfigurationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DeleteEdgeConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeleteEdgeConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeleteSignalingChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DeleteSignalingChannelInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#VersionMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DeleteSignalingChannelInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeleteSignalingChannelOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeleteStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DeleteStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#VersionMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DeleteStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeleteStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DeletionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeEdgeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeEdgeConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#StreamEdgeConfigurationNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeEdgeConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeEdgeConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeImageGenerationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeImageGenerationConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeImageGenerationConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeImageGenerationConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeMappedResourceConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeMappedResourceConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeMappedResourceConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeMappedResourceConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeMediaStorageConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeMediaStorageConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeMediaStorageConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeMediaStorageConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeNotificationConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeNotificationConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeNotificationConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeSignalingChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeSignalingChannelInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeSignalingChannelInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeSignalingChannelOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#DescribeStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#DescribeStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DescribeStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DestinationRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#DestinationUri": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#DeviceName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#DeviceStreamLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#DurationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#EdgeAgentStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#EdgeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#EdgeRetentionInHours": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#FailedStatusDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#FormatConfig": {
+      "type": "map"
+    },
+    "com.amazonaws.kinesisvideo#FormatConfigKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#FormatConfigValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#GetDataEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#GetDataEndpointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#GetDataEndpointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#GetDataEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#GetSignalingChannelEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#GetSignalingChannelEndpointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#GetSignalingChannelEndpointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#GetSignalingChannelEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#HeightPixels": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#HubDeviceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#ImageGenerationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ImageGenerationDestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ImageSelectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#InvalidArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#InvalidDeviceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#InvalidResourceFormatException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#JobStatusDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#KinesisVideo_20170930": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Kinesis Video"
+        }
+      }
+    },
+    "com.amazonaws.kinesisvideo#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#LastRecorderStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#LastUploaderStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsEdgeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsEdgeConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListOfProtocols": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#ListSignalingChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#ListSignalingChannelsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#ListSignalingChannelsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListSignalingChannelsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#ListStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#ListStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListStreamsInputLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#ListStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#ListTagsForStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidResourceFormatException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ListTagsForStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#LocalSizeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#MappedResourceConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#MappedResourceConfigurationListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#MappedResourceConfigurationListLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#MaxLocalMediaSizeInMB": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#MediaSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#MediaStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#MediaStorageConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#MediaType": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#MediaUriSecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#MediaUriType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#MessageTtlSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#NoDataRetentionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#NotAuthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#NotificationDestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#RecorderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#RecorderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#ResourceEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#ResourceEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#ResourceEndpointListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ResourceTags": {
+      "type": "map"
+    },
+    "com.amazonaws.kinesisvideo#SamplingInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.kinesisvideo#ScheduleConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#SingleMasterChannelEndpointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#SingleMasterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#StartEdgeConfigurationUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#StartEdgeConfigurationUpdateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NoDataRetentionException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#StartEdgeConfigurationUpdateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#StartEdgeConfigurationUpdateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#StrategyOnFullSize": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#StreamEdgeConfigurationNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#StreamInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#StreamInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#StreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#StreamNameCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#SyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#TagOnCreateList": {
+      "type": "list"
+    },
+    "com.amazonaws.kinesisvideo#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagsPerResourceExceededLimitException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#TagStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#TagStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidResourceFormatException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagsPerResourceExceededLimitException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#TagStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#TagStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#TagsPerResourceExceededLimitException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.kinesisvideo#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UntagStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UntagStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidResourceFormatException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UntagStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UntagStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateDataRetention": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateDataRetentionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#VersionMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateDataRetentionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateDataRetentionOperation": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#UpdateDataRetentionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateImageGenerationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateImageGenerationConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NoDataRetentionException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateImageGenerationConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateImageGenerationConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateMediaStorageConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateMediaStorageConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NoDataRetentionException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateMediaStorageConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateMediaStorageConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateNotificationConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NoDataRetentionException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateNotificationConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateNotificationConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateSignalingChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateSignalingChannelInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#VersionMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateSignalingChannelInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateSignalingChannelOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kinesisvideo#UpdateStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kinesisvideo#ClientLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#InvalidArgumentException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#VersionMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.kinesisvideo#UpdateStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UpdateStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UploaderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#UploaderStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kinesisvideo#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.kinesisvideo#VersionMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kinesisvideo#WidthPixels": {
+      "type": "integer"
+    }
+  }
+}

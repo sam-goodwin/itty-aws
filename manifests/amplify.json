@@ -1,0 +1,1484 @@
+{
+  "shapes": {
+    "com.amazonaws.amplify#AccessToken": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ActiveJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Amplify": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Amplify"
+        }
+      }
+    },
+    "com.amazonaws.amplify#App": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#AppArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#AppId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Apps": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#Artifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ArtifactFileName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ArtifactId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ArtifactUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Artifacts": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#ArtifactsUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#AssociatedResource": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#AssociatedResources": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#AutoBranchCreationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#AutoBranchCreationPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#AutoBranchCreationPatterns": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#AutoSubDomainCreationPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#AutoSubDomainCreationPatterns": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#AutoSubDomainIAMRole": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Backend": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#BackendEnvironment": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#BackendEnvironmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#BackendEnvironments": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#BasicAuthCredentials": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Branch": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#BranchArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#BranchName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Branches": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#BuildComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#BuildSpec": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CacheConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CacheConfigType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CertificateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CertificateSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CertificateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#CertificateVerificationDNSRecord": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CommitId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CommitMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CommitTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#ComputeRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Condition": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Context": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CreateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateAppResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateBackendEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateBackendEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateBackendEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateBackendEnvironmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateBranchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateBranchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateBranchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateDeploymentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateDomainAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateDomainAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#CreateWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#CreateWebhookRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#CreateWebhookRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CreateWebhookResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CustomDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CustomDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#CustomHeaders": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#CustomRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#CustomRules": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#DNSRecord": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DefaultDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteAppResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteBackendEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteBackendEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteBackendEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteBackendEnvironmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteBranchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteBranchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteBranchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteDomainAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteDomainAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#DeleteWebhookRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#DeleteWebhookRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeleteWebhookResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DependentServiceFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DeploymentArtifacts": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DomainAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#DomainAssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DomainAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DomainPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#DomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#EnableAutoBranchCreation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableAutoBuild": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableAutoSubDomain": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableBasicAuth": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableBranchAutoBuild": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableBranchAutoDeletion": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableNotification": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnablePerformanceMode": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnablePullRequestPreview": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EnableSkewProtection": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#EndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#EnvKey": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#EnvValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#EnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#EnvironmentVariables": {
+      "type": "map"
+    },
+    "com.amazonaws.amplify#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#FileMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amplify#FileName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#FileUploadUrls": {
+      "type": "map"
+    },
+    "com.amazonaws.amplify#Framework": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#GenerateAccessLogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GenerateAccessLogsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GenerateAccessLogsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GenerateAccessLogsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetAppResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetArtifactUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetArtifactUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetArtifactUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetArtifactUrlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetBackendEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetBackendEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetBackendEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetBackendEnvironmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetBranchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetBranchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetBranchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetDomainAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetDomainAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#GetWebhookRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#GetWebhookRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#GetWebhookResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#JobArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#JobConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#JobReason": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#JobSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#JobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#JobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#LastDeployTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListAppsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListArtifactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListArtifactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListArtifactsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListBackendEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListBackendEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListBackendEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListBackendEnvironmentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListBranches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListBranchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListBranchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListBranchesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListDomainAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListDomainAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListDomainAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListDomainAssociationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListWebhooks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#ListWebhooksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#ListWebhooksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#ListWebhooksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#LogUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#MD5Hash": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.amplify#MaxResultsForListApps": {
+      "type": "integer"
+    },
+    "com.amazonaws.amplify#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#OauthToken": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Platform": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#ProductionBranch": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#PullRequestEnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Repository": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#RepositoryCloneMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#Screenshots": {
+      "type": "map"
+    },
+    "com.amazonaws.amplify#ServiceRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#SourceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#SourceUrlType": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#StackArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#StackName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Stage": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#StartDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#StartDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#StartDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StartDeploymentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StartJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#StartJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#StartJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StartJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#StatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Step": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StepName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Steps": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#StopJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#StopJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#StopJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#StopJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#SubDomain": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#SubDomainSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#SubDomainSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#SubDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#TTL": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amplify#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Target": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#TestArtifactsUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#TestConfigUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ThumbnailName": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#ThumbnailUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#TotalNumberOfJobs": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#UpdateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#UpdateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateAppResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateBranch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#UpdateBranchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#UpdateBranchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateBranchResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateDomainAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#UpdateDomainAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#UpdateDomainAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateDomainAssociationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#UpdateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.amplify#UpdateWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amplify#UpdateWebhookRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amplify#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.amplify#DependentServiceFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.amplify#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amplify#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.amplify#UpdateWebhookRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UpdateWebhookResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#UploadUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Verified": {
+      "type": "boolean"
+    },
+    "com.amazonaws.amplify#WafConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#WafStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.amplify#WebAclArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Webhook": {
+      "type": "structure"
+    },
+    "com.amazonaws.amplify#WebhookArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#WebhookId": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#WebhookUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.amplify#Webhooks": {
+      "type": "list"
+    },
+    "com.amazonaws.amplify#webhookCreateTime": {
+      "type": "timestamp"
+    }
+  }
+}

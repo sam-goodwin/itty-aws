@@ -1,0 +1,2092 @@
+{
+  "shapes": {
+    "com.amazonaws.athena#AclConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#Age": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#AllocatedDpusInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#AmazonAthena": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Athena"
+        }
+      }
+    },
+    "com.amazonaws.athena#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ApplicationDPUSizes": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ApplicationDPUSizesList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#AthenaError": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#AuthToken": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#BatchGetNamedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#BatchGetNamedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#BatchGetNamedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#BatchGetNamedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#BatchGetPreparedStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#BatchGetPreparedStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#BatchGetPreparedStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#BatchGetPreparedStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#BatchGetQueryExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#BatchGetQueryExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#BatchGetQueryExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#BatchGetQueryExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.athena#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.athena#BytesScannedCutoffValue": {
+      "type": "long"
+    },
+    "com.amazonaws.athena#CalculationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CalculationExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#CalculationExecutionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#CalculationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CalculationResultType": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#CalculationStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CalculationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CalculationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CalculationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#CancelCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CancelCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CancelCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CancelCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CapacityAllocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CapacityAllocationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#CapacityAssignment": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CapacityAssignmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CapacityAssignmentsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#CapacityReservation": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CapacityReservationName": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#CapacityReservationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#CapacityReservationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#CatalogNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#CodeBlock": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#Column": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ColumnInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ColumnInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#ColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#ColumnNullable": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#CommentString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#CoordinatorDpuSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#CreateCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreateCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreateCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateDataCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreateDataCatalogInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreateDataCatalogInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateDataCatalogOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateNamedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreateNamedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreateNamedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateNamedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateNotebook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreateNotebookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreateNotebookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateNotebookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreatePreparedStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreatePreparedStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreatePreparedStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreatePreparedStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreatePresignedNotebookUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreatePresignedNotebookUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreatePresignedNotebookUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreatePresignedNotebookUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateWorkGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#CreateWorkGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#CreateWorkGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CreateWorkGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#CustomerContentEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DataCatalog": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DataCatalogStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#DataCatalogSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DataCatalogSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#DataCatalogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#Database": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DatabaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#DatabaseString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.athena#Datum": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DefaultExecutorDpuSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#DeleteCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeleteCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeleteCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteDataCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeleteDataCatalogInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeleteDataCatalogInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteDataCatalogOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteNamedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeleteNamedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeleteNamedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteNamedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteNotebook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeleteNotebookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeleteNotebookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteNotebookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeletePreparedStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeletePreparedStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeletePreparedStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeletePreparedStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteWorkGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#DeleteWorkGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#DeleteWorkGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DeleteWorkGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#EncryptionOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#EngineConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#EngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#EngineVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#ErrorCategory": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ErrorType": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#ExecutionParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ExecutionParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#ExecutorId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ExecutorState": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#ExecutorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#ExecutorsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ExecutorsSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#ExportNotebook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ExportNotebookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ExportNotebookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ExportNotebookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ExpressionString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#FilterDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetCalculationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetCalculationExecutionCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetCalculationExecutionCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetCalculationExecutionCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecutionCodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecutionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetCalculationExecutionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetCalculationExecutionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCalculationExecutionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCapacityAssignmentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetCapacityAssignmentConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetCapacityAssignmentConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCapacityAssignmentConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetDataCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetDataCatalogInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetDataCatalogInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetDataCatalogOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetDatabaseInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#MetadataException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetDatabaseInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetDatabaseOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetNamedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetNamedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetNamedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetNamedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetNotebookMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetNotebookMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetNotebookMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetNotebookMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetPreparedStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetPreparedStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetPreparedStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetPreparedStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetQueryExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetQueryExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetQueryResultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetQueryResultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryResultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryRuntimeStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetQueryRuntimeStatisticsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetQueryRuntimeStatisticsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetQueryRuntimeStatisticsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetSessionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetSessionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetSessionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetSessionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetTableMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetTableMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#MetadataException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetTableMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetTableMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetWorkGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#GetWorkGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#GetWorkGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#GetWorkGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#IdentityCenterApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#IdentityCenterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#IdentityCenterInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ImportNotebook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ImportNotebookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ImportNotebookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ImportNotebookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#KeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#KmsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ListApplicationDPUSizes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListApplicationDPUSizesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListApplicationDPUSizesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListApplicationDPUSizesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListCalculationExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListCalculationExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListCalculationExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListCalculationExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListCapacityReservations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListCapacityReservationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListCapacityReservationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListCapacityReservationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListDataCatalogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListDataCatalogsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListDataCatalogsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListDataCatalogsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListDatabasesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#MetadataException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListDatabasesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListDatabasesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListEngineVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListEngineVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListEngineVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListExecutors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListExecutorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListExecutorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListExecutorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNamedQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListNamedQueriesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListNamedQueriesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNamedQueriesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNotebookMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListNotebookMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListNotebookMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNotebookMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNotebookSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListNotebookSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListNotebookSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListNotebookSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListPreparedStatements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListPreparedStatementsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListPreparedStatementsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListPreparedStatementsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListQueryExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListQueryExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListQueryExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListQueryExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListTableMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListTableMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#MetadataException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListTableMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListTableMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListWorkGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#ListWorkGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#ListWorkGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ListWorkGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.athena#ManagedQueryResultsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ManagedQueryResultsConfigurationUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ManagedQueryResultsEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#MaxApplicationDPUSizesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxCalculationsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxCapacityReservationsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxConcurrentDpus": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxDataCatalogsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxDatabasesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxEngineVersionsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxListExecutorsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxNamedQueriesCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxNotebooksCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxPreparedStatementsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxQueryExecutionsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxQueryResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxSessionsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxTableMetadataCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxTagsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MaxWorkGroupsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#MetadataException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#NameString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#NamedQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#NamedQueryDescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#NamedQueryId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#NamedQueryIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#NamedQueryList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#NotebookId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#NotebookMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#NotebookMetadataArray": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#NotebookName": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#NotebookSessionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#NotebookSessionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#NotebookType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#ParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.athena#ParametersMapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#Payload": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#PreparedStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#PreparedStatementDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#PreparedStatementNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#PreparedStatementSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#PreparedStatementsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#PutCapacityAssignmentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#PutCapacityAssignmentConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#PutCapacityAssignmentConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#PutCapacityAssignmentConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryExecutionContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#QueryExecutionIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#QueryExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#QueryExecutionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#QueryExecutionStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryExecutionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryResultType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#QueryResultsS3AccessGrantsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryRuntimeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryRuntimeStatisticsRows": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryRuntimeStatisticsTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryStage": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryStagePlanNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#QueryStagePlanNodes": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#QueryStages": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultConfigurationUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultOutputLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#ResultReuseByAgeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultReuseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultReuseInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ResultSetMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#Row": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#RowList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#S3AclOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#S3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#SessionAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#SessionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#SessionIdleTimeoutInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#SessionManagerToken": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#SessionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#SessionStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#SessionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#SessionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#SessionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#StartCalculationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#StartCalculationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#StartCalculationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StartCalculationExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StartQueryExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#StartQueryExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#StartQueryExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StartQueryExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StartSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#StartSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.athena#SessionAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#StartSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StartSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StatementName": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#StatementType": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#StopCalculationExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#StopCalculationExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#StopCalculationExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StopCalculationExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StopQueryExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#StopQueryExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#StopQueryExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#StopQueryExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#String": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#SupportedDPUSizeList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#TableMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TableMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#TableTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#TargetDpusInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.athena#TerminateSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#TerminateSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#TerminateSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TerminateSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#ThrottleReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.athena#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#TypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#UnprocessedNamedQueryId": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UnprocessedNamedQueryIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#UnprocessedPreparedStatementName": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UnprocessedPreparedStatementNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#UnprocessedQueryExecutionId": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UnprocessedQueryExecutionIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateCapacityReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateCapacityReservationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateCapacityReservationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateCapacityReservationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateDataCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateDataCatalogInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateDataCatalogInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateDataCatalogOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNamedQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateNamedQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateNamedQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNamedQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNotebook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateNotebookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateNotebookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNotebookMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateNotebookMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateNotebookMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNotebookMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateNotebookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdatePreparedStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdatePreparedStatementInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.athena#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdatePreparedStatementInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdatePreparedStatementOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateWorkGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.athena#UpdateWorkGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.athena#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.athena#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.athena#UpdateWorkGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#UpdateWorkGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#WorkGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#WorkGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#WorkGroupConfigurationUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#WorkGroupDescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#WorkGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.athena#WorkGroupNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#WorkGroupState": {
+      "type": "enum"
+    },
+    "com.amazonaws.athena#WorkGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.athena#WorkGroupsList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#datumList": {
+      "type": "list"
+    },
+    "com.amazonaws.athena#datumString": {
+      "type": "string"
+    }
+  }
+}

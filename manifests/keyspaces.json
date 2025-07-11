@@ -1,0 +1,839 @@
+{
+  "shapes": {
+    "com.amazonaws.keyspaces#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#AutoScalingPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#AutoScalingSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#AutoScalingSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.keyspaces#CapacitySpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CapacitySpecificationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CapacityUnits": {
+      "type": "long"
+    },
+    "com.amazonaws.keyspaces#CdcPropagateTags": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#CdcSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CdcSpecificationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CdcStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#ClientSideTimestamps": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ClientSideTimestampsStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#ClusteringKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ClusteringKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ColumnDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ColumnDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#Comment": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateKeyspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#CreateKeyspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#CreateKeyspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateKeyspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#CreateTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#CreateTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#CreateTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#CreateTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#CreateTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DefaultTimeToLive": {
+      "type": "integer"
+    },
+    "com.amazonaws.keyspaces#DeleteKeyspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#DeleteKeyspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#DeleteKeyspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DeleteKeyspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DeleteTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#DeleteTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#DeleteTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DeleteTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DeleteType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#DeleteTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#DeleteTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#DeleteTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#Depth": {
+      "type": "integer"
+    },
+    "com.amazonaws.keyspaces#DoubleObject": {
+      "type": "double"
+    },
+    "com.amazonaws.keyspaces#EncryptionSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#EncryptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#FieldDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#GenericString": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#GetKeyspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#GetKeyspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#GetKeyspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetKeyspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#GetTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#GetTableAutoScalingSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#GetTableAutoScalingSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#GetTableAutoScalingSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetTableAutoScalingSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#GetTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#GetTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#GetTypeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#IntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.keyspaces#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#KeyspaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#KeyspaceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#KeyspaceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#KeyspaceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#KeyspacesService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Keyspaces"
+        }
+      }
+    },
+    "com.amazonaws.keyspaces#ListKeyspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#ListKeyspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#ListKeyspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListKeyspacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#ListTablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#ListTablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#ListTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#ListTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ListTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.keyspaces#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#PartitionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#PartitionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#PointInTimeRecovery": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#PointInTimeRecoveryStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#PointInTimeRecoverySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ReplicaAutoScalingSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ReplicaAutoScalingSpecificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ReplicaSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ReplicaSpecificationList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ReplicaSpecificationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ReplicaSpecificationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ReplicationGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ReplicationGroupStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#ReplicationSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#RestoreTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#RestoreTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#RestoreTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#RestoreTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#SchemaDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#SortOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#StaticColumn": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#StaticColumnList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#StreamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TableNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#TableStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TableSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#TableSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#TablesReplicationProgress": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TargetTrackingScalingPolicyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ThroughputMode": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TimeToLive": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#TimeToLiveStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.keyspaces#TypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#TypeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.keyspaces#TypeStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#UpdateKeyspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#UpdateKeyspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#UpdateKeyspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#UpdateKeyspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#UpdateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.keyspaces#UpdateTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.keyspaces#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.keyspaces#UpdateTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#UpdateTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.keyspaces#ViewType": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#kmsKeyARN": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#region": {
+      "type": "string"
+    },
+    "com.amazonaws.keyspaces#rs": {
+      "type": "string"
+    }
+  }
+}

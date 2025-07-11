@@ -1,0 +1,173 @@
+{
+  "shapes": {
+    "com.amazonaws.sso#AccessKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#AccessTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#AccountIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#AccountInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#AccountListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sso#AccountNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#EmailAddressType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#ErrorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#ExpirationTimestampType": {
+      "type": "long"
+    },
+    "com.amazonaws.sso#GetRoleCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sso#GetRoleCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sso#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.sso#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sso#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.sso#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.sso#GetRoleCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#GetRoleCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#ListAccountRoles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sso#ListAccountRolesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sso#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.sso#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sso#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.sso#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.sso#ListAccountRolesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#ListAccountRolesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#ListAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sso#ListAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sso#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.sso#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.sso#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.sso#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.sso#ListAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#ListAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#Logout": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sso#LogoutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sso#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.sso#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.sso#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.sso#LogoutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#MaxResultType": {
+      "type": "integer"
+    },
+    "com.amazonaws.sso#NextTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#RoleCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#RoleInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#RoleListType": {
+      "type": "list"
+    },
+    "com.amazonaws.sso#RoleNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#SWBPortalService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SSO"
+        }
+      }
+    },
+    "com.amazonaws.sso#SecretAccessKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#SessionTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.sso#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sso#UnauthorizedException": {
+      "type": "structure"
+    }
+  }
+}

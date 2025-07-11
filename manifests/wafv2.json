@@ -1,0 +1,2631 @@
+{
+  "shapes": {
+    "com.amazonaws.wafv2#APIKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#APIKeySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#APIKeySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#APIKeyTokenDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#APIKeyVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#ASN": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#AWSManagedRulesACFPRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AWSManagedRulesATPRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AWSManagedRulesAntiDDoSRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AWSManagedRulesBotControlRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AWSWAF_20190729": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WAFV2"
+        }
+      }
+    },
+    "com.amazonaws.wafv2#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ActionCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ActionValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#AddressField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AddressFields": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#All": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AllQueryArguments": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AllowAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AndStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ApplicationAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ApplicationAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ApplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AsnList": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#AsnMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AssociateWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#AssociateWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#AssociateWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AssociateWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AssociatedResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#AssociationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#AttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#AttributeValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#BlockAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Body": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#BodyParsingFallbackBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wafv2#ByteMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CapacityUnit": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#CaptchaAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CaptchaConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CaptchaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ChallengeAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ChallengeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ChallengeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CheckCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CheckCapacityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFExpiredManagedRuleGroupVersionException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFSubscriptionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CheckCapacityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CheckCapacityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ClientSideAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ClientSideActionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Conditions": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ConsumedCapacity": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#CookieMatchPattern": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CookieNames": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#Cookies": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CountAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Country": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#CountryCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#CountryCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#CreateAPIKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CreateAPIKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CreateAPIKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateAPIKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CreateIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CreateIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateRegexPatternSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CreateRegexPatternSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CreateRegexPatternSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateRegexPatternSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CreateRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFSubscriptionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CreateRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#CreateWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFConfigurationWarningException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFExpiredManagedRuleGroupVersionException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFSubscriptionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#CreateWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreateWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CreationPathString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#CustomHTTPHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CustomHTTPHeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#CustomHTTPHeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#CustomHTTPHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#CustomRequestHandling": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CustomResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#CustomResponseBodies": {
+      "type": "map"
+    },
+    "com.amazonaws.wafv2#CustomResponseBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DataProtection": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DataProtectionAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#DataProtectionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DataProtections": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#DefaultAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteAPIKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteAPIKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteAPIKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteAPIKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteFirewallManagerRuleGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteFirewallManagerRuleGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteFirewallManagerRuleGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteFirewallManagerRuleGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFAssociatedItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeletePermissionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeletePermissionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeletePermissionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeletePermissionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteRegexPatternSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteRegexPatternSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFAssociatedItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteRegexPatternSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteRegexPatternSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFAssociatedItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DeleteWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFAssociatedItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DeleteWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DeleteWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeAllManagedProducts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DescribeAllManagedProductsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DescribeAllManagedProductsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeAllManagedProductsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeManagedProductsByVendor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DescribeManagedProductsByVendorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DescribeManagedProductsByVendorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeManagedProductsByVendorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeManagedRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DescribeManagedRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFExpiredManagedRuleGroupVersionException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DescribeManagedRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DescribeManagedRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DisassociateWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#DisassociateWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#DisassociateWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DisassociateWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#DownloadUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#EmailField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#EnableMachineLearning": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wafv2#EntityDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#EntityName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ErrorReason": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#EvaluationWindowSec": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#ExcludedRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ExcludedRules": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#FailureCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#FailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#FailureValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#FallbackBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#FieldIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#FieldToMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#FieldToMatchData": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#FieldToProtect": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#FieldToProtectKeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#FieldToProtectKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#FieldToProtectType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#FilterBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#FilterRequirement": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#FirewallManagerRuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#FirewallManagerRuleGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#FirewallManagerStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ForwardedIPConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ForwardedIPHeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ForwardedIPPosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#GenerateMobileSdkReleaseUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GenerateMobileSdkReleaseUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GenerateMobileSdkReleaseUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GenerateMobileSdkReleaseUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GeoMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetDecryptedAPIKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetDecryptedAPIKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetDecryptedAPIKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetDecryptedAPIKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetManagedRuleSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetManagedRuleSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetManagedRuleSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetManagedRuleSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetMobileSdkRelease": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetMobileSdkReleaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetMobileSdkReleaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetMobileSdkReleaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetPermissionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetPermissionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetPermissionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetPermissionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRateBasedStatementManagedKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetRateBasedStatementManagedKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnsupportedAggregateKeyTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetRateBasedStatementManagedKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRateBasedStatementManagedKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRegexPatternSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetRegexPatternSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetRegexPatternSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRegexPatternSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetSampledRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetSampledRequestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetSampledRequestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetSampledRequestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetWebACLForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#GetWebACLForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#GetWebACLForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetWebACLForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#GetWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#HTTPHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#HTTPHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#HTTPMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#HTTPRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#HTTPVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#HeaderMatchPattern": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#HeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#HeaderNames": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#HeaderOrder": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#Headers": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#IPAddressVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#IPAddresses": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#IPSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#IPSetForwardedIPConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#IPSetReferenceStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#IPSetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#IPSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#IPString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ImmunityTimeProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#InspectionLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#JA3Fingerprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#JA4Fingerprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#JsonBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#JsonMatchPattern": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#JsonMatchScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#JsonPointerPath": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#JsonPointerPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#Label": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LabelMatchKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#LabelMatchScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#LabelMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LabelName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#LabelNameCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LabelNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#LabelSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#LabelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Labels": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ListAPIKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListAPIKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListAPIKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListAPIKeysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroupVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListAvailableManagedRuleGroupVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroupVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroupVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListAvailableManagedRuleGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListAvailableManagedRuleGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListIPSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListIPSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListIPSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListIPSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListLoggingConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListLoggingConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListLoggingConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListLoggingConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListManagedRuleSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListManagedRuleSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListManagedRuleSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListManagedRuleSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListMaxItems": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#ListMobileSdkReleases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListMobileSdkReleasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListMobileSdkReleasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListMobileSdkReleasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListRegexPatternSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListRegexPatternSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListRegexPatternSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListRegexPatternSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListResourcesForWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListResourcesForWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListResourcesForWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListResourcesForWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListRuleGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListRuleGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListRuleGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListRuleGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListWebACLs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#ListWebACLsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#ListWebACLsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ListWebACLsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LockToken": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#LogDestinationConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#LogScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#LoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LoggingConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#LoggingFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#LoginPathString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#LowReputationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#ManagedProductDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedProductDescriptors": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleGroupVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ManagedRuleSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleSetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ManagedRuleSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ManagedRuleSetVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#MapMatchScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#Method": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#MobileSdkRelease": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#NextMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#NoneAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#NotStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#OnSourceDDoSProtectionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#OrStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#OutputUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#OverrideAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#OversizeHandling": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#PaginationLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#ParameterExceptionField": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#ParameterExceptionParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#PasswordField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PayloadType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#PhoneNumberField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PhoneNumberFields": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#Platform": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#PolicyString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#PopulationSize": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#PositionalConstraint": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#ProductDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ProductId": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ProductLink": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ProductTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#PublishedVersions": {
+      "type": "map"
+    },
+    "com.amazonaws.wafv2#PutLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#PutLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLogDestinationPermissionIssueException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFServiceLinkedRoleErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#PutLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PutLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PutManagedRuleSetVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#PutManagedRuleSetVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#PutManagedRuleSetVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PutManagedRuleSetVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PutPermissionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#PutPermissionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidPermissionPolicyException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#PutPermissionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#PutPermissionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#QueryString": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateBasedStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateBasedStatementAggregateKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#RateBasedStatementCustomKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateBasedStatementCustomKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#RateBasedStatementManagedKeysIPSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimit": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#RateLimitAsn": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitCookie": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitForwardedIP": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitHTTPMethod": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitIP": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitJA3Fingerprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitJA4Fingerprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitLabelNamespace": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitQueryArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitQueryString": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RateLimitUriPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RedactedFields": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#Regex": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RegexMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RegexPatternSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RegexPatternSetReferenceStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RegexPatternSetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#RegexPatternSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RegexPatternString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#RegistrationPagePathString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#RegularExpressionList": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ReleaseNotes": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ReleaseSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ReleaseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RequestBody": {
+      "type": "map"
+    },
+    "com.amazonaws.wafv2#RequestBodyAssociatedResourceTypeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RequestInspection": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RequestInspectionACFP": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ResourceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#ResponseCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#ResponseContent": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ResponseContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#ResponseInspection": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionBodyContains": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionBodyContainsFailureStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionBodyContainsSuccessStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionHeaderFailureValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionHeaderName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionHeaderSuccessValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionJson": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionJsonFailureValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionJsonSuccessValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionStatusCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionStatusCodeFailureCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseInspectionStatusCodeSuccessCodes": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#ResponseStatusCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RuleAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RuleActionOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RuleActionOverrides": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#RuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RuleGroupReferenceStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RuleGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#RuleGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#RulePriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#RuleSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#RuleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Rules": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#SampleWeight": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#SampledHTTPRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#SampledHTTPRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#Scope": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#SearchString": {
+      "type": "blob"
+    },
+    "com.amazonaws.wafv2#SensitivityLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#SensitivityToAct": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#SingleCookieName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#SingleHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#SingleQueryArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Size": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#SizeConstraintStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#SizeInspectionLimit": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#SolveTimestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#SourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#SqliMatchStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Statement": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#Statements": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#String": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#SuccessCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#SuccessValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TagInfoForResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#TextTransformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TextTransformationPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#TextTransformationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#TextTransformations": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#TimeWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#TimeWindowDay": {
+      "type": "integer"
+    },
+    "com.amazonaws.wafv2#TimeWindowSecond": {
+      "type": "long"
+    },
+    "com.amazonaws.wafv2#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.wafv2#TokenDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#TokenDomains": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#URIString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFTagOperationInternalErrorException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateIPSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UpdateIPSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UpdateIPSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateIPSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateManagedRuleSetVersionExpiryDate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UpdateManagedRuleSetVersionExpiryDateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UpdateManagedRuleSetVersionExpiryDateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateManagedRuleSetVersionExpiryDateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateRegexPatternSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UpdateRegexPatternSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UpdateRegexPatternSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateRegexPatternSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateRuleGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UpdateRuleGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFConfigurationWarningException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFSubscriptionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UpdateRuleGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateRuleGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateWebACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wafv2#UpdateWebACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wafv2#WAFConfigurationWarningException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFDuplicateItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFExpiredManagedRuleGroupVersionException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFInvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFLimitsExceededException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFNonexistentItemException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFOptimisticLockException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFSubscriptionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wafv2#WAFUnavailableEntityException"
+        }
+      ]
+    },
+    "com.amazonaws.wafv2#UpdateWebACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UpdateWebACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UriFragment": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UriPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#UsageOfAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.wafv2#UsernameField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#VendorName": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#VersionKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.wafv2#VersionToPublish": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#VersionsToPublish": {
+      "type": "map"
+    },
+    "com.amazonaws.wafv2#VisibilityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFAssociatedItemException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFConfigurationWarningException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFDuplicateItemException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFExpiredManagedRuleGroupVersionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFInternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFInvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFInvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFInvalidPermissionPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFInvalidResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFLimitsExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFLogDestinationPermissionIssueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFNonexistentItemException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFOptimisticLockException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFServiceLinkedRoleErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFSubscriptionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFTagOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFTagOperationInternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFUnavailableEntityException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WAFUnsupportedAggregateKeyTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WebACL": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#WebACLSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wafv2#WebACLSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wafv2#XssMatchStatement": {
+      "type": "structure"
+    }
+  }
+}

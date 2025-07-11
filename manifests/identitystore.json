@@ -1,0 +1,587 @@
+{
+  "shapes": {
+    "com.amazonaws.identitystore#AWSIdentityStore": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "identitystore"
+        }
+      }
+    },
+    "com.amazonaws.identitystore#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Address": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Addresses": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#AlternateIdentifier": {
+      "type": "union"
+    },
+    "com.amazonaws.identitystore#AttributeOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#AttributeOperations": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#AttributePath": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#AttributeValue": {
+      "type": "document"
+    },
+    "com.amazonaws.identitystore#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ConflictExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#CreateGroupMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#CreateGroupMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#CreateGroupMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#CreateGroupMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DeleteGroupMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DeleteGroupMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DeleteGroupMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteGroupMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DeleteUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DescribeGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DescribeGroupMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DescribeGroupMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DescribeGroupMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeGroupMembershipResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#DescribeUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#DescribeUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#DescribeUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Email": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Emails": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ExternalId": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ExternalIdIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ExternalIdIssuer": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ExternalIds": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#GetGroupId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#GetGroupIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#GetGroupIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GetGroupIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GetGroupMembershipId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#GetGroupMembershipIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#GetGroupMembershipIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GetGroupMembershipIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GetUserId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#GetUserIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#GetUserIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GetUserIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GroupDisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#GroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#GroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GroupMembershipExistenceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#GroupMembershipExistenceResults": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#GroupMembershipResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.identitystore#GroupMemberships": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#GroupResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.identitystore#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#IdentityStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#IsMemberInGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#IsMemberInGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#IsMemberInGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#IsMemberInGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroupMemberships": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#ListGroupMembershipsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#ListGroupMembershipsForMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#ListGroupMembershipsForMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#ListGroupMembershipsForMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroupMembershipsForMemberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroupMembershipsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroupMembershipsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#ListGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.identitystore#MemberId": {
+      "type": "union"
+    },
+    "com.amazonaws.identitystore#Name": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#PhoneNumber": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#PhoneNumbers": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.identitystore#SensitiveBooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.identitystore#SensitiveStringType": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UniqueAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UpdateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.identitystore#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.identitystore#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.identitystore#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.identitystore#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.identitystore#UserResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.identitystore#Users": {
+      "type": "list"
+    },
+    "com.amazonaws.identitystore#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

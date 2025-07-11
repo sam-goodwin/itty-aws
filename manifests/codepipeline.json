@@ -1,0 +1,2194 @@
+{
+  "shapes": {
+    "com.amazonaws.codepipeline#AWSRegionName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#AWSSessionCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#AccessKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#AcknowledgeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#AcknowledgeJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNonceException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#AcknowledgeJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#AcknowledgeJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#AcknowledgeThirdPartyJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#AcknowledgeThirdPartyJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNonceException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#AcknowledgeThirdPartyJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#AcknowledgeThirdPartyJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ActionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationPropertyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationQueryableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionConfigurationValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ActionExecutionToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionOwner": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ActionProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionRunOrder": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#ActionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ActionTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#ActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeArtifactDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionTypeExecutor": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeId": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ActionTypeNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ActionTypePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ActionTypeProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ActionTypeUrls": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#AllowedAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#AllowedAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ApprovalAlreadyCompletedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ApprovalResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ApprovalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ApprovalSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ApprovalToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#Artifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ArtifactDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ArtifactLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactLocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ArtifactName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ArtifactRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactRevisionList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ArtifactStore": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ArtifactStoreLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ArtifactStoreMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#ArtifactStoreType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#BeforeEntryConditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#BlockerDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#BlockerName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#BlockerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codepipeline#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#CodePipeline_20150709": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CodePipeline"
+        }
+      }
+    },
+    "com.amazonaws.codepipeline#Command": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#CommandList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ConcurrentPipelineExecutionsLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ConditionExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ConditionExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ConditionNotOverridableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ConditionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ConditionStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ConditionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ContinuationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#CreateCustomActionType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#CreateCustomActionTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#CreateCustomActionTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#CreateCustomActionTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#CreatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#CreatePipelineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidActionDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidBlockerDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidStageDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidStructureException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNameInUseException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#CreatePipelineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#CreatePipelineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#CurrentRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeleteCustomActionType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#DeleteCustomActionTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#DeleteCustomActionTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeletePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#DeletePipelineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#DeletePipelineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeleteWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#DeleteWebhookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#DeleteWebhookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeleteWebhookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeployActionExecutionTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeployActionExecutionTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#DeployTargetEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeployTargetEventContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeployTargetEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#DeregisterWebhookWithThirdParty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#DeregisterWebhookWithThirdPartyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#WebhookNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#DeregisterWebhookWithThirdPartyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DeregisterWebhookWithThirdPartyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#DisableStageTransition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#DisableStageTransitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#DisableStageTransitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#DisabledReason": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#DuplicatedStopRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#EnableStageTransition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#EnableStageTransitionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#EnableStageTransitionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.codepipeline#EncryptionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#EncryptionKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#EncryptionKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#EnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#EnvironmentVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#EnvironmentVariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#EnvironmentVariableType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#EnvironmentVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ExecutionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ExecutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ExecutionSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ExecutionTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ExecutionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ExecutorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ExecutorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#ExternalExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ExternalExecutionSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#FailureConditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#FailureDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#FailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#FilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#FilePathList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GetActionType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetActionTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionTypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetActionTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetActionTypeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetJobDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetJobDetailsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetJobDetailsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetJobDetailsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetPipelineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineVersionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetPipelineExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetPipelineExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetPipelineExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipelineExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipelineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipelineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipelineState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetPipelineStateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetPipelineStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetPipelineStateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetThirdPartyJobDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#GetThirdPartyJobDetailsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidJobException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#GetThirdPartyJobDetailsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GetThirdPartyJobDetailsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitBranchFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitBranchNamePattern": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#GitBranchPatternList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GitConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitFilePathFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitFilePathPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#GitFilePathPatternList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GitPullRequestEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#GitPullRequestEventTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GitPullRequestFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitPullRequestFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GitPushFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitPushFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#GitTagFilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#GitTagNamePattern": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#GitTagPatternList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#InputArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InputArtifactList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#InvalidActionDeclarationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidApprovalTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidArnException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidBlockerDeclarationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidClientTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidJobException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidJobStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidNonceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidStageDeclarationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidStructureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidWebhookAuthenticationParametersException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#InvalidWebhookFilterPatternException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#JobData": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#JobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#JobList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#JobNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#JobTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#JobWorkerExecutorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#JsonPath": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#LambdaExecutorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#LambdaFunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#LastChangedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codepipeline#LastChangedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#LastUpdatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#LatestInPipelineExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListActionExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListActionExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListActionExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListActionExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListActionTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListActionTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListActionTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListActionTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListDeployActionExecutionTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListDeployActionExecutionTargetsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListDeployActionExecutionTargetsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListDeployActionExecutionTargetsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListPipelineExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListPipelineExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListPipelineExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListPipelineExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListPipelines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListPipelinesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListPipelinesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListPipelinesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListRuleExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListRuleExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListRuleExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListRuleExecutionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListRuleTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListRuleTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListRuleTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListRuleTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListWebhookItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListWebhooks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#ListWebhooksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#ListWebhooksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ListWebhooksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#LogStreamARN": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#MatchEquals": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#MaxBatchSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#MaxPipelines": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#MaximumActionTypeArtifactCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#MaximumArtifactCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#MinimumActionTypeArtifactCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#MinimumArtifactCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#Nonce": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#NotLatestPipelineExecutionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#OutputArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#OutputArtifactList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#OutputVariable": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#OutputVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#OutputVariablesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#OutputVariablesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#OutputVariablesSizeExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#OutputVariablesValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#OverrideStageCondition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#OverrideStageConditionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentPipelineExecutionsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ConditionNotOverridableException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#NotLatestPipelineExecutionException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#OverrideStageConditionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#PipelineArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionNotStoppableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionOutdatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionStatusSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineExecutionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineNameInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineRollbackMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineStageDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineTriggerDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineTriggerDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineTriggerProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#PipelineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#PipelineVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PipelineVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#PipelineVersionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PolicyStatementsTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PollForJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PollForJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionTypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PollForJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PollForJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PollForThirdPartyJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PollForThirdPartyJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionTypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PollForThirdPartyJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PollForThirdPartyJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PollingAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PollingServicePrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#PropertyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#PutActionRevision": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutActionRevisionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentPipelineExecutionsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutActionRevisionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutActionRevisionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutApprovalResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutApprovalResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ApprovalAlreadyCompletedException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidApprovalTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutApprovalResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutApprovalResultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutJobFailureResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutJobFailureResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutJobFailureResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutJobSuccessResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutJobSuccessResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#OutputVariablesSizeExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutJobSuccessResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutThirdPartyJobFailureResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutThirdPartyJobFailureResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutThirdPartyJobFailureResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutThirdPartyJobSuccessResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutThirdPartyJobSuccessResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidClientTokenException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#JobNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutThirdPartyJobSuccessResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutWebhook": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#PutWebhookInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidWebhookAuthenticationParametersException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidWebhookFilterPatternException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#PutWebhookInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#PutWebhookOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#QueryParamMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#RegisterWebhookWithThirdParty": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#RegisterWebhookWithThirdPartyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#WebhookNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#RegisterWebhookWithThirdPartyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RegisterWebhookWithThirdPartyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RequestFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ResolvedActionConfigurationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#ResolvedPipelineVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ResolvedPipelineVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ResolvedRuleConfigurationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Result": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#RetryAttempt": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#RetryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RetryStageExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#RetryStageExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentPipelineExecutionsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#NotLatestPipelineExecutionException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotRetryableException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#RetryStageExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RetryStageExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RetryStageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RetryTrigger": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#Revision": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RevisionChangeIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RevisionSummary": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RollbackStage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#RollbackStageInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionOutdatedException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StageNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#UnableToRollbackStageException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#RollbackStageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RollbackStageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationPropertyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#RuleConfigurationValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#RuleExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#RuleExecutionToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleOwner": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#RuleProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#RuleRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#RuleTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.codepipeline#RuleType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleTypeId": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#RuleTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#RuleTypeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#S3ArtifactLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#SecretAccessKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ServicePrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#SessionToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#SourceRevision": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#SourceRevisionList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#SourceRevisionOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#SourceRevisionOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#SourceRevisionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#StageActionDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#StageBlockerDeclarationList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#StageConditionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageConditionsExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageDeclaration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#StageExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#StageName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#StageNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageNotRetryableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageRetryMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#StageState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StageStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#StageTransitionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#StartPipelineExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#StartPipelineExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentPipelineExecutionsLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#StartPipelineExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StartPipelineExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StartTimeRange": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#StopExecutionTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StopPipelineExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#StopPipelineExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DuplicatedStopRequestException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineExecutionNotStoppableException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PipelineNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#StopPipelineExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StopPipelineExecutionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#StopPipelineExecutionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#String": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#SucceededInStageFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#SuccessConditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#TooManyTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#TargetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TargetFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#TargetFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#TargetFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#TargetFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#ThirdPartyJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ThirdPartyJobData": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ThirdPartyJobDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#ThirdPartyJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ThirdPartyJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#Time": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codepipeline#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codepipeline#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TransitionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#TriggerDetail": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#TriggerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#UnableToRollbackStageException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidArnException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidTagsException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#UpdateActionType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#UpdateActionTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#ActionTypeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#UpdateActionTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#UpdatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codepipeline#UpdatePipelineInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codepipeline#InvalidActionDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidBlockerDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidStageDeclarationException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#InvalidStructureException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codepipeline#UpdatePipelineInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#UpdatePipelineOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#UrlTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookAuthConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#WebhookAuthConfigurationAllowedIPRange": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookAuthConfigurationSecretToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codepipeline#WebhookDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#WebhookErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookFilterRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#WebhookFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#WebhookLastTriggered": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codepipeline#WebhookList": {
+      "type": "list"
+    },
+    "com.amazonaws.codepipeline#WebhookName": {
+      "type": "string"
+    },
+    "com.amazonaws.codepipeline#WebhookNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codepipeline#WebhookUrl": {
+      "type": "string"
+    }
+  }
+}

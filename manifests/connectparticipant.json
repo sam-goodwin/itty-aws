@@ -1,0 +1,523 @@
+{
+  "shapes": {
+    "com.amazonaws.connectparticipant#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#AmazonConnectParticipantServiceLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ConnectParticipant"
+        }
+      }
+    },
+    "com.amazonaws.connectparticipant#ArtifactId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ArtifactStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#AttachmentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#AttachmentItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#AttachmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#AttachmentSizeInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.connectparticipant#Attachments": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#AuthenticationUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#Bool": {
+      "type": "boolean"
+    },
+    "com.amazonaws.connectparticipant#CancelParticipantAuthentication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#CancelParticipantAuthenticationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#CancelParticipantAuthenticationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#CancelParticipantAuthenticationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ChatContent": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ChatContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ChatItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ChatItemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#CompleteAttachmentUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#CompleteAttachmentUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#CompleteAttachmentUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#CompleteAttachmentUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ConnectionCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ConnectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#ConnectionTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#ContactId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#CreateParticipantConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#CreateParticipantConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#CreateParticipantConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#CreateParticipantConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#DescribeView": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#DescribeViewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#DescribeViewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#DescribeViewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#DisconnectParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#DisconnectParticipantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#DisconnectParticipantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#DisconnectParticipantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#GetAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#GetAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#GetAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#GetAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#GetAuthenticationUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#GetAuthenticationUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#GetAuthenticationUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#GetAuthenticationUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#GetTranscript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#GetTranscriptRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#GetTranscriptRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#GetTranscriptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ISO8601Datetime": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#Instant": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#Item": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectparticipant#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#MessageMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#MostRecent": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectparticipant#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#NonEmptyClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ParticipantId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ParticipantRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#ParticipantToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#PreSignedAttachmentUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#PreSignedConnectionUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#Receipt": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#Receipts": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#RedirectURI": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#ScanDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#SendEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#SendEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#SendEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#SendEventResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#SendMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#SendMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#SendMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#SendMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#SortKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.connectparticipant#StartAttachmentUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectparticipant#StartAttachmentUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectparticipant#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectparticipant#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.connectparticipant#StartAttachmentUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#StartAttachmentUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#StartPosition": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#Transcript": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#URLExpiryInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectparticipant#UploadMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#UploadMetadataSignedHeaders": {
+      "type": "map"
+    },
+    "com.amazonaws.connectparticipant#UploadMetadataSignedHeadersKey": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#UploadMetadataSignedHeadersValue": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#UploadMetadataUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#View": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ViewAction": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewActions": {
+      "type": "list"
+    },
+    "com.amazonaws.connectparticipant#ViewContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.connectparticipant#ViewId": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewInputSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewName": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewToken": {
+      "type": "string"
+    },
+    "com.amazonaws.connectparticipant#ViewVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.connectparticipant#Websocket": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,1260 @@
+{
+  "shapes": {
+    "com.amazonaws.amp#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#AlertManagerDefinition": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#AlertManagerDefinitionData": {
+      "type": "blob"
+    },
+    "com.amazonaws.amp#AlertManagerDefinitionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#AlertManagerDefinitionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#AlertManagerDefinitionStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#AmazonPrometheusService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "amp"
+        }
+      }
+    },
+    "com.amazonaws.amp#AmpConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CloudWatchLogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ClusterArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateAlertManagerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateAlertManagerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateAlertManagerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateAlertManagerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateQueryLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateQueryLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateQueryLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateQueryLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateRuleGroupsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateRuleGroupsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateRuleGroupsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateRuleGroupsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateScraper": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateScraperRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateScraperRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateScraperResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#CreateWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#CreateWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#CreateWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteAlertManagerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteAlertManagerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteAlertManagerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteQueryLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteQueryLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteQueryLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteRuleGroupsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteRuleGroupsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteRuleGroupsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteScraper": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteScraperRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteScraperRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteScraperResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DeleteWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DeleteWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DeleteWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeAlertManagerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeAlertManagerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeAlertManagerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeAlertManagerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeQueryLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeQueryLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeQueryLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeQueryLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeRuleGroupsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeRuleGroupsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeRuleGroupsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeRuleGroupsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeScraper": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeScraperRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeScraperRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeScraperResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeWorkspace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeWorkspaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeWorkspaceConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#DescribeWorkspaceConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#DescribeWorkspaceConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeWorkspaceConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeWorkspaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#DescribeWorkspaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#Destination": {
+      "type": "union"
+    },
+    "com.amazonaws.amp#EksConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#FilterKey": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#GetDefaultScraperConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#GetDefaultScraperConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#GetDefaultScraperConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#GetDefaultScraperConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#LabelName": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#LabelSet": {
+      "type": "map"
+    },
+    "com.amazonaws.amp#LabelValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#LimitsPerLabelSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LimitsPerLabelSetEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LimitsPerLabelSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#ListRuleGroupsNamespaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#ListRuleGroupsNamespacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#ListRuleGroupsNamespacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListRuleGroupsNamespacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListScrapers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#ListScrapersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#ListScrapersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListScrapersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListWorkspaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#ListWorkspacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#ListWorkspacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ListWorkspacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#LoggingConfiguration": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#LoggingConfigurationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LoggingConfigurationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LoggingConfigurationStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#LoggingDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#LoggingDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#LoggingFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#PutAlertManagerDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#PutAlertManagerDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#PutAlertManagerDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#PutAlertManagerDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#PutRuleGroupsNamespace": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#PutRuleGroupsNamespaceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#PutRuleGroupsNamespaceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#PutRuleGroupsNamespaceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#QueryLoggingConfiguration": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#QueryLoggingConfigurationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#QueryLoggingConfigurationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#QueryLoggingConfigurationStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#RoleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespace": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceData": {
+      "type": "blob"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#RuleGroupsNamespaceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#ScrapeConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.amp#Scraper": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#ScraperAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ScraperArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ScraperDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ScraperFilters": {
+      "type": "map"
+    },
+    "com.amazonaws.amp#ScraperId": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ScraperStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ScraperStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ScraperSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ScraperSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#Source": {
+      "type": "union"
+    },
+    "com.amazonaws.amp#StatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.amp#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UpdateLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UpdateLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateQueryLoggingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UpdateQueryLoggingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UpdateQueryLoggingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateQueryLoggingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateScraper": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UpdateScraperRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UpdateScraperRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateScraperResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateWorkspaceAlias": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UpdateWorkspaceAliasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UpdateWorkspaceAliasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateWorkspaceConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.amp#UpdateWorkspaceConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.amp#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.amp#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.amp#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.amp#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.amp#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.amp#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.amp#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.amp#UpdateWorkspaceConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#UpdateWorkspaceConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.amp#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#Workspace": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#WorkspaceAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#WorkspaceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#WorkspaceConfiguration": {
+      "type": "resource"
+    },
+    "com.amazonaws.amp#WorkspaceConfigurationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#WorkspaceConfigurationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#WorkspaceConfigurationStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#WorkspaceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#WorkspaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#WorkspaceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#WorkspaceStatusCode": {
+      "type": "string"
+    },
+    "com.amazonaws.amp#WorkspaceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.amp#WorkspaceSummaryList": {
+      "type": "list"
+    }
+  }
+}

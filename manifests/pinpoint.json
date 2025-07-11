@@ -1,0 +1,5074 @@
+{
+  "shapes": {
+    "com.amazonaws.pinpoint#ADMChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ADMChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ADMMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSPushNotificationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSVoipChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSVoipChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSVoipSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#APNSVoipSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Action": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#ActivitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Activity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ActivityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#AddressConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Alignment": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#AndroidPushNotificationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ApplicationDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ApplicationSettingsJourneyLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ApplicationSettingsResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#AttributeDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#AttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#AttributesResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#BaiduChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#BaiduChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#BaiduMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#BaseKpiResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ButtonAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#CampaignCustomMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignEmailMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignEventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignHook": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignInAppMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignSmsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignState": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CampaignStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#CampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ChannelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#ChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ClosedDays": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ClosedDaysRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ConditionalSplitActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ContactCenterActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateInAppTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateInAppTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateInAppTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateInAppTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateJourney": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateJourneyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateJourneyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateJourneyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreatePushTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreatePushTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreatePushTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreatePushTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateRecommenderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateRecommenderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateRecommenderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateRecommenderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateRecommenderConfigurationShape": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateSmsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateSmsTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateSmsTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateSmsTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateTemplateMessageBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateVoiceTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#CreateVoiceTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#CreateVoiceTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CreateVoiceTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CustomDeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#CustomMessageActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DayOfWeek": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#DefaultButtonConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DefaultMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DefaultPushNotificationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DefaultPushNotificationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteAdmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteAdmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteAdmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteAdmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteApnsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteApnsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteApnsSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteApnsSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteApnsVoipChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteApnsVoipSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApnsVoipSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteBaiduChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteBaiduChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteBaiduChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteBaiduChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEmailChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteEmailChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteEmailChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEmailChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteGcmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteGcmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteGcmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteGcmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteInAppTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteInAppTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteInAppTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteInAppTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteJourney": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteJourneyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteJourneyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteJourneyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeletePushTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeletePushTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeletePushTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeletePushTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteRecommenderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteRecommenderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteRecommenderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteRecommenderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSmsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteSmsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteSmsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSmsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSmsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteSmsTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteSmsTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteSmsTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteUserEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteUserEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteUserEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteUserEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteVoiceChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#DeleteVoiceTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeleteVoiceTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#DeliveryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#DimensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#DirectMessageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Duration": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#EmailChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EmailChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EmailMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EmailMessageActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointBatchItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointDemographic": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointMessageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointSendConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventDimensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventStartCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventsBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#EventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ExportJobResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#FilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Format": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#Frequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#GCMChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GCMChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GCMMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GPSCoordinates": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GPSPointDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetAdmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetAdmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetAdmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetAdmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApnsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApnsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApnsSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApnsSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApnsVoipChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApnsVoipSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApnsVoipSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetAppRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetAppRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetAppResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApplicationDateRangeKpi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApplicationDateRangeKpiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApplicationDateRangeKpiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApplicationDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApplicationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetApplicationSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetApplicationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApplicationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetAppsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetAppsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetAppsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetBaiduChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetBaiduChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetBaiduChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetBaiduChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignActivitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignActivitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignActivitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignDateRangeKpi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignDateRangeKpiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignDateRangeKpiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEmailChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetEmailChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetEmailChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEmailChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetGcmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetGcmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetGcmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetGcmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetInAppMessages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetInAppMessagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetInAppMessagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetInAppMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetInAppTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetInAppTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetInAppTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetInAppTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourney": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyDateRangeKpi": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyDateRangeKpiRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyDateRangeKpiRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionActivityMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyExecutionActivityMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionActivityMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionActivityMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyExecutionMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyExecutionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionActivityMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyRunExecutionActivityMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionActivityMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionActivityMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyRunExecutionMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunExecutionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetJourneyRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetJourneyRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetPushTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetPushTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetPushTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetPushTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetRecommenderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetRecommenderConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetRecommenderConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSegmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSegmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSegmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSmsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSmsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSmsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSmsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSmsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetSmsTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetSmsTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetSmsTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetUserEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetUserEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetUserEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetUserEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetVoiceChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetVoiceChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetVoiceChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetVoiceChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetVoiceTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#GetVoiceTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#GetVoiceTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#GetVoiceTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#HoldoutActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ImportJobResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppCampaignSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessageBodyConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessageButton": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessageCampaign": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessageContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessageHeaderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#InAppTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Include": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ItemResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#JourneyChannelSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyCustomMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyDateRangeKpiResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyEmailMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyExecutionActivityMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyExecutionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyPushMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyRunExecutionActivityMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyRunExecutionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyRunStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#JourneyRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneySMSMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneyTimeframeCap": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#JourneysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Layout": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#ListJourneys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#ListJourneysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#ListJourneysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListJourneysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListOfActivityResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfApplicationResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfCampaignResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfClosedDaysRules": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfEndpointBatchItem": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfEndpointResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfExportJobResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfImportJobResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfInAppMessageCampaign": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfInAppMessageContent": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfJourneyResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfJourneyRunResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfMessageHeader": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfMultiConditionalBranch": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfOpenHoursRules": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfRandomSplitEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfRecommenderConfigurationResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfResultRow": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfResultRowValue": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfSegmentDimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfSegmentGroup": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfSegmentReference": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfSegmentResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfSimpleCondition": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfTemplateResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfTemplateVersionResponse": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfTreatmentResource": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOfWriteTreatmentResource": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOf__EndpointTypesElement": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOf__TimezoneEstimationMethodsElement": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpoint#ListRecommenderConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#ListTagsForResourceRequest"
+      }
+    },
+    "com.amazonaws.pinpoint#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTemplateVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#ListTemplateVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#ListTemplateVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTemplateVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#ListTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#ListTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ListTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MapOfActivity": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfAddressConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfAttributeDimension": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfChannelResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfEndpointMessageResult": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfEndpointSendConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfEvent": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfEventItemResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfEventsBatch": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfItemResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfListOfOpenHoursRules": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfListOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfMapOfEndpointMessageResult": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfMessageResult": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOfMetricDimension": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOf__double": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOf__integer": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#MapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpoint#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MessageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#MethodNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MetricDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#MultiConditionalBranch": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#MultiConditionalSplitActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#NumberValidateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#NumberValidateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#OpenHours": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#OpenHoursRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Operator": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#OverrideButtonConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PayloadTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PhoneNumberValidate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#PhoneNumberValidateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#PhoneNumberValidateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PhoneNumberValidateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Pinpoint": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Pinpoint"
+        }
+      }
+    },
+    "com.amazonaws.pinpoint#PublicEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PushMessageActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PushNotificationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PushNotificationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PutEventStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#PutEventStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#PutEventStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PutEventStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PutEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#PutEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#PutEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#PutEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#QuietTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RandomSplitActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RandomSplitEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RawEmail": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RecencyDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RecencyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#RecommenderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RemoveAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#RemoveAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#RemoveAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#RemoveAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ResultRow": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#ResultRowValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSMessageActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SMSTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Schedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentBehaviors": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentDemographics": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentDimensions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentGroupList": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentImportResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SegmentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#SegmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendMessages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#SendMessagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#SendMessagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendOTPMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#SendOTPMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#SendOTPMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendOTPMessageRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendOTPMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendUsersMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendUsersMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendUsersMessages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#SendUsersMessagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#SendUsersMessagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SendUsersMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SetDimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SimpleCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SimpleEmail": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SimpleEmailPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#StartCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#TagResourceRequest"
+      }
+    },
+    "com.amazonaws.pinpoint#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TagsModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Template": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateActiveVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateCreateMessageBody": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#TemplateVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplateVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#TreatmentResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UntagResourceRequest"
+      }
+    },
+    "com.amazonaws.pinpoint#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateAdmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateAdmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateAdmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateAdmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateApnsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateApnsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateApnsSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateApnsSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateApnsVoipChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipSandboxChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateApnsVoipSandboxChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipSandboxChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApnsVoipSandboxChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApplicationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateApplicationSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateApplicationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateApplicationSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateBaiduChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateBaiduChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateBaiduChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateBaiduChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEmailChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateEmailChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateEmailChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEmailChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEmailTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateEmailTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateEmailTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEmailTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEndpointsBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateEndpointsBatchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateEndpointsBatchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateEndpointsBatchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateGcmChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateGcmChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateGcmChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateGcmChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateInAppTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateInAppTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateInAppTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateInAppTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateJourney": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateJourneyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateJourneyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateJourneyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateJourneyState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateJourneyStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateJourneyStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateJourneyStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdatePushTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdatePushTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdatePushTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdatePushTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateRecommenderConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateRecommenderConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateRecommenderConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateRecommenderConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateRecommenderConfigurationShape": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSmsChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateSmsChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateSmsChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSmsChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSmsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateSmsTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateSmsTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateSmsTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateTemplateActiveVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateTemplateActiveVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateTemplateActiveVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateTemplateActiveVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateVoiceChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#UpdateVoiceTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#UpdateVoiceTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VerificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VerifyOTPMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpoint#VerifyOTPMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpoint#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PayloadTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpoint#VerifyOTPMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VerifyOTPMessageRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VerifyOTPMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VoiceChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VoiceChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VoiceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VoiceTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#VoiceTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WaitActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WaitTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteApplicationSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteEventStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteJourneyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#WriteTreatmentResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpoint#__EndpointTypesElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#__TimezoneEstimationMethodsElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpoint#__blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.pinpoint#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.pinpoint#__double": {
+      "type": "double"
+    },
+    "com.amazonaws.pinpoint#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.pinpoint#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpoint#__timestampIso8601": {
+      "type": "timestamp"
+    }
+  }
+}

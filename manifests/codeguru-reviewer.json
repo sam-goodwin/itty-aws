@@ -1,0 +1,700 @@
+{
+  "shapes": {
+    "com.amazonaws.codegurureviewer#AWSGuruFrontendService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CodeGuru Reviewer"
+        }
+      }
+    },
+    "com.amazonaws.codegurureviewer#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#AnalysisType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#AnalysisTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#AssociateRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#AssociateRepositoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#AssociateRepositoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#AssociateRepositoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#AssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#AssociationId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#BranchDiffSourceCodeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#BranchName": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#BuildArtifactsObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#CodeArtifacts": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CodeCommitRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CodeReview": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CodeReviewName": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#CodeReviewSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#CodeReviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CodeReviewType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CommitDiffSourceCodeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CommitId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#ConfigFileState": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#CreateCodeReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#CreateCodeReviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#CreateCodeReviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#CreateCodeReviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeCodeReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#DescribeCodeReviewRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#DescribeCodeReviewRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeCodeReviewResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeRecommendationFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#DescribeRecommendationFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#DescribeRecommendationFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeRecommendationFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeRepositoryAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#DescribeRepositoryAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#DescribeRepositoryAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DescribeRepositoryAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DisassociateRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#DisassociateRepositoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#DisassociateRepositoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#DisassociateRepositoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#EncryptionOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#EventInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#EventName": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#EventState": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#FilePath": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#FindingsCount": {
+      "type": "long"
+    },
+    "com.amazonaws.codegurureviewer#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#JobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#JobStates": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#KMSKeyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#KMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#LineNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.codegurureviewer#LinesOfCodeCount": {
+      "type": "long"
+    },
+    "com.amazonaws.codegurureviewer#ListCodeReviews": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#ListCodeReviewsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#ListCodeReviewsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codegurureviewer#ListCodeReviewsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListCodeReviewsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#ListRecommendationFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#ListRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRepositoryAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#ListRepositoryAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#ListRepositoryAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListRepositoryAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#LongDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.codegurureviewer#Metrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#MetricsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#Names": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Owner": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#Owners": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#ProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#ProviderTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#PullRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#PutRecommendationFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#PutRecommendationFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#PutRecommendationFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#PutRecommendationFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Reaction": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#Reactions": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationFeedbackSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationFeedbackSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RecommendationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Repository": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAnalysis": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAssociationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAssociationStates": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAssociationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryHeadSourceCodeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RepositoryNames": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#RequestMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Requester": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#RuleMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#RuleTag": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#RuleTags": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#S3BucketRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#S3Repository": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#S3RepositoryDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#Severity": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#ShortDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#SourceCodeArtifactsObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#SourceCodeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#StateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.codegurureviewer#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#Text": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#ThirdPartySourceRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.codegurureviewer#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.codegurureviewer#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.codegurureviewer#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.codegurureviewer#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.codegurureviewer#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.codegurureviewer#UserIds": {
+      "type": "list"
+    },
+    "com.amazonaws.codegurureviewer#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.codegurureviewer#VendorName": {
+      "type": "enum"
+    }
+  }
+}

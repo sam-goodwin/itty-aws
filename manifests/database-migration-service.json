@@ -1,0 +1,3424 @@
+{
+  "shapes": {
+    "com.amazonaws.databasemigrationservice#AccessDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#AccountQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#AccountQuotaList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#AddTagsToResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#AddTagsToResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#AddTagsToResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#AmazonDMSv20160101": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Database Migration Service"
+        }
+      }
+    },
+    "com.amazonaws.databasemigrationservice#ApplyPendingMaintenanceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ApplyPendingMaintenanceActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ApplyPendingMaintenanceActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ApplyPendingMaintenanceActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#AssessmentReportType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#AssessmentReportTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#AuthMechanismValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#AuthTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#AvailabilityZonesList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#AvailableUpgradesList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#BatchStartRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#BatchStartRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#BatchStartRecommendationsErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#BatchStartRecommendationsErrorEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#BatchStartRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#BatchStartRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databasemigrationservice#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.databasemigrationservice#CancelReplicationTaskAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CancelReplicationTaskAssessmentRunMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CancelReplicationTaskAssessmentRunMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CancelReplicationTaskAssessmentRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CannedAclForObjectsValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#CertificateWallet": {
+      "type": "blob"
+    },
+    "com.amazonaws.databasemigrationservice#CharLengthSemantics": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorHealthCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorResponses": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorShortInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#CollectorsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#CompressionTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ComputeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Connection": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ConnectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateDataMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidOperationFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateDataProviderMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataProviderMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateDataProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSInvalidStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#SNSNoAuthorizationFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateEventSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateFleetAdvisorCollector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateFleetAdvisorCollectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateFleetAdvisorCollectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateFleetAdvisorCollectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateInstanceProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateInstanceProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateInstanceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateMigrationProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateMigrationProjectMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateMigrationProjectMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateMigrationProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateReplicationConfigMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationConfigMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateReplicationInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InsufficientResourceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateReplicationSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#CreateReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#CreateReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataFormatValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#DataMigration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataMigrationCidrBlock": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DataMigrationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataMigrationStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataMigrations": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DataProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderDescriptorDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderDescriptorDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderDescriptorList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DataProviderSettings": {
+      "type": "union"
+    },
+    "com.amazonaws.databasemigrationservice#DatabaseInstanceSoftwareDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DatabaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#DatabaseMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#DatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DatabaseShortInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DatePartitionDelimiterValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#DatePartitionSequenceValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#DefaultErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteCertificateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteCertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteCollectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteConnectionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteConnectionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteDataMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteDataProviderMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataProviderMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteDataProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteEventSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorCollector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteCollectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CollectorNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidOperationFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteInstanceProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteInstanceProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteInstanceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteMigrationProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteMigrationProjectMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteMigrationProjectMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteMigrationProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteReplicationConfigMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationConfigMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteReplicationInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteReplicationSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTaskAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DeleteReplicationTaskAssessmentRunMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTaskAssessmentRunMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTaskAssessmentRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DeleteReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeAccountAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeAccountAttributesMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeAccountAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeAccountAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeApplicableIndividualAssessments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeApplicableIndividualAssessmentsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeApplicableIndividualAssessmentsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeApplicableIndividualAssessmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeCertificatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeCertificatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeCertificatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeConnectionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConnectionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConversionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeConversionConfigurationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConversionConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeConversionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataMigrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeDataMigrationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataMigrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataMigrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeDataProvidersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataProvidersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeDataProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEndpointSettingsMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointSettingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEndpointTypesMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointTypesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointTypesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEndpointsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEngineVersionsMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEngineVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEngineVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEventCategoriesMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventCategoriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEventSubscriptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventSubscriptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeExtensionPackAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeExtensionPackAssociationsMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeExtensionPackAssociationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeExtensionPackAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorCollectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorCollectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorCollectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorCollectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorLsaAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorLsaAnalysisRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorLsaAnalysisRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorLsaAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemaObjectSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemaObjectSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemaObjectSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemaObjectSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeInstanceProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeInstanceProfilesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeInstanceProfilesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeInstanceProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelAssessments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelAssessmentsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelAssessmentsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelAssessmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelConversions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelConversionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelConversionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelConversionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsAsScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsAsScriptMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsAsScriptMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsAsScriptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsToTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsToTargetMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsToTargetMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsToTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelImports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelImportsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelImportsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMetadataModelImportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMigrationProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeMigrationProjectsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMigrationProjectsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeMigrationProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeOrderableReplicationInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeOrderableReplicationInstancesMessage"
+      }
+    },
+    "com.amazonaws.databasemigrationservice#DescribeOrderableReplicationInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeOrderableReplicationInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribePendingMaintenanceActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribePendingMaintenanceActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribePendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribePendingMaintenanceActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendationLimitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeRecommendationLimitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendationLimitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendationLimitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRefreshSchemasStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeRefreshSchemasStatusMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRefreshSchemasStatusMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeRefreshSchemasStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationConfigsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationConfigsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstanceTaskLogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationInstanceTaskLogsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstanceTaskLogsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstanceTaskLogsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationInstancesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationSubnetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTableStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTableStatisticsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTableStatisticsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTableStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentResultsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentResultsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentRunsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentRunsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskIndividualAssessments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskIndividualAssessmentsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskIndividualAssessmentsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTaskIndividualAssessmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTasksMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTasksMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeReplicationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeReplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeSchemasMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeSchemasMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeTableStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#DescribeTableStatisticsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#DescribeTableStatisticsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DescribeTableStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DmsSslModeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#DmsTransferSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DocDbDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DocDbSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#DoubleOptional": {
+      "type": "double"
+    },
+    "com.amazonaws.databasemigrationservice#DynamoDbSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ElasticsearchSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EncodingTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#EncryptionModeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EndpointSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EndpointSettingEnumValues": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EndpointSettingTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#EndpointSettingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EngineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ErrorDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.databasemigrationservice#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EventCategoriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EventCategoryGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EventCategoryGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#EventSubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#ExcludeTestList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessmentResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ExportSqlDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#FailedDependencyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#FleetAdvisorLsaAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#FleetAdvisorLsaAnalysisResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#FleetAdvisorSchemaList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#FleetAdvisorSchemaObjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#FleetAdvisorSchemaObjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#GcpMySQLSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#IBMDb2Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#IbmDb2LuwDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#IbmDb2zOsDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ImportCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ImportCertificateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidCertificateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ImportCertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ImportCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#IncludeTestList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#IndividualAssessmentNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#InstanceProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#InstanceProfileList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#InsufficientResourceCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.databasemigrationservice#IntegerList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.databasemigrationservice#InvalidCertificateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#InvalidOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#InvalidResourceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#InventoryData": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Iso8601DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.databasemigrationservice#KMSAccessDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSDisabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSInvalidStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KMSThrottlingFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KafkaSaslMechanism": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#KafkaSecurityProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#KafkaSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KafkaSslEndpointIdentificationAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#KerberosAuthenticationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#KinesisSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Limitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#LimitationList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.databasemigrationservice#LongOptional": {
+      "type": "long"
+    },
+    "com.amazonaws.databasemigrationservice#LongVarcharMappingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#MariaDbDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#MessageFormatValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#MicrosoftSQLServerSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MicrosoftSqlServerDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MigrationProject": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MigrationProjectIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#MigrationProjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#MigrationTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyConversionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyConversionConfigurationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyConversionConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyConversionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyDataMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyDataProviderMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataProviderMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyDataProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSInvalidStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSThrottlingFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#SNSNoAuthorizationFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyEventSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyInstanceProfileMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyInstanceProfileMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyInstanceProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyMigrationProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyMigrationProjectMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyMigrationProjectMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyMigrationProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyReplicationConfigMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationConfigMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyReplicationInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InsufficientResourceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#UpgradeDependencyFailureFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyReplicationSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#SubnetAlreadyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ModifyReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ModifyReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MongoDbDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MongoDbSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MoveReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#MoveReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#MoveReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MoveReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MySQLAuthenticationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#MySQLSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#MySqlDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#NeptuneSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#NestingLevelValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#OracleAuthenticationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#OracleDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#OracleSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#OrderableReplicationInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#OrderableReplicationInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#OriginTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ParquetVersionValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#PendingMaintenanceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#PendingMaintenanceActionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#PendingMaintenanceActions": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#PluginNameValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#PostgreSQLAuthenticationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#PostgreSQLSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#PostgreSqlDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#PremigrationAssessmentStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#PremigrationAssessmentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ProvisionData": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#PublicIpAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#RdsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RdsRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RdsRequirements": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RebootReplicationInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#RebootReplicationInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#RebootReplicationInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RebootReplicationInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Recommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RecommendationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#RecommendationSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RedisAuthTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#RedisSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RedshiftDataProviderSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RedshiftSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RefreshSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#RefreshSchemasMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#RefreshSchemasMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RefreshSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RefreshSchemasStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RefreshSchemasStatusTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ReleaseStatusValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ReloadOptionValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ReloadReplicationTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ReloadReplicationTablesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ReloadReplicationTablesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReloadReplicationTablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReloadTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#ReloadTablesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#ReloadTablesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReloadTablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#RemoveTagsFromResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#RemoveTagsFromResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RemoveTagsFromResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Replication": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationEndpointTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstanceClass": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstanceIpv6AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstancePrivateIpAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstancePublicIpAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstanceTaskLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationInstanceTaskLogsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationPendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationSubnetGroupDoesNotCoverEnoughAZs": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTableStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentRunList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentRunProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskAssessmentRunResultStatistic": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskIndividualAssessment": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskIndividualAssessmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#ReplicationTaskStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ResourcePendingMaintenanceActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#RunFleetAdvisorLsaAnalysis": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#RunFleetAdvisorLsaAnalysisResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#S3AccessDeniedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#S3Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SCApplicationAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SNSInvalidTopicFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SNSNoAuthorizationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SafeguardPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#SchemaConversionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SchemaConversionRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SchemaList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SchemaShortInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SecretString": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#ServerShortInfoResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SourceDataSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SourceDataSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SourceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#SqlServerAuthenticationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#SslSecurityProtocolValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#StartDataMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartDataMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidOperationFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartDataMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartDataMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartExtensionPackAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartExtensionPackAssociationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartExtensionPackAssociationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartExtensionPackAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartMetadataModelAssessmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelAssessmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelConversion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartMetadataModelConversionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelConversionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelConversionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportAsScript": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartMetadataModelExportAsScriptMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportAsScriptMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportAsScriptResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportToTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartMetadataModelExportToTargetMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportToTargetMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelExportToTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartMetadataModelImportMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelImportMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartMetadataModelImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartRecommendationsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartRecommendationsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartReplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationMigrationTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentRunMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSAccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSDisabledFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSInvalidStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#S3ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentRunMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StartReplicationTaskTypeValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#StopDataMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StopDataMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#FailedDependencyFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StopDataMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StopDataMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StopReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StopReplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StopReplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StopReplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StopReplicationTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#StopReplicationTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#StopReplicationTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StopReplicationTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#StorageQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#String": {
+      "type": "string"
+    },
+    "com.amazonaws.databasemigrationservice#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SubnetAlreadyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SupportedEndpointType": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#SupportedEndpointTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#SybaseSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.databasemigrationservice#TableListToReload": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#TablePreparationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#TableStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TableStatisticsList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#TableToReload": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#TargetDataSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TargetDataSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#TargetDbType": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#TestConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#TestConnectionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ResourceQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#TestConnectionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TestConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TimestreamSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#TlogAccessMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#UpdateSubscriptionsToEventBridge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.databasemigrationservice#UpdateSubscriptionsToEventBridgeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AccessDeniedFault"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#InvalidResourceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.databasemigrationservice#UpdateSubscriptionsToEventBridgeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#UpdateSubscriptionsToEventBridgeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#UpgradeDependencyFailureFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#VersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.databasemigrationservice#VpcSecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.databasemigrationservice#VpcSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.databasemigrationservice#VpcSecurityGroupMembershipList": {
+      "type": "list"
+    }
+  }
+}

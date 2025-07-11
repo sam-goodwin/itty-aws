@@ -1,0 +1,2672 @@
+{
+  "shapes": {
+    "com.amazonaws.ssoadmin#AccessControlAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccessControlAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#AccessControlAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AccessControlAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccessControlAttributeValueSource": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#AccessControlAttributeValueSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccessDeniedExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentForPrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentListForPrincipal": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentOperationStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentOperationStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AccountAssignmentOperationStatusMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ActorPolicyDocument": {
+      "type": "document"
+    },
+    "com.amazonaws.ssoadmin#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAccessScopeResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.ssoadmin#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAssignment": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAssignmentForPrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAssignmentListForPrincipal": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAssignmentsList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ApplicationAuthenticationMethodResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.ssoadmin#ApplicationGrantResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.ssoadmin#ApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ApplicationNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ApplicationProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ApplicationProviderArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ApplicationProviderList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ApplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#ApplicationUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ApplicationVisibility": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#AssignmentRequired": {
+      "type": "boolean"
+    },
+    "com.amazonaws.ssoadmin#AttachCustomerManagedPolicyReferenceToPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#AttachCustomerManagedPolicyReferenceToPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#AttachCustomerManagedPolicyReferenceToPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AttachCustomerManagedPolicyReferenceToPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AttachManagedPolicyToPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#AttachManagedPolicyToPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#AttachManagedPolicyToPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AttachManagedPolicyToPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AttachedManagedPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AttachedManagedPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AuthenticationMethod": {
+      "type": "union"
+    },
+    "com.amazonaws.ssoadmin#AuthenticationMethodItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AuthenticationMethodType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#AuthenticationMethods": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#AuthorizationCodeGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AuthorizedTokenIssuer": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#AuthorizedTokenIssuers": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ClaimAttributePath": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ConflictExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#CreateAccountAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateAccountAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateAccountAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateAccountAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateApplicationAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateApplicationAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateApplicationAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateApplicationAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateInstanceAccessControlAttributeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateInstanceAccessControlAttributeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateInstanceAccessControlAttributeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateInstanceAccessControlAttributeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreatePermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreatePermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreatePermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreatePermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateTrustedTokenIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#CreateTrustedTokenIssuerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#CreateTrustedTokenIssuerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CreateTrustedTokenIssuerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CustomerManagedPolicyReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#CustomerManagedPolicyReferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.ssoadmin#DeleteAccountAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteAccountAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteAccountAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteAccountAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAccessScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteApplicationAccessScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAccessScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteApplicationAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAuthenticationMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteApplicationAuthenticationMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationAuthenticationMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteApplicationGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInlinePolicyFromPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteInlinePolicyFromPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteInlinePolicyFromPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInlinePolicyFromPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteInstanceAccessControlAttributeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteInstanceAccessControlAttributeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteInstanceAccessControlAttributeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInstanceAccessControlAttributeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeletePermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionsBoundaryFromPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeletePermissionsBoundaryFromPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionsBoundaryFromPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeletePermissionsBoundaryFromPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteTrustedTokenIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DeleteTrustedTokenIssuerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DeleteTrustedTokenIssuerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DeleteTrustedTokenIssuerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentCreationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeAccountAssignmentCreationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentCreationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentCreationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentDeletionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeAccountAssignmentDeletionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentDeletionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeAccountAssignmentDeletionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeApplicationAssignmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationAssignmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationAssignmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeApplicationProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeInstanceAccessControlAttributeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeInstanceAccessControlAttributeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeInstanceAccessControlAttributeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeInstanceAccessControlAttributeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribePermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSetProvisioningStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribePermissionSetProvisioningStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSetProvisioningStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSetProvisioningStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribePermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeTrustedTokenIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DescribeTrustedTokenIssuerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DescribeTrustedTokenIssuerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DescribeTrustedTokenIssuerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#DetachCustomerManagedPolicyReferenceFromPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DetachCustomerManagedPolicyReferenceFromPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DetachCustomerManagedPolicyReferenceFromPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DetachCustomerManagedPolicyReferenceFromPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DetachManagedPolicyFromPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#DetachManagedPolicyFromPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#DetachManagedPolicyFromPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DetachManagedPolicyFromPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#DisplayData": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#Duration": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#FederationProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAccessScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetApplicationAccessScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAccessScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAccessScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAssignmentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetApplicationAssignmentConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAssignmentConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAssignmentConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAuthenticationMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetApplicationAuthenticationMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAuthenticationMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationAuthenticationMethodResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetApplicationGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetApplicationGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetApplicationGrantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetInlinePolicyForPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetInlinePolicyForPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetInlinePolicyForPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetInlinePolicyForPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetPermissionsBoundaryForPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#GetPermissionsBoundaryForPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#GetPermissionsBoundaryForPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GetPermissionsBoundaryForPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#Grant": {
+      "type": "union"
+    },
+    "com.amazonaws.ssoadmin#GrantItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#GrantType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#Grants": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#IamAuthenticationMethod": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#IconUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#InstanceAccessControlAttributeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#InstanceAccessControlAttributeConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#InstanceAccessControlAttributeConfigurationStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#InstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#InstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#InstanceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#InstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#InternalFailureMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#JMESPath": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#JwksRetrievalOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#JwtBearerGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentCreationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListAccountAssignmentCreationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentCreationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentCreationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentDeletionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListAccountAssignmentDeletionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentDeletionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentDeletionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListAccountAssignmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsForPrincipal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListAccountAssignmentsForPrincipalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsForPrincipalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsForPrincipalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountAssignmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountsForProvisionedPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListAccountsForProvisionedPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListAccountsForProvisionedPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListAccountsForProvisionedPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAccessScopes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationAccessScopesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAccessScopesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAccessScopesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationAssignmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsForPrincipal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationAssignmentsForPrincipalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsForPrincipalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsForPrincipalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAssignmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAuthenticationMethods": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationAuthenticationMethodsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAuthenticationMethodsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationAuthenticationMethodsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationGrants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationGrantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationGrantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationGrantsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListApplicationsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListCustomerManagedPolicyReferencesInPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListCustomerManagedPolicyReferencesInPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListCustomerManagedPolicyReferencesInPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListCustomerManagedPolicyReferencesInPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListManagedPoliciesInPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListManagedPoliciesInPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListManagedPoliciesInPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListManagedPoliciesInPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetProvisioningStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListPermissionSetProvisioningStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetProvisioningStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetProvisioningStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListPermissionSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetsProvisionedToAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListPermissionSetsProvisionedToAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetsProvisionedToAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetsProvisionedToAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListPermissionSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListTrustedTokenIssuers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ListTrustedTokenIssuersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ListTrustedTokenIssuersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ListTrustedTokenIssuersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ManagedPolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ManagedPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ManagedPolicyPath": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssoadmin#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#NameType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#OidcJwtConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#OidcJwtUpdateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#OperationStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PermissionSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetProvisioningStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetProvisioningStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#PermissionSetProvisioningStatusMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PermissionsBoundary": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PortalOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PrincipalId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#ProvisionPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#ProvisionPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#ProvisionPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ProvisionPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ProvisionTargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#ProvisioningStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAccessScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutApplicationAccessScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAccessScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAssignmentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutApplicationAssignmentConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAssignmentConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAssignmentConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAuthenticationMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutApplicationAuthenticationMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutApplicationAuthenticationMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutApplicationGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutApplicationGrantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutApplicationGrantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutInlinePolicyToPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutInlinePolicyToPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutInlinePolicyToPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutInlinePolicyToPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutPermissionsBoundaryToPermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#PutPermissionsBoundaryToPermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#PutPermissionsBoundaryToPermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#PutPermissionsBoundaryToPermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#RedirectUris": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#RefreshTokenGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#RelayState": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ResourceNotFoundMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ResourceServerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ResourceServerScope": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ResourceServerScopeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ResourceServerScopes": {
+      "type": "map"
+    },
+    "com.amazonaws.ssoadmin#SWBExternalService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SSO Admin"
+        }
+      }
+    },
+    "com.amazonaws.ssoadmin#Scope": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ScopeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ScopeTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#ScopeTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#Scopes": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ServiceQuotaExceededMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#SignInOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#SignInOrigin": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#StatusValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TaggableResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ThrottlingExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TokenExchangeGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#TokenIssuerAudience": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TokenIssuerAudiences": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerList": {
+      "type": "list"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerUpdateConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.ssoadmin#TrustedTokenIssuerUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#UUId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssoadmin#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UpdateApplicationPortalOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UpdateInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UpdateInstanceAccessControlAttributeConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UpdateInstanceAccessControlAttributeConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UpdateInstanceAccessControlAttributeConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateInstanceAccessControlAttributeConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdatePermissionSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UpdatePermissionSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UpdatePermissionSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdatePermissionSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateTrustedTokenIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssoadmin#UpdateTrustedTokenIssuerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssoadmin#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.ssoadmin#UpdateTrustedTokenIssuerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#UpdateTrustedTokenIssuerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssoadmin#ValidationExceptionMessage": {
+      "type": "string"
+    }
+  }
+}

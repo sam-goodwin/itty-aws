@@ -1,0 +1,2940 @@
+{
+  "shapes": {
+    "com.amazonaws.wellarchitected#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AccountJiraConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AccountJiraConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AccountJiraIssueManagementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#AccountSummary": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#AdditionalResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#AdditionalResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AdditionalResourcesList": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#Answer": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AnswerReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#AnswerSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#AnswerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#AssociateLenses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#AssociateLensesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#AssociateLensesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AssociateProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#AssociateProfilesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#AssociateProfilesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#AwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#Base64String": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#BestPractice": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#BestPractices": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#CheckDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#CheckDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CheckDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#CheckFailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#CheckId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#CheckName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#CheckProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#CheckStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#CheckStatusCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#CheckSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#CheckSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#Choice": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceAnswerSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ChoiceAnswerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceAnswers": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ChoiceContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceContentDisplayText": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceContentUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceImprovementPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceImprovementPlans": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ChoiceNotes": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ChoiceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ChoiceTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ChoiceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ChoiceUpdates": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#Choices": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ConsolidatedReportMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ConsolidatedReportMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#Count": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#CreateLensShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateLensShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateLensShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateLensShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateLensVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateLensVersionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateLensVersionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateLensVersionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateMilestone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateMilestoneInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateMilestoneInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateMilestoneOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateProfileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateProfileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateProfileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateProfileShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateProfileShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateProfileShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateProfileShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateReviewTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateReviewTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateReviewTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateReviewTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateTemplateShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateTemplateShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateTemplateShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateTemplateShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateWorkload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateWorkloadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateWorkloadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateWorkloadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateWorkloadShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#CreateWorkloadShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#CreateWorkloadShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#CreateWorkloadShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DefinitionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#DeleteLens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteLensInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteLensInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteLensShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteLensShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteLensShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteProfileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteProfileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteProfileShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteProfileShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteProfileShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteReviewTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteReviewTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteReviewTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteTemplateShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteTemplateShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteTemplateShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteWorkload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteWorkloadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteWorkloadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DeleteWorkloadShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DeleteWorkloadShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DeleteWorkloadShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DifferenceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#DisassociateLenses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DisassociateLensesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DisassociateLensesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DisassociateProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#DisassociateProfilesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#DisassociateProfilesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#DiscoveryIntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#DisplayText": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ExceptionResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ExceptionResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ExportLens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ExportLensInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ExportLensInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ExportLensOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#FlaggedResources": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#GetAnswer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetAnswerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetAnswerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetAnswerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetConsolidatedReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetConsolidatedReportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetConsolidatedReportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetConsolidatedReportMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#GetConsolidatedReportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetGlobalSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetLensInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetLensInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensReviewOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensReviewReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetLensReviewReportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetLensReviewReportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensReviewReportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensVersionDifference": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetLensVersionDifferenceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetLensVersionDifferenceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetLensVersionDifferenceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetMilestone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetMilestoneInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetMilestoneInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetMilestoneOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetProfileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetProfileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetProfileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetProfileTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetProfileTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetProfileTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetProfileTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetReviewTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateAnswer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetReviewTemplateAnswerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateAnswerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateAnswerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetReviewTemplateLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateLensReviewOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetReviewTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetWorkload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#GetWorkloadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#GetWorkloadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#GetWorkloadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#HelpfulResourceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ImportLens": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ImportLensInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ImportLensInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ImportLensOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ImportLensStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ImprovementPlanUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ImprovementSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ImprovementSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#IncludeSharedResources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wellarchitected#IntegratingService": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#IntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#IntegrationStatusInput": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#IsApplicable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wellarchitected#IsMajorVersion": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wellarchitected#IsReviewOwnerUpdateAcknowledged": {
+      "type": "boolean"
+    },
+    "com.amazonaws.wellarchitected#IssueManagementType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#JiraConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#JiraIssueUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#JiraProjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#JiraSelectedQuestionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#Lens": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensAliases": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#LensArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensJSON": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#LensName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensReview": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensReviewReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensReviewSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#LensReviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensShareSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#LensShareSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#LensStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#LensSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#LensSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#LensUpgradeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#LensVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#LensesAppliedCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListAnswers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListAnswersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListAnswersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListAnswersMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListAnswersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListCheckDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListCheckDetailsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListCheckDetailsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListCheckDetailsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListCheckSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListCheckSummariesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListCheckSummariesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListCheckSummariesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewImprovements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListLensReviewImprovementsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewImprovementsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewImprovementsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewImprovementsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensReviews": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListLensReviewsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensReviewsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListLensSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListLensSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLenses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListLensesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListLensesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListLensesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListMilestones": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListMilestonesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListMilestonesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListMilestonesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListNotificationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListNotificationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfileNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListProfileNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListProfileNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfileNotificationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfileShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListProfileSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListProfileSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfileSharesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListProfileSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListProfilesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListProfilesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListProfilesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplateAnswers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListReviewTemplateAnswersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplateAnswersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplateAnswersMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplateAnswersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListReviewTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListReviewTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListShareInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListShareInvitationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListShareInvitationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListShareInvitationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListShareInvitationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListTemplateShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListTemplateSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListTemplateSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListTemplateSharesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListTemplateSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListWorkloadSharesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadSharesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadSharesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadSharesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloads": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#ListWorkloadsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#ListWorkloadsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#MaxSelectedProfileChoices": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#MetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#Milestone": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#MilestoneName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#MilestoneNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#MilestoneSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#MilestoneSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#MinSelectedProfileChoices": {
+      "type": "integer"
+    },
+    "com.amazonaws.wellarchitected#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#Notes": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#NotificationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#NotificationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#NotificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#OrganizationSharingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#PermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#PillarDifference": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#PillarDifferences": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#PillarId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#PillarMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#PillarMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#PillarName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#PillarNotes": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#PillarReviewSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#PillarReviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#Profile": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ProfileArns": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileChoice": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ProfileName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ProfileNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ProfileNotificationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileNotificationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileNotificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ProfileOwnerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ProfileQuestion": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileQuestionChoices": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileQuestionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileQuestionUpdates": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileQuestions": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileShareSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileShareSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileTemplateChoice": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileTemplateQuestion": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ProfileTemplateQuestionChoices": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ProfileVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#Question": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#QuestionCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#QuestionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#QuestionDifference": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#QuestionDifferences": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#QuestionId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#QuestionMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#QuestionMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#QuestionPriority": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#QuestionTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#QuestionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#QuotaCode": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ReportFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateAnswer": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateAnswerStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateAnswerSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateAnswerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateArns": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateLensAliases": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateLensReview": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateLenses": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplatePillarReviewSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplatePillarReviewSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplateUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ReviewTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#Risk": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#RiskCounts": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#SelectedChoiceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#SelectedChoices": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#SelectedPillar": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#SelectedPillars": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#SelectedProfileChoiceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#SelectedQuestionId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#SelectedQuestionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ShareId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ShareInvitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ShareInvitationAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ShareInvitationId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ShareInvitationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ShareInvitationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ShareResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#ShareStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#SharedWith": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#SharedWithPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#Subdomain": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.wellarchitected#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TemplateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TemplateDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TemplateNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#TemplateQuestions": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#TemplateShareSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#TemplateShareSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.wellarchitected#TrustedAdvisorIntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateAnswer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateAnswerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateAnswerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateAnswerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateGlobalSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateGlobalSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateIntegrationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateIntegrationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateLensReviewOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateProfileInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateProfileInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateProfileOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateReviewTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateAnswer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateReviewTemplateAnswerInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateAnswerInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateAnswerOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateReviewTemplateLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateLensReviewOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateReviewTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateShareInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateShareInvitationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateShareInvitationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateShareInvitationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateWorkloadInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkloadInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkloadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkloadShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpdateWorkloadShareInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkloadShareInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpdateWorkloadShareOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpgradeLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpgradeLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpgradeLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpgradeProfileVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpgradeProfileVersionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpgradeProfileVersionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#UpgradeReviewTemplateLensReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wellarchitected#UpgradeReviewTemplateLensReviewInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wellarchitected#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wellarchitected#UpgradeReviewTemplateLensReviewInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#Urls": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#ValidationExceptionFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#VersionDifferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WellArchitectedApiServiceLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WellArchitected"
+        }
+      }
+    },
+    "com.amazonaws.wellarchitected#Workload": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadAccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadApplications": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadArchitecturalDesign": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadAwsRegions": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadDiscoveryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadEnvironment": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#WorkloadId": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadImprovementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#WorkloadIndustry": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadIndustryType": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadIssueManagementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.wellarchitected#WorkloadJiraConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadJiraConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadLenses": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadName": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadNonAwsRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadNonAwsRegions": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadPillarPriorities": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadProfileArns": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadResourceDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadReviewOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.wellarchitected#WorkloadShare": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadShareSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadShareSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wellarchitected#WorkloadSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wellarchitected#WorkloadSummary": {
+      "type": "structure"
+    }
+  }
+}

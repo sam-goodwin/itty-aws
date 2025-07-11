@@ -1,0 +1,2601 @@
+{
+  "shapes": {
+    "com.amazonaws.s3#AbortDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#AbortIncompleteMultipartUpload": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AbortMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#AbortMultipartUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchUpload"
+        }
+      ]
+    },
+    "com.amazonaws.s3#AbortMultipartUploadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AbortMultipartUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AbortRuleId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AccelerateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AcceptRanges": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AccessControlPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AccessControlTranslation": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AccessKeyIdValue": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AccessPointAlias": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#AccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AllowQuotedRecordDelimiter": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#AllowedHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AllowedHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#AllowedMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AllowedMethods": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#AllowedOrigin": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AllowedOrigins": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#AmazonS3": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "S3"
+        }
+      }
+    },
+    "com.amazonaws.s3#AnalyticsAndOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AnalyticsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AnalyticsConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#AnalyticsExportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AnalyticsFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.s3#AnalyticsId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#AnalyticsS3BucketDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#AnalyticsS3ExportFileFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ArchiveStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Body": {
+      "type": "blob"
+    },
+    "com.amazonaws.s3#Bucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketAccelerateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#BucketAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketAlreadyOwnedByYou": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketCannedACL": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#BucketInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketKeyEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#BucketLifecycleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketLocationConstraint": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#BucketLocationName": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#BucketLoggingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#BucketLogsPermission": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#BucketRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#BucketType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#BucketVersioningStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Buckets": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#BypassGovernanceRetention": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#BytesProcessed": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#BytesReturned": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#BytesScanned": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#CORSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CORSRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CORSRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#CSVInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CSVOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CacheControl": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Checksum": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ChecksumAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ChecksumAlgorithmList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ChecksumCRC32": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ChecksumCRC32C": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ChecksumCRC64NVME": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ChecksumMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ChecksumSHA1": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ChecksumSHA256": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ChecksumType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Comments": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CommonPrefix": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CommonPrefixList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#CompleteMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CompleteMultipartUploadRequest"
+      }
+    },
+    "com.amazonaws.s3#CompleteMultipartUploadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CompleteMultipartUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CompletedMultipartUpload": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CompletedPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CompletedPartList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#CompressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ConfirmRemoveSelfBucketAccess": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#ContentDisposition": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContentEncoding": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContentLanguage": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContentLength": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#ContentMD5": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContentRange": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ContinuationEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CopyObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CopyObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#ObjectNotInActiveTierError"
+        }
+      ]
+    },
+    "com.amazonaws.s3#CopyObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CopyObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CopyObjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CopyPartResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CopySource": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceIfMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceIfModifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#CopySourceIfNoneMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceIfUnmodifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#CopySourceRange": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceSSECustomerAlgorithm": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceSSECustomerKey": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceSSECustomerKeyMD5": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CopySourceVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#CreateBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CreateBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#BucketAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.s3#BucketAlreadyOwnedByYou"
+        }
+      ]
+    },
+    "com.amazonaws.s3#CreateBucketConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateBucketMetadataTableConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CreateBucketMetadataTableConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#CreateBucketMetadataTableConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateBucketOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateMultipartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CreateMultipartUploadRequest"
+      }
+    },
+    "com.amazonaws.s3#CreateMultipartUploadOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateMultipartUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#CreateSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchBucket"
+        }
+      ]
+    },
+    "com.amazonaws.s3#CreateSessionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreateSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#CreationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#DataRedundancy": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#Days": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#DaysAfterInitiation": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#DefaultRetention": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Delete": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketAnalyticsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketAnalyticsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketAnalyticsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketCors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketCorsRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketCorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketEncryptionRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketEncryptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketIntelligentTieringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketIntelligentTieringConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketIntelligentTieringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketInventoryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketInventoryConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketInventoryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketLifecycle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketLifecycleRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketLifecycleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketMetadataTableConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketMetadataTableConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketMetadataTableConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketMetricsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketMetricsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketMetricsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketOwnershipControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketOwnershipControlsRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketOwnershipControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketPolicyRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketReplicationRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteBucketWebsite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteBucketWebsiteRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteBucketWebsiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteMarker": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#DeleteMarkerEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteMarkerReplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteMarkerReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#DeleteMarkerVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#DeleteMarkers": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#DeleteObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteObjectRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteObjectTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteObjectTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteObjectTaggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteObjectTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeleteObjectsRequest"
+      }
+    },
+    "com.amazonaws.s3#DeleteObjectsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeleteObjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeletePublicAccessBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#DeletePublicAccessBlockRequest"
+      }
+    },
+    "com.amazonaws.s3#DeletePublicAccessBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeletedObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DeletedObjects": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Delimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#DirectoryBucketToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ETag": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#EnableRequestProgress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#EncodingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Encryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#EncryptionTypeMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#End": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#EndEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Error": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ErrorDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Errors": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Event": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#EventBridgeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ExistingObjectReplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ExistingObjectReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Expiration": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ExpirationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ExpiredObjectDeleteMarker": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#Expires": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#ExposeHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ExposeHeaders": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Expression": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ExpressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#FetchOwner": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#FieldDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#FileHeaderInfo": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#FilterRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#FilterRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#FilterRuleName": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#FilterRuleValue": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#GetBucketAccelerateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketAccelerateConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketAccelerateConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketAccelerateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketAcl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketAclRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketAclOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketAclRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketAnalyticsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketAnalyticsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketAnalyticsConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketAnalyticsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketCors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketCorsRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketCorsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketCorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketEncryptionRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketEncryptionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketEncryptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketIntelligentTieringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketIntelligentTieringConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketIntelligentTieringConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketIntelligentTieringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketInventoryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketInventoryConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketInventoryConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketInventoryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLifecycleConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketLifecycleConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketLifecycleConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLifecycleConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketLocationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketLocationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketLoggingRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketLoggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketLoggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketMetadataTableConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketMetadataTableConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketMetadataTableConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketMetadataTableConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketMetadataTableConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketMetricsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketMetricsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketMetricsConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketMetricsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketNotificationConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketNotificationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketOwnershipControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketOwnershipControlsRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketOwnershipControlsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketOwnershipControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketPolicyRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketPolicyStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketPolicyStatusRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketPolicyStatusOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketPolicyStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketReplicationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketReplicationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketRequestPayment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketRequestPaymentRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketRequestPaymentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketRequestPaymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketTaggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketVersioning": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketVersioningRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketVersioningOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketVersioningRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketWebsite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetBucketWebsiteRequest"
+      }
+    },
+    "com.amazonaws.s3#GetBucketWebsiteOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetBucketWebsiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#InvalidObjectState"
+        },
+        {
+          "target": "com.amazonaws.s3#NoSuchKey"
+        }
+      ]
+    },
+    "com.amazonaws.s3#GetObjectAcl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectAclRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchKey"
+        }
+      ]
+    },
+    "com.amazonaws.s3#GetObjectAclOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectAclRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchKey"
+        }
+      ]
+    },
+    "com.amazonaws.s3#GetObjectAttributesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectAttributesParts": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectLegalHoldRequest"
+      }
+    },
+    "com.amazonaws.s3#GetObjectLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectLegalHoldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectLockConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectLockConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#GetObjectLockConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectLockConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectResponseStatusCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#GetObjectRetention": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectRetentionRequest"
+      }
+    },
+    "com.amazonaws.s3#GetObjectRetentionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectRetentionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#GetObjectTaggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectTorrent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetObjectTorrentRequest"
+      }
+    },
+    "com.amazonaws.s3#GetObjectTorrentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetObjectTorrentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetPublicAccessBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#GetPublicAccessBlockRequest"
+      }
+    },
+    "com.amazonaws.s3#GetPublicAccessBlockOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GetPublicAccessBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GlacierJobParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Grant": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#GrantFullControl": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#GrantRead": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#GrantReadACP": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#GrantWrite": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#GrantWriteACP": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Grantee": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Grants": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#HeadBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#HeadBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NotFound"
+        }
+      ]
+    },
+    "com.amazonaws.s3#HeadBucketOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#HeadBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#HeadObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#HeadObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NotFound"
+        }
+      ]
+    },
+    "com.amazonaws.s3#HeadObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#HeadObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#HostName": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#HttpErrorCodeReturnedEquals": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#HttpRedirectCode": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ID": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#IdempotencyParameterMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IfMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#IfMatchInitiatedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#IfMatchLastModifiedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#IfMatchSize": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#IfModifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#IfNoneMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#IfUnmodifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#IndexDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Initiated": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#Initiator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InputSerialization": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IntelligentTieringAccessTier": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#IntelligentTieringAndOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IntelligentTieringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IntelligentTieringConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#IntelligentTieringDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#IntelligentTieringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IntelligentTieringId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#IntelligentTieringStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#InvalidObjectState": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InvalidRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InvalidWriteOffset": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventoryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventoryConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#InventoryDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventoryEncryption": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventoryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventoryFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#InventoryFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#InventoryId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#InventoryIncludedObjectVersions": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#InventoryOptionalField": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#InventoryOptionalFields": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#InventoryS3BucketDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#InventorySchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#IsEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#IsLatest": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#IsPublic": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#IsRestoreInProgress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#IsTruncated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#JSONInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#JSONOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#JSONType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#KMSContext": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#KeyCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#KeyMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#KeyPrefixEquals": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#LambdaFunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#LambdaFunctionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LambdaFunctionConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#LastModified": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#LastModifiedTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#LifecycleExpiration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LifecycleRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LifecycleRuleAndOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LifecycleRuleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LifecycleRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ListBucketAnalyticsConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListBucketAnalyticsConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListBucketAnalyticsConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketAnalyticsConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketIntelligentTieringConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListBucketIntelligentTieringConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListBucketIntelligentTieringConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketIntelligentTieringConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketInventoryConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListBucketInventoryConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListBucketInventoryConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketInventoryConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketMetricsConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListBucketMetricsConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListBucketMetricsConfigurationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketMetricsConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBuckets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListBucketsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListBucketsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListBucketsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListDirectoryBuckets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListDirectoryBucketsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListDirectoryBucketsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListDirectoryBucketsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListMultipartUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListMultipartUploadsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListMultipartUploadsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListMultipartUploadsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjectVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListObjectVersionsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListObjectVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjectVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListObjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchBucket"
+        }
+      ]
+    },
+    "com.amazonaws.s3#ListObjectsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjectsV2": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListObjectsV2Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchBucket"
+        }
+      ]
+    },
+    "com.amazonaws.s3#ListObjectsV2Output": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListObjectsV2Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListParts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#ListPartsRequest"
+      }
+    },
+    "com.amazonaws.s3#ListPartsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ListPartsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#LocationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#LocationNameAsString": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#LocationPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#LocationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#LoggingEnabled": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MFA": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MFADelete": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#MFADeleteStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MaxAgeSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MaxBuckets": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MaxDirectoryBuckets": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MaxKeys": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MaxParts": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MaxUploads": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Metadata": {
+      "type": "map"
+    },
+    "com.amazonaws.s3#MetadataDirective": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#MetadataEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MetadataTableConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetadataTableConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetadataTableStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Metrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetricsAndOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetricsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MetricsConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#MetricsFilter": {
+      "type": "union"
+    },
+    "com.amazonaws.s3#MetricsId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MetricsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Minutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MissingMeta": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#MpuObjectSize": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#MultipartUpload": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#MultipartUploadId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#MultipartUploadList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#NextKeyMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NextMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NextPartNumberMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NextUploadIdMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NextVersionIdMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#NoSuchBucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NoSuchKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NoSuchUpload": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NoncurrentVersionExpiration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NoncurrentVersionTransition": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NoncurrentVersionTransitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#NotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NotificationConfigurationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#NotificationId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectAlreadyInActiveTierError": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectAttributes": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ObjectCannedACL": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ObjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ObjectLockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectLockEnabled": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectLockEnabledForBucket": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#ObjectLockLegalHold": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectLockLegalHoldStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectLockMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectLockRetainUntilDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#ObjectLockRetention": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectLockRetentionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectLockRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectLockToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ObjectNotInActiveTierError": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectOwnership": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectSize": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#ObjectSizeGreaterThanBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#ObjectSizeLessThanBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#ObjectStorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ObjectVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ObjectVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ObjectVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ObjectVersionStorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#OptionalObjectAttributes": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#OptionalObjectAttributesList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#OutputLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#OutputSerialization": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Owner": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#OwnerOverride": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#OwnershipControls": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#OwnershipControlsRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#OwnershipControlsRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ParquetInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Part": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PartNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#PartNumberMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#PartitionDateSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#PartitionedPrefix": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Parts": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#PartsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#PartsList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Payer": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Policy": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#PolicyStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Priority": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#Progress": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ProgressEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#PublicAccessBlockConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketAccelerateConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketAccelerateConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketAccelerateConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketAcl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketAclRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketAclRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketAnalyticsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketAnalyticsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketAnalyticsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketCors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketCorsRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketCorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketEncryption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketEncryptionRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketEncryptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketIntelligentTieringConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketIntelligentTieringConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketIntelligentTieringConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketInventoryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketInventoryConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketInventoryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketLifecycleConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketLifecycleConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketLifecycleConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketLifecycleConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketLogging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketLoggingRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketLoggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketMetricsConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketMetricsConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketMetricsConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketNotificationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketNotificationConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketNotificationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketOwnershipControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketOwnershipControlsRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketOwnershipControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketPolicyRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketReplicationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketReplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketRequestPayment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketRequestPaymentRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketRequestPaymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketVersioning": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketVersioningRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketVersioningRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutBucketWebsite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutBucketWebsiteRequest"
+      }
+    },
+    "com.amazonaws.s3#PutBucketWebsiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#EncryptionTypeMismatch"
+        },
+        {
+          "target": "com.amazonaws.s3#InvalidRequest"
+        },
+        {
+          "target": "com.amazonaws.s3#InvalidWriteOffset"
+        },
+        {
+          "target": "com.amazonaws.s3#TooManyParts"
+        }
+      ]
+    },
+    "com.amazonaws.s3#PutObjectAcl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectAclRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#NoSuchKey"
+        }
+      ]
+    },
+    "com.amazonaws.s3#PutObjectAclOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectAclRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectLegalHoldRequest"
+      }
+    },
+    "com.amazonaws.s3#PutObjectLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectLegalHoldRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectLockConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectLockConfigurationRequest"
+      }
+    },
+    "com.amazonaws.s3#PutObjectLockConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectLockConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectRetention": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectRetentionRequest"
+      }
+    },
+    "com.amazonaws.s3#PutObjectRetentionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectRetentionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectTagging": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutObjectTaggingRequest"
+      }
+    },
+    "com.amazonaws.s3#PutObjectTaggingOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutObjectTaggingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#PutPublicAccessBlock": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#PutPublicAccessBlockRequest"
+      }
+    },
+    "com.amazonaws.s3#PutPublicAccessBlockRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#QueueArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#QueueConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#QueueConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Quiet": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#QuoteCharacter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#QuoteEscapeCharacter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#QuoteFields": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Range": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RecordDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RecordsEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Redirect": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RedirectAllRequestsTo": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RenameObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#RenameObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#IdempotencyParameterMismatch"
+        }
+      ]
+    },
+    "com.amazonaws.s3#RenameObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RenameObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RenameSource": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RenameSourceIfMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RenameSourceIfModifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#RenameSourceIfNoneMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RenameSourceIfUnmodifiedSince": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#ReplaceKeyPrefixWith": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ReplaceKeyWith": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ReplicaKmsKeyID": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ReplicaModifications": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicaModificationsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicationRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicationRuleAndOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicationRuleFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicationRuleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ReplicationRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#ReplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ReplicationTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ReplicationTimeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ReplicationTimeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RequestCharged": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#RequestPayer": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#RequestPaymentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RequestProgress": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RequestRoute": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseCacheControl": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseContentDisposition": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseContentEncoding": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseContentLanguage": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#ResponseExpires": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#Restore": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RestoreExpiryDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#RestoreObject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#RestoreObjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3#ObjectAlreadyInActiveTierError"
+        }
+      ]
+    },
+    "com.amazonaws.s3#RestoreObjectOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RestoreObjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RestoreOutputPath": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RestoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RestoreRequestType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#RestoreStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Role": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#RoutingRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#RoutingRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#S3KeyFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#S3RegionalOrS3ExpressBucketArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#S3TablesArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#S3TablesBucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#S3TablesDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#S3TablesDestinationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#S3TablesName": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#S3TablesNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSECustomerAlgorithm": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSECustomerKey": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSECustomerKeyMD5": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSEKMS": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SSEKMSEncryptionContext": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSEKMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SSES3": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ScanRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SelectObjectContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#SelectObjectContentRequest"
+      }
+    },
+    "com.amazonaws.s3#SelectObjectContentEventStream": {
+      "type": "union"
+    },
+    "com.amazonaws.s3#SelectObjectContentOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SelectObjectContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SelectParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ServerSideEncryption": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#ServerSideEncryptionByDefault": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ServerSideEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ServerSideEncryptionRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#ServerSideEncryptionRules": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#SessionCredentialValue": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#SessionCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SessionExpiration": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3#SessionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Setting": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#SimplePrefix": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#Size": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#SkipValidation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.s3#SourceSelectionCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SseKmsEncryptedObjects": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#SseKmsEncryptedObjectsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Start": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#StartAfter": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Stats": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#StatsEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#StorageClassAnalysis": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#StorageClassAnalysisDataExport": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#StorageClassAnalysisSchemaVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#StreamingBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.s3#Suffix": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TagCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#TagSet": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Tagging": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TaggingDirective": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#TaggingHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#TargetBucket": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#TargetGrant": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TargetGrants": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#TargetObjectKeyFormat": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TargetPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#Tier": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Tiering": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TieringList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#TooManyParts": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#TopicConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TopicConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Transition": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#TransitionDefaultMinimumObjectSize": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#TransitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#TransitionStorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#UploadIdMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#UploadPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#UploadPartRequest"
+      }
+    },
+    "com.amazonaws.s3#UploadPartCopy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#UploadPartCopyRequest"
+      }
+    },
+    "com.amazonaws.s3#UploadPartCopyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#UploadPartCopyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#UploadPartOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#UploadPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#UserMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.s3#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#VersionCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3#VersionIdMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#VersioningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#WebsiteConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#WebsiteRedirectLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.s3#WriteGetObjectResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3#WriteGetObjectResponseRequest"
+      }
+    },
+    "com.amazonaws.s3#WriteGetObjectResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3#WriteOffsetBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.s3#Years": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,2191 @@
+{
+  "shapes": {
+    "com.amazonaws.auditmanager#AWSAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AWSAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AWSService": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AWSServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AWSServices": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ActionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ActionPlanInstructions": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ActionPlanTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Assessment": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentControlSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentControlSets": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentControls": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentEvidenceFolder": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentEvidenceFolderName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentEvidenceFolders": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentFramework": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentFrameworkDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentFrameworkMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentFrameworkShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentFrameworkShareRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentMetadataItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportEvidenceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportEvidenceErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportsDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssessmentReportsMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#AssessmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#AssociateAssessmentReportEvidenceFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#AssociateAssessmentReportEvidenceFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#AssociateAssessmentReportEvidenceFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AssociateAssessmentReportEvidenceFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#AuditManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#BatchAssociateAssessmentReportEvidence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#BatchAssociateAssessmentReportEvidenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#BatchAssociateAssessmentReportEvidenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchAssociateAssessmentReportEvidenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchCreateDelegationByAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#BatchCreateDelegationByAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#BatchCreateDelegationByAssessmentError": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchCreateDelegationByAssessmentErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#BatchCreateDelegationByAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchCreateDelegationByAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessmentError": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessmentErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchDisassociateAssessmentReportEvidence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#BatchDisassociateAssessmentReportEvidenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#BatchDisassociateAssessmentReportEvidenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchDisassociateAssessmentReportEvidenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControlError": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControlErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#BedrockAssessmentManagerLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AuditManager"
+        }
+      }
+    },
+    "com.amazonaws.auditmanager#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.auditmanager#ChangeLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ChangeLogs": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#CloudTrailArn": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ComplianceType": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Control": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlCatalogId": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlComment": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlCommentBody": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlComments": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlDomainId": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlDomainInsights": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlDomainInsightsList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlInsightsMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlInsightsMetadataByAssessment": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlInsightsMetadataByAssessmentItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlInsightsMetadataItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlMappingSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlMappingSources": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlResponse": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ControlSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ControlSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ControlSets": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlSetsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.auditmanager#ControlSources": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ControlState": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ControlStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ControlType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#Controls": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ControlsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.auditmanager#CreateAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#CreateAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#CreateAssessmentFrameworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkControlSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkControlSets": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkControls": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentFrameworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#CreateAssessmentReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#CreateControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#CreateControlMappingSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateControlMappingSources": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#CreateControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateDelegationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#CreateDelegationRequests": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#CreatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#DataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#DefaultExportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Delegation": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DelegationComment": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#DelegationIds": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#DelegationMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DelegationMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#DelegationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#Delegations": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeleteAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeleteAssessmentFrameworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFrameworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFrameworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFrameworkShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeleteAssessmentFrameworkShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFrameworkShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentFrameworkShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeleteAssessmentReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeleteControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeleteControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeleteResources": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#DeregisterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeregisterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeregisterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeregisterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeregisterOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DeregisterOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DeregisterOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeregisterOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DeregistrationPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DisassociateAssessmentReportEvidenceFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#DisassociateAssessmentReportEvidenceFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#DisassociateAssessmentReportEvidenceFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#DisassociateAssessmentReportEvidenceFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#EventName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Evidence": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#EvidenceAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#EvidenceAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#EvidenceAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.auditmanager#EvidenceFinderBackfillStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#EvidenceFinderEnablement": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#EvidenceFinderEnablementStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#EvidenceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#EvidenceInsights": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#EvidenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#EvidenceSources": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ExportDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#Filename": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Framework": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#FrameworkDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#FrameworkMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#FrameworkMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#FrameworkName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#FrameworkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#GenericArn": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#GetAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetAccountStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetAccountStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAccountStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetAssessmentFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetAssessmentFrameworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetAssessmentFrameworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessmentFrameworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessmentReportUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetAssessmentReportUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetAssessmentReportUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessmentReportUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetChangeLogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetChangeLogsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetChangeLogsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetChangeLogsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetDelegations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetDelegationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetDelegationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetDelegationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidence": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceByEvidenceFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceByEvidenceFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceByEvidenceFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceByEvidenceFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFileUploadUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceFileUploadUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFileUploadUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFileUploadUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFolder": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceFolderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFolderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFolderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetEvidenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetInsightsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetInsightsByAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetInsightsByAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetInsightsByAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetInsightsByAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetInsightsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetServicesInScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetServicesInScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetServicesInScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetServicesInScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#GetSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#GetSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#GetSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#HyperlinkName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#IamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Insights": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#InsightsByAssessment": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.auditmanager#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#KeywordInputType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#KeywordValue": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Keywords": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#KmsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#LastUpdatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentControlInsightsByControlDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListAssessmentControlInsightsByControlDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListAssessmentControlInsightsByControlDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentControlInsightsByControlDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworkShareRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListAssessmentFrameworkShareRequestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworkShareRequestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworkShareRequestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListAssessmentFrameworksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentFrameworksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentMetadata": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListAssessmentReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListAssessmentReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListAssessmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListAssessmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListAssessmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListControlDomainInsightsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsightsByAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListControlDomainInsightsByAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsightsByAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsightsByAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsightsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlDomainInsightsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlInsightsByControlDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListControlInsightsByControlDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListControlInsightsByControlDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlInsightsByControlDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControls": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListControlsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListControlsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListControlsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListKeywordsForDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListKeywordsForDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListKeywordsForDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListKeywordsForDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListNotificationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListNotificationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListNotificationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ManualEvidence": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ManualEvidenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ManualEvidenceLocalFileName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ManualEvidenceTextResponse": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.auditmanager#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Notification": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Notifications": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.auditmanager#ObjectTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#QueryStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#RegisterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#RegisterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#RegisterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#RegisterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#RegisterOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#RegisterOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#RegisterOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#RegisterOrganizationAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Resources": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#Role": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#RoleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#Roles": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#S3Url": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#SNSTopic": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Scope": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ServiceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ServiceMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#SettingAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#Settings": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ShareRequestAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ShareRequestComment": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ShareRequestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#ShareRequestType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#SnsArn": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#SourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#SourceFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#SourceKeyword": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#SourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#SourceSetUpOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#StartAssessmentFrameworkShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#StartAssessmentFrameworkShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#StartAssessmentFrameworkShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#StartAssessmentFrameworkShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#String": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.auditmanager#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#TestingInformation": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.auditmanager#TimestampUUID": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#TroubleshootingText": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#URL": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControlSetStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentControlSetStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControlSetStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentControlSetStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentFrameworkRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkControlSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkControlSets": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentFrameworkShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentFrameworkShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateAssessmentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateAssessmentStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateControl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateControlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateControlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateControlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#UpdateSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#UpdateSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UpdateSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#UrlLink": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.auditmanager#ValidateAssessmentReportIntegrity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.auditmanager#ValidateAssessmentReportIntegrityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.auditmanager#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.auditmanager#ValidateAssessmentReportIntegrityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ValidateAssessmentReportIntegrityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ValidationErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.auditmanager#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.auditmanager#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.auditmanager#organizationId": {
+      "type": "string"
+    }
+  }
+}

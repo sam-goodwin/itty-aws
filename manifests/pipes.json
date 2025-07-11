@@ -1,0 +1,923 @@
+{
+  "shapes": {
+    "com.amazonaws.pipes#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ArnOrJsonPath": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ArnOrUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#AssignPublicIp": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#AwsVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchArrayProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchArraySize": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#BatchContainerOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchDependsOn": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#BatchEnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchEnvironmentVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#BatchJobDependency": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchJobDependencyType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#BatchParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pipes#BatchResourceRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#BatchResourceRequirementType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#BatchResourceRequirementsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#BatchRetryAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#BatchRetryStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.pipes#CapacityProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#CapacityProviderStrategy": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#CapacityProviderStrategyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#CapacityProviderStrategyItemBase": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#CapacityProviderStrategyItemWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#CloudwatchLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#CloudwatchLogsLogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#CloudwatchLogsLogDestinationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#CreatePipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#CreatePipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#CreatePipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#CreatePipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#Database": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#DbUser": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#DeadLetterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DeletePipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#DeletePipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#DeletePipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DeletePipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DescribePipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#DescribePipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#DescribePipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DescribePipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DimensionMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#DimensionMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#DimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#DimensionValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#DynamoDBStreamStartPosition": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EcsContainerOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsContainerOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EcsEnvironmentFile": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsEnvironmentFileList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EcsEnvironmentFileType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EcsEnvironmentVariable": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsEnvironmentVariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EcsEphemeralStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsInferenceAcceleratorOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsInferenceAcceleratorOverrideList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EcsResourceRequirement": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EcsResourceRequirementType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EcsResourceRequirementsList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EcsTaskOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#EndpointString": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EphemeralStorageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#EpochTimeUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EventBridgeDetailType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EventBridgeEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EventBridgeEventResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#EventBridgeEventSource": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#EventPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#FilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#FirehoseArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#FirehoseLogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#FirehoseLogDestinationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#HeaderKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#HeaderParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pipes#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#IncludeExecutionData": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#IncludeExecutionDataOption": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#InputTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#JsonPath": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#KafkaBootstrapServers": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#KafkaTopicName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#KinesisPartitionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#KinesisStreamStartPosition": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#KmsKeyIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#LaunchType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#LimitMax10": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#LimitMax100": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#LimitMax10000": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#LimitMin1": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#ListPipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#ListPipesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#ListPipesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ListPipesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#LogLevel": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#LogStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MQBrokerAccessCredentials": {
+      "type": "union"
+    },
+    "com.amazonaws.pipes#MQBrokerQueueName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MSKAccessCredentials": {
+      "type": "union"
+    },
+    "com.amazonaws.pipes#MSKStartPosition": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MaximumBatchingWindowInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#MaximumRecordAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#MaximumRetryAttemptsESM": {
+      "type": "integer"
+    },
+    "com.amazonaws.pipes#MeasureName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MeasureValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MeasureValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MessageDeduplicationId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MessageGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MultiMeasureAttributeMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#MultiMeasureAttributeMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#MultiMeasureAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#MultiMeasureMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#MultiMeasureMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#MultiMeasureName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#OnPartialBatchItemFailureStreams": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#OptionalArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PathParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PathParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#Pipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeEnrichmentHttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeEnrichmentParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#PipeLogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeLogConfigurationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.pipes#PipeSourceActiveMQBrokerParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceDynamoDBStreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceKinesisStreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceManagedStreamingKafkaParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceRabbitMQBrokerParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceSelfManagedKafkaParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeSourceSqsQueueParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeState": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeTargetBatchJobParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetCloudWatchLogsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetEcsTaskParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetEventBridgeEventBusParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetHttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetInvocationType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PipeTargetKinesisStreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetLambdaFunctionParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetRedshiftDataParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetSageMakerPipelineParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetSqsQueueParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetStateMachineParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PipeTargetTimestreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#Pipes": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Pipes"
+        }
+      }
+    },
+    "com.amazonaws.pipes#PlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PlacementConstraintExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PlacementConstraintType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#PlacementStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#PlacementStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#PlacementStrategyField": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PlacementStrategyType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#PropagateTags": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#QueryStringKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#QueryStringParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pipes#QueryStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#RequestedPipeState": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#RequestedPipeStateDescribeResponse": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#S3LogDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#S3LogDestinationParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#S3OutputFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SageMakerPipelineParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#SageMakerPipelineParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#SageMakerPipelineParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SageMakerPipelineParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SecretManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SecretManagerArnOrJsonPath": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SecurityGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#SecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#SelfManagedKafkaAccessConfigurationCredentials": {
+      "type": "union"
+    },
+    "com.amazonaws.pipes#SelfManagedKafkaAccessConfigurationVpc": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#SelfManagedKafkaStartPosition": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#SingleMeasureMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#SingleMeasureMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#Sql": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#Sqls": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#StartPipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#StartPipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#StartPipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#StartPipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#StatementName": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#StopPipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#StopPipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#StopPipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#StopPipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#String": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#Subnet": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#Subnets": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.pipes#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#TimeFieldType": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#TimeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.pipes#TimestampFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.pipes#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pipes#UpdatePipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pipes#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.pipes#InternalException"
+        },
+        {
+          "target": "com.amazonaws.pipes#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.pipes#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.pipes#UpdatePipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceActiveMQBrokerParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceDynamoDBStreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceKinesisStreamParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceManagedStreamingKafkaParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceRabbitMQBrokerParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceSelfManagedKafkaParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#UpdatePipeSourceSqsQueueParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.pipes#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.pipes#VersionValue": {
+      "type": "string"
+    }
+  }
+}

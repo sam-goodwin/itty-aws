@@ -1,0 +1,1538 @@
+{
+  "shapes": {
+    "com.amazonaws.iotanalytics#AWSIoTAnalytics": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTAnalytics"
+        }
+      }
+    },
+    "com.amazonaws.iotanalytics#ActivityBatchSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#ActivityName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#AddAttributesActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#AttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#AttributeNameMapping": {
+      "type": "map"
+    },
+    "com.amazonaws.iotanalytics#AttributeNames": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#BatchPutMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#BatchPutMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#BatchPutMessageErrorEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#BatchPutMessageErrorEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#BatchPutMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#BatchPutMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#BucketKeyExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#CancelPipelineReprocessing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CancelPipelineReprocessingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CancelPipelineReprocessingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CancelPipelineReprocessingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Channel": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ChannelMessages": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ChannelStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#ChannelStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelStorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ChannelSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#ChannelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Column": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ColumnDataType": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Columns": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#ComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#ContainerDatasetAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CreateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CreateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CreateDatasetContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CreateDatasetContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CreateDatasetContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDatasetContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CreateDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CreateDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreateDatastoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#CreatePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#CreatePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CreatePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CustomerManagedChannelS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CustomerManagedChannelS3StorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CustomerManagedDatastoreS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#CustomerManagedDatastoreS3StorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Dataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatasetActionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetActionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#DatasetActions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentDeliveryDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentDeliveryRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentDeliveryRules": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatasetContentVersionValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatasetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#DatasetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatasetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatasetTriggers": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#Datastore": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatastoreIotSiteWiseMultiLayerStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreIotSiteWiseMultiLayerStorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#DatastorePartition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastorePartitions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#DatastoreStorage": {
+      "type": "union"
+    },
+    "com.amazonaws.iotanalytics#DatastoreStorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DatastoreSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#DatastoreSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeleteChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DeleteChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DeleteChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DeleteDatasetContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DeleteDatasetContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DeleteDatasetContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeleteDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DeleteDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DeleteDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeletePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DeletePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DeletePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeltaTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeltaTimeSessionWindowConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DescribeChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DescribeChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DescribeDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DescribeDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeDatastoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DescribeLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DescribeLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribeLoggingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#DescribePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#DescribePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DescribePipelineResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeviceRegistryEnrichActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DeviceShadowEnrichActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#DoubleValue": {
+      "type": "double"
+    },
+    "com.amazonaws.iotanalytics#EndTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotanalytics#EntryName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#EstimatedResourceSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#FileFormatConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#FileFormatType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#FilterActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#FilterExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#GetDatasetContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#GetDatasetContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#GetDatasetContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#GetDatasetContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#GlueConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#GlueDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#GlueTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Image": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#IncludeStatisticsFlag": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotanalytics#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#IotEventsDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#IotEventsInputName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#IotSiteWiseCustomerManagedDatastoreS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#IotSiteWiseCustomerManagedDatastoreS3StorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#JsonConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#LambdaActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#LambdaName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#LateDataRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#LateDataRuleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#LateDataRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#LateDataRules": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListChannelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatasetContents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListDatasetContentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListDatasetContentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatasetContentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatastores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListDatastoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListDatastoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListDatastoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListPipelines": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListPipelinesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListPipelinesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListPipelinesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#LogResult": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#LoggingEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotanalytics#LoggingLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#LoggingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#MathActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#MathExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#MaxMessages": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#MaxVersions": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#MessageId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#MessagePayload": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotanalytics#MessagePayloads": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#Messages": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#OffsetSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#OutputFileName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#OutputFileUriValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ParquetConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Partition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#PartitionAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Partitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#Pipeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#PipelineActivities": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#PipelineActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#PipelineArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#PipelineName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#PipelineSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#PipelineSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#PresignedURI": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#PutLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#PutLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#PutLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#QueryFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#QueryFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#Reason": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#RemoveAttributesActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ReprocessingId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ReprocessingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotanalytics#ReprocessingSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#ReprocessingSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ResourceArn2": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ResourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#RetentionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#RetentionPeriodInDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#RunPipelineActivity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#RunPipelineActivityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#RunPipelineActivityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#RunPipelineActivityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#S3DestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#S3PathChannelMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#S3PathChannelMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#SampleChannelData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#SampleChannelDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#SampleChannelDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#SampleChannelDataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Schedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#SchemaDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#SelectAttributesActivity": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ServiceManagedChannelS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ServiceManagedChannelS3StorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ServiceManagedDatastoreS3Storage": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ServiceManagedDatastoreS3StorageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#SessionTimeoutInMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#SizeInBytes": {
+      "type": "double"
+    },
+    "com.amazonaws.iotanalytics#SqlQuery": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#SqlQueryDatasetAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#StartPipelineReprocessing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#StartPipelineReprocessingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#StartPipelineReprocessingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#StartPipelineReprocessingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#StartTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotanalytics#StringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#TimeExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotanalytics#TimestampFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#TimestampPartition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#TriggeringDataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UnlimitedRetentionPeriod": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotanalytics#UnlimitedVersioning": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotanalytics#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UpdateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#UpdateChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#UpdateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UpdateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#UpdateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#UpdateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UpdateDatastore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#UpdateDatastoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#UpdateDatastoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#UpdatePipeline": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotanalytics#UpdatePipelineRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotanalytics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotanalytics#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotanalytics#UpdatePipelineRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#Variable": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#VariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotanalytics#Variables": {
+      "type": "list"
+    },
+    "com.amazonaws.iotanalytics#VersioningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotanalytics#VolumeSizeInGB": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotanalytics#resourceId": {
+      "type": "string"
+    }
+  }
+}

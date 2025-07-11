@@ -1,0 +1,1514 @@
+{
+  "shapes": {
+    "com.amazonaws.m2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#AlternateKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#AlternateKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#Application": {
+      "type": "resource"
+    },
+    "com.amazonaws.m2#ApplicationDeploymentLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ApplicationLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ApplicationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#ApplicationVersionLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ApplicationVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ApplicationVersionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#AuthSecretsManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#AwsSupernovaControlPlaneService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "m2"
+        }
+      }
+    },
+    "com.amazonaws.m2#BatchJobDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#BatchJobDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#BatchJobExecutionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#BatchJobExecutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#BatchJobExecutionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#BatchJobIdentifier": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#BatchJobParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.m2#BatchJobStepList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#BatchJobType": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#BatchParamKey": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#BatchParamValue": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.m2#CancelBatchJobExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CancelBatchJobExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CancelBatchJobExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CancelBatchJobExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CapacityValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.m2#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDataSetExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CreateDataSetExportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CreateDataSetExportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDataSetExportTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDataSetImportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CreateDataSetImportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CreateDataSetImportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDataSetImportTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CreateDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CreateDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#CreateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#CreateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#CreateEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetExportConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#DataSetExportItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetExportList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DataSetExportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetExportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetExportTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DataSetImportConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#DataSetImportItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetImportList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DataSetImportSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetImportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetImportTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DataSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DataSetTaskLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#DataSetsSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DatasetDetailOrgAttributes": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#DatasetOrgAttributes": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#Definition": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#DeleteApplicationFromEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#DeleteApplicationFromEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#DeleteApplicationFromEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeleteApplicationFromEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeleteEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#DeleteEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#DeleteEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeleteEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeployedVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#DeploymentLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#DeploymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#DeploymentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#EfsStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#EngineType": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#EngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#EngineVersionsSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#EngineVersionsSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#EntityDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#EntityName": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#EntityNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#Environment": {
+      "type": "resource"
+    },
+    "com.amazonaws.m2#EnvironmentLifecycle": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#EnvironmentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#EnvironmentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#ExecutionTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ExternalLocation": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#FileBatchJobDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#FileBatchJobIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#FsxStorageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GdgAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GdgDetailAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetApplicationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetApplicationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetApplicationVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetBatchJobExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetBatchJobExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetBatchJobExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetBatchJobExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetDataSetDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#ExecutionTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetDataSetDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetDataSetExportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetDataSetExportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetExportTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetImportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetDataSetImportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetDataSetImportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDataSetImportTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#GetEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#GetSignedBluinsightsUrl": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#GetSignedBluinsightsUrlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#HighAvailabilityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#IdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.m2#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#JobIdentifier": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#JobStep": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#JobStepRestartMarker": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#KMSKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ListApplicationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListApplicationVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListApplicationVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListApplicationVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListBatchJobDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListBatchJobDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListBatchJobExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListBatchJobExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobRestartPoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListBatchJobRestartPointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListBatchJobRestartPointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListBatchJobRestartPointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSetExportHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListDataSetExportHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListDataSetExportHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSetExportHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSetImportHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListDataSetImportHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListDataSetImportHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSetImportHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListDataSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#ExecutionTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListDataSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDataSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListEngineVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListEngineVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListEngineVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListEnvironmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListEnvironmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListEnvironmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#LogGroupIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#LogGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#LogGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#MaintenanceSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.m2#NetworkType": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#PendingMaintenance": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#PoAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#PoDetailAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#PortList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#PrimaryKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#PsAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#PsDetailAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#RecordLength": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#RestartBatchJobIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#S3BatchJobIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ScriptBatchJobDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ScriptBatchJobIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StartApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#StartApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#StartApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StartApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StartBatchJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#StartBatchJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#StartBatchJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StartBatchJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StopApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#StopApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#StopApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StopApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#StorageConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.m2#StorageConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#String100": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#String20": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#String200": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#String2000": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#String20List": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#String50": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#String50List": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#StringFree65000": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.m2#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.m2#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.m2#UpdateEnvironmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.m2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.m2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.m2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.m2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.m2#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.m2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.m2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.m2#UpdateEnvironmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#UpdateEnvironmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.m2#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.m2#Version": {
+      "type": "integer"
+    },
+    "com.amazonaws.m2#VsamAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.m2#VsamDetailAttributes": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "shapes": {
+    "com.amazonaws.s3outposts#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#CapacityInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.s3outposts#CidrBlock": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#CreateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3outposts#CreateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#OutpostOfflineException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.s3outposts#CreateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#CreateEndpointResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.s3outposts#CustomerOwnedIpv4Pool": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3outposts#DeleteEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#OutpostOfflineException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.s3outposts#DeleteEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#EndpointAccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3outposts#EndpointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#EndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#EndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.s3outposts#Endpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.s3outposts#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#FailedReason": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3outposts#ListEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.s3outposts#ListEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListEndpointsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListOutpostsWithS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3outposts#ListOutpostsWithS3Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.s3outposts#ListOutpostsWithS3Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListOutpostsWithS3Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListSharedEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.s3outposts#ListSharedEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.s3outposts#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.s3outposts#ListSharedEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ListSharedEndpointsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.s3outposts#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#NetworkInterfaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.s3outposts#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#Outpost": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#OutpostArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#OutpostId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#OutpostOfflineException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#Outposts": {
+      "type": "list"
+    },
+    "com.amazonaws.s3outposts#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#S3OutpostArn": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#S3Outposts": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "S3Outposts"
+        }
+      }
+    },
+    "com.amazonaws.s3outposts#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.s3outposts#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.s3outposts#VpcId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "shapes": {
+    "com.amazonaws.iotsecuretunneling#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#ClientAccessToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#ClientMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsecuretunneling#CloseTunnel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#CloseTunnelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#CloseTunnelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#CloseTunnelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ConnectionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsecuretunneling#DateType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotsecuretunneling#DeleteFlag": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotsecuretunneling#DescribeTunnel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#DescribeTunnelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#DescribeTunnelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#DescribeTunnelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#DestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#IoTSecuredTunneling": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTSecureTunneling"
+        }
+      }
+    },
+    "com.amazonaws.iotsecuretunneling#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ListTunnels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#ListTunnelsRequest"
+      }
+    },
+    "com.amazonaws.iotsecuretunneling#ListTunnelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ListTunnelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsecuretunneling#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#OpenTunnel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#OpenTunnelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#OpenTunnelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#OpenTunnelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#RotateTunnelAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#RotateTunnelAccessTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#RotateTunnelAccessTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#RotateTunnelAccessTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#Service": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#ServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsecuretunneling#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsecuretunneling#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsecuretunneling#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#ThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#TimeoutConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TimeoutInMin": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotsecuretunneling#Tunnel": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TunnelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#TunnelId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotsecuretunneling#TunnelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotsecuretunneling#TunnelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#TunnelSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotsecuretunneling#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotsecuretunneling#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotsecuretunneling#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.iotsecuretunneling#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotsecuretunneling#UntagResourceResponse": {
+      "type": "structure"
+    }
+  }
+}

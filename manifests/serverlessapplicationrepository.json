@@ -1,0 +1,508 @@
+{
+  "shapes": {
+    "com.amazonaws.serverlessapplicationrepository#ApplicationDependencySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ApplicationPolicyStatement": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#Capability": {
+      "type": "enum"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#CreateApplicationVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplicationVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateApplicationVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationChangeSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationChangeSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationChangeSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationChangeSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplicationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#GetApplicationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplicationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplicationPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetCloudFormationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#GetCloudFormationTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetCloudFormationTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#GetCloudFormationTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationDependencies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#ListApplicationDependenciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationDependenciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationDependenciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#ListApplicationVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.serverlessapplicationrepository#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ParameterDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ParameterValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#PutApplicationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#PutApplicationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#PutApplicationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#PutApplicationPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#RollbackConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#RollbackTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#ServerlessApplicationRepository": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ServerlessApplicationRepository"
+        }
+      }
+    },
+    "com.amazonaws.serverlessapplicationrepository#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.serverlessapplicationrepository#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#UnshareApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#UnshareApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#UnshareApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.serverlessapplicationrepository#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.serverlessapplicationrepository#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#Version": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#VersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfApplicationDependencySummary": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfApplicationPolicyStatement": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfApplicationSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfCapability": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfParameterDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfParameterValue": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfRollbackTrigger": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfTag": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOfVersionSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.serverlessapplicationrepository#__string": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,1072 @@
+{
+  "shapes": {
+    "com.amazonaws.detective#APIFailureCount": {
+      "type": "long"
+    },
+    "com.amazonaws.detective#APIName": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#APISuccessCount": {
+      "type": "long"
+    },
+    "com.amazonaws.detective#AcceptInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#AcceptInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#AcceptInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Account": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#AccountIdExtendedList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#AccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#Administrator": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#AdministratorList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#AiPaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#AmazonDetective": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Detective"
+        }
+      }
+    },
+    "com.amazonaws.detective#Aso": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#BatchGetGraphMemberDatasources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#BatchGetGraphMemberDatasourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#BatchGetGraphMemberDatasourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#BatchGetGraphMemberDatasourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#BatchGetMembershipDatasources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#BatchGetMembershipDatasourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#BatchGetMembershipDatasourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#BatchGetMembershipDatasourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.detective#ByteValue": {
+      "type": "long"
+    },
+    "com.amazonaws.detective#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#CreateGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#CreateGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#CreateGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#CreateGraphResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#CreateMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#CreateMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#CreateMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#CreateMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DatasourcePackage": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#DatasourcePackageIngestDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DatasourcePackageIngestDetails": {
+      "type": "map"
+    },
+    "com.amazonaws.detective#DatasourcePackageIngestHistory": {
+      "type": "map"
+    },
+    "com.amazonaws.detective#DatasourcePackageIngestState": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#DatasourcePackageIngestStates": {
+      "type": "map"
+    },
+    "com.amazonaws.detective#DatasourcePackageList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#DatasourcePackageUsageInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DeleteGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#DeleteGraphRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#DeleteGraphRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DeleteMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#DeleteMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#DeleteMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DeleteMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DescribeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#DescribeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#DescribeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DescribeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#DisableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#DisassociateMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#DisassociateMembershipRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#DisassociateMembershipRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#EmailMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#EnableOrganizationAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#EnableOrganizationAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#EnableOrganizationAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#EntityArn": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#ErrorCodeReason": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#Field": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#FilterCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#FlaggedIpAddressDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#GetInvestigation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#GetInvestigationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#GetInvestigationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#GetInvestigationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#GetMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#GetMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#GetMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#GetMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Graph": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#GraphArn": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#GraphArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#GraphList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#HourlyTimeDelta": {
+      "type": "integer"
+    },
+    "com.amazonaws.detective#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#ImpossibleTravelDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Indicator": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#IndicatorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#IndicatorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#Indicators": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#InvestigationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#InvestigationDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#InvestigationId": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#InvitationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#IsNewForEntireAccount": {
+      "type": "boolean"
+    },
+    "com.amazonaws.detective#LastIngestStateChangeDates": {
+      "type": "map"
+    },
+    "com.amazonaws.detective#ListDatasourcePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListDatasourcePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListDatasourcePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListDatasourcePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListGraphs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListGraphsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListGraphsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListGraphsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListIndicators": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListIndicatorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListIndicatorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListIndicatorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListInvestigations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListInvestigationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListInvestigationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListInvestigationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListInvitationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListInvitationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListInvitationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListMembersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListMembersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListMembersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListOrganizationAdminAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListOrganizationAdminAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListOrganizationAdminAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListOrganizationAdminAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.detective#MemberDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#MemberDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#MemberDisabledReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#MemberResultsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.detective#MemberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#MembershipDatasources": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#MembershipDatasourcesList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#NewAsoDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#NewGeolocationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#NewUserAgentDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#Percentage": {
+      "type": "double"
+    },
+    "com.amazonaws.detective#Procedure": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#Reason": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#RejectInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#RejectInvitationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#RejectInvitationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#RelatedFindingDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#RelatedFindingGroupDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Resource": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Severity": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#SortCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#StartInvestigation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#StartInvestigationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#StartInvestigationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#StartInvestigationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#StartMonitoringMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#StartMonitoringMemberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#StartMonitoringMemberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.detective#StringFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#TTPsObservedDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Tactic": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.detective#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#Technique": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.detective#TimestampForCollection": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#UnprocessedAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UnprocessedAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#UnprocessedGraph": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UnprocessedGraphList": {
+      "type": "list"
+    },
+    "com.amazonaws.detective#UnprocessedReason": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UpdateDatasourcePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#UpdateDatasourcePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#UpdateDatasourcePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UpdateInvestigationState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#UpdateInvestigationStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#UpdateInvestigationStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UpdateOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.detective#UpdateOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.detective#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.detective#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.detective#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.detective#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.detective#UpdateOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#UserAgent": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.detective#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.detective#VolumeUsageByDatasourcePackage": {
+      "type": "map"
+    }
+  }
+}

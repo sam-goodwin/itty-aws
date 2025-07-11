@@ -1,0 +1,541 @@
+{
+  "shapes": {
+    "com.amazonaws.dlm#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ActionName": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#ArchiveRetainRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ArchiveRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#AvailabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#CmkArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#CopyTags": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#CopyTagsNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#Count": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#CreateInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#CreateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#CreateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#CreateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CreateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CreateRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CronExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyDeprecateRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyRetainRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyRules": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#CrossRegionCopyTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#DefaultPoliciesTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#DefaultPolicy": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#DefaultPolicyTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#DeleteLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#DeleteLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#DeleteLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#DeleteLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#DeprecateRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#DescriptionRegex": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#Encrypted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#EventParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#EventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#EventSourceValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#EventTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ExcludeBootVolume": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#ExcludeBootVolumes": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#ExcludeDataVolumeTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ExcludeTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ExcludeVolumeTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#Exclusions": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ExecuteOperationOnScriptFailure": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#ExecutionHandler": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#ExecutionHandlerServiceValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ExecutionRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#ExtendDeletion": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#FastRestoreRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#GetLifecyclePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#GetLifecyclePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#GetLifecyclePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#GetLifecyclePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#GetLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#GetLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#GetLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#GetLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#GettablePolicyStateValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#Interval": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#IntervalUnitValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#LifecyclePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#LifecyclePolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#LifecyclePolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#LocationValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#NoReboot": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dlm#Parameter": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#ParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#Parameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#PolicyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#PolicyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#PolicyDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#PolicyIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#PolicyLanguageValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#PolicyTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ResourceLocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ResourceLocationValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ResourceTypeValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ResourceTypeValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#RetainInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#RetainRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#RetentionArchiveTier": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#RetentionIntervalUnitValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#Schedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ScheduleName": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#Script": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ScriptExecutionTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#ScriptMaximumRetryCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#ScriptsList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#SettablePolicyStateValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#ShareRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#ShareRules": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#ShareTargetAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#SnapshotOwnerList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#StageValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.dlm#StagesList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#StandardTierRetainRuleCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#StandardTierRetainRuleInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.dlm#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#String": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#TagFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.dlm#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TagsToAddFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#TagsToAddList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#Target": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TargetRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TargetTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#TargetTagsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#Time": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#TimesList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dlm#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#UpdateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dlm#UpdateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dlm#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.dlm#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.dlm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.dlm#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.dlm#UpdateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#UpdateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dlm#VariableTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.dlm#VolumeTypeValues": {
+      "type": "string"
+    },
+    "com.amazonaws.dlm#dlm_20180112": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DLM"
+        }
+      }
+    }
+  }
+}

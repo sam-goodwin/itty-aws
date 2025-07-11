@@ -1,0 +1,6391 @@
+{
+  "shapes": {
+    "com.amazonaws.lightsail#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AccessDirection": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AccessKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AccessKeyLastUsed": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AccessKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AccessReceiverList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AccessRules": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AccountLevelBpaSync": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AccountLevelBpaSyncStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AccountSetupInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AddOn": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AddOnList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AddOnRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AddOnRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AddOnType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Alarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AlarmState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AlarmsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AllocateStaticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AllocateStaticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AllocateStaticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AllocateStaticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AppCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AppCategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AttachCertificateToDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AttachCertificateToDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AttachCertificateToDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachCertificateToDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachDisk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AttachDiskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AttachDiskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachDiskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachInstancesToLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AttachInstancesToLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AttachInstancesToLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachInstancesToLoadBalancerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachLoadBalancerTlsCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AttachLoadBalancerTlsCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AttachLoadBalancerTlsCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachLoadBalancerTlsCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachStaticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#AttachStaticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#AttachStaticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachStaticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachedDisk": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AttachedDiskList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AttachedDiskMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#AutoMountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AutoSnapshotAddOnRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AutoSnapshotDate": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#AutoSnapshotDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AutoSnapshotDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#AutoSnapshotStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#BPAStatusMessage": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Base64": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#BehaviorEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Blueprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#BlueprintList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#BlueprintType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Bucket": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#BucketAccessLogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#BucketAccessLogPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#BucketBundle": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#BucketBundleList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#BucketList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#BucketMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#BucketState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Bundle": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#BundleList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CacheBehavior": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CacheBehaviorList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CacheBehaviorPerPath": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CacheSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CertificateDomainValidationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#CertificateName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#CertificateProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#CertificateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#CertificateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CertificateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CertificateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CloseInstancePublicPorts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CloseInstancePublicPortsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CloseInstancePublicPortsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CloseInstancePublicPortsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CloudFormationStackRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CloudFormationStackRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CloudFormationStackRecordSourceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CloudFormationStackRecordSourceInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CloudFormationStackRecordSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContactMethod": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContactMethodStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContactMethodVerificationProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContactMethodsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContactProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContactProtocolsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#Container": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerImageList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ContainerMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#ContainerName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ContainerService": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceDeploymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServiceDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceDeploymentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServiceECRImagePullerRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceECRImagePullerRoleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceHealthCheckConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServiceLogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceLogEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServiceMetadataEntry": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#ContainerServiceMetadataEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServiceMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ContainerServicePower": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServicePowerList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServicePowerName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServiceProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServicePublicDomains": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#ContainerServicePublicDomainsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ContainerServiceRegistryLogin": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceScale": {
+      "type": "integer"
+    },
+    "com.amazonaws.lightsail#ContainerServiceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServiceStateDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ContainerServiceStateDetailCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ContainerServicesListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CookieObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CopySnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CopySnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CopySnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CopySnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CostEstimate": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CostEstimates": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#CreateBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateBucketAccessKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateBucketAccessKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateBucketAccessKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateBucketAccessKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateBucketResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateCloudFormationStack": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateCloudFormationStackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateCloudFormationStackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateCloudFormationStackResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContactMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateContactMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateContactMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContactMethodResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateContainerServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateContainerServiceDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceDeploymentResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceRegistryLogin": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateContainerServiceRegistryLoginRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceRegistryLoginRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceRegistryLoginResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateContainerServiceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDisk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDiskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDiskFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDiskFromSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDiskFromSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDiskFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDiskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDiskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDiskSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDiskSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDiskSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDiskSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDomainEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateDomainEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateDomainEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDomainEntryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateDomainResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateGUISessionAccessDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateGUISessionAccessDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateGUISessionAccessDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateGUISessionAccessDetailsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstanceSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateInstanceSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateInstanceSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstanceSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateInstancesFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateInstancesFromSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateInstancesFromSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstancesFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateInstancesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateKeyPairResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancerTlsCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateLoadBalancerTlsCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancerTlsCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateLoadBalancerTlsCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateRelationalDatabaseFromSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseFromSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#CreateRelationalDatabaseSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#CreateRelationalDatabaseSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Currency": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#DeleteAlarm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteAlarmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteAlarmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteAlarmResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteAutoSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteAutoSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteAutoSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteAutoSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteBucketAccessKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteBucketAccessKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteBucketAccessKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteBucketAccessKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteBucketResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContactMethod": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteContactMethodRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteContactMethodRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContactMethodResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContainerImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteContainerImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteContainerImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContainerImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContainerService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteContainerServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteContainerServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteContainerServiceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDisk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteDiskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteDiskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDiskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDiskSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteDiskSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteDiskSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDiskSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteDomainEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteDomainEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteDomainEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDomainEntryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteDomainResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteInstanceSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteInstanceSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteInstanceSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteInstanceSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteKeyPairResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteKnownHostKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteKnownHostKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteKnownHostKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteKnownHostKeysResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancerTlsCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteLoadBalancerTlsCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancerTlsCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteLoadBalancerTlsCertificateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabaseSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DeleteRelationalDatabaseSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabaseSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DeleteRelationalDatabaseSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DestinationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachCertificateFromDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DetachCertificateFromDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DetachCertificateFromDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachCertificateFromDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachDisk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DetachDiskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DetachDiskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachDiskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachInstancesFromLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DetachInstancesFromLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DetachInstancesFromLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachInstancesFromLoadBalancerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachStaticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DetachStaticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DetachStaticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DetachStaticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DisableAddOn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DisableAddOnRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DisableAddOnRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DisableAddOnResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Disk": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DiskInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DiskInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DiskList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DiskMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DiskMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DiskSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DiskSnapshotInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DiskSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DiskSnapshotState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#DiskState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#DistributionBundle": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DistributionBundleList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DistributionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DistributionMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#DnsRecordCreationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DnsRecordCreationStateCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Domain": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DomainEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DomainEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DomainEntryOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#DomainEntryOptionsKeys": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#DomainEntryType": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#DomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#DomainNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DomainValidationRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DomainValidationRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#DownloadDefaultKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#DownloadDefaultKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#DownloadDefaultKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#DownloadDefaultKeyPairResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#EligibleToRenew": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#EnableAddOn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#EnableAddOnRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#EnableAddOnRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#EnableAddOnResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#EndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Environment": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#EstimateByTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#EstimatesByTime": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ExportSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#ExportSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#ExportSnapshotRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ExportSnapshotRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ExportSnapshotRecordSourceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ExportSnapshotRecordSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ExportSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ExportSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ForwardValues": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#GetActiveNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetActiveNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetActiveNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetActiveNamesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetAlarms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetAlarmsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetAlarmsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetAlarmsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetAutoSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetAutoSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetAutoSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetAutoSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBlueprints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBlueprintsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBlueprintsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBlueprintsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketAccessKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBucketAccessKeysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBucketAccessKeysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketAccessKeysResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketBundles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBucketBundlesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBucketBundlesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketBundlesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBucketMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBucketMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBuckets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBucketsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBucketsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBucketsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBundles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetBundlesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetBundlesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetBundlesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCertificatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCloudFormationStackRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetCloudFormationStackRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetCloudFormationStackRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCloudFormationStackRecordsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContactMethods": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContactMethodsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContactMethodsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContactMethodsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerAPIMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerAPIMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerAPIMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerAPIMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerImagesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerLog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerLogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerLogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerLogResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServiceDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerServiceDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerServiceDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServiceDeploymentsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServiceMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerServiceMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerServiceMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServiceMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServicePowers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerServicePowersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerServicePowersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServicePowersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetContainerServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetContainerServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetContainerServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCostEstimate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetCostEstimateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetCostEstimateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetCostEstimateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDisk": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDiskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDiskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDiskResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDiskSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDiskSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDiskSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDisks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDisksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDisksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDisksResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionBundles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDistributionBundlesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDistributionBundlesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionBundlesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionLatestCacheReset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDistributionLatestCacheResetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDistributionLatestCacheResetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionLatestCacheResetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDistributionMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDistributionMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDistributionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDistributionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDistributionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDomainResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetDomainsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetExportSnapshotRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetExportSnapshotRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetExportSnapshotRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetExportSnapshotRecordsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceAccessDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceAccessDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceAccessDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceAccessDetailsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstancePortStates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstancePortStatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstancePortStatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstancePortStatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstanceStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstanceStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstanceStateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetInstancesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetKeyPairResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetKeyPairs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetKeyPairsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetKeyPairsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetKeyPairsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetLoadBalancerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetLoadBalancerMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetLoadBalancerTlsCertificatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsCertificatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsCertificatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetLoadBalancerTlsPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancerTlsPoliciesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetLoadBalancersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetLoadBalancersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetLoadBalancersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetOperationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetOperationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetOperationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetOperationsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetOperationsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetOperationsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperationsForResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetOperationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRegions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRegionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRegionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRegionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBlueprints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseBlueprintsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBlueprintsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBlueprintsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBundles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseBundlesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBundlesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseBundlesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseEventsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseLogEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogEventsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseLogStreamsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogStreamsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseLogStreamsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMasterUserPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseMasterUserPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMasterUserPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMasterUserPasswordResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseMetricDataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMetricDataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseMetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabaseSnapshotsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetRelationalDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetRelationalDatabasesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetSetupHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetSetupHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetSetupHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetSetupHistoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetStaticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetStaticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetStaticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetStaticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetStaticIps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#GetStaticIpsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#GetStaticIpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#GetStaticIpsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#HeaderEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#HeaderForwardList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#HeaderObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#HostKeyAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#HostKeysList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#HttpEndpoint": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#HttpProtocolIpv6": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#HttpTokens": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#IAMAccessKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ImportKeyPair": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#ImportKeyPairRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#ImportKeyPairRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ImportKeyPairResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InUseResourceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.lightsail#IncludeCertificateDetails": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lightsail#InputOrigin": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceAccessDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceAccessProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstanceHardware": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceHealthReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceHealthState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceHealthSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceHealthSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstanceMetadataOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceMetadataState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceNetworking": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstancePlatform": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstancePlatformList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstancePortInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstancePortInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstancePortState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstancePortStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstanceSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceSnapshotInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InstanceSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#InstanceSnapshotState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#InstanceState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#IpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Ipv6Address": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#Ipv6AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#IsVpcPeered": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#IsVpcPeeredRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#IsVpcPeeredRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#IsVpcPeeredResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#IsoDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lightsail#IssuerCA": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#KeyAlgorithm": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#KeyPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#KeyPairList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LightsailDistribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Lightsail_20161128": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Lightsail"
+        }
+      }
+    },
+    "com.amazonaws.lightsail#LoadBalancer": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerAttributeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerConfigurationOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#LoadBalancerList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LoadBalancerMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDnsRecordCreationState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDnsRecordCreationStateCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDomainValidationOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDomainValidationOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDomainValidationRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateDomainValidationRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateFailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateRenewalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateRenewalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateRevocationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsCertificateSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LoadBalancerTlsPolicyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#LogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#LogEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#MetricDatapoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#MetricDatapointList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#MetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#MetricPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.lightsail#MetricStatistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#MetricStatisticList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#MetricUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#MonitoredResourceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#MonthlyTransfer": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#NameServersUpdateState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#NameServersUpdateStateCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#NetworkProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#NotificationTriggerList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#OpenInstancePublicPorts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#OpenInstancePublicPortsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#OpenInstancePublicPortsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#OpenInstancePublicPortsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Operation": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#OperationFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#OperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#OperationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#OperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Origin": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#OriginProtocolPolicyEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#PartnerIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#PasswordData": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PeerVpc": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#PeerVpcRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#PeerVpcRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PeerVpcResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PendingMaintenanceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PendingMaintenanceActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#PendingModifiedRelationalDatabaseValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.lightsail#PortAccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#PortInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PortInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#PortInfoSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#PortList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#PortMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lightsail#PortState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#PricingUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#PrivateRegistryAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PrivateRegistryAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PutAlarm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#PutAlarmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#PutAlarmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PutAlarmResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PutInstancePublicPorts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#PutInstancePublicPortsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#PutInstancePublicPortsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#PutInstancePublicPortsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#QueryStringObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#R53HostedZoneDeletionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#R53HostedZoneDeletionStateCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RebootInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#RebootInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#RebootInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RebootInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RebootRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#RebootRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#RebootRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RebootRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RecordState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#Region": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RegionName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RegisterContainerImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#RegisterContainerImageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#RegisterContainerImageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RegisterContainerImageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RegisteredDomainDelegationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabase": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseBlueprint": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseBlueprintList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseBundle": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseBundleList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseEngine": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseHardware": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseMetricName": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RelationalDatabasePasswordVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RelationalDatabaseSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ReleaseStaticIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#ReleaseStaticIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#ReleaseStaticIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ReleaseStaticIpResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RenewalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#RenewalStatusReason": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#RenewalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#RequestFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ResetDistributionCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#ResetDistributionCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#ResetDistributionCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResetDistributionCacheResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ResourceBucketAccess": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ResourceBudgetEstimate": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResourceLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ResourceNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#ResourceReceivingAccess": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResourceRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#ResourcesBudgetEstimate": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#RevocationReason": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SendContactMethodVerification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#SendContactMethodVerificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#SendContactMethodVerificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SendContactMethodVerificationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SensitiveNonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SerialNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#ServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Session": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#Sessions": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#SetIpAddressType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#SetIpAddressTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#SetIpAddressTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetIpAddressTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetResourceAccessForBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#SetResourceAccessForBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#SetResourceAccessForBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetResourceAccessForBucketResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SetupDomainNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#SetupExecutionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupExecutionDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#SetupHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupHistoryPageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SetupHistoryResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupInstanceHttps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#SetupInstanceHttpsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#SetupInstanceHttpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupInstanceHttpsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#SetupStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#StartGUISession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StartGUISessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StartGUISessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StartGUISessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StartInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StartInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StartInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StartInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StartRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StartRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StartRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StartRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StaticIp": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StaticIpList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#StatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#StopGUISession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StopGUISessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StopGUISessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopGUISessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StopInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StopInstanceOnIdleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#StopRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#StopRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StopRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#StringMax256": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#SubjectAlternativeNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TagResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#TestAlarm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#TestAlarmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#TestAlarmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TestAlarmResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TimeOfDay": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#TimePeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#TreatMissingData": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#UnauthenticatedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UnpeerVpc": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UnpeerVpcRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UnpeerVpcRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UnpeerVpcResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UntagResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateBucket": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateBucketRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateBucketBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateBucketBundleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateBucketBundleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateBucketBundleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateBucketRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateBucketResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateContainerService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateContainerServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateContainerServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateContainerServiceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDistribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateDistributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateDistributionBundle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateDistributionBundleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateDistributionBundleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDistributionBundleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDistributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDistributionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDomainEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateDomainEntryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateDomainEntryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateDomainEntryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateInstanceMetadataOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateInstanceMetadataOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateInstanceMetadataOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateInstanceMetadataOptionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateLoadBalancerAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateLoadBalancerAttributeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateLoadBalancerAttributeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateLoadBalancerAttributeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateRelationalDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabaseParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lightsail#UpdateRelationalDatabaseParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lightsail#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AccountSetupInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OperationFailureException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ServiceException"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnauthenticatedException"
+        }
+      ]
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabaseParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabaseParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#UpdateRelationalDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lightsail#ViewerMinimumTlsProtocolVersionEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.lightsail#boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lightsail#double": {
+      "type": "double"
+    },
+    "com.amazonaws.lightsail#float": {
+      "type": "float"
+    },
+    "com.amazonaws.lightsail#integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.lightsail#long": {
+      "type": "long"
+    },
+    "com.amazonaws.lightsail#setupHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lightsail#string": {
+      "type": "string"
+    },
+    "com.amazonaws.lightsail#timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

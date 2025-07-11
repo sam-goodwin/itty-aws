@@ -1,0 +1,1506 @@
+{
+  "shapes": {
+    "com.amazonaws.elasticbeanstalk#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#AWSElasticBeanstalkService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Elastic Beanstalk"
+        }
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#AbortEnvironmentUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#AbortEnvironmentUpdateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#AbortEnvironmentUpdateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#AbortableOperationInProgress": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#ActionHistoryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationDescriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationDescriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationResourceLifecycleConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationResourceLifecycleDescriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionDescriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionDescriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionLifecycleConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionProccess": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplicationVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplyEnvironmentManagedAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ApplyEnvironmentManagedActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ManagedActionInvalidStateException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#ApplyEnvironmentManagedActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ApplyEnvironmentManagedActionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#AssociateEnvironmentOperationsRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#AssociateEnvironmentOperationsRoleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#AssociateEnvironmentOperationsRoleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#AutoCreateApplication": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#AutoScalingGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#AutoScalingGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#AvailableSolutionStackDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#AvailableSolutionStackNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#BoxedInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#BranchName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#BranchOrder": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#BuildConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Builder": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CPUUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Cause": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#Causes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#CheckDNSAvailability": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CheckDNSAvailabilityMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#CheckDNSAvailabilityMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CheckDNSAvailabilityResultMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CnameAvailability": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#CodeBuildNotInServiceRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ComposeEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ComposeEnvironmentsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyEnvironmentsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#ComposeEnvironmentsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ComputeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationDeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionDefaultValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionDescriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionPossibleValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionPossibleValues": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionSettingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionSeverity": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationOptionsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationSettingsDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationSettingsDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationSettingsDescriptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationSettingsValidationMessages": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationTemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ConfigurationTemplateNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CreateApplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyApplicationsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreateApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreateApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CreateApplicationVersionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CodeBuildNotInServiceRegionException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#S3LocationNotInServiceRegionException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyApplicationsException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyApplicationVersionsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreateApplicationVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreateConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CreateConfigurationTemplateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyConfigurationTemplatesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreateConfigurationTemplateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CreateEnvironmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyEnvironmentsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreateEnvironmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreatePlatformVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#CreatePlatformVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyPlatformsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreatePlatformVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreatePlatformVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreateStorageLocation": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#S3SubscriptionRequiredException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#CreateStorageLocationResultMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CreationDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#CustomAmi": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#CustomAmiList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#DNSCname": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#DNSCnamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DeleteApplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#OperationInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DeleteApplicationVersionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#S3LocationNotInServiceRegionException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#SourceBundleDeletionException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteApplicationVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DeleteConfigurationTemplateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#OperationInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteConfigurationTemplateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteEnvironmentConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DeleteEnvironmentConfigurationMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteEnvironmentConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeletePlatformVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DeletePlatformVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#PlatformVersionStillReferencedException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DeletePlatformVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeletePlatformVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeleteSourceBundle": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#Deployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DeploymentTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeAccountAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeAccountAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeApplicationVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeApplicationVersionsMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeApplicationVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeApplicationsMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeApplicationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeConfigurationOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeConfigurationOptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeConfigurationOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeConfigurationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeConfigurationSettingsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeConfigurationSettingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentHealthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentHealthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentHealthResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionHistoryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentResourcesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentResourcesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentsMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEnvironmentsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeInstancesHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribeInstancesHealthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeInstancesHealthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribeInstancesHealthResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribePlatformVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DescribePlatformVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DescribePlatformVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#DescribePlatformVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#DisassociateEnvironmentOperationsRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#DisassociateEnvironmentOperationsRoleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#DisassociateEnvironmentOperationsRoleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Ec2InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EndpointURL": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentDescriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentDescriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentHealth": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentHealthAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentHealthAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentHealthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentInfoDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentInfoDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentInfoType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentLinks": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentResourceDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentResourceDescriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentResourcesDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#EnvironmentTier": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EventDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#EventDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EventDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#EventDescriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#EventMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#EventSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#FailureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#FileTypeExtension": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ForceTerminate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ImageId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#IncludeDeleted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#IncludeDeletedBackTo": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#Instance": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#InstanceHealthList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#InstanceHealthSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#InstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#InstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#InstancesHealthAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#InstancesHealthAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Latency": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LaunchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LaunchConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#LaunchTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LaunchTemplateList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#LaunchedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#ListAvailableSolutionStacks": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#ListAvailableSolutionStacksResultMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformBranches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ListPlatformBranchesRequest"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformBranchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformBranchesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ListPlatformVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ElasticBeanstalkServiceException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ListPlatformVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ResourceTypeNotSupportedException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Listener": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadAverage": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadAverageValue": {
+      "type": "double"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadBalancer": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadBalancerDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadBalancerList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#LoadBalancerListenersDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#Maintainer": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedActionHistoryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedActionHistoryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedActionHistoryMaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedActionInvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ManagedActions": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#MaxAgeRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#MaxCountRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#MaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#NullableDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.elasticbeanstalk#NullableInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#NullableLong": {
+      "type": "long"
+    },
+    "com.amazonaws.elasticbeanstalk#OperatingSystemName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#OperatingSystemVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#OperationInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#OperationsRole": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionRestrictionMaxLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionRestrictionMaxValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionRestrictionMinValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionRestrictionRegex": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#OptionsSpecifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformBranchLifecycleState": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformBranchMaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformBranchSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformBranchSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilterType": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFramework": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformFrameworks": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformLifecycleState": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformMaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformProgrammingLanguage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformProgrammingLanguages": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#PlatformVersionStillReferencedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Queue": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#QueueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#RebuildEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#RebuildEnvironmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#RebuildEnvironmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#RefreshedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#RegexLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#RegexPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#RequestCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticbeanstalk#RequestEnvironmentInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#RequestEnvironmentInfoMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#RequestEnvironmentInfoMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceQuotas": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceTagsDescriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ResourceTypeNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#RestartAppServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#RestartAppServerMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#RestartAppServerMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#RetrieveEnvironmentInfo": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#RetrieveEnvironmentInfoMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#RetrieveEnvironmentInfoMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#RetrieveEnvironmentInfoResultMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#S3LocationNotInServiceRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#S3SubscriptionRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SampleTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilterAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#SearchFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#SingleInstanceHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SolutionStackDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SolutionStackFileTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#SolutionStackName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceBuildInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceBundleDeletionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceRepository": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#StatusCodes": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#String": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SupportedAddon": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SupportedAddonList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#SupportedTier": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#SupportedTierList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#SwapEnvironmentCNAMEs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#SwapEnvironmentCNAMEsMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#SwapEnvironmentCNAMEsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#SystemStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#TerminateEnvForce": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#TerminateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#TerminateEnvironmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#TerminateEnvironmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TerminateEnvironmentResources": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#TimeFilterEnd": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#TimeFilterStart": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyApplicationVersionsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyApplicationsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyBucketsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyConfigurationTemplatesException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyEnvironmentsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyPlatformsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#Trigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#TriggerList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateApplicationMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplicationResourceLifecycle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateApplicationResourceLifecycleMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplicationResourceLifecycleMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplicationVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateApplicationVersionMessage"
+      }
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateApplicationVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateConfigurationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateConfigurationTemplateMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateConfigurationTemplateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateEnvironmentMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateEnvironmentMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#UpdateTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#OperationInProgressException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ResourceTypeNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#UpdateTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#UserDefinedOption": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticbeanstalk#ValidateConfigurationSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticbeanstalk#ValidateConfigurationSettingsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#InsufficientPrivilegesException"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TooManyBucketsException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticbeanstalk#ValidateConfigurationSettingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ValidationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticbeanstalk#ValidationMessageString": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#ValidationMessagesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#ValidationSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticbeanstalk#VersionLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticbeanstalk#VersionLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#VersionLabelsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticbeanstalk#VirtualizationType": {
+      "type": "string"
+    }
+  }
+}

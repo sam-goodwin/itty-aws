@@ -1,0 +1,199 @@
+{
+  "shapes": {
+    "com.amazonaws.personalizeevents#Action": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#ActionId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#ActionImpression": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#ActionInteraction": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#ActionInteractionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#ActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#AmazonPersonalizeEvents": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Personalize Events"
+        }
+      }
+    },
+    "com.amazonaws.personalizeevents#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.personalizeevents#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#EventAttributionSource": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#FloatType": {
+      "type": "float"
+    },
+    "com.amazonaws.personalizeevents#Impression": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#Item": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#ItemId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#ItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalizeevents#MetricAttribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#PutActionInteractions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalizeevents#PutActionInteractionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalizeevents#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalizeevents#PutActionInteractionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#PutActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalizeevents#PutActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalizeevents#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalizeevents#PutActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#PutEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalizeevents#PutEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalizeevents#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.personalizeevents#PutEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#PutItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalizeevents#PutItemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalizeevents#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalizeevents#PutItemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#PutUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalizeevents#PutUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalizeevents#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalizeevents#PutUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#RecommendationId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#StringType": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#SynthesizedJsonActionInteractionProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#SynthesizedJsonActionProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#SynthesizedJsonEventPropertiesJSON": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#SynthesizedJsonItemProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#SynthesizedJsonUserProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalizeevents#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalizeevents#UserList": {
+      "type": "list"
+    }
+  }
+}

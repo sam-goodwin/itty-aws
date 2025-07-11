@@ -1,0 +1,480 @@
+{
+  "shapes": {
+    "com.amazonaws.lexruntimev2#AWSDeepSenseRunTimeServiceApi2_0": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Lex Runtime V2"
+        }
+      }
+    },
+    "com.amazonaws.lexruntimev2#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextTimeToLive": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextTimeToLiveInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextTurnsToLive": {
+      "type": "integer"
+    },
+    "com.amazonaws.lexruntimev2#ActiveContextsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#AttachmentTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#AttachmentUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#AudioChunk": {
+      "type": "blob"
+    },
+    "com.amazonaws.lexruntimev2#AudioInputEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#AudioResponseEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#BadGatewayException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#BlobStream": {
+      "type": "blob"
+    },
+    "com.amazonaws.lexruntimev2#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lexruntimev2#BotAliasIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#BotIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#Button": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ButtonText": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#ButtonValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#ButtonsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#ConfidenceScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ConfigurationEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ConfirmationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ConversationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#DTMFInputEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#DTMFRegex": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#DeleteSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#DeleteSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#DeleteSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#DeleteSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#DependencyFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#DialogAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#DialogActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#DisconnectionEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.lexruntimev2#ElicitSubSlot": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#EpochMillis": {
+      "type": "long"
+    },
+    "com.amazonaws.lexruntimev2#EventId": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#GetSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#GetSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#GetSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#GetSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#HeartbeatEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ImageResponseCard": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#InputMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#Intent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#IntentResultEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#IntentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#Interpretation": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#InterpretationSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#Interpretations": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#LocaleId": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#MessageContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#Messages": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#PlaybackCompletionEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#PlaybackInterruptionEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#PlaybackInterruptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#PutSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#PutSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#PutSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#PutSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RecognizeText": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#RecognizeTextRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#RecognizeTextRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RecognizeTextResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RecognizeUtterance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#RecognizeUtteranceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#BadGatewayException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#DependencyFailedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#RecognizeUtteranceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RecognizeUtteranceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RecognizedBotMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RuntimeHintDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RuntimeHintPhrase": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#RuntimeHintValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#RuntimeHintValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#RuntimeHints": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#SensitiveNonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#SentimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#SentimentScore": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#SentimentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#SessionState": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#Shape": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#Slot": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#SlotHintsIntentMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimev2#SlotHintsSlotMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimev2#Slots": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimev2#StartConversation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lexruntimev2#StartConversationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lexruntimev2#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lexruntimev2#StartConversationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#StartConversationRequestEventStream": {
+      "type": "union"
+    },
+    "com.amazonaws.lexruntimev2#StartConversationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#StartConversationResponseEventStream": {
+      "type": "union"
+    },
+    "com.amazonaws.lexruntimev2#String": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.lexruntimev2#StringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lexruntimev2#StyleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lexruntimev2#Text": {
+      "type": "string"
+    },
+    "com.amazonaws.lexruntimev2#TextInputEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#TextResponseEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#TranscriptEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#Value": {
+      "type": "structure"
+    },
+    "com.amazonaws.lexruntimev2#Values": {
+      "type": "list"
+    }
+  }
+}

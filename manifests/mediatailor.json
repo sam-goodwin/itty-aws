@@ -1,0 +1,930 @@
+{
+  "shapes": {
+    "com.amazonaws.mediatailor#AccessConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#AdBreak": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AdBreakMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#AdBreakOpportunities": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#AdBreakOpportunity": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AdConditioningConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AdMarkerPassthrough": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AdMarkupType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#AdsInteractionExcludeEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#AdsInteractionLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AdsInteractionPublishOptInEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#Alert": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AlertCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#AlternateMedia": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AudienceMedia": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#Audiences": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#AvailMatchingCriteria": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#AvailSuppression": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#Bumper": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CdnConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#Channel": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ChannelPolicy": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#ChannelResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#ChannelState": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#ClipRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ConfigurationAliasesRequest": {
+      "type": "map"
+    },
+    "com.amazonaws.mediatailor#ConfigurationAliasesResponse": {
+      "type": "map"
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ConfigureLogsForChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForPlaybackConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ConfigureLogsForPlaybackConfigurationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForPlaybackConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ConfigureLogsForPlaybackConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreateChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateLiveSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreateLiveSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreateLiveSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateLiveSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreatePrefetchSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreatePrefetchScheduleRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreatePrefetchScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreatePrefetchScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateProgram": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreateProgramRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreateProgramRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateProgramResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateSourceLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreateSourceLocationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreateSourceLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateSourceLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateVodSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#CreateVodSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#CreateVodSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#CreateVodSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DashConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DashConfigurationForPut": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DashPlaylistSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DefaultSegmentDeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteChannelPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteChannelPolicyRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteChannelPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteChannelPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteLiveSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteLiveSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteLiveSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteLiveSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeletePlaybackConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeletePlaybackConfigurationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeletePlaybackConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeletePlaybackConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeletePrefetchSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeletePrefetchScheduleRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeletePrefetchScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeletePrefetchScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteProgram": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteProgramRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteProgramRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteProgramResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteSourceLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteSourceLocationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteSourceLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteSourceLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteVodSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DeleteVodSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DeleteVodSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DeleteVodSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DescribeChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DescribeChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeLiveSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DescribeLiveSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DescribeLiveSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeLiveSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeProgram": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DescribeProgramRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DescribeProgramRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeProgramResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeSourceLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DescribeSourceLocationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DescribeSourceLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeSourceLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeVodSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#DescribeVodSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#DescribeVodSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#DescribeVodSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#FillPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#GetChannelPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#GetChannelPolicyRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#GetChannelPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetChannelPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetChannelSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#GetChannelScheduleRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#GetChannelScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetChannelScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetPlaybackConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#GetPlaybackConfigurationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#GetPlaybackConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetPlaybackConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetPrefetchSchedule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#GetPrefetchScheduleRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#GetPrefetchScheduleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#GetPrefetchScheduleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#HlsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#HlsPlaylistSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#HttpConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#HttpPackageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#HttpPackageConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#InsertionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#KeyValuePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListAlerts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListAlertsRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListAlertsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListAlertsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListChannels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListChannelsRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListChannelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListChannelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListLiveSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListLiveSourcesRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListLiveSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListLiveSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListPlaybackConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListPlaybackConfigurationsRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListPlaybackConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListPlaybackConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListPrefetchScheduleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#ListPrefetchSchedules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListPrefetchSchedulesRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListPrefetchSchedulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListPrefetchSchedulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListSourceLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListSourceLocationsRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListSourceLocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListSourceLocationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediatailor#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.mediatailor#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListVodSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#ListVodSourcesRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#ListVodSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ListVodSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#LivePreRollConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#LiveSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#LiveSourceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#LogConfigurationForChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#LogTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#LoggingStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#ManifestProcessingRules": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ManifestServiceExcludeEventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#ManifestServiceInteractionLog": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediatailor#MediaTailor": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MediaTailor"
+        }
+      }
+    },
+    "com.amazonaws.mediatailor#MessageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#Operator": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#OriginManifestType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#PlaybackConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PlaybackConfigurationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#PlaybackMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#PrefetchConsumption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PrefetchRetrieval": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PrefetchSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PrefetchScheduleResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#PrefetchScheduleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#ProgramResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#PutChannelPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#PutChannelPolicyRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#PutChannelPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PutChannelPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PutPlaybackConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#PutPlaybackConfigurationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#PutPlaybackConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#PutPlaybackConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#RecurringConsumption": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#RecurringPrefetchConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#RecurringRetrieval": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#RelativePosition": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#RequestOutputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#RequestOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#ResponseOutputItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ResponseOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#ScheduleAdBreak": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ScheduleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ScheduleEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#ScheduleEntryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#SecretsManagerAccessTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#SegmentDeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#SegmentationDescriptor": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#SegmentationDescriptorList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#SlateSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#SourceLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#SourceLocationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#SpliceInsertMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#StartChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#StartChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#StartChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#StartChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#StopChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#StopChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#StopChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#StopChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#StreamingMediaFileConditioning": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediatailor#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.mediatailor#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#Tier": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#TimeShiftConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#TimeSignalMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#TrafficShapingRetrievalWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#TrafficShapingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#Transition": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.mediatailor#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.mediatailor#BadRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.mediatailor#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UpdateChannelRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#UpdateChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateLiveSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UpdateLiveSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#UpdateLiveSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateLiveSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateProgram": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UpdateProgramRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#UpdateProgramRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateProgramResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateProgramScheduleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateProgramTransition": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateSourceLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UpdateSourceLocationRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#UpdateSourceLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateSourceLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateVodSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.mediatailor#UpdateVodSourceRequest"
+      }
+    },
+    "com.amazonaws.mediatailor#UpdateVodSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#UpdateVodSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#VodSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.mediatailor#VodSourceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.mediatailor#__adsInteractionExcludeEventTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__adsInteractionPublishOptInEventTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.mediatailor#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediatailor#__integerMin1": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediatailor#__integerMin1Max100": {
+      "type": "integer"
+    },
+    "com.amazonaws.mediatailor#__listOfAdBreak": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfAlert": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfAlternateMedia": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfAudienceMedia": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfAvailMatchingCriteria": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfChannel": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfLiveSource": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfLoggingStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfPlaybackConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfPrefetchSchedule": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfScheduleAdBreak": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfScheduleEntry": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfSegmentDeliveryConfiguration": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfSourceLocation": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOfVodSource": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.mediatailor#__manifestServiceExcludeEventTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.mediatailor#__mapOf__string": {
+      "type": "map"
+    },
+    "com.amazonaws.mediatailor#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.mediatailor#__timestampUnix": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.mediatailor#adMarkupTypes": {
+      "type": "list"
+    }
+  }
+}

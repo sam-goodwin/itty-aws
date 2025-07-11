@@ -1,0 +1,882 @@
+{
+  "shapes": {
+    "com.amazonaws.dax#AmazonDAXV3": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DAX"
+        }
+      }
+    },
+    "com.amazonaws.dax#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#AwsQueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dax#ChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ClusterEndpointEncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#ClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ClusterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ClusterQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.dax#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#CreateParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#CreateParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#CreateSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#CreateSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#CreateSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DecreaseReplicationFactor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DecreaseReplicationFactorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DecreaseReplicationFactorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DecreaseReplicationFactorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DeleteClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DeleteClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DeleteParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DeleteParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DeleteSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupInUseFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DeleteSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DeleteSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeDefaultParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeDefaultParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeDefaultParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeDefaultParametersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeParameterGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeParameterGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeParameterGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeParametersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#DescribeSubnetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#DescribeSubnetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#DescribeSubnetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.dax#IncreaseReplicationFactor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#IncreaseReplicationFactorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#IncreaseReplicationFactorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#IncreaseReplicationFactorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InsufficientClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.dax#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.dax#InvalidARNFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#IsModifiable": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#Node": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#NodeIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#NodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#NodeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#NodeQuotaForClusterExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#NodeQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#NodeTypeSpecificValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#NodeTypeSpecificValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ParameterGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ParameterNameValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ParameterNameValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ParameterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#RebootNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#RebootNodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#NodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#RebootNodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#RebootNodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SSEDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SSEEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.dax#SSESpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SSEStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#SecurityGroupIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#SecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.dax#String": {
+      "type": "string"
+    },
+    "com.amazonaws.dax#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetGroupInUseFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#SubnetGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#SubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#SubnetInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#SubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.dax#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.dax#TagNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#TagQuotaPerResourceExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.dax#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#TagNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#UpdateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#UpdateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#UpdateParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.dax#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.dax#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#UpdateParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.dax#UpdateSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.dax#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.dax#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetInUse"
+        },
+        {
+          "target": "com.amazonaws.dax#SubnetQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.dax#UpdateSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.dax#UpdateSubnetGroupResponse": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,2513 @@
+{
+  "shapes": {
+    "com.amazonaws.route53#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#AWSAccountID": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#AWSDnsV20130401": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Route 53"
+        }
+      }
+    },
+    "com.amazonaws.route53#AWSRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#AccountLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#AccountLimitType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ActivateKeySigningKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ActivateKeySigningKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKMSArn"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidSigningStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchKeySigningKey"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ActivateKeySigningKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ActivateKeySigningKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#AlarmIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#AlarmName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#AliasHealthEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#AliasTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#AssociateVPCComment": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#AssociateVPCWithHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#AssociateVPCWithHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConflictingDomainExists"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidVPCId"
+        },
+        {
+          "target": "com.amazonaws.route53#LimitsExceeded"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        },
+        {
+          "target": "com.amazonaws.route53#PublicZoneVPCAssociation"
+        }
+      ]
+    },
+    "com.amazonaws.route53#AssociateVPCWithHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#AssociateVPCWithHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Bias": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#Change": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ChangeBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeCidrCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ChangeCidrCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#CidrBlockInUseException"
+        },
+        {
+          "target": "com.amazonaws.route53#CidrCollectionVersionMismatchException"
+        },
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#LimitsExceeded"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCidrCollectionException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ChangeCidrCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeCidrCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ChangeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeResourceRecordSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ChangeResourceRecordSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidChangeBatch"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ChangeResourceRecordSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeResourceRecordSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ChangeTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ChangeTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        },
+        {
+          "target": "com.amazonaws.route53#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ChangeTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ChangeTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Changes": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#CheckerIpRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#ChildHealthCheckList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#Cidr": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CidrBlockInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrBlockSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#CidrBlockSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrCollection": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrCollectionAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrCollectionChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrCollectionChangeAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#CidrCollectionChanges": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#CidrCollectionInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrCollectionVersionMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CidrList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#CidrLocationNameDefaultAllowed": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CidrLocationNameDefaultNotAllowed": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CidrNonce": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CidrRoutingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CloudWatchAlarmConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CloudWatchLogsLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CloudWatchRegion": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#CollectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#CollectionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#CollectionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CollectionVersion": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ConcurrentModification": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ConflictingDomainExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ConflictingTypes": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Coordinates": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateCidrCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateCidrCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#CidrCollectionAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#LimitsExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateCidrCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateCidrCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#HealthCheckAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyHealthChecks"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConflictingDomainExists"
+        },
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotAvailable"
+        },
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotReusable"
+        },
+        {
+          "target": "com.amazonaws.route53#HostedZoneAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidDomainName"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidVPCId"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchDelegationSet"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyHostedZones"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateKeySigningKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateKeySigningKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyName"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKMSArn"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidSigningStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#KeySigningKeyAlreadyExists"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyKeySigningKeys"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateKeySigningKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateKeySigningKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateQueryLoggingConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateQueryLoggingConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InsufficientCloudWatchLogsResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCloudWatchLogsLogGroup"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#QueryLoggingConfigAlreadyExists"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateQueryLoggingConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateQueryLoggingConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateReusableDelegationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateReusableDelegationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#DelegationSetAlreadyCreated"
+        },
+        {
+          "target": "com.amazonaws.route53#DelegationSetAlreadyReusable"
+        },
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotAvailable"
+        },
+        {
+          "target": "com.amazonaws.route53#HostedZoneNotFound"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#LimitsExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateReusableDelegationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateReusableDelegationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateTrafficPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidTrafficPolicyDocument"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyTrafficPolicies"
+        },
+        {
+          "target": "com.amazonaws.route53#TrafficPolicyAlreadyExists"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateTrafficPolicyInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyTrafficPolicyInstances"
+        },
+        {
+          "target": "com.amazonaws.route53#TrafficPolicyInstanceAlreadyExists"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateTrafficPolicyVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidTrafficPolicyDocument"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyTrafficPolicyVersionsForCurrentPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateTrafficPolicyVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateVPCAssociationAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#CreateVPCAssociationAuthorizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidVPCId"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#TooManyVPCAssociationAuthorizations"
+        }
+      ]
+    },
+    "com.amazonaws.route53#CreateVPCAssociationAuthorizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#CreateVPCAssociationAuthorizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DNSName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#DNSRCode": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#DNSSECNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DNSSECStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeactivateKeySigningKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeactivateKeySigningKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidSigningStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#KeySigningKeyInParentDSRecord"
+        },
+        {
+          "target": "com.amazonaws.route53#KeySigningKeyInUse"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchKeySigningKey"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeactivateKeySigningKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeactivateKeySigningKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSetAlreadyCreated": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSetAlreadyReusable": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSetInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSetNameServers": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#DelegationSetNotAvailable": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSetNotReusable": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DelegationSets": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#DeleteCidrCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteCidrCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#CidrCollectionInUseException"
+        },
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCidrCollectionException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteCidrCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteCidrCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#HealthCheckInUse"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#HostedZoneNotEmpty"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidDomainName"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteKeySigningKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteKeySigningKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKMSArn"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidSigningStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchKeySigningKey"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteKeySigningKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteKeySigningKeyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteQueryLoggingConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteQueryLoggingConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchQueryLoggingConfig"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteQueryLoggingConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteQueryLoggingConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteReusableDelegationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteReusableDelegationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#DelegationSetInUse"
+        },
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotReusable"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchDelegationSet"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteReusableDelegationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteReusableDelegationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteTrafficPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#TrafficPolicyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicyInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteTrafficPolicyInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicyInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicyInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteTrafficPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteVPCAssociationAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DeleteVPCAssociationAuthorizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidVPCId"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#VPCAssociationAuthorizationNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DeleteVPCAssociationAuthorizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DeleteVPCAssociationAuthorizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Dimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DimensionField": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#DimensionList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#DisableHostedZoneDNSSEC": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DisableHostedZoneDNSSECRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#DNSSECNotFound"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKMSArn"
+        },
+        {
+          "target": "com.amazonaws.route53#KeySigningKeyInParentDSRecord"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DisableHostedZoneDNSSECRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DisableHostedZoneDNSSECResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Disabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#DisassociateVPCComment": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#DisassociateVPCFromHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#DisassociateVPCFromHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidVPCId"
+        },
+        {
+          "target": "com.amazonaws.route53#LastVPCAssociation"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#VPCAssociationNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.route53#DisassociateVPCFromHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#DisassociateVPCFromHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#EnableHostedZoneDNSSEC": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#EnableHostedZoneDNSSECRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#DNSSECNotFound"
+        },
+        {
+          "target": "com.amazonaws.route53#HostedZonePartiallyDelegated"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKeySigningKeyStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidKMSArn"
+        },
+        {
+          "target": "com.amazonaws.route53#KeySigningKeyWithActiveStatusNotFound"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#EnableHostedZoneDNSSECRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#EnableHostedZoneDNSSECResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#EnableSNI": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ErrorMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#EvaluationPeriods": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#FailureThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#FullyQualifiedDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GeoLocationContinentCode": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocationContinentName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocationCountryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocationCountryName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GeoLocationDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#GeoLocationSubdivisionCode": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoLocationSubdivisionName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#GeoProximityLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetAccountLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetAccountLimitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetAccountLimitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetAccountLimitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchChange"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetCheckerIpRanges": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetCheckerIpRangesRequest"
+      }
+    },
+    "com.amazonaws.route53#GetCheckerIpRangesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetCheckerIpRangesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetDNSSEC": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetDNSSECRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidArgument"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetDNSSECRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetDNSSECResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetGeoLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetGeoLocationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchGeoLocation"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetGeoLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetGeoLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#IncompatibleVersion"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHealthCheckCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHealthCheckCountRequest"
+      }
+    },
+    "com.amazonaws.route53#GetHealthCheckCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckLastFailureReason": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHealthCheckLastFailureReasonRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHealthCheckLastFailureReasonRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckLastFailureReasonResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHealthCheckStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHealthCheckStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHealthCheckStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHostedZoneCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHostedZoneCountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHostedZoneCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZoneCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZoneLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetHostedZoneLimitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#HostedZoneNotPrivate"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetHostedZoneLimitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZoneLimitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetQueryLoggingConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetQueryLoggingConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchQueryLoggingConfig"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetQueryLoggingConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetQueryLoggingConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetReusableDelegationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetReusableDelegationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotReusable"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchDelegationSet"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetReusableDelegationSetLimit": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetReusableDelegationSetLimitRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchDelegationSet"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetReusableDelegationSetLimitRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetReusableDelegationSetLimitResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetReusableDelegationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetReusableDelegationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetTrafficPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetTrafficPolicyInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        }
+      ]
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstanceCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#GetTrafficPolicyInstanceCountRequest"
+      }
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstanceCountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstanceCountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicyInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#GetTrafficPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheckAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheckConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheckCount": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#HealthCheckId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#HealthCheckInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheckNonce": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#HealthCheckObservation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthCheckObservations": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#HealthCheckRegion": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#HealthCheckRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#HealthCheckType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#HealthCheckVersion": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#HealthCheckVersionMismatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HealthChecks": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#HealthThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#HostedZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneCount": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#HostedZoneLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneLimitType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#HostedZoneNotEmpty": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneNotPrivate": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneOwner": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneOwningService": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#HostedZonePartiallyDelegated": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneRRSetCount": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#HostedZoneSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#HostedZoneSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#HostedZoneType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#HostedZones": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#IPAddressCidr": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#IncompatibleVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InsufficientCloudWatchLogsResourcePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InsufficientDataHealthStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#InvalidArgument": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidChangeBatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidDomainName": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidKMSArn": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidKeySigningKeyName": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidKeySigningKeyStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidPaginationToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidSigningStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidTrafficPolicyDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#InvalidVPCId": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Inverted": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#IsPrivateZone": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#KeySigningKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#KeySigningKeyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#KeySigningKeyInParentDSRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#KeySigningKeyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#KeySigningKeyWithActiveStatusNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#KeySigningKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#LastVPCAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Latitude": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#LimitValue": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#LimitsExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#LinkedService": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrBlocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListCidrBlocksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCidrCollectionException"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCidrLocationException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListCidrBlocksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrBlocksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrCollections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListCidrCollectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListCidrCollectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrCollectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListCidrLocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchCidrCollectionException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListCidrLocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListCidrLocationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListGeoLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListGeoLocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListGeoLocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListGeoLocationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHealthChecks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListHealthChecksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#IncompatibleVersion"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListHealthChecksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHealthChecksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZones": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListHostedZonesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#DelegationSetNotReusable"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchDelegationSet"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListHostedZonesByName": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListHostedZonesByNameRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidDomainName"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListHostedZonesByNameRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZonesByNameResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZonesByVPC": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListHostedZonesByVPCRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidPaginationToken"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListHostedZonesByVPCRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZonesByVPCResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZonesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListHostedZonesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListQueryLoggingConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListQueryLoggingConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListQueryLoggingConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListQueryLoggingConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListResourceRecordSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListResourceRecordSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListResourceRecordSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListResourceRecordSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListReusableDelegationSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListReusableDelegationSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListReusableDelegationSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListReusableDelegationSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        },
+        {
+          "target": "com.amazonaws.route53#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTagsForResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTagsForResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        },
+        {
+          "target": "com.amazonaws.route53#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTagsForResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTagsForResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTrafficPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTrafficPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTrafficPolicyInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByHostedZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTrafficPolicyInstancesByHostedZoneRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByHostedZoneRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByHostedZoneResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTrafficPolicyInstancesByPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesByPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListTrafficPolicyVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListTrafficPolicyVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListTrafficPolicyVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListVPCAssociationAuthorizations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#ListVPCAssociationAuthorizationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidPaginationToken"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#ListVPCAssociationAuthorizationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ListVPCAssociationAuthorizationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#LocalZoneGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#LocationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#LocationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Longitude": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#MeasureLatency": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#Nameserver": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#NoSuchChange": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchCidrCollectionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchCidrLocationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchCloudWatchLogsLogGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchDelegationSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchGeoLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchHealthCheck": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchHostedZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchKeySigningKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchQueryLoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchTrafficPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#NoSuchTrafficPolicyInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Nonce": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#NotAuthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#PageMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#PageTruncated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#Period": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#PriorRequestNotComplete": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#PublicZoneVPCAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#QueryLoggingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#QueryLoggingConfigAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#QueryLoggingConfigId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#QueryLoggingConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#RData": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#RRType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#RecordData": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#RecordDataEntry": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#RequestInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#ResettableElementName": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ResettableElementNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ResourcePath": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ResourceRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ResourceRecordSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ResourceRecordSetFailover": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ResourceRecordSetIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ResourceRecordSetMultiValueAnswer": {
+      "type": "boolean"
+    },
+    "com.amazonaws.route53#ResourceRecordSetRegion": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#ResourceRecordSetWeight": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#ResourceRecordSets": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#ResourceRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#ResourceTagSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ResourceTagSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#ResourceURI": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ReusableDelegationSetLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#ReusableDelegationSetLimitType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#RoutingControlArn": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SearchString": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ServeSignature": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#ServicePrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SigningKeyInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#SigningKeyName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SigningKeyStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SigningKeyStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SigningKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#SigningKeyTag": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#Statistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#StatusReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#SubnetMask": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TTL": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TagResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TagResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TagResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TestDNSAnswer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#TestDNSAnswerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        }
+      ]
+    },
+    "com.amazonaws.route53#TestDNSAnswerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TestDNSAnswerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#Threshold": {
+      "type": "double"
+    },
+    "com.amazonaws.route53#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.route53#TooManyHealthChecks": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyHostedZones": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyKeySigningKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyTrafficPolicies": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyTrafficPolicyInstances": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyTrafficPolicyVersionsForCurrentPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TooManyVPCAssociationAuthorizations": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TrafficPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyComment": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstanceAlreadyExists": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstanceId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstanceState": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicyInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TrafficPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TrafficPolicySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.route53#TrafficPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#TrafficPolicyVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.route53#TrafficPolicyVersionMarker": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#TransportProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#UpdateHealthCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#UpdateHealthCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#HealthCheckVersionMismatch"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHealthCheck"
+        }
+      ]
+    },
+    "com.amazonaws.route53#UpdateHealthCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateHealthCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateHostedZoneComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#UpdateHostedZoneCommentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        }
+      ]
+    },
+    "com.amazonaws.route53#UpdateHostedZoneCommentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateHostedZoneCommentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#UpdateTrafficPolicyCommentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConcurrentModification"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        }
+      ]
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyCommentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyCommentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.route53#UpdateTrafficPolicyInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.route53#ConflictingTypes"
+        },
+        {
+          "target": "com.amazonaws.route53#InvalidInput"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#NoSuchTrafficPolicyInstance"
+        },
+        {
+          "target": "com.amazonaws.route53#PriorRequestNotComplete"
+        }
+      ]
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UpdateTrafficPolicyInstanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#UsageCount": {
+      "type": "long"
+    },
+    "com.amazonaws.route53#VPC": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#VPCAssociationAuthorizationNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#VPCAssociationNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.route53#VPCId": {
+      "type": "string"
+    },
+    "com.amazonaws.route53#VPCRegion": {
+      "type": "enum"
+    },
+    "com.amazonaws.route53#VPCs": {
+      "type": "list"
+    }
+  }
+}

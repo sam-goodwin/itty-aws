@@ -1,0 +1,869 @@
+{
+  "shapes": {
+    "com.amazonaws.synthetics#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ArtifactConfigInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ArtifactConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#AssociateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#AssociateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#AssociateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#AssociateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#BaseScreenshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#BaseScreenshotConfigIgnoreCoordinate": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#BaseScreenshotIgnoreCoordinates": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#BaseScreenshots": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.synthetics#Canaries": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#CanariesLastRun": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#Canary": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#CanaryCodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryCodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryDryRunConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryLastRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryName": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#CanaryRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryRunConfigInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryRunConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryRunState": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#CanaryRunStateReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#CanaryRunStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryRunTestResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#CanaryRunTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryRuns": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#CanaryScheduleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryScheduleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryState": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#CanaryStateReasonCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#CanaryStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CanaryTimeline": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CodeHandler": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CreateCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#CreateCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#RequestEntityTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#CreateCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CreateCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DeleteCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DeleteCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DeleteCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DeleteCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DeleteGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeCanaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DescribeCanariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DescribeCanariesLastRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DescribeCanariesLastRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DescribeCanariesLastRunNameFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#DescribeCanariesLastRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeCanariesLastRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeCanariesNameFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#DescribeCanariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeCanariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeRuntimeVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DescribeRuntimeVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DescribeRuntimeVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DescribeRuntimeVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DisassociateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#DisassociateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#DisassociateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DisassociateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#DryRunConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#EncryptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#EnvironmentVariableName": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#EnvironmentVariableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#EnvironmentVariablesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.synthetics#EphemeralStorageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#FunctionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#GetCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#GetCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#GetCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GetCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GetCanaryRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#GetCanaryRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#GetCanaryRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GetCanaryRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#GetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#GetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#GroupIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#GroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#GroupSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#ListAssociatedGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#ListAssociatedGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#ListAssociatedGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListAssociatedGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListGroupResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#ListGroupResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#ListGroupResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListGroupResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#ListGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#MaxCanaryResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxFifteenMinutesInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxGroupResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxOneYearInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.synthetics#MaxRetries": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxSize100": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxSize1024": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#MaxSize3008": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.synthetics#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#ProvisionedResourceCleanupSetting": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#RequestEntityTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ResourceToTag": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#RetryAttempt": {
+      "type": "integer"
+    },
+    "com.amazonaws.synthetics#RetryConfigInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#RetryConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#RunType": {
+      "type": "enum"
+    },
+    "com.amazonaws.synthetics#RuntimeVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#RuntimeVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#S3EncryptionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StartCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#StartCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#StartCanaryDryRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#StartCanaryDryRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#StartCanaryDryRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StartCanaryDryRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StartCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StartCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StopCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#StopCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#StopCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#StopCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#String": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#Synthetics": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "synthetics"
+        }
+      }
+    },
+    "com.amazonaws.synthetics#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.synthetics#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.synthetics#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.synthetics#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#UpdateCanary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.synthetics#UpdateCanaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.synthetics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#RequestEntityTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.synthetics#UpdateCanaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#UpdateCanaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#VisualReferenceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#VisualReferenceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#VpcConfigInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#VpcConfigOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.synthetics#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.synthetics#boolean": {
+      "type": "boolean"
+    }
+  }
+}

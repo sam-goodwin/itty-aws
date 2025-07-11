@@ -1,0 +1,1070 @@
+{
+  "shapes": {
+    "com.amazonaws.schemas#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#Body": {
+      "type": "blob"
+    },
+    "com.amazonaws.schemas#CodeGenerationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.schemas#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#CreateDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#CreateDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateDiscovererResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateRegistry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#CreateRegistryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#CreateRegistryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateRegistryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#CreateSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#CreateSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#CreateSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DeleteDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DeleteDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DeleteDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DeleteRegistry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DeleteRegistryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DeleteRegistryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DeleteSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DeleteSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DeleteSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DeleteSchemaVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DeleteSchemaVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DeleteSchemaVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeCodeBinding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DescribeCodeBindingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DescribeCodeBindingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeCodeBindingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DescribeDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DescribeDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeDiscovererResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeRegistry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DescribeRegistryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DescribeRegistryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeRegistryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#DescribeSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#DescribeSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DescribeSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#DiscovererState": {
+      "type": "enum"
+    },
+    "com.amazonaws.schemas#DiscovererSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ExportSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ExportSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ExportSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ExportSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetCodeBindingSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#GetCodeBindingSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#GetCodeBindingSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetCodeBindingSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetDiscoveredSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#GetDiscoveredSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#GetDiscoveredSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetDiscoveredSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetDiscoveredSchemaVersionItemInput": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#GetResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#GetResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#GetResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GetResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#GoneException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListDiscoverers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ListDiscoverersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ListDiscoverersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListDiscoverersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListRegistries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ListRegistriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ListRegistriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListRegistriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListSchemaVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ListSchemaVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ListSchemaVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListSchemaVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ListSchemasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ListSchemasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#PreconditionFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#PutCodeBinding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#PutCodeBindingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#GoneException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#PutCodeBindingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#PutCodeBindingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#RegistrySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SchemaSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SchemaVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SearchSchemaSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SearchSchemaVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SearchSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#SearchSchemasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#SearchSchemasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SearchSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#StartDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#StartDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#StartDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#StartDiscovererResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#StopDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#StopDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#StopDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#StopDiscovererResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#SynthesizedJson__string": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.schemas#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.schemas#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateDiscoverer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#UpdateDiscovererRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#UpdateDiscovererRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateDiscovererResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateRegistry": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#UpdateRegistryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.schemas#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#UpdateRegistryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateRegistryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.schemas#UpdateSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.schemas#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.schemas#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.schemas#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.schemas#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.schemas#UpdateSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#UpdateSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.schemas#__boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.schemas#__integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.schemas#__listOfDiscovererSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfGetDiscoveredSchemaVersionItemInput": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfRegistrySummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfSchemaSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfSchemaVersionSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfSearchSchemaSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOfSearchSchemaVersionSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__listOf__string": {
+      "type": "list"
+    },
+    "com.amazonaws.schemas#__long": {
+      "type": "long"
+    },
+    "com.amazonaws.schemas#__string": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#__stringMin0Max256": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#__stringMin0Max36": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#__stringMin1Max100000": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#__stringMin20Max1600": {
+      "type": "string"
+    },
+    "com.amazonaws.schemas#__timestampIso8601": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.schemas#schemas": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "schemas"
+        }
+      }
+    }
+  }
+}

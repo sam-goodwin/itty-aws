@@ -1,0 +1,1519 @@
+{
+  "shapes": {
+    "com.amazonaws.evidently#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#AppConfigResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#BatchEvaluateFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#BatchEvaluateFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#BatchEvaluateFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#BatchEvaluateFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ChangeDirectionEnum": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#CloudWatchLogsDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CloudWatchLogsDestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#CreateExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#CreateExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#CreateFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#CreateFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#CreateLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#CreateLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#CreateSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#CreateSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CreateSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#CwDimensionSafeName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#CwLogGroupSafeName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#DeleteExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#DeleteExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#DeleteExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#DeleteFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#DeleteFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#DeleteLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#DeleteLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#DeleteSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#DeleteSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#DeleteSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#DoubleValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#EntityOverrideMap": {
+      "type": "map"
+    },
+    "com.amazonaws.evidently#ErrorCodeEnum": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#EvaluateFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#EvaluateFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#EvaluateFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EvaluateFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EvaluationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EvaluationRequestsList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EvaluationResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#EvaluationRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EvaluationRulesList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#EventType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#Evidently": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Evidently"
+        }
+      }
+    },
+    "com.amazonaws.evidently#Experiment": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ExperimentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentBaseStat": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ExperimentList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ExperimentName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ExperimentReportList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ExperimentReportName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentReportNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ExperimentResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.evidently#ExperimentResultRequestType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentResultRequestTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ExperimentResultResponseType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentResultsData": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ExperimentResultsDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ExperimentSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ExperimentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentStopDesiredState": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ExperimentType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#Feature": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#FeatureArn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#FeatureEvaluationStrategy": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#FeatureName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#FeatureResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.evidently#FeatureStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#FeatureSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#FeatureSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#FeatureToVariationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.evidently#GetExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetExperimentResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetExperimentResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetExperimentResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetExperimentResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#GetSegmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#GetSegmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GetSegmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#GroupToWeightMap": {
+      "type": "map"
+    },
+    "com.amazonaws.evidently#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#JsonPath": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#JsonValue": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#Launch": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#LaunchArn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#LaunchExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#LaunchGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#LaunchGroupConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#LaunchGroupConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#LaunchGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#LaunchName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#LaunchResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.evidently#LaunchStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#LaunchStopDesiredState": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#LaunchType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#LaunchesList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ListExperiments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListExperimentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListExperimentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListExperimentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListFeatures": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListFeaturesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListFeaturesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListFeaturesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListLaunches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListLaunchesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListLaunchesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListLaunchesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListSegmentReferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListSegmentReferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListSegmentReferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListSegmentReferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListSegments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListSegmentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListSegmentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListSegmentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MaxExperiments": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MaxFeatures": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MaxLaunches": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MaxProjects": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MaxReferences": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MaxSegments": {
+      "type": "integer"
+    },
+    "com.amazonaws.evidently#MetricDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricDefinitionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricGoal": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricGoalConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricGoalConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#MetricGoalsList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#MetricMonitor": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricMonitorConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#MetricMonitorConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#MetricMonitorList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#MetricNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#MetricUnitLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#OnlineAbConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#OnlineAbDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#Project": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ProjectAppConfigResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ProjectAppConfigResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ProjectArn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ProjectDataDelivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ProjectDataDeliveryConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ProjectRef": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ProjectResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.evidently#ProjectStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ProjectSummariesList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ProjectSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#PutProjectEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#PutProjectEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#PutProjectEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#PutProjectEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#PutProjectEventsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#PutProjectEventsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#RandomizationSalt": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#RefResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#RefResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ResultsPeriod": {
+      "type": "long"
+    },
+    "com.amazonaws.evidently#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#RuleType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#S3BucketSafeName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#S3Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#S3DestinationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#S3PrefixSafeName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ScheduledSplit": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ScheduledSplitConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ScheduledSplitConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ScheduledSplitsLaunchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ScheduledSplitsLaunchDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ScheduledStepList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#Segment": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#SegmentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#SegmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#SegmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#SegmentOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#SegmentOverridesList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#SegmentPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#SegmentRef": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#SegmentReferenceResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#SegmentResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.evidently#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#SplitWeight": {
+      "type": "long"
+    },
+    "com.amazonaws.evidently#StartExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#StartExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#StartExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StartExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StartLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#StartLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#StartLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StartLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StopExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#StopExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#StopExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StopExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StopLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#StopLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#StopLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#StopLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.evidently#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#TestSegmentPattern": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#TestSegmentPatternRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#TestSegmentPatternRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TestSegmentPatternResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TimestampList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#Treatment": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TreatmentConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#TreatmentConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#TreatmentList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#TreatmentName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#TreatmentNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#TreatmentToWeightMap": {
+      "type": "map"
+    },
+    "com.amazonaws.evidently#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateExperiment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UpdateExperimentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UpdateExperimentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateExperimentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateFeature": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UpdateFeatureRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UpdateFeatureRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateFeatureResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateLaunch": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UpdateLaunchRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UpdateLaunchRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateLaunchResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UpdateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UpdateProjectDataDelivery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.evidently#UpdateProjectDataDeliveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.evidently#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.evidently#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.evidently#UpdateProjectDataDeliveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateProjectDataDeliveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#UpdateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#ValidationExceptionReason": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#VariableValue": {
+      "type": "union"
+    },
+    "com.amazonaws.evidently#Variation": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#VariationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.evidently#VariationConfigsList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#VariationName": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#VariationNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.evidently#VariationValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.evidently#VariationsList": {
+      "type": "list"
+    }
+  }
+}

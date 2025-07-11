@@ -1,0 +1,638 @@
+{
+  "shapes": {
+    "com.amazonaws.support#AWSSupport_20130415": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Support"
+        }
+      }
+    },
+    "com.amazonaws.support#AddAttachmentsToSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#AddAttachmentsToSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#AttachmentLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.support#AttachmentSetExpired"
+        },
+        {
+          "target": "com.amazonaws.support#AttachmentSetIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#AttachmentSetSizeLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#AddAttachmentsToSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AddAttachmentsToSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AddCommunicationToCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#AddCommunicationToCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#AttachmentSetExpired"
+        },
+        {
+          "target": "com.amazonaws.support#AttachmentSetIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#CaseIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#AddCommunicationToCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AddCommunicationToCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AfterTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Attachment": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentId": {
+      "type": "string"
+    },
+    "com.amazonaws.support#AttachmentIdNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentSet": {
+      "type": "list"
+    },
+    "com.amazonaws.support#AttachmentSetExpired": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.support#AttachmentSetIdNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#AttachmentSetSizeLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#Attachments": {
+      "type": "list"
+    },
+    "com.amazonaws.support#AvailabilityErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.support#BeforeTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.support#CaseCreationLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CaseDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CaseId": {
+      "type": "string"
+    },
+    "com.amazonaws.support#CaseIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#CaseIdNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#CaseStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Category": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CategoryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.support#CategoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#CategoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.support#CcEmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.support#CcEmailAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#Code": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Communication": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CommunicationBody": {
+      "type": "string"
+    },
+    "com.amazonaws.support#CommunicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#CommunicationTypeOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CommunicationTypeOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#CreateCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#CreateCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#AttachmentSetExpired"
+        },
+        {
+          "target": "com.amazonaws.support#AttachmentSetIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#CaseCreationLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#CreateCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#CreateCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#Data": {
+      "type": "blob"
+    },
+    "com.amazonaws.support#DateInterval": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DatesWithoutSupportList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#DescribeAttachment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeAttachmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#AttachmentIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeAttachmentLimitExceeded"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeAttachmentLimitExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeAttachmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeAttachmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeCasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#CaseIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeCasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCommunications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeCommunicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#CaseIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeCommunicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCommunicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCreateCaseOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeCreateCaseOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeCreateCaseOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeCreateCaseOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeSeverityLevels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeSeverityLevelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeSeverityLevelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeSeverityLevelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeSupportedLanguages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeSupportedLanguagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeSupportedLanguagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeSupportedLanguagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckRefreshStatuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckRefreshStatusesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckRefreshStatusesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckRefreshStatusesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckResultRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckResultRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckResultResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckSummariesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckSummariesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorCheckSummariesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorChecks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#DescribeTrustedAdvisorChecksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        },
+        {
+          "target": "com.amazonaws.support#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorChecksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#DescribeTrustedAdvisorChecksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#Display": {
+      "type": "string"
+    },
+    "com.amazonaws.support#DisplayId": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.support#EndTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ExpiryTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#FileName": {
+      "type": "string"
+    },
+    "com.amazonaws.support#IncludeCommunications": {
+      "type": "boolean"
+    },
+    "com.amazonaws.support#IncludeResolvedCases": {
+      "type": "boolean"
+    },
+    "com.amazonaws.support#InternalServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#IssueType": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Language": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.support#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.support#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.support#RecentCaseCommunications": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#RefreshTrustedAdvisorCheck": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#RefreshTrustedAdvisorCheckRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#RefreshTrustedAdvisorCheckRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#RefreshTrustedAdvisorCheckResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#ResolveCase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.support#ResolveCaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.support#CaseIdNotFound"
+        },
+        {
+          "target": "com.amazonaws.support#InternalServerError"
+        }
+      ]
+    },
+    "com.amazonaws.support#ResolveCaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#ResolveCaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#Result": {
+      "type": "boolean"
+    },
+    "com.amazonaws.support#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#ServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ServiceCode2": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ServiceCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#ServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SeverityCode": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SeverityLevel": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#SeverityLevelCode": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SeverityLevelName": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SeverityLevelsList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#StartTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.support#String": {
+      "type": "string"
+    },
+    "com.amazonaws.support#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#Subject": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SubmittedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.support#SupportedHour": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#SupportedHoursList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#SupportedLanguage": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#SupportedLanguagesList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TimeCreated": {
+      "type": "string"
+    },
+    "com.amazonaws.support#TrustedAdvisorCategorySpecificSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckRefreshStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckRefreshStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorCheckSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#TrustedAdvisorCostOptimizingSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorResourceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#TrustedAdvisorResourceDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.support#TrustedAdvisorResourcesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.support#Type": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedCategoryCode": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedCommunicationBody": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedDateTime": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedIssueTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedLanguageAvailability": {
+      "type": "string"
+    },
+    "com.amazonaws.support#ValidatedServiceCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,3314 @@
+{
+  "shapes": {
+    "com.amazonaws.opensearch#AIMLOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AIMLOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AIMLOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#AWSAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#AWSDomainInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AWSServicePrincipal": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AcceptInboundConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AcceptInboundConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AcceptInboundConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AcceptInboundConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AccessPoliciesStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ActionSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AddDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AddDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AddDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AddDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AddDirectQueryDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AddDirectQueryDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AddDirectQueryDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AddDirectQueryDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AddTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AddTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AdditionalLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AdditionalLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#AdvancedOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.opensearch#AdvancedOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AdvancedSecurityOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AdvancedSecurityOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AdvancedSecurityOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AmazonOpenSearchService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "OpenSearch"
+        }
+      }
+    },
+    "com.amazonaws.opensearch#AppConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AppConfigType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AppConfigValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#AppConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ApplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ApplicationStatuses": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ApplicationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AssociatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AssociatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AssociatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AssociatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AssociatePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AssociatePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AssociatePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AssociatePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AuthorizeVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#AuthorizeVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#AuthorizeVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AuthorizeVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AuthorizedPrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AuthorizedPrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#AutoTune": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneDate": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#AutoTuneDesiredState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AutoTuneDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#AutoTuneMaintenanceSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneMaintenanceScheduleList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#AutoTuneOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AutoTuneStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AutoTuneType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#AvailabilityZone": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#AvailabilityZoneInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#AvailabilityZoneInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#BackendRole": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#BaseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.opensearch#CancelDomainConfigChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CancelDomainConfigChangeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CancelDomainConfigChangeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CancelDomainConfigChangeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CancelServiceSoftwareUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CancelServiceSoftwareUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CancelServiceSoftwareUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CancelServiceSoftwareUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CancelledChangeProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CancelledChangePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ChangeProgressDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ChangeProgressStage": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ChangeProgressStageList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ChangeProgressStageName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ChangeProgressStageStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ChangeProgressStatusDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#CloudWatchDirectQueryDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CloudWatchLogsLogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ClusterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ClusterConfigStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CognitoOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CognitoOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ColdStorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CommitMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#CompatibleVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#CompatibleVersionsMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ConfigChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ConnectionAlias": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ConnectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ConnectionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ConnectionProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ConnectionStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CreateDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CreateDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateOutboundConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CreateOutboundConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CreateOutboundConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateOutboundConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CreatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CreatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#CreateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#CreateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#CreatedAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#CrossClusterSearchConnectionProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DataSourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DataSourceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DataSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DataSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DataSourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DataSourceType": {
+      "type": "union"
+    },
+    "com.amazonaws.opensearch#DataSources": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteDirectQueryDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteDirectQueryDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteDirectQueryDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteInboundConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteInboundConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteInboundConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteInboundConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteOutboundConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteOutboundConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteOutboundConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteOutboundConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeletePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeletePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeletePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeletePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DeleteVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DeleteVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeleteVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DependencyFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DeploymentCloseDateTimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#DeploymentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DeploymentType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DescribeDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainAutoTunes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainAutoTunesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainAutoTunesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainAutoTunesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainChangeProgress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainChangeProgressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainChangeProgressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainChangeProgressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainHealth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainHealthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainHealthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainHealthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDryRunProgress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeDryRunProgressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeDryRunProgressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeDryRunProgressResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeInboundConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeInboundConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidPaginationTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeInboundConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeInboundConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeInstanceTypeLimits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeInstanceTypeLimitsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeInstanceTypeLimitsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeInstanceTypeLimitsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeOutboundConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeOutboundConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidPaginationTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeOutboundConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeOutboundConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribePackagesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribePackagesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DescribePackagesFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DescribePackagesFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DescribePackagesFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DescribePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstanceOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeReservedInstanceOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstanceOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstanceOfferingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeReservedInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeReservedInstancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeVpcEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DescribeVpcEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DescribeVpcEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DescribeVpcEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSourceRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DirectQueryDataSourceType": {
+      "type": "union"
+    },
+    "com.amazonaws.opensearch#DirectQueryOpenSearchARNList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DisableTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#DisabledOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DissociatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DissociatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DissociatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DissociatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DissociatePackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#DissociatePackagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#DissociatePackagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DissociatePackagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DomainConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainEndpointOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainEndpointOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainHealth": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DomainId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DomainInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DomainInformationContainer": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainMaintenanceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainMaintenanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DomainNameFqdn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#DomainNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DomainNodesStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainNodesStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DomainPackageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainPackageDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#DomainPackageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DomainProcessingStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DomainState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DomainStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DomainStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.opensearch#DryRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.opensearch#DryRunMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#DryRunProgressStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DryRunResults": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Duration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#DurationValue": {
+      "type": "long"
+    },
+    "com.amazonaws.opensearch#EBSOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#EBSOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#EncryptionAtRestOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#EncryptionAtRestOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#EndpointsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.opensearch#EngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#EngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#EnvironmentInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#EnvironmentInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ErrorDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ErrorType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#GUID": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#GUIDList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetCompatibleVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetCompatibleVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetCompatibleVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetCompatibleVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDirectQueryDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetDirectQueryDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetDirectQueryDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDirectQueryDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDomainMaintenanceStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetDomainMaintenanceStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetDomainMaintenanceStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetDomainMaintenanceStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetPackageVersionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetPackageVersionHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetPackageVersionHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetPackageVersionHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetUpgradeHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetUpgradeHistoryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetUpgradeHistoryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetUpgradeHistoryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetUpgradeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#GetUpgradeStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#GetUpgradeStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#GetUpgradeStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#HostedZoneId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#IPAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#IPAddressTypeStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#IamIdentityCenterOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#IamIdentityCenterOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#IdentityCenterApplicationARN": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#IdentityCenterInstanceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#IdentityCenterOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#IdentityCenterOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#IdentityCenterOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#IdentityPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#IdentityStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#InboundConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InboundConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InboundConnectionStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#InboundConnections": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#InitiatedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#InstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#InstanceCountLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InstanceLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InstanceRole": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#InstanceRoleList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#InstanceTypeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InstanceTypeDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#InstanceTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#IntegerClass": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InvalidPaginationTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#InvalidTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#Issue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#Issues": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#JWTOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#JWTOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#KeyStoreAccessOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#LastUpdated": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#LicenseFilepath": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#LimitName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#LimitValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#LimitValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#Limits": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#LimitsByRole": {
+      "type": "map"
+    },
+    "com.amazonaws.opensearch#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListDataSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListDataSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDataSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDirectQueryDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListDirectQueryDataSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListDirectQueryDataSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDirectQueryDataSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainMaintenances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListDomainMaintenancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListDomainMaintenancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainMaintenancesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainNames": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListDomainNamesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListDomainNamesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainNamesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainsForPackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListDomainsForPackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListDomainsForPackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListDomainsForPackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListInstanceTypeDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListInstanceTypeDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListInstanceTypeDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListInstanceTypeDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListPackagesForDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListPackagesForDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListPackagesForDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListPackagesForDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListScheduledActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListScheduledActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidPaginationTokenException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListScheduledActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListScheduledActionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListVpcEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointsForDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#ListVpcEndpointsForDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointsForDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointsForDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ListVpcEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#LogPublishingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#LogPublishingOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.opensearch#LogPublishingOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.opensearch#MaintenanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#MaintenanceStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#MaintenanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#MasterNodeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#MasterUserOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#MaximumInstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#MinimumInstanceCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#ModifyingProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ModifyingPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#NaturalLanguageQueryGenerationCurrentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#NaturalLanguageQueryGenerationDesiredState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#NaturalLanguageQueryGenerationOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NaturalLanguageQueryGenerationOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#NodeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NodeId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#NodeOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NodeOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#NodeOptionsNodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#NodeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#NodeToNodeEncryptionOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NodeToNodeEncryptionOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#NodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#NumberOfAZs": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#NumberOfNodes": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#NumberOfShards": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#OffPeakWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OffPeakWindowOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OffPeakWindowOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OpenSearchPartitionInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#OpenSearchWarmPartitionInstanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#OptionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#OptionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OutboundConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OutboundConnectionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#OutboundConnectionStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#OutboundConnections": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#OverallChangeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#OwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageAssociationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageDetailsForAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageDetailsForAssociationList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#PackageDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#PackageEncryptionOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageID": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageIDList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#PackageName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageScopeOperationEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#PackageSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#PackageType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#PackageUser": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageUserList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#PackageVendingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PackageVersionHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PackageVersionHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#Password": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PluginClassName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PluginDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PluginName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PluginProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PluginVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#PropertyValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#PurchaseReservedInstanceOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#PurchaseReservedInstanceOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#PurchaseReservedInstanceOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#PurchaseReservedInstanceOfferingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ReferencePath": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#RejectInboundConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#RejectInboundConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#RejectInboundConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RejectInboundConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RemoveTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#RemoveTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#RemoveTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#RequirementLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ReservationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ReservedInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ReservedInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ReservedInstanceOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ReservedInstanceOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ReservedInstancePaymentOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RevokeVpcEndpointAccess": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#RevokeVpcEndpointAccessRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#RevokeVpcEndpointAccessRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RevokeVpcEndpointAccessResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#RolesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#RolesKeyIdCOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#RollbackOnDisable": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#S3GlueDataCatalog": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#SAMLEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#SAMLIdp": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SAMLMetadata": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#SAMLOptionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SAMLOptionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ScheduleAt": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ScheduledAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ScheduledActionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ScheduledAutoTuneActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ScheduledAutoTuneDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#ScheduledAutoTuneDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ScheduledAutoTuneSeverityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#ScheduledBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#SecurityLakeDirectQueryDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ServiceSoftwareOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ServiceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#SkipUnavailableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#SlotList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#SlotNotAvailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SnapshotOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SnapshotOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SoftwareUpdateOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#SoftwareUpdateOptionsStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StartAt": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#StartDomainMaintenance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#StartDomainMaintenanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#StartDomainMaintenanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StartDomainMaintenanceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StartServiceSoftwareUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#StartServiceSoftwareUpdateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#StartServiceSoftwareUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StartServiceSoftwareUpdateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StartTimeHours": {
+      "type": "long"
+    },
+    "com.amazonaws.opensearch#StartTimeMinutes": {
+      "type": "long"
+    },
+    "com.amazonaws.opensearch#StartTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#StorageSubTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#StorageType": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StorageTypeLimit": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#StorageTypeLimitList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#StorageTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#StorageTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#String": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#SubjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#SubjectKeyIdCOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#TLSSecurityPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#TimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#TotalNumberOfStages": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#UIntValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearch#UncompressedPluginSizeInBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.opensearch#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDirectQueryDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateDirectQueryDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateDirectQueryDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDirectQueryDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDomainConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateDomainConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateDomainConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateDomainConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdatePackage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdatePackageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdatePackageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdatePackageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdatePackageScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdatePackageScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdatePackageScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdatePackageScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateScheduledAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateScheduledActionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#SlotNotAvailableException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateScheduledActionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateScheduledActionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.opensearch#UpdateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpdateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpdateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpdateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpgradeDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearch#UpgradeDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearch#BaseException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DisabledOperationException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#InternalException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearch#UpgradeDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpgradeDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpgradeHistory": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpgradeHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#UpgradeName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#UpgradeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#UpgradeStep": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#UpgradeStepItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#UpgradeStepsList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#UserPoolId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#VPCDerivedInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VPCDerivedInfoStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VPCOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ValidationFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ValidationFailures": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#ValueStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#VersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#VersionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#VolumeSize": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#VolumeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#VpcEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VpcEndpointError": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VpcEndpointErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#VpcEndpointErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#VpcEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearch#VpcEndpointIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#VpcEndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.opensearch#VpcEndpointSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#VpcEndpointSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#VpcEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearch#WindowStartTime": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ZoneAwarenessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearch#ZoneStatus": {
+      "type": "enum"
+    }
+  }
+}

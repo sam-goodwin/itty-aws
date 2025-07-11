@@ -1,0 +1,874 @@
+{
+  "shapes": {
+    "com.amazonaws.snowball#AWSIESnowballJobManagementService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Snowball"
+        }
+      }
+    },
+    "com.amazonaws.snowball#Address": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#AddressId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#AddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#AddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#AmiId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.snowball#CancelCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CancelClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CancelClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CancelClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CancelJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CancelJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CancelJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ClusterId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#ClusterLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ClusterListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ClusterListEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#ClusterMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ClusterState": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#CompatibleImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CompatibleImageList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CreateAddressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidAddressException"
+        },
+        {
+          "target": "com.amazonaws.snowball#UnsupportedAddressException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CreateAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateAddressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#Ec2RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidInputCombinationException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CreateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#ClusterLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.snowball#Ec2RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidInputCombinationException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CreateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateLongTermPricing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CreateLongTermPricingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CreateLongTermPricingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateLongTermPricingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateReturnShippingLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#CreateReturnShippingLabelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidInputCombinationException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#ReturnShippingLabelAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#CreateReturnShippingLabelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#CreateReturnShippingLabelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DataTransfer": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DependentService": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DependentServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#DescribeAddress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#DescribeAddressRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#DescribeAddressRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeAddressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeAddresses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#DescribeAddressesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#DescribeAddressesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeAddressesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#DescribeClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#DescribeClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#DescribeJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#DescribeJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeReturnShippingLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#DescribeReturnShippingLabelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#DescribeReturnShippingLabelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DescribeReturnShippingLabelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DeviceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#DevicePickupId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#DeviceServiceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#EKSOnDeviceServiceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#Ec2AmiResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#Ec2AmiResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#Ec2RequestFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#Email": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#EventTriggerDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#EventTriggerDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#GSTIN": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#GetJobManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#GetJobManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#GetJobManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetJobManifestResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetJobUnlockCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#GetJobUnlockCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#GetJobUnlockCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetJobUnlockCodeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetSnowballUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#GetSnowballUsageRequest"
+      }
+    },
+    "com.amazonaws.snowball#GetSnowballUsageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetSnowballUsageResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetSoftwareUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#GetSoftwareUpdatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#GetSoftwareUpdatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#GetSoftwareUpdatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#INDTaxDocuments": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ImpactLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#InitialClusterSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#InvalidAddressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#InvalidInputCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#InvalidJobStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#InvalidResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#JavaBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.snowball#JobId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#JobListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#JobListEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#JobLogs": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#JobMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#JobMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#JobResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#JobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#JobStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#JobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#KMSRequestFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#KeyRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#KmsKeyARN": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#LambdaResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#LambdaResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#ListClusterJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListClusterJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListClusterJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListClusterJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListClustersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListCompatibleImages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListCompatibleImagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#Ec2RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListCompatibleImagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListCompatibleImagesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#ListLongTermPricing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListLongTermPricingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListLongTermPricingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListLongTermPricingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListPickupLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListPickupLocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListPickupLocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListPickupLocationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListServiceVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#ListServiceVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#ListServiceVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ListServiceVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.snowball#LongTermPricingAssociatedJobIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#LongTermPricingEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#LongTermPricingId": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#LongTermPricingIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#LongTermPricingListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#LongTermPricingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#NFSOnDeviceServiceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#NodeFaultTolerance": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#Notification": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#OnDeviceServiceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#PhoneNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#PickupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#RemoteManagement": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#ResourceARN": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#ReturnShippingLabelAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#RoleARN": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#S3OnDeviceServiceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#S3Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#S3ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#S3StorageLimit": {
+      "type": "double"
+    },
+    "com.amazonaws.snowball#ServiceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#ServiceSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#ServiceVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ServiceVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#Shipment": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ShipmentState": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#ShippingDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#ShippingLabelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#ShippingOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#SnowballCapacity": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#SnowballType": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#SnowconeDeviceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#SnsTopicARN": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#StorageLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.snowball#StorageUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#String": {
+      "type": "string"
+    },
+    "com.amazonaws.snowball#TGWOnDeviceServiceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#TargetOnDeviceService": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#TargetOnDeviceServiceList": {
+      "type": "list"
+    },
+    "com.amazonaws.snowball#TaxDocuments": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.snowball#TransferOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.snowball#UnsupportedAddressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#UpdateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#Ec2RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidInputCombinationException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#UpdateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#UpdateJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#ClusterLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.snowball#Ec2RequestFailedException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidInputCombinationException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        },
+        {
+          "target": "com.amazonaws.snowball#KMSRequestFailedException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#UpdateJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateJobShipmentState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#UpdateJobShipmentStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidJobStateException"
+        },
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#UpdateJobShipmentStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateJobShipmentStateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateLongTermPricing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.snowball#UpdateLongTermPricingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.snowball#InvalidResourceException"
+        }
+      ]
+    },
+    "com.amazonaws.snowball#UpdateLongTermPricingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#UpdateLongTermPricingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.snowball#WirelessConnection": {
+      "type": "structure"
+    }
+  }
+}

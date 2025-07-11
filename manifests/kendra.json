@@ -1,0 +1,3462 @@
+{
+  "shapes": {
+    "com.amazonaws.kendra#AWSKendraFrontendService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "kendra"
+        }
+      }
+    },
+    "com.amazonaws.kendra#AccessControlConfigurationId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#AccessControlConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#AccessControlConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AccessControlConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#AccessControlListConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AclConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AdditionalResultAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AdditionalResultAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#AdditionalResultAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AdditionalResultAttributeValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#AlfrescoConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AlfrescoEntity": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#AssociateEntitiesToExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#AssociateEntitiesToExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceAlreadyExistException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#AssociateEntitiesToExperienceFailedEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#AssociateEntitiesToExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AssociateEntitiesToExperienceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AssociateEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#AssociatePersonasToEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#AssociatePersonasToEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceAlreadyExistException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#AssociatePersonasToEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AssociatePersonasToEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AttributeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AttributeFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#AttributeSuggestionsDescribeConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AttributeSuggestionsGetConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AttributeSuggestionsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#AttributeSuggestionsUpdateConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#AuthenticationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BasicAuthenticationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BasicAuthenticationConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#BatchDeleteDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#BatchDeleteDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#BatchDeleteDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchDeleteDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchDeleteDocumentResponseFailedDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchDeleteDocumentResponseFailedDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#BatchDeleteFeaturedResultsSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#BatchDeleteFeaturedResultsSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#BatchDeleteFeaturedResultsSetError": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchDeleteFeaturedResultsSetErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#BatchDeleteFeaturedResultsSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchDeleteFeaturedResultsSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchGetDocumentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#BatchGetDocumentStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#BatchGetDocumentStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchGetDocumentStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchGetDocumentStatusResponseError": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchGetDocumentStatusResponseErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#BatchPutDocument": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#BatchPutDocumentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#BatchPutDocumentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchPutDocumentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchPutDocumentResponseFailedDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#BatchPutDocumentResponseFailedDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.kendra#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kendra#BoxConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CapacityUnitsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ChangeDetectingColumns": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ClaimRegex": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ClearQuerySuggestions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ClearQuerySuggestionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ClearQuerySuggestionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ClickFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ClickFeedbackList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ClientTokenName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#CollapseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CollapsedResultDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ColumnConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ConditionOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConflictingItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConflictingItems": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluenceAttachmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceAttachmentFieldMappingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluenceAttachmentFieldName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConfluenceAttachmentToIndexFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConfluenceBlogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceBlogFieldMappingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluenceBlogFieldName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConfluenceBlogToIndexFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluencePageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluencePageFieldMappingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluencePageFieldName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConfluencePageToIndexFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceFieldMappingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceFieldName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ConfluenceSpaceToIndexFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ConfluenceVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ConnectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Content": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ContentSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ContentType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#Correction": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CorrectionList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#CrawlDepth": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#CreateAccessControlConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateAccessControlConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateAccessControlConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateAccessControlConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceAlreadyExistException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateExperienceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateFaq": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateFaqRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateFaqRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateFaqResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateFeaturedResultsSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateFeaturedResultsSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#FeaturedResultsConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateFeaturedResultsSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateFeaturedResultsSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceAlreadyExistException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateQuerySuggestionsBlockList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateQuerySuggestionsBlockListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateQuerySuggestionsBlockListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateQuerySuggestionsBlockListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateThesaurus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#CreateThesaurusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#CreateThesaurusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CreateThesaurusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#CustomDocumentEnrichmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceDateFieldFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceInclusionsExclusionsStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceInclusionsExclusionsStringsMember": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DataSourceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJobHistoryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJobMetricTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJobMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceSyncJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DataSourceToIndexFieldMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DataSourceToIndexFieldMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DataSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DataSourceVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DatabaseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DatabaseEngineType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DatabaseHost": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DatabasePort": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#DeleteAccessControlConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteAccessControlConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteAccessControlConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteAccessControlConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteExperienceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteFaq": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteFaqRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteFaqRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeletePrincipalMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeletePrincipalMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeletePrincipalMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteQuerySuggestionsBlockList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteQuerySuggestionsBlockListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteQuerySuggestionsBlockListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DeleteThesaurus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DeleteThesaurusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DeleteThesaurusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeAccessControlConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeAccessControlConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeAccessControlConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeAccessControlConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeDataSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeExperienceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeFaq": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeFaqRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeFaqRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeFaqResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeFeaturedResultsSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeFeaturedResultsSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeFeaturedResultsSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeFeaturedResultsSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeIndexResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribePrincipalMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribePrincipalMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribePrincipalMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribePrincipalMappingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsBlockList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeQuerySuggestionsBlockListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsBlockListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsBlockListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeQuerySuggestionsConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeQuerySuggestionsConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeThesaurus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DescribeThesaurusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DescribeThesaurusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DescribeThesaurusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DisassociateEntitiesFromExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DisassociateEntitiesFromExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DisassociateEntitiesFromExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DisassociateEntitiesFromExperienceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DisassociateEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DisassociatePersonasFromEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#DisassociatePersonasFromEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#DisassociatePersonasFromEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DisassociatePersonasFromEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Document": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttributeCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DocumentAttributeKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentAttributeStringListValue": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentAttributeStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DocumentAttributeTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttributeValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttributeValueCountPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentAttributeValueCountPairList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentAttributeValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DocumentId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DocumentIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentMetadataBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kendra#DocumentMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentMetadataConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentMetadataConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DocumentRelevanceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#DocumentRelevanceOverrideConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#DocumentStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#DocumentTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#DocumentsMetadataConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Domain": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Duration": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#EnterpriseId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#EntityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#EntityDisplayData": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#EntityFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#EntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#EntityIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#EntityPersonaConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#EntityPersonaConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#EntityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ExcludeMimeTypesList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExcludeSharedDrivesList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExcludeUserAccountsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExpandConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExpandedResultItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExpandedResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExperienceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExperienceEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExperienceEndpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExperienceEntitiesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExperienceEntitiesSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ExperienceId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ExperienceName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ExperienceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ExperiencesSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ExperiencesSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Facet": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FacetList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FacetResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FacetResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FailedEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FailedEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FaqFileFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#FaqId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FaqIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FaqName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FaqStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FaqStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#FaqSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FaqSummaryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedDocumentList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedDocumentMissing": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedDocumentMissingList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedDocumentWithMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedDocumentWithMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedResultsConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedResultsItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedResultsItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FeaturedResultsSetSummaryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FeedbackToken": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FileSystemId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FolderId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#FolderIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#FsxConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#FsxFileSystemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#GetQuerySuggestions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#GetQuerySuggestionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#GetQuerySuggestionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GetQuerySuggestionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GetSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#GetSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#GetSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GetSnapshotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GitHubConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GitHubDocumentCrawlProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GoogleDriveConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GroupAttributeField": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#GroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#GroupMembers": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GroupOrderingIdSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#GroupOrderingIdSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#GroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Groups": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#HierarchicalPrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#HierarchicalPrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Highlight": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#HighlightList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#HighlightType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#HookConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Host": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#IdentityAttributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Importance": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#IndexConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#IndexConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#IndexEdition": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#IndexFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#IndexId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#IndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#IndexStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#IndexStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#IndexedQuestionAnswersCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#IndexedTextBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.kendra#IndexedTextDocumentsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#InlineCustomDocumentEnrichmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#InlineCustomDocumentEnrichmentConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Interval": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#IssueSubEntity": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#IssueSubEntityFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#IssueType": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Issuer": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#JiraAccountUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#JiraConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#JiraStatus": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#JsonTokenTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#JwtTokenTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#KeyLocation": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#LambdaArn": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#LanguageCode": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ListAccessControlConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListAccessControlConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListAccessControlConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListAccessControlConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListDataSourceSyncJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListDataSourceSyncJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListDataSourceSyncJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListDataSourceSyncJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListDataSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListDataSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListDataSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListEntityPersonas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListEntityPersonasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListEntityPersonasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListEntityPersonasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListExperienceEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListExperienceEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListExperienceEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListExperienceEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListExperiences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListExperiencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListExperiencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListExperiencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListFaqs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListFaqsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListFaqsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListFaqsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListFeaturedResultsSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListFeaturedResultsSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListFeaturedResultsSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListFeaturedResultsSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListGroupsOlderThanOrderingId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListGroupsOlderThanOrderingIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListGroupsOlderThanOrderingIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListGroupsOlderThanOrderingIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListIndices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListIndicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListIndicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListIndicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListOfGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ListQuerySuggestionsBlockLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListQuerySuggestionsBlockListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListQuerySuggestionsBlockListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListQuerySuggestionsBlockListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListThesauri": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#ListThesauriRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#ListThesauriRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ListThesauriResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.kendra#LookBackPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxContentSizePerPageInMegaBytes": {
+      "type": "float"
+    },
+    "com.amazonaws.kendra#MaxLinksPerPage": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListAccessControlConfigurationsRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListDataSourceSyncJobsRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListDataSourcesRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListEntityPersonasRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListExperiencesRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListFaqsRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListFeaturedResultsSetsRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListIndicesRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListPrincipalsRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListQuerySuggestionsBlockLists": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxResultsIntegerForListThesauriRequest": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MaxUrlsPerMinuteCrawlRate": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MemberGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#MemberGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#MemberUser": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#MemberUsers": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#MetricType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#MetricValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#MimeType": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#MinimumNumberOfQueryingUsers": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MinimumQueryCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#MissingAttributeKeyStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#Mode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#NameType": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ObjectBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.kendra#OnPremiseConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#OneDriveConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#OneDriveUser": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#OneDriveUserList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#OneDriveUsers": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Order": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#OrganizationId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#OrganizationName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Persona": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#PersonasSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#PersonasSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Port": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#Principal": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#PrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#PrincipalMappingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#PrincipalName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#PrincipalOrderingId": {
+      "type": "long"
+    },
+    "com.amazonaws.kendra#PrincipalType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#PrivateChannelFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Project": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ProxyConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#PublicChannelFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#PutPrincipalMapping": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#PutPrincipalMappingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#PutPrincipalMappingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Query": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#QueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#QueryCapacityUnit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#QueryId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#QueryIdentifiersEnclosingOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#QueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#QueryResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#QueryResultFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#QueryResultItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#QueryResultItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#QueryResultType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsBlockListId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsBlockListName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsBlockListStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsBlockListSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsBlockListSummaryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#QuerySuggestionsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#QueryText": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#QueryTextList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#QuipConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ReadAccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#Relevance": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#RelevanceFeedback": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#RelevanceFeedbackList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#RelevanceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#RepositoryName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#RepositoryNames": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ResourceAlreadyExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ResourceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ResultId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Retrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#RetrieveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#RetrieveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#RetrieveResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#RetrieveResultItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#RetrieveResultItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#S3DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#S3Path": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SaaSConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceChatterFeedConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceChatterFeedIncludeFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SalesforceChatterFeedIncludeFilterTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SalesforceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceCustomKnowledgeArticleTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceCustomKnowledgeArticleTypeConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SalesforceCustomKnowledgeArticleTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SalesforceKnowledgeArticleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceKnowledgeArticleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SalesforceKnowledgeArticleStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SalesforceStandardKnowledgeArticleTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceStandardObjectAttachmentConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceStandardObjectConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SalesforceStandardObjectConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SalesforceStandardObjectName": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ScanSchedule": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ScoreAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ScoreConfidence": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#Search": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SeedUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SeedUrlConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SeedUrlList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ServerSideEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ServiceNowAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ServiceNowBuildVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ServiceNowConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ServiceNowHostUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ServiceNowKnowledgeArticleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ServiceNowKnowledgeArticleFilterQuery": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ServiceNowServiceCatalogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SharePointConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SharePointOnlineAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SharePointUrlList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SharePointVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SharedDriveId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SinceCrawlDate": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SiteId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SiteMap": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SiteMapsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SiteMapsList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SiteUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SlackConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SlackEntity": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SlackEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SnapshotsDataHeaderFields": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SnapshotsDataRecord": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SnapshotsDataRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SortOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SortingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SortingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SourceDocument": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SourceDocuments": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SpellCorrectedQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SpellCorrectedQueryList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SpellCorrectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SqlConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#StartDataSourceSyncJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#StartDataSourceSyncJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#StartDataSourceSyncJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#StartDataSourceSyncJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Status": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#StopDataSourceSyncJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#StopDataSourceSyncJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#StopDataSourceSyncJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#StorageCapacityUnit": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#String": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SubmitFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#SubmitFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#SubmitFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SubnetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SuggestableConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SuggestableConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SuggestedQueryText": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Suggestion": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SuggestionHighlight": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SuggestionHighlightList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SuggestionList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SuggestionQueryText": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#SuggestionTextWithHighlights": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#SuggestionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#SuggestionTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#SuggestionValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TableCell": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TableCellList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#TableExcerpt": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TableName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#TableRow": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TableRowList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#TeamId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Template": {
+      "type": "document"
+    },
+    "com.amazonaws.kendra#TemplateConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TenantDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#TextDocumentStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TextWithHighlights": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ThesaurusId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ThesaurusName": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#ThesaurusStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#ThesaurusSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ThesaurusSummaryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#TimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.kendra#Title": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#TopDocumentAttributeValueCountPairsSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.kendra#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateAccessControlConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateAccessControlConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateAccessControlConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateAccessControlConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateDataSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateDataSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateDataSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateExperience": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateExperienceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateExperienceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateFeaturedResultsSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateFeaturedResultsSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#FeaturedResultsConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateFeaturedResultsSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateFeaturedResultsSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateIndex": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateIndexRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateIndexRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateQuerySuggestionsBlockList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateQuerySuggestionsBlockListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateQuerySuggestionsBlockListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateQuerySuggestionsConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateQuerySuggestionsConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateQuerySuggestionsConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UpdateThesaurus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.kendra#UpdateThesaurusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.kendra#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.kendra#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.kendra#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.kendra#UpdateThesaurusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Urls": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UserAccount": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#UserContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UserContextPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#UserGroupResolutionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UserGroupResolutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#UserIdentityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UserNameAttributeField": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#UserTokenConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#UserTokenConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#ValueImportanceMap": {
+      "type": "map"
+    },
+    "com.amazonaws.kendra#ValueImportanceMapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#VisitorId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#VpcSecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#Warning": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#WarningCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#WarningList": {
+      "type": "list"
+    },
+    "com.amazonaws.kendra#WarningMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.kendra#WebCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.kendra#WebCrawlerMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.kendra#WorkDocsConfiguration": {
+      "type": "structure"
+    }
+  }
+}

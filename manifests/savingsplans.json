@@ -1,0 +1,497 @@
+{
+  "shapes": {
+    "com.amazonaws.savingsplans#AWSSavingsPlan": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "savingsplans"
+        }
+      }
+    },
+    "com.amazonaws.savingsplans#Amount": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#CreateSavingsPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#CreateSavingsPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#CreateSavingsPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#CreateSavingsPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#CurrencyCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#CurrencyList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.savingsplans#DeleteQueuedSavingsPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#DeleteQueuedSavingsPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#DeleteQueuedSavingsPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DeleteQueuedSavingsPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlanRates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#DescribeSavingsPlanRatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlanRatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlanRatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#DescribeSavingsPlansRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingRates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingRatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingRatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingRatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DescribeSavingsPlansResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#DurationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#EC2InstanceFamily": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#FilterValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#JsonSafeFilterValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#ListOfStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.savingsplans#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.savingsplans#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#ParentSavingsPlanOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#ReturnSavingsPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#ReturnSavingsPlanRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#ReturnSavingsPlanRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#ReturnSavingsPlanResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanArn": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanDescriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanId": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingFilterAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingFilterElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingId": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingPropertyKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingPropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRate": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRateFilterElement": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRateFiltersList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRateProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRatePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingRatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOfferingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOperation": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanPaymentOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanPaymentOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanProductType": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanProductTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRate": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateFilterAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateOperation": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRatePricePerUnit": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRatePropertyKey": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRatePropertyList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateServiceCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateServiceCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateUsageType": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanRateUsageTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanServiceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanServiceCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanState": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanStateList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanType": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanUsageType": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#SavingsPlanUsageTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#SavingsPlansDuration": {
+      "type": "long"
+    },
+    "com.amazonaws.savingsplans#SavingsPlansFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.savingsplans#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#String": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.savingsplans#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#TermDurationInSeconds": {
+      "type": "long"
+    },
+    "com.amazonaws.savingsplans#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.savingsplans#UUIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.savingsplans#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.savingsplans#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.savingsplans#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.savingsplans#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.savingsplans#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

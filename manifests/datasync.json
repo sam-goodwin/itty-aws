@@ -1,0 +1,1600 @@
+{
+  "shapes": {
+    "com.amazonaws.datasync#ActivationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#AgentArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#AgentArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#AgentList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#AgentListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#AgentStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#AgentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#Atime": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#AzureAccessTier": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#AzureBlobAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#AzureBlobContainerUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#AzureBlobSasConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#AzureBlobSasToken": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#AzureBlobSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#AzureBlobType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#BytesPerSecond": {
+      "type": "long"
+    },
+    "com.amazonaws.datasync#CancelTaskExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CancelTaskExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CancelTaskExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CancelTaskExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CmkSecretConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationAzureBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationAzureBlobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationAzureBlobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationAzureBlobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationEfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationEfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationEfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationEfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxLustre": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationFsxLustreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationFsxLustreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxLustreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOntap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationFsxOntapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOntapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOntapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOpenZfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationFsxOpenZfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOpenZfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxOpenZfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxWindows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationFsxWindowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationFsxWindowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationFsxWindowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationHdfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationHdfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationHdfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationHdfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationNfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationNfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationNfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationNfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationObjectStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationObjectStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationObjectStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationObjectStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationS3Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationS3Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationS3Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationSmb": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateLocationSmbRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateLocationSmbRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateLocationSmbResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#CreateTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#CreateTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CreateTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#CustomSecretConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DeleteAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DeleteAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DeleteLocationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DeleteLocationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteLocationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DeleteTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DeleteTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DeleteTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationAzureBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationAzureBlobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationAzureBlobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationAzureBlobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationEfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationEfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationEfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationEfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxLustre": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationFsxLustreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxLustreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxLustreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOntap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationFsxOntapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOntapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOntapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOpenZfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationFsxOpenZfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOpenZfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxOpenZfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxWindows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationFsxWindowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxWindowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationFsxWindowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationHdfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationHdfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationHdfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationHdfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationNfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationNfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationNfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationNfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationObjectStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationObjectStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationObjectStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationObjectStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationS3Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationS3Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationS3Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationSmb": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeLocationSmbRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeLocationSmbRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeLocationSmbResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeTaskExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#DescribeTaskExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#DescribeTaskExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeTaskExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DescribeTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#DestinationNetworkInterfaceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#DnsIpList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#Duration": {
+      "type": "long"
+    },
+    "com.amazonaws.datasync#Ec2Config": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#Ec2SecurityGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#Ec2SecurityGroupArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#Ec2SubnetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#EfsAccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#EfsFilesystemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#EfsInTransitEncryption": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#EfsSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#EndpointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#FilterAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#FilterRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#FmrsService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DataSync"
+        }
+      }
+    },
+    "com.amazonaws.datasync#FsxFilesystemArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FsxLustreSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FsxOntapSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FsxOpenZfsSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#FsxProtocol": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FsxProtocolNfs": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FsxProtocolSmb": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FsxUpdateProtocol": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FsxUpdateProtocolSmb": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#FsxWindowsSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#Gid": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#HdfsAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#HdfsBlockSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.datasync#HdfsDataTransferProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#HdfsNameNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#HdfsNameNodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#HdfsReplicationFactor": {
+      "type": "integer"
+    },
+    "com.amazonaws.datasync#HdfsRpcProtection": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#HdfsServerHostname": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#HdfsServerPort": {
+      "type": "integer"
+    },
+    "com.amazonaws.datasync#HdfsSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#HdfsUser": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#IamRoleArnOrEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#InputTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#KerberosKeytabFile": {
+      "type": "blob"
+    },
+    "com.amazonaws.datasync#KerberosKrb5ConfFile": {
+      "type": "blob"
+    },
+    "com.amazonaws.datasync#KerberosPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#KmsKeyProviderUri": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ListAgents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#ListAgentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#ListAgentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListAgentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListLocations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#ListLocationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#ListLocationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListLocationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTaskExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#ListTaskExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#ListTaskExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTaskExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#ListTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#ListTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ListTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#LocationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#LocationFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#LocationFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#LocationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#LocationList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#LocationListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#LocationUri": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#LogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#LogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ManagedSecretConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ManifestAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ManifestConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ManifestFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.datasync#Mtime": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#NetworkInterfaceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#NfsMountOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#NfsSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#NfsVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ObjectStorageAccessKey": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ObjectStorageBucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ObjectStorageCertificate": {
+      "type": "blob"
+    },
+    "com.amazonaws.datasync#ObjectStorageSecretKey": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ObjectStorageServerPort": {
+      "type": "integer"
+    },
+    "com.amazonaws.datasync#ObjectStorageServerProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ObjectTags": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ObjectVersionIds": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#OnPremConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#Operator": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#Options": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#OutputTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#OverwriteMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#PLSecurityGroupArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#PLSubnetArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#PhaseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#Platform": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#PosixPermissions": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#PreserveDeletedFiles": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#PreserveDevices": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#PrivateLinkConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#QopConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ReportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ReportDestinationS3": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ReportLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ReportOutputType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ReportOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ReportOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#ReportResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#S3BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#S3Config": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#S3ManifestConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#S3ObjectVersionId": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#S3StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#S3Subdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ScheduleDisabledBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#ScheduleDisabledReason": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ScheduleExpressionCron": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ScheduleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#SecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ServerHostname": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#ServerIpAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#SmbAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#SmbDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#SmbMountOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#SmbPassword": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#SmbSecurityDescriptorCopyFlags": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#SmbSubdirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#SmbUser": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#SmbVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#SourceManifestConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#SourceNetworkInterfaceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#StartTaskExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#StartTaskExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#StartTaskExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#StartTaskExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#StorageVirtualMachineArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#TagListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TaggableResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TaskArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TaskExecutionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#TaskExecutionFilesFailedDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskExecutionFilesListedDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#TaskExecutionListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskExecutionResultDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#TaskFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#TaskFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#TaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.datasync#TaskListEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#TaskQueueing": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#TaskReportConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskSchedule": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskScheduleDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#TaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#Time": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.datasync#TransferMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#Uid": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateAgent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateAgentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateAgentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateAgentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationAzureBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationAzureBlobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationAzureBlobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationAzureBlobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationEfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationEfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationEfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationEfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxLustre": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationFsxLustreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxLustreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxLustreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOntap": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationFsxOntapRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOntapRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOntapResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOpenZfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationFsxOpenZfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOpenZfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxOpenZfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxWindows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationFsxWindowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxWindowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationFsxWindowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationHdfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationHdfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationHdfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationHdfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationNfs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationNfsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationNfsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationNfsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationObjectStorage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationObjectStorageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationObjectStorageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationObjectStorageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationS3Request"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationS3Request": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationS3Response": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationSmb": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateLocationSmbRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateLocationSmbRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateLocationSmbResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateSmbDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#UpdateTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateTaskExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.datasync#UpdateTaskExecutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.datasync#InternalException"
+        },
+        {
+          "target": "com.amazonaws.datasync#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.datasync#UpdateTaskExecutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateTaskExecutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdateTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.datasync#UpdatedEfsAccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#UpdatedEfsIamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#VerifyMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.datasync#VpcEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.datasync#long": {
+      "type": "long"
+    },
+    "com.amazonaws.datasync#string": {
+      "type": "string"
+    }
+  }
+}

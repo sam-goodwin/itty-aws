@@ -1,0 +1,1253 @@
+{
+  "shapes": {
+    "com.amazonaws.securitylake#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#AccessType": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#AccessTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#AccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#AwsIdentity": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#AwsLogSourceVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#AwsPrincipal": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateAwsLogSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateAwsLogSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateAwsLogSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateAwsLogSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateCustomLogSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateCustomLogSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateCustomLogSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateCustomLogSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateDataLakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateDataLakeExceptionSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateDataLakeExceptionSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateDataLakeExceptionSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLakeExceptionSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLakeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateDataLakeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateDataLakeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLakeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateDataLakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateSubscriberNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#CreateSubscriberNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#CreateSubscriberNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateSubscriberNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CreateSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceCrawlerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceProvider": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#CustomLogSourceVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#DataLake": {
+      "type": "resource"
+    },
+    "com.amazonaws.securitylake#DataLakeAutoEnableNewAccountConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeAutoEnableNewAccountConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeExceptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeLifecycleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeLifecycleExpiration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeLifecycleTransition": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeLifecycleTransitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeReplicationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeSourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeSourceStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#DataLakeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#DataLakeStorageClass": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#DataLakeUpdateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DataLakeUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteAwsLogSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteAwsLogSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteAwsLogSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteAwsLogSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteCustomLogSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteCustomLogSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteCustomLogSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteCustomLogSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteDataLakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeExceptionSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteDataLakeExceptionSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeExceptionSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeExceptionSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteDataLakeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteDataLakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteSubscriberNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeleteSubscriberNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeleteSubscriberNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteSubscriberNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeleteSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeregisterDataLakeDelegatedAdministrator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#DeregisterDataLakeDelegatedAdministratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#DeregisterDataLakeDelegatedAdministratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DeregisterDataLakeDelegatedAdministratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#ExternalId": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#GetDataLakeExceptionSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#GetDataLakeExceptionSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#GetDataLakeExceptionSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetDataLakeExceptionSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetDataLakeOrganizationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#GetDataLakeOrganizationConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#GetDataLakeOrganizationConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetDataLakeOrganizationConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetDataLakeSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#GetDataLakeSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#GetDataLakeSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetDataLakeSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#GetSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#GetSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#GetSubscriberResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#HttpMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#HttpsNotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListDataLakeExceptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#ListDataLakeExceptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#ListDataLakeExceptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListDataLakeExceptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListDataLakes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#ListDataLakesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#ListDataLakesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListDataLakesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListLogSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#ListLogSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#ListLogSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListLogSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListSubscribers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#ListSubscribersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#ListSubscribersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListSubscribersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#LogSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#LogSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#LogSourceResource": {
+      "type": "union"
+    },
+    "com.amazonaws.securitylake#LogSourceResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.securitylake#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#NotificationConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.securitylake#OcsfEventClass": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#OcsfEventClassList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#RegisterDataLakeDelegatedAdministrator": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#RegisterDataLakeDelegatedAdministratorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#RegisterDataLakeDelegatedAdministratorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#RegisterDataLakeDelegatedAdministratorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#ResourceShareArn": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#ResourceShareName": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#S3BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#S3URI": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#SafeString": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#SecurityLake": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SecurityLake"
+        }
+      }
+    },
+    "com.amazonaws.securitylake#SourceCollectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#SqsNotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#Subscriber": {
+      "type": "resource"
+    },
+    "com.amazonaws.securitylake#SubscriberResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#SubscriberResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#SubscriberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.securitylake#SubscriptionProtocol": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.securitylake#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.securitylake#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateDataLake": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#UpdateDataLakeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#UpdateDataLakeExceptionSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#UpdateDataLakeExceptionSubscriptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#UpdateDataLakeExceptionSubscriptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateDataLakeExceptionSubscriptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateDataLakeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateDataLakeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateSubscriber": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#UpdateSubscriberRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#UpdateSubscriberNotification": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.securitylake#UpdateSubscriberNotificationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.securitylake#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.securitylake#UpdateSubscriberNotificationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateSubscriberNotificationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateSubscriberRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.securitylake#UpdateSubscriberResponse": {
+      "type": "structure"
+    }
+  }
+}

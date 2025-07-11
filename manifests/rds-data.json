@@ -1,0 +1,540 @@
+{
+  "shapes": {
+    "com.amazonaws.rdsdata#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#ArrayOfArray": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#ArrayValue": {
+      "type": "union"
+    },
+    "com.amazonaws.rdsdata#ArrayValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#BatchExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#BatchExecuteStatementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseResumingException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#HttpEndpointNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidSecretException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#SecretsErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#StatementTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#TransactionNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#BatchExecuteStatementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#BatchExecuteStatementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#BeginTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#BeginTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseResumingException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#HttpEndpointNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidSecretException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#SecretsErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#StatementTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#TransactionNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#BeginTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#BeginTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.rdsdata#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rdsdata#BooleanArray": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#BoxedBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rdsdata#BoxedDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.rdsdata#BoxedFloat": {
+      "type": "float"
+    },
+    "com.amazonaws.rdsdata#BoxedInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.rdsdata#BoxedLong": {
+      "type": "long"
+    },
+    "com.amazonaws.rdsdata#ColumnMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#CommitTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#CommitTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#HttpEndpointNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidSecretException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#SecretsErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#StatementTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#TransactionNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#CommitTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#CommitTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#DatabaseErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#DatabaseNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#DatabaseResumingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#DatabaseUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#DbName": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#DecimalReturnType": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#DoubleArray": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#ExecuteSql": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#ExecuteSqlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#ExecuteSqlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ExecuteSqlResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ExecuteStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#ExecuteStatementRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseResumingException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#HttpEndpointNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidSecretException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#SecretsErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#StatementTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#TransactionNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#UnsupportedResultException"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#ExecuteStatementRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ExecuteStatementResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Field": {
+      "type": "union"
+    },
+    "com.amazonaws.rdsdata#FieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#FormattedSqlRecords": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#HttpEndpointNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Id": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.rdsdata#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#InvalidResourceStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#InvalidSecretException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.rdsdata#LongArray": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#LongReturnType": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#Metadata": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#RdsDataService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RDS Data"
+        }
+      }
+    },
+    "com.amazonaws.rdsdata#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Records": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#RecordsFormatType": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#RecordsUpdated": {
+      "type": "long"
+    },
+    "com.amazonaws.rdsdata#ResultFrame": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ResultSetMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ResultSetOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#RollbackTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rdsdata#RollbackTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rdsdata#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#DatabaseUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#HttpEndpointNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#InvalidSecretException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#SecretsErrorException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ServiceUnavailableError"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#StatementTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#TransactionNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.rdsdata#RollbackTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#RollbackTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#Row": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#SecretsErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#ServiceUnavailableError": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#SqlParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#SqlParameterSets": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#SqlParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#SqlRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#SqlStatement": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#SqlStatementResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#SqlStatementResults": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#StatementTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#String": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#StringArray": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#StructValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#TransactionNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#TransactionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#TypeHint": {
+      "type": "string"
+    },
+    "com.amazonaws.rdsdata#UnsupportedResultException": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#UpdateResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rdsdata#UpdateResults": {
+      "type": "list"
+    },
+    "com.amazonaws.rdsdata#Value": {
+      "type": "union"
+    }
+  }
+}

@@ -1,0 +1,1722 @@
+{
+  "shapes": {
+    "com.amazonaws.fms#AWSAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#AWSAccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AWSFMS_20180101": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "FMS"
+        }
+      }
+    },
+    "com.amazonaws.fms#AWSRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#AWSRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AccountIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AccountRoleStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#AccountScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ActionTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AdminAccountSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AdminAccountSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AdminScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#App": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AppsList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AppsListData": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AppsListDataSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AppsListsData": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AssociateAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#AssociateAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#AssociateAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AssociateThirdPartyFirewall": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#AssociateThirdPartyFirewallRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#AssociateThirdPartyFirewallRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AssociateThirdPartyFirewallResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AwsEc2InstanceViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AwsEc2NetworkInterfaceViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#AwsEc2NetworkInterfaceViolations": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#AwsVPCSecurityGroupViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#Base62Id": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#BasicInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#BatchAssociateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#BatchAssociateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#BatchAssociateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#BatchAssociateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#BatchDisassociateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#BatchDisassociateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#BatchDisassociateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#BatchDisassociateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fms#BooleanObject": {
+      "type": "boolean"
+    },
+    "com.amazonaws.fms#CIDR": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ComplianceViolator": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ComplianceViolatorMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.fms#ComplianceViolators": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#CreateNetworkAclAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#CreateNetworkAclEntriesAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#CustomerPolicyScopeId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#CustomerPolicyScopeIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#CustomerPolicyScopeIdType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#CustomerPolicyScopeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fms#CustomerPolicyStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#DeleteAppsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DeleteAppsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DeleteAppsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DeleteNetworkAclEntriesAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DeleteNotificationChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DeleteNotificationChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DeleteNotificationChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DeletePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DeletePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DeletePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DeleteProtocolsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DeleteProtocolsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DeleteProtocolsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DeleteResourceSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DeleteResourceSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DeleteResourceSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DependentServiceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#DestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#DetailedInfo": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#DisassociateAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DisassociateAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DisassociateAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DisassociateThirdPartyFirewall": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#DisassociateThirdPartyFirewallRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#DisassociateThirdPartyFirewallRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DisassociateThirdPartyFirewallResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DiscoveredResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DiscoveredResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#DnsDuplicateRuleGroupViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DnsRuleGroupLimitExceededViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#DnsRuleGroupPriorities": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#DnsRuleGroupPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#DnsRuleGroupPriorityConflictViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2AssociateRouteTableAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2CopyRouteTableAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2CreateRouteAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2CreateRouteTableAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2DeleteRouteAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2ReplaceRouteAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EC2ReplaceRouteTableAssociationAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EntriesDescription": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#EntriesWithConflicts": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#EntryDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EntryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#EntryViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EntryViolationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#EntryViolationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#EntryViolations": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#EvaluationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#EvaluationResults": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ExpectedRoute": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ExpectedRoutes": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#FMSPolicyUpdateFirewallCreationConfigAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#FailedItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#FailedItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#FailedItemReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#FirewallDeploymentModel": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#FirewallPolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#FirewallPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#FirewallSubnetIsOutOfScopeViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#FirewallSubnetMissingVPCEndpointViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAdminAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAdminScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetAdminScopeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetAdminScopeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAdminScopeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAppsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetAppsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetAppsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetAppsListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetComplianceDetail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetComplianceDetailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetComplianceDetailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetComplianceDetailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetNotificationChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetNotificationChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetNotificationChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetNotificationChannelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetProtectionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetProtectionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetProtectionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetProtectionStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetProtocolsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetProtocolsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetProtocolsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetProtocolsListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetResourceSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetResourceSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetResourceSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetResourceSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetThirdPartyFirewallAssociationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetThirdPartyFirewallAssociationStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetThirdPartyFirewallAssociationStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetThirdPartyFirewallAssociationStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetViolationDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#GetViolationDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#GetViolationDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#GetViolationDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#IPPortNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.fms#IPPortNumberInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#IdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#IntegerObject": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#IntegerObjectMinimum0": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#InvalidNetworkAclEntriesViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#InvalidTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#IssueInfoMap": {
+      "type": "map"
+    },
+    "com.amazonaws.fms#LengthBoundedNonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#LengthBoundedString": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#LengthBoundedStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAdminAccountsForOrganization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListAdminAccountsForOrganizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListAdminAccountsForOrganizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAdminAccountsForOrganizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAdminsManagingAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListAdminsManagingAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListAdminsManagingAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAdminsManagingAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAppsLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListAppsListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListAppsListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListAppsListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListComplianceStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListComplianceStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListComplianceStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListComplianceStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListDiscoveredResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListDiscoveredResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListDiscoveredResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListDiscoveredResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ListMemberAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListMemberAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListMemberAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListMemberAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListProtocolsLists": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListProtocolsListsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListProtocolsListsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListProtocolsListsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListResourceSetResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListResourceSetResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListResourceSetResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListResourceSetResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListResourceSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListResourceSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListResourceSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListResourceSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListThirdPartyFirewallFirewallPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#ListThirdPartyFirewallFirewallPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#ListThirdPartyFirewallFirewallPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ListThirdPartyFirewallFirewallPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ManagedServiceData": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#MarketplaceSubscriptionOnboardingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#MemberAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#NetworkAclCommonPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkAclEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#NetworkAclEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkAclEntrySet": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkAclIcmpTypeCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkAclPortRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkAclRuleAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#NetworkFirewallAction": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#NetworkFirewallActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#NetworkFirewallBlackHoleRouteDetectedViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallInternetTrafficNotInspectedViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallInvalidRouteConfigurationViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallMissingExpectedRTViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallMissingExpectedRoutesViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallMissingFirewallViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallMissingSubnetViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallOverrideAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#NetworkFirewallPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallPolicyDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallPolicyModifiedViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#NetworkFirewallStatefulRuleGroupOverride": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallUnexpectedFirewallRoutesViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#NetworkFirewallUnexpectedGatewayRoutesViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#OrderedRemediationActions": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#OrganizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#OrganizationalUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#OrganizationalUnitIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#OrganizationalUnitScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PaginationMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#PartialMatch": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PartialMatches": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#Policy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicyComplianceDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicyComplianceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicyComplianceStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#PolicyComplianceStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#PolicyId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#PolicyOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicySummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#PolicyTypeScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PolicyUpdateToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#PossibleRemediationAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PossibleRemediationActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#PossibleRemediationActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PreviousAppsList": {
+      "type": "map"
+    },
+    "com.amazonaws.fms#PreviousListVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#PreviousProtocolsList": {
+      "type": "map"
+    },
+    "com.amazonaws.fms#PriorityNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#ProtectionData": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#Protocol": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ProtocolsList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ProtocolsListData": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ProtocolsListDataSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ProtocolsListsData": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#PutAdminAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutAdminAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutAdminAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutAppsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutAppsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutAppsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutAppsListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutNotificationChannel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutNotificationChannelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutNotificationChannelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidTypeException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutProtocolsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutProtocolsListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutProtocolsListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutProtocolsListResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutResourceSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#PutResourceSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#PutResourceSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#PutResourceSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ReferenceRule": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#RegionScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#RemediationAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#RemediationActionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#RemediationActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#RemediationActionWithOrder": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ReplaceNetworkAclAssociationAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceCount": {
+      "type": "long"
+    },
+    "com.amazonaws.fms#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceSetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceSetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#ResourceSetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceSetSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceTagLogicalOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#ResourceTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceTags": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ResourceViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ResourceViolations": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#Route": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#RouteHasOutOfScopeEndpointViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#Routes": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#RuleOrder": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#SecurityGroupRemediationAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#SecurityGroupRemediationActions": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#SecurityGroupRuleDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#SecurityServicePolicyData": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#SecurityServiceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#SecurityServiceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#StatefulEngineOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#StatefulRuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#StatefulRuleGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#StatelessRuleGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#StatelessRuleGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#StatelessRuleGroupPriority": {
+      "type": "integer"
+    },
+    "com.amazonaws.fms#StreamExceptionPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#TargetViolationReason": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#TargetViolationReasons": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewall": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallFirewallPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallFirewallPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallMissingExpectedRouteTableViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallMissingFirewallViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallMissingSubnetViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ThirdPartyFirewallPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.fms#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.fms#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.fms#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.fms#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.fms#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.fms#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#UpdateToken": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#ViolationDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#ViolationReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.fms#ViolationTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.fms#WebACLHasIncompatibleConfigurationViolation": {
+      "type": "structure"
+    },
+    "com.amazonaws.fms#WebACLHasOutOfScopeResourcesViolation": {
+      "type": "structure"
+    }
+  }
+}

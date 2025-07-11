@@ -1,0 +1,1420 @@
+{
+  "shapes": {
+    "com.amazonaws.wisdom#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AppIntegrationsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Assistant": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#AssistantAssociation": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#AssistantAssociationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AssistantAssociationInputData": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#AssistantAssociationOutputData": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#AssistantAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AssistantAssociationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#AssistantData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AssistantIntegrationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AssistantList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#AssistantStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#AssistantSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#AssistantType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#AssociationType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Channel": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Channels": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Configuration": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ConnectConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ContactAttributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ContactAttributeKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#ContactAttributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ContactAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.wisdom#Content": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#ContentData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ContentMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.wisdom#ContentReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ContentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ContentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ContentSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#ContentTitle": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#CreateAssistant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateAssistantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateAssistantAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateAssistantAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateAssistantAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateAssistantAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateAssistantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateAssistantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateQuickResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateQuickResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateQuickResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateQuickResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#CreateSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#CreateSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#CreateSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteAssistant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteAssistantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteAssistantAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteAssistantAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteAssistantAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteAssistantAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteAssistantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteAssistantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteQuickResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#DeleteQuickResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#DeleteQuickResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DeleteQuickResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Document": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#DocumentText": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ExternalSource": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ExternalSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#FilterField": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#FilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#GenericArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#GetAssistant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetAssistantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetAssistantAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetAssistantAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetAssistantAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetAssistantAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetAssistantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetAssistantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetContentSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetContentSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetContentSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetContentSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetKnowledgeBase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetKnowledgeBaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetKnowledgeBaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetKnowledgeBaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetQuickResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetQuickResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetQuickResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetQuickResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetRecommendationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetRecommendationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetRecommendationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#GetSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#GetSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GetSessionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GroupingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#GroupingCriteria": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#GroupingValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#GroupingValues": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#Headers": {
+      "type": "map"
+    },
+    "com.amazonaws.wisdom#Highlight": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#HighlightOffset": {
+      "type": "integer"
+    },
+    "com.amazonaws.wisdom#Highlights": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#ImportJobData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ImportJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#ImportJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ImportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ImportJobType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#KnowledgeBase": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseAssociationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#KnowledgeBaseType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#LanguageCode": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ListAssistantAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListAssistantAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListAssistantAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListAssistantAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListAssistants": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListAssistantsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListAssistantsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListAssistantsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListContents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListContentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListContentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListContentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListKnowledgeBases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListKnowledgeBasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListKnowledgeBasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListKnowledgeBasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListQuickResponses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListQuickResponsesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListQuickResponsesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListQuickResponsesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.wisdom#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceived": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#NotifyRecommendationsReceivedRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceivedError": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceivedErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceivedErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceivedRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#NotifyRecommendationsReceivedResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ObjectFieldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#Order": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#PreconditionFailedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#Priority": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QueryAssistant": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#QueryAssistantRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#QueryAssistantRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QueryAssistantResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QueryRecommendationTriggerData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QueryResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QueryText": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponse": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#QuickResponseContent": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseContentProvider": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#QuickResponseContents": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseDataProvider": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#QuickResponseDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseFilterField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseFilterFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseFilterOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseFilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseName": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseOrderField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseQueryField": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseQueryFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseQueryOperator": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseQueryValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseQueryValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseSearchExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseSearchResultData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseSearchResultsList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#QuickResponseSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#QuickResponseSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#QuickResponseType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#RecommendationData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#RecommendationIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#RecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#RecommendationSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#RecommendationTrigger": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#RecommendationTriggerData": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#RecommendationTriggerList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#RecommendationTriggerType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#RecommendationType": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#RelevanceLevel": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#RelevanceScore": {
+      "type": "double"
+    },
+    "com.amazonaws.wisdom#RemoveKnowledgeBaseTemplateUri": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#RemoveKnowledgeBaseTemplateUriRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#RemoveKnowledgeBaseTemplateUriRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#RemoveKnowledgeBaseTemplateUriResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#RenderingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#RequestTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ResultData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#SearchContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#SearchContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchQuickResponses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#SearchQuickResponsesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#SearchQuickResponsesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchQuickResponsesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#SearchSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#SearchSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SearchSessionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ServerSideEncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#Session": {
+      "type": "resource"
+    },
+    "com.amazonaws.wisdom#SessionData": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SessionIntegrationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#SessionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#SessionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#ShortCutKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#SourceConfiguration": {
+      "type": "union"
+    },
+    "com.amazonaws.wisdom#StartContentUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#StartContentUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#StartContentUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#StartContentUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#StartImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#StartImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#StartImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#StartImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.wisdom#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.wisdom#TimeToLive": {
+      "type": "integer"
+    },
+    "com.amazonaws.wisdom#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#UpdateContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#UpdateContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateKnowledgeBaseTemplateUri": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#UpdateKnowledgeBaseTemplateUriRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#UpdateKnowledgeBaseTemplateUriRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateKnowledgeBaseTemplateUriResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateQuickResponse": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.wisdom#UpdateQuickResponseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.wisdom#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#PreconditionFailedException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.wisdom#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.wisdom#UpdateQuickResponseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UpdateQuickResponseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#UploadId": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#Uuid": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#UuidOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.wisdom#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.wisdom#WaitTimeSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.wisdom#WisdomService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Wisdom"
+        }
+      }
+    }
+  }
+}

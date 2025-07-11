@@ -1,0 +1,1134 @@
+{
+  "shapes": {
+    "com.amazonaws.managedblockchain#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#Accessor": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#AccessorBillingTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#AccessorListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#AccessorNetworkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#AccessorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#AccessorSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#AccessorSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#AccessorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#ApprovalThresholdPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#AvailabilityZoneString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#ClientRequestTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#CreateAccessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#CreateAccessorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#CreateAccessorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateAccessorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#CreateMemberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#CreateMemberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#CreateNetworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#CreateNetworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateNetworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#CreateNodeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#CreateNodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateNodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateProposal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#CreateProposalInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#CreateProposalInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#CreateProposalOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteAccessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#DeleteAccessorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#DeleteAccessorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteAccessorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#DeleteMemberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#DeleteMemberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#DeleteNodeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#DeleteNodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DeleteNodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#Edition": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.managedblockchain#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#Framework": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#FrameworkVersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#GetAccessor": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#GetAccessorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#GetAccessorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetAccessorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#GetMemberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#GetMemberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#GetNetworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#GetNetworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetNetworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#GetNodeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#GetNodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetNodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetProposal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#GetProposalInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#GetProposalInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#GetProposalOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#IllegalActionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#InputTagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.managedblockchain#InstanceTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#Invitation": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#InvitationList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#InvitationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#InviteAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#InviteActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#IsOwned": {
+      "type": "boolean"
+    },
+    "com.amazonaws.managedblockchain#ListAccessors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListAccessorsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListAccessorsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListAccessorsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListInvitations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListInvitationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListInvitationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListInvitationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListMembersInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListMembersInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListMembersOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListNetworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListNetworksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListNetworksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListNetworksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListNodesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListNodesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListNodesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListProposalVotes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListProposalVotesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListProposalVotesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListProposalVotesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListProposals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListProposalsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListProposalsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListProposalsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#LogConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#LogConfigurations": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#Member": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberFabricAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberFabricConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberFabricLogPublishingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberFrameworkAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberFrameworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#MemberLogPublishingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#MemberSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#MemberSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#NameString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#Network": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkEthereumAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkFabricAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkFabricConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkFrameworkAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkFrameworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#NetworkMemberNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#NetworkStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#NetworkSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NetworkSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#Node": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeEthereumAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeFabricAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeFabricLogPublishingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeFrameworkAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#NodeLogPublishingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#NodeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#NodeSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#OutputTagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.managedblockchain#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#PasswordString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#PrincipalString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#Proposal": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ProposalActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ProposalDurationInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#ProposalListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#ProposalStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#ProposalSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ProposalSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#ProposalVoteList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#RejectInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#RejectInvitationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#IllegalActionException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#RejectInvitationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#RejectInvitationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#RemoveAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#RemoveActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ResourceIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#ResourceLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#ResourceNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#StateDBType": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#String": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.managedblockchain#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#TaigaWebService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ManagedBlockchain"
+        }
+      }
+    },
+    "com.amazonaws.managedblockchain#ThresholdComparator": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#ThresholdPercentageInt": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.managedblockchain#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotReadyException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UpdateMember": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#UpdateMemberInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#UpdateMemberInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UpdateMemberOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UpdateNode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#UpdateNodeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#UpdateNodeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UpdateNodeOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#UsernameString": {
+      "type": "string"
+    },
+    "com.amazonaws.managedblockchain#VoteCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.managedblockchain#VoteOnProposal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.managedblockchain#VoteOnProposalInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.managedblockchain#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#IllegalActionException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.managedblockchain#VoteOnProposalInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#VoteOnProposalOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#VoteSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.managedblockchain#VoteValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.managedblockchain#VotingPolicy": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,3090 @@
+{
+  "shapes": {
+    "com.amazonaws.backup#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#AdvancedBackupSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#AdvancedBackupSettings": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#AggregationPeriod": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#AssociateBackupVaultMpaApprovalTeam": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#AssociateBackupVaultMpaApprovalTeamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#AssociateBackupVaultMpaApprovalTeamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupJobChildJobsInState": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#BackupJobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#BackupJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#BackupJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupOptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#BackupOptionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#BackupOptions": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#BackupPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupPlanName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#BackupPlanTemplatesList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupPlanTemplatesListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupPlanVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupPlansList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupPlansListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#BackupRules": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupRulesInput": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupSelection": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupSelectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#BackupSelectionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupSelectionsListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupVaultEvent": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#BackupVaultEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupVaultList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#BackupVaultListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#BackupVaultName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.backup#Boolean2": {
+      "type": "boolean"
+    },
+    "com.amazonaws.backup#CalculatedLifecycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CancelLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CancelLegalHoldInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CancelLegalHoldInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CancelLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ComplianceResourceIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ConditionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ConditionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ConditionParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ConditionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#ConditionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#Conditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ControlInputParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ControlInputParameters": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ControlName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ControlScope": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CopyAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CopyActions": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#CopyJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CopyJobChildJobsInState": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#CopyJobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#CopyJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#CopyJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CopyJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#CopyJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#CreateBackupPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateBackupPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateBackupPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateBackupPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateBackupSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateBackupSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateBackupSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateBackupSelectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateFrameworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateFrameworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateFrameworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateLegalHoldInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateLegalHoldInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateLogicallyAirGappedBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateLogicallyAirGappedBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateLogicallyAirGappedBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateLogicallyAirGappedBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateReportPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateReportPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateReportPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateReportPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreAccessBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateRestoreAccessBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateRestoreAccessBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreAccessBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreTestingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateRestoreTestingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateRestoreTestingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreTestingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreTestingSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#CreateRestoreTestingSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#CreateRestoreTestingSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CreateRestoreTestingSelectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#CronExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#CryoControllerUserManager": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Backup"
+        }
+      }
+    },
+    "com.amazonaws.backup#DateRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupVaultLockConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupVaultLockConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupVaultLockConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteBackupVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteBackupVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteBackupVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteFrameworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteFrameworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteRecoveryPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteRecoveryPointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteRecoveryPointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteReportPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteReportPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteReportPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteRestoreTestingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteRestoreTestingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteRestoreTestingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DeleteRestoreTestingSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DeleteRestoreTestingSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DeleteRestoreTestingSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DependencyFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeBackupJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeBackupJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeBackupJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeBackupJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeCopyJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeCopyJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeCopyJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeCopyJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeFrameworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeFrameworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeFrameworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeGlobalSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeGlobalSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeGlobalSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeProtectedResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeProtectedResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeProtectedResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeProtectedResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRecoveryPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeRecoveryPointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeRecoveryPointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRecoveryPointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRegionSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeRegionSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeRegionSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRegionSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeReportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeReportJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeReportJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeReportJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeReportPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeReportPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeReportPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeReportPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRestoreJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DescribeRestoreJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#DependencyFailureException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DescribeRestoreJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DescribeRestoreJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DisassociateBackupVaultMpaApprovalTeam": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DisassociateBackupVaultMpaApprovalTeamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DisassociateBackupVaultMpaApprovalTeamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DisassociateRecoveryPoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DisassociateRecoveryPointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidResourceStateException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DisassociateRecoveryPointFromParent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#DisassociateRecoveryPointFromParentInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#DisassociateRecoveryPointFromParentInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#DisassociateRecoveryPointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ExportBackupPlanTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ExportBackupPlanTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ExportBackupPlanTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ExportBackupPlanTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#FormatList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#Framework": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#FrameworkControl": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#FrameworkControls": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#FrameworkDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#FrameworkList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#FrameworkName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#GetBackupPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupPlanFromJSON": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupPlanFromJSONInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupPlanFromJSONInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupPlanFromJSONOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupPlanFromTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupPlanFromTemplateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupPlanFromTemplateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupPlanFromTemplateOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupSelectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupVaultAccessPolicyOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetBackupVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetBackupVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetBackupVaultNotificationsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetLegalHoldInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetLegalHoldInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRecoveryPointIndexDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRecoveryPointIndexDetailsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRecoveryPointIndexDetailsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRecoveryPointIndexDetailsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRecoveryPointRestoreMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRecoveryPointRestoreMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRecoveryPointRestoreMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRecoveryPointRestoreMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreJobMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRestoreJobMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRestoreJobMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreJobMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingInferredMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRestoreTestingInferredMetadataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRestoreTestingInferredMetadataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingInferredMetadataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRestoreTestingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRestoreTestingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#GetRestoreTestingSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetRestoreTestingSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetRestoreTestingSelectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GetSupportedResourceTypes": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#GetSupportedResourceTypesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#GlobalSettings": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#GlobalSettingsName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#GlobalSettingsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#IAMPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#Index": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#IndexAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#IndexActions": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#IndexStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#IndexedRecoveryPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#IndexedRecoveryPointList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#InvalidResourceStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#IsEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.backup#KeyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#KeyValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#LatestMpaApprovalTeamUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#LatestRevokeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#LegalHold": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#LegalHoldStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#LegalHoldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#Lifecycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupJobSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupJobSummariesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupJobSummariesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupJobSummariesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlanTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupPlanTemplatesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupPlanTemplatesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlanTemplatesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlanVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupPlanVersionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupPlanVersionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlanVersionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupPlansInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupPlansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupPlansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupSelections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupSelectionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupSelectionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupSelectionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupVaults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListBackupVaultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListBackupVaultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListBackupVaultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListCopyJobSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListCopyJobSummariesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListCopyJobSummariesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListCopyJobSummariesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListCopyJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListCopyJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListCopyJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListCopyJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListFrameworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListFrameworksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListFrameworksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListFrameworksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListIndexedRecoveryPoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListIndexedRecoveryPointsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListIndexedRecoveryPointsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListIndexedRecoveryPointsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListLegalHolds": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListLegalHoldsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListLegalHoldsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListLegalHoldsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListOfTags": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ListProtectedResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListProtectedResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListProtectedResourcesByBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListProtectedResourcesByBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListProtectedResourcesByBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListProtectedResourcesByBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListProtectedResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListProtectedResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRecoveryPointsByBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByBackupVaultOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByLegalHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRecoveryPointsByLegalHoldInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByLegalHoldInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByLegalHoldOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRecoveryPointsByResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRecoveryPointsByResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListReportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListReportJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListReportJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListReportJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListReportPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListReportPlansInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListReportPlansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListReportPlansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreAccessBackupVaults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreAccessBackupVaultsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreAccessBackupVaultsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreAccessBackupVaultsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobSummaries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreJobSummariesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreJobSummariesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobSummariesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreJobsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreJobsByProtectedResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreJobsByProtectedResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreJobsByProtectedResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobsByProtectedResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreJobsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreTestingPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreTestingPlansInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreTestingPlansInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreTestingPlansInputMaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.backup#ListRestoreTestingPlansOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreTestingSelections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListRestoreTestingSelectionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListRestoreTestingSelectionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListRestoreTestingSelectionsInputMaxResultsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.backup#ListRestoreTestingSelectionsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#ListTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#ListTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ListTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.backup#Long2": {
+      "type": "long"
+    },
+    "com.amazonaws.backup#MaxFrameworkInputs": {
+      "type": "integer"
+    },
+    "com.amazonaws.backup#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.backup#MessageCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#Metadata": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#MetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#MetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#MissingParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#MpaRevokeSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#MpaSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ProtectedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ProtectedResourceConditions": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ProtectedResourcesList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#PutBackupVaultAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#PutBackupVaultAccessPolicyInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#PutBackupVaultAccessPolicyInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#PutBackupVaultLockConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#PutBackupVaultLockConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#PutBackupVaultLockConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#PutBackupVaultNotifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#PutBackupVaultNotificationsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#PutBackupVaultNotificationsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#PutRestoreValidationResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#PutRestoreValidationResultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#PutRestoreValidationResultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointByBackupVault": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointByBackupVaultList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RecoveryPointByResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointByResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RecoveryPointCreator": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointSelection": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RecoveryPointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RecoveryPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ReportDeliveryChannel": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ReportDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ReportJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ReportJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ReportJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ReportPlan": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ReportPlanDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ReportPlanList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ReportPlanName": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ReportSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RequesterComment": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ResourceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ResourceIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#ResourceTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#ResourceTypeManagementPreference": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#ResourceTypeOptInPreference": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#ResourceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreAccessBackupVaultList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreAccessBackupVaultListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreDeletionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RestoreJobCreator": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#RestoreJobState": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RestoreJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RestoreJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreJobSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreJobsListMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingPlanForCreate": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingPlanForGet": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingPlanForList": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingPlanForUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingPlans": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreTestingRecoveryPointSelection": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingRecoveryPointSelectionAlgorithm": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RestoreTestingRecoveryPointType": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RestoreTestingRecoveryPointTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreTestingSelectionForCreate": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingSelectionForGet": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingSelectionForList": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingSelectionForUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#RestoreTestingSelections": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#RestoreValidationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#RevokeRestoreAccessBackupVault": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#RevokeRestoreAccessBackupVaultInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#RevokeRestoreAccessBackupVaultInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#SensitiveStringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartBackupJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#StartBackupJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#StartBackupJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartBackupJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartCopyJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#StartCopyJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#StartCopyJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartCopyJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartReportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#StartReportJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#StartReportJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartReportJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartRestoreJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#StartRestoreJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#StartRestoreJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StartRestoreJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StopBackupJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#StopBackupJobInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#StopBackupJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#StorageClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateBackupPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateBackupPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateBackupPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateBackupPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateFramework": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateFrameworkInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateFrameworkInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateFrameworkOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateGlobalSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateGlobalSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateGlobalSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointIndexSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateRecoveryPointIndexSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointIndexSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointIndexSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointLifecycle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateRecoveryPointLifecycleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointLifecycleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRecoveryPointLifecycleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRegionSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateRegionSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateRegionSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateReportPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateReportPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateReportPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateReportPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingPlan": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateRestoreTestingPlanInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingPlanInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingPlanOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingSelection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.backup#UpdateRestoreTestingSelectionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.backup#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.backup#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#MissingParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.backup#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.backup#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingSelectionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#UpdateRestoreTestingSelectionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.backup#VaultNames": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#VaultState": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#VaultType": {
+      "type": "enum"
+    },
+    "com.amazonaws.backup#WindowMinutes": {
+      "type": "long"
+    },
+    "com.amazonaws.backup#integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.backup#string": {
+      "type": "string"
+    },
+    "com.amazonaws.backup#stringList": {
+      "type": "list"
+    },
+    "com.amazonaws.backup#stringMap": {
+      "type": "map"
+    },
+    "com.amazonaws.backup#timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "shapes": {
+    "com.amazonaws.sagemakerruntime#AmazonSageMakerRuntime": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SageMaker Runtime"
+        }
+      }
+    },
+    "com.amazonaws.sagemakerruntime#BodyBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.sagemakerruntime#CustomAttributesHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#EnableExplanationsHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#EndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#Header": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#InferenceComponentHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#InferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#InputLocationHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#InternalDependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InternalFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InternalStreamFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvocationTimeoutSecondsHeader": {
+      "type": "integer"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sagemakerruntime#InvokeEndpointInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sagemakerruntime#InternalDependencyException"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#InternalFailure"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ModelError"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ModelNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ServiceUnavailable"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ValidationError"
+        }
+      ]
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointAsync": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sagemakerruntime#InvokeEndpointAsyncInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sagemakerruntime#InternalFailure"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ServiceUnavailable"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ValidationError"
+        }
+      ]
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointAsyncInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointAsyncOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointWithResponseStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.sagemakerruntime#InvokeEndpointWithResponseStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.sagemakerruntime#InternalFailure"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#InternalStreamFailure"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ModelError"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ModelStreamError"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ServiceUnavailable"
+        },
+        {
+          "target": "com.amazonaws.sagemakerruntime#ValidationError"
+        }
+      ]
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointWithResponseStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#InvokeEndpointWithResponseStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#LogStreamArn": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#ModelError": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#ModelNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#ModelStreamError": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#NewSessionResponseHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#PartBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.sagemakerruntime#PayloadPart": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#RequestTTLSecondsHeader": {
+      "type": "integer"
+    },
+    "com.amazonaws.sagemakerruntime#ResponseStream": {
+      "type": "union"
+    },
+    "com.amazonaws.sagemakerruntime#ServiceUnavailable": {
+      "type": "structure"
+    },
+    "com.amazonaws.sagemakerruntime#SessionIdHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#SessionIdOrNewSessionConstantHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#StatusCode": {
+      "type": "integer"
+    },
+    "com.amazonaws.sagemakerruntime#TargetContainerHostnameHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#TargetModelHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#TargetVariantHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.sagemakerruntime#ValidationError": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,2073 @@
+{
+  "shapes": {
+    "com.amazonaws.eventbridge#AWSEvents": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EventBridge"
+        }
+      }
+    },
+    "com.amazonaws.eventbridge#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Action": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ActivateEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ActivateEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ActivateEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ApiDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationHttpMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationInvocationRateLimitPerSecond": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ApiDestinationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#AppSyncParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Archive": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ArchiveArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ArchiveDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ArchiveName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ArchiveResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ArchiveState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ArchiveStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#AssignPublicIp": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#AuthHeaderParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#AuthHeaderParametersSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#AwsVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#BatchArrayProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#BatchParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#BatchRetryStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.eventbridge#CancelReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CancelReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#IllegalStatusException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CancelReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CancelReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CapacityProvider": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#CapacityProviderStrategy": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#CapacityProviderStrategyItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CapacityProviderStrategyItemBase": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#CapacityProviderStrategyItemWeight": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Connection": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionApiKeyAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ConnectionAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionAuthorizationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ConnectionBasicAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionBodyParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionBodyParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ConnectionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ConnectionHeaderParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionHeaderParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ConnectionHttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ConnectionOAuthClientResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionOAuthHttpMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ConnectionOAuthResponseParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionQueryStringParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectionQueryStringParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ConnectionResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ConnectionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ConnectionStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ConnectivityResourceConfigurationArn": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ConnectivityResourceParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreateApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreateApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreateArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreateArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreateConnectionApiKeyAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionBasicAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionOAuthClientRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionOAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreateEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreateEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreateEventBusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreatePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#CreatePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#CreatePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreatePartnerEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#CreatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Database": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#DbUser": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#DeactivateEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeactivateEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeactivateEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeadLetterConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeauthorizeConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeauthorizeConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeauthorizeConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeauthorizeConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeletePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeletePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeletePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DeleteRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DeleteRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeConnectionConnectivityParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeConnectionResourceParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEventBusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribePartnerEventSource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribePartnerEventSourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribePartnerEventSourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribePartnerEventSourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DescribeRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DescribeRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DescribeRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#DisableRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#DisableRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#DisableRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EcsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EnableRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#EnableRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#EnableRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EndpointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EndpointDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EndpointEventBus": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EndpointEventBusList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#EndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#EndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EndpointState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#EndpointStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EndpointUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventBus": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EventBusArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventBusDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventBusList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#EventBusName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventBusNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventResource": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#EventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#EventSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#EventSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventSourceNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#EventSourceState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#EventTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.eventbridge#FailoverConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#GraphQLOperation": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HeaderKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HeaderParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eventbridge#HeaderValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HeaderValueSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HealthCheck": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HomeRegion": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#HttpParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#HttpsEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#IamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#IllegalStatusException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#InputTransformer": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#InputTransformerPathKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#InternalException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#InvalidEventPatternException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#KinesisParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#KmsKeyIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#LaunchType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#LimitMax100": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#LimitMin1": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#ListApiDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListApiDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListApiDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListApiDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListArchives": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListArchivesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListArchivesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListArchivesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEventBuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListEventBusesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListEventBusesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEventBusesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEventSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListEventSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListEventSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListEventSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSourceAccounts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListPartnerEventSourceAccountsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSourceAccountsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSourceAccountsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListPartnerEventSourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListPartnerEventSourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListReplays": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListReplaysRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListReplaysRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListReplaysResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListRuleNamesByTarget": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListRuleNamesByTargetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListRuleNamesByTargetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListRuleNamesByTargetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListRulesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListTargetsByRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#ListTargetsByRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#ListTargetsByRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ListTargetsByRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.eventbridge#ManagedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ManagedRuleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#MaximumEventAgeInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#MaximumRetryAttempts": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#MessageGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#NonPartnerEventBusArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#NonPartnerEventBusName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#NonPartnerEventBusNameOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#OperationDisabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PartnerEventSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PartnerEventSourceAccount": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PartnerEventSourceAccountList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PartnerEventSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PartnerEventSourceNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#PathParameter": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#PathParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PlacementConstraint": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PlacementConstraintExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#PlacementConstraintType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#PlacementConstraints": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PlacementStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PlacementStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PlacementStrategyField": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#PlacementStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#PolicyLengthExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Primary": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Principal": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#PropagateTags": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#PutEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#PutEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#PutEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutEventsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutEventsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PutEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutEventsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutEventsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#PutPartnerEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutPartnerEventsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#PutPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#PutPermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PolicyLengthExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#PutPermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#PutRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#PutRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutRuleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#PutTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#PutTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutTargetsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#PutTargetsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#QueryStringKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#QueryStringParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.eventbridge#QueryStringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#QueryStringValueSensitive": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RedshiftDataParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RedshiftSecretManagerArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RemovePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#RemovePermissionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#RemovePermissionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RemoveTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#RemoveTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#RemoveTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RemoveTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RemoveTargetsResultEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RemoveTargetsResultEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#Replay": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ReplayArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ReplayDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ReplayDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ReplayDestinationFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ReplayList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#ReplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ReplayState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ReplayStateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ReplicationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ReplicationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ResourceAssociationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ResourceConfigurationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RetentionDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.eventbridge#RetryPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Route": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RoutingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RuleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RuleDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RuleNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#RuleResponseList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#RuleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.eventbridge#RunCommandParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RunCommandTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#RunCommandTargetKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RunCommandTargetValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#RunCommandTargetValues": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#RunCommandTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#SageMakerPipelineParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#SageMakerPipelineParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#SageMakerPipelineParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#SageMakerPipelineParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#SageMakerPipelineParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Secondary": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#SecretsManagerSecretArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Sql": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Sqls": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#SqsParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#StartReplay": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#StartReplayRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#StartReplayRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#StartReplayResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#StatementId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#StatementName": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#String": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#Target": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#TargetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TargetId": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TargetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#TargetInput": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TargetInputPath": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.eventbridge#TargetPartitionKeyPath": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TestEventPattern": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#TestEventPatternRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidEventPatternException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#TestEventPatternRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#TestEventPatternResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.eventbridge#TraceHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TransformerInput": {
+      "type": "string"
+    },
+    "com.amazonaws.eventbridge#TransformerPaths": {
+      "type": "map"
+    },
+    "com.amazonaws.eventbridge#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ManagedRuleException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateApiDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UpdateApiDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UpdateApiDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateApiDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateArchive": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UpdateArchiveRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InvalidEventPatternException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UpdateArchiveRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateArchiveResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UpdateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionApiKeyAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionBasicAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionOAuthClientRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionOAuthRequestParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UpdateEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UpdateEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateEventBus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.eventbridge#UpdateEventBusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.eventbridge#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#InternalException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#OperationDisabledException"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.eventbridge#UpdateEventBusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.eventbridge#UpdateEventBusResponse": {
+      "type": "structure"
+    }
+  }
+}

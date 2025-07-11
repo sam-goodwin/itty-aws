@@ -1,0 +1,1253 @@
+{
+  "shapes": {
+    "com.amazonaws.apprunner#ASConfigMaxConcurrency": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#ASConfigMaxSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#ASConfigMinSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#AppRunner": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppRunner"
+        }
+      }
+    },
+    "com.amazonaws.apprunner#AppRunnerResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#AssociateCustomDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#AssociateCustomDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#AssociateCustomDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#AssociateCustomDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#AuthenticationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfigurationRevision": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#AutoScalingConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apprunner#BuildCommand": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#CertificateValidationRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CertificateValidationRecordList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#CertificateValidationRecordStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#CodeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CodeConfigurationValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CodeRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ConfigurationSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#Connection": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#ConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#ConnectionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ConnectionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#Cpu": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#CreateAutoScalingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateAutoScalingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateAutoScalingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateAutoScalingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateObservabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateObservabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateObservabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateObservabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateVpcConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateVpcConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateVpcConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateVpcConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateVpcIngressConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#CreateVpcIngressConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#CreateVpcIngressConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CreateVpcIngressConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CustomDomain": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#CustomDomainAssociationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#CustomDomainList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#CustomerAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#DeleteAutoScalingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteAutoScalingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteAutoScalingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteAutoScalingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteObservabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteObservabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteObservabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteObservabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteVpcConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteVpcConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteVpcConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteVpcConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteVpcIngressConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DeleteVpcIngressConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DeleteVpcIngressConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DeleteVpcIngressConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeAutoScalingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeAutoScalingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeAutoScalingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeAutoScalingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeCustomDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeCustomDomainsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeCustomDomainsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#DescribeCustomDomainsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeCustomDomainsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeObservabilityConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeObservabilityConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeObservabilityConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeObservabilityConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeVpcConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeVpcConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeVpcConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeVpcConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeVpcIngressConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DescribeVpcIngressConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DescribeVpcIngressConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DescribeVpcIngressConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DisassociateCustomDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#DisassociateCustomDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#DisassociateCustomDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DisassociateCustomDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#EgressConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#EgressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#EncryptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#HasAssociatedService": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apprunner#HealthCheckConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#HealthCheckHealthyThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#HealthCheckInterval": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#HealthCheckPath": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#HealthCheckProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#HealthCheckTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#HealthCheckUnhealthyThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#ImageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ImageIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#ImageRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ImageRepositoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#IngressConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#IngressVpcConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#InstanceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#InternalServiceErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#InvalidStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#IpAddressType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#IsDefault": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apprunner#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#Latest": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apprunner#ListAutoScalingConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListAutoScalingConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListAutoScalingConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListAutoScalingConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListObservabilityConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListObservabilityConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListObservabilityConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListObservabilityConfigurationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListOperationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListOperationsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#ListOperationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListOperationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListServicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListServicesForAutoScalingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListServicesForAutoScalingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListServicesForAutoScalingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListServicesForAutoScalingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListServicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListServicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListVpcConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListVpcConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListVpcConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListVpcConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListVpcIngressConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ListVpcIngressConnectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ListVpcIngressConnectionsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListVpcIngressConnectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ListVpcIngressConnectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#MaxConcurrency": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#MaxSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#Memory": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#MinSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.apprunner#ObservabilityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ObservabilityConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#ObservabilityConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#ObservabilityConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ObservabilityConfigurationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#OperationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#OperationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#OperationSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#OperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#PauseService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#PauseServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#PauseServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#PauseServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ProviderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ResumeService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#ResumeServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#ResumeServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ResumeServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#Runtime": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentSecrets": {
+      "type": "map"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentSecretsName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentSecretsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentVariables": {
+      "type": "map"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentVariablesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#RuntimeEnvironmentVariablesValue": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#Service": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ServiceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#ServiceId": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#ServiceMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.apprunner#ServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#ServiceObservabilityConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ServiceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#ServiceSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#ServiceSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#SourceCodeVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#SourceCodeVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#SourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#SourceDirectory": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#StartCommand": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#StartDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#StartDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#StartDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#StartDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#String": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.apprunner#TraceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#TracingVendor": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateDefaultAutoScalingConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#UpdateDefaultAutoScalingConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#UpdateDefaultAutoScalingConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateDefaultAutoScalingConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateService": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#UpdateServiceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#UpdateServiceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateServiceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateVpcIngressConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.apprunner#UpdateVpcIngressConnectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.apprunner#InternalServiceErrorException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#InvalidStateException"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.apprunner#UpdateVpcIngressConnectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#UpdateVpcIngressConnectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#VpcConnector": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#VpcConnectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#VpcConnectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#VpcConnectors": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#VpcDNSTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#VpcDNSTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.apprunner#VpcIngressConnection": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#VpcIngressConnectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.apprunner#VpcIngressConnectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.apprunner#VpcIngressConnectionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.apprunner#VpcIngressConnectionSummaryList": {
+      "type": "list"
+    }
+  }
+}

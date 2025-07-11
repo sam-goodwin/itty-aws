@@ -1,0 +1,875 @@
+{
+  "shapes": {
+    "com.amazonaws.timestreamwrite#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadProgressReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadTaskDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#BatchLoadTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.timestreamwrite#ClientRequestToken": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateBatchLoadTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#CreateBatchLoadTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#CreateBatchLoadTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateBatchLoadTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#CreateDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#CreateDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#CreateTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#CreateTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CreateTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#CsvConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DataModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DataModelConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DataModelS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DataSourceConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DataSourceS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#Database": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DatabaseList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.timestreamwrite#DeleteDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DeleteDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DeleteDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DeleteTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DeleteTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DeleteTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeBatchLoadTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DescribeBatchLoadTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DescribeBatchLoadTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeBatchLoadTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DescribeDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DescribeDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DescribeEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DescribeEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#DescribeTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#DescribeTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DescribeTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#Dimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DimensionMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#DimensionMappings": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#DimensionValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#Dimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#Endpoints": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamwrite#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#InvalidEndpointException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListBatchLoadTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#ListBatchLoadTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#ListBatchLoadTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListBatchLoadTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#ListDatabasesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#ListDatabasesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListDatabasesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListTables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#ListTablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#ListTablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListTablesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.timestreamwrite#MagneticStoreRejectedDataLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#MagneticStoreRetentionPeriodInDays": {
+      "type": "long"
+    },
+    "com.amazonaws.timestreamwrite#MagneticStoreWriteProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#MeasureValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#MeasureValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#MeasureValues": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#MemoryStoreRetentionPeriodInHours": {
+      "type": "long"
+    },
+    "com.amazonaws.timestreamwrite#MixedMeasureMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#MixedMeasureMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#MultiMeasureAttributeMapping": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#MultiMeasureAttributeMappingList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#MultiMeasureMappings": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#PageLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamwrite#PaginationLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamwrite#PartitionKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#PartitionKeyEnforcementLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#PartitionKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#PartitionKeyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#Record": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#RecordIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.timestreamwrite#RecordVersion": {
+      "type": "long"
+    },
+    "com.amazonaws.timestreamwrite#Records": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#RecordsIngested": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#RejectedRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#RejectedRecords": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#RejectedRecordsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ReportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ReportS3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ResourceCreateAPIName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ResumeBatchLoadTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#ResumeBatchLoadTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#ResumeBatchLoadTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ResumeBatchLoadTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#RetentionProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#S3Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#S3EncryptionOption": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#S3ObjectKeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ScalarMeasureValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#Schema": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#SchemaName": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#SchemaValue": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#String": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#StringValue1": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#StringValue2048": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#StringValue256": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#Table": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#TableList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#TableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.timestreamwrite#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.timestreamwrite#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#TimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.timestreamwrite#Timestream_20181101": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Timestream Write"
+        }
+      }
+    },
+    "com.amazonaws.timestreamwrite#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#UpdateDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#UpdateDatabaseRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#UpdateDatabaseRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#UpdateDatabaseResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#UpdateTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#UpdateTableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#UpdateTableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#UpdateTableResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#WriteRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.timestreamwrite#WriteRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.timestreamwrite#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#InvalidEndpointException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#RejectedRecordsException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.timestreamwrite#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.timestreamwrite#WriteRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.timestreamwrite#WriteRecordsResponse": {
+      "type": "structure"
+    }
+  }
+}

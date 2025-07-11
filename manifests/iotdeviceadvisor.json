@@ -1,0 +1,481 @@
+{
+  "shapes": {
+    "com.amazonaws.iotdeviceadvisor#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#AuthenticationMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#DeviceUnderTest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#DeviceUnderTestList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#Endpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#ErrorReason": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#Failure": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#GetEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#GetEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#GetSuiteDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#GetSuiteRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRunReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#GetSuiteRunReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRunReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRunReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GetSuiteRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#GroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#GroupResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#IntendedForQualificationBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotdeviceadvisor#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#IotSenateService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IotDeviceAdvisor"
+        }
+      }
+    },
+    "com.amazonaws.iotdeviceadvisor#IsLongDurationTestBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#ListSuiteRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListSuiteRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#LogUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotdeviceadvisor#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#ParallelRun": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotdeviceadvisor#Protocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#QualificationReportDownloadUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#RootGroup": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#SelectedTestList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#StartSuiteRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#StartSuiteRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#StartSuiteRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#StartSuiteRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#Status": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#StopSuiteRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#StopSuiteRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#StopSuiteRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#StopSuiteRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#String128": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#String256": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteDefinitionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteDefinitionInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteDefinitionInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteDefinitionName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteDefinitionVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteRunConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteRunInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteRunResultCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteRunStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#SuiteRunsList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#SystemMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iotdeviceadvisor#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseDefinitionName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseRuns": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseScenario": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseScenarioId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseScenarioStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseScenarioType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestCaseScenariosList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdeviceadvisor#TestResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotdeviceadvisor#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdeviceadvisor#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdeviceadvisor#Warnings": {
+      "type": "string"
+    }
+  }
+}

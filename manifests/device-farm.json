@@ -1,0 +1,2551 @@
+{
+  "shapes": {
+    "com.amazonaws.devicefarm#AWSAccountNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#AccountSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#AccountsCleanup": {
+      "type": "boolean"
+    },
+    "com.amazonaws.devicefarm#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#AmazonResourceNames": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#AndroidPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#AppPackagesCleanup": {
+      "type": "boolean"
+    },
+    "com.amazonaws.devicefarm#ArgumentException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Artifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ArtifactCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#ArtifactType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Artifacts": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#BillingMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.devicefarm#CPU": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CannotDeleteException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#Counters": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateDevicePool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateDevicePoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateDevicePoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateDevicePoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateInstanceProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateNetworkProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateNetworkProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateNetworkProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateNetworkProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateRemoteAccessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateRemoteAccessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateRemoteAccessSessionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateRemoteAccessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateRemoteAccessSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateTestGridProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateTestGridProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateTestGridProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateTestGridProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateTestGridUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateTestGridUrlRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateTestGridUrlRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateTestGridUrlResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateUploadResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateVPCEConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#CreateVPCEConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#CreateVPCEConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CreateVPCEConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#CurrencyCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#CustomerArtifactPaths": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.devicefarm#DeleteDevicePool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteDevicePoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteDevicePoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteDevicePoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteInstanceProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteNetworkProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteNetworkProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteNetworkProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteNetworkProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteRemoteAccessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteRemoteAccessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteRemoteAccessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteRemoteAccessSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteRunResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteTestGridProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteTestGridProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CannotDeleteException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteTestGridProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteTestGridProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteUploadResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteVPCEConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#DeleteVPCEConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#DeleteVPCEConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeleteVPCEConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Device": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeviceAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DeviceAvailability": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DeviceFarmArn": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#DeviceFarm_20150623": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Device Farm"
+        }
+      }
+    },
+    "com.amazonaws.devicefarm#DeviceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeviceFilterAttribute": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DeviceFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DeviceFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DeviceFormFactor": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DeviceHostPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DeviceInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeviceInstances": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DeviceMinutes": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DevicePlatform": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DevicePool": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DevicePoolCompatibilityResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DevicePoolCompatibilityResults": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DevicePoolType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#DevicePools": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#DeviceProxy": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeviceProxyHost": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#DeviceProxyPort": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#DeviceSelectionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#DeviceSelectionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Devices": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.devicefarm#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#ExecutionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ExecutionResult": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#ExecutionResultCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Filter": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetAccountSettingsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetDeviceInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetDeviceInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetDeviceInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDeviceInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDevicePool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetDevicePoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetDevicePoolCompatibility": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetDevicePoolCompatibilityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetDevicePoolCompatibilityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDevicePoolCompatibilityResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDevicePoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDevicePoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetDeviceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetInstanceProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetNetworkProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetNetworkProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetNetworkProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetNetworkProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetOfferingStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetOfferingStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetOfferingStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetOfferingStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetRemoteAccessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetRemoteAccessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetRemoteAccessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetRemoteAccessSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetRunResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetSuite": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetSuiteRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetSuiteRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetSuiteResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetTestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetTestGridProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetTestGridProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetTestGridProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTestGridProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTestGridSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetTestGridSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetTestGridSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTestGridSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetTestResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetUploadResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetVPCEConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#GetVPCEConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#GetVPCEConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#GetVPCEConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#HostAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#IdempotencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#IncompatibilityMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#IncompatibilityMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#InstallToRemoteAccessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#InstallToRemoteAccessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#InstallToRemoteAccessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#InstallToRemoteAccessSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#InstanceLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#InstanceProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#InstanceProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#InstanceStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#InteractionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#IosPaths": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Job": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#JobTimeoutMinutes": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#Jobs": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListArtifactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListArtifactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListArtifactsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDeviceInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListDeviceInstancesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListDeviceInstancesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDeviceInstancesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDevicePools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListDevicePoolsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListDevicePoolsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDevicePoolsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListDevicesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListInstanceProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListInstanceProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListInstanceProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListInstanceProfilesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListNetworkProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListNetworkProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListNetworkProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListNetworkProfilesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferingPromotions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListOfferingPromotionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListOfferingPromotionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferingPromotionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferingTransactions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListOfferingTransactionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListOfferingTransactionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferingTransactionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListOfferingsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListProjectsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListRemoteAccessSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListRemoteAccessSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListRemoteAccessSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListRemoteAccessSessionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListRunsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListSamples": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListSamplesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListSamplesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListSamplesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListSuites": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListSuitesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListSuitesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListSuitesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTestGridProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTestGridProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridProjectsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTestGridSessionActionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionActionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionActionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTestGridSessionArtifactsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionArtifactsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionArtifactsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTestGridSessionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestGridSessionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListTestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListTestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListTestsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListUniqueProblems": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListUniqueProblemsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListUniqueProblemsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListUniqueProblemsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListUploadsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListUploadsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListUploadsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListVPCEConfigurations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ListVPCEConfigurationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ListVPCEConfigurationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ListVPCEConfigurationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.devicefarm#MaxPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#MaxSlotMap": {
+      "type": "map"
+    },
+    "com.amazonaws.devicefarm#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#Metadata": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#MonetaryAmount": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#NetworkProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#NetworkProfileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#NetworkProfiles": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#NonEmptyString": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#NotEligibleException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Offering": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#OfferingIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#OfferingPromotion": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#OfferingPromotionIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#OfferingPromotions": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#OfferingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#OfferingStatusMap": {
+      "type": "map"
+    },
+    "com.amazonaws.devicefarm#OfferingTransaction": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#OfferingTransactionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#OfferingTransactions": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#OfferingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Offerings": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#PackageIds": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#PercentInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#Problem": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ProblemDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Problems": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Project": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Projects": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#PurchaseOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#PurchaseOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#PurchaseOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#PurchaseOfferingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#PurchasedDevicesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.devicefarm#Radios": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#RecurringChargeFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#RecurringCharges": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#RemoteAccessSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#RemoteAccessSessions": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#RenewOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#RenewOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotEligibleException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#RenewOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#RenewOfferingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Resolution": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ResourceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#RuleOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Rules": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Run": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Runs": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Sample": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#SampleType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Samples": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#ScheduleRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#ScheduleRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#IdempotencyException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#ScheduleRunConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ScheduleRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ScheduleRunResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ScheduleRunTest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#SensitiveURL": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#ServiceAccountException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#ServiceDnsName": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#SkipAppResign": {
+      "type": "boolean"
+    },
+    "com.amazonaws.devicefarm#SshPublicKey": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#StopJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#StopJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#StopJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#StopJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#StopRemoteAccessSession": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#StopRemoteAccessSessionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#StopRemoteAccessSessionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#StopRemoteAccessSessionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#StopRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#StopRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#StopRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#StopRunResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#String": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Suite": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Suites": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TagOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TagPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagOperationException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagPolicyException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#Test": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestGridProject": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestGridProjects": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TestGridSession": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionActions": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionArtifact": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionArtifactCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionArtifactType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionArtifacts": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TestGridSessionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#TestGridSessions": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TestGridUrlExpiresInSecondsInput": {
+      "type": "integer"
+    },
+    "com.amazonaws.devicefarm#TestGridVpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TestParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.devicefarm#TestType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Tests": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#TransactionIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#TrialMinutes": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#URL": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#UniqueProblem": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UniqueProblems": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#UniqueProblemsByExecutionResultMap": {
+      "type": "map"
+    },
+    "com.amazonaws.devicefarm#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateDeviceInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateDeviceInstanceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateDeviceInstanceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateDeviceInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateDevicePool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateDevicePoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateDevicePoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateDevicePoolResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateInstanceProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateInstanceProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateInstanceProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateInstanceProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateNetworkProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateNetworkProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateNetworkProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateNetworkProfileResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateTestGridProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateTestGridProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateTestGridProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateTestGridProjectResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateUploadResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateVPCEConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.devicefarm#UpdateVPCEConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.devicefarm#ArgumentException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ServiceAccountException"
+        }
+      ]
+    },
+    "com.amazonaws.devicefarm#UpdateVPCEConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UpdateVPCEConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#Upload": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#UploadCategory": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#UploadStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#UploadType": {
+      "type": "enum"
+    },
+    "com.amazonaws.devicefarm#Uploads": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#VPCEConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#VPCEConfigurationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#VPCEConfigurationName": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#VPCEConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#VPCEServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.devicefarm#VideoCapture": {
+      "type": "boolean"
+    },
+    "com.amazonaws.devicefarm#VpcConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.devicefarm#VpcSecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.devicefarm#VpcSubnetIds": {
+      "type": "list"
+    }
+  }
+}

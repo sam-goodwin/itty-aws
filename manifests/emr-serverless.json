@@ -1,0 +1,719 @@
+{
+  "shapes": {
+    "com.amazonaws.emrserverless#Application": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ApplicationId": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ApplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ApplicationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.emrserverless#ApplicationState": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ApplicationStateSet": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#Architecture": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#AttemptNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.emrserverless#AutoStartConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#AutoStopConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#AwsToledoWebService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "EMR Serverless"
+        }
+      }
+    },
+    "com.amazonaws.emrserverless#CancelJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#CancelJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#CancelJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#CancelJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#CloudWatchLoggingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#Configuration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#ConfigurationOverrides": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ConfigurationPropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ConfigurationPropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#CpuSize": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.emrserverless#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#DiskSize": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#DiskType": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#Duration": {
+      "type": "long"
+    },
+    "com.amazonaws.emrserverless#EncryptionKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#EngineType": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#EntryPointArgument": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#EntryPointArguments": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#EntryPointPath": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#GetApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#GetDashboardForJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#GetDashboardForJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#GetDashboardForJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#GetDashboardForJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#GetJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#GetJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#GetJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#GetJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#Hive": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#HiveCliParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#IdentityCenterApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#IdentityCenterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#IdentityCenterConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#IdentityCenterInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ImageConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ImageConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ImageDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ImageUri": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#InitScriptPath": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#InitialCapacityConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#InitialCapacityConfigMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#InteractiveConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#JobArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#JobDriver": {
+      "type": "union"
+    },
+    "com.amazonaws.emrserverless#JobRun": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#JobRunAttemptSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#JobRunAttempts": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#JobRunExecutionIamPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#JobRunId": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#JobRunMode": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#JobRunResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.emrserverless#JobRunState": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#JobRunStateSet": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#JobRunSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#JobRunType": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#JobRuns": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListJobRunAttempts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#ListJobRunAttemptsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#ListJobRunAttemptsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListJobRunAttemptsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListJobRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#ListJobRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#ListJobRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListJobRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#LogStreamNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#LogTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#LogTypeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#LogTypeString": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ManagedPersistenceMonitoringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#MaximumAllowedResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#MemorySize": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#MonitoringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#NetworkConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#PolicyArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#PrometheusMonitoringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#PrometheusUrlString": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#Query": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ReleaseLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#RequestIdentityUserArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#RetryPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#S3MonitoringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#SchedulerConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#SecurityGroupString": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#SensitivePropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#ShutdownGracePeriodInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.emrserverless#SparkSubmit": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#SparkSubmitParameters": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#StartApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#StartApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#StartApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#StartApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#StartJobRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#StartJobRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#StartJobRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#StartJobRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#StopApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#StopApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#StopApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#StopApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#String1024": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#String256": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#SubnetString": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.emrserverless#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#TotalResourceUtilization": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.emrserverless#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.emrserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.emrserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.emrserverless#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#UriString": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#Url": {
+      "type": "string"
+    },
+    "com.amazonaws.emrserverless#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#WorkerCounts": {
+      "type": "long"
+    },
+    "com.amazonaws.emrserverless#WorkerResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#WorkerTypeSpecification": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#WorkerTypeSpecificationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.emrserverless#WorkerTypeSpecificationInputMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#WorkerTypeSpecificationMap": {
+      "type": "map"
+    },
+    "com.amazonaws.emrserverless#WorkerTypeString": {
+      "type": "string"
+    }
+  }
+}

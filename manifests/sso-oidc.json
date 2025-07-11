@@ -1,0 +1,305 @@
+{
+  "shapes": {
+    "com.amazonaws.ssooidc#AWSSSOOIDCService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SSO OIDC"
+        }
+      }
+    },
+    "com.amazonaws.ssooidc#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#AccessToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#Assertion": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#AuthCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#AuthorizationPendingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#AwsAdditionalDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ClientName": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ClientSecret": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ClientType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#CodeVerifier": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#CreateToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssooidc#CreateTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssooidc#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#AuthorizationPendingException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidClientException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidGrantException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidScopeException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#SlowDownException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnauthorizedClientException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnsupportedGrantTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.ssooidc#CreateTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#CreateTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#CreateTokenWithIAM": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssooidc#CreateTokenWithIAMRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssooidc#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#AuthorizationPendingException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#ExpiredTokenException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidClientException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidGrantException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRequestRegionException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidScopeException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#SlowDownException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnauthorizedClientException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnsupportedGrantTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.ssooidc#CreateTokenWithIAMRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#CreateTokenWithIAMResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#DeviceCode": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#Error": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ErrorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#ExpirationInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssooidc#ExpiredTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#GrantType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#GrantTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.ssooidc#IdToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#IdentityContext": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#IntervalInSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.ssooidc#InvalidClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidClientMetadataException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidGrantException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidRedirectUriException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidRequestRegionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#InvalidScopeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#LongTimeStampType": {
+      "type": "long"
+    },
+    "com.amazonaws.ssooidc#RedirectUris": {
+      "type": "list"
+    },
+    "com.amazonaws.ssooidc#RefreshToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#RegisterClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssooidc#RegisterClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssooidc#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidClientMetadataException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRedirectUriException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidScopeException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnsupportedGrantTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.ssooidc#RegisterClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#RegisterClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#Scope": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#Scopes": {
+      "type": "list"
+    },
+    "com.amazonaws.ssooidc#SlowDownException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#StartDeviceAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.ssooidc#StartDeviceAuthorizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.ssooidc#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidClientException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#SlowDownException"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#UnauthorizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.ssooidc#StartDeviceAuthorizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#StartDeviceAuthorizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#SubjectToken": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#TokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#TokenTypeURI": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.ssooidc#UnauthorizedClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#UnsupportedGrantTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.ssooidc#UserCode": {
+      "type": "string"
+    }
+  }
+}

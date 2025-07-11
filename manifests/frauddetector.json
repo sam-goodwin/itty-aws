@@ -1,0 +1,2729 @@
+{
+  "shapes": {
+    "com.amazonaws.frauddetector#ATIMetricDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ATIMetricDataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ATIModelPerformance": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ATITrainingMetricsValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AWSHawksNestServiceFacade": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "FraudDetector"
+        }
+      }
+    },
+    "com.amazonaws.frauddetector#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AggregatedLogOddsMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AggregatedVariablesImpactExplanation": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AggregatedVariablesImportanceMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AllowDenyList": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#AllowDenyLists": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#AsyncJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#BatchCreateVariable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#BatchCreateVariableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#BatchCreateVariableError": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchCreateVariableErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#BatchCreateVariableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchCreateVariableResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchGetVariable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#BatchGetVariableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#BatchGetVariableError": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchGetVariableErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#BatchGetVariableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchGetVariableResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchImport": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchImportList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#BatchPrediction": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#BatchPredictionList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.frauddetector#CancelBatchImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CancelBatchImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CancelBatchImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CancelBatchImportJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CancelBatchPredictionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CancelBatchPredictionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CancelBatchPredictionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CancelBatchPredictionJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateBatchImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateBatchImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateBatchImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateBatchImportJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateBatchPredictionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateBatchPredictionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateBatchPredictionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateBatchPredictionJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateDetectorVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateDetectorVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateDetectorVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateDetectorVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateModelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateModelVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateModelVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateModelVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateModelVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateVariable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#CreateVariableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#CreateVariableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CreateVariableResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#CsvIndexToVariableMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#DataSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#DataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#DataValidationMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteAuditHistory": {
+      "type": "boolean"
+    },
+    "com.amazonaws.frauddetector#DeleteBatchImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteBatchImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteBatchImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteBatchImportJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteBatchPredictionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteBatchPredictionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteBatchPredictionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteBatchPredictionJobResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteDetectorResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteDetectorVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteDetectorVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteDetectorVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteDetectorVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEntityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteEntityTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteEntityTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEntityTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEventResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEventType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteEventTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteEventTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEventTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEventsByEventType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteEventsByEventTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteEventsByEventTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteEventsByEventTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteExternalModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteExternalModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteExternalModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteExternalModelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteLabelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteLabelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteLabelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteModelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteModelVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteModelVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteModelVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteModelVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteOutcome": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteOutcomeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteOutcomeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteOutcomeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteRuleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteRuleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteRuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteVariable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DeleteVariableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DeleteVariableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DeleteVariableResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DescribeDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DescribeDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DescribeDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DescribeDetectorResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DescribeModelVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#DescribeModelVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#DescribeModelVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DescribeModelVersionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Detector": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DetectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#DetectorVersionMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#DetectorVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#DetectorVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#DetectorVersionSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#DetectorsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#Elements": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#ElementsList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EntityType": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EvaluatedExternalModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EvaluatedModelVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EvaluatedRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EvaluatedRuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EventAttributeMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#EventIngestion": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#EventOrchestration": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EventPredictionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EventPredictionsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#EventType": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#EventVariableMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#EventVariableSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ExternalEventsDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ExternalModel": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ExternalModelEndpointDataBlobMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#ExternalModelList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ExternalModelOutputs": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ExternalModelPredictionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#ExternalModelSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ExternalModelsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#FieldValidationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#FileValidationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#FilterCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetBatchImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetBatchImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetBatchImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetBatchImportJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetBatchPredictionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetBatchPredictionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetBatchPredictionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetBatchPredictionJobsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDeleteEventsByEventTypeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetDeleteEventsByEventTypeStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetDeleteEventsByEventTypeStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDeleteEventsByEventTypeStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDetectorVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetDetectorVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetDetectorVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDetectorVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetDetectorsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEntityTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetEntityTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetEntityTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEntityTypesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetEventPrediction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetEventPredictionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetEventPredictionMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetEventPredictionMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetEventPredictionMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventPredictionMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventPredictionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventPredictionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetEventTypesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetEventTypesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetEventTypesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetExternalModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetExternalModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetExternalModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetExternalModelsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetKMSEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetKMSEncryptionKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetLabelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetLabelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetLabelsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetListElements": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetListElementsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetListElementsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetListElementsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetListsMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetListsMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetListsMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetListsMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetModelVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetModelVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetModelVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetModelVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetModelsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetOutcomes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetOutcomesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetOutcomesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetOutcomesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetRulesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetRulesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetRulesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetVariables": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#GetVariablesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#GetVariablesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#GetVariablesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#IngestedEventStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#IngestedEventsDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#IngestedEventsTimeWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#Integer2": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#JsonKeyToVariableMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#KMSKey": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#KmsEncryptionKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#Label": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#LabelSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Language": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ListEventPredictions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#ListEventPredictionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#ListEventPredictionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ListEventPredictionsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ListOfAggregatedLogOddsMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfAggregatedVariablesImpactExplanations": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfEvaluatedExternalModels": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfEvaluatedModelVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfEventPredictionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfEventVariableSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfExternalModelOutputs": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfLogOddsMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfModelScores": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfModelVersionEvaluations": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfModelVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfRuleResults": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListOfStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ListTagsForResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ListUpdateMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ListsElementsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#ListsMetadataMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#LogOddsMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.frauddetector#MapOfStrings": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#MetricDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Model": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelEndpointDataBlob": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelEndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ModelInputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelInputDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ModelOutputConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelOutputDataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ModelPredictionMap": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#ModelScores": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ModelTypeEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#ModelVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelVersionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelVersionEvaluation": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ModelVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#NameList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#NonEmptyListOfStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#OFIMetricDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#OFIMetricDataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#OFIModelPerformance": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#OFITrainingMetricsValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Outcome": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#OutcomeList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#OutcomesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#PredictionExplanations": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PredictionTimeRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutDetectorResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutEntityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutEntityTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutEntityTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutEntityTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutEventType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutEventTypeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutEventTypeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutEventTypeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutExternalModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutExternalModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutExternalModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutExternalModelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutKMSEncryptionKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutKMSEncryptionKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutKMSEncryptionKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutKMSEncryptionKeyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutLabelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutLabelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutLabelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutOutcome": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#PutOutcomeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#PutOutcomeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#PutOutcomeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#ResourceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Rule": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#RuleDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#RuleDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#RuleExecutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#RuleList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#RuleResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#RulesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#SendEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#SendEventRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#SendEventRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#SendEventResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TFIMetricDataPoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TFIMetricDataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#TFIModelPerformance": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TFITrainingMetricsValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TagResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TagsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TrainingDataSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TrainingDataSourceEnum": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#TrainingMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TrainingMetricsV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TrainingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#TrainingResultV2": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UncertaintyRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UnlabeledEventsTreatment": {
+      "type": "enum"
+    },
+    "com.amazonaws.frauddetector#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UntagResourceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateDetectorVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateDetectorVersionMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateDetectorVersionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateDetectorVersionStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateEventLabel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateEventLabelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateEventLabelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateEventLabelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateList": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateListRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateListRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateListResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModelResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateModelVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateModelVersionStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersionStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateModelVersionStatusResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateRuleMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateRuleMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateRuleMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateRuleMetadataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateRuleVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateRuleVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateRuleVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateRuleVersionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateVariable": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.frauddetector#UpdateVariableRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.frauddetector#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.frauddetector#UpdateVariableRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UpdateVariableResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#UseEventVariables": {
+      "type": "boolean"
+    },
+    "com.amazonaws.frauddetector#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#Variable": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#VariableEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#VariableEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#VariableImpactExplanation": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#VariableImportanceMetrics": {
+      "type": "structure"
+    },
+    "com.amazonaws.frauddetector#VariableList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#VariablesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#attributeKey": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#attributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#batchImportsMaxPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#batchPredictionsMaxPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#blob": {
+      "type": "blob"
+    },
+    "com.amazonaws.frauddetector#contentType": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#description": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#entityRestrictedString": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#entityTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#entityTypesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#eventTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#eventTypesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#fieldValidationMessageList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#fileValidationMessageList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#filterString": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#float": {
+      "type": "float"
+    },
+    "com.amazonaws.frauddetector#floatVersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#fraudDetectorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#iamRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#labelList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#labelMapper": {
+      "type": "map"
+    },
+    "com.amazonaws.frauddetector#labelsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#listOfEntities": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#listOfVariableImpactExplanations": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#metricDataPointsList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#modelIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#modelInputTemplate": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#modelList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#modelVersionDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#modelsMaxPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.frauddetector#nextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#noDashIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#ruleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#s3BucketLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#sageMakerEndpointIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#sensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#string": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#tagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#tagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#tagList": {
+      "type": "list"
+    },
+    "com.amazonaws.frauddetector#tagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#time": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#utcTimestampISO8601": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#variableName": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#variableType": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#variableValue": {
+      "type": "string"
+    },
+    "com.amazonaws.frauddetector#wholeNumberVersionString": {
+      "type": "string"
+    }
+  }
+}

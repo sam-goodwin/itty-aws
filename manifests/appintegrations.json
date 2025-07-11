@@ -1,0 +1,898 @@
+{
+  "shapes": {
+    "com.amazonaws.appintegrations#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#AmazonAppIntegrationService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "AppIntegrations"
+        }
+      }
+    },
+    "com.amazonaws.appintegrations#ApplicationApprovedOrigins": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#ApplicationAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ApplicationAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#ApplicationName": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ApplicationNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ApplicationSourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ApplicationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ApplicationTrustedSource": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ApplicationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ArnOrUUID": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ClientAssociationMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.appintegrations#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#CreateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#CreateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#CreateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#CreateDataIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegrationAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#CreateDataIntegrationAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegrationAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegrationAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateDataIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateEventIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#CreateEventIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DuplicateResourceException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#CreateEventIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#CreateEventIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DataIntegrationAssociationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DataIntegrationAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#DataIntegrationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DataIntegrationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#DeleteApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#DeleteApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#DeleteApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DeleteApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DeleteDataIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#DeleteDataIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#DeleteDataIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DeleteDataIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DeleteEventIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#DeleteEventIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#DeleteEventIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#DeleteEventIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#DestinationURI": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#DuplicateResourceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#EventBridgeBus": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#EventBridgeRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#EventDefinitionSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#EventFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#EventIntegration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#EventIntegrationAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#EventIntegrationAssociationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#EventIntegrationsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#EventName": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ExecutionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ExecutionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appintegrations#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appintegrations#ExternalUrlConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#Fields": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#FieldsList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#FieldsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appintegrations#FileConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#FolderList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#GetApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#GetApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#GetApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#GetApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#GetDataIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#GetDataIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#GetDataIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#GetDataIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#GetEventIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#GetEventIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#GetEventIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#GetEventIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#IdempotencyToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#InternalServiceError": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#LastExecutionStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListApplicationAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListApplicationAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListApplicationAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListApplicationAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListApplicationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListApplicationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListApplicationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrationAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListDataIntegrationAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrationAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrationAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListDataIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListDataIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrationAssociations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListEventIntegrationAssociationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrationAssociationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrationAssociationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListEventIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListEventIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appintegrations#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#NonBlankLongString": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#NonBlankString": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#Object": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ObjectConfiguration": {
+      "type": "map"
+    },
+    "com.amazonaws.appintegrations#OnDemandConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#Permission": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#PermissionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#Publication": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#PublicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ResourceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#ScheduleConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#SourceURI": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#Subscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#SubscriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appintegrations#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appintegrations#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appintegrations#URL": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#UUID": {
+      "type": "string"
+    },
+    "com.amazonaws.appintegrations#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateApplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#UpdateApplicationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#UpdateApplicationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateApplicationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#UpdateDataIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegrationAssociation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#UpdateDataIntegrationAssociationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegrationAssociationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegrationAssociationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateDataIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateEventIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appintegrations#UpdateEventIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appintegrations#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InternalServiceError"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.appintegrations#UpdateEventIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appintegrations#UpdateEventIntegrationResponse": {
+      "type": "structure"
+    }
+  }
+}

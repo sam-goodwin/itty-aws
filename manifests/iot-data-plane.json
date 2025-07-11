@@ -1,0 +1,356 @@
+{
+  "shapes": {
+    "com.amazonaws.iotdataplane#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#CorrelationData": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#DeleteThingShadow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#DeleteThingShadowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnsupportedDocumentEncodingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#DeleteThingShadowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#DeleteThingShadowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#GetRetainedMessage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#GetRetainedMessageRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#GetRetainedMessageRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#GetRetainedMessageResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#GetThingShadow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#GetThingShadowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnsupportedDocumentEncodingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#GetThingShadowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#GetThingShadowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#InternalFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#InvalidRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#IotMoonrakerService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoT Data Plane"
+        }
+      }
+    },
+    "com.amazonaws.iotdataplane#JsonDocument": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotdataplane#ListNamedShadowsForThing": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#ListNamedShadowsForThingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#ListNamedShadowsForThingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ListNamedShadowsForThingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ListRetainedMessages": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#ListRetainedMessagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#ListRetainedMessagesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ListRetainedMessagesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotdataplane#MessageExpiry": {
+      "type": "long"
+    },
+    "com.amazonaws.iotdataplane#MethodNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#NamedShadowList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdataplane#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotdataplane#Payload": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotdataplane#PayloadFormatIndicator": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotdataplane#PayloadSize": {
+      "type": "long"
+    },
+    "com.amazonaws.iotdataplane#Publish": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#PublishRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#PublishRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#Qos": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotdataplane#RequestEntityTooLargeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ResponseTopic": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#Retain": {
+      "type": "boolean"
+    },
+    "com.amazonaws.iotdataplane#RetainedMessageList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotdataplane#RetainedMessageSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#ShadowName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#SynthesizedJsonUserProperties": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#ThingName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#Timestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.iotdataplane#Topic": {
+      "type": "string"
+    },
+    "com.amazonaws.iotdataplane#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#UnsupportedDocumentEncodingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#UpdateThingShadow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotdataplane#UpdateThingShadowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotdataplane#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InternalFailureException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#InvalidRequestException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#RequestEntityTooLargeException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UnsupportedDocumentEncodingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotdataplane#UpdateThingShadowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#UpdateThingShadowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotdataplane#UserPropertiesBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotdataplane#errorMessage": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "shapes": {
+    "com.amazonaws.workmailmessageflow#GetRawMessageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmailmessageflow#GetRawMessageContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmailmessageflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmailmessageflow#GetRawMessageContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#GetRawMessageContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#GiraffeMessageInTransitService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "WorkMailMessageFlow"
+        }
+      }
+    },
+    "com.amazonaws.workmailmessageflow#InvalidContentLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#MessageFrozen": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#MessageRejected": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#PutRawMessageContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.workmailmessageflow#PutRawMessageContentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.workmailmessageflow#InvalidContentLocation"
+        },
+        {
+          "target": "com.amazonaws.workmailmessageflow#MessageFrozen"
+        },
+        {
+          "target": "com.amazonaws.workmailmessageflow#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.workmailmessageflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.workmailmessageflow#PutRawMessageContentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#PutRawMessageContentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#RawMessageContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#S3Reference": {
+      "type": "structure"
+    },
+    "com.amazonaws.workmailmessageflow#errorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.workmailmessageflow#messageContentBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.workmailmessageflow#messageIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workmailmessageflow#s3BucketIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workmailmessageflow#s3KeyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.workmailmessageflow#s3VersionType": {
+      "type": "string"
+    }
+  }
+}

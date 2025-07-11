@@ -1,0 +1,1232 @@
+{
+  "shapes": {
+    "com.amazonaws.opensearchserverless#AccessPolicy": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#AccessPolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#AccessPolicyStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#AccessPolicySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#AccessPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#AccessPolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#AccountSettingsDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#BatchGetCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#BatchGetCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetEffectiveLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#BatchGetEffectiveLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#BatchGetEffectiveLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetEffectiveLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#BatchGetLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#BatchGetLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#BatchGetVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#BatchGetVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#BatchGetVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CapacityLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#Collection": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#CollectionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CollectionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#CollectionErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CollectionErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#CollectionFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CollectionId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#CollectionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#CollectionName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#CollectionNames": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#CollectionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#CollectionSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#CollectionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CollectionType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ConfigDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ConfigName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#OcuLimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateCollectionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateIamIdentityCenterConfigOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateSecurityConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateSecurityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateSecurityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#CreateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#CreateVpcEndpointDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#CreateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteCollectionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteSecurityConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteSecurityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteSecurityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#DeleteVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#DeleteVpcEndpointDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#DeleteVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#EffectiveLifecyclePolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#EffectiveLifecyclePolicyDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#EffectiveLifecyclePolicyErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#EffectiveLifecyclePolicyErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#GetAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#GetAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#GetAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#GetAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#GetAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetPoliciesStats": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#GetPoliciesStatsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#GetPoliciesStatsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetPoliciesStatsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#GetSecurityConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#GetSecurityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#GetSecurityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#IamIdentityCenterApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#IamIdentityCenterConfigOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#IamIdentityCenterGroupAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#IamIdentityCenterInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#IamIdentityCenterUserAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#IndexingCapacityValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearchserverless#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicy": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyResourceIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#LifecyclePolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#LifecycleResource": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#LifecycleResourceFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#ListAccessPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListAccessPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListAccessPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListAccessPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListCollections": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListCollectionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListCollectionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListCollectionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListLifecyclePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListLifecyclePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListLifecyclePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListLifecyclePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListSecurityConfigsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityConfigsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityConfigsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListSecurityPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListSecurityPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListVpcEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#ListVpcEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#ListVpcEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ListVpcEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#OcuLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#OpenSearchServerless": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "OpenSearchServerless"
+        }
+      }
+    },
+    "com.amazonaws.opensearchserverless#PolicyDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#PolicyVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#Resource": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ResourceFilter": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SamlConfigOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SearchCapacityValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfig": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityConfigType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SecurityGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SecurityGroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicy": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicyDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicyStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicySummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#SecurityPolicyType": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#StandbyReplicas": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SubnetId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#SubnetIds": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateAccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateAccountSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccountSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateAccountSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateCollection": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateCollectionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateCollectionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateCollectionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateCollectionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateIamIdentityCenterConfigOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateLifecyclePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateLifecyclePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateLifecyclePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateSecurityConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateSecurityPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateSecurityPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateVpcEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.opensearchserverless#UpdateVpcEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.opensearchserverless#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.opensearchserverless#UpdateVpcEndpointDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateVpcEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#UpdateVpcEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpoint": {
+      "type": "resource"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointErrorDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointFilters": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointIds": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.opensearchserverless#VpcEndpointSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.opensearchserverless#VpcId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#openSearchServerlessEntityId": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#samlGroupAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#samlMetadata": {
+      "type": "string"
+    },
+    "com.amazonaws.opensearchserverless#samlUserAttribute": {
+      "type": "string"
+    }
+  }
+}

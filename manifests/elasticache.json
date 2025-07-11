@@ -1,0 +1,3124 @@
+{
+  "shapes": {
+    "com.amazonaws.elasticache#APICallRateForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AZMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#AccessString": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#AddTagsToResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#AddTagsToResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AllowedNodeGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#AllowedNodeTypeModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AmazonElastiCacheV9": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "ElastiCache"
+        }
+      }
+    },
+    "com.amazonaws.elasticache#AuthTokenUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#AuthTokenUpdateStrategyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#Authentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AuthenticationMode": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#AuthorizationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AuthorizeCacheSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#AuthorizeCacheSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#AuthorizationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#AuthorizeCacheSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AuthorizeCacheSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AutomaticFailoverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#AvailabilityZonesList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#AwsQueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#BatchApplyUpdateAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#BatchApplyUpdateActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceUpdateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#BatchApplyUpdateActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#BatchStopUpdateAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#BatchStopUpdateActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceUpdateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#BatchStopUpdateActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticache#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.elasticache#CacheCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheClusterIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheEngineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheNodeIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheNodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheNodeTypeSpecificParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheNodeTypeSpecificParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheNodeTypeSpecificValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheNodeTypeSpecificValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheNodeUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheNodeUpdateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroupInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#CacheSubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CacheUsageLimits": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ChangeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#CloudWatchLogsDestinationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ClusterIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ClusterMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#ClusterQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CompleteMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CompleteMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotUnderMigrationFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CompleteMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CompleteMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ConfigureShard": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CopyServerlessCacheSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CopyServerlessCacheSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CopyServerlessCacheSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CopyServerlessCacheSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CopySnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CopySnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CopySnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CopySnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateCacheClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateCacheClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateCacheParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateCacheParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateCacheSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateCacheSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheSecurityGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateCacheSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SubnetNotAllowedFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateCacheSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateCacheSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeGroupsPerReplicationGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateServerlessCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateServerlessCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateServerlessCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateServerlessCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateServerlessCacheSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateServerlessCacheSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateServerlessCacheSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateServerlessCacheSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotFeatureNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateUserMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateUserGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#CreateUserGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#DefaultUserRequired"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#CreateUserGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CreateUserMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CustomerNodeEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#CustomerNodeEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#DataStorage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DataStorageUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#DataTieringStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#DecreaseNodeGroupsInGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DecreaseNodeGroupsInGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DecreaseNodeGroupsInGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DecreaseNodeGroupsInGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DecreaseReplicaCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DecreaseReplicaCountMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeGroupsPerReplicationGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NoOperationFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DecreaseReplicaCountMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DecreaseReplicaCountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DefaultUserAssociatedToUserGroupFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DefaultUserRequired": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteCacheCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteCacheClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotFeatureNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteCacheClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteCacheClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteCacheParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteCacheParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteCacheParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteCacheSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteCacheSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteCacheSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteCacheSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteCacheSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupInUse"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteCacheSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotFeatureNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteServerlessCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCacheSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteServerlessCacheSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCacheSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteServerlessCacheSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteUserMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#DefaultUserAssociatedToUserGroupFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteUserGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DeleteUserGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DeleteUserGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DeleteUserMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeCacheClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheEngineVersionsMessage"
+      }
+    },
+    "com.amazonaws.elasticache#DescribeCacheEngineVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeCacheParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeCacheParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheSecurityGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeCacheSecurityGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeCacheSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeCacheSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeCacheSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeEngineDefaultParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeEngineDefaultParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeEngineDefaultParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeEngineDefaultParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeEventsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeGlobalReplicationGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeGlobalReplicationGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeGlobalReplicationGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeGlobalReplicationGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeReplicationGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeReplicationGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeReplicationGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeReservedCacheNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeReservedCacheNodesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeReservedCacheNodesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeReservedCacheNodesOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeReservedCacheNodesOfferingsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodesOfferingNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeReservedCacheNodesOfferingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCacheSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeServerlessCacheSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCacheSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCacheSnapshotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCaches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeServerlessCachesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCachesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeServerlessCachesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeServiceUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeServiceUpdatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceUpdateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeServiceUpdatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeSnapshotsListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeUpdateActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeUpdateActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeUpdateActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeUserGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeUserGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeUserGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeUserGroupsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DescribeUsersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DescribeUsersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DescribeUsersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DestinationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#DisassociateGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#DisassociateGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#DisassociateGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#DisassociateGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.elasticache#DuplicateUserNameFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#EC2SecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#EC2SecurityGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ECPUPerSecond": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#EngineDefaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#EngineType": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#EventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#ExportServerlessCacheSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ExportServerlessCacheSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ExportServerlessCacheSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ExportServerlessCacheSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#FailoverGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#FailoverGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#FailoverGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#FailoverGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#GlobalNodeGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#GlobalNodeGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#GlobalNodeGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#IncreaseNodeGroupsInGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#IncreaseNodeGroupsInGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#IncreaseNodeGroupsInGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#IncreaseNodeGroupsInGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#IncreaseReplicaCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#IncreaseReplicaCountMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeGroupsPerReplicationGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NoOperationFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#IncreaseReplicaCountMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#IncreaseReplicaCountResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InputAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticache#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.elasticache#InvalidARNFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidCacheClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidCacheParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidCredentialsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidKMSKeyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidReplicationGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidServerlessCacheStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidUserGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidUserStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#IpDiscovery": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#KinesisFirehoseDestinationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ListAllowedNodeTypeModifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ListAllowedNodeTypeModificationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ListAllowedNodeTypeModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#LogDeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#LogDeliveryConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#LogDeliveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#LogDeliveryConfigurationRequestList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#LogDeliveryConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#LogFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#ModifyCacheCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyCacheClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyCacheClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyCacheClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyCacheParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyCacheParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyCacheParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyCacheSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyCacheSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SubnetInUse"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SubnetNotAllowedFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyCacheSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyCacheSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroupShardConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyReplicationGroupShardConfigurationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InsufficientCacheClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeGroupsPerReplicationGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroupShardConfigurationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyReplicationGroupShardConfigurationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyServerlessCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyServerlessCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyServerlessCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyServerlessCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyUserMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyUserGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ModifyUserGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#DefaultUserRequired"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidUserGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ModifyUserGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ModifyUserMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#MultiAZStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#NetworkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#NetworkTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NoOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupMemberUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupMemberUpdateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupUpdateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupsPerReplicationGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeGroupsToRemoveList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeGroupsToRetainList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeQuotaForClusterExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#NodeSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#NodeUpdateInitiatedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#NodeUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#NotificationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#OutpostArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#OutpostMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ParameterNameValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ParameterNameValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#PasswordListInput": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#PendingAutomaticFailoverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#PendingLogDeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#PendingLogDeliveryConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#PendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#PreferredAvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#PreferredOutpostArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ProcessedUpdateAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ProcessedUpdateActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#PurchaseReservedCacheNodesOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#PurchaseReservedCacheNodesOfferingMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodesOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#PurchaseReservedCacheNodesOfferingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#PurchaseReservedCacheNodesOfferingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RebalanceSlotsInGlobalReplicationGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#RebalanceSlotsInGlobalReplicationGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#GlobalReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#RebalanceSlotsInGlobalReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RebalanceSlotsInGlobalReplicationGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RebootCacheCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#RebootCacheClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#RebootCacheClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RebootCacheClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#RegionalConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RegionalConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#RemoveReplicasList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#RemoveTagsFromResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidServerlessCacheStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TagNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#RemoveTagsFromResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicaConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReplicationGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupAlreadyUnderMigrationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupNotUnderMigrationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupOutpostArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReplicationGroupPendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodeAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodeQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodesOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodesOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodesOfferingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReservedCacheNodesOfferingNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ResetCacheParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#ResetCacheParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidGlobalReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#ResetCacheParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReshardingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ReshardingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ReshardingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RevokeCacheSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#RevokeCacheSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#RevokeCacheSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#RevokeCacheSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ScaleConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SecurityGroupIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ServerlessCache": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServerlessCacheSnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServiceLinkedRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServiceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateSeverity": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#ServiceUpdateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#ServiceUpdatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SlaMet": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#SlotMigration": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#Snapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SnapshotArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SnapshotFeatureNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#StartMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#StartMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupAlreadyUnderMigrationFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#StartMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#StartMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#String": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SubnetIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SubnetInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#SubnetNotAllowedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#SubnetOutpost": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.elasticache#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#TagListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TagNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TagQuotaPerResourceExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TestFailover": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#TestFailoverMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#APICallRateForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidCacheClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#NodeGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TestFailoverNotAvailableFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#TestFailoverMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TestFailoverNotAvailableFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TestFailoverResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TestMigration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.elasticache#TestMigrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.elasticache#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.elasticache#InvalidReplicationGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupAlreadyUnderMigrationFault"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ReplicationGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.elasticache#TestMigrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TestMigrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TimeRangeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#TransitEncryptionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#UGReplicationGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UGServerlessCacheIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UnprocessedUpdateAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UnprocessedUpdateActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UpdateAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UpdateActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UpdateActionResultsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UpdateActionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.elasticache#UpdateActionStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UpdateActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#UserGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserGroupIdListInput": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroupPendingChanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserGroupsUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserId": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#UserIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserIdListInput": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.elasticache#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.elasticache#UserNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.elasticache#UserQuotaExceededFault": {
+      "type": "structure"
+    }
+  }
+}

@@ -1,0 +1,5361 @@
+{
+  "shapes": {
+    "com.amazonaws.cognitoidentityprovider#AWSAccountIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#AWSCognitoIdentityProviderService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Cognito Identity Provider"
+        }
+      }
+    },
+    "com.amazonaws.cognitoidentityprovider#AccessTokenValidityType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountRecoverySettingType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountTakeoverActionNotifyType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountTakeoverActionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountTakeoverActionsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountTakeoverEventActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AccountTakeoverRiskConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AddCustomAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AddCustomAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserImportInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AddCustomAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AddCustomAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminAddUserToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminAddUserToGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminAddUserToGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminConfirmSignUp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminConfirmSignUpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyFailedAttemptsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminConfirmSignUpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminConfirmSignUpResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminCreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminCreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PreconditionNotMetException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedUserStateException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UsernameExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminCreateUserConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminCreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminCreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminCreateUserUnusedAccountValidityDaysType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminDeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDeleteUserAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminDeleteUserAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDeleteUserAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDeleteUserAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableProviderForUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminDisableProviderForUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableProviderForUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableProviderForUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminDisableUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminDisableUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminEnableUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminEnableUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminEnableUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminEnableUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminForgetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminForgetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminForgetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminGetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminGetUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminGetUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminInitiateAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminInitiateAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#MFAMethodNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminInitiateAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminInitiateAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminLinkProviderForUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminLinkProviderForUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminLinkProviderForUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminLinkProviderForUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminListDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListGroupsForUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminListGroupsForUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListGroupsForUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListGroupsForUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListUserAuthEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminListUserAuthEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListUserAuthEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminListUserAuthEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminRemoveUserFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminRemoveUserFromGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminRemoveUserFromGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminResetUserPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminResetUserPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminResetUserPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminResetUserPasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminRespondToAuthChallenge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminRespondToAuthChallengeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#MFAMethodNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFANotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminRespondToAuthChallengeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminRespondToAuthChallengeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserMFAPreference": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminSetUserMFAPreferenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserMFAPreferenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserMFAPreferenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminSetUserPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserPasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminSetUserSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminSetUserSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateAuthEventFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminUpdateAuthEventFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateAuthEventFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateAuthEventFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateDeviceStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminUpdateDeviceStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateDeviceStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateDeviceStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateUserAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminUpdateUserAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateUserAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUpdateUserAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUserGlobalSignOut": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AdminUserGlobalSignOutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUserGlobalSignOutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdminUserGlobalSignOutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdvancedSecurityAdditionalFlowsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdvancedSecurityEnabledModeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AdvancedSecurityModeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AliasAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AliasAttributesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AliasExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AllowedFirstAuthFactorsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AnalyticsConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AnalyticsMetadataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssetBytesType": {
+      "type": "blob"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssetCategoryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssetExtensionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssetListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssetType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssociateSoftwareToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#AssociateSoftwareTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFANotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#AssociateSoftwareTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AssociateSoftwareTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeMappingKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeMappingType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeNameListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributeValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#AttributesRequireVerificationBeforeUpdateType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthEventType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthEventsType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthFactorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthFlowType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthParametersType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthSessionValidityType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#AuthenticationResultType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#AvailableChallengeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#BlockedIPRangeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#BooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitoidentityprovider#CSSType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#CSSVersionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#CallbackURLsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeName": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeNameType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeParametersType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeResponse": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeResponseListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeResponseType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChallengeResponsesType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChangePassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ChangePasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ChangePasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ChangePasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientMetadataType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientPermissionListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientPermissionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ClientSecretType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#CloudWatchLogsConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CodeDeliveryDetailsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#CodeDeliveryDetailsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CodeMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ColorSchemeModeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompleteWebAuthnRegistration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CompleteWebAuthnRegistrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnChallengeNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnClientMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnCredentialNotSupportedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnNotEnabledException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnOriginNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnRelyingPartyMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CompleteWebAuthnRegistrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompleteWebAuthnRegistrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompletionMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompromisedCredentialsActionsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompromisedCredentialsEventActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#CompromisedCredentialsRiskConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfiguredUserAuthFactorsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ConfirmDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#DeviceKeyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UsernameExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmForgotPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ConfirmForgotPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyFailedAttemptsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmForgotPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmForgotPasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmSignUp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ConfirmSignUpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyFailedAttemptsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmSignUpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmSignUpResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ConfirmationCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ContextDataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#GroupExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateIdentityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateIdentityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#DuplicateProviderException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateIdentityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateIdentityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateManagedLoginBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateManagedLoginBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ManagedLoginBrandingExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateManagedLoginBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateManagedLoginBrandingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateResourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateResourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateResourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateResourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateUserImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PreconditionNotMetException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateUserPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TierChangeNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolTaggingException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateUserPoolClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidOAuthFlowException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ScopeDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#CreateUserPoolDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CreateUserPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomAttributeNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomAttributesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomDomainConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomEmailLambdaVersionConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomEmailSenderLambdaVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomSMSLambdaVersionConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#CustomSMSSenderLambdaVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DateType": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cognitoidentityprovider#DefaultEmailOptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteIdentityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteIdentityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedIdentityProviderException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteIdentityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteManagedLoginBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteManagedLoginBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteManagedLoginBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteResourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteResourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteResourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteUserAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteUserPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserImportInProgressException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteUserPoolClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteUserPoolDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteWebAuthnCredential": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DeleteWebAuthnCredentialRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteWebAuthnCredentialRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeleteWebAuthnCredentialResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeletionProtectionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeliveryMediumListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeliveryMediumType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeIdentityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeIdentityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeIdentityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeIdentityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingByClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingByClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingByClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingByClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeManagedLoginBrandingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeResourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeResourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeResourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeResourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeRiskConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeRiskConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeRiskConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeRiskConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeUserImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeUserPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolTaggingException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeUserPoolClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#DescribeUserPoolDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescribeUserPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceKeyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceRememberedStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceSecretVerifierConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DeviceType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#Document": {
+      "type": "document"
+    },
+    "com.amazonaws.cognitoidentityprovider#DomainDescriptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#DomainStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#DomainType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#DomainVersionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#DuplicateProviderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailAddressType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailInviteMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailMfaConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailMfaMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailMfaSettingsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailMfaSubjectType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailNotificationBodyType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailNotificationSubjectType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailSendingAccountType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailVerificationMessageByLinkType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailVerificationMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailVerificationSubjectByLinkType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EmailVerificationSubjectType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EnableSoftwareTokenMFAException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventContextDataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventFeedbackType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventFilterType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventFiltersType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventResponseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventRiskType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventSourceName": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#ExpiredCodeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ExplicitAuthFlowsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ExplicitAuthFlowsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#FeatureType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#FeedbackValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#FirehoseConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ForceAliasCreation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitoidentityprovider#ForgetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ForgetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ForgetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ForgotPassword": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ForgotPasswordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ForgotPasswordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ForgotPasswordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GenerateSecret": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetCSVHeader": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetCSVHeaderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetCSVHeaderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetCSVHeaderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetDevice": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetDeviceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetDeviceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetDeviceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetIdentityProviderByIdentifier": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetIdentityProviderByIdentifierRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetIdentityProviderByIdentifierRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetIdentityProviderByIdentifierResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetLogDeliveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetLogDeliveryConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetLogDeliveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetLogDeliveryConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetSigningCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetSigningCertificateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetSigningCertificateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetSigningCertificateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetTokensFromRefreshToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetTokensFromRefreshTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#RefreshTokenReuseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetTokensFromRefreshTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetTokensFromRefreshTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUICustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetUICustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUICustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUICustomizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAttributeVerificationCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetUserAttributeVerificationCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAttributeVerificationCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAttributeVerificationCodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAuthFactors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetUserAuthFactorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAuthFactorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserAuthFactorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserPoolMfaConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GetUserPoolMfaConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserPoolMfaConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserPoolMfaConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GetUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GlobalSignOut": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#GlobalSignOutRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#GlobalSignOutRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GlobalSignOutResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GroupExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#GroupListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#GroupNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#GroupType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#HexStringType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#HttpHeader": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#HttpHeaderList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#IdTokenValidityType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#IdentityProviderType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#IdentityProviderTypeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#IdpIdentifierType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#IdpIdentifiersListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ImageFileType": {
+      "type": "blob"
+    },
+    "com.amazonaws.cognitoidentityprovider#ImageUrlType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#InitiateAuth": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#InitiateAuthRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#InitiateAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InitiateAuthResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#IntegerType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#InternalErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidOAuthFlowException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidParameterExceptionReasonCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidPasswordException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#LambdaConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListDevices": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListDevicesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListDevicesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListDevicesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListIdentityProviders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListIdentityProvidersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListIdentityProvidersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListIdentityProvidersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListOfStringTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListProvidersLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListResourceServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListResourceServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListResourceServersLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListResourceServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListResourceServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListUserImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPoolClients": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListUserPoolClientsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPoolClientsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPoolClientsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListUserPoolsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPoolsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUserPoolsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsersInGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListUsersInGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsersInGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsersInGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListWebAuthnCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ListWebAuthnCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ListWebAuthnCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ListWebAuthnCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#LogConfigurationListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#LogConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#LogDeliveryConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#LogLevel": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#LogoutURLsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#LongType": {
+      "type": "long"
+    },
+    "com.amazonaws.cognitoidentityprovider#MFAMethodNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#MFAOptionListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#MFAOptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ManagedLoginBrandingExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ManagedLoginBrandingIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ManagedLoginBrandingType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#MessageActionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#MessageTemplateType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#MessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#NewDeviceMetadataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#NotAuthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#NotifyConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#NotifyEmailType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#NumberAttributeConstraintsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#OAuthFlowType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#OAuthFlowsType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#PaginationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#PaginationKeyType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordHistorySizeType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordPolicyMinLengthType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordPolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#PasswordType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#PoolQueryLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#PreSignedUrlType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#PreTokenGenerationLambdaVersionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#PreTokenGenerationVersionConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#PrecedenceType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#PreconditionNotMetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#PreventUserExistenceErrorTypes": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#PriorityType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProviderDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProviderDetailsType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProviderNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProviderNameTypeV2": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProviderUserIdentifierType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ProvidersListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#QueryLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#QueryLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#RecoveryMechanismsType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#RecoveryOptionNameType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#RecoveryOptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RedirectUrlType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#RefreshTokenReuseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RefreshTokenRotationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RefreshTokenValidityType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#RegionCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#RelyingPartyIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResendConfirmationCode": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#ResendConfirmationCodeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#ResendConfirmationCodeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResendConfirmationCodeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerIdentifierType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerScopeDescriptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerScopeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerScopeNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerScopeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServerType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ResourceServersListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#RespondToAuthChallenge": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#RespondToAuthChallengeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#MFAMethodNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordHistoryPolicyViolationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFANotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#RespondToAuthChallengeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RespondToAuthChallengeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RetryGracePeriodSecondsType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#RevokeToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#RevokeTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnauthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedTokenTypeException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#RevokeTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RevokeTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RiskConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RiskDecisionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#RiskExceptionConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#RiskLevelType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#S3ArnType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#S3BucketType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#S3ConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SESConfigurationSet": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SMSMfaSettingsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SchemaAttributeType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SchemaAttributesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ScopeDoesNotExistException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#ScopeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#ScopeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SearchPaginationTokenType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SearchedAttributeNamesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#SecretCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SecretHashType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SessionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetLogDeliveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetLogDeliveryConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetLogDeliveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetLogDeliveryConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetRiskConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetRiskConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetRiskConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetRiskConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUICustomization": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetUICustomizationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUICustomizationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUICustomizationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserMFAPreference": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetUserMFAPreferenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserMFAPreferenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserMFAPreferenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserPoolMfaConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetUserPoolMfaConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserPoolMfaConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserPoolMfaConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SetUserSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SetUserSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SignInPolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SignUp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#SignUpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidPasswordException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UsernameExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#SignUpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SignUpResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SkippedIPRangeListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#SmsConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SmsInviteMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SmsMfaConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SmsVerificationMessageType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFANotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFAUserCodeType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SoftwareTokenMfaConfigType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#SoftwareTokenMfaSettingsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StartUserImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#StartUserImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PreconditionNotMetException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#StartUserImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StartUserImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StartWebAuthnRegistration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#StartWebAuthnRegistrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnConfigurationMissingException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#WebAuthnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#StartWebAuthnRegistrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StartWebAuthnRegistrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#StopUserImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#StopUserImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PreconditionNotMetException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#StopUserImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StopUserImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StringAttributeConstraintsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#StringType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#SupportedIdentityProvidersListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#TagKeysType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#TagValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#TemporaryPasswordValidityDaysType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#TierChangeNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#TimeUnitsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#TokenModelType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#TokenValidityUnitsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#TooManyFailedAttemptsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UICustomizationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnsupportedIdentityProviderException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnsupportedTokenTypeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UnsupportedUserStateException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateAuthEventFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateAuthEventFeedbackRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateAuthEventFeedbackRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateAuthEventFeedbackResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateDeviceStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateDeviceStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateDeviceStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateDeviceStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateIdentityProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateIdentityProviderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnsupportedIdentityProviderException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateIdentityProviderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateIdentityProviderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateManagedLoginBranding": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateManagedLoginBrandingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateManagedLoginBrandingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateManagedLoginBrandingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateResourceServer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateResourceServerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateResourceServerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateResourceServerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateUserAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeDeliveryFailureException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidLambdaResponseException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UnexpectedLambdaException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateUserPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidEmailRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleAccessPolicyException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidSmsRoleTrustRelationshipException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TierChangeNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserImportInProgressException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserPoolTaggingException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolClient": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateUserPoolClientRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidOAuthFlowException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ScopeDoesNotExistException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolClientRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolClientResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#UpdateUserPoolDomainRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#FeatureUnavailableInTierException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolDomainRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolDomainResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UpdateUserPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserAttributeUpdateSettingsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserContextDataType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserFilterType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportJobIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportJobNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportJobStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportJobType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserImportJobsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserLambdaValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserMFASettingListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolAddOnNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolAddOnsType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolClientDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolClientListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolClientType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolDescriptionType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolIdType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolMfaType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolNameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolPolicyType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolTaggingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolTagsListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolTagsType": {
+      "type": "map"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolTierType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserPoolType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UserVerificationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsernameAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsernameAttributesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsernameConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsernameExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsernameType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#UsersListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerificationMessageTemplateType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifiedAttributeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifiedAttributesListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifySoftwareToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#VerifySoftwareTokenRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#EnableSoftwareTokenMFAException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidUserPoolConfigurationException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#SoftwareTokenMFANotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifySoftwareTokenRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifySoftwareTokenResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifySoftwareTokenResponseType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifyUserAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cognitoidentityprovider#VerifyUserAttributeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#AliasExistsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#CodeMismatchException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ExpiredCodeException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InternalErrorException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#NotAuthorizedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#PasswordResetRequiredException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotConfirmedException"
+        },
+        {
+          "target": "com.amazonaws.cognitoidentityprovider#UserNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifyUserAttributeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#VerifyUserAttributeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnAuthenticatorAttachmentType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnAuthenticatorTransportType": {
+      "type": "string"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnAuthenticatorTransportsList": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnChallengeNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnClientMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnConfigurationMissingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnConfigurationType": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnCredentialDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnCredentialDescriptionListType": {
+      "type": "list"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnCredentialNotSupportedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnCredentialsQueryLimitType": {
+      "type": "integer"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnNotEnabledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnOriginNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WebAuthnRelyingPartyMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cognitoidentityprovider#WrappedBooleanType": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cognitoidentityprovider#WrappedIntegerType": {
+      "type": "integer"
+    }
+  }
+}

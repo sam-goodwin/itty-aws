@@ -1,0 +1,1772 @@
+{
+  "shapes": {
+    "com.amazonaws.appflow#ARN": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AccessKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AccessToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AccountName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AggregationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AggregationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#AmplitudeConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#AmplitudeConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AmplitudeConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AmplitudeMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AmplitudeSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ApiKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApiKeyCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ApiSecretKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApiToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApiVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApplicationHostUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApplicationKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApplicationServicePath": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ApplicationType": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AuthCode": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AuthCodeUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#AuthCodeUrlList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#AuthParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AuthParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#AuthenticationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#BasicAuthCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appflow#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#BucketPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#BusinessUnitId": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CancelFlowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#CancelFlowExecutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#CancelFlowExecutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CancelFlowExecutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CatalogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ClientCredentialsArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ClientId": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ClientNumber": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ClientSecret": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ConnectorAuthenticationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorConfigurationsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#ConnectorDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorEntity": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorEntityField": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorEntityFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorEntityList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorEntityMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#ConnectorLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorMode": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorModeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorOAuthRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorOperator": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorProfile": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorProfileArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorProfileConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorProfileDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorProfileName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorProfileNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorProvisioningConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorProvisioningType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ConnectorRuntimeSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorRuntimeSettingDataType": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorRuntimeSettingList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorRuntimeSettingScope": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ConnectorSuppliedValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ConnectorSuppliedValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorSuppliedValueOptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ConnectorTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ConnectorVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CreateConnectorProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#CreateConnectorProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#CreateConnectorProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CreateConnectorProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CreateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#CreateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#CreateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CreateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CreatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CredentialsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#CredentialsMapKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CredentialsMapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CustomAuthConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomAuthConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#CustomAuthCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomAuthenticationType": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CustomConnectorDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomConnectorSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#CustomPropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CustomPropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#CustomerProfilesDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#CustomerProfilesMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DataApiRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DataPullMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#DataTransferApi": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DataTransferApiType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#DataTransferApiTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DatabaseUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DatadogConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#DatadogConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DatadogConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DatadogMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DatadogSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.appflow#DatetimeTypeFieldName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DeleteConnectorProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DeleteConnectorProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DeleteConnectorProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DeleteConnectorProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DeleteFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DeleteFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DeleteFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DeleteFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeConnectorEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeConnectorEntityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeConnectorEntityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorEntityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeConnectorProfilesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeConnectorProfilesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorProfilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeFlowExecutionRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#DescribeFlowExecutionRecordsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#DescribeFlowExecutionRecordsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeFlowExecutionRecordsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DescribeFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DestinationConnectorProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DestinationField": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DestinationFieldProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DestinationFlowConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DestinationFlowConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#DocumentType": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.appflow#DynatraceConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#DynatraceConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DynatraceConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DynatraceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#DynatraceSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#EntitiesPath": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#EntityName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ErrorHandlingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ErrorInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#EventBridgeDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#EventBridgeMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ExecutionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ExecutionId": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ExecutionIds": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ExecutionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ExecutionRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ExecutionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#FieldType": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#FieldTypeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#FileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#FilterOperatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#FlowArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#FlowDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#FlowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#FlowErrorDeactivationThreshold": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#FlowExecutionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#FlowList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#FlowName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#FlowStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#FlowStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#GlueDataCatalogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#GlueDataCatalogDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#GlueDataCatalogIAMRole": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#GlueDataCatalogTablePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#GoogleAnalyticsConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#GoogleAnalyticsConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#GoogleAnalyticsConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#GoogleAnalyticsMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#GoogleAnalyticsSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Group": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#HoneycodeConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#HoneycodeConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#HoneycodeDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#HoneycodeMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#IdFieldNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#IncrementalPullConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#InforNexusConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#InforNexusConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#InforNexusConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#InforNexusMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#InforNexusSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#InstanceUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#JavaBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.appflow#JwtToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#KMSArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Label": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#LambdaConnectorProvisioningConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListConnectorEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#ListConnectorEntitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#ListConnectorEntitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListConnectorEntitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListConnectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#ListConnectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#ListConnectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListConnectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListEntitiesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#ListFlows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#ListFlowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#ListFlowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListFlowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#LogoURL": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#LogonLanguage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.appflow#LookoutMetricsDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MarketoConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#MarketoConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MarketoConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MarketoDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MarketoMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MarketoSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#MetadataCatalogConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MetadataCatalogDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#MetadataCatalogDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#MostRecentExecutionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#OAuth2Credentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuth2CustomParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuth2CustomPropType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#OAuth2CustomPropertiesList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#OAuth2Defaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuth2GrantType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#OAuth2GrantTypeSupportedList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#OAuth2Properties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuthCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuthProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#OAuthScope": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#OAuthScopeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#Object": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ObjectTypeName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Operator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#OperatorPropertiesKeys": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#Operators": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PardotConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PardotConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#PardotConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#PardotMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#PardotSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Password": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#PathPrefix": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PathPrefixHierarchy": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#PortNumber": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#PrefixConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#PrefixFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PrefixType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PrivateConnectionProvisioningFailureCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PrivateConnectionProvisioningFailureMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#PrivateConnectionProvisioningState": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#PrivateConnectionProvisioningStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#PrivateLinkServiceName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ProfilePropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#ProfilePropertyKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ProfilePropertyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Property": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RedirectUri": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#RedshiftConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RedshiftConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RedshiftDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RedshiftMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RefreshToken": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Region": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#RegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#RegisterConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#RegisterConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#RegisterConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RegisterConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RegisteredBy": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#RegistrationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ResetConnectorMetadataCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#ResetConnectorMetadataCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#ResetConnectorMetadataCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ResetConnectorMetadataCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#S3ConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#S3DestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#S3InputFileType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#S3InputFormatConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#S3Metadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#S3OutputFormatConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#S3SourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SAPODataConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataMaxPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#SAPODataMaxParallelism": {
+      "type": "integer"
+    },
+    "com.amazonaws.appflow#SAPODataMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataPaginationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataParallelismConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SAPODataSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SalesforceConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SalesforceConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SalesforceConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SalesforceDataTransferApi": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SalesforceDataTransferApiList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SalesforceDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SalesforceMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SalesforceSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SandstoneConfigurationServiceLambda": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Appflow"
+        }
+      }
+    },
+    "com.amazonaws.appflow#ScheduleExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ScheduleFrequencyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ScheduleOffset": {
+      "type": "long"
+    },
+    "com.amazonaws.appflow#ScheduledTriggerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SchedulingFrequencyTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SecretKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ServiceNowConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ServiceNowConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ServiceNowConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ServiceNowMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ServiceNowSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SingularConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SingularConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SingularConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SingularMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SingularSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SlackConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SlackConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SlackConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SlackMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SlackSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SnowflakeConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SnowflakeConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SnowflakeDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SnowflakeMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SourceConnectorProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SourceFieldProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SourceFields": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SourceFlowConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Stage": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#StartFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#StartFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#StartFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#StartFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#StopFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#StopFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#UnsupportedOperationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#StopFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#StopFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#String": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#SuccessResponseHandlingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SupportedApiVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#SupportedApiVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SupportedDataTransferApis": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SupportedDataTransferType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#SupportedDataTransferTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SupportedFieldTypeDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#SupportedOperatorList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SupportedValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#SupportedWriteOperationList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#Task": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TaskPropertiesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#TaskType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#Tasks": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Timezone": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#TokenUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#TokenUrlCustomProperties": {
+      "type": "map"
+    },
+    "com.amazonaws.appflow#TokenUrlList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#TrendmicroConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#TrendmicroConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TrendmicroConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TrendmicroMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TrendmicroSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TriggerConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TriggerProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#TriggerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#TriggerTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.appflow#UnregisterConnector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#UnregisterConnectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#UnregisterConnectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UnregisterConnectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UnsupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateConnectorProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#UpdateConnectorProfileRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#UpdateConnectorProfileRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateConnectorProfileResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateConnectorRegistration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#UpdateConnectorRegistrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#UpdateConnectorRegistrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateConnectorRegistrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateFlow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.appflow#UpdateFlowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.appflow#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorAuthenticationException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ConnectorServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.appflow#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.appflow#UpdateFlowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdateFlowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpdatedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#UpsolverBucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#UpsolverDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpsolverMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#UpsolverS3OutputFormatConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Username": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#VeevaConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#VeevaConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#VeevaConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#VeevaMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#VeevaSourceProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#Warehouse": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#WorkgroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.appflow#WriteOperationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ZendeskConnectorOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.appflow#ZendeskConnectorProfileCredentials": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ZendeskConnectorProfileProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ZendeskDestinationProperties": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ZendeskMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.appflow#ZendeskSourceProperties": {
+      "type": "structure"
+    }
+  }
+}

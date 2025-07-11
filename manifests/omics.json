@@ -1,0 +1,4281 @@
+{
+  "shapes": {
+    "com.amazonaws.omics#AbortMultipartReadSetUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#AbortMultipartReadSetUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#AbortMultipartReadSetUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AbortMultipartReadSetUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Accelerators": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#AcceptShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#AcceptShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#AcceptShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AcceptShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AccessLogLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ActivateReadSetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ActivateReadSetJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ActivateReadSetJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ActivateReadSetSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ActivateReadSetSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ActivationJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#AnnotationFieldMap": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#AnnotationImportItemDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AnnotationImportItemDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AnnotationImportItemSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AnnotationImportItemSources": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AnnotationImportJob": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#AnnotationImportJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AnnotationImportJobItems": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AnnotationStore": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#AnnotationStoreItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AnnotationStoreItems": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AnnotationStoreVersion": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#AnnotationStoreVersionItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#AnnotationStoreVersionItems": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AnnotationType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#AwsAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#BatchDeleteReadSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#BatchDeleteReadSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#BatchDeleteReadSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#BatchDeleteReadSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CacheBehavior": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#CancelAnnotationImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CancelAnnotationImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CancelAnnotationImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CancelAnnotationImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CancelRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CancelRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CancelRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CancelVariantImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CancelVariantImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CancelVariantImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CancelVariantImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#CommentChar": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#CompleteMultipartReadSetUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CompleteMultipartReadSetUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CompleteMultipartReadSetUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CompleteMultipartReadSetUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CompleteReadSetUploadPartList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#CompleteReadSetUploadPartListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CompletionTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateAnnotationStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateAnnotationStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateAnnotationStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateAnnotationStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateAnnotationStoreVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateAnnotationStoreVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateAnnotationStoreVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateAnnotationStoreVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateMultipartReadSetUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateMultipartReadSetUploadRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateMultipartReadSetUploadRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateMultipartReadSetUploadResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateReferenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateReferenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateReferenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateReferenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateRunCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateRunCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateRunCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateRunCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateRunGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateRunGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateRunGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateRunGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateSequenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateSequenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateSequenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateSequenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateVariantStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateVariantStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateVariantStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateVariantStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateWorkflowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#CreateWorkflowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#CreateWorkflowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreateWorkflowVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#CreationJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#CreationTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#CreationType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#DeleteAnnotationStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteAnnotationStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteAnnotationStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteAnnotationStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteAnnotationStoreVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteAnnotationStoreVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteAnnotationStoreVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteAnnotationStoreVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteReference": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteReferenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteReferenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteReferenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteReferenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteReferenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteReferenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteReferenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteRunCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteRunCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteRunCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteRunGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteRunGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteRunGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteS3AccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteS3AccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteS3AccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteS3AccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteSequenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteSequenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteSequenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteSequenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteVariantStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteVariantStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteVariantStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteVariantStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#DeleteWorkflowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#DeleteWorkflowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#DeleteWorkflowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ETag": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ETagAlgorithm": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ETagAlgorithmFamily": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Encoding": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#EncryptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#EngineLogStream": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#EngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#EscapeChar": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#EscapeQuotes": {
+      "type": "boolean"
+    },
+    "com.amazonaws.omics#ExportJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ExportReadSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ExportReadSetDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ExportReadSetDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ExportReadSetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ExportReadSetJobDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ExportReadSetJobDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ExportReadSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#FallbackLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#FileInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#FileType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#FormatOptions": {
+      "type": "union"
+    },
+    "com.amazonaws.omics#FormatToHeader": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#FormatToHeaderKey": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#GeneratedFrom": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#GetAnnotationImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetAnnotationImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetAnnotationImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetAnnotationImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetAnnotationStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetAnnotationStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetAnnotationStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetAnnotationStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetAnnotationStoreVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetAnnotationStoreVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetAnnotationStoreVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetAnnotationStoreVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReadSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RangeNotSatisfiableException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReadSetActivationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReadSetActivationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReadSetActivationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetActivationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReadSetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReadSetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReadSetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReadSetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReadSetMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReadSetMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReadSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReference": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReferenceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RangeNotSatisfiableException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReferenceImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReferenceImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReferenceImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReferenceMetadataRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReferenceMetadataRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceMetadataResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetReferenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetReferenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetReferenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetRunCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetRunCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetRunCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunCacheResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetRunGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetRunGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetRunTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetRunTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetRunTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetS3AccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetS3AccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetS3AccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetS3AccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetSequenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetSequenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetSequenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetSequenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetShare": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetShareRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetShareRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetShareResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetVariantImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetVariantImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetVariantImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetVariantImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetVariantStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetVariantStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetVariantStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetVariantStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetWorkflowResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetWorkflowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#GetWorkflowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#GetWorkflowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#GetWorkflowVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Header": {
+      "type": "boolean"
+    },
+    "com.amazonaws.omics#IdList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ImportJobId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ImportReadSetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReadSetJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReadSetJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ImportReadSetSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReadSetSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ImportReferenceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReferenceJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReferenceJobList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ImportReferenceSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ImportReferenceSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#JobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#JobStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#JobStatusMsg": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#LineSep": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ListAnnotationImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListAnnotationImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListAnnotationImportJobsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStoreVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListAnnotationStoreVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListAnnotationStoreVersionsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStoreVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStoreVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListAnnotationStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListAnnotationStoresFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListAnnotationStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListMultipartReadSetUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListMultipartReadSetUploadsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListMultipartReadSetUploadsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListMultipartReadSetUploadsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetActivationJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReadSetActivationJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReadSetActivationJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetActivationJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReadSetExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReadSetExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReadSetImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReadSetImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetUploadParts": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReadSetUploadPartsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReadSetUploadPartsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetUploadPartsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReadSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReadSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReadSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferenceImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReferenceImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReferenceImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferenceImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferenceStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReferenceStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReferenceStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferenceStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListReferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListReferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListReferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunCaches": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListRunCachesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListRunCachesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunCachesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListRunGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListRunGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListRunTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListRunTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRuns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListRunsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListRunsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListRunsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListSequenceStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListSequenceStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListSequenceStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListSequenceStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListShares": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListSharesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListSharesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListSharesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ListVariantImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListVariantImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListVariantImportJobsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListVariantImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListVariantImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListVariantStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListVariantStoresRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListVariantStoresFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListVariantStoresRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListVariantStoresResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListWorkflowVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListWorkflowVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListWorkflowVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListWorkflowVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListWorkflows": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#ListWorkflowsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#ListWorkflowsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ListWorkflowsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Md5": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#MultipartReadSetUploadList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#MultipartReadSetUploadListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#NotSupportedOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#NumericIdInArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Omics": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Omics"
+        }
+      }
+    },
+    "com.amazonaws.omics#PropagatedSetLevelTags": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#PutS3AccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#PutS3AccessPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#PutS3AccessPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#PutS3AccessPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Quote": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#QuoteAll": {
+      "type": "boolean"
+    },
+    "com.amazonaws.omics#Range": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RangeNotSatisfiableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetActivationJobItemStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetActivationJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetBatchError": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetBatchErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReadSetDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetExportJobItemStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetExportJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetFile": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetFiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReadSetImportJobItemStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetImportJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReadSetListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetPartSource": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetPartStreamingBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.omics#ReadSetResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#ReadSetS3Access": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReadSetStreamingBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.omics#ReadSetUploadPartList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReadSetUploadPartListFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReadSetUploadPartListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceArnFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceCreationType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceFile": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceFiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceImportJobItemStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceImportJobStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceItem": {
+      "type": "union"
+    },
+    "com.amazonaws.omics#ReferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReferenceListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#ReferenceStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceStoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceStoreDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceStoreDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceStoreDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ReferenceStoreFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ReferenceStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceStoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ReferenceStoreResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#ReferenceStreamingBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.omics#RequestTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ResourceOwner": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunCacheArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunCacheId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunCacheList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#RunCacheListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#RunCacheRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunCacheResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#RunCacheStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunCacheTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#RunExport": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunExportList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#RunFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#RunGroupListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#RunGroupListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunGroupResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#RunGroupTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#RunId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunLeftNormalization": {
+      "type": "boolean"
+    },
+    "com.amazonaws.omics#RunList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#RunListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#RunListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunLogLevel": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunLogLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#RunLogStream": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunOutputUri": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunParameters": {
+      "type": "document"
+    },
+    "com.amazonaws.omics#RunRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#RunResourceDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunResourceDigestKey": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunResourceDigests": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#RunRetentionMode": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunStartedBy": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#RunTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#RunUuid": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#S3AccessConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#S3AccessPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#S3AccessPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#S3Destination": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#S3Uri": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#S3UriForBucketOrObject": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SampleId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Schema": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#SchemaItem": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#SchemaValueType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#Separator": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#SequenceStoreArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceStoreDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceStoreDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#SequenceStoreDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#SequenceStoreFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#SequenceStoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceStoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceStoreResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#SequenceStoreS3Access": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#SequenceStoreStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SequenceStoreStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#Share": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#ShareDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#ShareDetailsList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#ShareName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ShareResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ShareStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#SourceFiles": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#SseConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartAnnotationImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartAnnotationImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartAnnotationImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartAnnotationImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetActivationJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartReadSetActivationJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartReadSetActivationJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetActivationJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetActivationJobSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetActivationJobSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#StartReadSetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartReadSetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartReadSetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartReadSetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartReadSetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetImportJobSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReadSetImportJobSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#StartReferenceImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartReferenceImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartReferenceImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReferenceImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReferenceImportJobSourceItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartReferenceImportJobSourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#StartRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartRunRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartRunRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartRunResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartVariantImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#StartVariantImportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#StartVariantImportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StartVariantImportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#StatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StorageType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StoreFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StoreId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StoreName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StoreOptions": {
+      "type": "union"
+    },
+    "com.amazonaws.omics#StoreStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#StoreType": {
+      "type": "enum"
+    },
+    "com.amazonaws.omics#SubjectId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TagArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#TagMap": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaggingResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#TaskFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskInstanceType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#TaskListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TaskListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskLogStream": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#TaskStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#TaskTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TsvOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TsvStoreOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TsvVersionOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#TypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateAnnotationStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateAnnotationStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateAnnotationStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateAnnotationStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateAnnotationStoreVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateAnnotationStoreVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateAnnotationStoreVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateAnnotationStoreVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateRunCache": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateRunCacheRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateRunCacheRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateRunGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateRunGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateRunGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateSequenceStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateSequenceStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateSequenceStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateSequenceStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#UpdateVariantStore": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateVariantStoreRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateVariantStoreRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateVariantStoreResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateWorkflow": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateWorkflowRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateWorkflowRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UpdateWorkflowVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UpdateWorkflowVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UpdateWorkflowVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UploadId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#UploadReadSetPart": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.omics#UploadReadSetPartRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.omics#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.omics#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.omics#NotSupportedOperationException"
+        },
+        {
+          "target": "com.amazonaws.omics#RequestTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.omics#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.omics#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.omics#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.omics#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.omics#UploadReadSetPartRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UploadReadSetPartResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#UserCustomDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#UserCustomName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VariantImportItemDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VariantImportItemDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VariantImportItemSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VariantImportItemSources": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VariantImportJob": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#VariantImportJobItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VariantImportJobItems": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VariantStore": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#VariantStoreItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VariantStoreItems": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VcfOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VersionDeleteError": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#VersionDeleteErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#VersionName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#VersionOptions": {
+      "type": "union"
+    },
+    "com.amazonaws.omics#VersionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowBucketOwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowDefinition": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowDigest": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowEngine": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowExport": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowExportList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#WorkflowId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#WorkflowListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#WorkflowListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowMain": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowMetadata": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#WorkflowMetadataKey": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowMetadataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowOwnerId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#WorkflowParameterDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowParameterTemplate": {
+      "type": "map"
+    },
+    "com.amazonaws.omics#WorkflowRequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#WorkflowStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.omics#WorkflowType": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowUuid": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowVersion": {
+      "type": "resource"
+    },
+    "com.amazonaws.omics#WorkflowVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowVersionDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.omics#WorkflowVersionListItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.omics#WorkflowVersionListToken": {
+      "type": "string"
+    },
+    "com.amazonaws.omics#WorkflowVersionName": {
+      "type": "string"
+    }
+  }
+}

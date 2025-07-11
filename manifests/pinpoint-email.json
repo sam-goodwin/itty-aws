@@ -1,0 +1,1425 @@
+{
+  "shapes": {
+    "com.amazonaws.pinpointemail#AccountSuspendedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#AmazonPinpointEmailService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Pinpoint Email"
+        }
+      }
+    },
+    "com.amazonaws.pinpointemail#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#BehaviorOnMxFailure": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#BlacklistEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#BlacklistEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#BlacklistItemName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#BlacklistItemNames": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#BlacklistReport": {
+      "type": "map"
+    },
+    "com.amazonaws.pinpointemail#BlacklistingDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Body": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CampaignId": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Charset": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#CloudWatchDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CloudWatchDimensionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CloudWatchDimensionConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ConfigurationSetName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#ConfigurationSetNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#Content": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#CreateConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#CreateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateDedicatedIpPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#CreateDedicatedIpPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#CreateDedicatedIpPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateDedicatedIpPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateDeliverabilityTestReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#CreateDeliverabilityTestReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#CreateDeliverabilityTestReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateDeliverabilityTestReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#CreateEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#CreateEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CreateEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#CustomRedirectDomain": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DailyVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DailyVolumes": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#DedicatedIp": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DedicatedIpList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#DefaultDimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#DeleteConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#DeleteConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteDedicatedIpPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#DeleteDedicatedIpPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#DeleteDedicatedIpPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteDedicatedIpPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#DeleteEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#DeleteEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeleteEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeliverabilityDashboardAccountStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#DeliverabilityTestReport": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DeliverabilityTestReports": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#DeliverabilityTestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#DeliverabilityTestSubject": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DeliveryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DimensionValueSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#DkimAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DkimStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#DnsToken": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DnsTokenList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#Domain": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#DomainDeliverabilityCampaign": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DomainDeliverabilityCampaignList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#DomainDeliverabilityTrackingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DomainDeliverabilityTrackingOptions": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#DomainIspPlacement": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#DomainIspPlacements": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#EmailAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#EmailAddressList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#EmailContent": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Enabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.pinpointemail#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Esp": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Esps": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#EventDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#EventDestinationDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#EventDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#EventDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#EventTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#GeneralEnforcementStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#GetAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetBlacklistReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetBlacklistReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetBlacklistReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetBlacklistReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetConfigurationSetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSetEventDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetConfigurationSetEventDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSetEventDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSetEventDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetConfigurationSetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIp": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDedicatedIpRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIpRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIpResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIps": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDedicatedIpsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIpsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDedicatedIpsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityDashboardOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDeliverabilityDashboardOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityDashboardOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityDashboardOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityTestReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDeliverabilityTestReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityTestReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDeliverabilityTestReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDomainDeliverabilityCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDomainDeliverabilityCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDomainDeliverabilityCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDomainDeliverabilityCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDomainStatisticsReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetDomainStatisticsReportRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetDomainStatisticsReportRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetDomainStatisticsReportResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetEmailIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#GetEmailIdentityRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#GetEmailIdentityRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#GetEmailIdentityResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Identity": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#IdentityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#IdentityInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#IdentityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#ImageUrl": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#InboxPlacementTrackingOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Ip": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#IpList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#IspName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#IspNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#IspPlacement": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#IspPlacements": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#KinesisFirehoseDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#LastFreshStart": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.pinpointemail#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListConfigurationSets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListConfigurationSetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListConfigurationSetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListConfigurationSetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDedicatedIpPools": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListDedicatedIpPoolsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListDedicatedIpPoolsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDedicatedIpPoolsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDeliverabilityTestReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListDeliverabilityTestReportsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListDeliverabilityTestReportsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDeliverabilityTestReportsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDomainDeliverabilityCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListDomainDeliverabilityCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListDomainDeliverabilityCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListDomainDeliverabilityCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListEmailIdentities": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListEmailIdentitiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListEmailIdentitiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListEmailIdentitiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListOfDedicatedIpPools": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MailFromAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MailFromDomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#MailFromDomainNotVerifiedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MailFromDomainStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#Max24HourSend": {
+      "type": "double"
+    },
+    "com.amazonaws.pinpointemail#MaxItems": {
+      "type": "integer"
+    },
+    "com.amazonaws.pinpointemail#MaxSendRate": {
+      "type": "double"
+    },
+    "com.amazonaws.pinpointemail#Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MessageContent": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#MessageData": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#MessageRejected": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MessageTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#MessageTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#MessageTagName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#MessageTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#OutboundMessageId": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#OverallVolume": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Percentage": {
+      "type": "double"
+    },
+    "com.amazonaws.pinpointemail#Percentage100Wrapper": {
+      "type": "integer"
+    },
+    "com.amazonaws.pinpointemail#PinpointDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PlacementStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PoolName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#PutAccountDedicatedIpWarmupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutAccountDedicatedIpWarmupAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutAccountDedicatedIpWarmupAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutAccountDedicatedIpWarmupAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutAccountSendingAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutAccountSendingAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutAccountSendingAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutAccountSendingAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetDeliveryOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutConfigurationSetDeliveryOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetDeliveryOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetDeliveryOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetReputationOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutConfigurationSetReputationOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetReputationOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetReputationOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetSendingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutConfigurationSetSendingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetSendingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetSendingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetTrackingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutConfigurationSetTrackingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetTrackingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutConfigurationSetTrackingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpInPool": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutDedicatedIpInPoolRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpInPoolRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpInPoolResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpWarmupAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutDedicatedIpWarmupAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpWarmupAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDedicatedIpWarmupAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDeliverabilityDashboardOption": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutDeliverabilityDashboardOptionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutDeliverabilityDashboardOptionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutDeliverabilityDashboardOptionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityDkimAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutEmailIdentityDkimAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityDkimAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityDkimAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityFeedbackAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutEmailIdentityFeedbackAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityFeedbackAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityFeedbackAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityMailFromAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#PutEmailIdentityMailFromAttributesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityMailFromAttributesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#PutEmailIdentityMailFromAttributesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#RawMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#RawMessageData": {
+      "type": "blob"
+    },
+    "com.amazonaws.pinpointemail#RblName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#ReportId": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#ReportName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#ReputationOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendEmail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#SendEmailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#AccountSuspendedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#MailFromDomainNotVerifiedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#MessageRejected"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#SendingPausedException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#SendEmailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendEmailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendingPausedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#SendingPoolName": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#SentLast24Hours": {
+      "type": "double"
+    },
+    "com.amazonaws.pinpointemail#SnsDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Subject": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.pinpointemail#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Template": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#TemplateArn": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#TemplateData": {
+      "type": "string"
+    },
+    "com.amazonaws.pinpointemail#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.pinpointemail#TlsPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.pinpointemail#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#TrackingOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#UpdateConfigurationSetEventDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.pinpointemail#UpdateConfigurationSetEventDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.pinpointemail#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.pinpointemail#UpdateConfigurationSetEventDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#UpdateConfigurationSetEventDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#Volume": {
+      "type": "long"
+    },
+    "com.amazonaws.pinpointemail#VolumeStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.pinpointemail#WarmupStatus": {
+      "type": "enum"
+    }
+  }
+}

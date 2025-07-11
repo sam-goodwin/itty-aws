@@ -1,0 +1,1019 @@
+{
+  "shapes": {
+    "com.amazonaws.lookoutvision#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#Anomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#AnomalyClassFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#AnomalyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#AnomalyMask": {
+      "type": "blob"
+    },
+    "com.amazonaws.lookoutvision#AnomalyName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lookoutvision#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#Color": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#CompilerOptions": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ComponentDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ComponentName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ComponentVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ComponentVersionArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ContentType": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#CreateModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#CreateModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#CreateModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#CreateModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#CreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#CreateProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#CreateProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#CreateProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetChanges": {
+      "type": "blob"
+    },
+    "com.amazonaws.lookoutvision#DatasetDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetEntry": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#DatasetEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#DatasetGroundTruthManifest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetImageStats": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#DatasetSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DatasetStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#DatasetStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#DatasetType": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lookoutvision#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DeleteDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DeleteModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DeleteModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DeleteModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DeleteModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DeleteProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DeleteProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DeleteProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DescribeModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DescribeModelPackagingJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DescribeModelPackagingJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DescribeModelPackagingJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeModelPackagingJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DescribeProjectRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DescribeProjectRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DescribeProjectResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DetectAnomalies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#DetectAnomaliesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#DetectAnomaliesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DetectAnomaliesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#DetectAnomalyResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ExceptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#Float": {
+      "type": "float"
+    },
+    "com.amazonaws.lookoutvision#GreengrassConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#GreengrassOutputDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ImageSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ImageSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#InferenceUnits": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutvision#InputS3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutvision#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#IsLabeled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lookoutvision#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ListDatasetEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#ListDatasetEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#ListDatasetEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListDatasetEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListModelPackagingJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#ListModelPackagingJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#ListModelPackagingJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListModelPackagingJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#ListModelsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#ListModelsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListModelsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#ListProjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#ListProjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListProjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#LookoutVisionService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "LookoutVision"
+        }
+      }
+    },
+    "com.amazonaws.lookoutvision#ModelArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelDescriptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelHostingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#ModelMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingJobDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingJobMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingJobName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingJobStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingJobsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingMethod": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingOutputDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelPackagingStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelPerformance": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ModelStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#ModelStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ModelVersionNoLatest": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#OutputConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#OutputS3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutvision#PaginationToken": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#PixelAnomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ProjectArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ProjectDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ProjectMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ProjectMetadataList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.lookoutvision#S3BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#S3KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#S3Location": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#S3ObjectKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#S3ObjectVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StartModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#StartModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#StartModelPackagingJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#StartModelPackagingJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#StartModelPackagingJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StartModelPackagingJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StartModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StartModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StopModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#StopModelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#StopModelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#StopModelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#Stream": {
+      "type": "blob"
+    },
+    "com.amazonaws.lookoutvision#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#TagArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.lookoutvision#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lookoutvision#TargetDevice": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#TargetPlatform": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#TargetPlatformAccelerator": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#TargetPlatformArch": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#TargetPlatformOs": {
+      "type": "enum"
+    },
+    "com.amazonaws.lookoutvision#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#UpdateDatasetEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lookoutvision#UpdateDatasetEntriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lookoutvision#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.lookoutvision#UpdateDatasetEntriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#UpdateDatasetEntriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lookoutvision#ValidationException": {
+      "type": "structure"
+    }
+  }
+}

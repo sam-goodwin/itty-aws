@@ -1,0 +1,1317 @@
+{
+  "shapes": {
+    "com.amazonaws.swf#ActivityId": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#ActivityTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskCancelRequestedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskCanceledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskCompletedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskScheduledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskTimedOutEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTaskTimeoutType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ActivityType": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTypeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTypeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ActivityTypeInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#ActivityTypeInfos": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#CancelTimerDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CancelTimerFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#CancelTimerFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CancelWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CancelWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#CancelWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Canceled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.swf#CauseMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#ChildPolicy": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionCanceledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionCompletedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionTerminatedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ChildWorkflowExecutionTimedOutEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CloseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#CloseStatusFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CompleteWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CompleteWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#CompleteWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ContinueAsNewWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ContinueAsNewWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ContinueAsNewWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Count": {
+      "type": "integer"
+    },
+    "com.amazonaws.swf#CountClosedWorkflowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#CountClosedWorkflowExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#CountClosedWorkflowExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CountOpenWorkflowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#CountOpenWorkflowExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#CountOpenWorkflowExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CountPendingActivityTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#CountPendingActivityTasksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#CountPendingActivityTasksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#CountPendingDecisionTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#CountPendingDecisionTasksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#CountPendingDecisionTasksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Data": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#Decision": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#DecisionTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionTaskCompletedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionTaskScheduledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionTaskStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionTaskTimedOutEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DecisionTaskTimeoutType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#DecisionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#DefaultUndefinedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DeleteActivityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DeleteActivityTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeNotDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DeleteActivityTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DeleteWorkflowType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DeleteWorkflowTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeNotDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DeleteWorkflowTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DeprecateActivityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DeprecateActivityTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DeprecateActivityTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DeprecateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DeprecateDomainInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#DomainDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DeprecateDomainInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DeprecateWorkflowType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DeprecateWorkflowTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DeprecateWorkflowTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DescribeActivityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DescribeActivityTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DescribeActivityTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DescribeDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DescribeDomainInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DescribeDomainInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DescribeWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DescribeWorkflowExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DescribeWorkflowExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DescribeWorkflowType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#DescribeWorkflowTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#DescribeWorkflowTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#DomainAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainDeprecatedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#DomainInfos": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#DomainName": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#DurationInDays": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#DurationInSeconds": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#DurationInSecondsOptional": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#EventId": {
+      "type": "long"
+    },
+    "com.amazonaws.swf#EventType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ExecutionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ExecutionTimeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ExternalWorkflowExecutionCancelRequestedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ExternalWorkflowExecutionSignaledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#FailWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#FailWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#FailWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#FunctionId": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#FunctionInput": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#FunctionName": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#GetWorkflowExecutionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#GetWorkflowExecutionHistoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#GetWorkflowExecutionHistoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#History": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#HistoryEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#HistoryEventList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#Identity": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#LambdaFunctionCompletedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LambdaFunctionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LambdaFunctionScheduledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LambdaFunctionStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LambdaFunctionTimedOutEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LambdaFunctionTimeoutType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#LimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#LimitedData": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#ListActivityTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListActivityTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListActivityTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListClosedWorkflowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListClosedWorkflowExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListClosedWorkflowExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListDomainsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListDomainsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListOpenWorkflowExecutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListOpenWorkflowExecutionsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListOpenWorkflowExecutionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ListWorkflowTypes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#ListWorkflowTypesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#ListWorkflowTypesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#MarkerName": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#MarkerRecordedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#OpenDecisionTasksCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.swf#OperationNotPermittedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.swf#PageToken": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#PendingTaskCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#PollForActivityTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#PollForActivityTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#PollForActivityTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#PollForDecisionTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#PollForDecisionTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#PollForDecisionTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RecordActivityTaskHeartbeat": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RecordActivityTaskHeartbeatInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RecordActivityTaskHeartbeatInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RecordMarkerDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RecordMarkerFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#RecordMarkerFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RegisterActivityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RegisterActivityTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RegisterActivityTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RegisterDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RegisterDomainInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#DomainAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TooManyTagsFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RegisterDomainInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RegisterWorkflowType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RegisterWorkflowTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RegisterWorkflowTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RegistrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#RequestCancelActivityTaskDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RequestCancelActivityTaskFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#RequestCancelActivityTaskFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RequestCancelExternalWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RequestCancelExternalWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#RequestCancelExternalWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RequestCancelExternalWorkflowExecutionInitiatedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RequestCancelWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RequestCancelWorkflowExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RequestCancelWorkflowExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ResourceTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ResourceTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#ResourceTagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#ResourceTagList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#ResourceTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#RespondActivityTaskCanceled": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RespondActivityTaskCanceledInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RespondActivityTaskCanceledInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RespondActivityTaskCompleted": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RespondActivityTaskCompletedInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RespondActivityTaskCompletedInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RespondActivityTaskFailed": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RespondActivityTaskFailedInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RespondActivityTaskFailedInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#RespondDecisionTaskCompleted": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#RespondDecisionTaskCompletedInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#RespondDecisionTaskCompletedInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ReverseOrder": {
+      "type": "boolean"
+    },
+    "com.amazonaws.swf#Run": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ScheduleActivityTaskDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ScheduleActivityTaskFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ScheduleActivityTaskFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ScheduleLambdaFunctionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#ScheduleLambdaFunctionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#ScheduleLambdaFunctionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#SignalExternalWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#SignalExternalWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#SignalExternalWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#SignalExternalWorkflowExecutionInitiatedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#SignalName": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#SignalWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#SignalWorkflowExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#SignalWorkflowExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#SimpleWorkflowService": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "SWF"
+        }
+      }
+    },
+    "com.amazonaws.swf#StartAtPreviousStartedEvent": {
+      "type": "boolean"
+    },
+    "com.amazonaws.swf#StartChildWorkflowExecutionDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartChildWorkflowExecutionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#StartChildWorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartChildWorkflowExecutionInitiatedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartLambdaFunctionFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#StartLambdaFunctionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartTimerDecisionAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartTimerFailedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#StartTimerFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#StartWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#StartWorkflowExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#DefaultUndefinedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeDeprecatedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        },
+        {
+          "target": "com.amazonaws.swf#WorkflowExecutionAlreadyStartedFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#StartWorkflowExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Tag": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#TagFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TooManyTagsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TaskList": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TaskPriority": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#TaskToken": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#TerminateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#TerminateWorkflowExecution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#TerminateWorkflowExecutionInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#TerminateWorkflowExecutionInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TimerCanceledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TimerFiredEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TimerId": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#TimerStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.swf#TooManyTagsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Truncated": {
+      "type": "boolean"
+    },
+    "com.amazonaws.swf#TypeAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TypeDeprecatedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#TypeNotDeprecatedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#UndeprecateActivityType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#UndeprecateActivityTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#UndeprecateActivityTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#UndeprecateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#UndeprecateDomainInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#DomainAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#UndeprecateDomainInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#UndeprecateWorkflowType": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#UndeprecateWorkflowTypeInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#TypeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#UndeprecateWorkflowTypeInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#UnknownResourceFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.swf#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.swf#LimitExceededFault"
+        },
+        {
+          "target": "com.amazonaws.swf#OperationNotPermittedFault"
+        },
+        {
+          "target": "com.amazonaws.swf#UnknownResourceFault"
+        }
+      ]
+    },
+    "com.amazonaws.swf#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#Version": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#VersionOptional": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#WorkflowExecution": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionAlreadyStartedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionCancelRequestedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#WorkflowExecutionCancelRequestedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionCanceledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionCompletedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionContinuedAsNewEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionCount": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionFailedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#WorkflowExecutionInfos": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionOpenCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionSignaledEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionStartedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionTerminatedCause": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#WorkflowExecutionTerminatedEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionTimedOutEventAttributes": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowExecutionTimeoutType": {
+      "type": "enum"
+    },
+    "com.amazonaws.swf#WorkflowId": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#WorkflowRunId": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#WorkflowRunIdOptional": {
+      "type": "string"
+    },
+    "com.amazonaws.swf#WorkflowType": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowTypeConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowTypeDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowTypeFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowTypeInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.swf#WorkflowTypeInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.swf#WorkflowTypeInfos": {
+      "type": "structure"
+    }
+  }
+}

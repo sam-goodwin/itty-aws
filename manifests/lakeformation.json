@@ -1,0 +1,2328 @@
+{
+  "shapes": {
+    "com.amazonaws.lakeformation#AWSLakeFormation": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "LakeFormation"
+        }
+      }
+    },
+    "com.amazonaws.lakeformation#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AccessKeyIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#AddLFTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#AddLFTagsToResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#AddLFTagsToResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AddLFTagsToResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AddObjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AdditionalContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lakeformation#AllRowsWildcard": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ApplicationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#AssumeDecoratedRoleWithSAML": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#AssumeDecoratedRoleWithSAMLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#AssumeDecoratedRoleWithSAMLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AssumeDecoratedRoleWithSAMLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AuditContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#AuditContextString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#AuthorizedSessionTagValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#BatchGrantPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#BatchGrantPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#BatchGrantPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#BatchGrantPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#BatchPermissionsFailureEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#BatchPermissionsFailureList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#BatchPermissionsRequestEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#BatchPermissionsRequestEntryList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#BatchRevokePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#BatchRevokePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#BatchRevokePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#BatchRevokePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lakeformation#BooleanNullable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lakeformation#CancelTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CancelTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommitInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommittedException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CancelTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CancelTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CatalogIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#CatalogResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ColumnLFTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ColumnLFTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#ColumnNames": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#ColumnWildcard": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CommitTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CommitTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCanceledException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CommitTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CommitTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#Condition": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ContextKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ContextValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#CreateDataCellsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CreateDataCellsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CreateDataCellsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateDataCellsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLFTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CreateLFTagRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CreateLFTagExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CreateLFTagExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CreateLFTagExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLFTagExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLFTagRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLFTagResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationIdentityCenterConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CreateLakeFormationIdentityCenterConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationIdentityCenterConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationIdentityCenterConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationOptIn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#CreateLakeFormationOptInRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationOptInRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CreateLakeFormationOptInResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#CredentialTimeoutDurationSecondInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.lakeformation#DataCellsFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DataCellsFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#DataCellsFilterResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DataLakePrincipal": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DataLakePrincipalList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#DataLakePrincipalString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#DataLakeResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#DataLakeSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DataLocationResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DatabaseLFTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#DatabaseResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DateTime": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lakeformation#DeleteDataCellsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteDataCellsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteDataCellsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteDataCellsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLFTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteLFTagRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteLFTagExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteLFTagExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteLFTagExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLFTagExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLFTagRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLFTagResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationIdentityCenterConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteLakeFormationIdentityCenterConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationIdentityCenterConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationIdentityCenterConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationOptIn": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteLakeFormationOptInRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationOptInRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteLakeFormationOptInResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteObjectInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteObjectsOnCancel": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeleteObjectsOnCancelRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommittedException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeleteObjectsOnCancelRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeleteObjectsOnCancelResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeregisterResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DeregisterResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DeregisterResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DeregisterResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeLakeFormationIdentityCenterConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DescribeLakeFormationIdentityCenterConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DescribeLakeFormationIdentityCenterConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeLakeFormationIdentityCenterConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DescribeResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DescribeResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#DescribeTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#DescribeTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescribeTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#DescriptionString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#DetailsMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ETagString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#EnableStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#EntityNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ErrorDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ErrorMessageString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ExecutionStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ExpirationTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lakeformation#ExpiredException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#Expression": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#ExpressionString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ExtendTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ExtendTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommitInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommittedException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ExtendTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ExtendTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ExternalFilteringConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#FieldNameString": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#FilterCondition": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#FilterConditionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#GetDataCellsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetDataCellsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetDataCellsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetDataCellsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetDataLakePrincipal": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetDataLakePrincipalRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetDataLakePrincipalRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetDataLakePrincipalResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetDataLakeSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetDataLakeSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetDataLakeSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetDataLakeSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetEffectivePermissionsForPath": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetEffectivePermissionsForPathRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetEffectivePermissionsForPathRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetEffectivePermissionsForPathResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetLFTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetLFTagRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetLFTagExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetLFTagExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetLFTagExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetLFTagExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetLFTagRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetLFTagResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetQueryState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetQueryStateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetQueryStateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetQueryStateRequestQueryIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#GetQueryStateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetQueryStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetQueryStatisticsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ExpiredException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#StatisticsNotReadyYetException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetQueryStatisticsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetQueryStatisticsRequestQueryIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#GetQueryStatisticsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetResourceLFTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetResourceLFTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GlueEncryptionException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetResourceLFTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetResourceLFTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTableObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetTableObjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommittedException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetTableObjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTableObjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGluePartitionCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetTemporaryGluePartitionCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#PermissionTypeMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGluePartitionCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGluePartitionCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGlueTableCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetTemporaryGlueTableCredentialsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#PermissionTypeMismatchException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGlueTableCredentialsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetTemporaryGlueTableCredentialsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetWorkUnitResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ExpiredException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitResultsRequestQueryIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitResultsRequestWorkUnitIdLong": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnits": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GetWorkUnitsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ExpiredException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#WorkUnitsNotReadyYetException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitsRequestQueryIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#GetWorkUnitsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GlueEncryptionException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GrantPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#GrantPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#GrantPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#GrantPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#HashString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#IAMSAMLProviderArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#Identifier": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#IdentityCenterInstanceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#IdentityString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#InternalServiceException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#KeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#LFTag": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagError": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#LFTagExpression": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagExpressionResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagExpressionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#LFTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#LFTagKeyResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagPair": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagPolicyResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LFTagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#LFTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#LakeFormationOptInsInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#LakeFormationOptInsInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#LastModifiedTimestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lakeformation#ListDataCellsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListDataCellsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListDataCellsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListDataCellsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLFTagExpressions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListLFTagExpressionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListLFTagExpressionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLFTagExpressionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLFTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListLFTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListLFTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLFTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLakeFormationOptIns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListLakeFormationOptInsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListLakeFormationOptInsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListLakeFormationOptInsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListPermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListPermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListPermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListResourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListResourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListResourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListTableStorageOptimizers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListTableStorageOptimizersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListTableStorageOptimizersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListTableStorageOptimizersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListTransactions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#ListTransactionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#ListTransactionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ListTransactionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#MessageString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#NameString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#NullableBoolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.lakeformation#NullableString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#NumberOfBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#NumberOfItems": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#NumberOfMilliseconds": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#ObjectSize": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#OperationTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#OptimizerType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#PageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lakeformation#ParametersMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lakeformation#ParametersMapValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#PartitionObjects": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PartitionValueList": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PartitionValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#PartitionValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PartitionedTableObjectsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PathString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#PathStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#Permission": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#PermissionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PermissionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#PermissionTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PermissionTypeMismatchException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PlanningStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PredicateString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#PrincipalPermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PrincipalPermissionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PrincipalResourcePermissions": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PrincipalResourcePermissionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#PutDataLakeSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#PutDataLakeSettingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#PutDataLakeSettingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#PutDataLakeSettingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#QueryIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#QueryParameterMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lakeformation#QueryPlanningContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#QueryPlanningContextDatabaseNameString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#QuerySessionContext": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#QueryStateString": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#RAMResourceShareArn": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#RegisterResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#RegisterResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#AlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#RegisterResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#RegisterResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#RemoveLFTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#RemoveLFTagsFromResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GlueEncryptionException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#RemoveLFTagsFromResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#RemoveLFTagsFromResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#Resource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ResourceArnString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ResourceInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ResourceInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#ResourceNotReadyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ResourceNumberLimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ResourceShareList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#ResourceShareType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#ResourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#Result": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ResultStream": {
+      "type": "blob"
+    },
+    "com.amazonaws.lakeformation#RevokePermissions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#RevokePermissionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#RevokePermissionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#RevokePermissionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#RowFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#SAMLAssertionString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ScopeTarget": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ScopeTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#SearchDatabasesByLFTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#SearchDatabasesByLFTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GlueEncryptionException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#SearchDatabasesByLFTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#SearchDatabasesByLFTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#SearchPageSize": {
+      "type": "integer"
+    },
+    "com.amazonaws.lakeformation#SearchTablesByLFTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#SearchTablesByLFTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GlueEncryptionException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#SearchTablesByLFTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#SearchTablesByLFTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#SecretAccessKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#SessionTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#StartQueryPlanning": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#StartQueryPlanningRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ThrottledException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#StartQueryPlanningRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StartQueryPlanningResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StartTransaction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#StartTransactionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#StartTransactionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StartTransactionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StatisticsNotReadyYetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizer": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizerConfig": {
+      "type": "map"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizerConfigKey": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizerConfigMap": {
+      "type": "map"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizerConfigValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#StorageOptimizerList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#StringValue": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#StringValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#SyntheticGetWorkUnitResultsRequestWorkUnitTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#SyntheticStartQueryPlanningRequestQueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#TableLFTagsList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#TableObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TableObjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#TableResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TableWildcard": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TableWithColumnsResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TagValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#TaggedDatabase": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TaggedTable": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ThrottledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.lakeformation#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#TokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#TransactionCanceledException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TransactionCommitInProgressException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TransactionCommittedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TransactionDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#TransactionDescriptionList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#TransactionIdString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#TransactionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#TransactionStatusFilter": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#TransactionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.lakeformation#TrueFalseString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#TrustedResourceOwners": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#URI": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#UpdateDataCellsFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateDataCellsFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateDataCellsFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateDataCellsFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLFTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateLFTagRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateLFTagExpression": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateLFTagExpressionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNumberLimitExceededException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateLFTagExpressionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLFTagExpressionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLFTagRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLFTagResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLakeFormationIdentityCenterConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateLakeFormationIdentityCenterConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateLakeFormationIdentityCenterConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateLakeFormationIdentityCenterConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateTableObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateTableObjectsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#OperationTimeoutException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ResourceNotReadyException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCanceledException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommitInProgressException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#TransactionCommittedException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateTableObjectsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateTableObjectsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateTableStorageOptimizer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.lakeformation#UpdateTableStorageOptimizerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.lakeformation#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#EntityNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InternalServiceException"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#InvalidInputException"
+        }
+      ]
+    },
+    "com.amazonaws.lakeformation#UpdateTableStorageOptimizerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#UpdateTableStorageOptimizerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#ValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#ValueStringList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#VersionString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#VirtualObject": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#VirtualObjectList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#WorkUnitIdLong": {
+      "type": "long"
+    },
+    "com.amazonaws.lakeformation#WorkUnitRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#WorkUnitRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.lakeformation#WorkUnitTokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.lakeformation#WorkUnitsNotReadyYetException": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#WriteOperation": {
+      "type": "structure"
+    },
+    "com.amazonaws.lakeformation#WriteOperationList": {
+      "type": "list"
+    }
+  }
+}

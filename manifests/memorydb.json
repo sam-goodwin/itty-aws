@@ -1,0 +1,1838 @@
+{
+  "shapes": {
+    "com.amazonaws.memorydb#ACL": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ACLAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ACLClusterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ACLList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ACLName": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#ACLNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ACLNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ACLPendingChanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ACLQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ACLsUpdateStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#APICallRateForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#AZStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#AccessString": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#AmazonMemoryDB": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MemoryDB"
+        }
+      }
+    },
+    "com.amazonaws.memorydb#Authentication": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#AuthenticationMode": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#AuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#AwsQueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#BatchUpdateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#BatchUpdateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceUpdateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#BatchUpdateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#BatchUpdateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.memorydb#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.memorydb#Cluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ClusterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ClusterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ClusterPendingUpdates": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ClusterQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CopySnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CopySnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CopySnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CopySnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ACLQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DefaultUserRequired"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InsufficientClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidACLStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidCredentialsException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidMultiRegionClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ShardsPerClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateMultiRegionCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateMultiRegionClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateMultiRegionClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateMultiRegionClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetNotAllowedFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#CreateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#CreateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#CreateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DataTieringStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#DefaultUserRequired": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidACLStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotAlreadyExistsFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteMultiRegionCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteMultiRegionClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidMultiRegionClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteMultiRegionClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteMultiRegionClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteSnapshotRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteSnapshotRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteSnapshotResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupInUseFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DeleteUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidUserStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DeleteUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DeleteUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeACLs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeACLsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeACLsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeACLsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeEngineVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeEngineVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeEngineVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeMultiRegionClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeMultiRegionClustersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeMultiRegionClustersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeMultiRegionClustersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeParameterGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeParameterGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeParameterGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeParametersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeParametersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeParametersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeReservedNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ReservedNodeNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodesOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeReservedNodesOfferingsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ReservedNodesOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodesOfferingsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodesOfferingsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeReservedNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeServiceUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeServiceUpdatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeServiceUpdatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeServiceUpdatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeSnapshotsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeSnapshotsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeSnapshotsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeSubnetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeSubnetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeSubnetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#DescribeUsersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#DescribeUsersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#DescribeUsersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.memorydb#DuplicateUserNameFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#EngineVersionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#EngineVersionInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#FailoverShard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#FailoverShardRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#APICallRateForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ShardNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TestFailoverNotAvailableFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#FailoverShardRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#FailoverShardResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#FilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#InputAuthenticationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#InsufficientClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.memorydb#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.memorydb#InvalidACLStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidARNFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidCredentialsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidKMSKeyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidMultiRegionClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidNodeStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidUserStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#IpDiscovery": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#ListAllowedMultiRegionClusterUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#ListAllowedMultiRegionClusterUpdatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#ListAllowedMultiRegionClusterUpdatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ListAllowedMultiRegionClusterUpdatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ListAllowedNodeTypeUpdates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#ListAllowedNodeTypeUpdatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#ListAllowedNodeTypeUpdatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ListAllowedNodeTypeUpdatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#ListTagsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#ListTagsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ListTagsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#MultiRegionCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#MultiRegionClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#MultiRegionClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#NetworkType": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#NetworkTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#NoOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Node": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#NodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#NodeQuotaForClusterExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#NodeQuotaForCustomerExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#NodeTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ParameterNameValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ParameterNameValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#PasswordListInput": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#PendingModifiedServiceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#PendingModifiedServiceUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#PurchaseReservedNodesOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#PurchaseReservedNodesOfferingRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ReservedNodeAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ReservedNodeQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ReservedNodesOfferingNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#PurchaseReservedNodesOfferingRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#PurchaseReservedNodesOfferingResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#RegionalCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#RegionalClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ReplicaConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNode": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNodeAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ReservedNodeNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNodeQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNodesOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReservedNodesOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ReservedNodesOfferingNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ResetParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#ResetParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#ResetParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ResetParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ReshardingStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SecurityGroupIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ServiceUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ServiceUpdateType": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#Shard": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ShardConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ShardConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ShardDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ShardDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ShardList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#ShardNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#ShardsPerClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SlotMigration": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#Snapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SnapshotArnsList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#String": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetGroupInUseFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SubnetInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#SubnetNotAllowedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#SubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.memorydb#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#TagNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TagQuotaPerResourceExceeded": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagQuotaPerResourceExceeded"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#TargetBucket": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#TestFailoverNotAvailableFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UnprocessedCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UnprocessedClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidARNFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateACL": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateACLRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DefaultUserRequired"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DuplicateUserNameFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidACLStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateACLRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateACLResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#ACLNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ClusterQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidACLStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidKMSKeyFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidNodeStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#NodeQuotaForClusterExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#NodeQuotaForCustomerExceededFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#NoOperationFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ShardsPerClusterQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateMultiRegionCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateMultiRegionClusterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidMultiRegionClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#MultiRegionParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateMultiRegionClusterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateMultiRegionClusterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateParameterGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateParameterGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateParameterGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateStrategy": {
+      "type": "enum"
+    },
+    "com.amazonaws.memorydb#UpdateSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateSubnetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ServiceLinkedRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetInUse"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetNotAllowedFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#SubnetQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateSubnetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateSubnetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.memorydb#UpdateUserRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.memorydb#InvalidUserStateFault"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UserNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.memorydb#UpdateUserRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UpdateUserResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#User": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UserAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UserList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#UserName": {
+      "type": "string"
+    },
+    "com.amazonaws.memorydb#UserNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#UserNameListInput": {
+      "type": "list"
+    },
+    "com.amazonaws.memorydb#UserNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.memorydb#UserQuotaExceededFault": {
+      "type": "structure"
+    }
+  }
+}

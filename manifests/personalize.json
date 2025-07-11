@@ -1,0 +1,2170 @@
+{
+  "shapes": {
+    "com.amazonaws.personalize#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#Algorithm": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#AlgorithmImage": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#AmazonPersonalize": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Personalize"
+        }
+      }
+    },
+    "com.amazonaws.personalize#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#ArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#AutoMLConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#AutoMLResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#AutoTrainingConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#AvroSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#BatchInferenceJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchInferenceJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#BatchSegmentJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchSegmentJobInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchSegmentJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchSegmentJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#BatchSegmentJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.personalize#Campaign": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CampaignConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CampaignSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CampaignUpdateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Campaigns": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#CategoricalHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CategoricalHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#CategoricalValue": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#CategoricalValues": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#ColumnName": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#ColumnNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#ContinuousHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ContinuousHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#ContinuousMaxValue": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#ContinuousMinValue": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#CreateBatchInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateBatchInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateBatchInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateBatchInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateBatchSegmentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateBatchSegmentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateBatchSegmentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateBatchSegmentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDataDeletionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateDataDeletionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateDataDeletionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDataDeletionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateDatasetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateDatasetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateDatasetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateDatasetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateDatasetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateEventTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateEventTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateEventTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateEventTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateMetricAttribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateMetricAttributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateMetricAttributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateMetricAttributionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateRecommenderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSolution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateSolutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateSolutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSolutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSolutionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#CreateSolutionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#CreateSolutionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#CreateSolutionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DataDeletionJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DataDeletionJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DataDeletionJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Dataset": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetExportJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetExportJobOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetExportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetExportJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DatasetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DatasetImportJob": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetImportJobSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetImportJobs": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DatasetSchema": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetSchemaSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DatasetType": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#DatasetUpdateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Datasets": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#Date": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.personalize#DefaultCategoricalHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DefaultCategoricalHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DefaultContinuousHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DefaultContinuousHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DefaultHyperParameterRanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DefaultIntegerHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DefaultIntegerHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#DeleteCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteEventTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteEventTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteEventTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteMetricAttribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteMetricAttributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteMetricAttributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DeleteSolution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DeleteSolutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DeleteSolutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeAlgorithm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeAlgorithmRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeAlgorithmRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeAlgorithmResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeBatchInferenceJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeBatchInferenceJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeBatchInferenceJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeBatchInferenceJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeBatchSegmentJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeBatchSegmentJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeBatchSegmentJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeBatchSegmentJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDataDeletionJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeDataDeletionJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeDataDeletionJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDataDeletionJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeDatasetExportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeDatasetExportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeDatasetExportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetExportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeDatasetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeDatasetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetImportJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeDatasetImportJobRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeDatasetImportJobRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetImportJobResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeEventTracker": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeEventTrackerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeEventTrackerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeEventTrackerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeFeatureTransformation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeFeatureTransformationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeFeatureTransformationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeFeatureTransformationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeMetricAttribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeMetricAttributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeMetricAttributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeMetricAttributionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeRecipe": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeRecipeRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeRecipeRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeRecipeResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeRecommenderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeSchemaRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeSchemaRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSchemaResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSolution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeSolutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeSolutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSolutionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSolutionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#DescribeSolutionVersionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#DescribeSolutionVersionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#DescribeSolutionVersionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#DockerURI": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#Domain": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#EventParameters": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#EventParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#EventTracker": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#EventTrackerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#EventTrackers": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#EventType": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#EventTypeThresholdValue": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#EventTypeWeight": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#EventValueThreshold": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#EventsConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ExcludedDatasetColumns": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#FailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#FeatureTransformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#FeatureTransformationParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#FeaturizationParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#FieldsForThemeGeneration": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#FilterExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#FilterSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Filters": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#GetSolutionMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#GetSolutionMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#GetSolutionMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#GetSolutionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#HPOConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#HPOObjective": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#HPOObjectiveType": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#HPOResource": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#HPOResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#HyperParameterRanges": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#HyperParameters": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#ImportMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#IngestionMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#IntegerHyperParameterRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#IntegerHyperParameterRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#IntegerMaxValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#IntegerMinValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#InvalidInputException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#InvalidNextTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ItemAttribute": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#KmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListBatchInferenceJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListBatchInferenceJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListBatchInferenceJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListBatchInferenceJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListBatchSegmentJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListBatchSegmentJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListBatchSegmentJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListBatchSegmentJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDataDeletionJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListDataDeletionJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListDataDeletionJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDataDeletionJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetExportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListDatasetExportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListDatasetExportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetExportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListDatasetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListDatasetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetImportJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListDatasetImportJobsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListDatasetImportJobsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetImportJobsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListDatasetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListDatasetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListDatasetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListEventTrackers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListEventTrackersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListEventTrackersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListEventTrackersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListMetricAttributionMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListMetricAttributionMetricsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListMetricAttributionMetricsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListMetricAttributionMetricsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListMetricAttributions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListMetricAttributionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListMetricAttributionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListMetricAttributionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListRecipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListRecipesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListRecipesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListRecipesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListRecommenders": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListRecommendersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListRecommendersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListRecommendersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSchemas": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListSchemasRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListSchemasRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSchemasResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSolutionVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListSolutionVersionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListSolutionVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSolutionVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSolutions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListSolutionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#InvalidNextTokenException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListSolutionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListSolutionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#MetricAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#MetricAttributes": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#MetricAttributesNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#MetricAttribution": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#MetricAttributionOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#MetricAttributionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#MetricAttributions": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#MetricExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#MetricRegex": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#MetricValue": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#Metrics": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#Name": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#NumBatchResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#ObjectiveSensitivity": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#OptimizationObjective": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#ParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#PerformAutoML": {
+      "type": "boolean"
+    },
+    "com.amazonaws.personalize#PerformAutoTraining": {
+      "type": "boolean"
+    },
+    "com.amazonaws.personalize#PerformHPO": {
+      "type": "boolean"
+    },
+    "com.amazonaws.personalize#Recipe": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RecipeProvider": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#RecipeSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RecipeType": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#Recipes": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#Recommender": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RecommenderConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RecommenderSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RecommenderUpdateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Recommenders": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ResourceConfig": {
+      "type": "map"
+    },
+    "com.amazonaws.personalize#ResourceInUseException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#S3DataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#S3Location": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#SchedulingExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#Schemas": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#Solution": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionUpdateConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionUpdateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionVersionSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#SolutionVersions": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#Solutions": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#StartRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#StartRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#StartRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#StartRecommenderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Status": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#StopRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#StopRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#StopRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#StopRecommenderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#StopSolutionVersionCreation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#StopSolutionVersionCreationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#StopSolutionVersionCreationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#TagKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#Tags": {
+      "type": "list"
+    },
+    "com.amazonaws.personalize#ThemeGenerationConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TooManyTagKeysException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TrackingId": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#TrainingDataConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#TrainingHours": {
+      "type": "double"
+    },
+    "com.amazonaws.personalize#TrainingInputMode": {
+      "type": "string"
+    },
+    "com.amazonaws.personalize#TrainingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#TrainingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.personalize#TransactionsPerSecond": {
+      "type": "integer"
+    },
+    "com.amazonaws.personalize#Tunable": {
+      "type": "boolean"
+    },
+    "com.amazonaws.personalize#TunedHPOParams": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.personalize#TooManyTagKeysException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UpdateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UpdateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateDataset": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UpdateDatasetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UpdateDatasetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateDatasetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateMetricAttribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UpdateMetricAttributionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UpdateMetricAttributionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateMetricAttributionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateRecommender": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UpdateRecommenderRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UpdateRecommenderRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateRecommenderResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateSolution": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.personalize#UpdateSolutionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.personalize#InvalidInputException"
+        },
+        {
+          "target": "com.amazonaws.personalize#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceInUseException"
+        },
+        {
+          "target": "com.amazonaws.personalize#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.personalize#UpdateSolutionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.personalize#UpdateSolutionResponse": {
+      "type": "structure"
+    }
+  }
+}

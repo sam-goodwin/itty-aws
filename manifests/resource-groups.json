@@ -1,0 +1,1021 @@
+{
+  "shapes": {
+    "com.amazonaws.resourcegroups#AccountSettings": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ApplicationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ApplicationTag": {
+      "type": "map"
+    },
+    "com.amazonaws.resourcegroups#ApplicationTagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#Ardi": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "Resource Groups"
+        }
+      }
+    },
+    "com.amazonaws.resourcegroups#BadRequestException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#CancelTagSyncTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#CancelTagSyncTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#CancelTagSyncTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#CreateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#CreateGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#CreateGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#CreateGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#CreateGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Criticality": {
+      "type": "integer"
+    },
+    "com.amazonaws.resourcegroups#DeleteGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#DeleteGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#DeleteGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#DeleteGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#DisplayName": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ErrorCode": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#FailedResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#FailedResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ForbiddenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetAccountSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GetGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetGroupConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GetGroupConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetGroupConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroupConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroupQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GetGroupQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetGroupQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetGroupQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetTagSyncTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GetTagSyncTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetTagSyncTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetTagSyncTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GetTagsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GetTagsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GetTagsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupArnV2": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationFailureReason": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationParameterName": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationParameterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationParameterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#GroupConfigurationType": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#GroupFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupLifecycleEventsDesiredStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#GroupLifecycleEventsStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#GroupLifecycleEventsStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#GroupResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#GroupResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupString": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupStringV2": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#GroupingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#GroupingStatusesItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#GroupingStatusesList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#GroupingType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#InternalServerErrorException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#ListGroupResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#ListGroupResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupResourcesItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupResourcesItemList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ListGroupResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatuses": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#ListGroupingStatusesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupingStatusesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#ListGroupsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#ListGroupsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListGroupsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListTagSyncTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#ListTagSyncTasksInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#ListTagSyncTasksFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListTagSyncTasksFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ListTagSyncTasksInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ListTagSyncTasksOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#MaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.resourcegroups#MethodNotAllowedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#NotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Owner": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#PendingResource": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#PendingResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#PutGroupConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#PutGroupConfigurationInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#PutGroupConfigurationInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#PutGroupConfigurationOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Query": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#QueryError": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#QueryErrorCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#QueryErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#QueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#QueryType": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#ResourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ResourceArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ResourceFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ResourceFilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ResourceFilterName": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#ResourceFilterValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#ResourceFilterValues": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ResourceIdentifier": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ResourceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#ResourceQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ResourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#ResourceStatusValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#SearchResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#SearchResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#SearchResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#SearchResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#StartTagSyncTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#StartTagSyncTaskInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UnauthorizedException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#StartTagSyncTaskInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#StartTagSyncTaskOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Tag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#TagInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#TagInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#TagOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#TagSyncTaskArn": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#TagSyncTaskItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#TagSyncTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.resourcegroups#TagSyncTaskStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.resourcegroups#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.resourcegroups#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.resourcegroups#TooManyRequestsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UnauthorizedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UngroupResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#UngroupResourcesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#UngroupResourcesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UngroupResourcesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#Untag": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#UntagInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#UntagInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UntagOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateAccountSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#UpdateAccountSettingsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#UpdateAccountSettingsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateAccountSettingsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#UpdateGroupInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#UpdateGroupInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateGroupOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateGroupQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.resourcegroups#UpdateGroupQueryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.resourcegroups#BadRequestException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ForbiddenException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#InternalServerErrorException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#MethodNotAllowedException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#NotFoundException"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#TooManyRequestsException"
+        }
+      ]
+    },
+    "com.amazonaws.resourcegroups#UpdateGroupQueryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#UpdateGroupQueryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.resourcegroups#timestamp": {
+      "type": "timestamp"
+    }
+  }
+}

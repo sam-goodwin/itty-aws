@@ -1,0 +1,1798 @@
+{
+  "shapes": {
+    "com.amazonaws.docdb#AddSourceIdentifierToSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#AddSourceIdentifierToSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#AddSourceIdentifierToSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AddSourceIdentifierToSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#AddTagsToResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#AddTagsToResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AmazonRDSv19": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "DocDB"
+        }
+      }
+    },
+    "com.amazonaws.docdb#ApplyMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.docdb#ApplyPendingMaintenanceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ApplyPendingMaintenanceActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ApplyPendingMaintenanceActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ApplyPendingMaintenanceActionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#AuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#AvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.docdb#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.docdb#CACertificateIdentifiersList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CertificateDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#CertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CertificateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CloudwatchLogsExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ClusterMasterUserSecret": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CopyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CopyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CopyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CopyDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CopyDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CopyDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CopyDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CopyDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionAlreadyExistFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionCategoryNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#CreateGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#CreateGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#CreateGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.docdb#DBClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterRoles": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBEngineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstanceAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstanceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstanceStatusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBInstanceStatusInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSecurityGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroupDoesNotCoverEnoughAZs": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#DBSubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DBUpgradeDependencyFailureFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSubnetStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#InvalidEventSubscriptionStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DeleteGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DeleteGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DeleteGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeCertificatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#CertificateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeCertificatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusterParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBClusterParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBClusterParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusterSnapshotAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBClusterSnapshotAttributesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBClusterSnapshotAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBClusterSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBClusterSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBEngineVersionsMessage"
+      }
+    },
+    "com.amazonaws.docdb#DescribeDBEngineVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBInstancesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeDBSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeDBSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeDBSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeEngineDefaultClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeEngineDefaultClusterParametersMessage"
+      }
+    },
+    "com.amazonaws.docdb#DescribeEngineDefaultClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeEngineDefaultClusterParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeEventCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeEventCategoriesMessage"
+      }
+    },
+    "com.amazonaws.docdb#DescribeEventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeEventSubscriptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeEventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.docdb#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeGlobalClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeGlobalClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribeGlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribeOrderableDBInstanceOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribeOrderableDBInstanceOptionsMessage"
+      }
+    },
+    "com.amazonaws.docdb#DescribeOrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#DescribePendingMaintenanceActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#DescribePendingMaintenanceActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#DescribePendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EngineDefaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventCategoriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#EventCategoriesMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventCategoriesMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#EventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventSubscriptionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventSubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#EventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#EventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.docdb#FailoverDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#FailoverDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#FailoverDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#FailoverDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#FailoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#FailoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#FailoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#FailoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#GlobalCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#GlobalClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#GlobalClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.docdb#GlobalClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#GlobalClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#GlobalClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#GlobalClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#GlobalClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#GlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InstanceQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InsufficientDBClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InsufficientDBInstanceCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InsufficientStorageClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.docdb#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBInstanceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBSecurityGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBSubnetGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidDBSubnetStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidEventSubscriptionStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidGlobalClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidRestoreFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#KMSKeyNotAccessibleFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#LogTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#ModifyDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBClusterSnapshotAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyDBClusterSnapshotAttributeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SharedSnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyDBClusterSnapshotAttributeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBClusterSnapshotAttributeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBUpgradeDependencyFailureFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubnetAlreadyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionCategoryNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ModifyGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ModifyGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ModifyGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#OrderableDBInstanceOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#OrderableDBInstanceOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#OrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#PendingCloudwatchLogsExports": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#PendingMaintenanceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#PendingMaintenanceActionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#PendingMaintenanceActions": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#PendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#PendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ReadReplicaIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#ReadersArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#RebootDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RebootDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RebootDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RebootDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RemoveFromGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RemoveFromGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RemoveFromGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RemoveFromGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RemoveSourceIdentifierFromSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RemoveSourceIdentifierFromSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RemoveSourceIdentifierFromSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RemoveSourceIdentifierFromSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RemoveTagsFromResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RemoveTagsFromResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ResetDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#ResetDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#ResetDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ResourcePendingMaintenanceActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RestoreDBClusterFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RestoreDBClusterFromSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RestoreDBClusterFromSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RestoreDBClusterFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RestoreDBClusterToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#RestoreDBClusterToPointInTimeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#RestoreDBClusterToPointInTimeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#RestoreDBClusterToPointInTimeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SNSInvalidTopicFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SNSNoAuthorizationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SNSTopicArnNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SharedSnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SourceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#SourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.docdb#StartDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#StartDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#StartDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#StartDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#StopDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#StopDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#StopDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#StopDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#StorageQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#StorageTypeNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#String": {
+      "type": "string"
+    },
+    "com.amazonaws.docdb#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SubnetAlreadyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#SubscriptionAlreadyExistFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SubscriptionCategoryNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SubscriptionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SwitchoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.docdb#SwitchoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.docdb#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.docdb#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.docdb#SwitchoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#SwitchoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.docdb#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#TagListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#UpgradeTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#ValidUpgradeTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#VpcSecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.docdb#VpcSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.docdb#VpcSecurityGroupMembershipList": {
+      "type": "list"
+    }
+  }
+}

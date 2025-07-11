@@ -1,0 +1,2436 @@
+{
+  "shapes": {
+    "com.amazonaws.iotfleetwise#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#Actuator": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#AssociateVehicleFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#AssociateVehicleFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#AssociateVehicleFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#AssociateVehicleFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#Attribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#BatchCreateVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#BatchCreateVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#BatchCreateVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#BatchCreateVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#BatchUpdateVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#BatchUpdateVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#BatchUpdateVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#BatchUpdateVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#Branch": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CampaignResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#CampaignStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#CampaignSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CanDbcDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CanInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CanInterfaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#CanSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CanSignalName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#CloudWatchLogDeliveryOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CloudWatchLogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#CollectionScheme": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#Compression": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#ConditionBasedCollectionScheme": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ConditionBasedSignalFetchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateDecoderManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateDecoderManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#DecoderManifestValidationException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateDecoderManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateDecoderManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateModelManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateModelManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateModelManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateModelManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateSignalCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateSignalCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidNodeException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateSignalCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateSignalCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateStateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateStateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateStateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateStateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#CreateVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicleError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicleRequestItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CreateVehicleResponseItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CustomDecodingId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#CustomDecodingInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CustomDecodingSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CustomDecodingSignalInterfaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#CustomProperty": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#CustomStruct": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DataDestinationConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#DataDestinationConfigs": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#DataExtraDimensionNodePathList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#DataFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#DataPartition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DataPartitionId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#DataPartitionStorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DataPartitionUploadOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DataPartitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#DecoderManifestResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#DecoderManifestSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DecoderManifestValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DefaultForUnmappedSignalsType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#DeleteCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteDecoderManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteDecoderManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteDecoderManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteDecoderManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteModelManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteModelManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteModelManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteModelManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteSignalCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteSignalCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteSignalCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteSignalCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteStateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteStateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteStateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteStateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DeleteVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DeleteVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DeleteVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DiagnosticsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#DisassociateVehicleFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#DisassociateVehicleFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#DisassociateVehicleFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#DisassociateVehicleFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#EncryptionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#EncryptionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#EventExpressionList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#FleetAssociationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#FleetResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#FleetSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#FormattedVss": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#Fqns": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#FullyQualifiedName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#GetCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetDecoderManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetDecoderManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetDecoderManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetDecoderManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetEncryptionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetEncryptionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetEncryptionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetEncryptionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetLoggingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetModelManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetModelManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetModelManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetModelManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetRegisterAccountStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetRegisterAccountStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetRegisterAccountStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetRegisterAccountStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetSignalCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetSignalCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetSignalCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetSignalCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetStateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetStateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetStateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetStateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetVehicleStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#GetVehicleStatusRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#GetVehicleStatusRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#GetVehicleStatusResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#IAMRoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#IamRegistrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#IamResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ImportDecoderManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ImportDecoderManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#DecoderManifestValidationException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ImportDecoderManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ImportDecoderManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ImportSignalCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ImportSignalCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ImportSignalCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ImportSignalCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InterfaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#InterfaceIds": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InvalidNetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InvalidNetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#InvalidNodeException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InvalidSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InvalidSignalDecoder": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#InvalidSignalDecoders": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#InvalidSignals": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#InvalidSignalsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#IoTAutobahnControlPlane": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "IoTFleetWise"
+        }
+      }
+    },
+    "com.amazonaws.iotfleetwise#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListCampaigns": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListCampaignsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListCampaignsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListCampaignsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestNetworkInterfaces": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListDecoderManifestNetworkInterfacesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestNetworkInterfacesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestNetworkInterfacesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestSignals": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListDecoderManifestSignalsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestSignalsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestSignalsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListDecoderManifestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListDecoderManifestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListFleets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListFleetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListFleetsForVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListFleetsForVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListFleetsForVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListFleetsForVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListFleetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListFleetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifestNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListModelManifestNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifestNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifestNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifests": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListModelManifestsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifestsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListModelManifestsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListResponseScope": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogNodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListSignalCatalogNodesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogNodesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogNodesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListSignalCatalogsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListSignalCatalogsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListStateTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListStateTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListStateTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListStateTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListVehicles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListVehiclesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListVehiclesInFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#ListVehiclesInFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#ListVehiclesInFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListVehiclesInFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListVehiclesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ListVehiclesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#LogType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#ManifestStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#MessageSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ModelManifestResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#ModelManifestSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ModelSignalsMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iotfleetwise#MqttTopicArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#MqttTopicConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#NetworkFileBlob": {
+      "type": "blob"
+    },
+    "com.amazonaws.iotfleetwise#NetworkFileDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#NetworkFileDefinitions": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#NetworkFilesList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#NetworkInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#NetworkInterfaceFailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#NetworkInterfaceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#NetworkInterfaces": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#Node": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#NodeCounts": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#NodeDataEncoding": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#NodeDataType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#NodePath": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#NodePaths": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#Nodes": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#ObdBitmaskLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#ObdByteLength": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#ObdInterface": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ObdInterfaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#ObdSignal": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ObdStandard": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#OnChangeStateTemplateUpdateStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#PeriodicStateTemplateUpdateStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#Prefix": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#PrimitiveMessageDefinition": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#ProtocolName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#ProtocolVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#PutEncryptionConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#PutEncryptionConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#PutEncryptionConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#PutEncryptionConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#PutLoggingOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#PutLoggingOptionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#PutLoggingOptionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#PutLoggingOptionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ROS2PrimitiveMessageDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ROS2PrimitiveType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#RegisterAccount": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#RegisterAccountRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#RegisterAccountRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#RegisterAccountResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#RegistrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ResourceUniqueId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#RetryAfterSeconds": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#S3BucketArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#S3Config": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#Sensor": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#SignalCatalogResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#SignalCatalogSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#SignalDecoder": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#SignalDecoderFailureReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#SignalDecoderType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#SignalDecoders": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#SignalFetchConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#SignalFetchInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#SignalFetchInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#SignalInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#SignalInformationList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#SignalNodeType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#SignalValueType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#SpoolingMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateAssociation": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateAssociationIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateAssociations": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateDataExtraDimensionNodePathList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateMetadataExtraDimensionNodePathList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StateTemplateUpdateStrategy": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#StorageCompressionFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#StorageLocation": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#StorageMaximumSize": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StorageMaximumSizeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#StorageMaximumSizeValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#StorageMinimumTimeToLive": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StorageMinimumTimeToLiveUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#StorageMinimumTimeToLiveValue": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#StructureMessageName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#StructuredMessage": {
+      "type": "union"
+    },
+    "com.amazonaws.iotfleetwise#StructuredMessageDefinition": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#StructuredMessageFieldNameAndDataTypePair": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StructuredMessageListDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#StructuredMessageListType": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimeBasedCollectionScheme": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimeBasedSignalFetchConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimePeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimeUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamDatabaseName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamRegistrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamTableArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#TimestreamTableName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#TopicName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#TriggerMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UntagResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateCampaign": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateCampaignRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateCampaignAction": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#UpdateCampaignRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateCampaignResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateDecoderManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateDecoderManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#DecoderManifestValidationException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateDecoderManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateDecoderManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateFleetRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateFleetRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateFleetResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#UpdateModelManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateModelManifestRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateModelManifestRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateModelManifestResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateSignalCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateSignalCatalogRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidNodeException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateSignalCatalogRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateSignalCatalogResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateStateTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateStateTemplateRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InvalidSignalsException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateStateTemplateRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateStateTemplateResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicle": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.iotfleetwise#UpdateVehicleRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.iotfleetwise#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.iotfleetwise#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicleError": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicleRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicleRequestItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicleResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#UpdateVehicleResponseItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ValidationExceptionField": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#ValidationExceptionFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#ValidationExceptionReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#VehicleAssociationBehavior": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#VehicleAssociationResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#VehicleMiddleware": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#VehicleMiddlewareName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#VehicleMiddlewareProtocol": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#VehicleResource": {
+      "type": "resource"
+    },
+    "com.amazonaws.iotfleetwise#VehicleState": {
+      "type": "enum"
+    },
+    "com.amazonaws.iotfleetwise#VehicleStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#VehicleStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#VehicleSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.iotfleetwise#actionEventExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#arn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#attributeName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#attributeNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#attributeValue": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#attributeValuesList": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#attributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.iotfleetwise#campaignArn": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#campaignName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#campaignSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#collectionPeriodMs": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleetwise#createVehicleErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#createVehicleRequestItems": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#createVehicleResponses": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#customerAccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#decoderManifestSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#description": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#double": {
+      "type": "double"
+    },
+    "com.amazonaws.iotfleetwise#errorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#eventExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#fetchConfigEventExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#fleetId": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#fleetSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#fleets": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#languageVersion": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#listOfStrings": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#listVehiclesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#maxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#maxSampleCount": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleetwise#maxStringSize": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleetwise#message": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#modelManifestSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#nextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#nonNegativeInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#number": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#positiveInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#positiveLong": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleetwise#priority": {
+      "type": "integer"
+    },
+    "com.amazonaws.iotfleetwise#resourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#signalCatalogSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#statusStr": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#string": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.iotfleetwise#uint32": {
+      "type": "long"
+    },
+    "com.amazonaws.iotfleetwise#updateVehicleErrors": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#updateVehicleRequestItems": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#updateVehicleResponseItems": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#vehicleName": {
+      "type": "string"
+    },
+    "com.amazonaws.iotfleetwise#vehicleSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#vehicles": {
+      "type": "list"
+    },
+    "com.amazonaws.iotfleetwise#wildcardSignalName": {
+      "type": "string"
+    }
+  }
+}

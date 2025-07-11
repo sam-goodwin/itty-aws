@@ -1,0 +1,1115 @@
+{
+  "shapes": {
+    "com.amazonaws.migrationhubstrategy#AWSMigrationHubStrategyRecommendation": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "MigrationHubStrategy"
+        }
+      }
+    },
+    "com.amazonaws.migrationhubstrategy#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AnalysisStatusUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhubstrategy#AnalysisType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AnalyzableServerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AnalyzableServerSummaryList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AnalyzerNameUnion": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhubstrategy#AntipatternReportResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AntipatternReportResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AntipatternReportStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AntipatternSeveritySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AppType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AppUnitError": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AppUnitErrorCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentCriteria": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentStatusSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationComponentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationMode": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ApplicationPreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentDataSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentTargetValues": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AssessmentTargets": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AssociatedApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AssociatedApplications": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AssociatedServerIDs": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#AsyncTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AuthType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AwsManagedResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#AwsManagedTargetDestination": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#AwsManagedTargetDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#BinaryAnalyzerName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.migrationhubstrategy#BusinessGoals": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#BusinessGoalsInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhubstrategy#Collector": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#CollectorHealth": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#Collectors": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#Condition": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ConfigurationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#DataCollectionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#DataSourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#DatabaseConfigDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#DatabaseManagementPreference": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#DatabaseMigrationPreference": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhubstrategy#DatabasePreferences": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#DependencyException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetApplicationComponentDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentStrategies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetApplicationComponentStrategiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentStrategiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetApplicationComponentStrategiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetImportFileTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetImportFileTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetImportFileTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetImportFileTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetLatestAssessmentId": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetLatestAssessmentIdRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#DependencyException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetLatestAssessmentIdRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetLatestAssessmentIdResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioPreferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetPortfolioPreferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioPreferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioPreferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetPortfolioSummaryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioSummaryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetPortfolioSummaryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetRecommendationReportDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetRecommendationReportDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetRecommendationReportDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetRecommendationReportDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetServerDetailsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerDetailsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerDetailsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerStrategies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#GetServerStrategiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerStrategiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GetServerStrategiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#Group": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#GroupIds": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#GroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#Heterogeneous": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#HeterogeneousTargetDatabaseEngine": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#HeterogeneousTargetDatabaseEngines": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#Homogeneous": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#HomogeneousTargetDatabaseEngine": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#HomogeneousTargetDatabaseEngines": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#IPAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#IPAddressBasedRemoteInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#IPAddressBasedRemoteInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ImportFileTaskInformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ImportFileTaskStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#InclusionStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhubstrategy#InterfaceName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#InternalServerException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListAnalyzableServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#ListAnalyzableServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#ListAnalyzableServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListAnalyzableServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListAntipatternSeveritySummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListApplicationComponentStatusSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListApplicationComponentSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListApplicationComponents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#ListApplicationComponentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ServiceLinkedRoleLockClientException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#ListApplicationComponentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListApplicationComponentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListCollectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#ListCollectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#ListCollectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListCollectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListImportFileTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#ListImportFileTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#ListImportFileTaskInformation": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListImportFileTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListImportFileTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListServerStatusSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListServerSummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ListServers": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#ListServersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#ListServersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListServersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ListStrategySummary": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#Location": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#MacAddress": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ManagementPreference": {
+      "type": "union"
+    },
+    "com.amazonaws.migrationhubstrategy#MaxResult": {
+      "type": "integer"
+    },
+    "com.amazonaws.migrationhubstrategy#NetMask": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#NetworkInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#NetworkInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#NoDatabaseMigrationPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#NoManagementPreference": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#NoPreferenceTargetDestination": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#NoPreferenceTargetDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#OSInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#OSType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#OSVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#OutputFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#PipelineInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#PipelineInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#PipelineType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#PrioritizeBusinessGoals": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ProjectName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#PutPortfolioPreferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#PutPortfolioPreferencesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#PutPortfolioPreferencesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#PutPortfolioPreferencesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationReportDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationReportStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationReportStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationReportTimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#RecommendationTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#RemoteSourceCodeAnalysisServerInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ResourceSubType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ResultList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#RunTimeAnalyzerName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#RunTimeAssessmentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#RuntimeAnalysisStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#S3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#S3Key": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#S3Keys": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#S3Object": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#SecretsManagerKey": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SelfManageResources": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#SelfManageTargetDestination": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SelfManageTargetDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerCriteria": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerError": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerErrorCategory": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerId": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerOsType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerStatusSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerStrategies": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerStrategy": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServerSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServiceLinkedRoleLockClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#Severity": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SortOrder": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceCode": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceCodeAnalyzerName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceCodeList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceCodeRepositories": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceCodeRepository": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#SourceVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SrcCodeOrDbAnalysisStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#StartAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#StartAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#StartAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StartAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StartImportFileTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#StartImportFileTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#StartImportFileTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StartImportFileTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StartRecommendationReportGeneration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#StartRecommendationReportGenerationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#StartRecommendationReportGenerationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StartRecommendationReportGenerationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#StopAssessment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#StopAssessmentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#StopAssessmentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StopAssessmentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#Strategy": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#StrategyOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#StrategyRecommendation": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#StrategySummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#String": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#SystemInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#TargetDatabaseEngine": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#TargetDatabaseEngines": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#TargetDestination": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#TimeStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.migrationhubstrategy#TranformationToolDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#TranformationToolInstallationLink": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#TransformationTool": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#TransformationToolName": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateApplicationComponentConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#UpdateApplicationComponentConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateApplicationComponentConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateApplicationComponentConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateServerConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.migrationhubstrategy#UpdateServerConfigRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateServerConfigRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#UpdateServerConfigResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#VcenterBasedRemoteInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#VcenterBasedRemoteInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#VersionControl": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#VersionControlInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.migrationhubstrategy#VersionControlInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.migrationhubstrategy#VersionControlType": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#errorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#importS3Bucket": {
+      "type": "string"
+    },
+    "com.amazonaws.migrationhubstrategy#importS3Key": {
+      "type": "string"
+    }
+  }
+}

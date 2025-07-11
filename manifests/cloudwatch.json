@@ -1,0 +1,1445 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudwatch#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ActionPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ActionsEnabled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#ActionsSuppressedBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#ActionsSuppressedReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmHistoryItem": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#AlarmHistoryItems": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AlarmName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AlarmRule": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AlarmType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#AlarmTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorExcludedTimeRanges": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorMetricStat": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorMetricTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorStateValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectorTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AnomalyDetectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#AwsQueryErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#BatchFailures": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#ComparisonOperator": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#CompositeAlarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#CompositeAlarms": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#ConcurrentModificationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Counts": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DashboardArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DashboardBody": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DashboardEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DashboardEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DashboardErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DashboardInvalidInputError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DashboardName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DashboardNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DashboardNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DashboardNotFoundError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DashboardValidationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DashboardValidationMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DataPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#Datapoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DatapointValue": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudwatch#DatapointValueMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatch#DatapointValues": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#Datapoints": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DatapointsToAlarm": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#DeleteAlarms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DeleteAlarmsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DeleteAlarmsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DeleteAnomalyDetectorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DeleteAnomalyDetectorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteAnomalyDetectorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteDashboards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DeleteDashboardsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DashboardNotFoundError"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DeleteDashboardsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteDashboardsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DeleteInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DeleteInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteMetricStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DeleteMetricStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DeleteMetricStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DeleteMetricStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DescribeAlarmHistoryInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmHistoryInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmHistoryOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarms": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DescribeAlarmsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmsForMetric": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DescribeAlarmsForMetricInput"
+      }
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmsForMetricInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmsForMetricOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAlarmsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAnomalyDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DescribeAnomalyDetectorsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DescribeAnomalyDetectorsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeAnomalyDetectorsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DescribeInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DescribeInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DescribeInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Dimension": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DimensionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DimensionFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DimensionName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#DimensionValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#Dimensions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#DisableAlarmActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DisableAlarmActionsInput"
+      }
+    },
+    "com.amazonaws.cloudwatch#DisableAlarmActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DisableInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#DisableInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#DisableInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#DisableInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#EnableAlarmActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#EnableAlarmActionsInput"
+      }
+    },
+    "com.amazonaws.cloudwatch#EnableAlarmActionsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#EnableInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#EnableInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#EnableInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#EnableInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#EntityAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatch#EntityAttributesMapKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EntityAttributesMapValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EntityKeyAttributesMap": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatch#EntityKeyAttributesMapKeyString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EntityKeyAttributesMapValueString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EntityMetricData": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#EntityMetricDataList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#ErrorMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EvaluateLowSampleCountPercentile": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#EvaluationPeriods": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#EvaluationState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#ExceptionType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ExtendedStatistic": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ExtendedStatistics": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#FailureCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#FailureDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#FailureResource": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#FaultDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#GetDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetDashboardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#DashboardNotFoundError"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#GetDashboardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetDashboardOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetInsightRuleReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetInsightRuleReportInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#GetInsightRuleReportInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetInsightRuleReportOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetMetricDataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#GetMetricDataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricDataLabelTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#GetMetricDataMaxDatapoints": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#GetMetricDataOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetMetricStatisticsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#GetMetricStatisticsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricStatisticsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetMetricStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#GetMetricStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricWidgetImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#GetMetricWidgetImageInput"
+      }
+    },
+    "com.amazonaws.cloudwatch#GetMetricWidgetImageInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GetMetricWidgetImageOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#GraniteServiceVersion20100801": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudWatch"
+        }
+      }
+    },
+    "com.amazonaws.cloudwatch#HistoryData": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#HistoryItemType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#HistorySummary": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#IncludeLinkedAccounts": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#IncludeLinkedAccountsMetrics": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#InsightRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleAggregationStatistic": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributor": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorDatapoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorDatapoints": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorKeyLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorKeyLabels": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributorKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleContributors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleDefinition": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleIsManaged": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleMetricDatapoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleMetricDatapoints": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleMetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleMetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleOnTransformedLogs": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleOrderBy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleSchema": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleState": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleUnboundDouble": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleUnboundInteger": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#InsightRuleUnboundLong": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatch#InsightRules": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#InternalServiceFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InvalidFormatFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InvalidNextToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InvalidParameterCombinationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#InvalidParameterValueException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#LabelOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#LastModified": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudwatch#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#LimitExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListDashboards": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#ListDashboardsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#ListDashboardsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListDashboardsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListManagedInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#ListManagedInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#ListManagedInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListManagedInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListMetricStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#ListMetricStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidNextToken"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#ListMetricStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListMetricStreamsMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#ListMetricStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#ListMetricsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#ListMetricsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListMetricsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#ListTagsForResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#ListTagsForResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ListTagsForResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ManagedRule": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ManagedRuleDescription": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ManagedRuleDescriptions": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#ManagedRuleState": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ManagedRules": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#MaxReturnedResultsCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MessageData": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MessageDataCode": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MessageDataValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricAlarm": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricAlarms": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricCharacteristics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricData": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricDataQueries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricDataQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricDataResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricDataResultMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricDataResults": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricDatum": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricExpression": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricLabel": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricMathAnomalyDetector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricStat": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamFilterMetricNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamOutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamState": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatistic": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatisticsAdditionalStatistics": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatisticsConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatisticsConfigurations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatisticsIncludeMetrics": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MetricStreamStatisticsMetric": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#MetricWidget": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#MetricWidgetImage": {
+      "type": "blob"
+    },
+    "com.amazonaws.cloudwatch#Metrics": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#MissingRequiredParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Namespace": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#OutputFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#OwningAccounts": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#PartialFailure": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Period": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#PeriodicSpikes": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#PutAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutAnomalyDetectorInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutAnomalyDetectorInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutAnomalyDetectorOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutCompositeAlarm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutCompositeAlarmInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#LimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutCompositeAlarmInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutDashboardInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DashboardInvalidInputError"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutDashboardInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutDashboardOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutInsightRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutInsightRuleInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutInsightRuleInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutInsightRuleOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutManagedInsightRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutManagedInsightRulesInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutManagedInsightRulesInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutManagedInsightRulesOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutMetricAlarm": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutMetricAlarmInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#LimitExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutMetricAlarmInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutMetricData": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutMetricDataInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutMetricDataInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutMetricStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#PutMetricStreamInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterCombinationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#PutMetricStreamInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#PutMetricStreamOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#RecentlyActive": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#ResourceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ResourceList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#ResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ResourceNotFound": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#ReturnData": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#ScanBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#SetAlarmState": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#SetAlarmStateInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidFormatFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFound"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#SetAlarmStateInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#SingleMetricAnomalyDetector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Size": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatch#StandardUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#StartMetricStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#StartMetricStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#StartMetricStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#StartMetricStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Stat": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#StateReason": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#StateReasonData": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#StateValue": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#Statistic": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#StatisticSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Statistics": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#StatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatch#StopMetricStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#StopMetricStreamsInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#MissingRequiredParameterException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#StopMetricStreamsInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#StopMetricStreamsOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#StorageResolution": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#StrictEntityValidation": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatch#SuppressorPeriod": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatch#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#TagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#TagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#TagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#TemplateName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#Threshold": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudwatch#Timestamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.cloudwatch#Timestamps": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatch#TreatMissingData": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatch#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatch#UntagResourceInput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatch#ConcurrentModificationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InternalServiceFault"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#InvalidParameterValueException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatch#UntagResourceInput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#UntagResourceOutput": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatch#Values": {
+      "type": "list"
+    }
+  }
+}

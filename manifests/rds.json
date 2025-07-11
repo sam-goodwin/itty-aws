@@ -1,0 +1,5549 @@
+{
+  "shapes": {
+    "com.amazonaws.rds#AccountAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AccountQuota": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AccountQuotaList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ActivityStreamMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ActivityStreamModeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ActivityStreamPolicyStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ActivityStreamStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#AddRoleToDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#AddRoleToDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterRoleAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterRoleQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#AddRoleToDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AddRoleToDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#AddRoleToDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceRoleAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceRoleQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#AddRoleToDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AddSourceIdentifierToSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#AddSourceIdentifierToSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#AddSourceIdentifierToSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AddSourceIdentifierToSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AddTagsToResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#AddTagsToResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotTenantDatabaseNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#AddTagsToResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AmazonRDSv19": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "RDS"
+        }
+      }
+    },
+    "com.amazonaws.rds#ApplyMethod": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ApplyPendingMaintenanceAction": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ApplyPendingMaintenanceActionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ApplyPendingMaintenanceActionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ApplyPendingMaintenanceActionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#AttributeValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#AuditPolicyState": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#AuthScheme": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#AuthorizationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AuthorizationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AuthorizationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AuthorizeDBSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#AuthorizeDBSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#AuthorizationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#AuthorizeDBSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AuthorizeDBSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AutomationMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#AvailabilityZone": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AvailabilityZoneList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#AvailabilityZones": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#AvailableProcessorFeature": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#AvailableProcessorFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#AwsBackupRecoveryPointArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BacktrackDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#BacktrackDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#BacktrackDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BackupPolicyNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BlueGreenDeployment": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentStatusDetails": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentTaskList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentTaskName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#BlueGreenDeploymentTaskStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rds#BooleanOptional": {
+      "type": "boolean"
+    },
+    "com.amazonaws.rds#BucketName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#CACertificateIdentifiersList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#CancelExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CancelExportTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ExportTaskNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidExportTaskStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CancelExportTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Certificate": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CertificateDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CertificateList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#CertificateMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CertificateNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CharacterSet": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ClientPasswordAuthType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#CloudwatchLogsExportConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ClusterPendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ClusterScalabilityType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ConnectionPoolConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ConnectionPoolConfigurationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ContextAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ContextAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#CopyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CopyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CopyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CopyDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CopyDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CopyDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CopyDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CopyDBSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CustomAvailabilityZoneNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CopyDBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyDBSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyOptionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CopyOptionGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#OptionGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CopyOptionGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CopyOptionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateBlueGreenDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateBlueGreenDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SourceClusterNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SourceDatabaseNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateBlueGreenDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateBlueGreenDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateCustomDBEngineVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateCustomDBEngineVersionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CreateCustomDBEngineVersionFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CustomDBEngineVersionAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CustomDBEngineVersionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#Ec2ImagePropertiesNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateCustomDBEngineVersionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateCustomDBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterEndpointAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterEndpointQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#BackupPolicyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBInstanceReadReplica": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBInstanceReadReplicaMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotAllowedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBInstanceReadReplicaMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBInstanceReadReplicaResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBParameterGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBProxy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBProxyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBProxyEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBProxyEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBProxyEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBProxyEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBProxyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBProxyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSecurityGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBShardGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBShardGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBShardGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#MaxDBShardGroupLimitReached"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#UnsupportedDBEngineVersionFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBShardGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionAlreadyExistFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionCategoryNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateOptionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateOptionGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#OptionGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateOptionGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateOptionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateTenantDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#CreateTenantDatabaseMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#CreateTenantDatabaseMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CreateTenantDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomAvailabilityZoneNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomDBEngineVersionAMI": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomDBEngineVersionAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomDBEngineVersionManifest": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#CustomDBEngineVersionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomDBEngineVersionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#CustomEngineName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#CustomEngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#CustomEngineVersionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#DBCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterAutomatedBackup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterAutomatedBackupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterAutomatedBackupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterAutomatedBackupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterAutomatedBackupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterBacktrack": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterBacktrackList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterBacktrackMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterBacktrackNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterCapacityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterEndpointAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterEndpointNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterEndpointQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DBClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterOptionGroupMemberships": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterOptionGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterRoleAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterRoleQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterRoles": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterStatusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBClusterStatusInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBEngineVersionList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupsReplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceAutomatedBackupsReplicationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceNotReadyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceRole": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceRoleAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceRoleQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceRoles": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBInstanceStatusInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBInstanceStatusInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBLogFileNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBMajorEngineVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBMajorEngineVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBParameterGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBParameterGroupNameMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBParameterGroupStatusList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxy": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyEndpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyEndpointAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyEndpointList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBProxyEndpointName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DBProxyEndpointNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyEndpointQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyEndpointStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#DBProxyEndpointTargetRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#DBProxyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBProxyName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DBProxyNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#DBProxyTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyTargetAlreadyRegisteredFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyTargetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBProxyTargetNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBRecommendation": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBRecommendationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBRecommendationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBRecommendationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSecurityGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSecurityGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBShardGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBShardGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBShardGroupIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DBShardGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBShardGroupsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSnapshot": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotAttribute": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotAttributeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotTenantDatabase": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotTenantDatabaseNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSnapshotTenantDatabasesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSnapshotTenantDatabasesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupNotAllowedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBSubnetGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DBSubnetQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DBUpgradeDependencyFailureFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DataFilter": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DatabaseArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DatabaseInsightsMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#DeleteBlueGreenDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteBlueGreenDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidBlueGreenDeploymentStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteBlueGreenDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteBlueGreenDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteCustomDBEngineVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteCustomDBEngineVersionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CustomDBEngineVersionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidCustomDBEngineVersionStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteCustomDBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAutomatedBackupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBClusterAutomatedBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBClusterAutomatedBackupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAutomatedBackupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterAutomatedBackupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBClusterAutomatedBackupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterAutomatedBackupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBClusterSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBClusterSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBClusterSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceAutomatedBackupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBInstanceAutomatedBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBInstanceAutomatedBackupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceAutomatedBackupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceAutomatedBackupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBInstanceAutomatedBackupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBInstanceAutomatedBackupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBProxy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBProxyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBProxyEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBProxyEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyEndpointStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBProxyEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBProxyEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBProxyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBProxyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBSecurityGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBSecurityGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBSecurityGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBShardGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBShardGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBShardGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBShardGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBShardGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidEventSubscriptionStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidIntegrationStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteOptionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteOptionGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidOptionGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteOptionGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteTenantDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeleteTenantDatabaseMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeleteTenantDatabaseMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeleteTenantDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeregisterDBProxyTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DeregisterDBProxyTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DeregisterDBProxyTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DeregisterDBProxyTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeAccountAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeAccountAttributesMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeAccountAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeBlueGreenDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeBlueGreenDeploymentsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeBlueGreenDeploymentsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeBlueGreenDeploymentsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeCertificatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeCertificatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterAutomatedBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterAutomatedBackupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAutomatedBackupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterAutomatedBackupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterBacktracks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterBacktracksMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterBacktrackNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterBacktracksMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterEndpointsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterEndpointsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterSnapshotAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterSnapshotAttributesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterSnapshotAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusterSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClusterSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClusterSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBEngineVersionsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeDBEngineVersionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBInstanceAutomatedBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBInstanceAutomatedBackupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceAutomatedBackupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBInstanceAutomatedBackupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBInstancesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBLogFiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBLogFilesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotReadyFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBLogFilesDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBLogFilesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DescribeDBLogFilesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBLogFilesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBMajorEngineVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBMajorEngineVersionsRequest"
+      }
+    },
+    "com.amazonaws.rds#DescribeDBMajorEngineVersionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBMajorEngineVersionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBParameterGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBParameterGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBParameterGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBParametersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBProxiesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBProxiesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxiesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBProxyEndpointsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBProxyEndpointsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyEndpointsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBProxyTargetGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargetGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargetGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBProxyTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBProxyTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBRecommendations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBRecommendationsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeDBRecommendationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSecurityGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBSecurityGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBSecurityGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBShardGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBShardGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBShardGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBShardGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBShardGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBSnapshotAttributesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotAttributesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotAttributesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotTenantDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBSnapshotTenantDatabasesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotTenantDatabasesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBSnapshotsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBSnapshotsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeDBSubnetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeDBSubnetGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeDBSubnetGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultClusterParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeEngineDefaultClusterParametersMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultClusterParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultClusterParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultParameters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeEngineDefaultParametersMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultParametersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEngineDefaultParametersResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEventCategories": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeEventCategoriesMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeEventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEventSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeEventSubscriptionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeEventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeEventsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeEventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeExportTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeExportTasksMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ExportTaskNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeExportTasksMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeGlobalClusters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeGlobalClustersMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeGlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeIntegrationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeIntegrationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeOptionGroupOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeOptionGroupOptionsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeOptionGroupOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeOptionGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeOptionGroupsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeOptionGroupsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeOrderableDBInstanceOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeOrderableDBInstanceOptionsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeOrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribePendingMaintenanceActions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribePendingMaintenanceActionsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribePendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeReservedDBInstances": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeReservedDBInstancesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ReservedDBInstanceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeReservedDBInstancesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeReservedDBInstancesOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeReservedDBInstancesOfferingsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ReservedDBInstancesOfferingNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeReservedDBInstancesOfferingsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeSourceRegions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeSourceRegionsMessage"
+      }
+    },
+    "com.amazonaws.rds#DescribeSourceRegionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeTenantDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeTenantDatabasesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeTenantDatabasesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeValidDBInstanceModifications": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DescribeValidDBInstanceModificationsMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DescribeValidDBInstanceModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DescribeValidDBInstanceModificationsResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#DisableHttpEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DisableHttpEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DisableHttpEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DisableHttpEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DocLink": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DocLinkList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DomainMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DomainMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DomainNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Double": {
+      "type": "double"
+    },
+    "com.amazonaws.rds#DoubleOptional": {
+      "type": "double"
+    },
+    "com.amazonaws.rds#DoubleRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DoubleRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#DownloadDBLogFilePortion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#DownloadDBLogFilePortionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotReadyFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBLogFileNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#DownloadDBLogFilePortionDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#DownloadDBLogFilePortionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EC2SecurityGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EC2SecurityGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#Ec2ImagePropertiesNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EnableHttpEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#EnableHttpEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidResourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#EnableHttpEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EnableHttpEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EncryptionContextMap": {
+      "type": "map"
+    },
+    "com.amazonaws.rds#Endpoint": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Engine": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#EngineDefaults": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EngineFamily": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#EngineModeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#Event": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventCategoriesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#EventCategoriesMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventCategoriesMapList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#EventCategoriesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#EventSubscription": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventSubscriptionQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventSubscriptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#EventSubscriptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#EventsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ExceptionMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#ExportSourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ExportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ExportTaskAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ExportTaskNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ExportTasksList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ExportTasksMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#FailoverDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#FailoverDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#FailoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#FailoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverState": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FailoverStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#FeatureNameList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#Filter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#FilterList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#FilterValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#GlobalCluster": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#GlobalClusterAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#GlobalClusterIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#GlobalClusterList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#GlobalClusterMember": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#GlobalClusterMemberList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#GlobalClusterMemberSynchronizationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#GlobalClusterNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#GlobalClusterQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#GlobalClustersMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IAMAuthMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#IPRange": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IPRangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#IamRoleMissingPermissionsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IamRoleNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InstanceQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InsufficientAvailableIPsInSubnetFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InsufficientDBClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InsufficientDBInstanceCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InsufficientStorageClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.rds#IntegerOptional": {
+      "type": "integer"
+    },
+    "com.amazonaws.rds#Integration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#IntegrationConflictOperationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationDescription": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#IntegrationError": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationErrorList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#IntegrationIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#IntegrationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#IntegrationName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#IntegrationNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#InvalidBlueGreenDeploymentStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidCustomDBEngineVersionStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBClusterAutomatedBackupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBClusterCapacityFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBClusterEndpointStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBInstanceAutomatedBackupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBInstanceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBParameterGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBProxyEndpointStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBProxyStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBSecurityGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBShardGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBSnapshotStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBSubnetGroupFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBSubnetGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidDBSubnetStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidEventSubscriptionStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidExportOnlyFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidExportSourceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidExportTaskStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidGlobalClusterStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidIntegrationStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidOptionGroupStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidResourceStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidRestoreFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidS3BucketFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidSubnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#InvalidVPCNetworkStateFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#IssueDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#KMSKeyNotAccessibleFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#KeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#KmsKeyIdOrArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#LifecycleSupportName": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#LimitlessDatabase": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#LimitlessDatabaseStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ListTagsForResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotTenantDatabaseNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ListTagsForResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#LocalWriteForwardingStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#LogTypeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#Long": {
+      "type": "long"
+    },
+    "com.amazonaws.rds#LongOptional": {
+      "type": "long"
+    },
+    "com.amazonaws.rds#MajorEngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#Marker": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#MasterUserSecret": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MaxDBShardGroupLimitReached": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MaxRecords": {
+      "type": "integer"
+    },
+    "com.amazonaws.rds#Metric": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MetricList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#MetricQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MetricReference": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MetricReferenceList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#MinimumEngineVersionPerAllowedValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#MinimumEngineVersionPerAllowedValueList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ModifyActivityStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyActivityStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyActivityStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyActivityStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyCertificatesMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyCertificatesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyCertificatesResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyCurrentDBClusterCapacity": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyCurrentDBClusterCapacityMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyCurrentDBClusterCapacityMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyCustomDBEngineVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyCustomDBEngineVersionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#CustomDBEngineVersionNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidCustomDBEngineVersionStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyCustomDBEngineVersionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotAvailableFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBClusterEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBClusterEndpointMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBClusterEndpointMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBClusterSnapshotAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBClusterSnapshotAttributeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SharedSnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBClusterSnapshotAttributeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBClusterSnapshotAttributeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#BackupPolicyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBUpgradeDependencyFailureFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSecurityGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBProxyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBProxyEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBProxyEndpointRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyEndpointNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyEndpointStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBProxyEndpointRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxyEndpointResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxyTargetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBProxyTargetGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBProxyTargetGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBProxyTargetGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBRecommendation": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBRecommendationMessage"
+      }
+    },
+    "com.amazonaws.rds#ModifyDBRecommendationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBShardGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBShardGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBShardGroupAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBShardGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBShardGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBSnapshotAttribute": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBSnapshotAttributeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SharedSnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBSnapshotAttributeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSnapshotAttributeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSubnetGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyDBSubnetGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#SubnetAlreadyInUse"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyDBSubnetGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyDBSubnetGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyEventSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyEventSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#EventSubscriptionQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSInvalidTopicFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSNoAuthorizationFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SNSTopicArnNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionCategoryNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyEventSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyEventSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#GlobalClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyIntegrationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#IntegrationConflictOperationFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidIntegrationStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyIntegrationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyOptionGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyOptionGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#InvalidOptionGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyOptionGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyOptionGroupResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyTenantDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ModifyTenantDatabaseMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ModifyTenantDatabaseMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ModifyTenantDatabaseResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#NetworkTypeNotSupported": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Option": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionGroupNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupOptionSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupOptionSettingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionGroupOptionVersionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionGroupOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionGroupOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroups": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionGroupsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionNamesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionSetting": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionSettingConfigurationList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionSettingsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionVersion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OptionsConflictsWith": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionsDependedOn": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OrderableDBInstanceOption": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#OrderableDBInstanceOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#OrderableDBInstanceOptionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Outpost": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Parameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ParametersList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#PendingCloudwatchLogsExports": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PendingMaintenanceAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PendingMaintenanceActionDetails": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#PendingMaintenanceActions": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#PendingMaintenanceActionsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PerformanceInsightsMetricDimensionGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PerformanceInsightsMetricQuery": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PerformanceIssueDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PointInTimeRestoreNotEnabledFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ProcessorFeature": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ProcessorFeatureList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#PromoteReadReplica": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#PromoteReadReplicaMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#PromoteReadReplicaDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#PromoteReadReplicaDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#PromoteReadReplicaDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PromoteReadReplicaDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PromoteReadReplicaMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PromoteReadReplicaResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PurchaseReservedDBInstancesOffering": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#PurchaseReservedDBInstancesOfferingMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#ReservedDBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ReservedDBInstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ReservedDBInstancesOfferingNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#PurchaseReservedDBInstancesOfferingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#PurchaseReservedDBInstancesOfferingResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Range": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RangeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#RdsCustomClusterConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReadReplicaDBClusterIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReadReplicaDBInstanceIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReadReplicaIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReadersArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#RebootDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RebootDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RebootDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RebootDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RebootDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RebootDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RebootDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RebootDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RebootDBShardGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RebootDBShardGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBShardGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBShardGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RebootDBShardGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RecommendedAction": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RecommendedActionList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#RecommendedActionParameter": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RecommendedActionParameterList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#RecommendedActionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RecommendedActionUpdateList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#RecurringCharge": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RecurringChargeList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReferenceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RegisterDBProxyTargets": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RegisterDBProxyTargetsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetAlreadyRegisteredFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientAvailableIPsInSubnetFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBProxyStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RegisterDBProxyTargetsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RegisterDBProxyTargetsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveFromGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RemoveFromGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RemoveFromGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveFromGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveRoleFromDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RemoveRoleFromDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RemoveRoleFromDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveRoleFromDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RemoveRoleFromDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RemoveRoleFromDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveSourceIdentifierFromSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RemoveSourceIdentifierFromSubscriptionMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#SourceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SubscriptionNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RemoveSourceIdentifierFromSubscriptionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveSourceIdentifierFromSubscriptionResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RemoveTagsFromResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RemoveTagsFromResourceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBProxyTargetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotTenantDatabaseNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IntegrationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RemoveTagsFromResourceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReplicaMode": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#ReservedDBInstance": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstanceAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstanceList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReservedDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstanceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstanceQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstancesOffering": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstancesOfferingList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ReservedDBInstancesOfferingMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ReservedDBInstancesOfferingNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ResetDBClusterParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ResetDBClusterParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ResetDBClusterParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ResetDBParameterGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#ResetDBParameterGroupMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBParameterGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#ResetDBParameterGroupMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ResourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ResourcePendingMaintenanceActions": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBClusterFromS3Message"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSubnetGroupStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidS3BucketFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromS3Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromS3Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBClusterFromSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterFromSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBClusterToPointInTimeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterAutomatedBackupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientStorageClusterCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBClusterToPointInTimeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBClusterToPointInTimeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromDBSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBInstanceFromDBSnapshotMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#BackupPolicyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSnapshotStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromDBSnapshotMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromDBSnapshotResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromS3": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBInstanceFromS3Message"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#BackupPolicyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidS3BucketFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromS3Message": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceFromS3Result": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceToPointInTime": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RestoreDBInstanceToPointInTimeMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#BackupPolicyNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#CertificateNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceAutomatedBackupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBParameterGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DomainNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InstanceQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidRestoreFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#NetworkTypeNotSupported"
+        },
+        {
+          "target": "com.amazonaws.rds#OptionGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#PointInTimeRestoreNotEnabledFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ProvisionedIopsNotAvailableInAZFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        },
+        {
+          "target": "com.amazonaws.rds#TenantDatabaseQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RestoreDBInstanceToPointInTimeMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreDBInstanceToPointInTimeResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RestoreWindow": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RevokeDBSecurityGroupIngress": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#RevokeDBSecurityGroupIngressMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSecurityGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBSecurityGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#RevokeDBSecurityGroupIngressMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#RevokeDBSecurityGroupIngressResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SNSInvalidTopicFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SNSNoAuthorizationFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SNSTopicArnNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ScalarReferenceDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ScalingConfigurationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SensitiveString": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#ServerlessV2FeaturesSupport": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ServerlessV2ScalingConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ServerlessV2ScalingConfigurationInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SharedSnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SnapshotQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceArn": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#SourceClusterNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceDatabaseNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceIdsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SourceNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceRegion": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceRegionList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SourceRegionMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SourceType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#StartActivityStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StartActivityStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StartActivityStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartActivityStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StartDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBShardGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StartDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StartDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#AuthorizationNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupDoesNotCoverEnoughAZs"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSubnetGroupNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InsufficientDBInstanceCapacityFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidSubnet"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidVPCNetworkStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StartDBInstanceAutomatedBackupsReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StartDBInstanceAutomatedBackupsReplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceAutomatedBackupQuotaExceededFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        },
+        {
+          "target": "com.amazonaws.rds#StorageTypeNotSupportedFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StartDBInstanceAutomatedBackupsReplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBInstanceAutomatedBackupsReplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StartExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StartExportTaskMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBClusterSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ExportTaskAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IamRoleMissingPermissionsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#IamRoleNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidExportOnlyFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidExportSourceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidS3BucketFault"
+        },
+        {
+          "target": "com.amazonaws.rds#KMSKeyNotAccessibleFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StartExportTaskMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopActivityStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StopActivityStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#ResourceNotFoundFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StopActivityStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopActivityStreamResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StopDBClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBShardGroupStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StopDBClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBInstance": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StopDBInstanceMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#DBSnapshotAlreadyExistsFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#SnapshotQuotaExceededFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StopDBInstanceAutomatedBackupsReplication": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#StopDBInstanceAutomatedBackupsReplicationMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#StopDBInstanceAutomatedBackupsReplicationMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBInstanceAutomatedBackupsReplicationResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBInstanceMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StopDBInstanceResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StorageQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StorageTypeNotAvailableFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#StorageTypeNotSupportedFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#String": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#String255": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#StringList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#Subnet": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SubnetAlreadyInUse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SubnetIdentifierList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SubnetList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SubscriptionAlreadyExistFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SubscriptionCategoryNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SubscriptionNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SupportedCharacterSetsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SupportedEngineLifecycle": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SupportedEngineLifecycleList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SupportedTimezonesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SwitchoverBlueGreenDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#SwitchoverBlueGreenDeploymentRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#BlueGreenDeploymentNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidBlueGreenDeploymentStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#SwitchoverBlueGreenDeploymentRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverBlueGreenDeploymentResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverDetail": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverDetailList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#SwitchoverDetailStatus": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#SwitchoverGlobalCluster": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#SwitchoverGlobalClusterMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#GlobalClusterNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBClusterStateFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidGlobalClusterStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#SwitchoverGlobalClusterMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverGlobalClusterResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverReadReplica": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.rds#SwitchoverReadReplicaMessage"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.rds#DBInstanceNotFoundFault"
+        },
+        {
+          "target": "com.amazonaws.rds#InvalidDBInstanceStateFault"
+        }
+      ]
+    },
+    "com.amazonaws.rds#SwitchoverReadReplicaMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverReadReplicaResult": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#SwitchoverTimeout": {
+      "type": "integer"
+    },
+    "com.amazonaws.rds#TStamp": {
+      "type": "timestamp"
+    },
+    "com.amazonaws.rds#Tag": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#TagListMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TargetDBClusterParameterGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#TargetDBInstanceClass": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#TargetDBParameterGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#TargetEngineVersion": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#TargetGroupList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#TargetHealth": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TargetHealthReason": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#TargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#TargetRole": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#TargetState": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#TargetStorageType": {
+      "type": "string"
+    },
+    "com.amazonaws.rds#TargetType": {
+      "type": "enum"
+    },
+    "com.amazonaws.rds#TenantDatabase": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TenantDatabaseAlreadyExistsFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TenantDatabaseNotFoundFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TenantDatabasePendingModifiedValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TenantDatabaseQuotaExceededFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#TenantDatabasesList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#TenantDatabasesMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#Timezone": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#UnsupportedDBEngineVersionFault": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#UpgradeTarget": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#UserAuthConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#UserAuthConfigInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#UserAuthConfigInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#UserAuthConfigList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ValidDBInstanceModificationsMessage": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ValidStorageOptions": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#ValidStorageOptionsList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#ValidUpgradeTargetList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#VpcSecurityGroupIdList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#VpcSecurityGroupMembership": {
+      "type": "structure"
+    },
+    "com.amazonaws.rds#VpcSecurityGroupMembershipList": {
+      "type": "list"
+    },
+    "com.amazonaws.rds#WriteForwardingStatus": {
+      "type": "enum"
+    }
+  }
+}

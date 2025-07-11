@@ -1,0 +1,3366 @@
+{
+  "shapes": {
+    "com.amazonaws.cloudwatchlogs#AccessDeniedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AccessPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AccountId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AccountIds": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AccountPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AccountPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AccountPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AddKeyEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AddKeyEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AddKeyValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AddKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AllowedActionForAllowVendedLogsDeliveryForResource": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AllowedFieldDelimiters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AllowedFields": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AmazonResourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Anomalies": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Anomaly": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyDetector": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyDetectorArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyDetectorStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyDetectors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AnomalyVisibilityTime": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#ApplyOnTransformedLogs": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#Arn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#AssociateKmsKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#AssociateKmsKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#AssociateKmsKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Baseline": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#Boolean": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#CSV": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CancelExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CancelExportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CancelExportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ClientToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#CollectionRetentionDays": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#Column": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Columns": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ConfigurationTemplate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ConfigurationTemplateDeliveryConfigValues": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ConfigurationTemplates": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ConflictException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CopyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CopyValueEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#CopyValueEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Count": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateDelivery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CreateDeliveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CreateDeliveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateDeliveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateExportTask": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CreateExportTaskRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CreateExportTaskRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateExportTaskResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CreateLogAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CreateLogGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#CreateLogStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#CreateLogStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DashboardViewerPrincipals": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DataAlreadyAcceptedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DataProtectionPolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DataProtectionStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#DateTimeConverter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Days": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#DefaultValue": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteAccountPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteAccountPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteAccountPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDataProtectionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDataProtectionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDataProtectionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDelivery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDeliveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliverySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDeliverySourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDeliverySourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIndexPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteIndexPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIndexPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIndexPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteLogAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteLogGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteLogStreamRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteLogStreamRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteMetricFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteMetricFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteMetricFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteQueryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteQueryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteQueryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteQueryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteRetentionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteRetentionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteRetentionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteSubscriptionFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteSubscriptionFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteSubscriptionFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteTransformer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DeleteTransformerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteTransformerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeleteWithKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Delimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Deliveries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Delivery": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestination": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinationConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinationPolicy": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinationTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryDestinations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliveryId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliverySource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliverySourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliverySources": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DeliverySuffixPath": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Descending": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeAccountPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeAccountPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeAccountPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeAccountPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeConfigurationTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeConfigurationTemplatesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeConfigurationTemplatesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeConfigurationTemplatesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeDeliveriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveryDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeDeliveryDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveryDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliveryDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliverySources": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeDeliverySourcesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliverySourcesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDeliverySourcesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDestinations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeDestinationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDestinationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeDestinationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeExportTasks": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeExportTasksRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeExportTasksRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeExportTasksResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeFieldIndexes": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeFieldIndexesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeFieldIndexesLogGroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeFieldIndexesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeFieldIndexesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeIndexPolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeIndexPoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeIndexPoliciesLogGroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeIndexPoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeIndexPoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeLogGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogGroupsLogGroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogStreams": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeLogStreamsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogStreamsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeLogStreamsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeMetricFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeMetricFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeMetricFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeMetricFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueriesMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueriesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueriesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueryDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeQueryDefinitionsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueryDefinitionsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeQueryDefinitionsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeResourcePolicies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeResourcePoliciesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeResourcePoliciesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeResourcePoliciesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeSubscriptionFilters": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DescribeSubscriptionFiltersRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeSubscriptionFiltersRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DescribeSubscriptionFiltersResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Description": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Destination": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#DestinationArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DestinationField": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DestinationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Destinations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#DetectorKmsKeyArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DetectorName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Dimensions": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#DimensionsKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DimensionsValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#DisassociateKmsKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#DisassociateKmsKeyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#DisassociateKmsKeyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Distribution": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#DynamicTokenPosition": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#EncryptionKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Entity": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityAttributesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityAttributesValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityKeyAttributes": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityKeyAttributesKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityKeyAttributesValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EntityRejectionErrorType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#Enumerations": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#EpochMillis": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#EvaluationFrequency": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#EventId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EventMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#EventNumber": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#EventSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#EventsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportDestinationBucket": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportDestinationPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTask": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskExecutionInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskStatusCode": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTaskStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ExportTasks": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ExtractedValues": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#Field": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FieldDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FieldHeader": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FieldIndex": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#FieldIndexName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FieldIndexes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#FilterCount": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#FilterLogEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#FilterLogEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#FilterLogEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#FilterLogEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#FilterName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FilterPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#FilteredLogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#FilteredLogEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Flatten": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#FlattenedElement": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#Force": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#ForceUpdate": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#FromKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDataProtectionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetDataProtectionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetDataProtectionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDataProtectionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDelivery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetDeliveryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliveryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliverySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetDeliverySourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliverySourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetDeliverySourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetLogAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogAnomalyDetectorResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetLogEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogGroupFields": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetLogGroupFieldsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogGroupFieldsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogGroupFieldsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetLogRecordRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogRecordRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetLogRecordResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetQueryResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetQueryResultsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetQueryResultsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetQueryResultsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetTransformer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#GetTransformerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#GetTransformerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GetTransformerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Grok": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#GrokMatch": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Histogram": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#IncludeLinkedAccounts": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#IndexPolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#IndexPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#IndexSource": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#InferredTokenName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#InheritedProperties": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#InheritedProperty": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#InputLogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#InputLogEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#InputLogStreamNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Integer": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationDetails": {
+      "type": "union"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationNamePrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationStatusMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#IntegrationType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#Interleaved": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#InvalidOperationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#InvalidParameterException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#InvalidSequenceTokenException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#IsSampled": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#Key": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#KeyPrefix": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#KeyValueDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#KmsKeyId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LimitExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListAnomalies": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListAnomaliesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListAnomaliesLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#ListAnomaliesRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListAnomaliesResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListIntegrations": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListIntegrationsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListIntegrationsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListIntegrationsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectors": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectorsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectorsLimit": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectorsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectorsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListLogGroupsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsForQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListLogGroupsForQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsForQueryMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsForQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsForQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListLogGroupsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsForResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListTagsForResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsForResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsForResourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsLogGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#ListTagsLogGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsLogGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListTagsLogGroupResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ListToMap": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LiveTailSessionLogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LiveTailSessionMetadata": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LiveTailSessionResults": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LiveTailSessionStart": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LiveTailSessionUpdate": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Locale": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LogEventIndex": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroup": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupArnList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupClass": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupField": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupFieldList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupNamePattern": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupNameRegexPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupNames": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupSummaries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroupSummary": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LogGroups": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogRecord": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#LogRecordPointer": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogSamples": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LogStreamName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogStreamSearchedCompletely": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#LogStreams": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#LogType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#LogTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Logs_20140328": {
+      "type": "service",
+      "traits": {
+        "aws.api#service": {
+          "sdkId": "CloudWatch Logs"
+        }
+      }
+    },
+    "com.amazonaws.cloudwatchlogs#LowerCaseString": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#LowerCaseStringWithKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#MalformedQueryException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#MatchPattern": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#MatchPatterns": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Message": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricFilterMatchRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricFilterMatches": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricNamespace": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricTransformation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricTransformations": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#MetricValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#MoveKeyEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#MoveKeyEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#MoveKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#NextToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#NonMatchValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OCSFVersion": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchApplication": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchApplicationEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchApplicationId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchCollection": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchCollectionEndpoint": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchDataAccessPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchDataSource": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchDataSourceName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchEncryptionPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchIntegrationDetails": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchLifecyclePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchNetworkPolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchPolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchResourceConfig": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchResourceStatus": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchResourceStatusType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchWorkspace": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OpenSearchWorkspaceId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#OperationAbortedException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OrderBy": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#OutputFormat": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#OutputFormats": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#OutputLogEvent": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#OutputLogEvents": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#OverwriteIfExists": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseCloudfront": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseJSON": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseKeyValue": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParsePostgres": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseRoute53": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseToOCSF": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseVPC": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParseWAF": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ParserFieldDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PatternId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PatternRegex": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PatternString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PatternToken": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PatternTokens": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Percentage": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#Policy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PolicyDocument": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PolicyName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#PolicyType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#Priority": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Processor": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Processors": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#PutAccountPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutAccountPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutAccountPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutAccountPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDataProtectionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDataProtectionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDataProtectionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDataProtectionPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliverySource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDeliverySourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliverySourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDeliverySourceResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDestination": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDestinationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDestinationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutDestinationPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutDestinationPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDestinationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutDestinationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutIndexPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutIndexPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutIndexPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutIndexPolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutIntegration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutIntegrationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutIntegrationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutIntegrationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutLogEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutLogEventsRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DataAlreadyAcceptedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidSequenceTokenException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UnrecognizedClientException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutLogEventsRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutLogEventsResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutMetricFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutMetricFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutMetricFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutQueryDefinition": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutQueryDefinitionRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutQueryDefinitionRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutQueryDefinitionResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutResourcePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutResourcePolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutResourcePolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutResourcePolicyResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutRetentionPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutRetentionPolicyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutRetentionPolicyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutSubscriptionFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutSubscriptionFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutSubscriptionFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#PutTransformer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#PutTransformerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#PutTransformerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryCharOffset": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryCompileError": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryCompileErrorLocation": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryDefinition": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryDefinitionList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryDefinitionName": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryDefinitionString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryInfoList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryLanguage": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryListMaxResults": {
+      "type": "integer"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryResults": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryStatistics": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryStatus": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#QueryString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#QuoteCharacter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#RecordField": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#RecordFields": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#RejectedEntityInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#RejectedLogEventsInfo": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#RenameKeyEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#RenameKeyEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#RenameKeys": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#RenameTo": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#RequestId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceAlreadyExistsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceArns": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceConfig": {
+      "type": "union"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceIdentifier": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceNotFoundException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourcePolicies": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourcePolicy": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceType": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ResourceTypes": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ResultField": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ResultRows": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#RoleArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#S3DeliveryConfiguration": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Scope": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#SearchedLogStream": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SearchedLogStreams": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#SelectionCriteria": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#SequenceToken": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Service": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ServiceQuotaExceededException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ServiceUnavailableException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SessionId": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#SessionStreamingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SessionTimeoutException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Source": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#SourceTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#SplitString": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SplitStringDelimiter": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#SplitStringEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#SplitStringEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StandardUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#StartFromHead": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#StartLiveTail": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#StartLiveTailRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#StartLiveTailLogGroupIdentifiers": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#StartLiveTailRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StartLiveTailResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StartLiveTailResponseStream": {
+      "type": "union"
+    },
+    "com.amazonaws.cloudwatchlogs#StartQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#StartQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#LimitExceededException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#MalformedQueryException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#StartQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StartQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#State": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#StatsValue": {
+      "type": "double"
+    },
+    "com.amazonaws.cloudwatchlogs#StopQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#StopQueryRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#StopQueryRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StopQueryResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#StoredBytes": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#SubscriptionFilter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SubscriptionFilters": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#SubstituteString": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SubstituteStringEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#SubstituteStringEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Success": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#SuppressionPeriod": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#SuppressionState": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#SuppressionType": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#SuppressionUnit": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#TagKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TagKeyList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#TagList": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#TagLogGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#TagLogGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#TagLogGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#TagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#TooManyTagsException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#TagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TagValue": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Tags": {
+      "type": "map"
+    },
+    "com.amazonaws.cloudwatchlogs#Target": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TargetArn": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TargetFormat": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TargetTimezone": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TestEventMessages": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#TestMetricFilter": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#TestMetricFilterRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#TestMetricFilterRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TestMetricFilterResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TestTransformer": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#TestTransformerRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidOperationException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#TestTransformerRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TestTransformerResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#ThrottlingException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Time": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Timestamp": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#ToKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#Token": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TokenString": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TokenValue": {
+      "type": "long"
+    },
+    "com.amazonaws.cloudwatchlogs#TooManyTagsException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TransformedEventMessage": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#TransformedLogRecord": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TransformedLogs": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#TrimString": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TrimStringWithKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#Type": {
+      "type": "enum"
+    },
+    "com.amazonaws.cloudwatchlogs#TypeConverter": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#TypeConverterEntries": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#TypeConverterEntry": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Unmask": {
+      "type": "boolean"
+    },
+    "com.amazonaws.cloudwatchlogs#UnrecognizedClientException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UntagLogGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#UntagLogGroupRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#UntagLogGroupRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UntagResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#UntagResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#UntagResourceRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateAnomaly": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#UpdateAnomalyRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateAnomalyRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateDeliveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#UpdateDeliveryConfigurationRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ValidationException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateDeliveryConfigurationRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateDeliveryConfigurationResponse": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateLogAnomalyDetector": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.cloudwatchlogs#UpdateLogAnomalyDetectorRequest"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#InvalidParameterException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#OperationAbortedException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ServiceUnavailableException"
+        }
+      ]
+    },
+    "com.amazonaws.cloudwatchlogs#UpdateLogAnomalyDetectorRequest": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpperCaseString": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#UpperCaseStringWithKeys": {
+      "type": "list"
+    },
+    "com.amazonaws.cloudwatchlogs#ValidationException": {
+      "type": "structure"
+    },
+    "com.amazonaws.cloudwatchlogs#Value": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#ValueKey": {
+      "type": "string"
+    },
+    "com.amazonaws.cloudwatchlogs#WithKey": {
+      "type": "string"
+    }
+  }
+}
